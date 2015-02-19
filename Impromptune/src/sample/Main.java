@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World - No hablo espanol");
         primaryStage.setScene(new Scene(root, 500, 500));
+        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 
