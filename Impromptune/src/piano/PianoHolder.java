@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Node;
 
@@ -14,6 +15,9 @@ import javafx.scene.Node;
  * Created by Sean on 2/19/2015.
  */
 public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
+
+    @FXML
+    private Slider registerSlider;
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -24,6 +28,9 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     public void handle(MouseEvent event) {
         if(event.getEventType() == MouseEvent.MOUSE_CLICKED){
             Node pianoKey = (Node) event.getTarget();
+            String id = pianoKey.getId();
+            int register = new Double(registerSlider.getValue()).intValue();
+
         }
     }
 }
