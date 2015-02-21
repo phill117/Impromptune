@@ -3,6 +3,25 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Impromptune.iml" filepath="$PROJECT_DIR$/Impromptune.iml" />
+      <module fileurl="file://C:/ZongIntelli/converter/converter.iml" filepath="C:/ZongIntelli/converter/converter.iml" />
+      <module fileurl="file://C:/ZongIntelli/core/core.iml" filepath="C:/ZongIntelli/core/core.iml" />
+      <module fileurl="file://C:/ZongIntelli/demos/demos.iml" filepath="C:/ZongIntelli/demos/demos.iml" />
+      <module fileurl="file://C:/ZongIntelli/desktop/desktop.iml" filepath="C:/ZongIntelli/desktop/desktop.iml" />
+      <module fileurl="file://C:/ZongIntelli/layout/layout.iml" filepath="C:/ZongIntelli/layout/layout.iml" />
+      <module fileurl="file://C:/ZongIntelli/lib/lib.iml" filepath="C:/ZongIntelli/lib/lib.iml" />
+      <module fileurl="file://C:/ZongIntelli/midi-out/midi-out.iml" filepath="C:/ZongIntelli/midi-out/midi-out.iml" />
+      <module fileurl="file://C:/ZongIntelli/musicxml/musicxml.iml" filepath="C:/ZongIntelli/musicxml/musicxml.iml" />
+      <module fileurl="file://C:/ZongIntelli/musicxml-in/musicxml-in.iml" filepath="C:/ZongIntelli/musicxml-in/musicxml-in.iml" />
+      <module fileurl="file://C:/ZongIntelli/player/player.iml" filepath="C:/ZongIntelli/player/player.iml" />
+      <module fileurl="file://C:/ZongIntelli/renderer/renderer.iml" filepath="C:/ZongIntelli/renderer/renderer.iml" />
+      <module fileurl="file://C:/ZongIntelli/renderer-awt/renderer-awt.iml" filepath="C:/ZongIntelli/renderer-awt/renderer-awt.iml" />
+      <module fileurl="file://C:/ZongIntelli/renderer-javafx/renderer-javafx.iml" filepath="C:/ZongIntelli/renderer-javafx/renderer-javafx.iml" />
+      <module fileurl="file://C:/ZongIntelli/utils/utils-base/utils-base.iml" filepath="C:/ZongIntelli/utils/utils-base/utils-base.iml" />
+      <module fileurl="file://C:/ZongIntelli/utils/utils-jse/utils-jse.iml" filepath="C:/ZongIntelli/utils/utils-jse/utils-jse.iml" />
+      <module fileurl="file://C:/ZongIntelli/utils/utils-jse8/utils-jse8.iml" filepath="C:/ZongIntelli/utils/utils-jse8/utils-jse8.iml" />
+      <module fileurl="file://C:/ZongIntelli/utils/utils-kernel/utils-kernel.iml" filepath="C:/ZongIntelli/utils/utils-kernel/utils-kernel.iml" />
+      <module fileurl="file://C:/ZongIntelli/utils/utils-pdlib/utils-pdlib.iml" filepath="C:/ZongIntelli/utils/utils-pdlib/utils-pdlib.iml" />
+      <module fileurl="file://C:/ZongIntelli/utils/utils-serialize/utils-serialize.iml" filepath="C:/ZongIntelli/utils/utils-serialize/utils-serialize.iml" />
     </modules>
   </component>
 </project>
