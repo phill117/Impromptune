@@ -1,16 +1,12 @@
 package com.xenoage.zong.desktop.utils.image;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.Transparency;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.imageio.ImageIO;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
 
 /**
  * Loads a {@link BufferedImage}, whose format is optimal for the system.

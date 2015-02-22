@@ -1,10 +1,9 @@
 package com.xenoage.zong.core.music.annotation;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.zong.core.music.format.Positioning;
+import lombok.Data;
 
 /**
  * A fermata.

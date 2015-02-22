@@ -1,24 +1,16 @@
 package com.xenoage.utils.jse.io;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.io.FileFilter;
 import com.xenoage.utils.io.FilesystemInput;
 import com.xenoage.utils.io.InputStream;
 import com.xenoage.utils.io.index.FilesystemIndex;
+
+import java.io.*;
+import java.util.*;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Some useful input/output methods for files on the filesystem

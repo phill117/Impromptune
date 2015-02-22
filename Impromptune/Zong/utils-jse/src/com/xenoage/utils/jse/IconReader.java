@@ -1,18 +1,16 @@
 package com.xenoage.utils.jse;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.warning;
+import com.xenoage.utils.jse.io.DesktopIO;
 
-import java.awt.Image;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
-import com.xenoage.utils.jse.io.DesktopIO;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.warning;
 
 
 /**

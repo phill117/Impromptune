@@ -1,10 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.columnspacing;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.kernel.Tuple2.t;
-
-import java.util.List;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.kernel.Tuple2;
@@ -14,6 +9,11 @@ import com.xenoage.zong.core.music.barline.Barline;
 import com.xenoage.zong.core.music.barline.BarlineRepeat;
 import com.xenoage.zong.core.music.util.BeatE;
 import com.xenoage.zong.musiclayout.BeatOffset;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.kernel.Tuple2.t;
 
 /**
  * This strategy creates {@link BeatOffset}s for the barlines

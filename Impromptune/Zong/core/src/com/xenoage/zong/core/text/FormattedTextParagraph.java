@@ -1,18 +1,17 @@
 package com.xenoage.zong.core.text;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CList.ilist;
-import static com.xenoage.utils.collections.CollectionUtils.llist;
-
-import java.util.LinkedList;
-
-import lombok.Data;
-
 import com.xenoage.utils.StringUtils;
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.font.TextMetrics;
+import lombok.Data;
+
+import java.util.LinkedList;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CList.ilist;
+import static com.xenoage.utils.collections.CollectionUtils.llist;
 
 /**
  * One paragraph within a {@link FormattedText}.

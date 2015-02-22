@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout.notations.chord;
 
+import com.xenoage.utils.annotations.Const;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import com.xenoage.utils.annotations.Const;
 
 /**
  * The alignment of a single note within a chord: its vertical position and its

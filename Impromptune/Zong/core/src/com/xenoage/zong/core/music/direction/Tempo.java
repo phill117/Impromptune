@@ -1,15 +1,15 @@
 package com.xenoage.zong.core.music.direction;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.header.ColumnHeader;
 import com.xenoage.zong.core.music.ColumnElement;
 import com.xenoage.zong.core.music.TextElement;
 import com.xenoage.zong.core.text.Text;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
 /**

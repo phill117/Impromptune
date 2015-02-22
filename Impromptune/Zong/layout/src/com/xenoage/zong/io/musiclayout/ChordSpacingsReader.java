@@ -1,13 +1,13 @@
 package com.xenoage.zong.io.musiclayout;
 
-import static com.xenoage.utils.collections.CollectionUtils.map;
+import com.xenoage.utils.math.Fraction;
+import com.xenoage.utils.xml.XmlReader;
+import com.xenoage.zong.musiclayout.settings.ChordSpacings;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-import com.xenoage.utils.math.Fraction;
-import com.xenoage.utils.xml.XmlReader;
-import com.xenoage.zong.musiclayout.settings.ChordSpacings;
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * Desktop reader for {@link ChordSpacings}.

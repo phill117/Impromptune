@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout.settings;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.NonNull;
+import lombok.AllArgsConstructor;
 
 /**
  * Settings for spacings (distances) in IS.

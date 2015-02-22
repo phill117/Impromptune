@@ -1,10 +1,10 @@
 package com.xenoage.utils.io;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
+import com.xenoage.utils.kernel.Tuple2;
 
 import java.util.List;
 
-import com.xenoage.utils.kernel.Tuple2;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Some useful file system functions.
@@ -25,7 +25,7 @@ public class FileUtils {
 			fileName = fileName.substring(pos + 1);
 		if ((pos = fileName.lastIndexOf('\\')) > -1)
 			fileName = fileName.substring(pos + 1);
-		if ((pos = fileName.indexOf("", 1)) > -1)
+		if ((pos = fileName.indexOf(".", 1)) > -1)
 			fileName = fileName.substring(0, pos);
 		return fileName;
 	}

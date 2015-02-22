@@ -1,8 +1,8 @@
 package com.xenoage.utils.math;
 
-import static com.xenoage.utils.math.geom.Point2f.p;
-
 import com.xenoage.utils.math.geom.Point2f;
+
+import static com.xenoage.utils.math.geom.Point2f.p;
 
 /**
  * Some useful mathematical functions.

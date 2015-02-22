@@ -1,8 +1,8 @@
 package com.xenoage.zong.io.midi.out;
 
-import static com.xenoage.zong.core.music.Pitch.pi;
-
 import com.xenoage.zong.core.music.Pitch;
+
+import static com.xenoage.zong.core.music.Pitch.pi;
 
 
 /**

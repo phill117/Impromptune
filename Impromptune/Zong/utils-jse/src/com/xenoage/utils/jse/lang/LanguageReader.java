@@ -1,14 +1,13 @@
 package com.xenoage.utils.jse.lang;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.utils.collections.CollectionUtils.map;
-import static com.xenoage.utils.io.FileFilters.orFilter;
-import static com.xenoage.utils.io.FileFilters.poFilter;
-import static com.xenoage.utils.io.FileFilters.xmlFilter;
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.remark;
-import static com.xenoage.utils.log.Report.warning;
+import com.xenoage.utils.jse.io.DesktopIO;
+import com.xenoage.utils.jse.io.JseInputStream;
+import com.xenoage.utils.jse.xml.XMLReader;
+import com.xenoage.utils.kernel.Tuple2;
+import com.xenoage.utils.lang.Lang;
+import com.xenoage.utils.lang.Language;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -19,15 +18,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import com.xenoage.utils.jse.io.DesktopIO;
-import com.xenoage.utils.jse.io.JseInputStream;
-import com.xenoage.utils.jse.xml.XMLReader;
-import com.xenoage.utils.kernel.Tuple2;
-import com.xenoage.utils.lang.Lang;
-import com.xenoage.utils.lang.Language;
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.utils.collections.CollectionUtils.map;
+import static com.xenoage.utils.io.FileFilters.*;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.remark;
+import static com.xenoage.utils.log.Report.warning;
 
 /**
  * This class reads a {@link Language} from a given directory.

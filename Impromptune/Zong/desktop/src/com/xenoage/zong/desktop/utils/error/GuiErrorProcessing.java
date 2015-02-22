@@ -1,14 +1,13 @@
 package com.xenoage.zong.desktop.utils.error;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.zong.desktop.App.app;
-
-import org.controlsfx.dialog.Dialogs;
-
 import com.xenoage.utils.error.BasicErrorProcessing;
 import com.xenoage.utils.lang.Lang;
 import com.xenoage.utils.log.Level;
 import com.xenoage.utils.log.Report;
+import org.controlsfx.dialog.Dialogs;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * This class handles error and warning {@link Report}s by

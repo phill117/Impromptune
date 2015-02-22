@@ -1,13 +1,13 @@
 package com.xenoage.zong.demos.minimal;
 
-import java.awt.Desktop;
-import java.io.File;
-
 import com.xenoage.zong.desktop.io.ScoreDocIO;
 import com.xenoage.zong.desktop.io.musicxml.in.MusicXmlScoreDocFileInput;
 import com.xenoage.zong.desktop.io.pdf.out.PdfScoreDocFileOutput;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.documents.ScoreDoc;
+
+import java.awt.*;
+import java.io.File;
 
 /**
  * This tiny demo shows how to use Zong! to convert a MusicXML file

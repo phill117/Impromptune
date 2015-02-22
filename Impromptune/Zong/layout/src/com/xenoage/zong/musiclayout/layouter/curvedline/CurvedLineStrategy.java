@@ -1,10 +1,10 @@
 package com.xenoage.zong.musiclayout.layouter.curvedline;
 
-import java.util.List;
-
 import com.xenoage.utils.math.VSide;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.util.math.CubicBezierCurve;
+
+import java.util.List;
 
 
 /**

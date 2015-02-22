@@ -1,19 +1,18 @@
 package com.xenoage.zong.desktop.io.midi.out;
 
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.remark;
-
-import java.io.IOException;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequence;
-
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.io.OutputStream;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.io.midi.out.MidiConverter;
 import com.xenoage.zong.io.midi.out.MidiSequence;
+
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequence;
+import java.io.IOException;
+
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.remark;
 
 
 /**

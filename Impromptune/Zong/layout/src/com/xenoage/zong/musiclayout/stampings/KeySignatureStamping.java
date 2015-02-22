@@ -1,7 +1,5 @@
 package com.xenoage.zong.musiclayout.stampings;
 
-import static com.xenoage.zong.core.music.key.TraditionalKey.getLinePosition;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Rectangle2f;
 import com.xenoage.utils.math.geom.Shape;
@@ -10,6 +8,8 @@ import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.common.CommonSymbol;
+
+import static com.xenoage.zong.core.music.key.TraditionalKey.getLinePosition;
 
 /**
  * Class for a key signature stamping.

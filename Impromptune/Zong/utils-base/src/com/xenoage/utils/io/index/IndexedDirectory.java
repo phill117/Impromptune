@@ -1,11 +1,11 @@
 package com.xenoage.utils.io.index;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
+import com.xenoage.utils.io.Directory;
+import com.xenoage.utils.io.FilesystemItem;
 
 import java.util.List;
 
-import com.xenoage.utils.io.Directory;
-import com.xenoage.utils.io.FilesystemItem;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * A {@link Directory} in the {@link FilesystemIndex}.

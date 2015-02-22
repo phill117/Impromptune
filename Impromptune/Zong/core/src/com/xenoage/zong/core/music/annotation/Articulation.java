@@ -1,11 +1,10 @@
 package com.xenoage.zong.core.music.annotation;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.music.format.Placement;
+import lombok.Data;
 
 /**
  * An articulation, like staccato or tenuto.

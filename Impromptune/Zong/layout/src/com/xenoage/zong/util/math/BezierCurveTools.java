@@ -1,10 +1,10 @@
 package com.xenoage.zong.util.math;
 
-import static com.xenoage.utils.math.geom.Point2f.p;
-
 import com.xenoage.utils.math.QuadraticCurve;
 import com.xenoage.utils.math.VSide;
 import com.xenoage.utils.math.geom.Point2f;
+
+import static com.xenoage.utils.math.geom.Point2f.p;
 
 /**
  * Computes a cubic bezier curve from a given quadratic curve

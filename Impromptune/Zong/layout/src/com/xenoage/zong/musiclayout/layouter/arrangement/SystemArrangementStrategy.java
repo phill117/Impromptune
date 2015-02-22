@@ -1,12 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.arrangement;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.kernel.Tuple2.t;
-import static com.xenoage.zong.core.position.MP.atStaff;
-
-import java.util.List;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.kernel.Tuple2;
 import com.xenoage.utils.kernel.Tuple3;
@@ -26,6 +19,13 @@ import com.xenoage.zong.musiclayout.layouter.cache.NotationsCache;
 import com.xenoage.zong.musiclayout.layouter.columnspacing.ColumnSpacingStrategy;
 import com.xenoage.zong.musiclayout.layouter.columnspacing.VoiceSpacingsByStaff;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.kernel.Tuple2.t;
+import static com.xenoage.zong.core.position.MP.atStaff;
 
 /**
  * The {@link SystemArrangementStrategy} arranges

@@ -1,11 +1,5 @@
 package com.xenoage.zong.io;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.List;
-
-import lombok.Getter;
-
 import com.xenoage.utils.document.io.FileFormat;
 import com.xenoage.utils.document.io.SupportedFormats;
 import com.xenoage.zong.core.Score;
@@ -14,6 +8,11 @@ import com.xenoage.zong.desktop.io.mp3.out.Mp3ScoreFileOutput;
 import com.xenoage.zong.desktop.io.ogg.out.OggScoreFileOutput;
 import com.xenoage.zong.desktop.io.wav.out.WavScoreFileOutput;
 import com.xenoage.zong.io.musicxml.in.MusicXmlScoreFileInput;
+import lombok.Getter;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * This class contains a list of all formats which can be used

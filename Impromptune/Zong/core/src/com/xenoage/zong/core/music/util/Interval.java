@@ -1,11 +1,9 @@
 package com.xenoage.zong.core.music.util;
 
-import static com.xenoage.zong.core.music.util.Interval.Result.FalseHigh;
-import static com.xenoage.zong.core.music.util.Interval.Result.FalseLow;
-import static com.xenoage.zong.core.music.util.Interval.Result.True;
-
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.position.MP;
+
+import static com.xenoage.zong.core.music.util.Interval.Result.*;
 
 
 /**

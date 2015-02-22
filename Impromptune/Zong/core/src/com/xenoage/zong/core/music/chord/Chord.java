@@ -1,19 +1,5 @@
 package com.xenoage.zong.core.music.chord;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import static com.xenoage.utils.annotations.Optimized.Reason.MemorySaving;
-import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.math.Fraction._0;
-import static java.util.Collections.emptyList;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonEmpty;
 import com.xenoage.utils.annotations.NonNull;
@@ -33,6 +19,19 @@ import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.core.position.MPElement;
 import com.xenoage.zong.core.util.InconsistentScoreException;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
+import static com.xenoage.utils.annotations.Optimized.Reason.MemorySaving;
+import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.math.Fraction._0;
+import static java.util.Collections.emptyList;
 
 /**
  * Class for a chord.

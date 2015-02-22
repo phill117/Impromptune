@@ -1,11 +1,11 @@
 package com.xenoage.utils.document.io;
 
-import java.io.IOException;
-
 import com.xenoage.utils.annotations.MaybeNull;
-import com.xenoage.utils.exceptions.InvalidFormatException;
 import com.xenoage.utils.document.Document;
+import com.xenoage.utils.exceptions.InvalidFormatException;
 import com.xenoage.utils.io.InputStream;
+
+import java.io.IOException;
 
 
 /**

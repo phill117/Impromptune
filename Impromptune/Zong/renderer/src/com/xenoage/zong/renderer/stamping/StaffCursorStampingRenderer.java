@@ -1,7 +1,7 @@
 package com.xenoage.zong.renderer.stamping;
 
-import com.xenoage.utils.math.Units;
 import com.xenoage.utils.color.Color;
+import com.xenoage.utils.math.Units;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.musiclayout.stampings.StaffCursorStamping;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;

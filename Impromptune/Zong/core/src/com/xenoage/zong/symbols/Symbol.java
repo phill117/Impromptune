@@ -1,10 +1,10 @@
 package com.xenoage.zong.symbols;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.math.geom.Rectangle2f;
+import lombok.Getter;
+
+import static com.xenoage.utils.NullUtils.notNull;
 
 /**
  * Base class for all musical symbol images,

@@ -1,12 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.columnspacing;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.kernel.Tuple2.t;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.zong.core.position.MP.atMeasure;
-
-import java.util.List;
-
 import com.xenoage.utils.annotations.MaybeEmpty;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.collections.CList;
@@ -28,11 +21,14 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.layouter.cache.NotationsCache;
 import com.xenoage.zong.musiclayout.notations.Notation;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
-import com.xenoage.zong.musiclayout.spacing.horizontal.ElementWidth;
-import com.xenoage.zong.musiclayout.spacing.horizontal.LeadingSpacing;
-import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureElementsSpacings;
-import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
-import com.xenoage.zong.musiclayout.spacing.horizontal.VoiceSpacing;
+import com.xenoage.zong.musiclayout.spacing.horizontal.*;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.kernel.Tuple2.t;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.zong.core.position.MP.atMeasure;
 
 /**
  * This strategy creates {@link SpacingElement}s for the

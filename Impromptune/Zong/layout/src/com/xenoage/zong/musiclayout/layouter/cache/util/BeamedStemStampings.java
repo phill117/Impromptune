@@ -1,13 +1,12 @@
 package com.xenoage.zong.musiclayout.layouter.cache.util;
 
-import java.util.ArrayList;
-
+import com.xenoage.zong.core.music.beam.Beam;
+import com.xenoage.zong.musiclayout.stampings.StemStamping;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.xenoage.zong.core.music.beam.Beam;
-import com.xenoage.zong.musiclayout.stampings.StemStamping;
+import java.util.ArrayList;
 
 /**
  * This class is used by the layouter

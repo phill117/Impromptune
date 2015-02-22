@@ -1,16 +1,16 @@
 package com.xenoage.zong.musicxml.types;
 
-import static com.xenoage.zong.core.music.Pitch.pi;
-import static com.xenoage.zong.musicxml.util.InvalidCore.invalidCore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.core.music.Pitch;
 import com.xenoage.zong.musicxml.types.choice.MxlFullNoteContent;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import static com.xenoage.zong.core.music.Pitch.pi;
+import static com.xenoage.zong.musicxml.util.InvalidCore.invalidCore;
 
 /**
  * MusicXML pitch.

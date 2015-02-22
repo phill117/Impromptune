@@ -1,10 +1,5 @@
 package com.xenoage.zong.io.midi.out;
 
-import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
-import static com.xenoage.utils.kernel.Tuple2.t;
-
-import java.util.List;
-
 import com.xenoage.utils.kernel.Tuple2;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.utils.math.MathUtils;
@@ -19,6 +14,11 @@ import com.xenoage.zong.core.music.direction.Dynamics;
 import com.xenoage.zong.core.music.direction.DynamicsType;
 import com.xenoage.zong.core.music.util.BeatE;
 import com.xenoage.zong.core.position.MP;
+
+import java.util.List;
+
+import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
+import static com.xenoage.utils.kernel.Tuple2.t;
 
 /**
  * This class converts dynamics.

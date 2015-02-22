@@ -1,11 +1,11 @@
 package com.xenoage.zong.musicxml.types.enums;
 
-import static com.xenoage.utils.math.Fraction.fr;
+import com.xenoage.utils.annotations.NonNull;
+import com.xenoage.utils.math.Fraction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import com.xenoage.utils.annotations.NonNull;
-import com.xenoage.utils.math.Fraction;
+import static com.xenoage.utils.math.Fraction.fr;
 
 /**
  * MusicXML note-type-value.

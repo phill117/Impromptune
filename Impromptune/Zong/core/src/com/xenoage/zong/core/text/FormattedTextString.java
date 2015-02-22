@@ -1,14 +1,14 @@
 package com.xenoage.zong.core.text;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.NonEmpty;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.font.FontInfo;
 import com.xenoage.utils.font.TextMetrics;
+import lombok.Data;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
+import static com.xenoage.utils.PlatformUtils.platformUtils;
 
 /**
  * Formatted substring of a text.

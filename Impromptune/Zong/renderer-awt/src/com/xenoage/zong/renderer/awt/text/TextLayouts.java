@@ -1,23 +1,22 @@
 package com.xenoage.zong.renderer.awt.text;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.kernel.Tuple2.t;
-import static com.xenoage.utils.kernel.Tuple3.t3;
+import com.xenoage.utils.kernel.Tuple2;
+import com.xenoage.utils.kernel.Tuple3;
+import com.xenoage.utils.math.Units;
+import com.xenoage.utils.math.geom.Point2f;
+import com.xenoage.utils.math.geom.Rectangle2f;
 
-import java.awt.Graphics2D;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xenoage.utils.kernel.Tuple2;
-import com.xenoage.utils.kernel.Tuple3;
-import com.xenoage.utils.math.Units;
-import com.xenoage.utils.math.geom.Point2f;
-import com.xenoage.utils.math.geom.Rectangle2f;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.kernel.Tuple2.t;
+import static com.xenoage.utils.kernel.Tuple3.t3;
 
 /**
  * This class combines several {@link TextLayout}s with

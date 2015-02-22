@@ -1,11 +1,6 @@
 package com.xenoage.utils.jse.javafx;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.jse.javafx.JavaFXApp.javaFXApp;
-import static com.xenoage.utils.log.Report.fatal;
-
-import java.io.IOException;
-
+import com.xenoage.utils.jse.lang.LangResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +8,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import com.xenoage.utils.jse.lang.LangResourceBundle;
+import java.io.IOException;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.jse.javafx.JavaFXApp.javaFXApp;
+import static com.xenoage.utils.log.Report.fatal;
 
 /**
  * A base class for dialog controllers based on JavaFX.

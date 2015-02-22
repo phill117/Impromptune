@@ -1,8 +1,8 @@
 package com.xenoage.utils.io.index;
 
-import java.io.IOException;
-
 import com.xenoage.utils.xml.XmlReader;
+
+import java.io.IOException;
 
 /**
  * This class reads a {@link FilesystemIndex} from a XML file.

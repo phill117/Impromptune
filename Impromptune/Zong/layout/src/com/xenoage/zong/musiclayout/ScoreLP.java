@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Point2f;
+import lombok.AllArgsConstructor;
 
 /**
  * This class contains a position within a score layout,

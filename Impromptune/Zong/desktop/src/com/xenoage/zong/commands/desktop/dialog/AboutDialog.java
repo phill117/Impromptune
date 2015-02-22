@@ -1,9 +1,9 @@
 package com.xenoage.zong.commands.desktop.dialog;
 
-import static com.xenoage.zong.desktop.App.app;
-
 import com.xenoage.utils.document.command.TransparentCommand;
 import com.xenoage.zong.Zong;
+
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * Shows an about-dialog.

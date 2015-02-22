@@ -1,14 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.utils.math.Fraction.fr;
-import static com.xenoage.zong.core.position.MP.atElement;
-import static com.xenoage.zong.core.position.MP.atStaff;
-import static com.xenoage.zong.io.musicxml.in.util.CommandPerformer.execute;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.iterators.It;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.commands.core.music.ColumnElementWrite;
@@ -32,6 +23,15 @@ import com.xenoage.zong.io.musicxml.in.util.MusicReaderException;
 import com.xenoage.zong.musicxml.types.MxlScorePartwise;
 import com.xenoage.zong.musicxml.types.partwise.MxlMeasure;
 import com.xenoage.zong.musicxml.types.partwise.MxlPart;
+import lombok.RequiredArgsConstructor;
+
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.utils.math.Fraction.fr;
+import static com.xenoage.zong.core.position.MP.atElement;
+import static com.xenoage.zong.core.position.MP.atStaff;
+import static com.xenoage.zong.io.musicxml.in.util.CommandPerformer.execute;
 
 /**
  * This class reads the actual musical contents of

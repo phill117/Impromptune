@@ -19,27 +19,16 @@ package com.xenoage.zong.desktop.io.wav.out;
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Set;
+import com.sun.media.sound.AudioSynthesizer;
 
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MidiDevice;
+import javax.sound.midi.*;
 import javax.sound.midi.MidiDevice.Info;
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.MidiMessage;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Receiver;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.Synthesizer;
-import javax.sound.midi.Track;
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-
-import com.sun.media.sound.AudioSynthesizer;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Set;
 
 /**
  * Converts a Midi {@link Sequence} to a sampled audio file (.wav) stream.

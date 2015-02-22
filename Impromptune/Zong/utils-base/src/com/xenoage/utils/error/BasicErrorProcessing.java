@@ -1,10 +1,10 @@
 package com.xenoage.utils.error;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.log.Log.log;
-
 import com.xenoage.utils.log.Level;
 import com.xenoage.utils.log.Report;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.log.Log.log;
 
 /**
  * This class handles all errors and warnings that are caught

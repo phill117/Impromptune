@@ -1,14 +1,14 @@
 package com.xenoage.zong.desktop.utils;
 
-import static com.xenoage.zong.desktop.App.app;
+import com.xenoage.utils.filter.Filter;
+import com.xenoage.utils.lang.Lang;
+import com.xenoage.zong.Voc;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import com.xenoage.utils.filter.Filter;
-import com.xenoage.utils.lang.Lang;
-import com.xenoage.zong.Voc;
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * Filter dialog which allows selecting a single filename.

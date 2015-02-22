@@ -1,30 +1,11 @@
 package com.xenoage.zong.io.selection;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.zong.core.music.beam.Beam.beam;
-import static com.xenoage.zong.core.position.MP.mp;
-
-import java.util.ArrayList;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.document.command.CommandPerformer;
 import com.xenoage.utils.math.Fraction;
-import com.xenoage.zong.commands.core.music.ColumnElementWrite;
-import com.xenoage.zong.commands.core.music.MeasureAdd;
-import com.xenoage.zong.commands.core.music.MeasureElementWrite;
-import com.xenoage.zong.commands.core.music.StaffAdd;
-import com.xenoage.zong.commands.core.music.VoiceAdd;
-import com.xenoage.zong.commands.core.music.VoiceElementWrite;
+import com.xenoage.zong.commands.core.music.*;
 import com.xenoage.zong.commands.core.music.slur.SlurAdd;
 import com.xenoage.zong.core.Score;
-import com.xenoage.zong.core.music.ColumnElement;
-import com.xenoage.zong.core.music.Measure;
-import com.xenoage.zong.core.music.MeasureElement;
-import com.xenoage.zong.core.music.Pitch;
-import com.xenoage.zong.core.music.VoiceElement;
+import com.xenoage.zong.core.music.*;
 import com.xenoage.zong.core.music.beam.Beam;
 import com.xenoage.zong.core.music.beam.BeamWaypoint;
 import com.xenoage.zong.core.music.chord.Chord;
@@ -38,6 +19,15 @@ import com.xenoage.zong.io.score.ScoreInputOptions;
 import com.xenoage.zong.io.score.ScoreInputOptions.WriteMode;
 import com.xenoage.zong.utils.exceptions.IllegalMPException;
 import com.xenoage.zong.utils.exceptions.MeasureFullException;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.zong.core.music.beam.Beam.beam;
+import static com.xenoage.zong.core.position.MP.mp;
 
 
 /**

@@ -1,27 +1,15 @@
 package com.xenoage.zong.desktop.io.midi.out;
 
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.warning;
-
-import java.util.List;
-
-import javax.sound.midi.ControllerEventListener;
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.ShortMessage;
-
 import com.xenoage.utils.jse.collections.WeakList;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.position.MP;
-import com.xenoage.zong.io.midi.out.MidiConverter;
-import com.xenoage.zong.io.midi.out.MidiEvents;
-import com.xenoage.zong.io.midi.out.MidiSequence;
-import com.xenoage.zong.io.midi.out.MidiSettings;
-import com.xenoage.zong.io.midi.out.MidiTime;
-import com.xenoage.zong.io.midi.out.PlaybackListener;
+import com.xenoage.zong.io.midi.out.*;
+
+import javax.sound.midi.*;
+import java.util.List;
+
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.warning;
 
 /**
  * This class offers the interface for MIDI playback in
@@ -73,7 +61,7 @@ public class MidiScorePlayer
 	public void openScore(Score score) {
 		stop();
 		this.sequence = MidiConverter.convertToSequence(
-			score, true, true, new JseMidiSequenceWriter());
+                score, true, true, new JseMidiSequenceWriter());
 		try {
 			SynthManager.getSequencer().setSequence(sequence.getSequence());
 		} catch (InvalidMidiDataException ex) {

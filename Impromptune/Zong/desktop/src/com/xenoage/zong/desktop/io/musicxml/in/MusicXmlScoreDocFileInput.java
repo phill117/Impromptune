@@ -1,12 +1,5 @@
 package com.xenoage.zong.desktop.io.musicxml.in;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
-import static com.xenoage.utils.jse.async.Sync.sync;
-import static com.xenoage.zong.util.ZongPlatformUtils.zongPlatformUtils;
-
-import java.io.IOException;
-import java.util.List;
-
 import com.xenoage.utils.document.io.FileInput;
 import com.xenoage.utils.exceptions.InvalidFormatException;
 import com.xenoage.utils.filter.AllFilter;
@@ -29,6 +22,13 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.musicxml.types.MxlScorePartwise;
 import com.xenoage.zong.symbols.SymbolPool;
+
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
+import static com.xenoage.utils.jse.async.Sync.sync;
+import static com.xenoage.zong.util.ZongPlatformUtils.zongPlatformUtils;
 
 /**
  * This class reads a MusicXML 2.0 file

@@ -1,7 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.math.geom.Size2f;
@@ -11,6 +9,7 @@ import com.xenoage.zong.core.format.PageMargins;
 import com.xenoage.zong.musicxml.types.MxlPageLayout;
 import com.xenoage.zong.musicxml.types.MxlPageMargins;
 import com.xenoage.zong.musicxml.types.groups.MxlLayout;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Reads a {@link LayoutFormat} from a {@link MxlLayout}.

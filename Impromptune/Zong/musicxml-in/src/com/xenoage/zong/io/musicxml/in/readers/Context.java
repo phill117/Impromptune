@@ -1,18 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.zong.core.position.MP.atBeat;
-import static com.xenoage.zong.io.musicxml.in.util.CommandPerformer.execute;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.kernel.Range;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.utils.math.VSide;
@@ -24,17 +11,7 @@ import com.xenoage.zong.commands.core.music.beam.BeamAdd;
 import com.xenoage.zong.commands.core.music.slur.SlurAdd;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.instrument.Instrument;
-import com.xenoage.zong.core.music.ColumnElement;
-import com.xenoage.zong.core.music.InstrumentChange;
-import com.xenoage.zong.core.music.Measure;
-import com.xenoage.zong.core.music.MeasureElement;
-import com.xenoage.zong.core.music.MeasureSide;
-import com.xenoage.zong.core.music.MusicContext;
-import com.xenoage.zong.core.music.Part;
-import com.xenoage.zong.core.music.Pitch;
-import com.xenoage.zong.core.music.StavesList;
-import com.xenoage.zong.core.music.VoiceElement;
-import com.xenoage.zong.core.music.WaypointPosition;
+import com.xenoage.zong.core.music.*;
 import com.xenoage.zong.core.music.beam.Beam;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.direction.Wedge;
@@ -46,12 +23,20 @@ import com.xenoage.zong.core.music.util.Interval;
 import com.xenoage.zong.core.music.volta.Volta;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.core.util.InconsistentScoreException;
-import com.xenoage.zong.io.musicxml.in.util.ClosedVolta;
-import com.xenoage.zong.io.musicxml.in.util.MusicReaderException;
-import com.xenoage.zong.io.musicxml.in.util.OpenElements;
-import com.xenoage.zong.io.musicxml.in.util.OpenSlur;
-import com.xenoage.zong.io.musicxml.in.util.OpenVolta;
+import com.xenoage.zong.io.musicxml.in.util.*;
 import com.xenoage.zong.utils.exceptions.MeasureFullException;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.zong.core.position.MP.atBeat;
+import static com.xenoage.zong.io.musicxml.in.util.CommandPerformer.execute;
 
 /**
  * This class stores the current context when

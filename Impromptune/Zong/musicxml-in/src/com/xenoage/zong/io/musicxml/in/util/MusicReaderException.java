@@ -1,7 +1,7 @@
 package com.xenoage.zong.io.musicxml.in.util;
 
-import com.xenoage.zong.io.musicxml.in.readers.ScoreReader;
 import com.xenoage.zong.io.musicxml.in.readers.Context;
+import com.xenoage.zong.io.musicxml.in.readers.ScoreReader;
 
 /**
  * Exception within a {@link ScoreReader}.

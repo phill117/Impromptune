@@ -1,14 +1,14 @@
 package com.xenoage.zong.musicxml.types;
 
-import static com.xenoage.utils.Parser.parseInt;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import static com.xenoage.utils.Parser.parseInt;
 
 
 /**

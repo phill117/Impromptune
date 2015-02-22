@@ -1,10 +1,9 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.zong.core.format.StaffLayout;
 import com.xenoage.zong.musicxml.types.MxlStaffLayout;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * This class reads a staff-layout element into a

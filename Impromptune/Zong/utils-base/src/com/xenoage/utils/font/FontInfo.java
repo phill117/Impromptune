@@ -1,16 +1,12 @@
 package com.xenoage.utils.font;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.utils.collections.CList.ilist;
+import com.xenoage.utils.annotations.*;
+import com.xenoage.utils.collections.IList;
 
 import java.util.List;
 
-import com.xenoage.utils.annotations.Const;
-import com.xenoage.utils.annotations.MaybeEmpty;
-import com.xenoage.utils.annotations.MaybeNull;
-import com.xenoage.utils.annotations.NonEmpty;
-import com.xenoage.utils.annotations.NonNull;
-import com.xenoage.utils.collections.IList;
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.utils.collections.CList.ilist;
 
 /**
  * Information about a font.

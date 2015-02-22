@@ -1,13 +1,13 @@
 package com.xenoage.zong.desktop.io;
 
-import java.io.File;
-import java.io.IOException;
-
 import com.xenoage.utils.document.io.FileInput;
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.jse.io.JseInputStream;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.zong.documents.ScoreDoc;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Reads and writes a {@link ScoreDoc} from or to the given {@link File}

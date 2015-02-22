@@ -1,10 +1,10 @@
 package com.xenoage.zong.desktop.utils.text;
 
+import com.xenoage.zong.core.text.Alignment;
+
 import javax.swing.text.AttributeSet;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.StyleConstants;
-
-import com.xenoage.zong.core.text.Alignment;
 
 /**
  * Working with {@link Alignment} in Java SE.

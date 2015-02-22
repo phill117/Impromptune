@@ -1,11 +1,11 @@
 package com.xenoage.zong.musiclayout.layouter.cache.util;
 
-import javax.rmi.CORBA.Tie;
-
 import com.xenoage.utils.math.VSide;
 import com.xenoage.zong.core.music.slur.Slur;
 import com.xenoage.zong.musiclayout.continued.ContinuedSlur;
 import com.xenoage.zong.musiclayout.stampings.NoteheadStamping;
+
+import javax.rmi.CORBA.Tie;
 
 /**
  * This class is used by the layouter to save layouting information about

@@ -1,22 +1,15 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readDuration;
-
-import java.util.List;
-
 import com.xenoage.utils.math.Fraction;
-import com.xenoage.zong.musicxml.types.MxlAttributes;
-import com.xenoage.zong.musicxml.types.MxlBackup;
-import com.xenoage.zong.musicxml.types.MxlBarline;
-import com.xenoage.zong.musicxml.types.MxlDirection;
-import com.xenoage.zong.musicxml.types.MxlForward;
-import com.xenoage.zong.musicxml.types.MxlInstrument;
-import com.xenoage.zong.musicxml.types.MxlNote;
-import com.xenoage.zong.musicxml.types.MxlPrint;
+import com.xenoage.zong.musicxml.types.*;
 import com.xenoage.zong.musicxml.types.choice.MxlMusicDataContent;
 import com.xenoage.zong.musicxml.types.choice.MxlMusicDataContent.MxlMusicDataContentType;
 import com.xenoage.zong.musicxml.types.partwise.MxlMeasure;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readDuration;
 
 /**
  * Reads a {@link MxlMeasure} to the context.

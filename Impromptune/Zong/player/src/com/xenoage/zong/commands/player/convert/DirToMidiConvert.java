@@ -1,21 +1,5 @@
 package com.xenoage.zong.commands.player.convert;
 
-import static com.xenoage.utils.jse.io.JseFileUtils.listFiles;
-import static com.xenoage.zong.desktop.App.app;
-import static com.xenoage.zong.player.Player.pApp;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Window;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequence;
-
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.document.command.TransparentCommand;
 import com.xenoage.utils.filter.AllFilter;
 import com.xenoage.utils.iterators.It;
@@ -28,6 +12,19 @@ import com.xenoage.zong.desktop.io.midi.out.JseMidiSequenceWriter;
 import com.xenoage.zong.io.midi.out.MidiConverter;
 import com.xenoage.zong.io.musicxml.FileType;
 import com.xenoage.zong.io.musicxml.in.FileTypeReader;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Window;
+import lombok.AllArgsConstructor;
+
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequence;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.jse.io.JseFileUtils.listFiles;
+import static com.xenoage.zong.desktop.App.app;
+import static com.xenoage.zong.player.Player.pApp;
 
 /**
  * This command lets the user select a directory whose MusicXML files

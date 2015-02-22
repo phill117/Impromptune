@@ -1,13 +1,9 @@
 package com.xenoage.utils.collections;
 
+import java.util.*;
+
 import static com.xenoage.utils.iterators.It.it;
 import static com.xenoage.utils.iterators.ListIt.listIt;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Immutable closeable list.

@@ -1,18 +1,17 @@
 package com.xenoage.zong.layout;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.kernel.Range.rangeReverse;
-
-import java.util.ArrayList;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.core.format.PageFormat;
 import com.xenoage.zong.layout.frames.FP;
 import com.xenoage.zong.layout.frames.Frame;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.kernel.Range.rangeReverse;
 
 /**
  * One page within a page layout.

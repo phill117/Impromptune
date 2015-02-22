@@ -1,26 +1,20 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.zong.commands.core.music.direction.DirectionAdd;
 import com.xenoage.zong.core.music.annotation.Annotation;
 import com.xenoage.zong.core.music.annotation.Fermata;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.direction.Dynamics;
 import com.xenoage.zong.io.musicxml.in.util.StaffDetails;
-import com.xenoage.zong.musicxml.types.MxlArticulations;
-import com.xenoage.zong.musicxml.types.MxlDynamics;
-import com.xenoage.zong.musicxml.types.MxlFermata;
-import com.xenoage.zong.musicxml.types.MxlNotations;
-import com.xenoage.zong.musicxml.types.MxlOrnaments;
-import com.xenoage.zong.musicxml.types.MxlSlurOrTied;
+import com.xenoage.zong.musicxml.types.*;
 import com.xenoage.zong.musicxml.types.choice.MxlNotationsContent;
 import com.xenoage.zong.musicxml.types.choice.MxlNotationsContent.MxlNotationsContentType;
+import lombok.RequiredArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Reads the slurs, ties and dynamics from the {@link MxlNotations} of a chord.

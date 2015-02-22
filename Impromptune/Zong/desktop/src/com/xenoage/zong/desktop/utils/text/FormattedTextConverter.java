@@ -1,32 +1,20 @@
 package com.xenoage.zong.desktop.utils.text;
 
+import com.xenoage.utils.collections.CList;
+import com.xenoage.utils.font.FontInfo;
+import com.xenoage.utils.font.FontStyle;
+import com.xenoage.zong.core.text.*;
+
+import javax.swing.text.*;
+import java.awt.*;
+import java.awt.font.TextLayout;
+
 import static com.xenoage.utils.collections.CList.clist;
 import static com.xenoage.utils.jse.color.AwtColorUtils.fromAwtColor;
 import static com.xenoage.utils.jse.color.AwtColorUtils.toAwtColor;
 import static com.xenoage.utils.jse.font.AwtFontUtils.toAwtFont;
 import static com.xenoage.zong.desktop.utils.text.AlignmentUtils.applyAlignmentToAttributeSet;
 import static com.xenoage.zong.desktop.utils.text.AlignmentUtils.fromAttributeSet;
-
-import java.awt.Font;
-import java.awt.font.TextLayout;
-
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
-
-import com.xenoage.utils.collections.CList;
-import com.xenoage.utils.font.FontInfo;
-import com.xenoage.utils.font.FontStyle;
-import com.xenoage.zong.core.text.Alignment;
-import com.xenoage.zong.core.text.FormattedText;
-import com.xenoage.zong.core.text.FormattedTextElement;
-import com.xenoage.zong.core.text.FormattedTextParagraph;
-import com.xenoage.zong.core.text.FormattedTextString;
-import com.xenoage.zong.core.text.FormattedTextStyle;
-import com.xenoage.zong.core.text.Superscript;
 
 /**
  * This class converts a {@link StyledDocument} or a {@link TextLayout}

@@ -1,11 +1,5 @@
 package com.xenoage.zong.musicxml.types;
 
-import java.util.List;
-
-import lombok.AllArgsConstructor;
-import lombok.Setter;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.NonEmpty;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.collections.CollectionUtils;
@@ -13,6 +7,11 @@ import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.choice.MxlCreditContent;
 import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 /**
  * MusicXML credit-words content for the credit element.

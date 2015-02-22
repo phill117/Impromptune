@@ -1,8 +1,8 @@
 package com.xenoage.zong.desktop.utils.math;
 
-import java.awt.geom.Rectangle2D;
-
 import com.xenoage.utils.math.geom.Rectangle2f;
+
+import java.awt.geom.Rectangle2D;
 
 /**
  * Useful additions to the math utils for the desktop platform.

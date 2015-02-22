@@ -1,13 +1,5 @@
 package com.xenoage.zong.core.music;
 
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.kernel.Range.rangeReverse;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Unneeded;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.utils.math.MathUtils;
@@ -18,6 +10,13 @@ import com.xenoage.zong.core.music.group.StavesRange;
 import com.xenoage.zong.core.music.util.Column;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.utils.exceptions.IllegalMPException;
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.kernel.Range.rangeReverse;
 
 /**
  * A {@link StavesList} manages the staves of a score

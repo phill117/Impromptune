@@ -1,14 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.kernel.Tuple2.t;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.iterators.It;
 import com.xenoage.utils.kernel.Tuple2;
@@ -37,6 +28,15 @@ import com.xenoage.zong.musiclayout.layouter.scoreframelayout.ScoreFrameLayoutSt
 import com.xenoage.zong.musiclayout.layouter.verticalframefilling.VerticalFrameFillingStrategy;
 import com.xenoage.zong.musiclayout.layouter.voicenotation.VoiceStemDirectionNotationsStrategy;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.kernel.Tuple2.t;
 
 /**
  * This strategy creates a {@link ScoreLayout} from a given

@@ -1,8 +1,7 @@
 package com.xenoage.utils.jse;
 
 import java.applet.Applet;
-import java.awt.Container;
-import java.awt.Frame;
+import java.awt.*;
 
 /**
  * Useful methods for working with applets.

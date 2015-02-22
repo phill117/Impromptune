@@ -1,13 +1,12 @@
 package com.xenoage.zong.core.music;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-
-import java.util.List;
-
+import com.xenoage.zong.core.instrument.Instrument;
 import lombok.Data;
 import lombok.NonNull;
 
-import com.xenoage.zong.core.instrument.Instrument;
+import java.util.List;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
 /**

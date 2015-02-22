@@ -1,6 +1,10 @@
 package com.xenoage.utils.jse.io;
 
-import static com.xenoage.utils.collections.CollectionUtils.mergeNoDuplicates;
+import com.xenoage.utils.async.AsyncResult;
+import com.xenoage.utils.io.FileFilter;
+import com.xenoage.utils.io.FilesystemInput;
+import com.xenoage.utils.io.InputStream;
+import com.xenoage.utils.jse.JsePlatformUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,11 +12,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-import com.xenoage.utils.async.AsyncResult;
-import com.xenoage.utils.io.FileFilter;
-import com.xenoage.utils.io.FilesystemInput;
-import com.xenoage.utils.io.InputStream;
-import com.xenoage.utils.jse.JsePlatformUtils;
+import static com.xenoage.utils.collections.CollectionUtils.mergeNoDuplicates;
 
 /**
  * Some useful input/output methods for a JSE based desktop

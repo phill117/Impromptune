@@ -1,7 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.beamednotation;
 
-import java.util.List;
-
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.music.beam.Beam;
 import com.xenoage.zong.core.music.beam.Beam.HorizontalSpan;
@@ -12,6 +10,8 @@ import com.xenoage.zong.musiclayout.layouter.beamednotation.alignment.SingleMeas
 import com.xenoage.zong.musiclayout.layouter.beamednotation.alignment.SingleMeasureTwoStavesStrategy;
 import com.xenoage.zong.musiclayout.layouter.cache.NotationsCache;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
+
+import java.util.List;
 
 /**
  * This strategy computes the alignments of the stems and the widths

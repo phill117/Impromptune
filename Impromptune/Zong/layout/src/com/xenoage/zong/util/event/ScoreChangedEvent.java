@@ -1,9 +1,8 @@
 package com.xenoage.zong.util.event;
 
-import lombok.Getter;
-
 import com.xenoage.utils.kernel.Range;
 import com.xenoage.zong.core.Score;
+import lombok.Getter;
 
 /**
  * This event is fired when the score has been changed.

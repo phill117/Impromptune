@@ -1,11 +1,10 @@
 package com.xenoage.zong.musiclayout.stampings;
 
-import lombok.AllArgsConstructor;
-import lombok.ToString;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Shape;
 import com.xenoage.zong.core.music.MusicElement;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 /**
  * Stampings can be visible objects like notes, clefs, texts, but

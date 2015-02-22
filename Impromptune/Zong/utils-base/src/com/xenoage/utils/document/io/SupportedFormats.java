@@ -1,11 +1,11 @@
 package com.xenoage.utils.document.io;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
+import com.xenoage.utils.document.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xenoage.utils.document.Document;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * This base class provides a list of all formats which can be used

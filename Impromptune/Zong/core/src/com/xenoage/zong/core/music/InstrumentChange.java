@@ -1,11 +1,10 @@
 package com.xenoage.zong.core.music;
 
+import com.xenoage.zong.core.instrument.Instrument;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
-import com.xenoage.zong.core.instrument.Instrument;
 
 
 /**

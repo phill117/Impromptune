@@ -1,10 +1,10 @@
 package com.xenoage.utils.jse;
 
+import com.xenoage.utils.annotations.Unneeded;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import com.xenoage.utils.annotations.Unneeded;
 
 /**
  * Useful methods to work with operating system specific tasks.

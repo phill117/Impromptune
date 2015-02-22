@@ -1,11 +1,5 @@
 package com.xenoage.zong.io.musicxml.in;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.io.IOException;
-import java.util.List;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.async.AsyncProducer;
 import com.xenoage.utils.async.AsyncResult;
@@ -14,6 +8,12 @@ import com.xenoage.utils.io.ZipReader;
 import com.xenoage.zong.io.musicxml.opus.Opus;
 import com.xenoage.zong.io.musicxml.opus.OpusItem;
 import com.xenoage.zong.io.musicxml.opus.OpusLink;
+
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Resolves all {@link OpusLink} items within the given {@link Opus} to

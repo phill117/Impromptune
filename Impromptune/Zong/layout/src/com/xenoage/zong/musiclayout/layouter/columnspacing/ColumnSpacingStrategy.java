@@ -1,15 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.columnspacing;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.kernel.Tuple3.t3;
-import static com.xenoage.zong.core.music.util.Interval.At;
-import static com.xenoage.zong.core.position.MP.atBeat;
-import static com.xenoage.zong.core.position.MP.atMeasure;
-
-import java.util.ArrayList;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.kernel.Tuple2;
@@ -31,6 +21,16 @@ import com.xenoage.zong.musiclayout.spacing.horizontal.LeadingSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureElementsSpacings;
 import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.VoiceSpacing;
+
+import java.util.ArrayList;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.kernel.Tuple3.t3;
+import static com.xenoage.zong.core.music.util.Interval.At;
+import static com.xenoage.zong.core.position.MP.atBeat;
+import static com.xenoage.zong.core.position.MP.atMeasure;
 
 /**
  * A {@link ColumnSpacingStrategy}

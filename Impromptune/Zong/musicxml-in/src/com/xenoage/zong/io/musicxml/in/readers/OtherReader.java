@@ -1,10 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.utils.math.Fraction._1;
-import static com.xenoage.utils.math.Fraction.fr;
-import static com.xenoage.zong.core.music.format.SP.sp;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.utils.math.VSide;
@@ -15,6 +10,11 @@ import com.xenoage.zong.musicxml.types.MxlBezier;
 import com.xenoage.zong.musicxml.types.attributes.MxlPosition;
 import com.xenoage.zong.musicxml.types.enums.MxlLeftCenterRight;
 import com.xenoage.zong.musicxml.types.enums.MxlPlacement;
+
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.utils.math.Fraction._1;
+import static com.xenoage.utils.math.Fraction.fr;
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Reads some other MusicXML elements.

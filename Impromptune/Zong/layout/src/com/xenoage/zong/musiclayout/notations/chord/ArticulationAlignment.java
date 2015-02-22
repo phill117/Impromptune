@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout.notations.chord;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.annotation.ArticulationType;
+import lombok.AllArgsConstructor;
 
 /**
  * The alignment of a single articulation assigned

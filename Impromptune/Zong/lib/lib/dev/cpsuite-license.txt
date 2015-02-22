@@ -1,6 +1,0 @@
-ClasspathSuite
-by Johannes Link
-
-Apache License, Version 2.0
-
-http://johanneslink.net/projects/cpsuite.jsp

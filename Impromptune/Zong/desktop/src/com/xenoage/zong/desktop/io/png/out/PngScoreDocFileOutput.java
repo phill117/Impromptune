@@ -1,18 +1,18 @@
 package com.xenoage.zong.desktop.io.png.out;
 
-import static com.xenoage.utils.io.FilenameUtils.numberFiles;
-import static com.xenoage.utils.kernel.Range.range;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
-
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.io.FilenameUtils;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.zong.desktop.io.print.PngPrinter;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.layout.Layout;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.io.FilenameUtils.numberFiles;
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * This class writes one or more PNG files from a given {@link ScoreDoc}.

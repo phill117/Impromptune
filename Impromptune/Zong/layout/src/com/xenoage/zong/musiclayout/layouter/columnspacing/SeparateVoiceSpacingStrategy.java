@@ -1,12 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.columnspacing;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CList.ilist;
-import static com.xenoage.utils.collections.CollectionUtils.llist;
-import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
-
-import java.util.LinkedList;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.music.Voice;
@@ -19,6 +12,13 @@ import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.musiclayout.spacing.horizontal.ElementWidth;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
 import com.xenoage.zong.musiclayout.spacing.horizontal.VoiceSpacing;
+
+import java.util.LinkedList;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CList.ilist;
+import static com.xenoage.utils.collections.CollectionUtils.llist;
+import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
 
 /**
  * Strategy to compute the horizontal spacing for a

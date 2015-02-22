@@ -1,10 +1,9 @@
 package com.xenoage.zong.core.music.direction;
 
-import lombok.Data;
-
 import com.xenoage.zong.core.music.ColumnElement;
 import com.xenoage.zong.core.music.MeasureElement;
 import com.xenoage.zong.core.music.format.Positioning;
+import lombok.Data;
 
 
 /**

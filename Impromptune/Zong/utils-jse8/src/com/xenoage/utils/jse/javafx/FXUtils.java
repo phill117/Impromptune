@@ -1,7 +1,7 @@
 package com.xenoage.utils.jse.javafx;
 
-import java.io.IOException;
-
+import com.xenoage.utils.jse.lang.LangResourceBundle;
+import com.xenoage.utils.lang.VocID;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,8 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import com.xenoage.utils.jse.lang.LangResourceBundle;
-import com.xenoage.utils.lang.VocID;
+import java.io.IOException;
 
 /**
  * Some useful JavaFX helper functions.

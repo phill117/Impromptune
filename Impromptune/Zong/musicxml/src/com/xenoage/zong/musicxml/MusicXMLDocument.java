@@ -1,13 +1,12 @@
 package com.xenoage.zong.musicxml;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.xml.XmlException;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.MxlScorePartwise;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * MusicXML document.

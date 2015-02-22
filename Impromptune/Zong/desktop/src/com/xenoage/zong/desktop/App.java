@@ -1,33 +1,5 @@
 package com.xenoage.zong.desktop;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static com.xenoage.utils.jse.async.Sync.sync;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.error;
-import static com.xenoage.utils.log.Report.remark;
-import static com.xenoage.utils.log.Report.warning;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import javafx.application.Platform;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-
-import javax.sound.midi.MidiUnavailableException;
-import javax.swing.JOptionPane;
-
-import lombok.Getter;
-
-import org.controlsfx.dialog.Dialog;
-import org.controlsfx.dialog.Dialogs;
-
 import com.xenoage.utils.document.Document;
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.CommandPerformer;
@@ -55,6 +27,28 @@ import com.xenoage.zong.desktop.io.midi.out.MidiScorePlayer;
 import com.xenoage.zong.desktop.io.midi.out.SynthManager;
 import com.xenoage.zong.desktop.utils.FilenameDialogFilter;
 import com.xenoage.zong.io.musicxml.in.MusicXmlFileReader;
+import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import lombok.Getter;
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
+
+import javax.sound.midi.MidiUnavailableException;
+import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static com.xenoage.utils.jse.async.Sync.sync;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.*;
 
 /**
  * Base class for all Zong! applications based on JavaFX.

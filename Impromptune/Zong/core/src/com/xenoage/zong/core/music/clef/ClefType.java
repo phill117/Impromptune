@@ -1,11 +1,10 @@
 package com.xenoage.zong.core.music.clef;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.xenoage.zong.core.music.Pitch;
 import lombok.Data;
 
-import com.xenoage.zong.core.music.Pitch;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is the type of a clef.

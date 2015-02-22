@@ -1,17 +1,16 @@
 package com.xenoage.zong.core.info;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.List;
-
+import com.xenoage.utils.annotations.MaybeEmpty;
+import com.xenoage.utils.annotations.MaybeNull;
+import com.xenoage.utils.annotations.NonNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import com.xenoage.utils.annotations.MaybeEmpty;
-import com.xenoage.utils.annotations.MaybeNull;
-import com.xenoage.utils.annotations.NonNull;
+import java.util.List;
+
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Information about a single score,

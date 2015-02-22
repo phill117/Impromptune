@@ -1,16 +1,15 @@
 package com.xenoage.zong.desktop.io.midi.out;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.Synthesizer;
-
 import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.instrument.PitchedInstrument;
 import com.xenoage.zong.core.music.Pitch;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.io.midi.out.MidiTools;
+
+import javax.sound.midi.MidiChannel;
+import javax.sound.midi.Synthesizer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * This class provides the playback functions for simple chords. 

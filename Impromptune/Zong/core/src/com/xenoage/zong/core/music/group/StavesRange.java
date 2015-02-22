@@ -1,9 +1,9 @@
 package com.xenoage.zong.core.music.group;
 
-import static com.xenoage.utils.kernel.Range.range;
+import com.xenoage.utils.kernel.Range;
 import lombok.Data;
 
-import com.xenoage.utils.kernel.Range;
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * Range of adjacent staves.

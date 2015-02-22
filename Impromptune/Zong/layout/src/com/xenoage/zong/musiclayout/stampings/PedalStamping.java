@@ -1,10 +1,10 @@
 package com.xenoage.zong.musiclayout.stampings;
 
 import com.xenoage.utils.annotations.Const;
-import com.xenoage.zong.symbols.SymbolPool;
-import com.xenoage.zong.symbols.common.CommonSymbol;
 import com.xenoage.zong.core.music.direction.Pedal;
 import com.xenoage.zong.core.music.format.SP;
+import com.xenoage.zong.symbols.SymbolPool;
+import com.xenoage.zong.symbols.common.CommonSymbol;
 
 /**
  * Stamping of a pedal symbol.

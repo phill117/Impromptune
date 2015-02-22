@@ -1,9 +1,9 @@
 package com.xenoage.utils.document.command;
 
-import static com.xenoage.utils.kernel.Range.rangeReverse;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.xenoage.utils.kernel.Range.rangeReverse;
 
 /**
  * A history of {@link Command}s executed on the same {@link CommandPerformer}.

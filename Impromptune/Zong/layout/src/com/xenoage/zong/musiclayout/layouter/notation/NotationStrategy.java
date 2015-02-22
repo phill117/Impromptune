@@ -2,6 +2,7 @@ package com.xenoage.zong.musiclayout.layouter.notation;
 
 import static com.xenoage.utils.CheckUtils.checkNotNull;
 import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.iterators.It.it;
 import static com.xenoage.utils.kernel.Range.range;
 import static com.xenoage.utils.math.Fraction._0;
 import static com.xenoage.zong.core.music.Pitch.pi;
@@ -9,8 +10,11 @@ import static com.xenoage.zong.core.music.util.Interval.Before;
 import static com.xenoage.zong.core.music.util.Interval.BeforeOrAt;
 import static com.xenoage.zong.core.text.FormattedTextUtils.styleText;
 
+import java.util.List;
+
 import com.xenoage.utils.font.FontInfo;
 import com.xenoage.utils.font.TextMeasurer;
+import com.xenoage.utils.iterators.It;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.format.Break;

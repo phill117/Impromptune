@@ -1,14 +1,13 @@
 package com.xenoage.zong.symbols.common;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.List;
-
-import lombok.Getter;
-
 import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.WarningSymbol;
+import lombok.Getter;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * This class manages an array of all symbols

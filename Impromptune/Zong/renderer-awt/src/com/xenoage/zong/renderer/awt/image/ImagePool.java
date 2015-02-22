@@ -1,8 +1,8 @@
 package com.xenoage.zong.renderer.awt.image;
 
-import java.awt.image.BufferedImage;
-
 import com.xenoage.zong.layout.frames.ImageFrame;
+
+import java.awt.image.BufferedImage;
 
 /**
  * A cache for images, used for example within {@link ImageFrame}s.

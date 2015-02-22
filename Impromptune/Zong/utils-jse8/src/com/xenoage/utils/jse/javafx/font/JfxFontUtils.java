@@ -2,7 +2,6 @@ package com.xenoage.utils.jse.javafx.font;
 
 import com.xenoage.utils.font.FontInfo;
 import com.xenoage.utils.font.FontStyle;
-
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;

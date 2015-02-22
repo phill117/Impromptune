@@ -1,16 +1,15 @@
 package com.xenoage.zong.renderer.slur;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.List;
-
-import lombok.Getter;
-
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.symbols.path.CubicCurveTo;
 import com.xenoage.zong.symbols.path.MoveTo;
 import com.xenoage.zong.symbols.path.Path;
 import com.xenoage.zong.symbols.path.PathElement;
+import lombok.Getter;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Shape of a slur, drawn in the Default style.

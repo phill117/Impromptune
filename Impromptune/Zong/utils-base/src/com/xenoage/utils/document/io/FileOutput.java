@@ -1,9 +1,9 @@
 package com.xenoage.utils.document.io;
 
-import java.io.IOException;
-
 import com.xenoage.utils.document.Document;
 import com.xenoage.utils.io.OutputStream;
+
+import java.io.IOException;
 
 /**
  * This is the interface for all classes that allow the creation of a file

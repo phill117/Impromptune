@@ -1,10 +1,10 @@
 package com.xenoage.zong.io.score;
 
-import static com.xenoage.utils.math.Fraction.fr;
-import lombok.Getter;
-
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.io.selection.ScoreSelection;
+import lombok.Getter;
+
+import static com.xenoage.utils.math.Fraction.fr;
 
 
 /**

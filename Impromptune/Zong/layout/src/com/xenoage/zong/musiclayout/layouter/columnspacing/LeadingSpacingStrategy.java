@@ -1,8 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.columnspacing;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.math.Fraction.fr;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.kernel.Tuple2;
 import com.xenoage.zong.core.music.MusicContext;
@@ -18,6 +15,9 @@ import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.musiclayout.spacing.horizontal.ElementWidth;
 import com.xenoage.zong.musiclayout.spacing.horizontal.LeadingSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.math.Fraction.fr;
 
 /**
  * Strategy to compute the {@link LeadingSpacing} for

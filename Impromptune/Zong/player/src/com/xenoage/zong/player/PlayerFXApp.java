@@ -1,12 +1,12 @@
 package com.xenoage.zong.player;
 
-import static com.xenoage.utils.jse.javafx.Dialog.dialog;
-import static com.xenoage.zong.player.Player.pApp;
+import com.xenoage.zong.gui.PlayerFrame;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import lombok.Getter;
 
-import com.xenoage.zong.gui.PlayerFrame;
+import static com.xenoage.utils.jse.javafx.Dialog.dialog;
+import static com.xenoage.zong.player.Player.pApp;
 
 /**
  * JavaFX application for the {@link Player}.

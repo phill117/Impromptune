@@ -1,17 +1,16 @@
 package com.xenoage.zong.core.instrument;
 
+import com.xenoage.utils.annotations.MaybeNull;
+import com.xenoage.utils.annotations.NonNull;
+import com.xenoage.utils.lang.Lang;
+import lombok.Data;
+
+import java.util.List;
+
 import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.lang.VocByString.voc;
 import static com.xenoage.zong.core.music.Pitch.pi;
 import static java.util.Collections.emptyList;
-
-import java.util.List;
-
-import lombok.Data;
-
-import com.xenoage.utils.annotations.MaybeNull;
-import com.xenoage.utils.annotations.NonNull;
-import com.xenoage.utils.lang.Lang;
 
 /**
  * Base class for an instrument.

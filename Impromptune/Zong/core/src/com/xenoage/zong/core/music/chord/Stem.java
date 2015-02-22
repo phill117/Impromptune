@@ -1,9 +1,8 @@
 package com.xenoage.zong.core.music.chord;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
+import lombok.Data;
 
 
 /**

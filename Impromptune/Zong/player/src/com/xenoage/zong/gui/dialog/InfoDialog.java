@@ -1,13 +1,5 @@
 package com.xenoage.zong.gui.dialog;
 
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.zong.desktop.App.app;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-
 import com.xenoage.utils.jse.javafx.Dialog;
 import com.xenoage.utils.lang.Lang;
 import com.xenoage.zong.Voc;
@@ -16,6 +8,14 @@ import com.xenoage.zong.core.info.Creator;
 import com.xenoage.zong.core.info.Rights;
 import com.xenoage.zong.core.info.ScoreInfo;
 import com.xenoage.zong.core.music.Part;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * Dialog with information about a {@link Score}.

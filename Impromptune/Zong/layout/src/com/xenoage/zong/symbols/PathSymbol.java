@@ -1,8 +1,7 @@
 package com.xenoage.zong.symbols;
 
-import lombok.Getter;
-
 import com.xenoage.zong.symbols.path.Path;
+import lombok.Getter;
 
 /**
  * Symbols which consist of a complex path.

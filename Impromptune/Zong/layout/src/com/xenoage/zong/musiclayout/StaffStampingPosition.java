@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+import lombok.AllArgsConstructor;
 
 /**
  * A {@link StaffStampingPosition} is a reference

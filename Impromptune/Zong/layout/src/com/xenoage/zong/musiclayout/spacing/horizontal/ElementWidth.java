@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout.spacing.horizontal;
 
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.MusicElement;
+import lombok.Getter;
 
 /**
  * This class stores the width of a {@link MusicElement},

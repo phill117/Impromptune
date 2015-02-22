@@ -1,12 +1,11 @@
 package com.xenoage.zong.core.format;
 
-import static com.xenoage.utils.collections.CollectionUtils.setExtend;
+import com.xenoage.utils.annotations.MaybeNull;
+import lombok.Data;
 
 import java.util.List;
 
-import lombok.Data;
-
-import com.xenoage.utils.annotations.MaybeNull;
+import static com.xenoage.utils.collections.CollectionUtils.setExtend;
 
 /**
  * Layout information for a system.

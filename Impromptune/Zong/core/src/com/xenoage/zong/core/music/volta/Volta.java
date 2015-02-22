@@ -1,12 +1,11 @@
 package com.xenoage.zong.core.music.volta;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
 import com.xenoage.utils.kernel.Range;
 import com.xenoage.zong.core.header.ColumnHeader;
 import com.xenoage.zong.core.music.ColumnElement;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * Class for a volta (also informally called "Haus" in German).

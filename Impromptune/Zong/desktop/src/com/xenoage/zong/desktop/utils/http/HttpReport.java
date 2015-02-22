@@ -1,17 +1,12 @@
 package com.xenoage.zong.desktop.utils.http;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import com.xenoage.utils.jse.io.JseStreamUtils;
+import com.xenoage.utils.kernel.Tuple2;
+
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
-
-import com.xenoage.utils.jse.io.JseStreamUtils;
-import com.xenoage.utils.kernel.Tuple2;
 
 /**
  * This class sends an report by HTTP POST

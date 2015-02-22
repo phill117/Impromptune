@@ -1,13 +1,13 @@
 package com.xenoage.zong.core.music.barline;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.header.ColumnHeader;
 import com.xenoage.zong.core.music.ColumnElement;
 import com.xenoage.zong.core.music.Measure;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 /**
  * Class for a barline.

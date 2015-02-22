@@ -1,14 +1,14 @@
 package com.xenoage.zong.core.music.key;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.zong.core.music.Pitch.pi;
+import com.xenoage.utils.math.MathUtils;
+import com.xenoage.zong.core.music.Pitch;
+import com.xenoage.zong.core.position.MPContainer;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.xenoage.utils.math.MathUtils;
-import com.xenoage.zong.core.music.Pitch;
-import com.xenoage.zong.core.position.MPContainer;
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.zong.core.music.Pitch.pi;
 
 /**
  * Traditional key signature in the circle of fifth and a mode (like major or

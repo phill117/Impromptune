@@ -1,10 +1,10 @@
 package com.xenoage.zong.musiclayout.stampings;
 
-import javax.rmi.CORBA.Tie;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.format.SP;
 import com.xenoage.zong.core.music.slur.Slur;
+
+import javax.rmi.CORBA.Tie;
 
 /**
  * Class for {@link Slur} stamping, that represents a slur

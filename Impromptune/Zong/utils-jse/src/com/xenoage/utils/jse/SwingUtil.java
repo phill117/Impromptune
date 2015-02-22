@@ -1,7 +1,6 @@
 package com.xenoage.utils.jse;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 
 /**
  * Useful methods to work with Swing.

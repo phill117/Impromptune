@@ -1,15 +1,15 @@
 package com.xenoage.zong.desktop.utils;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.jse.async.Sync.sync;
-import static com.xenoage.utils.log.Report.fatal;
-
 import com.xenoage.utils.PlatformUtils;
 import com.xenoage.utils.jse.JsePlatformUtils;
 import com.xenoage.zong.Voc;
 import com.xenoage.zong.io.symbols.SymbolPoolReader;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.util.ZongPlatformUtils;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.jse.async.Sync.sync;
+import static com.xenoage.utils.log.Report.fatal;
 
 /**
  * Java SE implementation of {@link ZongPlatformUtils}.

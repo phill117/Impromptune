@@ -1,10 +1,9 @@
 package com.xenoage.zong.musiclayout.continued;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.VSide;
 import com.xenoage.zong.core.music.slur.Slur;
+import lombok.AllArgsConstructor;
 
 /**
  * Continued slur or tie.

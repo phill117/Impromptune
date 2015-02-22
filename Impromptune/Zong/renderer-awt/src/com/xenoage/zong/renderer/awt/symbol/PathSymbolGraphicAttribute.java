@@ -1,16 +1,15 @@
 package com.xenoage.zong.renderer.awt.symbol;
 
-import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.font.GraphicAttribute;
-import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-
 import com.xenoage.utils.math.Units;
 import com.xenoage.utils.math.geom.Rectangle2f;
 import com.xenoage.zong.renderer.awt.path.AwtPath;
 import com.xenoage.zong.symbols.PathSymbol;
+
+import java.awt.*;
+import java.awt.font.GraphicAttribute;
+import java.awt.font.TextLayout;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 
 /**
  * This class can draw {@link PathSymbol}s in a {@link TextLayout}.

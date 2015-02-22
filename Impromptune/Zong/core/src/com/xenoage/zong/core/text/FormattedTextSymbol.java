@@ -1,12 +1,11 @@
 package com.xenoage.zong.core.text;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.font.TextMetrics;
 import com.xenoage.utils.math.Units;
 import com.xenoage.zong.symbols.Symbol;
+import lombok.Data;
 
 /**
  * Musical {@link Symbol} within a formatted text.

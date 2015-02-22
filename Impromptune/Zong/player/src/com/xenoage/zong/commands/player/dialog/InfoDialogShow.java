@@ -1,12 +1,12 @@
 package com.xenoage.zong.commands.player.dialog;
 
-import static com.xenoage.utils.jse.javafx.Dialog.dialog;
-import javafx.stage.Window;
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.document.command.TransparentCommand;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.gui.dialog.InfoDialog;
+import javafx.stage.Window;
+import lombok.AllArgsConstructor;
+
+import static com.xenoage.utils.jse.javafx.Dialog.dialog;
 
 /**
  * Shows the {@link InfoDialog}.

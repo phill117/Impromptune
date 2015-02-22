@@ -1,12 +1,12 @@
 package com.xenoage.zong.util;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-
 import com.xenoage.utils.PlatformUtils;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.log.Report;
 import com.xenoage.zong.symbols.SymbolPool;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 /**
  * Interface for platform dependent methods which are specific to Zong!,

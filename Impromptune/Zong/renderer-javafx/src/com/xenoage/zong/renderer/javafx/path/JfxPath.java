@@ -1,13 +1,7 @@
 package com.xenoage.zong.renderer.javafx.path;
 
+import com.xenoage.zong.symbols.path.*;
 import javafx.scene.canvas.GraphicsContext;
-
-import com.xenoage.zong.symbols.path.CubicCurveTo;
-import com.xenoage.zong.symbols.path.LineTo;
-import com.xenoage.zong.symbols.path.MoveTo;
-import com.xenoage.zong.symbols.path.Path;
-import com.xenoage.zong.symbols.path.PathElement;
-import com.xenoage.zong.symbols.path.QuadraticCurveTo;
 
 /**
  * Draws a {@link Path} on a JavaFX {@link GraphicsContext}.

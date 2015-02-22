@@ -1,8 +1,7 @@
 package com.xenoage.zong.layout.frames;
 
-import lombok.Getter;
-
 import com.xenoage.zong.core.text.FormattedText;
+import lombok.Getter;
 
 /**
  * A {@link TextFrame} is a frame that contains a {@link FormattedText}.

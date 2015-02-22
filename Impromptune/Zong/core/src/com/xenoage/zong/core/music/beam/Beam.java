@@ -1,14 +1,5 @@
 package com.xenoage.zong.core.music.beam;
 
-import static com.xenoage.utils.kernel.Range.range;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.music.MusicElement;
@@ -17,6 +8,14 @@ import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.util.DurationInfo;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.core.util.InconsistentScoreException;
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static com.xenoage.utils.kernel.Range.range;
 
 
 /**

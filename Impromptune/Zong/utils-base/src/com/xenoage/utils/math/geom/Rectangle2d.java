@@ -1,8 +1,8 @@
 package com.xenoage.utils.math.geom;
 
-import static com.xenoage.utils.math.geom.Point2d.p;
-
 import java.awt.geom.Rectangle2D;
+
+import static com.xenoage.utils.math.geom.Point2d.p;
 
 /**
  * Class for a 2D rectangle.

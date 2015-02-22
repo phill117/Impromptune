@@ -1,13 +1,13 @@
 package com.xenoage.zong.musiclayout.layouter.cache;
 
-import static com.xenoage.utils.collections.CollectionUtils.map;
+import com.xenoage.zong.core.music.chord.Chord;
+import com.xenoage.zong.core.music.tuplet.Tuplet;
+import com.xenoage.zong.musiclayout.layouter.scoreframelayout.util.ChordStampings;
 
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.xenoage.zong.core.music.chord.Chord;
-import com.xenoage.zong.core.music.tuplet.Tuplet;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.util.ChordStampings;
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * Cache for tuplets which still have to be created.

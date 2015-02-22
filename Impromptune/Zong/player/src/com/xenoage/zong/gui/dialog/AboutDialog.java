@@ -1,15 +1,14 @@
 package com.xenoage.zong.gui.dialog;
 
-import static com.xenoage.zong.desktop.App.app;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
-import org.controlsfx.control.HyperlinkLabel;
-
 import com.xenoage.utils.jse.javafx.Dialog;
 import com.xenoage.zong.Zong;
 import com.xenoage.zong.commands.desktop.app.WebsiteOpen;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import org.controlsfx.control.HyperlinkLabel;
+
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * About dialog.

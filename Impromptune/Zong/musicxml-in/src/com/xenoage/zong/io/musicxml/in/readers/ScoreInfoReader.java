@@ -1,9 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.utils.iterators.It.it;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.zong.core.info.Creator;
 import com.xenoage.zong.core.info.Rights;
 import com.xenoage.zong.core.info.ScoreInfo;
@@ -11,6 +7,10 @@ import com.xenoage.zong.musicxml.types.MxlIdentification;
 import com.xenoage.zong.musicxml.types.MxlTypedText;
 import com.xenoage.zong.musicxml.types.MxlWork;
 import com.xenoage.zong.musicxml.types.groups.MxlScoreHeader;
+import lombok.RequiredArgsConstructor;
+
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.utils.iterators.It.it;
 
 /**
  * Reads a {@link ScoreInfo} from a {@link MxlScoreHeader}.

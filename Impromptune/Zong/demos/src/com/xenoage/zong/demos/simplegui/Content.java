@@ -1,7 +1,5 @@
 package com.xenoage.zong.demos.simplegui;
 
-import java.io.File;
-
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.log.Report;
@@ -17,6 +15,8 @@ import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.io.midi.out.PlaybackListener;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.musiclayout.layouter.PlaybackLayouter;
+
+import java.io.File;
 
 /**
  * The loaded document, its layout and playback capabilities.

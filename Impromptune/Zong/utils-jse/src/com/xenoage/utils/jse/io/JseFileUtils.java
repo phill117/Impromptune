@@ -1,25 +1,13 @@
 package com.xenoage.utils.jse.io;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
-import java.util.regex.Matcher;
-
 import com.xenoage.utils.io.FileUtils;
 import com.xenoage.utils.jse.OSUtils;
 import com.xenoage.utils.jse.OSUtils.OS;
 import com.xenoage.utils.kernel.Tuple2;
+
+import java.io.*;
+import java.util.*;
+import java.util.regex.Matcher;
 
 /**
  * Some useful file system functions.
@@ -41,7 +29,7 @@ public class JseFileUtils {
 			directoriesFilter = new FileFilter() {
 
 				@Override public boolean accept(File file) {
-					return file.isDirectory() && !file.getName().startsWith("");
+					return file.isDirectory() && !file.getName().startsWith(".");
 				}
 			};
 		}
@@ -313,7 +301,7 @@ public class JseFileUtils {
 		OS os = OSUtils.getOS();
 		if (os == OS.Linux || os == OS.Solaris) {
 			//Linux, Solaris: <user-home>/.<program>
-			return new File(System.getProperty("user.home") + "/" + program);
+			return new File(System.getProperty("user.home") + "/." + program);
 		}
 		else if (os == OS.MacOSX) {
 			//Mac OS X: <user-home>/Library/Application Support/<program>

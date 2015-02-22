@@ -1,9 +1,9 @@
 package com.xenoage.utils.lang;
 
-import java.util.ArrayList;
-
 import com.xenoage.utils.iterators.It;
 import com.xenoage.utils.kernel.Tuple2;
+
+import java.util.ArrayList;
 
 /**
  * This class manages a single language pack for

@@ -1,16 +1,16 @@
 package com.xenoage.zong.musicxml.types;
 
-import static com.xenoage.utils.EnumUtils.getEnumValue;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.choice.MxlLyricContent;
 import com.xenoage.zong.musicxml.types.enums.MxlSyllabic;
 import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import static com.xenoage.utils.EnumUtils.getEnumValue;
 
 /**
  * MusicXML syllabic and its text.

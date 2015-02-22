@@ -1,12 +1,11 @@
 package com.xenoage.zong.musicxml.types.attributes;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.enums.MxlCSSFontSize;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * MusicXML font-size.

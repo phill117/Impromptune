@@ -1,7 +1,11 @@
 package com.xenoage.utils.jse.io;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CollectionUtils.map;
+import com.xenoage.utils.collections.CList;
+import com.xenoage.utils.collections.IList;
+import com.xenoage.utils.io.FileNotFoundException;
+import com.xenoage.utils.io.InputStream;
+import com.xenoage.utils.io.ZipReader;
+import com.xenoage.utils.jse.zip.ZipUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,12 +15,8 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import com.xenoage.utils.collections.CList;
-import com.xenoage.utils.collections.IList;
-import com.xenoage.utils.io.FileNotFoundException;
-import com.xenoage.utils.io.InputStream;
-import com.xenoage.utils.io.ZipReader;
-import com.xenoage.utils.jse.zip.ZipUtils;
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * Java SE implementation of a {@link ZipReader}.

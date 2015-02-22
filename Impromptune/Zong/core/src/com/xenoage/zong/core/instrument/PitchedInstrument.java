@@ -1,11 +1,10 @@
 package com.xenoage.zong.core.instrument;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.music.Pitch;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 /**

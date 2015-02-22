@@ -1,13 +1,13 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.kernel.Range.range;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.kernel.Range;
 import com.xenoage.zong.core.music.volta.Volta;
 import com.xenoage.zong.io.musicxml.in.util.ClosedVolta;
 import com.xenoage.zong.musicxml.types.MxlEnding;
 import com.xenoage.zong.musicxml.types.enums.MxlStartStopDiscontinue;
+import lombok.RequiredArgsConstructor;
+
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * Reads a {@link Volta} from a {@link MxlEnding}.

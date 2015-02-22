@@ -1,13 +1,12 @@
 package com.xenoage.zong.commands.desktop.app;
 
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.warning;
+import com.xenoage.utils.document.command.TransparentCommand;
 
-import java.awt.Desktop;
+import java.awt.*;
 import java.net.URI;
 
-
-import com.xenoage.utils.document.command.TransparentCommand;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.warning;
 
 /**
  * Opens the given website in the default browser.

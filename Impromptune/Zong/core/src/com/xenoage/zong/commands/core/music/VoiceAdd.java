@@ -1,12 +1,12 @@
 package com.xenoage.zong.commands.core.music;
 
-import static com.xenoage.zong.core.music.Voice.voice;
-
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.Undoability;
 import com.xenoage.utils.document.exceptions.UselessException;
 import com.xenoage.zong.core.music.Measure;
 import com.xenoage.zong.core.music.Voice;
+
+import static com.xenoage.zong.core.music.Voice.voice;
 
 
 /**

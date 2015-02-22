@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout.settings;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.NonNull;
+import lombok.Data;
 
 /**
  * Settings for the musical layout.

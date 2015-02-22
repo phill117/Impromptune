@@ -1,7 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.notation;
 
-import java.util.ArrayList;
-
 import com.xenoage.utils.collections.ArrayUtils;
 import com.xenoage.utils.kernel.Range;
 import com.xenoage.utils.math.Fraction;
@@ -14,6 +12,8 @@ import com.xenoage.zong.musiclayout.notations.chord.NoteAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.NoteSuspension;
 import com.xenoage.zong.musiclayout.notations.chord.NotesAlignment;
 import com.xenoage.zong.musiclayout.settings.ChordWidths;
+
+import java.util.ArrayList;
 
 /**
  * This strategy computes the alignment of the notes

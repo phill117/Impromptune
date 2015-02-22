@@ -1,13 +1,12 @@
 package com.xenoage.utils.pdlib;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-
+import com.xenoage.utils.collections.ISet;
 import org.pcollections.HashTreePSet;
 import org.pcollections.MapPSet;
 
-import com.xenoage.utils.collections.ISet;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Persistent hash set.

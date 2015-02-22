@@ -1,13 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.zong.core.text.UnformattedText.ut;
-
-import java.util.List;
-
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.Parser;
 import com.xenoage.zong.commands.core.music.lyric.LyricAdd;
 import com.xenoage.zong.core.music.chord.Chord;
@@ -17,6 +9,13 @@ import com.xenoage.zong.musicxml.types.MxlLyric;
 import com.xenoage.zong.musicxml.types.MxlNote;
 import com.xenoage.zong.musicxml.types.MxlSyllabicText;
 import com.xenoage.zong.musicxml.types.choice.MxlLyricContent.MxlLyricContentType;
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.zong.core.text.UnformattedText.ut;
 
 /**
  * Reads {@link Lyric}s from {@link MxlLyric} elements of {@link MxlNote}s.

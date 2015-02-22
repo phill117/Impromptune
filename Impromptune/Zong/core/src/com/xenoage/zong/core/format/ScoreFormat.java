@@ -1,18 +1,17 @@
 package com.xenoage.zong.core.format;
 
+import com.xenoage.utils.annotations.MaybeNull;
+import com.xenoage.utils.annotations.NonNull;
+import com.xenoage.utils.font.FontInfo;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
 import static com.xenoage.utils.NullUtils.notNull;
 import static com.xenoage.utils.collections.CollectionUtils.getOrNull;
 import static com.xenoage.utils.collections.CollectionUtils.setExtend;
 import static com.xenoage.zong.core.format.Defaults.defaultFont;
-
-import java.util.List;
-
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
-import com.xenoage.utils.annotations.MaybeNull;
-import com.xenoage.utils.annotations.NonNull;
-import com.xenoage.utils.font.FontInfo;
 
 /**
  * Default formats to be used in a score.

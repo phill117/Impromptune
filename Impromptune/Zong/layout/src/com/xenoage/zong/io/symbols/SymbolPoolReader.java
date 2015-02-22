@@ -1,24 +1,24 @@
 package com.xenoage.zong.io.symbols;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.collections.CollectionUtils.map;
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.log.Level.Warning;
-import static com.xenoage.utils.log.Report.createReport;
-
-import java.util.List;
-import java.util.Map;
-
 import com.xenoage.utils.PlatformUtils;
-import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.async.AsyncProducer;
+import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.io.FileFilters;
 import com.xenoage.utils.io.FileNotFoundException;
 import com.xenoage.zong.Voc;
 import com.xenoage.zong.symbols.PathSymbol;
 import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.SymbolPool;
+
+import java.util.List;
+import java.util.Map;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.collections.CollectionUtils.map;
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.log.Level.Warning;
+import static com.xenoage.utils.log.Report.createReport;
 
 /**
  * This class reads a {@link SymbolPool}

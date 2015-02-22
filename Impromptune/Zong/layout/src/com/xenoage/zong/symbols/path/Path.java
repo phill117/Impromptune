@@ -1,11 +1,10 @@
 package com.xenoage.zong.symbols.path;
 
-import java.util.List;
-
-import lombok.Getter;
-
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Rectangle2f;
+import lombok.Getter;
+
+import java.util.List;
 
 /**
  * Platform independent path representation.

@@ -1,15 +1,15 @@
 package com.xenoage.zong.musicxml.types.attributes;
 
-import static com.xenoage.zong.musicxml.types.attributes.MxlPrintStyle.noPrintStyle;
-import static com.xenoage.zong.musicxml.types.enums.MxlPlacement.Unknown;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.enums.MxlPlacement;
 import com.xenoage.zong.musicxml.types.util.MxlPlacementContent;
 import com.xenoage.zong.musicxml.types.util.MxlPrintStyleContent;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import static com.xenoage.zong.musicxml.types.attributes.MxlPrintStyle.noPrintStyle;
+import static com.xenoage.zong.musicxml.types.enums.MxlPlacement.Unknown;
 
 /**
  * MusicXML empty-placement.

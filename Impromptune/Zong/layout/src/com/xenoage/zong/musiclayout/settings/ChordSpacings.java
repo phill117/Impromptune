@@ -1,15 +1,13 @@
 package com.xenoage.zong.musiclayout.settings;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import static com.xenoage.utils.collections.CollectionUtils.getMax;
-import static com.xenoage.utils.collections.CollectionUtils.getMin;
-import static com.xenoage.utils.collections.CollectionUtils.map;
-import static com.xenoage.utils.math.Fraction._0;
+import com.xenoage.utils.annotations.NonNull;
+import com.xenoage.utils.math.Fraction;
 
 import java.util.Map;
 
-import com.xenoage.utils.annotations.NonNull;
-import com.xenoage.utils.math.Fraction;
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
+import static com.xenoage.utils.collections.CollectionUtils.*;
+import static com.xenoage.utils.math.Fraction._0;
 
 /**
  * Settings for space (in IS) chords need.

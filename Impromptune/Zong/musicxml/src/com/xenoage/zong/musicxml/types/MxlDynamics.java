@@ -1,10 +1,5 @@
 package com.xenoage.zong.musicxml.types;
 
-import static com.xenoage.utils.EnumUtils.getEnumValue;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
@@ -16,6 +11,11 @@ import com.xenoage.zong.musicxml.types.enums.MxlPlacement;
 import com.xenoage.zong.musicxml.types.util.MxlPlacementContent;
 import com.xenoage.zong.musicxml.types.util.MxlPrintStyleContent;
 import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import static com.xenoage.utils.EnumUtils.getEnumValue;
 
 /**
  * MusicXML dynamics.

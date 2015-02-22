@@ -1,14 +1,14 @@
 package com.xenoage.zong.util.math;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import com.xenoage.utils.math.Gauss;
 import com.xenoage.utils.math.QuadraticCurve;
 import com.xenoage.utils.math.VSide;
 import com.xenoage.utils.math.geom.ConvexHull;
 import com.xenoage.utils.math.geom.Point2f;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This class computes quadratic curves using the given

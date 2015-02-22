@@ -1,7 +1,5 @@
 package com.xenoage.zong.renderer.stamping;
 
-import static com.xenoage.zong.core.music.format.SP.sp;
-
 import com.xenoage.zong.musiclayout.stampings.NormalTimeStamping;
 import com.xenoage.zong.musiclayout.stampings.Stamping;
 import com.xenoage.zong.renderer.RendererArgs;
@@ -9,6 +7,8 @@ import com.xenoage.zong.renderer.canvas.Canvas;
 import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.common.CommonSymbol;
+
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Renderer for a {@link NormalTimeStamping}.

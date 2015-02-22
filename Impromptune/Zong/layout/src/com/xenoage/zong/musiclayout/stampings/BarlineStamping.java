@@ -1,10 +1,10 @@
 package com.xenoage.zong.musiclayout.stampings;
 
-import java.util.List;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.barline.Barline;
 import com.xenoage.zong.core.music.group.BarlineGroup;
+
+import java.util.List;
 
 /**
  * Class for a barline stamping.

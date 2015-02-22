@@ -1,13 +1,5 @@
 package com.xenoage.utils.jse;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.List;
-
 import com.xenoage.utils.PlatformUtils;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.async.AsyncResult;
@@ -24,6 +16,14 @@ import com.xenoage.utils.jse.xml.JseXmlReader;
 import com.xenoage.utils.jse.xml.JseXmlWriter;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Java SE specific {@link PlatformUtils} implementation.

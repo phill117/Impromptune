@@ -1,9 +1,5 @@
 package com.xenoage.zong.renderer.stamping;
 
-import static com.xenoage.zong.core.music.format.SP.sp;
-
-import java.util.List;
-
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.core.music.barline.BarlineRepeat;
@@ -19,6 +15,10 @@ import com.xenoage.zong.renderer.canvas.Canvas;
 import com.xenoage.zong.renderer.canvas.CanvasFormat;
 import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.common.CommonSymbol;
+
+import java.util.List;
+
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Renderer for a {@link BarlineStamping}.

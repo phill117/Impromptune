@@ -1,14 +1,5 @@
 package com.xenoage.zong.desktop.io.print;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.remark;
-import static com.xenoage.utils.log.Report.warning;
-
-import java.awt.Graphics2D;
-import java.io.OutputStream;
-
 import com.itextpdf.awt.PdfGraphics2D;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
@@ -25,6 +16,15 @@ import com.xenoage.zong.renderer.awt.canvas.AwtCanvas;
 import com.xenoage.zong.renderer.canvas.CanvasDecoration;
 import com.xenoage.zong.renderer.canvas.CanvasFormat;
 import com.xenoage.zong.renderer.canvas.CanvasIntegrity;
+
+import java.awt.*;
+import java.io.OutputStream;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.remark;
+import static com.xenoage.utils.log.Report.warning;
 
 /**
  * This class allows the user to print out

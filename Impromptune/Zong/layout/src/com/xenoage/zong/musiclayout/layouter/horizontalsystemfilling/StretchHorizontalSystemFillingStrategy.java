@@ -1,8 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.horizontalsystemfilling;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.zong.musiclayout.BeatOffset;
 import com.xenoage.zong.musiclayout.SystemArrangement;
@@ -11,6 +8,9 @@ import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureElementsSpacings;
 import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
 import com.xenoage.zong.musiclayout.spacing.horizontal.VoiceSpacing;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
 
 /**
  * This horizontal system filling strategy

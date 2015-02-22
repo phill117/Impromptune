@@ -1,11 +1,10 @@
 package com.xenoage.zong.core.music.direction;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.music.TextElement;
 import com.xenoage.zong.core.text.Text;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 /**

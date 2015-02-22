@@ -1,9 +1,9 @@
 package com.xenoage.utils.math.geom;
 
+import com.xenoage.utils.math.VSide;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.xenoage.utils.math.VSide;
 
 /**
  * This class contains the convex hull over a given list

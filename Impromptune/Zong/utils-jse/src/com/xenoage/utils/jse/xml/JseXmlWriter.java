@@ -1,14 +1,13 @@
 package com.xenoage.utils.jse.xml;
 
-import java.io.OutputStream;
+import com.xenoage.utils.jse.xml.indent.IndentingXMLStreamWriter;
+import com.xenoage.utils.xml.XmlException;
+import com.xenoage.utils.xml.XmlWriter;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
-
-import com.xenoage.utils.jse.xml.indent.IndentingXMLStreamWriter;
-import com.xenoage.utils.xml.XmlException;
-import com.xenoage.utils.xml.XmlWriter;
+import java.io.OutputStream;
 
 /**
  * Java SE implementation of an {@link XmlWriter},

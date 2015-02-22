@@ -1,8 +1,8 @@
 package com.xenoage.zong.core.music.util;
 
-import java.util.ArrayList;
-
 import com.xenoage.zong.core.music.Measure;
+
+import java.util.ArrayList;
 
 
 /**

@@ -1,15 +1,13 @@
 package com.xenoage.zong.musiclayout.layouter.notation;
 
-import static com.xenoage.zong.core.music.chord.StemDirection.Down;
-import static com.xenoage.zong.core.music.chord.StemDirection.None;
-import static com.xenoage.zong.core.music.chord.StemDirection.Up;
-
 import com.xenoage.zong.core.music.chord.Stem;
 import com.xenoage.zong.core.music.chord.StemDirection;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.notations.chord.NoteAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.NotesAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.StemAlignment;
+
+import static com.xenoage.zong.core.music.chord.StemDirection.*;
 
 /**
  * A {@link StemAlignmentStrategy} computes the

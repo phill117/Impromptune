@@ -1,21 +1,16 @@
 package com.xenoage.zong.view;
 
-import static com.xenoage.utils.math.geom.Point2f.p;
-import static com.xenoage.zong.layout.LP.lp;
+import com.xenoage.utils.math.Units;
+import com.xenoage.utils.math.geom.*;
+import com.xenoage.zong.layout.LP;
+import com.xenoage.zong.layout.Layout;
+import com.xenoage.zong.layout.Page;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xenoage.utils.math.Units;
-import com.xenoage.utils.math.geom.Point2f;
-import com.xenoage.utils.math.geom.Point2i;
-import com.xenoage.utils.math.geom.Rectangle2f;
-import com.xenoage.utils.math.geom.Rectangle2i;
-import com.xenoage.utils.math.geom.Size2f;
-import com.xenoage.utils.math.geom.Size2i;
-import com.xenoage.zong.layout.LP;
-import com.xenoage.zong.layout.Layout;
-import com.xenoage.zong.layout.Page;
+import static com.xenoage.utils.math.geom.Point2f.p;
+import static com.xenoage.zong.layout.LP.lp;
 
 /**
  * This class manages a page view of a {@link Layout}.

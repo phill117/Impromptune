@@ -1,24 +1,19 @@
 package com.xenoage.utils.jse.settings;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.error;
-import static com.xenoage.utils.log.Report.warning;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Properties;
-
 import com.xenoage.utils.Parser;
 import com.xenoage.utils.error.BasicErrorProcessing;
 import com.xenoage.utils.io.FileUtils;
 import com.xenoage.utils.jse.io.DesktopIO;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.*;
+
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.error;
+import static com.xenoage.utils.log.Report.warning;
 
 /**
  * This class manages simple configuration data, which is String values

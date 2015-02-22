@@ -1,10 +1,9 @@
 package com.xenoage.zong.musiclayout.notations.chord;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.chord.Accidental;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * The alignment of a single accidental within

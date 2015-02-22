@@ -1,17 +1,16 @@
 package com.xenoage.zong.demos.simplegui;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.jse.log.DesktopLogProcessing;
 import com.xenoage.utils.log.Log;
 import com.xenoage.zong.desktop.io.midi.out.SynthManager;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.desktop.utils.error.GuiErrorProcessing;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * Main class of this simple GUI demo app.
@@ -48,7 +47,7 @@ public class SimpleGuiDemo
 		throws Exception {
 		//load main window FXML into stage and show it
 		Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
-    stage.setTitle("Simple Demo App based on Zong!");
+    stage.setTitle("WHYYYY!!!!!Simple Demo App based on Zong!");
     stage.setScene(new Scene(root));
     stage.setOnCloseRequest(e -> exit());
     stage.show();

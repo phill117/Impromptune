@@ -1,9 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.zong.core.music.format.SP.sp;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.color.Color;
 import com.xenoage.zong.core.music.beam.Beam;
@@ -14,35 +10,16 @@ import com.xenoage.zong.core.music.util.DurationInfo;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.layouter.cache.util.OpenBeamMiddleStem;
 import com.xenoage.zong.musiclayout.layouter.scoreframelayout.util.ChordStampings;
-import com.xenoage.zong.musiclayout.notations.ChordNotation;
-import com.xenoage.zong.musiclayout.notations.ClefNotation;
-import com.xenoage.zong.musiclayout.notations.RestNotation;
-import com.xenoage.zong.musiclayout.notations.TimeNotation;
-import com.xenoage.zong.musiclayout.notations.TraditionalKeyNotation;
-import com.xenoage.zong.musiclayout.notations.chord.AccidentalAlignment;
-import com.xenoage.zong.musiclayout.notations.chord.AccidentalsAlignment;
-import com.xenoage.zong.musiclayout.notations.chord.ArticulationAlignment;
-import com.xenoage.zong.musiclayout.notations.chord.ArticulationsAlignment;
-import com.xenoage.zong.musiclayout.notations.chord.NoteAlignment;
-import com.xenoage.zong.musiclayout.notations.chord.NotesAlignment;
-import com.xenoage.zong.musiclayout.notations.chord.StemAlignment;
+import com.xenoage.zong.musiclayout.notations.*;
+import com.xenoage.zong.musiclayout.notations.chord.*;
 import com.xenoage.zong.musiclayout.settings.ChordWidths;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
-import com.xenoage.zong.musiclayout.stampings.AccidentalStamping;
-import com.xenoage.zong.musiclayout.stampings.ArticulationStamping;
-import com.xenoage.zong.musiclayout.stampings.ClefStamping;
-import com.xenoage.zong.musiclayout.stampings.CommonTimeStamping;
-import com.xenoage.zong.musiclayout.stampings.FlagsStamping;
-import com.xenoage.zong.musiclayout.stampings.KeySignatureStamping;
-import com.xenoage.zong.musiclayout.stampings.LegerLineStamping;
-import com.xenoage.zong.musiclayout.stampings.NoteheadStamping;
-import com.xenoage.zong.musiclayout.stampings.ProlongationDotStamping;
-import com.xenoage.zong.musiclayout.stampings.RestStamping;
-import com.xenoage.zong.musiclayout.stampings.StaffStamping;
-import com.xenoage.zong.musiclayout.stampings.Stamping;
-import com.xenoage.zong.musiclayout.stampings.StemStamping;
-import com.xenoage.zong.musiclayout.stampings.NormalTimeStamping;
+import com.xenoage.zong.musiclayout.stampings.*;
 import com.xenoage.zong.symbols.SymbolPool;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Strategy to create stampings for elements like chords, rests,

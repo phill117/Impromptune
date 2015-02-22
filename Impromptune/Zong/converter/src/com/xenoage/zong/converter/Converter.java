@@ -1,15 +1,5 @@
 package com.xenoage.zong.converter;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.log.Report.fatal;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import javax.sound.midi.MidiUnavailableException;
-
 import com.xenoage.utils.document.io.FileFormat;
 import com.xenoage.utils.document.io.FileInput;
 import com.xenoage.utils.jse.io.JseInputStream;
@@ -21,6 +11,15 @@ import com.xenoage.zong.desktop.io.midi.out.SynthManager;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.io.ConverterSupportedFormats;
+
+import javax.sound.midi.MidiUnavailableException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.log.Report.fatal;
 
 /**
  * The <strong>Zong! Converter</strong> command-line application

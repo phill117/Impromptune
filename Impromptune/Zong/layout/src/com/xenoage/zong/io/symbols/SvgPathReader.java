@@ -1,20 +1,13 @@
 package com.xenoage.zong.io.symbols;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.math.geom.Point2f.p;
+import com.xenoage.utils.math.geom.Point2f;
+import com.xenoage.zong.symbols.path.*;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-import lombok.RequiredArgsConstructor;
-
-import com.xenoage.utils.math.geom.Point2f;
-import com.xenoage.zong.symbols.path.ClosePath;
-import com.xenoage.zong.symbols.path.CubicCurveTo;
-import com.xenoage.zong.symbols.path.LineTo;
-import com.xenoage.zong.symbols.path.MoveTo;
-import com.xenoage.zong.symbols.path.Path;
-import com.xenoage.zong.symbols.path.PathElement;
-import com.xenoage.zong.symbols.path.QuadraticCurveTo;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.math.geom.Point2f.p;
 
 /**
  * This class creates a path from a given SVG path

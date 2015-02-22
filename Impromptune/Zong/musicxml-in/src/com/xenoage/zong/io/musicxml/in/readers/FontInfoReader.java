@@ -1,11 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.collections.CList.ilist;
-
-import java.util.List;
-
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.font.FontInfo;
@@ -17,6 +11,11 @@ import com.xenoage.zong.musicxml.types.enums.MxlCSSFontSize;
 import com.xenoage.zong.musicxml.types.enums.MxlFontStyle;
 import com.xenoage.zong.musicxml.types.enums.MxlFontWeight;
 import com.xenoage.zong.musicxml.types.util.MxlPrintStyleContent;
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.ilist;
 
 /**
  * This class reads elements containing a font-group into

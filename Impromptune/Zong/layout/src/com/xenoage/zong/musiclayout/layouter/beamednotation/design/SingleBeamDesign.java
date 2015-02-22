@@ -1,9 +1,9 @@
 package com.xenoage.zong.musiclayout.layouter.beamednotation.design;
 
+import com.xenoage.zong.core.music.chord.StemDirection;
+
 import static com.xenoage.zong.core.music.chord.StemDirection.Down;
 import static com.xenoage.zong.musiclayout.layouter.beamednotation.alignment.SingleMeasureSingleStaffStrategy.isBeamOutsideStaff;
-
-import com.xenoage.zong.core.music.chord.StemDirection;
 
 /**
  * This implementation of {@link BeamDesign} is the default design for a single beam.

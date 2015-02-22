@@ -1,14 +1,13 @@
 package com.xenoage.utils.jse.javafx;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
+import com.xenoage.utils.document.io.FileFormat;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.File;
 import java.util.List;
 
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-
-import com.xenoage.utils.document.io.FileFormat;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Useful methods for working with a JavaFX {@link FileChooser}.

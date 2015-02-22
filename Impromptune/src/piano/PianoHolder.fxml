@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="1195.0" vbarPolicy="NEVER" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="piano.PianoHolder">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="1193.0">

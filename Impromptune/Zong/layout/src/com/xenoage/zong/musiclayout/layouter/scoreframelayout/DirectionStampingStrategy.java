@@ -1,5 +1,22 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout;
 
+import com.xenoage.utils.collections.CList;
+import com.xenoage.utils.collections.IList;
+import com.xenoage.zong.core.music.chord.Chord;
+import com.xenoage.zong.core.music.direction.*;
+import com.xenoage.zong.core.music.format.Placement;
+import com.xenoage.zong.core.music.format.Position;
+import com.xenoage.zong.core.music.format.Positioning;
+import com.xenoage.zong.core.music.format.SP;
+import com.xenoage.zong.core.position.MP;
+import com.xenoage.zong.core.text.*;
+import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
+import com.xenoage.zong.musiclayout.layouter.scoreframelayout.util.ChordStampings;
+import com.xenoage.zong.musiclayout.stampings.*;
+import com.xenoage.zong.symbols.Symbol;
+import com.xenoage.zong.symbols.SymbolPool;
+import com.xenoage.zong.symbols.common.CommonSymbol;
+
 import static com.xenoage.utils.NullUtils.notNull;
 import static com.xenoage.utils.collections.CList.clist;
 import static com.xenoage.zong.core.music.format.Position.asPosition;
@@ -7,38 +24,6 @@ import static com.xenoage.zong.core.music.format.SP.sp;
 import static com.xenoage.zong.core.text.FormattedText.fText;
 import static com.xenoage.zong.core.text.FormattedTextUtils.styleText;
 import static com.xenoage.zong.musiclayout.text.DefaultTexts.getTempoTextNotNull;
-
-import com.xenoage.utils.collections.CList;
-import com.xenoage.utils.collections.IList;
-import com.xenoage.zong.core.music.chord.Chord;
-import com.xenoage.zong.core.music.direction.Direction;
-import com.xenoage.zong.core.music.direction.Dynamics;
-import com.xenoage.zong.core.music.direction.Pedal;
-import com.xenoage.zong.core.music.direction.Tempo;
-import com.xenoage.zong.core.music.direction.Wedge;
-import com.xenoage.zong.core.music.direction.WedgeType;
-import com.xenoage.zong.core.music.direction.Words;
-import com.xenoage.zong.core.music.format.Placement;
-import com.xenoage.zong.core.music.format.Position;
-import com.xenoage.zong.core.music.format.Positioning;
-import com.xenoage.zong.core.music.format.SP;
-import com.xenoage.zong.core.position.MP;
-import com.xenoage.zong.core.text.Alignment;
-import com.xenoage.zong.core.text.FormattedText;
-import com.xenoage.zong.core.text.FormattedTextElement;
-import com.xenoage.zong.core.text.FormattedTextParagraph;
-import com.xenoage.zong.core.text.FormattedTextStyle;
-import com.xenoage.zong.core.text.FormattedTextSymbol;
-import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.util.ChordStampings;
-import com.xenoage.zong.musiclayout.stampings.PedalStamping;
-import com.xenoage.zong.musiclayout.stampings.StaffStamping;
-import com.xenoage.zong.musiclayout.stampings.StaffSymbolStamping;
-import com.xenoage.zong.musiclayout.stampings.StaffTextStamping;
-import com.xenoage.zong.musiclayout.stampings.WedgeStamping;
-import com.xenoage.zong.symbols.Symbol;
-import com.xenoage.zong.symbols.SymbolPool;
-import com.xenoage.zong.symbols.common.CommonSymbol;
 
 /**
  * This strategy computes the text stampings of {@link Direction}s.

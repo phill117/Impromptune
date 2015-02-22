@@ -1,19 +1,19 @@
 package com.xenoage.zong.io.musiclayout;
 
+import com.xenoage.utils.io.InputStream;
+import com.xenoage.utils.xml.XmlReader;
+import com.xenoage.zong.musiclayout.settings.ChordWidths;
+import com.xenoage.zong.musiclayout.settings.LayoutSettings;
+import com.xenoage.zong.musiclayout.settings.Spacings;
+
+import java.io.IOException;
+
 import static com.xenoage.utils.PlatformUtils.platformUtils;
 import static com.xenoage.utils.log.Log.log;
 import static com.xenoage.utils.log.Report.error;
 import static com.xenoage.zong.io.musiclayout.ChordWidthsReader.readChordWidths;
 import static com.xenoage.zong.io.musiclayout.SpacingsReader.readSpacings;
 import static java.lang.Float.parseFloat;
-
-import java.io.IOException;
-
-import com.xenoage.utils.io.InputStream;
-import com.xenoage.utils.xml.XmlReader;
-import com.xenoage.zong.musiclayout.settings.ChordWidths;
-import com.xenoage.zong.musiclayout.settings.LayoutSettings;
-import com.xenoage.zong.musiclayout.settings.Spacings;
 
 /**
  * Reader for {@link LayoutSettings}. 

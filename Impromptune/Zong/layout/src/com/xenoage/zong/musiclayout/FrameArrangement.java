@@ -1,11 +1,11 @@
 package com.xenoage.zong.musiclayout;
 
-import static com.xenoage.utils.collections.CollectionUtils.containsNull;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.geom.Size2f;
+import lombok.Getter;
+
+import static com.xenoage.utils.collections.CollectionUtils.containsNull;
 
 /**
  * This class contains the arrangement

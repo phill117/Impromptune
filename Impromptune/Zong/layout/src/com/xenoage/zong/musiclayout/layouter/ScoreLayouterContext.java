@@ -1,13 +1,12 @@
 package com.xenoage.zong.musiclayout.layouter;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.SymbolPool;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * This class can be used as a parameter in all {@link ScoreLayouterStrategy}

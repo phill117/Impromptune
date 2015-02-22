@@ -1,12 +1,12 @@
 package com.xenoage.zong.commands.desktop.app;
 
+import com.xenoage.utils.document.command.TransparentCommand;
+
+import java.awt.*;
+
 import static com.xenoage.utils.jse.JsePlatformUtils.io;
 import static com.xenoage.utils.log.Log.log;
 import static com.xenoage.utils.log.Report.warning;
-
-import java.awt.Desktop;
-
-import com.xenoage.utils.document.command.TransparentCommand;
 
 /**
  * Opens the given file in the default program.

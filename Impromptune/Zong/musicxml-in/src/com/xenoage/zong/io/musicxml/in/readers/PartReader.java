@@ -1,11 +1,11 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import java.util.List;
-
 import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.music.Part;
 import com.xenoage.zong.musicxml.types.MxlScorePart;
 import com.xenoage.zong.musicxml.types.partwise.MxlPart;
+
+import java.util.List;
 
 /**
  * Reads a {@link Part} from a given {@link MxlScorePart}.

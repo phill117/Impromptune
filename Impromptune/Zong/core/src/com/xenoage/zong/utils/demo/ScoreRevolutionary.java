@@ -1,23 +1,5 @@
 package com.xenoage.zong.utils.demo;
 
-import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.utils.math.Fraction.fr;
-import static com.xenoage.zong.core.music.Pitch.A;
-import static com.xenoage.zong.core.music.Pitch.B;
-import static com.xenoage.zong.core.music.Pitch.C;
-import static com.xenoage.zong.core.music.Pitch.D;
-import static com.xenoage.zong.core.music.Pitch.E;
-import static com.xenoage.zong.core.music.Pitch.F;
-import static com.xenoage.zong.core.music.Pitch.G;
-import static com.xenoage.zong.core.music.Pitch.pi;
-import static com.xenoage.zong.core.music.format.SP.sp;
-import static com.xenoage.zong.core.position.MP.mp;
-import static com.xenoage.zong.core.text.UnformattedText.ut;
-
-import java.util.ArrayList;
-
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.commands.core.music.ColumnElementWrite;
 import com.xenoage.zong.commands.core.music.PartAdd;
@@ -28,11 +10,7 @@ import com.xenoage.zong.commands.core.music.slur.SlurAdd;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.format.StaffLayout;
 import com.xenoage.zong.core.instrument.Instrument;
-import com.xenoage.zong.core.music.ColumnElement;
-import com.xenoage.zong.core.music.MeasureElement;
-import com.xenoage.zong.core.music.MeasureSide;
-import com.xenoage.zong.core.music.Part;
-import com.xenoage.zong.core.music.Pitch;
+import com.xenoage.zong.core.music.*;
 import com.xenoage.zong.core.music.annotation.Annotation;
 import com.xenoage.zong.core.music.annotation.Articulation;
 import com.xenoage.zong.core.music.annotation.ArticulationType;
@@ -42,11 +20,7 @@ import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.chord.Note;
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
-import com.xenoage.zong.core.music.direction.Dynamics;
-import com.xenoage.zong.core.music.direction.DynamicsType;
-import com.xenoage.zong.core.music.direction.Tempo;
-import com.xenoage.zong.core.music.direction.Wedge;
-import com.xenoage.zong.core.music.direction.WedgeType;
+import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
 import com.xenoage.zong.core.music.format.Position;
 import com.xenoage.zong.core.music.group.BarlineGroup;
@@ -62,6 +36,17 @@ import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.time.TimeType;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.io.selection.Cursor;
+
+import java.util.ArrayList;
+
+import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.utils.math.Fraction.fr;
+import static com.xenoage.zong.core.music.Pitch.*;
+import static com.xenoage.zong.core.music.format.SP.sp;
+import static com.xenoage.zong.core.position.MP.mp;
+import static com.xenoage.zong.core.text.UnformattedText.ut;
 
 
 /**

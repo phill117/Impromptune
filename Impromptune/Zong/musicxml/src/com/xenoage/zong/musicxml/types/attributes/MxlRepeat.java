@@ -1,13 +1,12 @@
 package com.xenoage.zong.musicxml.types.attributes;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.enums.MxlBackwardForward;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * MusicXML repeat.

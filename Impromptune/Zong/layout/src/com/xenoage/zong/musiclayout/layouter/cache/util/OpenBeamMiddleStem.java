@@ -1,11 +1,10 @@
 package com.xenoage.zong.musiclayout.layouter.cache.util;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.chord.StemDirection;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+import lombok.AllArgsConstructor;
 
 /**
  * Middle stems of a still open beam.

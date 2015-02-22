@@ -1,19 +1,18 @@
 package com.xenoage.zong.core.music.util;
 
+import com.xenoage.utils.collections.CList;
+import com.xenoage.utils.collections.IList;
+import com.xenoage.utils.math.Fraction;
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import static com.xenoage.utils.collections.CList.clist;
 import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
 import static com.xenoage.utils.kernel.Range.range;
 import static com.xenoage.zong.core.music.util.BeatE.beatE;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import lombok.Data;
-
-import com.xenoage.utils.collections.CList;
-import com.xenoage.utils.collections.IList;
-import com.xenoage.utils.math.Fraction;
 
 /**
  * This is a wrapper class to combine a list of objects with

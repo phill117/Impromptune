@@ -1,15 +1,15 @@
 package com.xenoage.zong.io.musicxml.in;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-
-import java.io.IOException;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.io.BufferedInputStream;
 import com.xenoage.utils.io.InputStream;
 import com.xenoage.utils.xml.XmlException;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.zong.io.musicxml.FileType;
+
+import java.io.IOException;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
 
 /**
  * This class returns the {@link FileType} of MusicXML data

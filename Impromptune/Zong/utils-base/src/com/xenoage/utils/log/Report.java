@@ -1,14 +1,14 @@
 package com.xenoage.utils.log;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.List;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.lang.VocID;
+
+import java.util.List;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * A logging or error report.

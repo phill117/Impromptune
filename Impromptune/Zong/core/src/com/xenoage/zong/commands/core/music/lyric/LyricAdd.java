@@ -1,13 +1,13 @@
 package com.xenoage.zong.commands.core.music.lyric;
 
-import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
-import static com.xenoage.utils.collections.CollectionUtils.removeOrEmpty;
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.Undoability;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.lyric.Lyric;
+import lombok.AllArgsConstructor;
+
+import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
+import static com.xenoage.utils.collections.CollectionUtils.removeOrEmpty;
 
 
 /**

@@ -1,12 +1,12 @@
 package com.xenoage.zong.demos.simplegui;
 
-import javax.sound.midi.MidiUnavailableException;
-
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.log.Report;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.desktop.io.midi.out.MidiScorePlayer;
 import com.xenoage.zong.io.midi.out.PlaybackListener;
+
+import javax.sound.midi.MidiUnavailableException;
 
 /**
  * MIDI playback controller.

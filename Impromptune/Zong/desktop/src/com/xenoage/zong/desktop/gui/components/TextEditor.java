@@ -1,19 +1,16 @@
 package com.xenoage.zong.desktop.gui.components;
 
-import static com.xenoage.zong.desktop.utils.text.FormattedTextConverter.fromStyledDocument;
-import static com.xenoage.zong.desktop.utils.text.FormattedTextConverter.toStyledDocument;
-
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.BorderFactory;
-import javax.swing.JTextPane;
-import javax.swing.text.View;
-
 import com.xenoage.utils.math.geom.Size2f;
 import com.xenoage.utils.math.geom.Size2i;
 import com.xenoage.zong.core.text.FormattedText;
 import com.xenoage.zong.desktop.gui.components.util.ScaledEditorKit;
+
+import javax.swing.*;
+import javax.swing.text.View;
+import java.awt.*;
+
+import static com.xenoage.zong.desktop.utils.text.FormattedTextConverter.fromStyledDocument;
+import static com.xenoage.zong.desktop.utils.text.FormattedTextConverter.toStyledDocument;
 
 /**
  * This is a Swing component which allows to edit

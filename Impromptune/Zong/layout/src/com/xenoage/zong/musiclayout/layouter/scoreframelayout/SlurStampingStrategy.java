@@ -1,7 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout;
 
-import static com.xenoage.zong.core.music.format.SP.sp;
-
 import com.xenoage.utils.kernel.Tuple2;
 import com.xenoage.utils.math.MathUtils;
 import com.xenoage.utils.math.VSide;
@@ -15,9 +13,11 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.layouter.cache.util.SlurCache;
 import com.xenoage.zong.musiclayout.notations.ChordNotation;
 import com.xenoage.zong.musiclayout.notations.chord.StemAlignment;
-import com.xenoage.zong.musiclayout.stampings.SlurStamping;
 import com.xenoage.zong.musiclayout.stampings.NoteheadStamping;
+import com.xenoage.zong.musiclayout.stampings.SlurStamping;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * This strategy computes the stampings of a {@link Slur}.

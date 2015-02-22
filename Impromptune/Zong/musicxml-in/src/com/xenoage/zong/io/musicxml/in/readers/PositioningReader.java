@@ -1,7 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.zong.core.music.format.Placement;
 import com.xenoage.zong.core.music.format.Position;
@@ -12,11 +10,8 @@ import com.xenoage.zong.musicxml.types.attributes.MxlEmptyPlacement;
 import com.xenoage.zong.musicxml.types.attributes.MxlPosition;
 import com.xenoage.zong.musicxml.types.attributes.MxlPrintStyle;
 import com.xenoage.zong.musicxml.types.enums.MxlPlacement;
-import com.xenoage.zong.musicxml.types.util.MxlEmptyPlacementContent;
-import com.xenoage.zong.musicxml.types.util.MxlFormattedTextContent;
-import com.xenoage.zong.musicxml.types.util.MxlPlacementContent;
-import com.xenoage.zong.musicxml.types.util.MxlPositionContent;
-import com.xenoage.zong.musicxml.types.util.MxlPrintStyleContent;
+import com.xenoage.zong.musicxml.types.util.*;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Reads {@link Positioning} information from any MusicXML element.

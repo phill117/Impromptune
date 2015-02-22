@@ -1,11 +1,10 @@
 package com.xenoage.zong.symbols;
 
-import java.util.Map;
-
-import lombok.Getter;
-
 import com.xenoage.zong.symbols.common.CommonSymbol;
 import com.xenoage.zong.symbols.common.CommonSymbolPool;
+import lombok.Getter;
+
+import java.util.Map;
 
 /**
  * A {@link SymbolPool} stores and provides all

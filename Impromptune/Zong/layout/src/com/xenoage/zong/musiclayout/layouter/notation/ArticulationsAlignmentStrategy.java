@@ -1,7 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.notation;
 
-import java.util.List;
-
 import com.xenoage.utils.math.VSide;
 import com.xenoage.zong.core.music.annotation.Articulation;
 import com.xenoage.zong.core.music.annotation.ArticulationType;
@@ -12,6 +10,8 @@ import com.xenoage.zong.musiclayout.notations.chord.ArticulationAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.ArticulationsAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.NoteAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.NotesAlignment;
+
+import java.util.List;
 
 /**
  * This strategy stores the alignment of

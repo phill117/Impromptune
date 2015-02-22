@@ -1,12 +1,12 @@
 package com.xenoage.zong.commands.core.music.group;
 
-import java.util.List;
-
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.Undoability;
 import com.xenoage.zong.core.music.StavesList;
 import com.xenoage.zong.core.music.group.BarlineGroup;
 import com.xenoage.zong.core.music.group.BracketGroup;
+
+import java.util.List;
 
 
 /**

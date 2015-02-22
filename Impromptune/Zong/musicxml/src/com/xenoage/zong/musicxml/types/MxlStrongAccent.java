@@ -1,14 +1,13 @@
 package com.xenoage.zong.musicxml.types;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.attributes.MxlEmptyPlacement;
 import com.xenoage.zong.musicxml.types.choice.MxlArticulationsContent;
 import com.xenoage.zong.musicxml.types.enums.MxlUpDown;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * MusicXML strong-accent.

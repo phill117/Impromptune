@@ -1,12 +1,5 @@
 package com.xenoage.zong.commands.core.music;
 
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.kernel.Range.rangeReverse;
-import static com.xenoage.zong.core.music.Staff.staff;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.Untested;
 import com.xenoage.utils.document.command.Command;
@@ -17,6 +10,13 @@ import com.xenoage.zong.core.music.Staff;
 import com.xenoage.zong.core.music.StavesList;
 import com.xenoage.zong.core.music.group.BarlineGroup;
 import com.xenoage.zong.core.music.group.BracketGroup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.kernel.Range.rangeReverse;
+import static com.xenoage.zong.core.music.Staff.staff;
 
 
 /**

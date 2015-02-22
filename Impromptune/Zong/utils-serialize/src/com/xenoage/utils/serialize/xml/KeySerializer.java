@@ -1,12 +1,11 @@
 package com.xenoage.utils.serialize.xml;
 
-import static com.xenoage.utils.jse.xml.XMLWriter.addAttribute;
-
-import org.w3c.dom.Element;
-
 import com.xenoage.utils.jse.Key;
 import com.xenoage.utils.jse.xml.Parse;
 import com.xenoage.utils.jse.xml.XMLWriter;
+import org.w3c.dom.Element;
+
+import static com.xenoage.utils.jse.xml.XMLWriter.addAttribute;
 
 public class KeySerializer {
 

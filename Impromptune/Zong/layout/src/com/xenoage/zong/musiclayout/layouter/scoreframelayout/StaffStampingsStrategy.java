@@ -1,26 +1,22 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.collections.CollectionUtils.llist;
-import static com.xenoage.utils.kernel.Range.range;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.core.Score;
-import com.xenoage.zong.musiclayout.BeatOffset;
-import com.xenoage.zong.musiclayout.FrameArrangement;
-import com.xenoage.zong.musiclayout.MeasureMarks;
-import com.xenoage.zong.musiclayout.StaffMarks;
-import com.xenoage.zong.musiclayout.SystemArrangement;
+import com.xenoage.zong.musiclayout.*;
 import com.xenoage.zong.musiclayout.layouter.scoreframelayout.util.StaffStampings;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.collections.CollectionUtils.llist;
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * This strategy creates the staves of all systems of a

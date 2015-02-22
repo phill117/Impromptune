@@ -1,25 +1,18 @@
 package com.xenoage.zong.musiclayout.text;
 
+import com.xenoage.utils.collections.CList;
+import com.xenoage.utils.math.Fraction;
+import com.xenoage.zong.core.music.TextElement;
+import com.xenoage.zong.core.music.direction.Tempo;
+import com.xenoage.zong.core.text.*;
+import com.xenoage.zong.symbols.SymbolPool;
+import com.xenoage.zong.symbols.common.CommonSymbol;
+
 import static com.xenoage.utils.collections.CList.clist;
 import static com.xenoage.utils.math.Fraction.fr;
 import static com.xenoage.zong.core.text.FormattedText.fText;
 import static com.xenoage.zong.core.text.FormattedTextUtils.styleText;
 import static com.xenoage.zong.core.text.UnformattedText.ut;
-
-import com.xenoage.utils.collections.CList;
-import com.xenoage.utils.math.Fraction;
-import com.xenoage.zong.core.music.TextElement;
-import com.xenoage.zong.core.music.direction.Tempo;
-import com.xenoage.zong.core.text.Alignment;
-import com.xenoage.zong.core.text.FormattedText;
-import com.xenoage.zong.core.text.FormattedTextElement;
-import com.xenoage.zong.core.text.FormattedTextParagraph;
-import com.xenoage.zong.core.text.FormattedTextString;
-import com.xenoage.zong.core.text.FormattedTextStyle;
-import com.xenoage.zong.core.text.FormattedTextSymbol;
-import com.xenoage.zong.core.text.Text;
-import com.xenoage.zong.symbols.SymbolPool;
-import com.xenoage.zong.symbols.common.CommonSymbol;
 
 /**
  * This class provides text content for {@link TextElement}s which

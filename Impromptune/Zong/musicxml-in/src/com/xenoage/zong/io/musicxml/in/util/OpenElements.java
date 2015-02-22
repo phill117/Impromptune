@@ -1,17 +1,16 @@
 package com.xenoage.zong.io.musicxml.in.util;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.collections.CollectionUtils.map;
+import com.xenoage.zong.core.music.Pitch;
+import com.xenoage.zong.core.music.chord.Chord;
+import com.xenoage.zong.core.music.direction.Wedge;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Map;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import com.xenoage.zong.core.music.Pitch;
-import com.xenoage.zong.core.music.chord.Chord;
-import com.xenoage.zong.core.music.direction.Wedge;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * Open wedges, beams, slurs and ties.

@@ -1,14 +1,14 @@
 package com.xenoage.zong.musicxml.types.attributes;
 
-import static com.xenoage.zong.musicxml.types.attributes.MxlColor.noColor;
-import static com.xenoage.zong.musicxml.types.attributes.MxlFont.noFont;
-import static com.xenoage.zong.musicxml.types.attributes.MxlPosition.noPosition;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.util.MxlPositionContent;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import static com.xenoage.zong.musicxml.types.attributes.MxlColor.noColor;
+import static com.xenoage.zong.musicxml.types.attributes.MxlFont.noFont;
+import static com.xenoage.zong.musicxml.types.attributes.MxlPosition.noPosition;
 
 /**
  * MusicXML print-style.

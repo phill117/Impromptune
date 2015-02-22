@@ -1,15 +1,14 @@
 package com.xenoage.zong.io.musicxml.opus;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
+import com.xenoage.zong.io.musicxml.in.OpusLinkResolver;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import com.xenoage.zong.io.musicxml.in.OpusLinkResolver;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * MusicXML opus, which can contain multiple scores and

@@ -1,8 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.verticalframefilling;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.kernel.Range.range;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.math.geom.Size2f;
 import com.xenoage.zong.core.Score;
@@ -11,6 +8,9 @@ import com.xenoage.zong.core.music.Staff;
 import com.xenoage.zong.musiclayout.FrameArrangement;
 import com.xenoage.zong.musiclayout.SystemArrangement;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * This vertical frame filling strategy

@@ -1,18 +1,18 @@
 package com.xenoage.zong.musiclayout.layouter.columnspacing;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.math.Fraction.fr;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.musiclayout.BeatOffset;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
 import com.xenoage.zong.musiclayout.spacing.horizontal.VoiceSpacing;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.math.Fraction.fr;
 
 /**
  * Strategy to compute the horizontal spacing for a

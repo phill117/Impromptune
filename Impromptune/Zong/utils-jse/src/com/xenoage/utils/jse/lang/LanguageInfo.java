@@ -1,18 +1,17 @@
 package com.xenoage.utils.jse.lang;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import com.xenoage.utils.jse.io.DesktopIO;
+import com.xenoage.utils.jse.xml.XMLReader;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import com.xenoage.utils.jse.io.DesktopIO;
-import com.xenoage.utils.jse.xml.XMLReader;
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
 
 /**
  * Contains the most important information about a language pack.

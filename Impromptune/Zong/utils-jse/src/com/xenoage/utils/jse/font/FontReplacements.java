@@ -1,8 +1,8 @@
 package com.xenoage.utils.jse.font;
 
-import java.util.HashMap;
-
 import com.xenoage.utils.jse.settings.Settings;
+
+import java.util.HashMap;
 
 
 /**

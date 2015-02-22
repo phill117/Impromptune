@@ -1,12 +1,11 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefSymbol;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.io.musicxml.Equivalents;
 import com.xenoage.zong.musicxml.types.MxlClef;
+import lombok.RequiredArgsConstructor;
 
 /**
  * This class reads a {@link ClefType} from a {@link MxlClef}.

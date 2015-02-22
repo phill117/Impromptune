@@ -1,10 +1,9 @@
 package com.xenoage.zong.core.info;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
+import lombok.Data;
 
 /**
  * Class for rights.

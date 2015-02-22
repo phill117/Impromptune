@@ -1,9 +1,5 @@
 package com.xenoage.utils.jse.io;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-
 import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.io.FileFilter;
 import com.xenoage.utils.io.FileUtils;
@@ -12,6 +8,10 @@ import com.xenoage.utils.io.InputStream;
 import com.xenoage.utils.io.index.FilesystemIndex;
 import com.xenoage.utils.io.index.FilesystemIndexReader;
 import com.xenoage.utils.jse.xml.JseXmlReader;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Some useful input/output methods for JAR bundled resource files

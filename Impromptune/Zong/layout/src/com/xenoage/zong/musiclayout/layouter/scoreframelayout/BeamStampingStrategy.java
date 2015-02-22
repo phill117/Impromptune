@@ -1,10 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout;
 
-import static com.xenoage.utils.collections.CList.clist;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.Fraction;
@@ -23,6 +18,11 @@ import com.xenoage.zong.musiclayout.stampings.BeamStamping;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
 import com.xenoage.zong.musiclayout.stampings.Stamping;
 import com.xenoage.zong.musiclayout.stampings.StemStamping;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
 
 /**
  * This strategy creates the stampings for a beam and

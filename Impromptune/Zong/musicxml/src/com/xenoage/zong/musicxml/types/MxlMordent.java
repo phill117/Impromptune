@@ -1,14 +1,13 @@
 package com.xenoage.zong.musicxml.types;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.attributes.MxlMordentType;
 import com.xenoage.zong.musicxml.types.choice.MxlOrnamentsContent;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * MusicXML mordent (element).

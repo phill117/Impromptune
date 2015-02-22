@@ -1,11 +1,10 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.zong.core.format.SystemLayout;
 import com.xenoage.zong.musicxml.types.MxlSystemLayout;
 import com.xenoage.zong.musicxml.types.MxlSystemMargins;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Reads a {@link SystemLayout} from a {@link MxlSystemLayout}.

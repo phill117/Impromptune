@@ -1,15 +1,15 @@
 package com.xenoage.zong.musiclayout;
 
-import static com.xenoage.utils.collections.CollectionUtils.containsNull;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.zong.core.position.MP.atBeat;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+import lombok.Getter;
+
+import static com.xenoage.utils.collections.CollectionUtils.containsNull;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.zong.core.position.MP.atBeat;
 
 /**
  * A {@link StaffMarks} class stores positioning

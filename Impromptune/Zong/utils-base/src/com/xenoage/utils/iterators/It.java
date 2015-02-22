@@ -1,11 +1,11 @@
 package com.xenoage.utils.iterators;
 
-import static com.xenoage.utils.collections.CList.ilist;
-
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import static com.xenoage.utils.collections.CList.ilist;
 
 /**
  * Iterable iterator around a given iterator,

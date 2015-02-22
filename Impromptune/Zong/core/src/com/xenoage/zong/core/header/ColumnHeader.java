@@ -1,12 +1,5 @@
 package com.xenoage.zong.core.header;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import static com.xenoage.utils.CheckUtils.checkNotNull;
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.zong.core.position.MP.atColumnBeat;
-import lombok.Data;
-
 import com.xenoage.utils.annotations.MaybeEmpty;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
@@ -32,6 +25,13 @@ import com.xenoage.zong.core.music.volta.Volta;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.core.position.MPContainer;
 import com.xenoage.zong.core.position.MPElement;
+import lombok.Data;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
+import static com.xenoage.utils.CheckUtils.checkNotNull;
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.zong.core.position.MP.atColumnBeat;
 
 /**
  * A {@link ColumnHeader} stores information that

@@ -1,8 +1,8 @@
 package com.xenoage.utils.jse.xml;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.StringWriter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -12,10 +12,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.StringWriter;
 
 /**
  * This class contains some helper functions

@@ -1,9 +1,8 @@
 package com.xenoage.zong.musiclayout.continued;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.volta.Volta;
+import lombok.AllArgsConstructor;
 
 /**
  * Continued {@link Volta}.

@@ -1,22 +1,21 @@
 package com.xenoage.zong.desktop.io.midi.out;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.io.FilenameUtils.numberFiles;
-import static com.xenoage.utils.kernel.Range.range;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequence;
-
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.io.FilenameUtils;
 import com.xenoage.utils.io.OutputStream;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.io.midi.out.MidiConverter;
+
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequence;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.io.FilenameUtils.numberFiles;
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * This class writes one or more MIDI files from a given {@link ScoreDoc}.

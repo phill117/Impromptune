@@ -1,12 +1,11 @@
 package com.xenoage.zong.musiclayout;
 
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.utils.math.MathUtils;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+import lombok.Getter;
 
 /**
  * A {@link MeasureMarks} class stores positioning

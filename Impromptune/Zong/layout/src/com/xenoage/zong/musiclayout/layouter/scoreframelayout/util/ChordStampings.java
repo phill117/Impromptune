@@ -1,21 +1,12 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout.util;
 
-import java.util.List;
-
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.zong.musiclayout.layouter.cache.util.OpenBeamMiddleStem;
-import com.xenoage.zong.musiclayout.stampings.AccidentalStamping;
-import com.xenoage.zong.musiclayout.stampings.ArticulationStamping;
-import com.xenoage.zong.musiclayout.stampings.FlagsStamping;
-import com.xenoage.zong.musiclayout.stampings.LegerLineStamping;
-import com.xenoage.zong.musiclayout.stampings.NoteheadStamping;
-import com.xenoage.zong.musiclayout.stampings.ProlongationDotStamping;
-import com.xenoage.zong.musiclayout.stampings.StaffStamping;
-import com.xenoage.zong.musiclayout.stampings.Stamping;
-import com.xenoage.zong.musiclayout.stampings.StemStamping;
+import com.xenoage.zong.musiclayout.stampings.*;
+import lombok.AllArgsConstructor;
+
+import java.util.List;
 
 /**
  * The stampings belonging to a chord: a list of noteheads,

@@ -1,12 +1,12 @@
 package com.xenoage.utils.jse.font;
 
-import static com.xenoage.utils.collections.CList.ilist;
-
-import java.awt.Font;
-
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.font.FontInfo;
 import com.xenoage.utils.font.FontStyle;
+
+import java.awt.*;
+
+import static com.xenoage.utils.collections.CList.ilist;
 
 
 /**

@@ -1,8 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.iterators.It.it;
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.zong.core.format.Break;
 import com.xenoage.zong.core.format.StaffLayout;
@@ -16,6 +13,9 @@ import com.xenoage.zong.musicxml.types.MxlSystemLayout;
 import com.xenoage.zong.musicxml.types.attributes.MxlPrintAttributes;
 import com.xenoage.zong.musicxml.types.enums.MxlYesNo;
 import com.xenoage.zong.musicxml.types.groups.MxlLayout;
+import lombok.RequiredArgsConstructor;
+
+import static com.xenoage.utils.iterators.It.it;
 
 /**
  * Reads a {@link MxlPrint} to the {@link Context}.

@@ -1,21 +1,5 @@
 package com.xenoage.zong.core.music;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.zong.core.music.Voice.voice;
-import static com.xenoage.zong.core.music.util.BeatEList.beatEList;
-import static com.xenoage.zong.core.music.util.Interval.At;
-import static com.xenoage.zong.core.music.util.Interval.Before;
-import static com.xenoage.zong.core.music.util.Interval.BeforeOrAt;
-import static com.xenoage.zong.core.position.MP.atVoice;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.NonEmpty;
 import com.xenoage.utils.annotations.Untested;
 import com.xenoage.utils.collections.SortedList;
@@ -34,6 +18,19 @@ import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.core.position.MPContainer;
 import com.xenoage.zong.core.position.MPElement;
 import com.xenoage.zong.utils.exceptions.IllegalMPException;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.zong.core.music.Voice.voice;
+import static com.xenoage.zong.core.music.util.BeatEList.beatEList;
+import static com.xenoage.zong.core.music.util.Interval.*;
+import static com.xenoage.zong.core.position.MP.atVoice;
 
 
 /**

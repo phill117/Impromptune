@@ -1,17 +1,16 @@
 package com.xenoage.zong.layout.frames;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.ArrayList;
-
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.musiclayout.ScoreFrameLayout;
 import com.xenoage.zong.musiclayout.ScoreLayout;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * A list of connected {@link ScoreFrame}s.

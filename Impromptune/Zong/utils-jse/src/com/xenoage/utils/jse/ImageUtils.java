@@ -1,19 +1,14 @@
 package com.xenoage.utils.jse;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import com.xenoage.utils.jse.io.DesktopIO;
 
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.Transparency;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-
-import com.xenoage.utils.jse.io.DesktopIO;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
 
 /**
  * Useful methods to work with images.

@@ -1,21 +1,12 @@
 package com.xenoage.zong.desktop.io.musicxml.in;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readAlignment;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.font.FontInfo;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Size2f;
 import com.xenoage.zong.core.format.ScoreFormat;
-import com.xenoage.zong.core.text.Alignment;
-import com.xenoage.zong.core.text.FormattedText;
-import com.xenoage.zong.core.text.FormattedTextElement;
-import com.xenoage.zong.core.text.FormattedTextParagraph;
-import com.xenoage.zong.core.text.FormattedTextString;
-import com.xenoage.zong.core.text.FormattedTextStyle;
+import com.xenoage.zong.core.text.*;
 import com.xenoage.zong.io.musicxml.in.readers.FontInfoReader;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.layout.Page;
@@ -27,6 +18,10 @@ import com.xenoage.zong.musicxml.types.MxlScorePartwise;
 import com.xenoage.zong.musicxml.types.attributes.MxlPosition;
 import com.xenoage.zong.musicxml.types.choice.MxlCreditContent.MxlCreditContentType;
 import com.xenoage.zong.musicxml.types.enums.MxlVAlign;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readAlignment;
 
 /**
  * This class reads the credit elements of a MusicXML 2.0

@@ -1,10 +1,9 @@
 package com.xenoage.zong.musiclayout.notations;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.musiclayout.spacing.horizontal.ElementWidth;
+import lombok.AllArgsConstructor;
 
 /**
  * This class contains layout information

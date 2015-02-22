@@ -1,10 +1,10 @@
 package com.xenoage.zong.musicxml.types.enums;
 
-import static com.xenoage.utils.EnumUtils.getEnumValue;
-import static com.xenoage.utils.EnumUtils.getEnumValueNamed;
-
 import com.xenoage.utils.xml.EnumWithXmlNames;
 import com.xenoage.utils.xml.XmlDataException;
+
+import static com.xenoage.utils.EnumUtils.getEnumValue;
+import static com.xenoage.utils.EnumUtils.getEnumValueNamed;
 
 
 public class Utils {

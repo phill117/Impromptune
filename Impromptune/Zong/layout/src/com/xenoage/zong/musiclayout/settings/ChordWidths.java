@@ -1,12 +1,12 @@
 package com.xenoage.zong.musiclayout.settings;
 
-import static com.xenoage.utils.math.Fraction._1;
-import static com.xenoage.utils.math.Fraction._1$2;
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.music.chord.Accidental;
+import lombok.AllArgsConstructor;
+
+import static com.xenoage.utils.math.Fraction._1;
+import static com.xenoage.utils.math.Fraction._1$2;
 
 /**
  * Settings for symbol widths (in IS) within a chord.

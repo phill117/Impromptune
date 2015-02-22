@@ -1,11 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.beamednotation.direction;
 
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.zong.core.music.chord.StemDirection.Down;
-import static com.xenoage.zong.core.music.chord.StemDirection.Up;
-
-import java.util.Iterator;
-
 import com.xenoage.utils.iterators.It;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.music.beam.Beam;
@@ -20,6 +14,12 @@ import com.xenoage.zong.musiclayout.notations.ChordNotation;
 import com.xenoage.zong.musiclayout.notations.Notation;
 import com.xenoage.zong.musiclayout.notations.beam.BeamStemDirections;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
+
+import java.util.Iterator;
+
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.zong.core.music.chord.StemDirection.Down;
+import static com.xenoage.zong.core.music.chord.StemDirection.Up;
 
 /**
  * This strategy recomputes the {@link Notation}s of the chords

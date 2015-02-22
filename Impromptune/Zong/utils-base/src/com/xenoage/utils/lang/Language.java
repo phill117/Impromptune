@@ -1,10 +1,10 @@
 package com.xenoage.utils.lang;
 
-import static com.xenoage.utils.NullUtils.notNull;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
+import static com.xenoage.utils.NullUtils.notNull;
 
 /**
  * Language pack, containing vocabularies.

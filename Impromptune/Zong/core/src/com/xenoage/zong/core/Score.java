@@ -1,24 +1,5 @@
 package com.xenoage.zong.core;
 
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.kernel.Range.rangeReverse;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.utils.math.Fraction.fr;
-import static com.xenoage.zong.core.header.ScoreHeader.scoreHeader;
-import static com.xenoage.zong.core.music.util.BeatE.selectLatest;
-import static com.xenoage.zong.core.music.util.Interval.At;
-import static com.xenoage.zong.core.music.util.Interval.BeforeOrAt;
-import static com.xenoage.zong.core.music.util.MPE.mpE;
-import static com.xenoage.zong.core.position.MP.atMeasure;
-import static com.xenoage.zong.core.position.MP.mpb0;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.Unneeded;
 import com.xenoage.utils.collections.SortedList;
 import com.xenoage.utils.document.Document;
@@ -30,25 +11,33 @@ import com.xenoage.zong.core.format.ScoreFormat;
 import com.xenoage.zong.core.header.ColumnHeader;
 import com.xenoage.zong.core.header.ScoreHeader;
 import com.xenoage.zong.core.info.ScoreInfo;
-import com.xenoage.zong.core.music.Measure;
-import com.xenoage.zong.core.music.MusicContext;
-import com.xenoage.zong.core.music.Pitch;
-import com.xenoage.zong.core.music.Staff;
-import com.xenoage.zong.core.music.StavesList;
-import com.xenoage.zong.core.music.Voice;
-import com.xenoage.zong.core.music.VoiceElement;
+import com.xenoage.zong.core.music.*;
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.Key;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.key.TraditionalKey.Mode;
-import com.xenoage.zong.core.music.util.BeatE;
-import com.xenoage.zong.core.music.util.BeatEList;
-import com.xenoage.zong.core.music.util.Column;
-import com.xenoage.zong.core.music.util.Interval;
-import com.xenoage.zong.core.music.util.MPE;
+import com.xenoage.zong.core.music.util.*;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.utils.exceptions.IllegalMPException;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.kernel.Range.rangeReverse;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.utils.math.Fraction.fr;
+import static com.xenoage.zong.core.header.ScoreHeader.scoreHeader;
+import static com.xenoage.zong.core.music.util.BeatE.selectLatest;
+import static com.xenoage.zong.core.music.util.Interval.At;
+import static com.xenoage.zong.core.music.util.Interval.BeforeOrAt;
+import static com.xenoage.zong.core.music.util.MPE.mpE;
+import static com.xenoage.zong.core.position.MP.atMeasure;
+import static com.xenoage.zong.core.position.MP.mpb0;
 
 
 /**

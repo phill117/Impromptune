@@ -1,11 +1,5 @@
 package com.xenoage.zong.core.music;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import lombok.Data;
-import lombok.NonNull;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.chord.Accidental;
 import com.xenoage.zong.core.music.clef.Clef;
@@ -13,6 +7,11 @@ import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.Key;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.key.TraditionalKey.Mode;
+import lombok.Data;
+import lombok.NonNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**

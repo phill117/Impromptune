@@ -1,12 +1,11 @@
 package com.xenoage.zong.core.music.chord;
 
-import java.util.ArrayList;
-
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.music.Pitch;
+import lombok.Data;
+
+import java.util.ArrayList;
 
 
 /**

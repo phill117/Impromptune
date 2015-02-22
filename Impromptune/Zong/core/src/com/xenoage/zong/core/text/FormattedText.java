@@ -1,16 +1,16 @@
 package com.xenoage.zong.core.text;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.CList.ilist;
-import static com.xenoage.zong.core.text.FormattedTextParagraph.fPara;
-import static com.xenoage.zong.core.text.FormattedTextString.fString;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.geom.Rectangle2f;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.CList.ilist;
+import static com.xenoage.zong.core.text.FormattedTextParagraph.fPara;
+import static com.xenoage.zong.core.text.FormattedTextString.fString;
 
 /**
  * Class for formatted text.

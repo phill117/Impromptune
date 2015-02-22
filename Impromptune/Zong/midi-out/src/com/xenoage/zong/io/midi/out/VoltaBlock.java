@@ -1,12 +1,12 @@
 package com.xenoage.zong.io.midi.out;
 
-import static com.xenoage.utils.kernel.Range.range;
+import com.xenoage.utils.kernel.Range;
+import com.xenoage.zong.core.music.volta.Volta;
 
 import java.util.HashMap;
 import java.util.Set;
 
-import com.xenoage.utils.kernel.Range;
-import com.xenoage.zong.core.music.volta.Volta;
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * This class packs a number of connected {@link Volta}s to one block.

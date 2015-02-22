@@ -1,8 +1,7 @@
 package com.xenoage.zong.core.music.group;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.NonNull;
+import lombok.Data;
 
 
 /**

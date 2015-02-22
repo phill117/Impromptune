@@ -1,13 +1,13 @@
 package com.xenoage.utils.jse.font;
 
-import java.awt.Font;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-
 import com.xenoage.utils.font.FontInfo;
 import com.xenoage.utils.font.TextMeasurer;
 import com.xenoage.utils.font.TextMetrics;
 import com.xenoage.utils.math.Units;
+
+import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
 
 /**
  * AWT implementation of a {@link TextMeasurer}.

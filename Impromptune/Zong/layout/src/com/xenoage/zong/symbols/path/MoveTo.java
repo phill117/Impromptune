@@ -1,9 +1,8 @@
 package com.xenoage.zong.symbols.path;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Point2f;
+import lombok.Data;
 
 /**
  * Move command to a given position.

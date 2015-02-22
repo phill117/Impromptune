@@ -1,24 +1,5 @@
 package com.xenoage.zong.commands.player.convert;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.jse.javafx.FileChooserUtils.addFilter;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.remark;
-import static com.xenoage.utils.log.Report.warning;
-import static com.xenoage.zong.desktop.App.app;
-import static com.xenoage.zong.player.Player.pApp;
-
-import java.io.File;
-import java.util.List;
-
-import javafx.stage.FileChooser;
-import javafx.stage.Window;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Sequence;
-
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.document.command.TransparentCommand;
 import com.xenoage.utils.document.io.FileFormat;
 import com.xenoage.utils.document.io.SupportedFormats;
@@ -29,6 +10,22 @@ import com.xenoage.zong.Voc;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.desktop.io.midi.out.JseMidiSequenceWriter;
 import com.xenoage.zong.io.midi.out.MidiConverter;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+import lombok.AllArgsConstructor;
+
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequence;
+import java.io.File;
+import java.util.List;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.jse.javafx.FileChooserUtils.addFilter;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.remark;
+import static com.xenoage.utils.log.Report.warning;
+import static com.xenoage.zong.desktop.App.app;
+import static com.xenoage.zong.player.Player.pApp;
 
 /**
  * This command lets the user select a MusicXML file which is then

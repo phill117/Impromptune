@@ -1,10 +1,10 @@
 package com.xenoage.zong.commands.desktop.dialog;
 
-import static com.xenoage.utils.jse.javafx.Dialog.dialog;
-import javafx.stage.Window;
-
 import com.xenoage.utils.document.command.TransparentCommand;
 import com.xenoage.zong.desktop.gui.dialogs.FeedbackDialog;
+import javafx.stage.Window;
+
+import static com.xenoage.utils.jse.javafx.Dialog.dialog;
 
 /**
  * Shows the feedback dialog.

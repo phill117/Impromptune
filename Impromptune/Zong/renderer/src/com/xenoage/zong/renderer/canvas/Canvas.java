@@ -1,8 +1,5 @@
 package com.xenoage.zong.renderer.canvas;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.math.geom.Point2f;
@@ -11,6 +8,8 @@ import com.xenoage.utils.math.geom.Size2f;
 import com.xenoage.zong.core.text.FormattedText;
 import com.xenoage.zong.io.selection.text.TextSelection;
 import com.xenoage.zong.symbols.path.Path;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * Base class for a canvas into which can be rendered

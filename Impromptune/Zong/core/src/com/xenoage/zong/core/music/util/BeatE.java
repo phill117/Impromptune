@@ -1,9 +1,8 @@
 package com.xenoage.zong.core.music.util;
 
+import com.xenoage.utils.math.Fraction;
 import lombok.Data;
 import lombok.NonNull;
-
-import com.xenoage.utils.math.Fraction;
 
 
 /**

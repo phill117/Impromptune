@@ -1,13 +1,12 @@
 package com.xenoage.zong.core.position;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.experimental.Wither;
-
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.music.MusicElement;
 import com.xenoage.zong.core.music.Voice;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.experimental.Wither;
 
 
 /**

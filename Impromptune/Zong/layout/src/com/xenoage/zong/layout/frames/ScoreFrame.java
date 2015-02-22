@@ -1,8 +1,5 @@
 package com.xenoage.zong.layout.frames;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.musiclayout.ScoreFrameLayout;
@@ -10,6 +7,8 @@ import com.xenoage.zong.musiclayout.layouter.horizontalsystemfilling.HorizontalS
 import com.xenoage.zong.musiclayout.layouter.horizontalsystemfilling.StretchHorizontalSystemFillingStrategy;
 import com.xenoage.zong.musiclayout.layouter.verticalframefilling.NoVerticalFrameFillingStrategy;
 import com.xenoage.zong.musiclayout.layouter.verticalframefilling.VerticalFrameFillingStrategy;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * A {@link ScoreFrame} is a frame that contains a musical score.

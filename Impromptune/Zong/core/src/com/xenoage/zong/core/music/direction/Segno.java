@@ -1,9 +1,8 @@
 package com.xenoage.zong.core.music.direction;
 
+import com.xenoage.zong.core.header.ColumnHeader;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import com.xenoage.zong.core.header.ColumnHeader;
 
 
 /**

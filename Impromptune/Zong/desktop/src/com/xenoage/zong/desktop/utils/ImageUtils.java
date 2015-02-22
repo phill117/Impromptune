@@ -1,14 +1,13 @@
 package com.xenoage.zong.desktop.utils;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import com.xenoage.utils.jse.io.DesktopIO;
+import javafx.scene.image.Image;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import javafx.scene.image.Image;
-
-import com.xenoage.utils.jse.io.DesktopIO;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
 
 /**
  * Useful methods to work with JavaFX images.

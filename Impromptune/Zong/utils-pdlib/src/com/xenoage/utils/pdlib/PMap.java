@@ -1,15 +1,10 @@
 package com.xenoage.utils.pdlib;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Set;
-
+import com.xenoage.utils.collections.IMap;
 import org.pcollections.HashPMap;
 import org.pcollections.HashTreePMap;
 
-import com.xenoage.utils.collections.IMap;
+import java.util.*;
 
 /**
  * Persistent hash map.

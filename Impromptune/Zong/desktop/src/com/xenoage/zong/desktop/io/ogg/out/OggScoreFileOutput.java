@@ -1,14 +1,14 @@
 package com.xenoage.zong.desktop.io.ogg.out;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.io.OutputStream;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.desktop.io.wav.out.WavScoreFileOutput;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * This class writes an Ogg Vorbis file from a given {@link Score}.

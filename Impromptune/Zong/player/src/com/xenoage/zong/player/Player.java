@@ -1,15 +1,5 @@
 package com.xenoage.zong.player;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.log.Report.fatal;
-import static com.xenoage.zong.desktop.io.midi.out.MidiScorePlayer.midiScorePlayer;
-import javafx.application.Application;
-
-import javax.swing.JOptionPane;
-
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.error.BasicErrorProcessing;
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.jse.CommandLine;
@@ -22,6 +12,15 @@ import com.xenoage.zong.desktop.io.midi.out.MidiScorePlayer;
 import com.xenoage.zong.desktop.utils.error.GuiErrorProcessing;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.io.PlayerSupportedFormats;
+import javafx.application.Application;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.swing.*;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.log.Report.fatal;
+import static com.xenoage.zong.desktop.io.midi.out.MidiScorePlayer.midiScorePlayer;
 
 /**
  * Main class for the Zong! Player desktop application.

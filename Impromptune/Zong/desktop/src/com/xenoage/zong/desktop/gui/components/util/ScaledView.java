@@ -3,17 +3,12 @@
  */
 package com.xenoage.zong.desktop.gui.components.util;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-
 import javax.swing.text.BadLocationException;
 import javax.swing.text.BoxView;
 import javax.swing.text.Element;
 import javax.swing.text.Position;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 /**
  * @author Uli

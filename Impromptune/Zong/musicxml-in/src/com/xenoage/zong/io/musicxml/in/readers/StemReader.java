@@ -1,9 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import java.util.List;
-
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.music.MusicContext;
 import com.xenoage.zong.core.music.Pitch;
@@ -13,6 +9,9 @@ import com.xenoage.zong.core.music.chord.StemDirection;
 import com.xenoage.zong.musicxml.types.MxlNote;
 import com.xenoage.zong.musicxml.types.MxlStem;
 import com.xenoage.zong.musicxml.types.attributes.MxlPosition;
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 /**
  * Reads a {@link Stem} from the given {@link MxlNote} and the context.

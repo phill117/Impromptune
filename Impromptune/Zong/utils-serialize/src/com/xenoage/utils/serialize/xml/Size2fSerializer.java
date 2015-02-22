@@ -1,12 +1,11 @@
 package com.xenoage.utils.serialize.xml;
 
-import static com.xenoage.utils.jse.xml.Parse.parseAttrFloat;
-import static com.xenoage.utils.jse.xml.XMLWriter.addAttribute;
-
-import org.w3c.dom.Element;
-
 import com.xenoage.utils.jse.xml.XMLWriter;
 import com.xenoage.utils.math.geom.Size2f;
+import org.w3c.dom.Element;
+
+import static com.xenoage.utils.jse.xml.Parse.parseAttrFloat;
+import static com.xenoage.utils.jse.xml.XMLWriter.addAttribute;
 
 public class Size2fSerializer {
 

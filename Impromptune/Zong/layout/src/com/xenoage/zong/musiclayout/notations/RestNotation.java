@@ -1,10 +1,9 @@
 package com.xenoage.zong.musiclayout.notations;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.musiclayout.spacing.horizontal.ElementWidth;
+import lombok.AllArgsConstructor;
 
 /**
  * This class contains layout information about a rest.

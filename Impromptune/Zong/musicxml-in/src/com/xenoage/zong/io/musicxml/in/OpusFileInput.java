@@ -1,11 +1,5 @@
 package com.xenoage.zong.io.musicxml.in;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.io.IOException;
-import java.util.List;
-
 import com.xenoage.utils.Parser;
 import com.xenoage.utils.exceptions.InvalidFormatException;
 import com.xenoage.utils.io.InputStream;
@@ -15,6 +9,12 @@ import com.xenoage.zong.io.musicxml.opus.Opus;
 import com.xenoage.zong.io.musicxml.opus.OpusItem;
 import com.xenoage.zong.io.musicxml.opus.OpusLink;
 import com.xenoage.zong.io.musicxml.opus.Score;
+
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * This class reads a MusicXML 2.0 opus file.

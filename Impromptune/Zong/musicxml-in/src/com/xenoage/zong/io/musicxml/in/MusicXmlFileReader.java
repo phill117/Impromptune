@@ -1,13 +1,7 @@
 package com.xenoage.zong.io.musicxml.in;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.io.IOException;
-import java.util.List;
-
-import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.async.AsyncProducer;
+import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.filter.Filter;
 import com.xenoage.utils.io.BufferedInputStream;
 import com.xenoage.utils.io.FileUtils;
@@ -15,6 +9,12 @@ import com.xenoage.utils.io.InputStream;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.io.musicxml.FileType;
 import com.xenoage.zong.io.musicxml.opus.Opus;
+
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * This class reads single or multiple {@link Score}s from

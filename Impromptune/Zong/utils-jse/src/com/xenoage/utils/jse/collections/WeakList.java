@@ -1,9 +1,9 @@
 package com.xenoage.utils.jse.collections;
 
-import static com.xenoage.utils.kernel.Range.rangeReverse;
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+
+import static com.xenoage.utils.kernel.Range.rangeReverse;
 
 /**
  * A list of weakly referenced objects (by {@link WeakReference}.

@@ -1,10 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.arrangement;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.kernel.Tuple2.t;
-
-import java.util.List;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.kernel.Tuple2;
 import com.xenoage.utils.math.geom.Size2f;
@@ -18,6 +13,11 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouterContext;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.layouter.cache.NotationsCache;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.kernel.Tuple2.t;
 
 /**
  * A {@link FrameArrangementStrategy} arranges a list of

@@ -1,11 +1,11 @@
 package com.xenoage.zong.commands.desktop.app;
 
-import static com.xenoage.zong.desktop.App.app;
+import com.xenoage.utils.document.command.TransparentCommand;
+import com.xenoage.utils.jse.files.RecentFiles;
 
 import java.io.File;
 
-import com.xenoage.utils.document.command.TransparentCommand;
-import com.xenoage.utils.jse.files.RecentFiles;
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * Command for opening a given file.

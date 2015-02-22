@@ -1,11 +1,11 @@
 package com.xenoage.zong.core.music.slur;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import lombok.Data;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.format.BezierPoint;
+import lombok.Data;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
 /**

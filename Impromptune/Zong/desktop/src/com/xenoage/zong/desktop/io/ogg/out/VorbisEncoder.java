@@ -6,18 +6,14 @@
  ********************************************************************/
 package com.xenoage.zong.desktop.io.ogg.out;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 import org.xiph.libogg.ogg_packet;
 import org.xiph.libogg.ogg_page;
 import org.xiph.libogg.ogg_stream_state;
-import org.xiph.libvorbis.vorbis_block;
-import org.xiph.libvorbis.vorbis_comment;
-import org.xiph.libvorbis.vorbis_dsp_state;
-import org.xiph.libvorbis.vorbis_info;
-import org.xiph.libvorbis.vorbisenc;
+import org.xiph.libvorbis.*;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Converts a WAVE file (.wav) to an Ogg Vorbis file (.ogg) stream.

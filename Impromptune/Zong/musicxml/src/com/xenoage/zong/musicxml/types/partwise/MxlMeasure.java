@@ -1,14 +1,13 @@
 package com.xenoage.zong.musicxml.types.partwise;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.groups.MxlMusicData;
 import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * MusicXML measure in a partwise score.

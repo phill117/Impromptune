@@ -1,7 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.curvedline;
 
-import java.util.List;
-
 import com.xenoage.utils.math.QuadraticCurve;
 import com.xenoage.utils.math.VSide;
 import com.xenoage.utils.math.geom.ConvexHull;
@@ -9,6 +7,8 @@ import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.util.math.BezierCurveTools;
 import com.xenoage.zong.util.math.CubicBezierCurve;
 import com.xenoage.zong.util.math.QuadraticCurvesTools;
+
+import java.util.List;
 
 
 /**

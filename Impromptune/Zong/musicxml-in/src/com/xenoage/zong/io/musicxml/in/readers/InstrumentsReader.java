@@ -1,30 +1,25 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.utils.CheckUtils.checkNotNull;
-import static com.xenoage.utils.NullUtils.notNull;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.collections.CollectionUtils.map;
-
-import java.util.HashMap;
-import java.util.List;
-
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.MaybeEmpty;
 import com.xenoage.utils.math.MathUtils;
 import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.instrument.PitchedInstrument;
 import com.xenoage.zong.core.instrument.Transpose;
 import com.xenoage.zong.core.instrument.UnpitchedInstrument;
-import com.xenoage.zong.musicxml.types.MxlAttributes;
-import com.xenoage.zong.musicxml.types.MxlMidiInstrument;
-import com.xenoage.zong.musicxml.types.MxlNote;
-import com.xenoage.zong.musicxml.types.MxlScoreInstrument;
-import com.xenoage.zong.musicxml.types.MxlScorePart;
+import com.xenoage.zong.musicxml.types.*;
 import com.xenoage.zong.musicxml.types.choice.MxlMusicDataContent;
 import com.xenoage.zong.musicxml.types.choice.MxlMusicDataContent.MxlMusicDataContentType;
 import com.xenoage.zong.musicxml.types.partwise.MxlMeasure;
 import com.xenoage.zong.musicxml.types.partwise.MxlPart;
+import lombok.RequiredArgsConstructor;
+
+import java.util.HashMap;
+import java.util.List;
+
+import static com.xenoage.utils.CheckUtils.checkNotNull;
+import static com.xenoage.utils.NullUtils.notNull;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * This class reads the {@link Instrument}s from a

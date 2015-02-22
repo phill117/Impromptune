@@ -1,9 +1,8 @@
 package com.xenoage.zong.layout.frames;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Point2f;
+import lombok.Data;
 
 /**
  * Frame position.

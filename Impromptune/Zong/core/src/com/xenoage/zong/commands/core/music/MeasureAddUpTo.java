@@ -1,13 +1,13 @@
 package com.xenoage.zong.commands.core.music;
 
-import static com.xenoage.utils.kernel.Range.range;
-
 import com.xenoage.utils.annotations.Untested;
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.Undoability;
 import com.xenoage.utils.document.exceptions.UselessException;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.music.Staff;
+
+import static com.xenoage.utils.kernel.Range.range;
 
 
 /**

@@ -1,8 +1,7 @@
 package com.xenoage.utils.jse.javafx;
 
-import javafx.stage.Stage;
-
 import com.xenoage.utils.lang.VocID;
+import javafx.stage.Stage;
 
 /**
  * General functionality each JavaFX should provide.

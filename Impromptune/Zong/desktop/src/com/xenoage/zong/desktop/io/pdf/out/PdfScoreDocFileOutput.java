@@ -1,11 +1,11 @@
 package com.xenoage.zong.desktop.io.pdf.out;
 
-import java.io.IOException;
-
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.zong.desktop.io.print.PdfPrinter;
 import com.xenoage.zong.documents.ScoreDoc;
+
+import java.io.IOException;
 
 /**
  * This class writes a PDF file from a given {@link ScoreDoc}

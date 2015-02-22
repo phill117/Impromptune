@@ -1,13 +1,13 @@
 package com.xenoage.zong.renderer.stamping;
 
-import java.util.HashMap;
-
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.math.geom.Rectangle2f;
 import com.xenoage.zong.musiclayout.stampings.Stamping;
 import com.xenoage.zong.musiclayout.stampings.StampingType;
 import com.xenoage.zong.renderer.RendererArgs;
 import com.xenoage.zong.renderer.canvas.Canvas;
+
+import java.util.HashMap;
 
 /**
  * Renderer for all kinds of {@link Stamping}s.

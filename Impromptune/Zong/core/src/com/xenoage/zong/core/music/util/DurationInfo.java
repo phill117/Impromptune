@@ -1,8 +1,8 @@
 package com.xenoage.zong.core.music.util;
 
-import static com.xenoage.utils.math.Fraction.fr;
-
 import com.xenoage.utils.math.Fraction;
+
+import static com.xenoage.utils.math.Fraction.fr;
 
 
 /**

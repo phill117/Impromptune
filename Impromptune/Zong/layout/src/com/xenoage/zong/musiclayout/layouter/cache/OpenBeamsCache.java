@@ -1,10 +1,10 @@
 package com.xenoage.zong.musiclayout.layouter.cache;
 
-import java.util.HashMap;
-import java.util.Iterator;
-
 import com.xenoage.zong.core.music.beam.Beam;
 import com.xenoage.zong.musiclayout.layouter.cache.util.BeamedStemStampings;
+
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Cache for beams which still have to be created.

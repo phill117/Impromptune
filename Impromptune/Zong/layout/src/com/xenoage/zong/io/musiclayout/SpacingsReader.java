@@ -1,13 +1,13 @@
 package com.xenoage.zong.io.musiclayout;
 
-import static com.xenoage.zong.io.musiclayout.ChordSpacingsReader.readChordSpacings;
-import static java.lang.Float.parseFloat;
-
-import java.io.IOException;
-
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.zong.musiclayout.settings.ChordSpacings;
 import com.xenoage.zong.musiclayout.settings.Spacings;
+
+import java.io.IOException;
+
+import static com.xenoage.zong.io.musiclayout.ChordSpacingsReader.readChordSpacings;
+import static java.lang.Float.parseFloat;
 
 /**
  * Desktop reader for {@link Spacings}.

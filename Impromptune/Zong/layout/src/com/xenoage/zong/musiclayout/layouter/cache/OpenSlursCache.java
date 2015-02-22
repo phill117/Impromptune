@@ -1,10 +1,10 @@
 package com.xenoage.zong.musiclayout.layouter.cache;
 
-import java.util.HashMap;
-import java.util.Iterator;
-
 import com.xenoage.zong.core.music.slur.Slur;
 import com.xenoage.zong.musiclayout.layouter.cache.util.SlurCache;
+
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Cache for {@link Slur}s which are still not stamped completely.

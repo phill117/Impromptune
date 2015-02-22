@@ -1,13 +1,9 @@
 package com.xenoage.utils.jse.lang;
 
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import com.xenoage.utils.lang.Lang;
 import com.xenoage.utils.lang.VocID;
+
+import java.util.*;
 
 /**
  * This class provides access to {@link Lang} language packs

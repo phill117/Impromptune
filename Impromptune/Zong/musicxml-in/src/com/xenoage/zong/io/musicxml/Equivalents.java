@@ -1,7 +1,5 @@
 package com.xenoage.zong.io.musicxml;
 
-import static com.xenoage.utils.collections.BiMap.biMap;
-
 import com.xenoage.utils.collections.BiMap;
 import com.xenoage.zong.core.music.annotation.ArticulationType;
 import com.xenoage.zong.core.music.annotation.OrnamentType;
@@ -15,6 +13,8 @@ import com.xenoage.zong.musicxml.types.enums.MxlBarStyle;
 import com.xenoage.zong.musicxml.types.enums.MxlClefSign;
 import com.xenoage.zong.musicxml.types.enums.MxlGroupSymbolValue;
 import com.xenoage.zong.musicxml.types.enums.MxlLeftCenterRight;
+
+import static com.xenoage.utils.collections.BiMap.biMap;
 
 /**
  * Some types are very similar in Zong! and in MusicXML.

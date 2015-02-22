@@ -1,11 +1,11 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout.util;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
+import com.xenoage.zong.musiclayout.stampings.StaffTextStamping;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xenoage.zong.musiclayout.stampings.StaffTextStamping;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * This class remembers the last stamped lyrics for each staff and each verse.

@@ -1,9 +1,9 @@
 package com.xenoage.utils.jse.xml;
 
-import java.io.ByteArrayInputStream;
-
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
+
+import java.io.ByteArrayInputStream;
 
 /**
  * Entity resolver that does just nothing.

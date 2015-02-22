@@ -1,14 +1,9 @@
 package com.xenoage.zong.renderer.awt.path;
 
-import java.awt.Shape;
-import java.awt.geom.GeneralPath;
+import com.xenoage.zong.symbols.path.*;
 
-import com.xenoage.zong.symbols.path.CubicCurveTo;
-import com.xenoage.zong.symbols.path.LineTo;
-import com.xenoage.zong.symbols.path.MoveTo;
-import com.xenoage.zong.symbols.path.Path;
-import com.xenoage.zong.symbols.path.PathElement;
-import com.xenoage.zong.symbols.path.QuadraticCurveTo;
+import java.awt.*;
+import java.awt.geom.GeneralPath;
 
 /**
  * Creates an AWT {@link Shape} from a {@link Path}.

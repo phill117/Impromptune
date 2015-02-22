@@ -1,13 +1,13 @@
 package com.xenoage.zong.symbols.common;
 
-import java.util.ArrayList;
-
 import com.xenoage.zong.core.music.annotation.ArticulationType;
 import com.xenoage.zong.core.music.chord.Accidental;
 import com.xenoage.zong.core.music.clef.ClefSymbol;
 import com.xenoage.zong.core.music.direction.DynamicsType;
 import com.xenoage.zong.core.music.direction.Pedal;
 import com.xenoage.zong.symbols.SymbolPool;
+
+import java.util.ArrayList;
 
 /**
  * Enumeration of commonly used symbols, that

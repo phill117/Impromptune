@@ -1,11 +1,11 @@
 package com.xenoage.utils.collections;
 
-import static com.xenoage.utils.collections.CollectionUtils.map;
+import com.xenoage.utils.annotations.MaybeNull;
+import com.xenoage.utils.annotations.NonNull;
 
 import java.util.Map;
 
-import com.xenoage.utils.annotations.MaybeNull;
-import com.xenoage.utils.annotations.NonNull;
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * A bidirectional map, with constant lookup time in both directions.

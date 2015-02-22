@@ -1,9 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter;
 
-import static com.xenoage.utils.lang.VocByString.voc;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.warning;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.lang.Lang;
@@ -15,31 +11,16 @@ import com.xenoage.zong.musiclayout.layouter.arrangement.FrameArrangementStrateg
 import com.xenoage.zong.musiclayout.layouter.arrangement.SystemArrangementStrategy;
 import com.xenoage.zong.musiclayout.layouter.beamednotation.BeamedStemAlignmentNotationsStrategy;
 import com.xenoage.zong.musiclayout.layouter.beamednotation.BeamedStemDirectionNotationsStrategy;
-import com.xenoage.zong.musiclayout.layouter.columnspacing.BarlinesBeatOffsetsStrategy;
-import com.xenoage.zong.musiclayout.layouter.columnspacing.BeatOffsetBasedVoiceSpacingStrategy;
-import com.xenoage.zong.musiclayout.layouter.columnspacing.BeatOffsetsStrategy;
-import com.xenoage.zong.musiclayout.layouter.columnspacing.ColumnSpacingStrategy;
-import com.xenoage.zong.musiclayout.layouter.columnspacing.LeadingSpacingStrategy;
-import com.xenoage.zong.musiclayout.layouter.columnspacing.MeasureElementsSpacingsStrategy;
-import com.xenoage.zong.musiclayout.layouter.columnspacing.SeparateVoiceSpacingStrategy;
-import com.xenoage.zong.musiclayout.layouter.notation.AccidentalsAlignmentStrategy;
-import com.xenoage.zong.musiclayout.layouter.notation.ArticulationsAlignmentStrategy;
-import com.xenoage.zong.musiclayout.layouter.notation.NotationStrategy;
-import com.xenoage.zong.musiclayout.layouter.notation.NotesAlignmentStrategy;
-import com.xenoage.zong.musiclayout.layouter.notation.StemAlignmentStrategy;
-import com.xenoage.zong.musiclayout.layouter.notation.StemDirectionStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.BeamStampingStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.SlurStampingStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.DirectionStampingStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.LyricStampingStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.MusicElementStampingStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.ScoreFrameLayoutStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.StaffStampingsStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.TupletStampingStrategy;
-import com.xenoage.zong.musiclayout.layouter.scoreframelayout.VoltaStampingStrategy;
+import com.xenoage.zong.musiclayout.layouter.columnspacing.*;
+import com.xenoage.zong.musiclayout.layouter.notation.*;
+import com.xenoage.zong.musiclayout.layouter.scoreframelayout.*;
 import com.xenoage.zong.musiclayout.layouter.voicenotation.VoiceStemDirectionNotationsStrategy;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.SymbolPool;
+
+import static com.xenoage.utils.lang.VocByString.voc;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.warning;
 
 /**
  * A score layouter creates the content for

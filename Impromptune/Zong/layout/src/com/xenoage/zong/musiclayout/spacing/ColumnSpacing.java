@@ -1,7 +1,5 @@
 package com.xenoage.zong.musiclayout.spacing;
 
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.Fraction;
@@ -12,6 +10,7 @@ import com.xenoage.zong.musiclayout.BeatOffset;
 import com.xenoage.zong.musiclayout.spacing.horizontal.LeadingSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
+import lombok.Getter;
 
 /**
  * This class contains the horizontal spacing

@@ -1,9 +1,9 @@
 package com.xenoage.utils.error;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.log.Report;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 /**
  * This class manages a single error handler for

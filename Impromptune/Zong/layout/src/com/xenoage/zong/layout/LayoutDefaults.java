@@ -1,12 +1,11 @@
 package com.xenoage.zong.layout;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.format.LayoutFormat;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.SymbolPool;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * Default settings within a {@link Layout}.

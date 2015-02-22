@@ -1,9 +1,8 @@
 package com.xenoage.zong.io.musicxml.in.util;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.kernel.Range;
 import com.xenoage.zong.core.music.volta.Volta;
+import lombok.AllArgsConstructor;
 
 /**
  * An unclosed {@link Volta}, needed during MusicXML import.

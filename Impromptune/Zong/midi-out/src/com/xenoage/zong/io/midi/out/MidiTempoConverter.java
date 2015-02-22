@@ -1,9 +1,5 @@
 package com.xenoage.zong.io.midi.out;
 
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.zong.io.midi.out.MidiConverter.calculateTickFromFraction;
-
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.header.ColumnHeader;
@@ -11,6 +7,10 @@ import com.xenoage.zong.core.music.direction.Tempo;
 import com.xenoage.zong.core.music.util.BeatE;
 import com.xenoage.zong.core.music.util.BeatEList;
 import com.xenoage.zong.io.midi.out.Playlist.PlayRange;
+
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.zong.io.midi.out.MidiConverter.calculateTickFromFraction;
 
 /**
  * This class calculates the tempo changes for the {@link MidiConverter}.

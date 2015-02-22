@@ -1,10 +1,9 @@
 package com.xenoage.zong.utils.exceptions;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.position.MP;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 
 /**

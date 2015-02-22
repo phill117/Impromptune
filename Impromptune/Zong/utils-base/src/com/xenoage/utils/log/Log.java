@@ -1,8 +1,8 @@
 package com.xenoage.utils.log;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-
 import com.xenoage.utils.annotations.NonNull;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 /**
  * This class manages a single logging handler for

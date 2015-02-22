@@ -1,12 +1,11 @@
 package com.xenoage.utils.jse;
 
-import java.io.File;
-
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-
 import com.xenoage.utils.document.io.FileFormat;
 import com.xenoage.utils.jse.settings.Settings;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import java.io.File;
 
 /**
  * Useful methods for working with a {@link JFileChooser}.

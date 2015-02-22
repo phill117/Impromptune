@@ -1,13 +1,12 @@
 package com.xenoage.zong.musiclayout.spacing.horizontal;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.music.MusicElement;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 /**
  * A spacing element stores the beat and the position (offset)

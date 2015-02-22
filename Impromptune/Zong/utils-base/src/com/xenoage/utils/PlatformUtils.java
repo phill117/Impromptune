@@ -1,10 +1,5 @@
 package com.xenoage.utils;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-
-import java.io.IOException;
-import java.util.List;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.font.TextMeasurer;
@@ -14,6 +9,11 @@ import com.xenoage.utils.io.OutputStream;
 import com.xenoage.utils.io.ZipReader;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
+
+import java.io.IOException;
+import java.util.List;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 /**
  * General methods which implementation is platform dependent.

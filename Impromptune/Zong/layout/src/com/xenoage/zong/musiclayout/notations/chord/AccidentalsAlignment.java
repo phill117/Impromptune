@@ -1,8 +1,7 @@
 package com.xenoage.zong.musiclayout.notations.chord;
 
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
+import lombok.Getter;
 
 /**
  * This class stores the alignment of the accidentals of a chord.

@@ -1,19 +1,18 @@
 package com.xenoage.utils.jse.font;
 
-import static com.xenoage.utils.io.FileFilters.ttfFilter;
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.remark;
+import com.xenoage.utils.collections.SortedList;
+import com.xenoage.utils.font.FontStyle;
+import com.xenoage.utils.jse.io.DesktopIO;
 
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import com.xenoage.utils.collections.SortedList;
-import com.xenoage.utils.font.FontStyle;
-import com.xenoage.utils.jse.io.DesktopIO;
+import static com.xenoage.utils.io.FileFilters.ttfFilter;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.remark;
 
 /**
  * Useful methods to work with fonts.

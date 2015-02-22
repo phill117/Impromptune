@@ -1,11 +1,11 @@
 package com.xenoage.zong.musiclayout.stampings;
 
-import static com.xenoage.zong.core.music.format.SP.sp;
-
 import com.xenoage.utils.annotations.Const;
+import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.common.CommonSymbol;
-import com.xenoage.zong.core.music.clef.Clef;
+
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Class for a clef stamping.

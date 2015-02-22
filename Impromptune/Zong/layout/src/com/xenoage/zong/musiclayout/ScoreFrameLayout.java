@@ -1,14 +1,5 @@
 package com.xenoage.zong.musiclayout;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import com.xenoage.utils.iterators.MultiIt;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Rectangle2f;
@@ -19,6 +10,14 @@ import com.xenoage.zong.musiclayout.stampings.StaffStamping;
 import com.xenoage.zong.musiclayout.stampings.Stamping;
 import com.xenoage.zong.musiclayout.stampings.StampingType;
 import com.xenoage.zong.musiclayout.stampings.TextStamping;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * A score frame layout contains the musical layout of a

@@ -1,19 +1,14 @@
 package com.xenoage.utils.pdlib;
 
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.utils.kernel.Tuple2.t;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.ListIterator;
-
-import org.pcollections.TreePVector;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.kernel.Tuple2;
+import org.pcollections.TreePVector;
+
+import java.util.*;
+
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.utils.kernel.Tuple2.t;
 
 /**
  * Persistent list.

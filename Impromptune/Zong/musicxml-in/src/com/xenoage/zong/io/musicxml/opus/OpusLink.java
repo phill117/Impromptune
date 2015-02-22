@@ -1,9 +1,8 @@
 package com.xenoage.zong.io.musicxml.opus;
 
+import com.xenoage.zong.io.musicxml.link.LinkAttributes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import com.xenoage.zong.io.musicxml.link.LinkAttributes;
 
 /**
  * Link to another {@link Opus}.

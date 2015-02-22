@@ -1,8 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.beamednotation.alignment;
 
-import static com.xenoage.utils.iterators.It.it;
-import static com.xenoage.zong.core.position.MP.getMP;
-
 import com.xenoage.utils.iterators.It;
 import com.xenoage.utils.math.MathUtils;
 import com.xenoage.zong.core.Score;
@@ -14,12 +11,7 @@ import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.layouter.beamednotation.BeamedStemAlignmentNotationsStrategy;
 import com.xenoage.zong.musiclayout.layouter.beamednotation.BeamedStemDirectionNotationsStrategy;
-import com.xenoage.zong.musiclayout.layouter.beamednotation.design.BeamDesign;
-import com.xenoage.zong.musiclayout.layouter.beamednotation.design.ChordBeamSpacing;
-import com.xenoage.zong.musiclayout.layouter.beamednotation.design.DoubleBeamDesign;
-import com.xenoage.zong.musiclayout.layouter.beamednotation.design.MultipleBeamDesign;
-import com.xenoage.zong.musiclayout.layouter.beamednotation.design.SingleBeamDesign;
-import com.xenoage.zong.musiclayout.layouter.beamednotation.design.TripleBeamDesign;
+import com.xenoage.zong.musiclayout.layouter.beamednotation.design.*;
 import com.xenoage.zong.musiclayout.layouter.cache.NotationsCache;
 import com.xenoage.zong.musiclayout.notations.ChordNotation;
 import com.xenoage.zong.musiclayout.notations.beam.BeamStemAlignments;
@@ -27,6 +19,9 @@ import com.xenoage.zong.musiclayout.notations.chord.AccidentalsAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.NotesAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.StemAlignment;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
+
+import static com.xenoage.utils.iterators.It.it;
+import static com.xenoage.zong.core.position.MP.getMP;
 
 /**
  * This class helps the {@link BeamedStemAlignmentNotationsStrategy}

@@ -1,14 +1,14 @@
 package com.xenoage.zong.renderer.frames;
 
-import static com.xenoage.utils.collections.CollectionUtils.map;
-
-import java.util.Map;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.zong.layout.frames.Frame;
 import com.xenoage.zong.layout.frames.FrameType;
 import com.xenoage.zong.renderer.RendererArgs;
 import com.xenoage.zong.renderer.canvas.Canvas;
+
+import java.util.Map;
+
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * Renderer for all types of {@link Frame}s.

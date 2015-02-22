@@ -1,12 +1,7 @@
 package com.xenoage.utils.jse.components;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Font;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * The component for a list item.

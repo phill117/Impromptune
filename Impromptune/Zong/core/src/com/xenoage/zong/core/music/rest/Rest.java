@@ -1,13 +1,13 @@
 package com.xenoage.zong.core.music.rest;
 
-import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.music.Voice;
 import com.xenoage.zong.core.music.VoiceElement;
+import lombok.Getter;
+import lombok.Setter;
+
+import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
 /**

@@ -1,11 +1,10 @@
 package com.xenoage.zong.io.midi.out;
 
-import java.util.List;
-
 import com.xenoage.zong.core.position.MP;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import java.util.List;
 
 /**
  * This class stores the repetitions in a score by

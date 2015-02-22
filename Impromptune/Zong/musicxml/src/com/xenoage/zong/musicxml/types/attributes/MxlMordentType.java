@@ -1,14 +1,14 @@
 package com.xenoage.zong.musicxml.types.attributes;
 
-import static com.xenoage.zong.musicxml.types.attributes.MxlEmptyTrillSound.noEmptyTrillSound;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.enums.MxlYesNo;
 import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import static com.xenoage.zong.musicxml.types.attributes.MxlEmptyTrillSound.noEmptyTrillSound;
 
 /**
  * MusicXML mordent (complexType).

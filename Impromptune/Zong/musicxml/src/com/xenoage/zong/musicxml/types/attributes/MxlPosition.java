@@ -1,13 +1,12 @@
 package com.xenoage.zong.musicxml.types.attributes;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.Optional;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * MusicXML x-position and y-position.

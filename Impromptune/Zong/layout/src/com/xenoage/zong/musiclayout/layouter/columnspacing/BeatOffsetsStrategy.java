@@ -1,13 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.columnspacing;
 
-import static com.xenoage.utils.collections.CList.clist;
-import static com.xenoage.utils.collections.SortedList.sortedListNoDuplicates;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.math.Fraction._0;
-
-import java.util.Iterator;
-import java.util.List;
-
 import com.xenoage.utils.collections.CList;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.collections.SortedList;
@@ -20,6 +12,14 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
 import com.xenoage.zong.musiclayout.spacing.horizontal.VoiceSpacing;
+
+import java.util.Iterator;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CList.clist;
+import static com.xenoage.utils.collections.SortedList.sortedListNoDuplicates;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.math.Fraction._0;
 
 /**
  * This strategy creates {@link BeatOffset}s for the given

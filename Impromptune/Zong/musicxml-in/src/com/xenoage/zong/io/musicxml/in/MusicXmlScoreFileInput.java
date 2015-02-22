@@ -1,9 +1,5 @@
 package com.xenoage.zong.io.musicxml.in;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-
-import java.io.IOException;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.document.io.FileInput;
 import com.xenoage.utils.exceptions.InvalidFormatException;
@@ -15,16 +11,16 @@ import com.xenoage.zong.core.format.LayoutFormat;
 import com.xenoage.zong.core.format.ScoreFormat;
 import com.xenoage.zong.core.info.ScoreInfo;
 import com.xenoage.zong.core.music.StavesList;
-import com.xenoage.zong.io.musicxml.in.readers.LayoutFormatReader;
-import com.xenoage.zong.io.musicxml.in.readers.ScoreFormatReader;
-import com.xenoage.zong.io.musicxml.in.readers.ScoreInfoReader;
-import com.xenoage.zong.io.musicxml.in.readers.ScoreReader;
-import com.xenoage.zong.io.musicxml.in.readers.StavesListReader;
+import com.xenoage.zong.io.musicxml.in.readers.*;
 import com.xenoage.zong.musicxml.MusicXMLDocument;
 import com.xenoage.zong.musicxml.types.MxlDefaults;
 import com.xenoage.zong.musicxml.types.MxlScorePartwise;
 import com.xenoage.zong.musicxml.types.groups.MxlLayout;
 import com.xenoage.zong.musicxml.types.groups.MxlScoreHeader;
+
+import java.io.IOException;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
 
 /**
  * This class reads a MusicXML 2.0 file

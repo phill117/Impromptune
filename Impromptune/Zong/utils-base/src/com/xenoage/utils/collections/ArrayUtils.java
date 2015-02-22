@@ -1,9 +1,9 @@
 package com.xenoage.utils.collections;
 
-import static com.xenoage.utils.kernel.Range.range;
-
 import java.util.Collection;
 import java.util.List;
+
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * Some useful functions for arrays.

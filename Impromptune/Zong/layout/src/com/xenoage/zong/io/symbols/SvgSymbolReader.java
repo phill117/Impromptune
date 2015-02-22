@@ -1,9 +1,5 @@
 package com.xenoage.zong.io.symbols;
 
-import static com.xenoage.utils.PlatformUtils.platformUtils;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.remark;
-
 import com.xenoage.utils.async.AsyncProducer;
 import com.xenoage.utils.async.AsyncResult;
 import com.xenoage.utils.io.FileUtils;
@@ -11,6 +7,10 @@ import com.xenoage.utils.io.InputStream;
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.zong.symbols.PathSymbol;
 import com.xenoage.zong.symbols.Symbol;
+
+import static com.xenoage.utils.PlatformUtils.platformUtils;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.remark;
 
 /**
  * A {@link SvgSymbolReader} creates a {@link Symbol} from a SVG file.

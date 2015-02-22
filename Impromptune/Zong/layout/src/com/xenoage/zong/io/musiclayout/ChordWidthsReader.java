@@ -1,12 +1,12 @@
 package com.xenoage.zong.io.musiclayout;
 
-import static com.xenoage.utils.collections.CollectionUtils.map;
+import com.xenoage.utils.xml.XmlReader;
+import com.xenoage.zong.musiclayout.settings.ChordWidths;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-import com.xenoage.utils.xml.XmlReader;
-import com.xenoage.zong.musiclayout.settings.ChordWidths;
+import static com.xenoage.utils.collections.CollectionUtils.map;
 
 /**
  * Reader for {@link ChordWidths}.

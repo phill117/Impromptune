@@ -1,13 +1,13 @@
 package com.xenoage.zong.musiclayout.stampings;
 
-import static com.xenoage.utils.math.geom.Point2f.p;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Shape;
 import com.xenoage.zong.core.music.MusicElement;
 import com.xenoage.zong.core.music.format.SP;
 import com.xenoage.zong.core.text.FormattedText;
+
+import static com.xenoage.utils.math.geom.Point2f.p;
 
 /**
  * Class for a text stamping belonging to a staff, e.g. for lyric

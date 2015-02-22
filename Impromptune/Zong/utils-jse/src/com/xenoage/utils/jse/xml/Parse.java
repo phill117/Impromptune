@@ -1,12 +1,10 @@
 package com.xenoage.utils.jse.xml;
 
+import org.w3c.dom.Element;
+
 import static com.xenoage.utils.jse.xml.InvalidXMLData.invalid;
 import static com.xenoage.utils.jse.xml.InvalidXMLData.throwNull;
-import static com.xenoage.utils.jse.xml.XMLReader.attribute;
-import static com.xenoage.utils.jse.xml.XMLReader.element;
-import static com.xenoage.utils.jse.xml.XMLReader.text;
-
-import org.w3c.dom.Element;
+import static com.xenoage.utils.jse.xml.XMLReader.*;
 
 /**
  * Useful parsing methods.

@@ -1,7 +1,5 @@
 package com.xenoage.zong.documents;
 
-import lombok.Getter;
-
 import com.xenoage.utils.document.Document;
 import com.xenoage.utils.document.command.CommandPerformer;
 import com.xenoage.utils.document.io.SupportedFormats;
@@ -10,6 +8,7 @@ import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.layout.LayoutDefaults;
 import com.xenoage.zong.layout.frames.ScoreFrameChain;
 import com.xenoage.zong.musiclayout.ScoreLayout;
+import lombok.Getter;
 
 /**
  * Class for a score document.

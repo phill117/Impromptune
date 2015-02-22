@@ -1,10 +1,5 @@
 package com.xenoage.zong.musiclayout.layouter.notation;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.xenoage.zong.core.music.MusicContext;
 import com.xenoage.zong.core.music.Pitch;
 import com.xenoage.zong.core.music.chord.Accidental;
@@ -15,6 +10,11 @@ import com.xenoage.zong.musiclayout.notations.chord.AccidentalsAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.NoteAlignment;
 import com.xenoage.zong.musiclayout.notations.chord.NotesAlignment;
 import com.xenoage.zong.musiclayout.settings.ChordWidths;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * This strategy stores the alignment of

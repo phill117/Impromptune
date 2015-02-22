@@ -1,16 +1,16 @@
 package com.xenoage.utils.jse.log;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static com.xenoage.utils.log.Level.Remark;
+import com.xenoage.utils.jse.io.DesktopIO;
+import com.xenoage.utils.log.Level;
+import com.xenoage.utils.log.LogProcessing;
+import com.xenoage.utils.log.Report;
 
 import java.io.PrintStream;
 import java.text.DateFormat;
 import java.util.Date;
 
-import com.xenoage.utils.jse.io.DesktopIO;
-import com.xenoage.utils.log.Level;
-import com.xenoage.utils.log.LogProcessing;
-import com.xenoage.utils.log.Report;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static com.xenoage.utils.log.Level.Remark;
 
 /**
  * Logging class for desktop applications.

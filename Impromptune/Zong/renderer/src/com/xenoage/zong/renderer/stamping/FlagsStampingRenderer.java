@@ -1,8 +1,5 @@
 package com.xenoage.zong.renderer.stamping;
 
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.zong.core.music.format.SP.sp;
-
 import com.xenoage.zong.musiclayout.stampings.FlagsStamping;
 import com.xenoage.zong.musiclayout.stampings.FlagsStamping.FlagsDirection;
 import com.xenoage.zong.musiclayout.stampings.Stamping;
@@ -10,6 +7,9 @@ import com.xenoage.zong.renderer.RendererArgs;
 import com.xenoage.zong.renderer.canvas.Canvas;
 import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.common.CommonSymbol;
+
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Renderer for a {@link FlagsStamping}.

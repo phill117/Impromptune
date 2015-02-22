@@ -1,13 +1,5 @@
 package com.xenoage.zong.musiclayout;
 
-import static com.xenoage.utils.kernel.Range.range;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import lombok.ToString;
-
 import com.xenoage.utils.annotations.MaybeEmpty;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.core.Score;
@@ -17,6 +9,13 @@ import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
 import com.xenoage.zong.musiclayout.stampings.Stamping;
 import com.xenoage.zong.symbols.SymbolPool;
+import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * A {@link ScoreLayout} stores the layout of a score,

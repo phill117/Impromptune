@@ -1,8 +1,8 @@
 package com.xenoage.zong.commands.desktop.app;
 
-import static com.xenoage.zong.desktop.App.app;
-
 import com.xenoage.utils.document.command.TransparentCommand;
+
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * Requests to close the application.

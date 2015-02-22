@@ -1,8 +1,8 @@
 package com.xenoage.utils.document.io;
 
-import static com.xenoage.utils.kernel.Range.range;
-
 import com.xenoage.utils.document.Document;
+
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * General information on a file format for a document.

@@ -1,18 +1,13 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import lombok.RequiredArgsConstructor;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.font.FontInfo;
 import com.xenoage.zong.core.format.ScoreFormat;
 import com.xenoage.zong.core.format.StaffLayout;
-import com.xenoage.zong.musicxml.types.MxlDefaults;
-import com.xenoage.zong.musicxml.types.MxlLyricFont;
-import com.xenoage.zong.musicxml.types.MxlScaling;
-import com.xenoage.zong.musicxml.types.MxlStaffLayout;
-import com.xenoage.zong.musicxml.types.MxlSystemLayout;
+import com.xenoage.zong.musicxml.types.*;
 import com.xenoage.zong.musicxml.types.groups.MxlLayout;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Reads a {@link ScoreFormat} from a {@link MxlDefaults}.

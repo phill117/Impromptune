@@ -1,12 +1,12 @@
 package com.xenoage.zong.commands.core.music.slur;
 
-import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
-
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.Undoability;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.slur.Slur;
 import com.xenoage.zong.core.music.slur.SlurWaypoint;
+
+import static com.xenoage.utils.collections.CollectionUtils.addOrNew;
 
 
 /**

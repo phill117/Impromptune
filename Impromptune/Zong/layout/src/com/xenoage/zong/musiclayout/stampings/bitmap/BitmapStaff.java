@@ -1,11 +1,11 @@
 package com.xenoage.zong.musiclayout.stampings.bitmap;
 
-import static com.xenoage.utils.math.Units.mmToPx;
-import static com.xenoage.utils.math.Units.pxToMm;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.Units;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+
+import static com.xenoage.utils.math.Units.mmToPx;
+import static com.xenoage.utils.math.Units.pxToMm;
 
 /**
  * This class helps drawing nice staves on a bitmap,

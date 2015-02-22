@@ -1,35 +1,16 @@
 package com.xenoage.zong.desktop.io.midi.out;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.sound.midi.ControllerEventListener;
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiDevice;
-import javax.sound.midi.MidiDevice.Info;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
-import javax.sound.midi.Soundbank;
-import javax.sound.midi.Synthesizer;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.Line;
-import javax.sound.sampled.Mixer;
-import javax.sound.sampled.SourceDataLine;
-
 import com.sun.media.sound.AudioSynthesizer;
 import com.xenoage.utils.exceptions.InvalidFormatException;
 import com.xenoage.utils.jse.settings.Settings;
+
+import javax.sound.midi.*;
+import javax.sound.midi.MidiDevice.Info;
+import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.*;
 
 /**
  * This class shares a {@link Synthesizer}, {@link Sequencer}

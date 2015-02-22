@@ -1,14 +1,14 @@
 package com.xenoage.zong.core.text;
 
-import static com.xenoage.utils.NullUtils.notNull;
-import lombok.Data;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.font.FontInfo;
+import lombok.Data;
+import lombok.Getter;
+
+import static com.xenoage.utils.NullUtils.notNull;
 
 /**
  * Style of a {@link FormattedTextString}.

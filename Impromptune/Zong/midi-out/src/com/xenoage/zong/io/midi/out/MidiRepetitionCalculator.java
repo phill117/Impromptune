@@ -1,15 +1,5 @@
 package com.xenoage.zong.io.midi.out;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.kernel.Range.range;
-import static com.xenoage.utils.math.Fraction._0;
-import static com.xenoage.zong.core.position.MP.atBeat;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.kernel.Range;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.Score;
@@ -22,6 +12,15 @@ import com.xenoage.zong.core.music.util.BeatEList;
 import com.xenoage.zong.core.music.volta.Volta;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.io.midi.out.Playlist.PlayRange;
+import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.kernel.Range.range;
+import static com.xenoage.utils.math.Fraction._0;
+import static com.xenoage.zong.core.position.MP.atBeat;
 
 /**
  * Class to calculate a {@link Playlist} for the midi converter.

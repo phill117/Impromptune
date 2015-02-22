@@ -1,24 +1,12 @@
 package com.xenoage.zong.renderer.javafx.canvas;
 
-import static com.xenoage.utils.jse.javafx.color.JfxColorUtils.toJavaFXColor;
-import static com.xenoage.utils.jse.javafx.font.JfxFontUtils.toJavaFXFont;
-import static com.xenoage.utils.kernel.Range.range;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.text.Font;
-
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.font.TextMetrics;
 import com.xenoage.utils.math.Units;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Rectangle2f;
 import com.xenoage.utils.math.geom.Size2f;
-import com.xenoage.zong.core.text.Alignment;
-import com.xenoage.zong.core.text.FormattedText;
-import com.xenoage.zong.core.text.FormattedTextElement;
-import com.xenoage.zong.core.text.FormattedTextParagraph;
-import com.xenoage.zong.core.text.FormattedTextString;
-import com.xenoage.zong.core.text.FormattedTextSymbol;
+import com.xenoage.zong.core.text.*;
 import com.xenoage.zong.io.selection.text.TextSelection;
 import com.xenoage.zong.renderer.canvas.Canvas;
 import com.xenoage.zong.renderer.canvas.CanvasDecoration;
@@ -27,6 +15,13 @@ import com.xenoage.zong.renderer.canvas.CanvasIntegrity;
 import com.xenoage.zong.renderer.javafx.path.JfxPath;
 import com.xenoage.zong.renderer.symbol.SymbolsRenderer;
 import com.xenoage.zong.symbols.path.Path;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.text.Font;
+
+import static com.xenoage.utils.jse.javafx.color.JfxColorUtils.toJavaFXColor;
+import static com.xenoage.utils.jse.javafx.font.JfxFontUtils.toJavaFXFont;
+import static com.xenoage.utils.kernel.Range.range;
 
 /**
  * JavaFX implementation of a {@link Canvas}

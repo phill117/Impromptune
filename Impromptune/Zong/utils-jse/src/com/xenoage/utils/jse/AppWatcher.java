@@ -1,10 +1,10 @@
 package com.xenoage.utils.jse;
 
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.warning;
-
 import java.io.File;
 import java.util.UUID;
+
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.warning;
 
 /**
  * The {@link AppWatcher} is a class that can tell if another
@@ -115,7 +115,7 @@ public class AppWatcher {
 				exceptThisName = exceptThis.toString();
 			}
 			for (File file : files) {
-				if (!file.getName().startsWith("")) //ignore files starting with "." (may be a subversion file)
+				if (!file.getName().startsWith(".")) //ignore files starting with "." (may be a subversion file)
 				{
 					if (exceptThis == null || !file.getName().equals(exceptThisName)) {
 						return true;

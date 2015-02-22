@@ -1,10 +1,10 @@
 package com.xenoage.zong.core.music.clef;
 
-import static com.xenoage.zong.core.music.Pitch.pi;
+import com.xenoage.zong.core.music.Pitch;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import com.xenoage.zong.core.music.Pitch;
+import static com.xenoage.zong.core.music.Pitch.pi;
 
 /**
  * Symbols for clefs.

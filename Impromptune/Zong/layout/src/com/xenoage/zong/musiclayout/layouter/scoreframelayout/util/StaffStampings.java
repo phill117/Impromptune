@@ -1,13 +1,13 @@
 package com.xenoage.zong.musiclayout.layouter.scoreframelayout.util;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-import static com.xenoage.utils.collections.CollectionUtils.alistInit;
+import com.xenoage.zong.musiclayout.ScoreFrameLayout;
+import com.xenoage.zong.musiclayout.stampings.StaffStamping;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xenoage.zong.musiclayout.ScoreFrameLayout;
-import com.xenoage.zong.musiclayout.stampings.StaffStamping;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
+import static com.xenoage.utils.collections.CollectionUtils.alistInit;
 
 /**
  * The staff stampings on a {@link ScoreFrameLayout}.

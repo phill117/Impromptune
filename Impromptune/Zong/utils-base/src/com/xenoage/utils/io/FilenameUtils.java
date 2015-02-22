@@ -1,10 +1,10 @@
 package com.xenoage.utils.io;
 
+import java.util.List;
+
 import static com.xenoage.utils.StringUtils.fillIntDigits;
 import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.kernel.Range.range;
-
-import java.util.List;
 
 /**
  * Useful methods to work with filenames.

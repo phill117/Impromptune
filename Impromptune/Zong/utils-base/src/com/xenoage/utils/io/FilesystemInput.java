@@ -1,8 +1,8 @@
 package com.xenoage.utils.io;
 
-import java.util.List;
-
 import com.xenoage.utils.async.AsyncResult;
+
+import java.util.List;
 
 /**
  * Interface for reading from filesystems.

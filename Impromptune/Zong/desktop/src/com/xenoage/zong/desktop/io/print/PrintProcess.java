@@ -1,19 +1,5 @@
 package com.xenoage.zong.desktop.io.print;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.log.Log.log;
-import static com.xenoage.utils.log.Report.error;
-import static com.xenoage.utils.log.Report.remark;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.print.PageFormat;
-import java.awt.print.Pageable;
-import java.awt.print.Paper;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-
 import com.xenoage.utils.math.Units;
 import com.xenoage.utils.math.geom.Size2f;
 import com.xenoage.zong.Voc;
@@ -23,6 +9,14 @@ import com.xenoage.zong.renderer.awt.canvas.AwtCanvas;
 import com.xenoage.zong.renderer.canvas.CanvasDecoration;
 import com.xenoage.zong.renderer.canvas.CanvasFormat;
 import com.xenoage.zong.renderer.canvas.CanvasIntegrity;
+
+import java.awt.*;
+import java.awt.print.*;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.log.Log.log;
+import static com.xenoage.utils.log.Report.error;
+import static com.xenoage.utils.log.Report.remark;
 
 /**
  * This class allows the user to print out the current score.

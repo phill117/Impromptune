@@ -1,9 +1,5 @@
 package com.xenoage.zong.renderer.stamping;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
-
-import java.util.List;
-
 import com.xenoage.utils.color.Color;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.zong.musiclayout.stampings.BeamStamping;
@@ -13,11 +9,11 @@ import com.xenoage.zong.musiclayout.stampings.bitmap.BitmapStaff;
 import com.xenoage.zong.renderer.RendererArgs;
 import com.xenoage.zong.renderer.canvas.Canvas;
 import com.xenoage.zong.renderer.canvas.CanvasFormat;
-import com.xenoage.zong.symbols.path.ClosePath;
-import com.xenoage.zong.symbols.path.LineTo;
-import com.xenoage.zong.symbols.path.MoveTo;
-import com.xenoage.zong.symbols.path.Path;
-import com.xenoage.zong.symbols.path.PathElement;
+import com.xenoage.zong.symbols.path.*;
+
+import java.util.List;
+
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Renderer for a {@link BeamStamping}.

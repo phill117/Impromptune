@@ -1,12 +1,11 @@
 package com.xenoage.zong.musicxml.types.choice;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import com.xenoage.utils.xml.XmlReader;
 import com.xenoage.utils.xml.XmlWriter;
 import com.xenoage.zong.musicxml.types.groups.MxlFullNote;
 import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * MusicXML cue note content.

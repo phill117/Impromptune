@@ -1,10 +1,9 @@
 package com.xenoage.zong.musiclayout.spacing.horizontal;
 
-import lombok.Data;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.IList;
 import com.xenoage.zong.core.music.Voice;
+import lombok.Data;
 
 /**
  * This class contains the spacing of one voice

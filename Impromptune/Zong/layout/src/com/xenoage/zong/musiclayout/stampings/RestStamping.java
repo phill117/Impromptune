@@ -1,15 +1,15 @@
 package com.xenoage.zong.musiclayout.stampings;
 
-import static com.xenoage.zong.core.music.format.SP.sp;
-
-import java.util.HashMap;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.util.DurationInfo;
 import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.common.CommonSymbol;
+
+import java.util.HashMap;
+
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Class for a rest stamping.

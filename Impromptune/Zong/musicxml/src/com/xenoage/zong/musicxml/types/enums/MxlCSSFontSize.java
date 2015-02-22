@@ -1,10 +1,9 @@
 package com.xenoage.zong.musicxml.types.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.xml.EnumWithXmlNames;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * MusicXML css-font-size.

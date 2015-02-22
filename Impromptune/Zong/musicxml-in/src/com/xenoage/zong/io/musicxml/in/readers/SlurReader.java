@@ -1,8 +1,5 @@
 package com.xenoage.zong.io.musicxml.in.readers;
 
-import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readBezierPoint;
-import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readVSide;
-
 import com.xenoage.utils.math.VSide;
 import com.xenoage.zong.core.music.Pitch;
 import com.xenoage.zong.core.music.WaypointPosition;
@@ -14,6 +11,9 @@ import com.xenoage.zong.core.music.slur.SlurWaypoint;
 import com.xenoage.zong.musicxml.types.MxlSlurOrTied;
 import com.xenoage.zong.musicxml.types.MxlSlurOrTied.MxlElementType;
 import com.xenoage.zong.musicxml.types.enums.MxlStartStopContinue;
+
+import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readBezierPoint;
+import static com.xenoage.zong.io.musicxml.in.readers.OtherReader.readVSide;
 
 /**
  * Reads a {@link Slur} from a {@link MxlSlurOrTied} in its context.

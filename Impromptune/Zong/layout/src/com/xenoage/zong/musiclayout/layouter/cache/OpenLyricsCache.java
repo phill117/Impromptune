@@ -1,15 +1,15 @@
 package com.xenoage.zong.musiclayout.layouter.cache;
 
-import static com.xenoage.utils.collections.CollectionUtils.map;
-import static com.xenoage.utils.kernel.Tuple3.t3;
-
-import java.util.HashMap;
-
 import com.xenoage.utils.iterators.It;
 import com.xenoage.utils.kernel.Tuple3;
 import com.xenoage.zong.core.music.lyric.Lyric;
 import com.xenoage.zong.musiclayout.stampings.NoteheadStamping;
 import com.xenoage.zong.musiclayout.stampings.StaffTextStamping;
+
+import java.util.HashMap;
+
+import static com.xenoage.utils.collections.CollectionUtils.map;
+import static com.xenoage.utils.kernel.Tuple3.t3;
 
 /**
  * Cache for lyric elements which still have to be created.

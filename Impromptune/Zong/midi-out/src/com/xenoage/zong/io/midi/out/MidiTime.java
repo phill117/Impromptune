@@ -1,9 +1,8 @@
 package com.xenoage.zong.io.midi.out;
 
-import lombok.AllArgsConstructor;
-
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.position.MP;
+import lombok.AllArgsConstructor;
 
 /**
  * This class maps a MIDI tick to a {@link MP} and an

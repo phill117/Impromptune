@@ -1,10 +1,10 @@
 package com.xenoage.zong.symbols.path;
 
-import static com.xenoage.utils.annotations.Optimized.Reason.Performance;
-
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.Optimized;
 import com.xenoage.utils.math.geom.Point2f;
+
+import static com.xenoage.utils.annotations.Optimized.Reason.Performance;
 
 /**
  * Interface for all path elements.

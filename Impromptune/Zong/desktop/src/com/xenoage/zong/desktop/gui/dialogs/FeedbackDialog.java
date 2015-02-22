@@ -1,12 +1,11 @@
 package com.xenoage.zong.desktop.gui.dialogs;
 
-import static com.xenoage.utils.error.Err.handle;
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static com.xenoage.utils.log.Report.warning;
-import static com.xenoage.zong.desktop.App.app;
-
-import java.io.IOException;
-
+import com.xenoage.utils.io.FileUtils;
+import com.xenoage.utils.jse.io.JseFileUtils;
+import com.xenoage.utils.jse.javafx.Dialog;
+import com.xenoage.utils.lang.Lang;
+import com.xenoage.zong.Voc;
+import com.xenoage.zong.desktop.utils.http.HttpReport;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -17,12 +16,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import lombok.Setter;
 
-import com.xenoage.utils.io.FileUtils;
-import com.xenoage.utils.jse.io.JseFileUtils;
-import com.xenoage.utils.jse.javafx.Dialog;
-import com.xenoage.utils.lang.Lang;
-import com.xenoage.zong.Voc;
-import com.xenoage.zong.desktop.utils.http.HttpReport;
+import java.io.IOException;
+
+import static com.xenoage.utils.error.Err.handle;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static com.xenoage.utils.log.Report.warning;
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * Controller for the <code>FeedbackController.fxml</code>.

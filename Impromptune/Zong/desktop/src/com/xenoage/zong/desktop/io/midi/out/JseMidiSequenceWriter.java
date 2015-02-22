@@ -1,15 +1,10 @@
 package com.xenoage.zong.desktop.io.midi.out;
 
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.ShortMessage;
-import javax.sound.midi.Track;
-
 import com.sun.media.sound.MidiUtils;
 import com.sun.media.sound.MidiUtils.TempoCache;
 import com.xenoage.zong.io.midi.out.MidiSequenceWriter;
+
+import javax.sound.midi.*;
 
 
 /**

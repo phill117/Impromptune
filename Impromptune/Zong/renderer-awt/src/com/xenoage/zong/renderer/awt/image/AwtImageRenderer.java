@@ -1,19 +1,17 @@
 package com.xenoage.zong.renderer.awt.image;
 
-import static com.xenoage.utils.jse.JsePlatformUtils.io;
-import static java.awt.Color.lightGray;
+import com.xenoage.utils.math.geom.Rectangle2f;
 
-import java.awt.BasicStroke;
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
-import com.xenoage.utils.math.geom.Rectangle2f;
+import static com.xenoage.utils.jse.JsePlatformUtils.io;
+import static java.awt.Color.lightGray;
 
 /**
  * Draws an image using AWT.

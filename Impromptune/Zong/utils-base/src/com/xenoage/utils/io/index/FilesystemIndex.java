@@ -1,15 +1,11 @@
 package com.xenoage.utils.io.index;
 
-import static com.xenoage.utils.collections.CollectionUtils.alist;
+import com.xenoage.utils.collections.CList;
+import com.xenoage.utils.io.*;
 
 import java.util.List;
 
-import com.xenoage.utils.collections.CList;
-import com.xenoage.utils.io.Directory;
-import com.xenoage.utils.io.File;
-import com.xenoage.utils.io.FileFilter;
-import com.xenoage.utils.io.FileUtils;
-import com.xenoage.utils.io.FilesystemItem;
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 
 /**
  * Index of files and directories.

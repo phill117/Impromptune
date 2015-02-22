@@ -1,11 +1,6 @@
 package com.xenoage.utils.iterators;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.RandomAccess;
+import java.util.*;
 
 /**
  * Iterable iterator around a {@link List} with {@link RandomAccess},
