@@ -7,6 +7,338 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/90a-Compressed-MusicXML.mxl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/demo/scores/BrahWiMeSample.mxl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/FileTypeReaderTest/BrahWiMeSample.mxl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlOpusFileInputTest/BrahWiMeSample.mxl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/BrahWiMeSample.mxl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/Grace Notes/Grace Notes 1.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/Grace Notes/Grace Notes 1.sib" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlCompressedFileInputTest/album.mxl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/flag16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/en/flag16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/01a-Pitches-Pitches.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/01b-Pitches-Intervals.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/01c-Pitches-NoVoiceElement.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/01d-Pitches-Microtones.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/01e-Pitches-ParenthesizedAccidentals.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/01f-Pitches-ParenthesizedMicrotoneAccidentals.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/02a-Rests-Durations.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/02b-Rests-PitchedRests.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/02c-Rests-MultiMeasureRests.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/02d-Rests-Multimeasure-TimeSignatures.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/02e-Rests-NoType.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/03a-Rhythm-Durations.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/03b-Rhythm-Backup.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/03c-Rhythm-DivisionChange.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/03d-Rhythm-DottedDurations-Factors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/0_2008_11_05-2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/0_2008_11_05.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/0_2008_11_06.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11a-TimeSignatures.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11b-TimeSignatures-NoTime.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11c-TimeSignatures-CompoundSimple.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11d-TimeSignatures-CompoundMultiple.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11e-TimeSignatures-CompoundMixed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11f-TimeSignatures-SymbolMeaning.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11g-TimeSignatures-SingleNumber.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/11h-TimeSignatures-SenzaMisura.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/12a-Clefs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/12b-Clefs-NoKeyOrClef.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/13a-KeySignatures.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/13b-KeySignatures-ChurchModes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/13c-KeySignatures-NonTraditional.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/13d-KeySignatures-Microtones.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/14a-StaffDetails-LineChanges.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/21a-Chord-Basic.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/21b-Chords-TwoNotes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/21c-Chords-ThreeNotesDuration.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/21d-Chords-SchubertStabatMater.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/21e-Chords-PickupMeasures.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/21f-Chord-ElementInBetween.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/22a-Noteheads.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/22b-Staff-Notestyles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/22c-Noteheads-Chords.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/22d-Parenthesized-Noteheads.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/23a-Tuplets.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/23b-Tuplets-Styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/23c-Tuplet-Display-NonStandard.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/23d-Tuplets-Nested.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/23e-Tuplets-Tremolo.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/23f-Tuplets-DurationButNoBracket.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/24a-GraceNotes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/24b-ChordAsGraceNote.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/24c-GraceNote-MeasureEnd.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/24d-AfterGrace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/24e-GraceNote-StaffChange.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/24f-GraceNote-Slur.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/31a-Directions.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/31c-MetronomeMarks.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/32a-Notations.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/32b-Articulations-Texts.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/32c-MultipleNotationChildren.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/32d-Arpeggio.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33a-Spanners.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33b-Spanners-Tie.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33c-Spanners-Slurs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33d-Spanners-OctaveShifts.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33e-Spanners-OctaveShifts-InvalidSize.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33f-Trill-EndingOnGraceNote.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33g-Slur-ChordedNotes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33h-Spanners-Glissando.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/33i-Ties-NotEnded.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41a-MultiParts-Partorder.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41b-MultiParts-MoreThan10.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41c-StaffGroups.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41d-StaffGroups-Nested.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41e-StaffGroups-InstrumentNames-Linebroken.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41f-StaffGroups-Overlapping.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41g-PartNoId.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41h-TooManyParts.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/41i-PartNameDisplay-Override.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/42a-MultiVoice-TwoVoicesOnStaff-Lyrics.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/42b-MultiVoice-MidMeasureClefChange.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/43a-PianoStaff.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/43b-MultiStaff-DifferentKeys.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/43c-MultiStaff-DifferentKeysAfterBackup.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/43d-MultiStaff-StaffChange.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/43e-Multistaff-ClefDynamics.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/45a-SimpleRepeat.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/45b-RepeatWithAlternatives.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/45c-RepeatMultipleTimes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/45d-Repeats-Nested-Alternatives.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/45e-Repeats-Nested-Alternatives.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/45f-Repeats-InvalidEndings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/45g-Repeats-NotEnded.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/46a-Barlines.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/46b-MidmeasureBarline.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/46c-Midmeasure-Clef.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/46d-PickupMeasure-ImplicitMeasures.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/46e-PickupMeasure-SecondVoiceStartsLater.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/46f-IncompleteMeasures.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/46g-PickupMeasure-Chordnames-FiguredBass.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/51b-Header-Quotes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/51c-MultipleRights.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/51d-EmptyTitle.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/52a-PageLayout.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/52b-Breaks.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61a-Lyrics.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61b-MultipleLyrics.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61c-Lyrics-Pianostaff.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61d-Lyrics-Melisma.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61e-Lyrics-Chords.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61f-Lyrics-GracedNotes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61g-Lyrics-NameNumber.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61h-Lyrics-BeamsMelismata.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61i-Lyrics-Chords.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61j-Lyrics-Elisions.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/61k-Lyrics-SpannersExtenders.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/71a-Chordnames.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/71c-ChordsFrets.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/71d-ChordsFrets-Multistaff.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/71e-TabStaves.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/71f-AllChordTypes.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/71g-MultipleChordnames.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/72a-TransposingInstruments.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/72b-TransposingInstruments-Full.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/72c-TransposingInstruments-Change.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/73a-Percussion.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/74a-FiguredBass.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/75a-AccordionRegistrations.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/99a-Sibelius5-IgnoreBeaming.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/99b-Lyrics-BeamsMelismata-IgnoreBeams.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/Beamed16th.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeatOffsetBasedVoiceSpacingStrategyTest-1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeatOffsetBasedVoiceSpacingStrategyTest-2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeatOffsetsStrategyTest-1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeatOffsetsStrategyTest-2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeatOffsetsStrategyTest-3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeatOffsetsStrategyTest-4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeetAnGeSample-LyricTest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/BeetAnGeSample-MeasureFullException.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/demo/scores/BeetAnGeSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/FileTypeReaderTest/BeetAnGeSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlOpusFileInputTest/BeetAnGeSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/BeetAnGeSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/BeetAnGeSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/Binchois.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/Binchois.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/BrahWiMeSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/BrahWiMeSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/BrookeWestSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/Chant.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/Chant.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlOpusFileInputTest/DebuMandSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/DebuMandSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/DebuMandSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/Dichterliebe01.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/Dichterliebe01.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/FaurReveSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/FaurReveSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/Grace Notes/Grace Notes 1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/InstrumentChanges.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/layout/LayoutSettingsTest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/MahlFaGe4Sample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/MahlFaGe4Sample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/MozaChloSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/MozaChloSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/MozaVeilSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/MozaVeilSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/MozartPianoSonata.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/MozartPianoSonata.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/MozartTrio.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/MozartTrio.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/MultiStaffBeam.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/Saltarello.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/Saltarello.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/demo/scores/SchbAvMaSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlOpusFileInputTest/SchbAvMaSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/SchbAvMaSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/SchbAvMaSample.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/FileTypeReaderTest/SomeOpus.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlOpusFileInputTest/SomeOpus.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlOpusFileInputTest/SomeOpus2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/Telemann.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/Telemann.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/Tremolo1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/test/_.c-dotted.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accidental-doubleflat.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accidental-doublesharp.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accidental-flat.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accidental-natural.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accidental-sharp.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-0-0-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-0-1-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-0-1-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-0-2-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-0-2-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-0-3-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-0-3-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-0-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-0-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-1-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-1-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-2-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-2-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-3-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/accordion-1-3-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/android-midi-lib-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-accent.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-downbow.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-fermata-long.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-fermata-short.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-flageolet.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-staccatissimo.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-staccato.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-strongaccent.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-tenuto.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/articulation-upbow.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/bracket-brace.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/bracket-bracketend.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/bracket-bracketline.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-c.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-f-8va.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-f-8vb.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-f.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-g-8va.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-g-8vb.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-g.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-percussion-1.svg.bad" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-percussion-2.svg.bad" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/clef-tab.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/controlsfx-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/FileTypeReaderTest/copyright.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MxlOpusFileInputTest/copyright.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/cpsuite-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/de.po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/layout/default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-0.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-2.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-3.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-4.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-5.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-6.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-7.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-8.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/digit-9.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/dynamics-f.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/dynamics-m.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/dynamics-p.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/dynamics-s.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/dynamics-z.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/editor.command.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/en/editor.command.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/gson-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/h2-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/id.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/en/id.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/instruments.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/en/instruments.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/itext-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/jetty-all-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/layout.strategy.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/en/layout.strategy.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/lombok-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/note-dot.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/note-flag.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/note-half.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/note-quarter.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/note-whole.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-breve.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-circlecross.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-cross.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-diamond.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-filleddiamond.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-filledquad.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-filledtriangle.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-longa.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-quad.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/notehead-triangle.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/ornament-mordent.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/ornament-pralltriller-mordent.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/ornament-pralltriller-pralltriller.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/ornament-pralltriller.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/ornament-tr.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/ornament-turn-inverted.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/ornament-turn.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/pedal-sustain-down-1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/pedal-sustain-down-2.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/pedal-sustain-up.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/MusicXML-TestSuite-0.1/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml11/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test/scores/musicxml20/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-128th.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-16th.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-256th.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-32th.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-64th.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-eighth.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-half.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-quarter.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/rest-whole.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/servlet-api-license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/symbol-coda.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/symbol-fermata-reversed.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/symbol-fermata.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/symbol-repeatbar.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/symbol-segno-bar1.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/symbol-segno-bar2.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/symbol-segno.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/test-staffheight-bottom.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/test-staffheight.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/text-note-half.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/text-note-quarter.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/time-allabreve.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/symbols/default/time-common.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/viewer.command.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/en/viewer.command.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/de/viewer.key.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/lang/en/viewer.key.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/vorbis-java-license.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -83,7 +415,7 @@
       <file leaf-file-name="SoundbankFileFilter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Zong/desktop/src/com/xenoage/zong/desktop/io/filefilter/SoundbankFileFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+            <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="595">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
@@ -142,7 +474,6 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="3030" max-vertical-offset="4845">
               <caret line="201" column="47" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
               <folding>
-                <element signature="e#760#778#0" expanded="true" />
                 <element signature="e#2375#2376#0" expanded="true" />
                 <element signature="e#2405#2406#0" expanded="true" />
               </folding>
@@ -153,7 +484,7 @@
       <file leaf-file-name="Mp3ScoreFileOutput.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Zong/desktop/src/com/xenoage/zong/desktop/io/mp3/out/Mp3ScoreFileOutput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1581">
               <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -165,7 +496,7 @@
       <file leaf-file-name="AboutDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Zong/player/src/com/xenoage/zong/gui/dialog/AboutDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="748">
               <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -195,7 +526,7 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Zong/demos/src/com/xenoage/zong/demos/simplegui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0980393" vertical-offset="819" max-vertical-offset="1717">
+            <state vertical-scroll-proportion="1.1312218" vertical-offset="797" max-vertical-offset="1717">
               <caret line="109" column="80" selection-start-line="109" selection-start-column="80" selection-end-line="109" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -281,8 +612,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="1" />
+    <option name="y" value="9" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -327,94 +658,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zong" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zong" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zong" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simplegui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Impromptune" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zong" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -794,7 +1037,13 @@
       <option name="project" value="LOCAL" />
       <updated>1424587760461</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Zong Modules Added FIXED!">
+      <created>1424587801809</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1424587801809</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -821,7 +1070,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1" y="9" width="1936" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -951,7 +1200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
           <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -966,7 +1214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3128">
           <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -989,9 +1236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,7 +1243,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,7 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
           <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,9 +1257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
           <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1025,7 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2183" max-vertical-offset="3604">
           <caret line="154" column="16" selection-start-line="154" selection-start-column="16" selection-end-line="154" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,7 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1639" max-vertical-offset="4998">
           <caret line="136" column="64" selection-start-line="136" selection-start-column="64" selection-end-line="136" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,9 +1278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7716" max-vertical-offset="8636">
           <caret line="503" column="15" selection-start-line="503" selection-start-column="15" selection-end-line="503" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,7 +1285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="1972">
           <caret line="37" column="59" selection-start-line="37" selection-start-column="59" selection-end-line="37" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1962" max-vertical-offset="3315">
           <caret line="148" column="21" selection-start-line="148" selection-start-column="21" selection-end-line="148" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1067,7 +1299,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="563" max-vertical-offset="1156">
           <caret line="61" column="48" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1075,9 +1306,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="768" max-vertical-offset="1666">
           <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1085,7 +1313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="92" max-vertical-offset="2380">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,9 +1320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2176">
           <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1103,7 +1327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1111,9 +1334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="10183">
           <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1121,10 +1341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="e#410#411#0" expanded="false" />
-            <element signature="e#425#426#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1132,9 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
           <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1142,9 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6001">
           <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1152,9 +1362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2744" max-vertical-offset="4165">
           <caret line="191" column="15" selection-start-line="191" selection-start-column="15" selection-end-line="191" selection-end-column="15" />
-          <folding>
-            <element signature="e#2497#2510#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1162,7 +1369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="935">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1170,7 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="4403">
           <caret line="57" column="48" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1178,9 +1383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="2788">
           <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1188,7 +1390,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5549" max-vertical-offset="11543">
           <caret line="401" column="42" selection-start-line="401" selection-start-column="42" selection-end-line="401" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1196,7 +1397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="377" max-vertical-offset="1275">
           <caret line="70" column="21" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1204,9 +1404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="942" max-vertical-offset="2737">
           <caret line="71" column="21" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1214,9 +1411,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
           <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1224,7 +1418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1010" max-vertical-offset="2363">
           <caret line="91" column="67" selection-start-line="91" selection-start-column="67" selection-end-line="91" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1232,7 +1425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="782">
           <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1240,9 +1432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="2363">
           <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1297,7 +1486,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3030" max-vertical-offset="4845">
           <caret line="201" column="47" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="47" />
           <folding>
-            <element signature="e#760#778#0" expanded="true" />
             <element signature="e#2375#2376#0" expanded="true" />
             <element signature="e#2405#2406#0" expanded="true" />
           </folding>
@@ -1342,7 +1530,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Zong/demos/src/com/xenoage/zong/demos/simplegui/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0980393" vertical-offset="819" max-vertical-offset="1717">
+        <state vertical-scroll-proportion="1.1312218" vertical-offset="797" max-vertical-offset="1717">
           <caret line="109" column="80" selection-start-line="109" selection-start-column="80" selection-end-line="109" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
