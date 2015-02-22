@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+    <output url="file://C:/ZongIntelli/player/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="core" />
+    <orderEntry type="module" module-name="desktop" />
+    <orderEntry type="module" module-name="midi-out" />
+    <orderEntry type="module" module-name="musicxml" />
+    <orderEntry type="module" module-name="musicxml-in" />
+    <orderEntry type="module" module-name="utils-base" />
+    <orderEntry type="module" module-name="utils-jse" />
+    <orderEntry type="module" module-name="utils-kernel" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="library" name="lombok" level="project" />
+    <orderEntry type="library" name="controlsfx" level="project" />
+    <orderEntry type="module" module-name="utils-jse8" />
+  </component>
+</module>
