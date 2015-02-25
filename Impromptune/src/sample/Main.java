@@ -15,18 +15,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        //String s =  getClass().getClassLoader().getResource("/demos/MainWindow.fxml").toString();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../Zong/demos/src/com/xenoage/zong/demos/simplegui/MainWindow.fxml"));
         primaryStage.setTitle("Hello World - No hablo espanol");
         primaryStage.setScene(new Scene(root, 500, 500));
       //  primaryStage.setFullScreen(true); ANNOYING AS HELL!
         primaryStage.show();
     }
 
-    @FXML
-    void zong(ActionEvent event) {
-        System.out.println("HELLO");
-        System.exit(0);
-    }
+
 
     public static void main(String[] args) {
         launch(args);

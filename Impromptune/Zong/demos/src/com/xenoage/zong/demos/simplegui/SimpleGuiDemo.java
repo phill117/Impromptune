@@ -47,7 +47,7 @@ public class SimpleGuiDemo
 		throws Exception {
 		//load main window FXML into stage and show it
 		Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
-    stage.setTitle("WHYYYY!!!!!Simple Demo App based on Zong!");
+    stage.setTitle("Simple Demo App based on Zong!");
     stage.setScene(new Scene(root));
     stage.setOnCloseRequest(e -> exit());
     stage.show();

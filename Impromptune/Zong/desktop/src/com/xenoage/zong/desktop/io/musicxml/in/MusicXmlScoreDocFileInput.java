@@ -135,4 +135,79 @@ public class MusicXmlScoreDocFileInput
 		return ret;
 	}
 
+
+
+
+
+//Jacob
+    public ScoreDoc read(Score score)
+            throws InvalidFormatException, IOException {
+
+        //page format
+        LayoutFormat layoutFormat = null;
+        Object oLayoutFormat = score.getMetaData().get("layoutformat");
+        if (oLayoutFormat instanceof LayoutFormat) {
+            layoutFormat = (LayoutFormat) oLayoutFormat;
+        }
+
+        //use default symbol pool
+        SymbolPool symbolPool = zongPlatformUtils().getSymbolPool();
+
+        //load layout settings - TIDY: do not reload each time when a score is loaded
+        LayoutSettings layoutSettings = LayoutSettingsReader.read(jsePlatformUtils().openFile(
+                "data/layout/default.xml"));
+
+        //create layout defaults
+        LayoutDefaults layoutDefaults = new LayoutDefaults(layoutFormat, symbolPool, layoutSettings);
+
+        //create the document
+        ScoreDoc ret = new ScoreDoc(score, layoutDefaults);
+        Layout layout = ret.getLayout();
+
+        //layout basics
+        PageFormat pageFormat = layoutFormat.getPageFormat(0);
+        Size2f frameSize = new Size2f(pageFormat.getUseableWidth(), pageFormat.getUseableHeight());
+        Point2f framePos = new Point2f(pageFormat.getMargins().getLeft() + frameSize.width / 2,
+                pageFormat.getMargins().getTop() + frameSize.height / 2);
+
+        //layout the score to find out the needed space
+        ScoreLayouter layouter = new ScoreLayouter(score, symbolPool, layoutSettings, true, frameSize);
+        ScoreLayout scoreLayout = layouter.createScoreLayout();
+
+        //create and fill at least one page
+        ScoreFrameChain chain = null;
+        for (int i = 0; i < scoreLayout.frames.size(); i++) {
+            Page page = new Page(pageFormat);
+            layout.addPage(page);
+            ScoreFrame frame = new ScoreFrame();
+            frame.setPosition(framePos);
+            frame.setSize(frameSize);
+            //TEST frame = frame.withHFill(NoHorizontalSystemFillingStrategy.getInstance());
+            page.addFrame(frame);
+            if (chain == null) {
+                chain = new ScoreFrameChain(score);
+                chain.setScoreLayout(scoreLayout);
+            }
+            chain.add(frame);
+        }
+
+        //add credit elements - TIDY
+        Object o = score.getMetaData().get("mxldoc");
+        if (o != null && o instanceof MxlScorePartwise) {
+            MxlScorePartwise doc = (MxlScorePartwise) o;
+            CreditsReader.read(doc, layout, score.getFormat());
+        }
+
+        return ret;
+    }
+
+
+
+
+
+
+
+
+
+
 }

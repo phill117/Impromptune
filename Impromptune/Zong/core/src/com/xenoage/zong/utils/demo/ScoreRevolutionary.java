@@ -60,7 +60,11 @@ public class ScoreRevolutionary {
 
 	public static Score createScore() {
 		Score score = new Score();
-		
+
+
+        score.info.setWorkTitle("A REVOLUTION IN ZONG!");  //this is not working
+        score.info.setMovementTitle("BY SCRUMPHD"); //this is not working
+
 		Instrument instr = Instrument.defaultInstrument;
 		float is = score.getFormat().getInterlineSpace();
 		StaffLayout staffLayout = new StaffLayout(is * 9);
@@ -89,7 +93,7 @@ public class ScoreRevolutionary {
 
 		//C minor, C (4/4) time
 		cursor.write((ColumnElement) new TraditionalKey(-3, Mode.Minor));
-		cursor.write(new Time(TimeType.timeCommon));
+		cursor.write(new Time( TimeType.timeCommon));
 
 		//first staff: g-clef and some notes
 		cursor.write(new Clef(ClefType.clefTreble));
