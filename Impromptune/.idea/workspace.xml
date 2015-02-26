@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/PlayerPictures/doubleback.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/PlayerPictures/doubleforward.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/PlayerPictures/pause.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/PlayerPictures/play.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/PlayerPictures/record.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/PlayerPictures/stop.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/ActorPreludeSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/BeetAnGeSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/Binchois.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/BrahWiMeSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/BrookeWestSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/Chant.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/DebuMandSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/Dichterliebe01.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/Echigo-Jishi.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/FaurReveSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/MahlFaGe4Sample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/MozaChloSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/MozaVeilSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/MozartPianoSonata.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/MozartTrio.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/player/MusicStringCreater.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/player/PlayerHolder.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/player/PlayerHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/Saltarello.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/SchbAvMaSample.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/SampleMusicXML/Telemann.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/player/TestPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Impromptune.iml" afterPath="$PROJECT_DIR$/Impromptune.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/piano/PianoHolder.java" afterPath="$PROJECT_DIR$/src/piano/PianoHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Impromptune/sample/sample.fxml" afterPath="$PROJECT_DIR$/out/production/Impromptune/sample/sample.fxml" />
+      <change type="DELETED" beforePath="C:\Users\Sean\Documents\GitHub\Impromptune\Impromptune\out\production\Impromptune\PlayerPictures\Thumbs.db" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/player/PlayerHolder.java" afterPath="$PROJECT_DIR$/src/player/PlayerHolder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -96,24 +67,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PlayerHolder.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlayerHolder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/player/PlayerHolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="1530">
-              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.7325175" vertical-offset="346" max-vertical-offset="1615">
+              <caret line="45" column="62" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1549#1722#0" expanded="true" />
-                <element signature="e#1721#1722#0" expanded="true" />
+                <element signature="e#1800#1973#0" expanded="true" />
+                <element signature="e#1972#1973#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PianoHolder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PianoHolder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/piano/PianoHolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.1293707" vertical-offset="329" max-vertical-offset="1785">
+            <state vertical-scroll-proportion="0.0" vertical-offset="431" max-vertical-offset="1785">
               <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -181,8 +152,8 @@
         <option value="$PROJECT_DIR$/src/piano/TestPiano.java" />
         <option value="$PROJECT_DIR$/src/player/MusicStringCreater.java" />
         <option value="$PROJECT_DIR$/src/player/TestPlayer.java" />
-        <option value="$PROJECT_DIR$/src/player/PlayerHolder.java" />
         <option value="$PROJECT_DIR$/src/piano/PianoHolder.java" />
+        <option value="$PROJECT_DIR$/src/player/PlayerHolder.java" />
       </list>
     </option>
   </component>
@@ -651,8 +622,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -664,7 +635,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32777777" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16417113" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -726,8 +697,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1549#1722#0" expanded="true" />
-            <element signature="e#1721#1722#0" expanded="true" />
+            <element signature="e#1800#1973#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1027,24 +998,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/player/PlayerHolder.java">
+    <entry file="file://$PROJECT_DIR$/src/piano/PianoHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="1530">
-          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="431" max-vertical-offset="1785">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1549#1722#0" expanded="true" />
-            <element signature="e#1721#1722#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/piano/PianoHolder.java">
+    <entry file="file://$PROJECT_DIR$/src/player/PlayerHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1293707" vertical-offset="329" max-vertical-offset="1785">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7325175" vertical-offset="346" max-vertical-offset="1615">
+          <caret line="45" column="62" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1800#1973#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
           </folding>
         </state>
       </provider>

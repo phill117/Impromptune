@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.jfugue.MusicXmlParser;
@@ -39,7 +41,10 @@ public class PlayerHolder implements Initializable, EventHandler<MouseEvent> {
 
         for(Node node : btnControlPane.getChildren()){
             node.setOnMouseClicked(this);
-            //if(node.getId().equals("play_btn"));
+            if(node.getId().equals("play_btn")){
+                Image image = new Image(getClass().getResourceAsStream("res/PlayerPictures/play.png"));
+                ((Button)node).setGraphic(new ImageView(image));
+            }
         }
     }
 
