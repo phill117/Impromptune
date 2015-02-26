@@ -1,0 +1,43 @@
+package com.xenoage.zong.musicxml;
+
+import com.xenoage.utils.xml.XmlException;
+import com.xenoage.utils.xml.XmlReader;
+import com.xenoage.utils.xml.XmlWriter;
+import com.xenoage.zong.musicxml.types.MxlScorePartwise;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * MusicXML document.
+ * 
+ * Only partwise scores are supported.
+ * 
+ * @author Andreas Wenger
+ */
+@AllArgsConstructor @Getter @Setter
+public final class MusicXMLDocument {
+
+	private MxlScorePartwise score;
+
+
+	public static MusicXMLDocument read(XmlReader reader)
+		throws XmlException {
+		reader.openNextChildElement();
+		String n = reader.getElementName();
+		if (n.equals(MxlScorePartwise.elemName))
+			return new MusicXMLDocument(MxlScorePartwise.read(reader));
+		else if (n.equals("score-timewise"))
+			throw new IllegalArgumentException("Timewise scores are not supported.");
+		throw new IllegalArgumentException("Unknown root element: " + n);
+	}
+	
+	
+	public void write(XmlWriter writer) {
+		writer.writeStartDocument();
+		writer.writeDTD("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 2.0 Partwise//EN\"" + 
+    " \"http://www.musicxml.org/dtds/partwise.dtd\">");
+		score.write(writer);
+	}
+
+}
