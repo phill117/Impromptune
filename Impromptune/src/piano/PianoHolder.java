@@ -37,6 +37,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
         // initialize your logic here: all @FXML variables will have been injected
         player = new Player();
 
+        //assign 'this' as an event listener for mouse presses and releases for all keys
         ObservableList<Node> keys = pianoPane.getChildren();
         for(Node key : keys){
             key.setOnMousePressed(this);
@@ -47,14 +48,14 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     @Override
     public void handle(MouseEvent event) {
 
-        System.out.println(event.getEventType());
-
+        //cache the event type
         EventType<MouseEvent> et = (EventType<MouseEvent>) event.getEventType();
 
         if(et == MouseEvent.MOUSE_PRESSED){
             pianoKey = (Node) event.getTarget();
             String id = pianoKey.getId();
 
+            //creates a sepia effect when a key is pressed
             if(id.charAt(1) == 'r')
                 pianoKey.setEffect(new SepiaTone(0.8));
             else {
@@ -62,10 +63,14 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
                 pianoKey.setEffect(new SepiaTone(0.8));
             }
 
+            //stores the desired register range
             Integer register = new Double(registerSlider.getValue()).intValue();
 
             String noteToPlay = ""+id.charAt(0);
+
+            //decide if note is flat or sharp
             if(id.charAt(1) == 's') noteToPlay += '#';
+            //decide on note register
             char keyReg = id.charAt(2);
 
             switch (keyReg){
@@ -75,10 +80,13 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
                 default: break;
             }
 
+            //make the note a 'half note'
             noteToPlay += "h";
 
+            //put the string into a final variable so that it can be used in a thread
             final String musicString = noteToPlay;
 
+            //start a new thread to play the note
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -88,6 +96,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
         }
 
         if(et == MouseEvent.MOUSE_RELEASED){
+            //end the sepia effect
             if(pianoKey.getId().charAt(1) == 'r') pianoKey.setEffect(null);
             else pianoKey.setEffect(blackKeyEffect);
         }
