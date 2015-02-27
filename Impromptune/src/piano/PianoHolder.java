@@ -1,14 +1,11 @@
 package piano;
 
-<<<<<<< HEAD
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-=======
->>>>>>> origin/Renderer
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -18,15 +15,11 @@ import javafx.scene.control.Slider;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
-<<<<<<< HEAD
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import org.jfugue.Player;
-=======
 
 import java.net.URL;
 import java.util.ResourceBundle;
->>>>>>> origin/Renderer
 
 /**
  * Created by Sean on 2/19/2015.
