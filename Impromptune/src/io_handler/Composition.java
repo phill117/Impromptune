@@ -37,9 +37,6 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.SymbolPool;
 
-import javafx.stage.FileChooser;
-import org.jfugue.Note;
-
 import static com.xenoage.utils.math.Fraction._0;
 import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.zong.core.position.MP.mp;
@@ -72,11 +69,8 @@ public class Composition {
         cursorList = new ArrayList<Cursor>();
 
         try {
-            currentScoreDoc = initializeScoreFromFile(fileName);
-
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
+            currentScoreDoc = initializeScoreDocFromFile(fileName);
+        } catch(IOException e) { e.printStackTrace(); }
     }
 
     void loadLayout(LayoutFormat layoutFormat) {
@@ -88,11 +82,7 @@ public class Composition {
             layoutDefaults = new LayoutDefaults(layoutFormat, symbolPool, layoutSettings);
             //use default symbol pool
             symbolPool = zongPlatformUtils().getSymbolPool();
-        } catch( IOException e) {
-            e.printStackTrace();
-        }
-
-
+        } catch( IOException e) { e.printStackTrace(); }
     }
 
     Score initializeEmptyScore() {
@@ -130,7 +120,7 @@ public class Composition {
         return currentComp;
     }
 
-    ScoreDoc initializeScoreFromFile(String filePath)
+    ScoreDoc initializeScoreDocFromFile(String filePath)
             throws IOException {
         return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput()); //lol should revisit
     }
@@ -179,5 +169,9 @@ public class Composition {
         }
 
         return scoreDoc;
+    }
+
+    void writeToComp() {
+        //write
     }
 }
