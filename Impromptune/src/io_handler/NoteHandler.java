@@ -41,14 +41,11 @@ public class NoteHandler {
     void writeNote(Note note, Cursor cursor) {
         String mus = note.getMusicString();
 
-        char p = mus.charAt(0);
-        char a = mus.charAt(1);
-        char d = mus.charAt(2);
+        char p = mus.charAt(0); //pitch
+        char a = mus.charAt(1); //alteration
+        char d = mus.charAt(2); //duration
 
         Fraction fr = null;
-
-        if (p == 'R')
-            writeRest(note, cursor);
 
         switch (d) {
             case 'w':
@@ -72,6 +69,9 @@ public class NoteHandler {
             case 'x':
                 fr = f64;
                 break;
+            default:
+                System.err.println("Invalid duration");
+                return;
         }
 
         switch(a) {
@@ -83,6 +83,9 @@ public class NoteHandler {
                 break;
             case 'n': //natural
                 cursor.write(chord(fr, pi(p - 65, 0, 1)));
+                break;
+            default:
+                System.err.println("Invalid alteration");
                 break;
         }
     }
