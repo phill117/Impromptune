@@ -25,9 +25,9 @@ import static com.xenoage.zong.core.music.Pitch.pi;
 /**
  * Created by ben on 2/25/15.
  */
-public class NoteHandler {
+public class Quill {
 
-    public NoteHandler(Cursor cursor) {
+    public Quill(Cursor cursor) {
         this.cursor = cursor;
     }
 
@@ -169,7 +169,6 @@ public class NoteHandler {
     private static Chord chord(Fraction fraction, Pitch... pitches) {
         return chord(fraction, null, pitches);
     }
-
 
     private static Chord chord(Fraction fraction, ArticulationType[] articulations, Pitch... pitches) {
         Chord chord = new Chord(com.xenoage.zong.core.music.chord.Note.notes(pitches), fraction);

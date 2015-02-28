@@ -1,16 +1,16 @@
 package io_handler;
 
-//import com.xenoage.zong.desktop.io.musicxml.in;
-
 import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.log.Report;
 import com.xenoage.zong.desktop.io.ScoreDocIO;
 import com.xenoage.zong.desktop.io.midi.out.MidiScoreDocFileOutput;
+import com.xenoage.zong.desktop.io.musicxml.in.MusicXmlScoreDocFileInput;
 import com.xenoage.zong.desktop.io.ogg.out.OggScoreDocFileOutput;
 import com.xenoage.zong.desktop.io.pdf.out.PdfScoreDocFileOutput;
 import com.xenoage.zong.desktop.io.png.out.PngScoreDocFileOutput;
 import com.xenoage.zong.documents.ScoreDoc;
+import com.xenoage.zong.layout.Layout;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -20,30 +20,17 @@ import java.io.InputStreamReader;
  * Created by ben on 2/22/15.
  */
 class IOHandler {
-    private InputStreamReader isr = null;
+    public void load() {
+        FileChooser chooser = new FileChooser();
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
+                "MusicXML files", "mxl", "xml");
+        chooser.setSelectedExtensionFilter(filter);
+        chooser.setTitle("Select a file to load...");
 
-//    public static void load() {
-////        if (isr == null)
-////            isr = new InputStreamReader();
-//
-//        FileChooser chooser = new FileChooser();
-//        ExtensionFilter filter = new ExtensionFilter(
-//                "MusicXML files", "mxl", "xml");
-//        chooser.setSelectedExtensionFilter(filter);
-//        chooser.setTitle("Select a file to load...");
-//
-//        int returnVal = chooser.showOpenDialog(parent);
-//
-//        if(returnVal == FileChooser.APPROVE) {
-//            System.out.println("You chose to open this file: " +
-//                    chooser.getSelectedFile().getName());
-//
-////            ScoreDoc read(InputStream stream, String filePath);
+//        if(chooser.showOpenDialog(parent) == FileChooser.APPROVE) {
+//            ScoreDocIO.read(new File(chooser.getSelectedFile().getName()), new MusicXmlScoreDocFileInput());
 //        }
-//
-//
-//
-//    }
+    }
 
     /**
      * Saves the current score using the given format.
@@ -80,9 +67,7 @@ class IOHandler {
         chooser.setTitle("Select a file to load...");
 
 //        if (chooser.showOpenDialog(parent) == FileChooser.APPROVE) {
-//            System.out.println("You chose to open this file: " +
-//                    chooser.getSelectedFile().getName());
-//            String filePath = "demo." + format;
+//            String filePath = chooser.getSelectedFile().getName());
 //            try {
 //                ScoreDocIO.write(currentScoreDoc, new File(filePath), out);
 ////            mainWindow.showMessageDialog(filePath + " saved.");
@@ -90,5 +75,28 @@ class IOHandler {
 //                Err.handle(Report.error(ex));
 //            }
 //        }
+    }
+
+    public void save() {
+        FileChooser chooser = new FileChooser();
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
+                "MusicXML files", "mxl", "xml");
+        chooser.setSelectedExtensionFilter(filter);
+        chooser.setTitle("Select a file to load...");
+
+//        if (chooser.showOpenDialog(parent) == FileChooser.APPROVE) {
+//
+//            String filePath = chooser.getSelectedFile().getName());
+//            try {
+//                ScoreDocIO.write(currentScoreDoc, new File(filePath), out);
+////            mainWindow.showMessageDialog(filePath + " saved.");
+//            } catch (Exception ex) {
+//                Err.handle(Report.error(ex));
+//            }
+//        }
+    }
+
+    public void print(Layout layout) {
+//        requestPrint(layout);
     }
 }

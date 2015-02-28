@@ -48,7 +48,7 @@ import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
 public class Composition {
     //internal zong score
     private Score currentComp = null;
-    private ArrayList<NoteHandler> cursorList = null;
+    private ArrayList<Quill> cursorList = null;
 
     //for viewage
     private LayoutSettings layoutSettings = null;
@@ -60,13 +60,13 @@ public class Composition {
     private SymbolPool symbolPool = null;
 
     public Composition() {
-        cursorList = new ArrayList<NoteHandler>();
+        cursorList = new ArrayList<Quill>();
         currentComp = initializeEmptyScore();
         currentScoreDoc = initializeScoreDoc(currentComp);
     }
 
     public Composition(String fileName) {
-        cursorList = new ArrayList<NoteHandler>();
+        cursorList = new ArrayList<Quill>();
 
         try {
             currentScoreDoc = initializeScoreDocFromFile(fileName);
@@ -97,8 +97,8 @@ public class Composition {
         Part pianoPart = new Part("Piano", null, 2, alist(instr));
         new PartAdd(currentComp, pianoPart, 0, null).execute();
 
-        cursorList.add(0, new NoteHandler( new Cursor(currentComp, MP.mp0, true)));
-        cursorList.add(1, new NoteHandler(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
+        cursorList.add(0, new Quill( new Cursor(currentComp, MP.mp0, true)));
+        cursorList.add(1, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
 
         Cursor cursorStaff1 = cursorList.get(0).getCursor();
         Cursor cursorStaff2 = cursorList.get(1).getCursor();
@@ -171,7 +171,4 @@ public class Composition {
         return scoreDoc;
     }
 
-    void writeToComp() {
-        //write
-    }
 }
