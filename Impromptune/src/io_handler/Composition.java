@@ -48,7 +48,7 @@ import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
 public class Composition {
     //internal zong score
     private Score currentComp = null;
-    private ArrayList<Cursor> cursorList = null;
+    private ArrayList<NoteHandler> cursorList = null;
 
     //for viewage
     private LayoutSettings layoutSettings = null;
@@ -60,13 +60,13 @@ public class Composition {
     private SymbolPool symbolPool = null;
 
     public Composition() {
-        cursorList = new ArrayList<Cursor>();
+        cursorList = new ArrayList<NoteHandler>();
         currentComp = initializeEmptyScore();
         currentScoreDoc = initializeScoreDoc(currentComp);
     }
 
     public Composition(String fileName) {
-        cursorList = new ArrayList<Cursor>();
+        cursorList = new ArrayList<NoteHandler>();
 
         try {
             currentScoreDoc = initializeScoreDocFromFile(fileName);
@@ -97,11 +97,11 @@ public class Composition {
         Part pianoPart = new Part("Piano", null, 2, alist(instr));
         new PartAdd(currentComp, pianoPart, 0, null).execute();
 
-        cursorList.add(0, new Cursor(currentComp, MP.mp0, true));
-        cursorList.add(1, new Cursor(currentComp, mp(1, 0, 0, _0, 0), true));
+        cursorList.add(0, new NoteHandler( new Cursor(currentComp, MP.mp0, true)));
+        cursorList.add(1, new NoteHandler(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
 
-        Cursor cursorStaff1 = cursorList.get(0);
-        Cursor cursorStaff2 = cursorList.get(1);
+        Cursor cursorStaff1 = cursorList.get(0).getCursor();
+        Cursor cursorStaff2 = cursorList.get(1).getCursor();
 
         //first staff: treble clef
         cursorStaff1.write(new Clef(ClefType.clefTreble));
