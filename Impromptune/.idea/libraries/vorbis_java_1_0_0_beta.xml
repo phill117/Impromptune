@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="vorbis-java-1.0.0-beta">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/lib/lib/vorbis-java-1.0.0-beta.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/vorbis-java-1.0.0-beta.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

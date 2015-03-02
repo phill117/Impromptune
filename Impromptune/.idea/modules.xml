@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/src/Zong/core/core.iml" filepath="$PROJECT_DIR$/src/Zong/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/Zong/demos/demos.iml" filepath="$PROJECT_DIR$/src/Zong/demos/demos.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/Zong/desktop/desktop.iml" filepath="$PROJECT_DIR$/src/Zong/desktop/desktop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/src/Zong/impromptune-utils/impromptune-utils.iml" filepath="$PROJECT_DIR$/src/Zong/impromptune-utils/impromptune-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/Zong/layout/layout.iml" filepath="$PROJECT_DIR$/src/Zong/layout/layout.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/Zong/midi-out/midi-out.iml" filepath="$PROJECT_DIR$/src/Zong/midi-out/midi-out.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/Zong/musicxml/musicxml.iml" filepath="$PROJECT_DIR$/src/Zong/musicxml/musicxml.iml" />

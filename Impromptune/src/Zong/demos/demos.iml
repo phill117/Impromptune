@@ -12,7 +12,6 @@
     <orderEntry type="module" module-name="utils-jse8" />
     <orderEntry type="module" module-name="utils-kernel" />
     <orderEntry type="module" module-name="converter" />
-    <orderEntry type="module" module-name="core" />
     <orderEntry type="module" module-name="desktop" />
     <orderEntry type="module" module-name="layout" />
     <orderEntry type="module" module-name="midi-out" />
@@ -24,5 +23,6 @@
     <orderEntry type="library" name="vorbis-java-1.0.0-beta" level="project" />
     <orderEntry type="library" name="itextpdf-5.4.5" level="project" />
     <orderEntry type="library" name="lombok-1.14.8" level="project" />
+    <orderEntry type="module" module-name="core" />
   </component>
 </module>
