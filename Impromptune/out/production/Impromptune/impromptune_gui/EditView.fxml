@@ -4,7 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="869.0" prefWidth="1252.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="869.0" prefWidth="1252.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.ImpromptuneInitializer">
    <children>
       <SplitPane dividerPositions="0.6992" layoutX="242.0" layoutY="110.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -19,7 +19,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                        <children>
-                                          <ToolBar fx:id="note_bar" layoutX="2.0" layoutY="2.0" prefHeight="49.0" prefWidth="866.0">
+                                          <ToolBar fx:id="NoteSelection" layoutX="2.0" layoutY="2.0" prefHeight="49.0" prefWidth="866.0">
                                             <items>
                                                 <Button mnemonicParsing="false" text="Button" />
                                               <Button mnemonicParsing="false" text="Button" />
@@ -31,7 +31,7 @@
                                           </ToolBar>
                                        </children>
                                     </AnchorPane>
-                                  <AnchorPane fx:id="piano_case" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                                  <AnchorPane fx:id="PianoCase" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
                                 </items>
                               </SplitPane>
                            </children></AnchorPane>
@@ -43,7 +43,7 @@
                <children>
                   <SplitPane dividerPositions="0.24508670520231213" layoutX="-1.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="867.0" prefWidth="378.0">
                     <items>
-                      <AnchorPane fx:id="player_case" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                      <AnchorPane fx:id="PlayerCase" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
                     </items>
                   </SplitPane>

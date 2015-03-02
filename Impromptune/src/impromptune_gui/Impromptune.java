@@ -23,7 +23,7 @@ public class Impromptune extends Application {
         //String s =  getClass().getClassLoader().getResource("/demos/MainWindow.fxml").toString();
         Parent root = FXMLLoader.load(getClass().getResource("EditView.fxml"));
         primaryStage.setTitle("Impromptune");
-        primaryStage.setScene(new Scene(root, 500, 500));
+        primaryStage.setScene(new Scene(root, 1000, 1000));
         primaryStage.show();
     }
 

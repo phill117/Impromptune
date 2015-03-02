@@ -16,9 +16,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //String s =  getClass().getClassLoader().getResource("/demos/MainWindow.fxml").toString();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../Zong/demos/src/com/xenoage/zong/demos/simplegui/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Zong/demos/src/com/xenoage/zong/demos/simplegui/MainWindow.fxml"));
         primaryStage.setTitle("NOOO!!!!!!Hello World - No hablo espanol");
-        primaryStage.setScene(new Scene(root, 500, 500));
+        primaryStage.setScene(new Scene(root, 1000, 1000));
       //  primaryStage.setFullScreen(true); ANNOYING AS HELL!
         primaryStage.show();
     }
