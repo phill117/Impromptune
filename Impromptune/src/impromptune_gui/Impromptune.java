@@ -4,10 +4,15 @@ package impromptune_gui;
  */
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import piano.PianoHolder;
@@ -17,6 +22,7 @@ public class Impromptune extends Application {
     private Stage primaryStage;
     private BorderPane baseLayout;
     private BorderPane editView;
+    private HBox noteControls;
     private PianoHolder piano;
 
     @Override
@@ -67,7 +73,9 @@ public class Impromptune extends Application {
     }
 
     public void initPiano() {
-
+        noteControls = (HBox) editView.getBottom();
+        AnchorPane pianoContainer = (AnchorPane) noteControls.getChildren().get(1);
+        // Eventually add piano to children of pianoContainer
     }
 
     public static void main(String[] args) {
