@@ -87,12 +87,20 @@ public class Content
 
 
     public void refresh(){
-
-
         mainWindow.renderLayout( comp.getLayout());
-
     }
 
+    public void undo(){
+        comp.removeLast();
+        layout = comp.getLayout();
+        layout.updateScoreLayouts(comp.getCurrentScore());
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+        Playback.openScore(comp.getCurrentScore());
+
+    }
 
     //Called by eventhandler
     public void addNote(String note)

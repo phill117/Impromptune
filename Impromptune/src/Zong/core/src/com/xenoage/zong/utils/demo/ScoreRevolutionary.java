@@ -61,7 +61,6 @@ public class ScoreRevolutionary {
 	public static Score createScore() {
 		Score score = new Score();
 
-
         score.info.setWorkTitle("A REVOLUTION IN ZONG!");  //this is not working
         score.info.setMovementTitle("BY SCRUMPHD"); //this is not working
 

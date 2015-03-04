@@ -93,6 +93,10 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onZOUT(ActionEvent event) {
-        mainWindow.setZoom(mainWindow.getZoom()+.25f);
+        mainWindow.setZoom(mainWindow.getZoom() + .25f);
+    }
+
+    @FXML void onREM(ActionEvent event) {
+        mainWindow.getContent().undo();
     }
 }

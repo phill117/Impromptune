@@ -134,6 +134,18 @@ public class Composition {
         cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
     }
 
+
+    //how do we remove a note???
+    public void removeLast() {
+
+    if(currentComp.getCommandPerformer().isUndoPossible())
+        System.out.print(("YES"));
+    //    cursorList.remove(currentIndex);
+    }
+
+
+
+
     Score initializeEmptyScore() {
         Score currentComp = new Score();
 
@@ -143,14 +155,14 @@ public class Composition {
         StaffLayout staffLayout = new StaffLayout(is * 9); // Was 9, changes distance between staves
         currentComp.getFormat().setStaffLayoutOther(staffLayout);
 
-        Part pianoPart = new Part("Piano", null, 2, alist(instr));
+        Part pianoPart = new Part("Piano", null, 1, alist(instr));
         new PartAdd(currentComp, pianoPart, 0, null).execute();
 
         cursorList.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true)));
-        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
+        //cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
 
         Cursor cursorStaff1 = cursorList.get(0).getCursor();
-        Cursor cursorStaff2 = cursorList.get(1).getCursor();
+     //   Cursor cursorStaff2 = cursorList.get(1).getCursor();
 
         //first staff: treble clef
         cursorStaff1.write(new Clef(ClefType.clefTreble));
@@ -160,7 +172,7 @@ public class Composition {
 //        cursorStaff1.write(new Time(TimeType.timeCommon));
 
         //second staff: bass clef
-        cursorStaff2.write(new Clef(ClefType.clefBass));
+     //   cursorStaff2.write(new Clef(ClefType.clefBass));
 
 //        //C major default, C (4/4) time
 //        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
