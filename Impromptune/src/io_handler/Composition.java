@@ -131,16 +131,16 @@ public class Composition {
         //first staff: treble clef
         cursorStaff1.write(new Clef(ClefType.clefTreble));
 
-        //C major default, C (4/4) time
-        cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-        cursorStaff1.write(new Time(TimeType.timeCommon));
+//        //C major default, C (4/4) time
+//        cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
+//        cursorStaff1.write(new Time(TimeType.timeCommon));
 
         //second staff: bass clef
         cursorStaff2.write(new Clef(ClefType.clefBass));
 
-        //C major default, C (4/4) time
-        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-        cursorStaff2.write(new Time(TimeType.timeCommon));
+//        //C major default, C (4/4) time
+//        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
+//        cursorStaff2.write(new Time(TimeType.timeCommon));
 
         return currentComp;
     }
