@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Renderer.MainWindow">
-    <top>
-        <MenuBar BorderPane.alignment="CENTER">
-            <menus>
-                <Menu mnemonicParsing="false" text="ADD NOTE!">
-                    <items>
-                        <MenuItem fx:id="onAddNote" mnemonicParsing="false" onAction="#onAddNote" text="ADD NOTE" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-    </top>
-
-
    <center>
-      <ScrollPane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <content>
             <AnchorPane>
                <children>
-                  <ImageView fx:id="scoreView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                  <ImageView fx:id="scoreView" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
                </children>
             </AnchorPane>
          </content>

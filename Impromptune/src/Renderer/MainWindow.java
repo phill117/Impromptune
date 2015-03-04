@@ -33,6 +33,18 @@ public class MainWindow {
 
     public Content getContent() { return content;}
 
+    private float zoomFactor = 1.25f;
+
+    public void setZoom(float z)
+    {
+        zoomFactor = z;
+        content.refresh();
+    }
+
+    public float getZoom()
+    {
+        return zoomFactor;
+    }
 
 	@FXML public void initialize() {
 
@@ -51,7 +63,7 @@ public class MainWindow {
 	public void renderLayout(Layout layout) {
 		//run in JavaFX application thread
 		Platform.runLater(() -> {
-			scoreImage = JfxLayoutRenderer.paintToImage(layout, 0, 2f);
+			scoreImage = JfxLayoutRenderer.paintToImage(layout, 0, zoomFactor);
 			scoreView.setImage(scoreImage);
 			scoreView.setFitWidth(scoreImage.getWidth());
 			scoreView.setFitHeight(scoreImage.getHeight());

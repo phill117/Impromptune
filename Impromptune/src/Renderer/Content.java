@@ -57,6 +57,7 @@ public class Content
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
         comp = new Composition(); // create blank
+        scoreDoc = comp.getCurrentScoreDoc();
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
 
@@ -82,6 +83,14 @@ public class Content
 
         //load score into MIDI playback
         Playback.openScore(comp.getCurrentScore());
+    }
+
+
+    public void refresh(){
+
+
+        mainWindow.renderLayout( comp.getLayout());
+
     }
 
 

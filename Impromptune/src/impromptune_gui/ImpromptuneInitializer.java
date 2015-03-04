@@ -34,7 +34,7 @@ public class ImpromptuneInitializer implements Initializable{
     static PlayerFrame frame = null;
 
     FXMLLoader fxmlLoader;
-
+    MainWindow mainWindow;
     public static final String appName = "Impromptune";
 
 
@@ -69,7 +69,7 @@ public class ImpromptuneInitializer implements Initializable{
             MainWindow mw = (MainWindow) fxmlLoader.getController();
 
             ph.mw = mw; //Set the current piano window to current renderer window
-
+            mainWindow = mw;
             Menubar = (((MenuBar)((BorderPane)FXMLLoader.load(getClass().getResource("MenuBarBaseLayout.fxml"))).getCenter()));
 
         }catch (Exception e){
@@ -86,5 +86,13 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onExit(ActionEvent event) {
         System.exit(1);
+    }
+
+    @FXML void onZIN(ActionEvent event) {
+        mainWindow.setZoom(mainWindow.getZoom()-.25f);
+    }
+
+    @FXML void onZOUT(ActionEvent event) {
+        mainWindow.setZoom(mainWindow.getZoom()+.25f);
     }
 }
