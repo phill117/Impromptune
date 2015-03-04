@@ -71,10 +71,7 @@ public class Composition {
 
     public Composition(String fileName) {
         cursorList = new ArrayList<Quill>();
-
-        try {
             currentScoreDoc = initializeScoreDocFromFile(fileName);
-        } catch(IOException e) { e.printStackTrace(); }
     }
 
     public ScoreDoc getCurrentScoreDoc() {
@@ -88,8 +85,7 @@ public class Composition {
     }
 
     //Not sure what this does but we need it -- Jacob
-    void setLayoutFormat(Score score)
-    {
+    void setLayoutFormat(Score score) {
         LayoutFormat layoutFormat = new LayoutFormatReader(
                 null, score.format.getInterlineSpace() / 10).read();
 
@@ -146,9 +142,14 @@ public class Composition {
         return currentComp;
     }
 
-    ScoreDoc initializeScoreDocFromFile(String filePath)
-            throws IOException {
-        return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput()); //lol should revisit
+    ScoreDoc initializeScoreDocFromFile(String filePath) {
+        try {
+            return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput()); //lol should revisit
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     ScoreDoc initializeScoreDoc(Score score) {
