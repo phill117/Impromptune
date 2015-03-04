@@ -9,6 +9,7 @@ import com.xenoage.zong.desktop.io.musicxml.in.MusicXmlScoreDocFileInput;
 import com.xenoage.zong.desktop.io.ogg.out.OggScoreDocFileOutput;
 import com.xenoage.zong.desktop.io.pdf.out.PdfScoreDocFileOutput;
 import com.xenoage.zong.desktop.io.png.out.PngScoreDocFileOutput;
+import com.xenoage.zong.desktop.io.print.PrintProcess;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.layout.Layout;
 import javafx.stage.FileChooser;
@@ -98,6 +99,7 @@ class IOHandler {
     }
 
     public void print(Layout layout) {
-//        requestPrint(layout);
+        PrintProcess proc = new PrintProcess();
+        proc.requestPrint(layout);
     }
 }
