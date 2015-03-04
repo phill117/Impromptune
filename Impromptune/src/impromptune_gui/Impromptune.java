@@ -22,7 +22,7 @@ public class Impromptune extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("EditView.fxml"));
         primaryStage.setTitle("Impromptune");
-        primaryStage.setScene(new Scene(root, 1000, 1000));
+        primaryStage.setScene(new Scene(root));
         primaryStage.setOnCloseRequest(e -> System.exit(0)); // Exits program when X is closed (Jacob) make this a function to stopplayback
         primaryStage.show();
     }

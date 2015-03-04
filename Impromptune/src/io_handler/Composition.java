@@ -140,7 +140,7 @@ public class Composition {
         Instrument instr = Instrument.defaultInstrument;
 
         float is = currentComp.getFormat().getInterlineSpace();
-        StaffLayout staffLayout = new StaffLayout(is * 4); // Was 9, changes distance between staves
+        StaffLayout staffLayout = new StaffLayout(is * 9); // Was 9, changes distance between staves
         currentComp.getFormat().setStaffLayoutOther(staffLayout);
 
         Part pianoPart = new Part("Piano", null, 2, alist(instr));
@@ -165,7 +165,7 @@ public class Composition {
 //        //C major default, C (4/4) time
 //        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
 //        cursorStaff2.write(new Time(TimeType.timeCommon));
-        addNewPart("Sax", 1, currentComp);
+      //  addNewPart("Sax", 1, currentComp);
         //end line
 
         return currentComp;

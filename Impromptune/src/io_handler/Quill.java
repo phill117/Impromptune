@@ -85,6 +85,11 @@ public class Quill {
 
         Fraction fr = null;
 
+
+        int o = (int) r - '0'; //octave this is still off from jfugue
+
+
+
         switch (d) {
             case 'w':
                 fr = fr(1, 1);
@@ -114,13 +119,13 @@ public class Quill {
 
         switch(a) {
             case 's'://sharp           //accents go in array as second arg to chord
-                cursor.write(chord(fr, pi(p - 65, 1, 1)));//last arg is octave
+                cursor.write(chord(fr, pi(p - 65, 1, o)));//last arg is octave
                 break;
             case 'f'://flat
-                cursor.write(chord(fr, pi(p - 65, -1, 1)));
+                cursor.write(chord(fr, pi(p - 65, -1, o)));
                 break;
             case 'n': //natural
-                cursor.write(chord(fr, pi(p - 65, 0, 1)));
+                cursor.write(chord(fr, pi(p - 65, 0, o)));
                 break;
             default:
                 System.err.println("Invalid alteration");

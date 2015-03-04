@@ -68,14 +68,14 @@ public class ImpromptuneInitializer implements Initializable{
 
             MainWindow mw = (MainWindow) fxmlLoader.getController();
 
-            ph.mw = mw;
+            ph.mw = mw; //Set the current piano window to current renderer window
 
             Menubar = (((MenuBar)((BorderPane)FXMLLoader.load(getClass().getResource("MenuBarBaseLayout.fxml"))).getCenter()));
 
         }catch (Exception e){
             System.out.println("WAHT HAPPENED");
             e.printStackTrace();
-           System.exit(1);
+            System.exit(1);
         }
 
     }
