@@ -19,6 +19,7 @@ import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.time.TimeType;
+
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.desktop.io.ScoreDocIO;
 
@@ -71,6 +72,10 @@ public class Composition {
         try {
             currentScoreDoc = initializeScoreDocFromFile(fileName);
         } catch(IOException e) { e.printStackTrace(); }
+    }
+
+    ScoreDoc getCurrentScore() {
+        return currentScoreDoc;
     }
 
     void loadLayout(LayoutFormat layoutFormat) {
@@ -170,5 +175,4 @@ public class Composition {
 
         return scoreDoc;
     }
-
 }

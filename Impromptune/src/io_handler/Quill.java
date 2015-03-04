@@ -12,11 +12,15 @@ import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.io.selection.Cursor;
+import com.xenoage.zong.musiclayout.notations.TimeNotation;
+import com.xenoage.zong.core.music.time.Time;
+import com.xenoage.zong.core.music.time.TimeType;
+
 import org.jfugue.*;
 import org.jfugue.Note;
 
 import java.util.ArrayList;
-
+import java.lang.Integer;
 import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.math.Fraction.fr;
 import static com.xenoage.zong.core.music.Pitch.G;
@@ -58,8 +62,27 @@ public class Quill {
 //        cursor.write(tempo);
     }
 
-    void writeTime () {
-
+    void writeTime (String option) { //option selected
+        switch(option) {
+            case "2/2":
+                cursor.write(new Time(TimeType.time_2_2));
+                break;
+            case "3/4":
+                cursor.write(new Time(TimeType.time_3_4));
+                break;
+            case "4/4":
+                cursor.write(new Time(TimeType.time_4_4));
+                break;
+            case "6/8":
+                cursor.write(new Time(TimeType.time_6_8));
+                break;
+            default: //custom
+                String values[] = option.split("/");
+                int num = Integer.parseInt(values[0]);
+                int den = Integer.parseInt(values[1]);
+//                cursor.write(new Time(TimeType(num, den)));
+                break;
+        }
     }
 
     void writeNote(Note note) {

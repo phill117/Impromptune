@@ -65,12 +65,13 @@ class IOHandler {
                 "MusicXML files", "mxl", "xml");
         chooser.setSelectedExtensionFilter(filter);
         chooser.setTitle("Select a file to load...");
+//        File f = chooser.showOpenDialog(parent);
 
-//        if (chooser.showOpenDialog(parent) == FileChooser.APPROVE) {
-//            String filePath = chooser.getSelectedFile().getName());
+//        if (f != null) {
+//            String filePath = f.toURI().toURL().toString();
 //            try {
 //                ScoreDocIO.write(currentScoreDoc, new File(filePath), out);
-////            mainWindow.showMessageDialog(filePath + " saved.");
+//                Impromptune.PrimaryStage.showMessageDialog(filePath + " saved.");
 //            } catch (Exception ex) {
 //                Err.handle(Report.error(ex));
 //            }
