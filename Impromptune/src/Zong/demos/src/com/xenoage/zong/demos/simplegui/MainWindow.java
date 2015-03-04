@@ -85,7 +85,7 @@ public class MainWindow {
 	public void renderLayout(Layout layout) {
 		//run in JavaFX application thread
 		Platform.runLater(() -> {
-			
+            System.out.println("RENDERING");
 			//if (useJavaFX) {
 				//JavaFX renderer
 				scoreImage = JfxLayoutRenderer.paintToImage(layout, 0, 2f);

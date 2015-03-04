@@ -26,5 +26,6 @@
     <orderEntry type="module" module-name="core" />
     <orderEntry type="module" module-name="converter" />
     <orderEntry type="module" module-name="layout" />
+    <orderEntry type="module" module-name="demos" />
   </component>
 </module>
