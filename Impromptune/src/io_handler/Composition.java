@@ -71,10 +71,7 @@ public class Composition {
 
     public Composition(String fileName) {
         cursorList = new ArrayList<Quill>();
-
-        try {
             currentScoreDoc = initializeScoreDocFromFile(fileName);
-        } catch(IOException e) { e.printStackTrace(); }
     }
 
     public ScoreDoc getCurrentScoreDoc() {
@@ -88,8 +85,7 @@ public class Composition {
     }
 
     //Not sure what this does but we need it -- Jacob
-    void setLayoutFormat(Score score)
-    {
+    void setLayoutFormat(Score score) {
         LayoutFormat layoutFormat = new LayoutFormatReader(
                 null, score.format.getInterlineSpace() / 10).read();
 
@@ -117,7 +113,7 @@ public class Composition {
         Instrument instr = Instrument.defaultInstrument;
 
         float is = currentComp.getFormat().getInterlineSpace();
-        StaffLayout staffLayout = new StaffLayout(is * 9);
+        StaffLayout staffLayout = new StaffLayout(is * 4); // Was 9, changes distance between staves
         currentComp.getFormat().setStaffLayoutOther(staffLayout);
 
         Part pianoPart = new Part("Piano", null, 2, alist(instr));
@@ -132,23 +128,28 @@ public class Composition {
         //first staff: treble clef
         cursorStaff1.write(new Clef(ClefType.clefTreble));
 
-        //C major default, C (4/4) time
-        cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-        cursorStaff1.write(new Time(TimeType.timeCommon));
+//        //C major default, C (4/4) time
+//        cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
+//        cursorStaff1.write(new Time(TimeType.timeCommon));
 
         //second staff: bass clef
         cursorStaff2.write(new Clef(ClefType.clefBass));
 
-        //C major default, C (4/4) time
-        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-        cursorStaff2.write(new Time(TimeType.timeCommon));
+//        //C major default, C (4/4) time
+//        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
+//        cursorStaff2.write(new Time(TimeType.timeCommon));
 
         return currentComp;
     }
 
-    ScoreDoc initializeScoreDocFromFile(String filePath)
-            throws IOException {
-        return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput()); //lol should revisit
+    ScoreDoc initializeScoreDocFromFile(String filePath) {
+        try {
+            return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput()); //lol should revisit
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     ScoreDoc initializeScoreDoc(Score score) {
@@ -168,7 +169,7 @@ public class Composition {
         Layout layout = scoreDoc.getLayout();
 
         //layout basics
-        PageFormat pageFormat = layoutFormat.getPageFormat(0);
+        PageFormat pageFormat = layoutFormat.getPageFormat(0);  //Change page format default values for width of bar??
         Size2f frameSize = new Size2f(pageFormat.getUseableWidth(), pageFormat.getUseableHeight());
         Point2f framePos = new Point2f(pageFormat.getMargins().getLeft() + frameSize.width / 2,
                 pageFormat.getMargins().getTop() + frameSize.height / 2);

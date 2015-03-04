@@ -17,6 +17,7 @@ import lombok.Data;
 	private final PageMargins margins;
 
 	/** Default page format, DIN A4, default {@link PageMargins}. */
+    //210,297
 	public static final PageFormat defaultValue = new PageFormat(new Size2f(210, 297), PageMargins.defaultValue);
 
 
