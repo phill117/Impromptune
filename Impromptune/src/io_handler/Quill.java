@@ -12,11 +12,15 @@ import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.io.selection.Cursor;
+import com.xenoage.zong.musiclayout.notations.TimeNotation;
+import com.xenoage.zong.core.music.time.Time;
+import com.xenoage.zong.core.music.time.TimeType;
+
 import org.jfugue.*;
 import org.jfugue.Note;
 
 import java.util.ArrayList;
-
+import java.lang.Integer;
 import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.math.Fraction.fr;
 import static com.xenoage.zong.core.music.Pitch.G;
@@ -34,14 +38,6 @@ public class Quill {
     private boolean openBeam = false;
     private Cursor cursor = null;
 
-    private Fraction f1 = fr(1, 1);
-    private Fraction f2 = fr(1, 2);
-    private Fraction f4 = fr(1, 4);
-    private Fraction f8 = fr(1, 8);
-    private Fraction f16 = fr(1, 16);
-    private Fraction f32 = fr(1, 32);
-    private Fraction f64 = fr(1, 64);
-
     Cursor getCursor() {
         return this.cursor;
     }
@@ -58,40 +54,58 @@ public class Quill {
 //        cursor.write(tempo);
     }
 
-    void writeTime () {
-
+    void writeTime (String option) { //option selected
+        switch(option) {
+            case "2/2":
+                cursor.write(new Time(TimeType.time_2_2));
+                break;
+            case "3/4":
+                cursor.write(new Time(TimeType.time_3_4));
+                break;
+            case "4/4":
+                cursor.write(new Time(TimeType.time_4_4));
+                break;
+            case "6/8":
+                cursor.write(new Time(TimeType.time_6_8));
+                break;
+            default: //custom
+                String values[] = option.split("/");
+                int num = Integer.parseInt(values[0]);
+                int den = Integer.parseInt(values[1]);
+//                cursor.write(new Time(TimeType(num, den)));
+                break;
+        }
     }
 
-    void writeNote(Note note) {
-        String mus = note.getMusicString();
-
-        char p = mus.charAt(0); //pitch
-        char a = mus.charAt(1); //alteration
-        char d = mus.charAt(2); //duration
+    void writeNote(String note) {
+        char p = note.charAt(0); //pitch
+        char a = note.charAt(1); //alteration
+        char r = note.charAt(2); //register
+        char d = note.charAt(3); //duration
 
         Fraction fr = null;
 
         switch (d) {
             case 'w':
-                fr = f1;
+                fr = fr(1, 1);
                 break;
             case 'h':
-                fr = f2;
+                fr = fr(1, 2);
                 break;
             case 'q':
-                fr = f4;
+                fr = fr(1, 4);
                 break;
             case 'i':
-                fr = f8;
+                fr = fr(1, 8);
                 break;
             case 's':
-                fr = f16;
+                fr = fr(1, 16);
                 break;
             case 't':
-                fr = f32;
+                fr = fr(1, 32);
                 break;
             case 'x':
-                fr = f64;
+                fr = fr(1, 64);
                 break;
             default:
                 System.err.println("Invalid duration");
@@ -172,12 +186,14 @@ public class Quill {
 
     private static Chord chord(Fraction fraction, ArticulationType[] articulations, Pitch... pitches) {
         Chord chord = new Chord(com.xenoage.zong.core.music.chord.Note.notes(pitches), fraction);
+
         if (articulations != null) {
             ArrayList<Annotation> a = alist(articulations.length);
             for (ArticulationType at : articulations)
                 a.add(new Articulation(at));
             chord.setAnnotations(a);
         }
+
         return chord;
     }
 }

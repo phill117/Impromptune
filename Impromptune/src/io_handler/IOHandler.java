@@ -9,6 +9,7 @@ import com.xenoage.zong.desktop.io.musicxml.in.MusicXmlScoreDocFileInput;
 import com.xenoage.zong.desktop.io.ogg.out.OggScoreDocFileOutput;
 import com.xenoage.zong.desktop.io.pdf.out.PdfScoreDocFileOutput;
 import com.xenoage.zong.desktop.io.png.out.PngScoreDocFileOutput;
+import com.xenoage.zong.desktop.io.print.PrintProcess;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.layout.Layout;
 import javafx.stage.FileChooser;
@@ -65,12 +66,13 @@ class IOHandler {
                 "MusicXML files", "mxl", "xml");
         chooser.setSelectedExtensionFilter(filter);
         chooser.setTitle("Select a file to load...");
+//        File f = chooser.showOpenDialog(parent);
 
-//        if (chooser.showOpenDialog(parent) == FileChooser.APPROVE) {
-//            String filePath = chooser.getSelectedFile().getName());
+//        if (f != null) {
+//            String filePath = f.toURI().toURL().toString();
 //            try {
 //                ScoreDocIO.write(currentScoreDoc, new File(filePath), out);
-////            mainWindow.showMessageDialog(filePath + " saved.");
+//                Impromptune.PrimaryStage.showMessageDialog(filePath + " saved.");
 //            } catch (Exception ex) {
 //                Err.handle(Report.error(ex));
 //            }
@@ -97,6 +99,7 @@ class IOHandler {
     }
 
     public void print(Layout layout) {
-//        requestPrint(layout);
+        PrintProcess proc = new PrintProcess();
+        proc.requestPrint(layout);
     }
 }
