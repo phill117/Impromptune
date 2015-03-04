@@ -38,14 +38,6 @@ public class Quill {
     private boolean openBeam = false;
     private Cursor cursor = null;
 
-    private Fraction f1 = fr(1, 1);
-    private Fraction f2 = fr(1, 2);
-    private Fraction f4 = fr(1, 4);
-    private Fraction f8 = fr(1, 8);
-    private Fraction f16 = fr(1, 16);
-    private Fraction f32 = fr(1, 32);
-    private Fraction f64 = fr(1, 64);
-
     Cursor getCursor() {
         return this.cursor;
     }
@@ -85,36 +77,35 @@ public class Quill {
         }
     }
 
-    void writeNote(Note note) {
-        String mus = note.getMusicString();
-
-        char p = mus.charAt(0); //pitch
-        char a = mus.charAt(1); //alteration
-        char d = mus.charAt(2); //duration
+    void writeNote(String note) {
+        char p = note.charAt(0); //pitch
+        char a = note.charAt(1); //alteration
+        char r = note.charAt(2); //register
+        char d = note.charAt(3); //duration
 
         Fraction fr = null;
 
         switch (d) {
             case 'w':
-                fr = f1;
+                fr = fr(1, 1);
                 break;
             case 'h':
-                fr = f2;
+                fr = fr(1, 2);
                 break;
             case 'q':
-                fr = f4;
+                fr = fr(1, 4);
                 break;
             case 'i':
-                fr = f8;
+                fr = fr(1, 8);
                 break;
             case 's':
-                fr = f16;
+                fr = fr(1, 16);
                 break;
             case 't':
-                fr = f32;
+                fr = fr(1, 32);
                 break;
             case 'x':
-                fr = f64;
+                fr = fr(1, 64);
                 break;
             default:
                 System.err.println("Invalid duration");
@@ -195,12 +186,14 @@ public class Quill {
 
     private static Chord chord(Fraction fraction, ArticulationType[] articulations, Pitch... pitches) {
         Chord chord = new Chord(com.xenoage.zong.core.music.chord.Note.notes(pitches), fraction);
+
         if (articulations != null) {
             ArrayList<Annotation> a = alist(articulations.length);
             for (ArticulationType at : articulations)
                 a.add(new Articulation(at));
             chord.setAnnotations(a);
         }
+
         return chord;
     }
 }
