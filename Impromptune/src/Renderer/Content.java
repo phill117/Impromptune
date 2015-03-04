@@ -1,6 +1,5 @@
 package Renderer;
 
-import com.xenoage.utils.document.io.FileOutput;
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.exceptions.InvalidFormatException;
 import com.xenoage.utils.log.Report;
@@ -13,11 +12,7 @@ import com.xenoage.zong.core.position.MP;
 import Renderer.MainWindow;
 import Renderer.Playback;
 import com.xenoage.zong.desktop.io.ScoreDocIO;
-import com.xenoage.zong.desktop.io.midi.out.MidiScoreDocFileOutput;
 import com.xenoage.zong.desktop.io.musicxml.in.MusicXmlScoreDocFileInput;
-import com.xenoage.zong.desktop.io.ogg.out.OggScoreDocFileOutput;
-import com.xenoage.zong.desktop.io.pdf.out.PdfScoreDocFileOutput;
-import com.xenoage.zong.desktop.io.png.out.PngScoreDocFileOutput;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.io.midi.out.PlaybackListener;
 import com.xenoage.zong.io.musiclayout.LayoutSettingsReader;
@@ -33,6 +28,7 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.utils.demo.ScoreRevolutionary;
+import io_handler.Composition;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +51,8 @@ public class Content
 	private Layout layout = null;
 	private PlaybackLayouter playbackLayouter = null;
 
+    private Composition comp = null;
+
 
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
@@ -70,7 +68,33 @@ public class Content
 		loadScore("scores/" + files[scoreIndex].getName());
 		scoreIndex = (scoreIndex + 1) % files.length;
 	}
-	
+
+
+
+
+    public void loadBlank()
+    {
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * Loads the MusicXML score from the given file path.
 	 */

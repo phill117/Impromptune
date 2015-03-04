@@ -36,8 +36,10 @@ public class MainWindow {
 	private WritableImage scoreImage = null;
 
 	@FXML public void initialize() {
-		//load the first demo score
+
 		content.loadNextScore();
+        //Load blank composition
+       // content.loadBlank();
 	}
 
 	public void renderLayout(Layout layout) {
