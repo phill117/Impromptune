@@ -56,6 +56,7 @@ public class Content
 
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
+        comp = new Composition(); // create blank
 		//listen for playback events (see method playbackAtMP)
 		Playback.registerListener(this);	
 	}
@@ -74,25 +75,20 @@ public class Content
 
     public void loadBlank()
     {
+        layout = comp.getCurrentScoreDoc().getLayout();
 
+        layout.updateScoreLayouts(comp.getCurrentScore());
 
+       playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+      //  Playback.openScore(comp.getCurrentScore());
 
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	/**
@@ -143,24 +139,6 @@ public class Content
             //load score into MIDI playback
             Playback.openScore(test2.getScore());
 
-
-
-
-            //END JACOB
-
-/*
-			//load the score
-		/	scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
-			//layout the first page
-			layout = scoreDoc.getLayout();
-			Score score = scoreDoc.getScore();
-			layout.updateScoreLayouts(score);
-			//create playback layouter for the playback cursor
-			playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
-			//set image to view
-			mainWindow.renderLayout(layout);
-			//load score into MIDI playback
-			Playback.openScore(scoreDoc.getScore());*/
 		}
 		catch (Exception ex) {
 			Err.handle(Report.error(ex));

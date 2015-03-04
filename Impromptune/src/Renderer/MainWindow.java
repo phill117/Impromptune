@@ -37,9 +37,9 @@ public class MainWindow {
 
 	@FXML public void initialize() {
 
-		content.loadNextScore();
+	//	content.loadNextScore();
         //Load blank composition
-       // content.loadBlank();
+        content.loadBlank();
 	}
 
 	public void renderLayout(Layout layout) {

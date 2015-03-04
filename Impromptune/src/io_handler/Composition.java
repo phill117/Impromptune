@@ -26,6 +26,7 @@ import com.xenoage.zong.desktop.io.ScoreDocIO;
 import com.xenoage.zong.desktop.io.musicxml.in.MusicXmlScoreDocFileInput;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.io.musiclayout.LayoutSettingsReader;
+import com.xenoage.zong.io.musicxml.in.readers.LayoutFormatReader;
 import com.xenoage.zong.io.selection.Cursor;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.layout.LayoutDefaults;
@@ -63,6 +64,7 @@ public class Composition {
     public Composition() {
         cursorList = new ArrayList<Quill>();
         currentComp = initializeEmptyScore();
+        setLayoutFormat(currentComp);
         currentScoreDoc = initializeScoreDoc(currentComp);
     }
 
@@ -74,19 +76,37 @@ public class Composition {
         } catch(IOException e) { e.printStackTrace(); }
     }
 
-    ScoreDoc getCurrentScore() {
+    public ScoreDoc getCurrentScoreDoc() {
         return currentScoreDoc;
     }
+    public Score getCurrentScore() {
+        return currentComp;
+    }
+    public Layout getLayout() {
+        return layout;
+    }
+
+    //Not sure what this does but we need it -- Jacob
+    void setLayoutFormat(Score score)
+    {
+        LayoutFormat layoutFormat = new LayoutFormatReader(
+                null, score.format.getInterlineSpace() / 10).read();
+
+       score.setMetaData("layoutformat", layoutFormat); //TIDY
+    }
+
 
     void loadLayout(LayoutFormat layoutFormat) {
         try {
             layoutSettings = LayoutSettingsReader.read(jsePlatformUtils().openFile(
                     "data/layout/default.xml"));
 
-            //create layout defaults
-            layoutDefaults = new LayoutDefaults(layoutFormat, symbolPool, layoutSettings);
             //use default symbol pool
             symbolPool = zongPlatformUtils().getSymbolPool();
+
+            //create layout defaults
+            layoutDefaults = new LayoutDefaults(layoutFormat, symbolPool, layoutSettings);
+
         } catch( IOException e) { e.printStackTrace(); }
     }
 
