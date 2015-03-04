@@ -131,7 +131,7 @@ public class Composition {
         Instrument instr = Instrument.defaultInstrument;
         Part part = new Part(instrName, null, staffSpan, alist(instr));
         new PartAdd(comp, part, 0, null).execute();
-        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
+        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
     }
 
     Score initializeEmptyScore() {
@@ -146,8 +146,8 @@ public class Composition {
         Part pianoPart = new Part("Piano", null, 2, alist(instr));
         new PartAdd(currentComp, pianoPart, 0, null).execute();
 
-        cursorList.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
-        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), "Piano"));
+        cursorList.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true)));
+        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
 
         Cursor cursorStaff1 = cursorList.get(0).getCursor();
         Cursor cursorStaff2 = cursorList.get(1).getCursor();
