@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Size2f;
+import com.xenoage.zong.commands.core.music.ColumnElementWrite;
 import com.xenoage.zong.commands.core.music.PartAdd;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.format.LayoutFormat;
@@ -13,7 +14,10 @@ import com.xenoage.zong.core.format.PageFormat;
 import com.xenoage.zong.core.format.StaffLayout;
 import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.music.ColumnElement;
+import com.xenoage.zong.core.music.MeasureSide;
 import com.xenoage.zong.core.music.Part;
+import com.xenoage.zong.core.music.barline.Barline;
+import com.xenoage.zong.core.music.barline.BarlineStyle;
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.TraditionalKey;
@@ -61,6 +65,7 @@ public class Composition {
     private LayoutDefaults layoutDefaults = null;
     private SymbolPool symbolPool = null;
     private int currentIndex = 0;
+    private int parts = 0;
 
     public Composition() {
         cursorList = new ArrayList<Quill>();
@@ -78,6 +83,8 @@ public class Composition {
 
     public void addNote(String str) {
         cursorList.get(currentIndex).writeNote(str);
+//        Barline barlineEnd = Barline.barline(BarlineStyle.LightHeavy);
+//        new ColumnElementWrite(barlineEnd, currentComp.getColumnHeader(0), null, MeasureSide.Right).execute();
     }
 
     public Quill getCurrentPart() {
@@ -120,10 +127,11 @@ public class Composition {
     }
 
 
-    void addNewPart(String instrName, Score comp) {
+    void addNewPart(String instrName, int staffSpan, Score comp) {
         Instrument instr = Instrument.defaultInstrument;
-        Part part = new Part(instrName, null, 2, alist(instr));
+        Part part = new Part(instrName, null, staffSpan, alist(instr));
         new PartAdd(comp, part, 0, null).execute();
+        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
     }
 
     Score initializeEmptyScore() {
@@ -138,8 +146,8 @@ public class Composition {
         Part pianoPart = new Part("Piano", null, 2, alist(instr));
         new PartAdd(currentComp, pianoPart, 0, null).execute();
 
-        cursorList.add(0, new Quill( new Cursor(currentComp, MP.mp0, true)));
-        cursorList.add(1, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
+        cursorList.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
+        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), "Piano"));
 
         Cursor cursorStaff1 = cursorList.get(0).getCursor();
         Cursor cursorStaff2 = cursorList.get(1).getCursor();
@@ -157,6 +165,8 @@ public class Composition {
 //        //C major default, C (4/4) time
 //        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
 //        cursorStaff2.write(new Time(TimeType.timeCommon));
+        addNewPart("Sax", 1, currentComp);
+        //end line
 
         return currentComp;
     }
