@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="controlsfx-8.20.7">
+  <library name="lombok-1.14.81">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/controlsfx-8.20.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/lib/lib/dev/lombok-1.14.8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
