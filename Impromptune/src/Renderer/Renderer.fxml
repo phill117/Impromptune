@@ -4,6 +4,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Renderer.MainWindow">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="ADD NOTE!">
+                    <items>
+                        <MenuItem fx:id="onAddNote" mnemonicParsing="false" onAction="#onAddNote" text="ADD NOTE" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+
    <center>
       <ScrollPane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <content>

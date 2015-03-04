@@ -44,6 +44,11 @@ public class MainWindow {
         content.loadBlank();
 	}
 
+
+    @FXML void onAddNote(ActionEvent event) {
+        content.addNote();
+    }
+
 	public void renderLayout(Layout layout) {
 		//run in JavaFX application thread
 		Platform.runLater(() -> {

@@ -85,6 +85,26 @@ public class Content
     }
 
 
+    //Called by eventhandler
+    public void addNote()
+    {
+       // comp.
+        comp.addNote("Af3h");
+        layout = comp.getLayout();
+        layout.updateScoreLayouts(comp.getCurrentScore());
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+        Playback.openScore(comp.getCurrentScore());
+    }
+
+
+
+
+
+
+
     public void loadScore() {
         try {
             //stop current playback

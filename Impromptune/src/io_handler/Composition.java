@@ -60,6 +60,7 @@ public class Composition {
     private PlaybackLayouter playbackLayouter = null;
     private LayoutDefaults layoutDefaults = null;
     private SymbolPool symbolPool = null;
+    private int currentIndex = 0;
 
     public Composition() {
         cursorList = new ArrayList<Quill>();
@@ -67,19 +68,30 @@ public class Composition {
         setLayoutFormat(currentComp);
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
+        currentIndex = 0;
     }
 
     public Composition(String fileName) {
         cursorList = new ArrayList<Quill>();
-            currentScoreDoc = initializeScoreDocFromFile(fileName);
+        currentScoreDoc = initializeScoreDocFromFile(fileName);
+    }
+
+    public void addNote(String str) {
+        cursorList.get(currentIndex).writeNote(str);
+    }
+
+    public Quill getCurrentPart() {
+        return cursorList.get(currentIndex);
     }
 
     public ScoreDoc getCurrentScoreDoc() {
         return currentScoreDoc;
     }
+
     public Score getCurrentScore() {
         return currentComp;
     }
+
     public Layout getLayout() {
         return layout;
     }
@@ -105,6 +117,13 @@ public class Composition {
             layoutDefaults = new LayoutDefaults(layoutFormat, symbolPool, layoutSettings);
 
         } catch( IOException e) { e.printStackTrace(); }
+    }
+
+
+    void addNewPart(String instrName, Score comp) {
+        Instrument instr = Instrument.defaultInstrument;
+        Part part = new Part(instrName, null, 2, alist(instr));
+        new PartAdd(comp, part, 0, null).execute();
     }
 
     Score initializeEmptyScore() {
@@ -156,6 +175,7 @@ public class Composition {
         //page format
         LayoutFormat layoutFormat = null;
         Object oLayoutFormat = score.getMetaData().get("layoutformat");
+
         if (oLayoutFormat instanceof LayoutFormat) {
             layoutFormat = (LayoutFormat) oLayoutFormat;
         }
