@@ -168,8 +168,8 @@ public class Composition {
         cursorStaff1.write(new Clef(ClefType.clefTreble));
 
 //        //C major default, C (4/4) time
-//        cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-//        cursorStaff1.write(new Time(TimeType.timeCommon));
+        cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
+       cursorStaff1.write(new Time(TimeType.timeCommon));
 
         //second staff: bass clef
      //   cursorStaff2.write(new Clef(ClefType.clefBass));

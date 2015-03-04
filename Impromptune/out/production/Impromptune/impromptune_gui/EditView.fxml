@@ -62,6 +62,15 @@
             <items>
               <MenuItem mnemonicParsing="false"  text="Delete" />
             </items>
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onZOUT" text="ZoomIn" />
+              </items>
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onZIN" text="ZoomOut" />
+              </items>
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onREM" text="Undo" />
+              </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
