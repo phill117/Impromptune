@@ -113,7 +113,7 @@ public class Composition {
         Instrument instr = Instrument.defaultInstrument;
 
         float is = currentComp.getFormat().getInterlineSpace();
-        StaffLayout staffLayout = new StaffLayout(is * 9);
+        StaffLayout staffLayout = new StaffLayout(is * 4); // Was 9, changes distance between staves
         currentComp.getFormat().setStaffLayoutOther(staffLayout);
 
         Part pianoPart = new Part("Piano", null, 2, alist(instr));
@@ -169,7 +169,7 @@ public class Composition {
         Layout layout = scoreDoc.getLayout();
 
         //layout basics
-        PageFormat pageFormat = layoutFormat.getPageFormat(0);
+        PageFormat pageFormat = layoutFormat.getPageFormat(0);  //Change page format default values for width of bar??
         Size2f frameSize = new Size2f(pageFormat.getUseableWidth(), pageFormat.getUseableHeight());
         Point2f framePos = new Point2f(pageFormat.getMargins().getLeft() + frameSize.width / 2,
                 pageFormat.getMargins().getTop() + frameSize.height / 2);

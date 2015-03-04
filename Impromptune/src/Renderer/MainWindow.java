@@ -37,7 +37,9 @@ public class MainWindow {
 
 	@FXML public void initialize() {
 
-	//	content.loadNextScore();
+		//content.loadNextScore();
+       // content.loadScore();  // TO LOAD REVOLUTIONARY
+
         //Load blank composition
         content.loadBlank();
 	}
