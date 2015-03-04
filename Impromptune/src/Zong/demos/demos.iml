@@ -19,10 +19,10 @@
     <orderEntry type="module" module-name="musicxml-in" />
     <orderEntry type="module" module-name="renderer" />
     <orderEntry type="module" module-name="renderer-javafx" />
+    <orderEntry type="module" module-name="core" />
     <orderEntry type="library" name="controlsfx-8.20.7" level="project" />
-    <orderEntry type="library" name="vorbis-java-1.0.0-beta" level="project" />
     <orderEntry type="library" name="itextpdf-5.4.5" level="project" />
     <orderEntry type="library" name="lombok-1.14.8" level="project" />
-    <orderEntry type="module" module-name="core" />
+    <orderEntry type="library" name="vorbis-java-1.0.0-beta" level="project" />
   </component>
 </module>
