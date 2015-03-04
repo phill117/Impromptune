@@ -6,12 +6,15 @@ import com.xenoage.zong.player.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.xenoage.utils.jse.javafx.Dialog;
+import javafx.scene.layout.BorderPane;
+
 /**
  * Created by Sean on 2/27/2015.
  */
@@ -21,6 +24,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML AnchorPane PlayerCase;
     @FXML AnchorPane RendererCase;
     @FXML ToolBar NoteSelection;
+    @FXML MenuBar Menubar;
     Player player = null;
     static PlayerFrame frame = null;
 
@@ -43,7 +47,9 @@ public class ImpromptuneInitializer implements Initializable{
          //   Log.init(new DesktopLogProcessing(appName + " " + appVersion));
           //  Err.init(new GuiErrorProcessing());
           //  SynthManager.init(false)
-           RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
+            RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
+
+            Menubar = (((MenuBar)((BorderPane)FXMLLoader.load(getClass().getResource("MenuBarBaseLayout.fxml"))).getCenter()));
 
         }catch (Exception e){
             System.out.println("WAHT HAPPENED");
