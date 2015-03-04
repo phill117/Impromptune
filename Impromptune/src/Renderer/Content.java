@@ -86,10 +86,11 @@ public class Content
 
 
     //Called by eventhandler
-    public void addNote()
+    public void addNote(String note)
     {
        // comp.
-        comp.addNote("Af3h");
+       // comp.addNote("Af3h");
+        comp.addNote(note);
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
+import Renderer.MainWindow;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,6 +30,9 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     private Player player;
     Node pianoKey;
     Effect blackKeyEffect;
+    public MainWindow mw;
+
+
 
     @FXML
     private Slider registerSlider;
@@ -69,25 +73,40 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             //stores the desired register range
             Integer register = new Double(registerSlider.getValue()).intValue();
 
-            String noteToPlay = ""+id.charAt(0);
+            String jNoteToPlay = ""+id.charAt(0); //SEND TO JFUGUE PLAYER
+            String zongNote = ""+id.charAt(0);      //SEND TO ZONG RENDERER
 
             //decide if note is flat or sharp
-            if(id.charAt(1) == 's') noteToPlay += '#';
+            if(id.charAt(1) == 's') {
+                jNoteToPlay += '#';
+                zongNote += 's';
+            }
+            else
+            {
+                jNoteToPlay += 'b';
+                zongNote += 'f';
+            }
+
             //decide on note register
             char keyReg = id.charAt(2);
 
             switch (keyReg){
-                case '1': noteToPlay += register; break;
-                case '2': noteToPlay += (register+1); break;
-                case '3': noteToPlay += (register+2); break;
+                case '1': jNoteToPlay += register; zongNote += register;break;
+                case '2': jNoteToPlay += (register+1);zongNote += (register+1); break;
+                case '3': jNoteToPlay += (register+2);zongNote += (register+2); break;
                 default: break;
             }
 
             //make the note a 'half note'
-            noteToPlay += "h";
+            jNoteToPlay += "h";
+            zongNote += "h";
+
+            System.out.println("jNote played:" + jNoteToPlay);
+
+            mw.getContent().addNote(zongNote);
 
             //put the string into a final variable so that it can be used in a thread
-            final String musicString = noteToPlay;
+            final String musicString = jNoteToPlay;
 
             //start a new thread to play the note
             new Thread(new Runnable() {

@@ -1,7 +1,5 @@
 package Renderer;
 
-//import java.awt.image.BufferedImage;
-
 
 import Renderer.Content;
 import Renderer.Playback;
@@ -14,10 +12,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
-import org.controlsfx.dialog.Dialog;
-import org.controlsfx.dialog.Dialogs;
 
-//import com.xenoage.zong.renderer.awt.AwtLayoutRenderer;
+
 
 
 /**
@@ -35,6 +31,9 @@ public class MainWindow {
 	private Content content = new Content(this);
 	private WritableImage scoreImage = null;
 
+    public Content getContent() { return content;}
+
+
 	@FXML public void initialize() {
 
 		//content.loadNextScore();
@@ -46,7 +45,7 @@ public class MainWindow {
 
 
     @FXML void onAddNote(ActionEvent event) {
-        content.addNote();
+        content.addNote("Af3h");
     }
 
 	public void renderLayout(Layout layout) {

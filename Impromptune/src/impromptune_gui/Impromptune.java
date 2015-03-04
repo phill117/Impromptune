@@ -20,7 +20,6 @@ public class Impromptune extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //String s =  getClass().getClassLoader().getResource("/demos/MainWindow.fxml").toString();
         Parent root = FXMLLoader.load(getClass().getResource("EditView.fxml"));
         primaryStage.setTitle("Impromptune");
         primaryStage.setScene(new Scene(root, 1000, 1000));
