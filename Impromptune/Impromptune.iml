@@ -26,6 +26,7 @@
     <orderEntry type="module" module-name="core" />
     <orderEntry type="module" module-name="converter" />
     <orderEntry type="module" module-name="layout" />
-    <orderEntry type="module" module-name="demos" />
+    <orderEntry type="module" module-name="renderer" />
+    <orderEntry type="module" module-name="renderer-javafx" />
   </component>
 </module>
