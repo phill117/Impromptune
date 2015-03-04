@@ -66,6 +66,7 @@ public class Composition {
         currentComp = initializeEmptyScore();
         setLayoutFormat(currentComp);
         currentScoreDoc = initializeScoreDoc(currentComp);
+        layout = currentScoreDoc.getLayout();
     }
 
     public Composition(String fileName) {

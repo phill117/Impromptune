@@ -71,23 +71,15 @@ public class Content
 	}
 
 
-
-
     public void loadBlank()
     {
-        layout = comp.getCurrentScoreDoc().getLayout();
-
+        layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
-
-       playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
         mainWindow.renderLayout(layout);
 
         //load score into MIDI playback
-      //  Playback.openScore(comp.getCurrentScore());
-
-
-
+        Playback.openScore(comp.getCurrentScore());
     }
 
 
