@@ -106,7 +106,6 @@ public class Content
     public void addNote(String note)
     {
        // comp.
-       // comp.addNote("Af3h");
         comp.addNote(note);
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());

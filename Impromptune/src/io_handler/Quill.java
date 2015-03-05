@@ -31,8 +31,11 @@ import static com.xenoage.zong.core.music.Pitch.pi;
  */
 public class Quill {
 
-    public Quill(Cursor cursor) {
+    String partName = null;
+
+    public Quill(Cursor cursor, String instr) {
         this.cursor = cursor;
+        this.partName = instr;
     }
 
     private boolean openBeam = false;
@@ -84,11 +87,11 @@ public class Quill {
         char d = note.charAt(3); //duration
 
         Fraction fr = null;
+        String s = new String();
+        s += r;
+        int o = Integer.parseInt(s);
 
-
-        int o = (int) r - '0'; //octave this is still off from jfugue
-
-
+//        System.out.println("p" + p + " " + a + " " + r + " " + o);
 
         switch (d) {
             case 'w':
@@ -119,13 +122,13 @@ public class Quill {
 
         switch(a) {
             case 's'://sharp           //accents go in array as second arg to chord
-                cursor.write(chord(fr, pi(p - 65, 1, o)));//last arg is octave
+                cursor.write(chord(fr, pi(p, 1, o)));//last arg is octave
                 break;
             case 'f'://flat
-                cursor.write(chord(fr, pi(p - 65, -1, o)));
+                cursor.write(chord(fr, pi(p, -1, o)));
                 break;
             case 'n': //natural
-                cursor.write(chord(fr, pi(p - 65, 0, o)));
+                cursor.write(chord(fr, pi(p, 0, o)));
                 break;
             default:
                 System.err.println("Invalid alteration");
