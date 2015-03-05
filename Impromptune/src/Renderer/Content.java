@@ -55,8 +55,8 @@ public class Content
 
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
-        comp = new Composition(); // create blank
-        scoreDoc = comp.getCurrentScoreDoc();
+       // comp = new Composition(); // create blank
+       // scoreDoc = comp.getCurrentScoreDoc();
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
 	}
@@ -77,6 +77,12 @@ public class Content
 
 
     public void loadBlank() {
+
+
+        comp = new Composition();
+        scoreDoc = comp.getCurrentScoreDoc();
+
+
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());

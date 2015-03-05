@@ -125,7 +125,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onZIN(ActionEvent event) {
-        mainWindow.setZoom(mainWindow.getZoom()-.25f);
+        mainWindow.setZoom(mainWindow.getZoom() - .25f);
     }
 
     @FXML void onZOUT(ActionEvent event) {
@@ -144,6 +144,23 @@ public class ImpromptuneInitializer implements Initializable{
              mainWindow.getContent().loadScore(file);
 
         }
+
+
+
+    @FXML void onNEW(ActionEvent event) {
+            mainWindow.getContent().loadBlank();
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     @FXML void onSAVEAS(ActionEvent event) {
         String file = "C:\\Save\\testfile.xml";
