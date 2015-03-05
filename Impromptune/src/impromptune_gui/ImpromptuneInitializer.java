@@ -7,6 +7,7 @@ import com.xenoage.zong.commands.player.convert.FileToMidiConvert;
 import com.xenoage.zong.desktop.io.ScoreDocIO;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.gui.PlayerFrame;
+import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -157,6 +158,13 @@ public class ImpromptuneInitializer implements Initializable{
       //      System.out.println("Saving error");
       //      e.printStackTrace();
       //  }
+    }
+
+    @FXML void onPRINT(ActionEvent event) {
+        Layout layout = mainWindow.getContent().getSD().getLayout();
+        if (layout == null)
+            System.out.println("PRINT -- Score.getLayout() FAILED");
+        IOHandler.print(layout);
     }
 
     @FXML void onREM(ActionEvent event) {

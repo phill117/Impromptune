@@ -85,6 +85,7 @@ public class Quill implements CommandListener {
     }
 
     void writeNote(String note) {
+        //Score.getMeasureBeats()
         char p = note.charAt(0); //pitch
         char a = note.charAt(1); //alteration
         char r = note.charAt(2); //register
@@ -181,10 +182,6 @@ public class Quill implements CommandListener {
         }
 
         cursor.write(new Rest(fr));
-    }
-
-    void writeMeasure(Measure measure) {
-
     }
 
     void writePitchBend(PitchBend pitchBend) {

@@ -63,7 +63,6 @@ public class Content
 
     public ScoreDoc getSD(){
         return scoreDoc;
-
     }
 
 

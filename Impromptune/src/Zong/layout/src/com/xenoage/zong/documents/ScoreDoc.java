@@ -72,6 +72,10 @@ public class ScoreDoc
 		layoutChanged();
 	}
 
+    public Layout getLayout() {
+        return this.layout;
+    }
+
 	/**
 	 * Gets the {@link ScoreLayout}.
 	 */
