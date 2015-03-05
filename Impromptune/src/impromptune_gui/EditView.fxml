@@ -109,9 +109,9 @@
       </MenuBar>
       <AnchorPane fx:id="root" onKeyPressed="#onNumDurationPressed" prefHeight="869.0" prefWidth="1252.0" VBox.vgrow="ALWAYS">
          <children>
-            <SplitPane dividerPositions="0.6001564945226917" layoutX="242.0" layoutY="110.0" prefHeight="869.0" prefWidth="1533.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <HBox prefHeight="761.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                      <children>
                         <VBox prefHeight="759.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -136,18 +136,20 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                  <Separator orientation="VERTICAL" prefHeight="761.0" prefWidth="0.0" />
+                <AnchorPane maxWidth="541.0" minHeight="0.0" minWidth="541.0" prefHeight="160.0" prefWidth="541.0">
                      <children>
-                        <VBox prefHeight="867.0" prefWidth="444.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox minWidth="444.0" prefHeight="867.0" prefWidth="444.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="PlayerCase" prefHeight="252.0" prefWidth="506.0" />
+                              <AnchorPane fx:id="PlayerCase" minHeight="179.0" prefHeight="179.0" prefWidth="506.0" />
                               <Separator prefWidth="200.0" />
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
-              </items>
-            </SplitPane>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>
