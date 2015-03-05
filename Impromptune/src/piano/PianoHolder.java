@@ -122,7 +122,10 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
 
             System.out.println("jNote played:" + jNoteToPlay);
 
-            mw.getContent().addNote(zongNote);
+            if(rest){
+                mw.getContent().addRest(duration.charAt(0));
+            }else
+                mw.getContent().addNote(zongNote);
 
             //put the string into a final variable so that it can be used in a thread
             final String musicString = jNoteToPlay;
