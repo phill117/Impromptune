@@ -132,7 +132,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="667.0" spacing="5.0">
          <children>
-            <Button fx:id="btnOpen" mnemonicParsing="false" onAction="#onOpen">
+            <Button fx:id="btnOpen" mnemonicParsing="false" onAction="#onOpen" visible="false">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -180,7 +180,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Slider>
-            <Button fx:id="btnSave" layoutX="146.0" layoutY="15.0" mnemonicParsing="false" onAction="#onSave">
+            <Button fx:id="btnSave" layoutX="146.0" layoutY="15.0" mnemonicParsing="false" onAction="#onSave" visible="false">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -188,7 +188,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnInfo" layoutX="509.0" layoutY="15.0" mnemonicParsing="false" onAction="#onInfo">
+            <Button fx:id="btnInfo" layoutX="509.0" layoutY="15.0" mnemonicParsing="false" onAction="#onInfo" visible="false">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
