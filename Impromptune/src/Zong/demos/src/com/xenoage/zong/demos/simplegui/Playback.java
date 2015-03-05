@@ -41,7 +41,7 @@ public class Playback {
 	 */
 	public static void start() {
 		if (player != null) {
-			player.setMetronomeEnabled(true);
+			player.setMetronomeEnabled(false);
 			player.start();
 		}
 	}
