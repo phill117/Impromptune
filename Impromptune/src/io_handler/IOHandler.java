@@ -13,6 +13,7 @@ import com.xenoage.zong.desktop.io.print.PrintProcess;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.layout.Layout;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.InputStreamReader;
@@ -20,17 +21,24 @@ import java.io.InputStreamReader;
 /**
  * Created by ben on 2/22/15.
  */
-class IOHandler {
-    public void load() {
+public class IOHandler {
+    public static String load(Stage s) {
         FileChooser chooser = new FileChooser();
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
                 "MusicXML files", "mxl", "xml");
+
+        File custom = new File("C:\\Impromptune");
+        chooser.setInitialDirectory(custom);
         chooser.setSelectedExtensionFilter(filter);
         chooser.setTitle("Select a file to load...");
 
-//        if(chooser.showOpenDialog(parent) == FileChooser.APPROVE) {
-//            ScoreDocIO.read(new File(chooser.getSelectedFile().getName()), new MusicXmlScoreDocFileInput());
-//        }
+
+        File f = chooser.showOpenDialog(s);
+        if (f!=null)
+            return f.getAbsolutePath();
+        else
+            return null;
+
     }
 
     /**
