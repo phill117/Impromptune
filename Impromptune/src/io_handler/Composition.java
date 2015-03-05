@@ -67,7 +67,7 @@ public class Composition {
     private SymbolPool symbolPool = null;
     private int currentIndex = 0;
     private int parts = 0;
-    private final int SPACING = 9;
+    private final float SPACING = 9;
 
     public Composition() {
         cursorList = new ArrayList<Quill>();
@@ -135,12 +135,11 @@ public class Composition {
         cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
     }
 
-    //how do we remove a note???
     public void removeLast() {
-
-    if(currentComp.getCommandPerformer().isUndoPossible())
-        System.out.print(("YES"));
-    //    cursorList.remove(currentIndex);
+        if(currentComp.getCommandPerformer().isUndoPossible()) {
+            currentComp.getCommandPerformer().undo();
+            System.out.print(("Composition: COMMAND [IS UNDOABLE]"));
+        }
     }
 
     Score initializeEmptyScore() {
