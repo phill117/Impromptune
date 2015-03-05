@@ -31,24 +31,23 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     Node pianoKey;
     Effect blackKeyEffect;
     public MainWindow mw;
+    static PianoHolder pianoHolder;
 
     static String duration;
     static boolean dotted;
     static boolean tie;
-    static boolean rest;
 
-    @FXML
-    private Slider registerSlider;
-    @FXML
-    private Pane pianoPane;
+    @FXML private Slider registerSlider;
+    @FXML private Pane pianoPane;
 
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         // initialize your logic here: all @FXML variables will have been injected
 
+        pianoHolder = this;
+
         //initialize toolbar parameters
         dotted = false;
-        rest = false;
         tie = false;
         duration = "h";
 
@@ -63,14 +62,19 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
         }
     }
 
+    public static PianoHolder getPianoHolder() { return pianoHolder; }
+
     public static void setDuration(String d){ duration = d;}
+    public static String getDuration(){return duration;}
 
     public static void setDotted(boolean d){ dotted = d;}
     public static boolean getDotted(){return dotted;}
     public static void setTie(boolean t){ tie = t;}
     public static boolean getTie(){return tie;}
-    public static void setRest(boolean r){ rest = r;}
-    public static boolean getRest(){return rest;}
+
+    public void handleRest(){
+        mw.getContent().addRest(duration.charAt(0));
+    }
 
 
     @Override
@@ -122,10 +126,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
 
             System.out.println("jNote played:" + jNoteToPlay);
 
-            if(rest){
-                mw.getContent().addRest(duration.charAt(0));
-            }else
-                mw.getContent().addNote(zongNote);
+            mw.getContent().addNote(zongNote);
 
             //put the string into a final variable so that it can be used in a thread
             final String musicString = jNoteToPlay;

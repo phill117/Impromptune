@@ -128,7 +128,7 @@
                                     <Separator prefHeight="44.0" prefWidth="14.0" />
                                     <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="dot" />
                                     <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
-                                    <ToggleButton fx:id="rest" mnemonicParsing="false" onAction="#onDurationPressed" text="rest" />
+                                    <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" text="rest" />
                                 </items>
                               </ToolBar>
                               <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />

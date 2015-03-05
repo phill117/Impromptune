@@ -15,12 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.ScrollPane;
 
 import java.io.File;
 import java.net.URL;
@@ -57,7 +54,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML ToggleButton thirtysecond;
     @FXML ToggleButton tie;
     @FXML ToggleButton dot;
-    @FXML ToggleButton rest;
+    @FXML Button rest;
 
     ArrayList<ToggleButton> durationGroup;
 
@@ -218,11 +215,10 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onNumDurationPressed(KeyEvent event){
         String key = event.getText();
-
         //handle rest, tie, or dotted
         if(key.equals(".")){PianoHolder.setDotted(!PianoHolder.getDotted()); dot.setSelected(!dot.isSelected()); return;}
-        if(key.equals("+")){PianoHolder.setTie(!PianoHolder.getTie()); tie.setSelected(!tie.isSelected()); return;}
-        if(key.equals("R")){PianoHolder.setRest(!PianoHolder.getRest()); rest.setSelected(!rest.isSelected()); return;}
+        if(key.equals("t")){PianoHolder.setTie(!PianoHolder.getTie()); tie.setSelected(!tie.isSelected()); return;}
+        if(key.equals("r")){PianoHolder.getPianoHolder().handleRest(); return;}
 
         if(key.equals("1")){
             flipDurations("whole");
@@ -250,6 +246,10 @@ public class ImpromptuneInitializer implements Initializable{
         }
     }
 
+    @FXML void onRestPressed(ActionEvent event){
+        PianoHolder.getPianoHolder().handleRest();
+    }
+
     @FXML void onDurationPressed(ActionEvent event){
         ToggleButton button = (ToggleButton) event.getTarget();
         String id = button.getId();
@@ -257,7 +257,6 @@ public class ImpromptuneInitializer implements Initializable{
         //handle rest, tie, or dotted
         if(id.equals("tie")){PianoHolder.setTie(!PianoHolder.getTie()); return;}
         if(id.equals("dot")){PianoHolder.setDotted(!PianoHolder.getDotted()); return;}
-        if(id.equals("rest")){PianoHolder.setRest(!PianoHolder.getRest()); return;}
 
         //turn off all other durations
         flipDurations(id);
