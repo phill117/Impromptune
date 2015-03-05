@@ -124,7 +124,7 @@ public class Quill implements CommandListener {
         }
 
         switch(a) {
-            case 's'://sharp           //accents go in array as second arg to chord
+            case '#'://sharp           //accents go in array as second arg to chord
                 cursor.write(chord(fr, pi(p, 1, o)));//last arg is octave
                 break;
             case 'f'://flat

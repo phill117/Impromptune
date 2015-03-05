@@ -67,6 +67,8 @@ public class Composition {
     private SymbolPool symbolPool = null;
     private int currentIndex = 0;
     private int parts = 0;
+
+    //const
     private final float SPACING = 9;
 
     public Composition() {

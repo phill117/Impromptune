@@ -100,7 +100,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             //decide if note is flat or sharp
             if(id.charAt(1) == 's') {
                 jNoteToPlay += '#';
-                zongNote += 's';
+                zongNote += '#';
             } else {
                 jNoteToPlay += 'n';
                 zongNote += 'n';
