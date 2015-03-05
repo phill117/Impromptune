@@ -60,7 +60,13 @@ public class Content
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
 	}
-	
+
+    public ScoreDoc getSD(){
+        return scoreDoc;
+
+    }
+
+
 	/**
 	 * Loads the next MusicXML demo score from the scores directory.
 	 */
@@ -85,6 +91,7 @@ public class Content
     public void refresh(){
         mainWindow.renderLayout( comp.getLayout());
     }
+
 
     public void undo() {
         comp.removeLast();

@@ -27,7 +27,7 @@ public class IOHandler {
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
                 "MusicXML files", "mxl", "xml");
 
-        File custom = new File("C:\\Impromptune");
+        File custom = new File("C:\\");
         chooser.setInitialDirectory(custom);
         chooser.setSelectedExtensionFilter(filter);
         chooser.setTitle("Select a file to load...");

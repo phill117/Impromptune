@@ -4,6 +4,7 @@ import Renderer.MainWindow;
 import com.xenoage.zong.commands.desktop.dialog.AudioSettingsDialogShow;
 import com.xenoage.zong.commands.player.convert.DirToMidiConvert;
 import com.xenoage.zong.commands.player.convert.FileToMidiConvert;
+import com.xenoage.zong.desktop.io.ScoreDocIO;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.player.Player;
@@ -19,6 +20,8 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ScrollPane;
+
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -141,6 +144,20 @@ public class ImpromptuneInitializer implements Initializable{
 
         }
 
+    @FXML void onSAVEAS(ActionEvent event) {
+        String file = "C:\\Save\\testfile.xml";
+        File custom = new File(file);
+
+        //need (FileOutput<ScoreDoc> output) then output.write
+      //  try {
+     //       ScoreDocIO.write(mainWindow.getContent().getSD(), custom, null);
+      //  }
+     //   catch (Exception e)
+     //   {
+      //      System.out.println("Saving error");
+      //      e.printStackTrace();
+      //  }
+    }
 
     @FXML void onREM(ActionEvent event) {
         mainWindow.getContent().undo();
