@@ -36,7 +36,7 @@
                      </accelerator>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" text="Revert to Saved" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
+                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Exit">
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
