@@ -80,9 +80,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             if(id.charAt(1) == 's') {
                 jNoteToPlay += '#';
                 zongNote += 's';
-            }
-            else
-            {
+            } else {
                 jNoteToPlay += 'n';
                 zongNote += 'n';
             }
