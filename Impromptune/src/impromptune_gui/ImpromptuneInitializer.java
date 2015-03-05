@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 import com.xenoage.utils.jse.javafx.Dialog;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
 
 import static com.xenoage.zong.desktop.App.app;
@@ -106,8 +107,27 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindow.setZoom(mainWindow.getZoom() + .25f);
     }
 
+    @FXML void onABOUT(ActionEvent event) {
+        showMessageDialog("Impromptune Version Sprint 1\n" +
+                "This product would have been endorsed by Ludwig von Beethoven, but...\n" +
+                "someone keeps pushing workspace.xml and .iml files and messing up the build, so he didn't.");
+    }
+
+    @FXML void onOpen(ActionEvent event) {
+           // content.loadNextScore();
+        }
+
+
     @FXML void onREM(ActionEvent event) {
         mainWindow.getContent().undo();
+    }
+
+    public void showMessageDialog(String message) {
+        dialog().message(message).showInformation();
+    }
+
+    private Dialogs dialog() {
+        return Dialogs.create().title(appName).styleClass(org.controlsfx.dialog.Dialog.STYLE_CLASS_NATIVE);
     }
 
 

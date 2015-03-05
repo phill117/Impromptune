@@ -131,7 +131,7 @@ public class Composition {
         Instrument instr = Instrument.defaultInstrument;
         Part part = new Part(instrName, null, staffSpan, alist(instr));
         new PartAdd(comp, part, 0, null).execute();
-        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
+        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
     }
 
 
@@ -158,25 +158,25 @@ public class Composition {
         Part pianoPart = new Part("Piano", null, 1, alist(instr));
         new PartAdd(currentComp, pianoPart, 0, null).execute();
 
-        cursorList.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true)));
+        cursorList.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
         //cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
 
         Cursor cursorStaff1 = cursorList.get(0).getCursor();
-     //   Cursor cursorStaff2 = cursorList.get(1).getCursor();
+        //Cursor cursorStaff2 = cursorList.get(1).getCursor();
 
         //first staff: treble clef
         cursorStaff1.write(new Clef(ClefType.clefTreble));
 
 //        //C major default, C (4/4) time
         cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-       cursorStaff1.write(new Time(TimeType.timeCommon));
+        cursorStaff1.write(new Time(TimeType.time_4_4));
 
         //second staff: bass clef
      //   cursorStaff2.write(new Clef(ClefType.clefBass));
 
 //        //C major default, C (4/4) time
-//        cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-//        cursorStaff2.write(new Time(TimeType.timeCommon));
+       // cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
+      //  cursorStaff2.write(new Time(TimeType.timeCommon));
       //  addNewPart("Sax", 1, currentComp);
         //end line
 
