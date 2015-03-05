@@ -143,7 +143,7 @@ public class Quill implements CommandListener {
 
     void startTie() {
 
-        cursor.openSlur();
+//        cursor.openSlur();
     }
 
     void endTie() {
