@@ -32,7 +32,10 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     Effect blackKeyEffect;
     public MainWindow mw;
 
-
+    static String duration;
+    static boolean dotted;
+    static boolean tie;
+    static boolean rest;
 
     @FXML
     private Slider registerSlider;
@@ -42,6 +45,14 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         // initialize your logic here: all @FXML variables will have been injected
+
+        //initialize toolbar parameters
+        dotted = false;
+        rest = false;
+        tie = false;
+        duration = "h";
+
+        //create the player
         player = new Player();
 
         //assign 'this' as an event listener for mouse presses and releases for all keys
@@ -51,6 +62,16 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             key.setOnMouseReleased(this);
         }
     }
+
+    public static void setDuration(String d){ duration = d;}
+
+    public static void setDotted(boolean d){ dotted = d;}
+    public static boolean getDotted(){return dotted;}
+    public static void setTie(boolean t){ tie = t;}
+    public static boolean getTie(){return tie;}
+    public static void setRest(boolean r){ rest = r;}
+    public static boolean getRest(){return rest;}
+
 
     @Override
     public void handle(MouseEvent event) {
@@ -74,7 +95,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             Integer register = new Double(registerSlider.getValue()).intValue();
 
             String jNoteToPlay = ""+id.charAt(0); //SEND TO JFUGUE PLAYER
-            String zongNote = ""+id.charAt(0);      //SEND TO ZONG RENDERER
+            String zongNote = ""+id.charAt(0);    //SEND TO ZONG RENDERER
 
             //decide if note is flat or sharp
             if(id.charAt(1) == 's') {
@@ -97,7 +118,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
 
             //make the note a 'half note'
             jNoteToPlay += "h";
-            zongNote += "h";
+            zongNote += duration;
 
             System.out.println("jNote played:" + jNoteToPlay);
 

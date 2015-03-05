@@ -11,12 +11,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ScrollPane;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import com.xenoage.utils.jse.javafx.Dialog;
 import javafx.scene.layout.BorderPane;
@@ -39,6 +43,19 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML BorderPane bp;
     @FXML ScrollPane sp;
     @FXML MenuBar Menubar;
+
+    @FXML ToggleButton whole;
+    @FXML ToggleButton half;
+    @FXML ToggleButton quarter;
+    @FXML ToggleButton eighth;
+    @FXML ToggleButton sixteenth;
+    @FXML ToggleButton thirtysecond;
+    @FXML ToggleButton tie;
+    @FXML ToggleButton dot;
+    @FXML ToggleButton rest;
+
+    ArrayList<ToggleButton> durationGroup;
+
     Player player = null;
     static PlayerFrame frame = null;
 
@@ -52,6 +69,10 @@ public class ImpromptuneInitializer implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
+            half.setSelected(true);
+            durationGroup = new ArrayList<>();
+            durationGroup.add(whole);durationGroup.add(half);durationGroup.add(quarter);
+            durationGroup.add(eighth);durationGroup.add(sixteenth);durationGroup.add(thirtysecond);
 
             stage = Impromptune.getStage();
 
@@ -143,4 +164,84 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML void onConvertDirToMidi(ActionEvent event) {
         app().execute(new DirToMidiConvert(stage));
     }
+
+
+    /**
+     * Methods to handle keyclicks and mouse press for the duration buttons
+     */
+
+    @FXML void onNumDurationPressed(KeyEvent event){
+        String key = event.getText();
+
+        //handle rest, tie, or dotted
+        if(key.equals(".")){PianoHolder.setDotted(!PianoHolder.getDotted()); dot.setSelected(!dot.isSelected()); return;}
+        if(key.equals("+")){PianoHolder.setTie(!PianoHolder.getTie()); tie.setSelected(!tie.isSelected()); return;}
+        if(key.equals("R")){PianoHolder.setRest(!PianoHolder.getRest()); rest.setSelected(!rest.isSelected()); return;}
+
+        if(key.equals("1")){
+            flipDurations("whole");
+            PianoHolder.setDuration("w");
+        }
+        if(key.equals("2")){
+            flipDurations("half");
+            PianoHolder.setDuration("h");
+        }
+        if(key.equals("3")){
+            flipDurations("quarter");
+            PianoHolder.setDuration("q");
+        }
+        if(key.equals("4")){
+            flipDurations("eighth");
+            PianoHolder.setDuration("i");
+        }
+        if(key.equals("5")){
+            flipDurations("sixteenth");
+            PianoHolder.setDuration("s");
+        }
+        if(key.equals("6")){
+            flipDurations("thirtysecond");
+            PianoHolder.setDuration("t");
+        }
+    }
+
+    @FXML void onDurationPressed(ActionEvent event){
+        ToggleButton button = (ToggleButton) event.getTarget();
+        String id = button.getId();
+
+        //handle rest, tie, or dotted
+        if(id.equals("tie")){PianoHolder.setTie(!PianoHolder.getTie()); return;}
+        if(id.equals("dot")){PianoHolder.setDotted(!PianoHolder.getDotted()); return;}
+        if(id.equals("rest")){PianoHolder.setRest(!PianoHolder.getRest()); return;}
+
+        //turn off all other durations
+        flipDurations(id);
+
+        if(id.equals("whole")){
+            PianoHolder.setDuration("w");
+        }
+        if(id.equals("half")){
+            PianoHolder.setDuration("h");
+        }
+        if(id.equals("quarter")){
+            PianoHolder.setDuration("q");
+        }
+        if(id.equals("eighth")){
+            PianoHolder.setDuration("i");
+        }
+        if(id.equals("sixteenth")){
+            PianoHolder.setDuration("s");
+        }
+        if(id.equals("thirtysecond")){
+            PianoHolder.setDuration("t");
+        }
+
+    }
+
+    private void flipDurations(String id){
+        for(ToggleButton toggleButton : durationGroup){
+            if(toggleButton.getId().equals(id)) toggleButton.setSelected(true);
+            else toggleButton.setSelected(false);
+        }
+    }
+
 }

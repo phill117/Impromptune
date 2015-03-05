@@ -102,7 +102,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="869.0" prefWidth="1252.0" VBox.vgrow="ALWAYS">
+      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onNumDurationPressed" prefHeight="869.0" prefWidth="1252.0" VBox.vgrow="ALWAYS">
          <children>
             <SplitPane dividerPositions="0.7962116263879817" layoutX="242.0" layoutY="110.0" prefHeight="869.0" prefWidth="1533.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
@@ -120,12 +120,15 @@
                                              <children>
                                                 <ToolBar fx:id="NoteSelection" layoutX="2.0" layoutY="2.0" prefHeight="49.0" prefWidth="1213.0">
                                                   <items>
-                                                      <Button mnemonicParsing="false" text="Button" />
-                                                    <Button mnemonicParsing="false" text="Button" />
-                                                      <Button mnemonicParsing="false" text="Button" />
-                                                      <Button mnemonicParsing="false" text="Button" />
-                                                      <Button mnemonicParsing="false" text="Button" />
-                                                      <Button mnemonicParsing="false" text="Button" />
+                                                      <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="whole" />
+                                                      <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" text="half" />
+                                                      <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" text="quarter" />
+                                                      <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" text="eighth" />
+                                                      <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" text="sixteenth" />
+                                                      <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" text="thirtysecond" />
+                                                      <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="dot" />
+                                                      <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
+                                                      <ToggleButton fx:id="rest" mnemonicParsing="false" onAction="#onDurationPressed" text="rest" />
                                                   </items>
                                                 </ToolBar>
                                              </children>
