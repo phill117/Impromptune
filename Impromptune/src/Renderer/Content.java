@@ -53,15 +53,12 @@ public class Content
 
     private Composition comp = null;
 
-
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
         comp = new Composition(); // create blank
         scoreDoc = comp.getCurrentScoreDoc();
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
-
-
 	}
 	
 	/**
@@ -74,8 +71,7 @@ public class Content
 	}
 
 
-    public void loadBlank()
-    {
+    public void loadBlank() {
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
@@ -90,7 +86,7 @@ public class Content
         mainWindow.renderLayout( comp.getLayout());
     }
 
-    public void undo(){
+    public void undo() {
         comp.removeLast();
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
@@ -99,12 +95,21 @@ public class Content
 
         //load score into MIDI playback
         Playback.openScore(comp.getCurrentScore());
+    }
 
+    public void redo() {
+        comp.reAdd();
+        layout = comp.getLayout();
+        layout.updateScoreLayouts(comp.getCurrentScore());
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+        Playback.openScore(comp.getCurrentScore());
     }
 
     //Called by eventhandler
-    public void addNote(String note)
-    {
+    public void addNote(String note) {
        // comp.
         comp.addNote(note);
         layout = comp.getLayout();

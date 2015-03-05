@@ -85,6 +85,7 @@ public class Composition {
     }
 
     public void addNote(String str) {
+
         cursorList.get(currentIndex).writeNote(str);
 //        Barline barlineEnd = Barline.barline(BarlineStyle.LightHeavy);
 //        new ColumnElementWrite(barlineEnd, currentComp.getColumnHeader(0), null, MeasureSide.Right).execute();
@@ -142,6 +143,13 @@ public class Composition {
         }
     }
 
+    public void reAdd() {
+        if (currentComp.getCommandPerformer().isRedoPossible()) {
+            currentComp.getCommandPerformer().redo();
+            System.out.print(("Composition: COMMAND [IS REDOABLE]"));
+        }
+    }
+
     Score initializeEmptyScore() {
         Score currentComp = new Score();
 
@@ -180,10 +188,10 @@ public class Composition {
 
     ScoreDoc initializeScoreDocFromFile(String filePath) {
         try {
+
             return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
+
+        } catch(IOException e) { e.printStackTrace(); }
 
         return null;
     }
