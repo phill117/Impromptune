@@ -13,6 +13,7 @@ import com.xenoage.zong.core.music.chord.*;
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.TraditionalKey;
+import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.io.selection.Cursor;
 import com.xenoage.zong.musiclayout.notations.TimeNotation;
@@ -98,6 +99,7 @@ public class Quill implements CommandListener {
 
         switch (d) {
             case 'w':
+                //check getPositionoffset
                 fr = fr(1, 1);
                 break;
             case 'h':
@@ -137,6 +139,47 @@ public class Quill implements CommandListener {
                 System.err.println("Invalid alteration");
                 return;
         }
+    }
+
+    void startTie() {
+
+    }
+
+    void endTie() {
+
+    }
+
+    void writeRest(char r) {
+        Fraction fr = null;
+        switch (r) {
+            case 'w':
+                //check getPositionoffset
+                fr = fr(1, 1);
+                break;
+            case 'h':
+                fr = fr(1, 2);
+                break;
+            case 'q':
+                fr = fr(1, 4);
+                break;
+            case 'i':
+                fr = fr(1, 8);
+                break;
+            case 's':
+                fr = fr(1, 16);
+                break;
+            case 't':
+                fr = fr(1, 32);
+                break;
+            case 'x':
+                fr = fr(1, 64);
+                break;
+            default:
+                System.err.println("Invalid duration");
+                return;
+        }
+
+        cursor.write(new Rest(fr));
     }
 
     void writeMeasure(Measure measure) {

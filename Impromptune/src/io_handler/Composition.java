@@ -95,6 +95,10 @@ public class Composition {
 //        new ColumnElementWrite(barlineEnd, currentComp.getColumnHeader(0), null, MeasureSide.Right).execute();
     }
 
+    public void addRest(char r) {
+        cursorList.get(currentIndex).writeRest(r);
+    }
+
     public Quill getCurrentPart() {
         return cursorList.get(currentIndex);
     }
