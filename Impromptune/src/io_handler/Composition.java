@@ -52,6 +52,7 @@ import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
  * Created by ben on 2/25/15.
  */
 public class Composition {
+
     //internal zong score
     private Score currentComp = null;
     private ArrayList<Quill> cursorList = null;
@@ -66,6 +67,7 @@ public class Composition {
     private SymbolPool symbolPool = null;
     private int currentIndex = 0;
     private int parts = 0;
+    private final int SPACING = 9;
 
     public Composition() {
         cursorList = new ArrayList<Quill>();
@@ -74,6 +76,7 @@ public class Composition {
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
         currentIndex = 0;
+        currentComp.getCommandPerformer().addCommandListener(new CommandHandler());
     }
 
     public Composition(String fileName) {
@@ -106,11 +109,10 @@ public class Composition {
     //Not sure what this does but we need it -- Jacob
     void setLayoutFormat(Score score) {
         LayoutFormat layoutFormat = new LayoutFormatReader(
-                null, score.format.getInterlineSpace() / 10).read();
+                null, score.format.getInterlineSpace() / SPACING).read();
 
        score.setMetaData("layoutformat", layoutFormat); //TIDY
     }
-
 
     void loadLayout(LayoutFormat layoutFormat) {
         try {
@@ -126,14 +128,12 @@ public class Composition {
         } catch( IOException e) { e.printStackTrace(); }
     }
 
-
     void addNewPart(String instrName, int staffSpan, Score comp) {
         Instrument instr = Instrument.defaultInstrument;
         Part part = new Part(instrName, null, staffSpan, alist(instr));
         new PartAdd(comp, part, 0, null).execute();
         cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
     }
-
 
     //how do we remove a note???
     public void removeLast() {
@@ -143,16 +143,13 @@ public class Composition {
     //    cursorList.remove(currentIndex);
     }
 
-
-
-
     Score initializeEmptyScore() {
         Score currentComp = new Score();
 
         Instrument instr = Instrument.defaultInstrument;
 
         float is = currentComp.getFormat().getInterlineSpace();
-        StaffLayout staffLayout = new StaffLayout(is * 9); // Was 9, changes distance between staves
+        StaffLayout staffLayout = new StaffLayout(is * SPACING); // Was 9, changes distance between staves
         currentComp.getFormat().setStaffLayoutOther(staffLayout);
 
         Part pianoPart = new Part("Piano", null, 1, alist(instr));
@@ -177,7 +174,6 @@ public class Composition {
 //        //C major default, C (4/4) time
        // cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
       //  cursorStaff2.write(new Time(TimeType.timeCommon));
-      //  addNewPart("Sax", 1, currentComp);
         //end line
 
         return currentComp;
@@ -185,7 +181,7 @@ public class Composition {
 
     ScoreDoc initializeScoreDocFromFile(String filePath) {
         try {
-            return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput()); //lol should revisit
+            return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
         } catch(IOException e) {
             e.printStackTrace();
         }
