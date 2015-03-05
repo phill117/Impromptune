@@ -76,12 +76,14 @@ public class Composition {
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
         currentIndex = 0;
-        currentComp.getCommandPerformer().addCommandListener(new CommandHandler());
+        currentComp.getCommandPerformer().addCommandListener(cursorList.get(0)); //first one for now
     }
 
     public Composition(String fileName) {
         cursorList = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
+        currentComp.getCommandPerformer().addCommandListener(cursorList.get(0)); //first one for now
+        //currentIndex = ??
     }
 
     public void addNote(String str) {
@@ -143,7 +145,7 @@ public class Composition {
         }
     }
 
-    public void reAdd() {
+    public void addLast() {
         if (currentComp.getCommandPerformer().isRedoPossible()) {
             currentComp.getCommandPerformer().redo();
             System.out.print(("Composition: COMMAND [IS REDOABLE]"));

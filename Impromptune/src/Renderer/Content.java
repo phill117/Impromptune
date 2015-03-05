@@ -98,7 +98,7 @@ public class Content
     }
 
     public void redo() {
-        comp.reAdd();
+        comp.addLast();
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
