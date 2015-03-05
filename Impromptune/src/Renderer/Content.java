@@ -53,15 +53,12 @@ public class Content
 
     private Composition comp = null;
 
-
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
         comp = new Composition(); // create blank
         scoreDoc = comp.getCurrentScoreDoc();
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
-
-
 	}
 	
 	/**
@@ -74,8 +71,7 @@ public class Content
 	}
 
 
-    public void loadBlank()
-    {
+    public void loadBlank() {
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
@@ -90,7 +86,7 @@ public class Content
         mainWindow.renderLayout( comp.getLayout());
     }
 
-    public void undo(){
+    public void undo() {
         comp.removeLast();
         layout = comp.getLayout();
         layout.updateScoreLayouts(comp.getCurrentScore());
@@ -99,12 +95,21 @@ public class Content
 
         //load score into MIDI playback
         Playback.openScore(comp.getCurrentScore());
+    }
 
+    public void redo() {
+        comp.addLast();
+        layout = comp.getLayout();
+        layout.updateScoreLayouts(comp.getCurrentScore());
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+        Playback.openScore(comp.getCurrentScore());
     }
 
     //Called by eventhandler
-    public void addNote(String note)
-    {
+    public void addNote(String note) {
        // comp.
         comp.addNote(note);
         layout = comp.getLayout();
@@ -117,11 +122,7 @@ public class Content
     }
 
 
-
-
-
-
-
+    //LOAD FROM REVOLUTIONARY FILE
     public void loadScore() {
         try {
             //stop current playback
@@ -160,51 +161,22 @@ public class Content
 	/**
 	 * Loads the MusicXML score from the given file path.
 	 */
-	private void loadScore(String filePath) {
+	public void loadScore(String filePath) {
 		try {
 			//stop current playback
 			Playback.stop();
-
-            //CUSTOM JACOB
-            //get manual score
-
-            //read information about the score
-         //   ScoreInfo scoreInfo = new ScoreInfoReader(mxlScore.getScoreHeader()).read();
-          //  test.setInfo(scoreInfo);
-
-            //read score format
-         //  MxlScoreHeader mxlScoreHeader = mxlScore.getScoreHeader();
-        //    MxlDefaults mxlDefaults = mxlScoreHeader.getDefaults();
-         //   ScoreFormat scoreFormat = new ScoreFormatReader(mxlDefaults).read();
-            //test.setFormat(scoreFormat);
-
-            //read layout format
-         //   MxlLayout mxlLayout = (mxlDefaults != null ? mxlDefaults.getLayout() : null);
-
-
-            Score test = new ScoreRevolutionary().createScore();
-
-            ScoreDoc scoreDoc2 = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
-
-            LayoutFormat layoutFormat = new LayoutFormatReader(
-                    null, test.format.getInterlineSpace() / 10).read();
-
-            test.setMetaData("layoutformat", layoutFormat); //TIDY
-
-
-            ScoreDoc test2 = test(test);
-
-            layout = test2.getLayout();
-
-            Score score = test2.getScore();
+            //load the score
+            scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
+            //layout the first page
+            layout = scoreDoc.getLayout();
+            Score score = scoreDoc.getScore();
             layout.updateScoreLayouts(score);
             //create playback layouter for the playback cursor
             playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
             //set image to view
             mainWindow.renderLayout(layout);
             //load score into MIDI playback
-            Playback.openScore(test2.getScore());
-
+            Playback.openScore(scoreDoc.getScore());
 		}
 		catch (Exception ex) {
 			Err.handle(Report.error(ex));

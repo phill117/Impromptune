@@ -1,5 +1,8 @@
 package io_handler;
 
+import com.xenoage.utils.document.Document;
+import com.xenoage.utils.document.command.Command;
+import com.xenoage.utils.document.command.CommandListener;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.music.ColumnElement;
 import com.xenoage.zong.core.music.Pitch;
@@ -29,7 +32,7 @@ import static com.xenoage.zong.core.music.Pitch.pi;
 /**
  * Created by ben on 2/25/15.
  */
-public class Quill {
+public class Quill implements CommandListener {
 
     String partName = null;
 
@@ -203,5 +206,15 @@ public class Quill {
         }
 
         return chord;
+    }
+
+    @Override
+    public void commandExecuted(Document document, Command command) {
+
+    }
+
+    @Override
+    public void commandUndone(Document document, Command command) {
+
     }
 }
