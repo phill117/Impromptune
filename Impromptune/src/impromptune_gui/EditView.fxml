@@ -91,12 +91,6 @@
                   </MenuItem>
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Impromptune Help" />
-                  <MenuItem mnemonicParsing="false" onAction="#onABOUT" text="About Impromptune" />
-               </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="Player">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#onConvertFileToMidi" text="File to Midi..." />
@@ -104,6 +98,12 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onSettingsAudio" text="Audio..." />
               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Impromptune Help" />
+                  <MenuItem mnemonicParsing="false" onAction="#onABOUT" text="About Impromptune" />
+               </items>
             </Menu>
          </menus>
       </MenuBar>
@@ -113,31 +113,27 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <SplitPane dividerPositions="0.5931307793923382" layoutX="124.0" layoutY="99.0" orientation="VERTICAL" prefHeight="398.0" prefWidth="429.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <items>
+                        <VBox prefHeight="759.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
                             <AnchorPane fx:id="RendererCase" minWidth="0.0" prefHeight="589.0" prefWidth="849.0">
                          </AnchorPane>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="794.0" VBox.vgrow="NEVER">
-                                      <items>
-                                          <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="whole" />
-                                          <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" text="half" />
-                                          <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" text="quarter" />
-                                          <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" text="eighth" />
-                                          <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" text="sixteenth" />
-                                          <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" text="thirtysecond" />
-                                          <Separator prefHeight="44.0" prefWidth="14.0" />
-                                          <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="dot" />
-                                          <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
-                                          <ToggleButton fx:id="rest" mnemonicParsing="false" onAction="#onDurationPressed" text="rest" />
-                                      </items>
-                                    </ToolBar>
-                                    <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                                 </children>
-                              </VBox>
-                          </items>
-                        </SplitPane>
+                              <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="794.0" VBox.vgrow="ALWAYS">
+                                <items>
+                                    <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="whole" />
+                                    <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" text="half" />
+                                    <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" text="quarter" />
+                                    <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" text="eighth" />
+                                    <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" text="sixteenth" />
+                                    <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" text="thirtysecond" />
+                                    <Separator prefHeight="44.0" prefWidth="14.0" />
+                                    <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="dot" />
+                                    <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
+                                    <ToggleButton fx:id="rest" mnemonicParsing="false" onAction="#onDurationPressed" text="rest" />
+                                </items>
+                              </ToolBar>
+                              <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
