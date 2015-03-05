@@ -83,8 +83,8 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             }
             else
             {
-                jNoteToPlay += 'b';
-                zongNote += 'f';
+                jNoteToPlay += 'n';
+                zongNote += 'n';
             }
 
             //decide on note register
