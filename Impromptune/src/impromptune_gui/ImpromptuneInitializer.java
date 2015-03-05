@@ -129,6 +129,7 @@ public class ImpromptuneInitializer implements Initializable{
         return Dialogs.create().title(appName).styleClass(org.controlsfx.dialog.Dialog.STYLE_CLASS_NATIVE);
     }
 
+    @FXML void openCompositionSettings(ActionEvent event){}
 
     /**
      * Necessary Ported Methods from the Player MenuBar

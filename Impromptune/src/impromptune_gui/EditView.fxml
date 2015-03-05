@@ -5,8 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.ImpromptuneInitializer">
+<VBox prefHeight="901.0" prefWidth="1526.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.ImpromptuneInitializer">
    <children>
       <MenuBar fx:id="Menubar" prefWidth="600.0">
          <menus>
@@ -69,6 +68,8 @@
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" text="Paste" />
                   <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#openCompositionSettings" text="Composition..." />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
@@ -77,11 +78,19 @@
                   <MenuItem mnemonicParsing="false" onAction="#onABOUT" text="About Impromptune" />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Player">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onConvertFileToMidi" text="File to Midi..." />
+                  <MenuItem mnemonicParsing="false" onAction="#onConvertDirToMidi" text="Directory to Midi..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#onSettingsAudio" text="Audio..." />
+              </items>
+            </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="869.0" prefWidth="1252.0">
+      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="869.0" prefWidth="1533.0">
          <children>
-            <SplitPane dividerPositions="0.6992" layoutX="242.0" layoutY="110.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.7962116263879817" layoutX="242.0" layoutY="110.0" prefHeight="869.0" prefWidth="1533.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
@@ -91,11 +100,11 @@
                          </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
-                                    <SplitPane dividerPositions="0.20784313725490197" layoutX="-3.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="257.0" prefWidth="873.0">
+                                    <SplitPane dividerPositions="0.20784313725490197" layoutX="-3.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="257.0" prefWidth="1221.0">
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <ToolBar fx:id="NoteSelection" layoutX="2.0" layoutY="2.0" prefHeight="49.0" prefWidth="866.0">
+                                                <ToolBar fx:id="NoteSelection" layoutX="2.0" layoutY="2.0" prefHeight="49.0" prefWidth="1213.0">
                                                   <items>
                                                       <Button mnemonicParsing="false" text="Button" />
                                                     <Button mnemonicParsing="false" text="Button" />
@@ -107,7 +116,7 @@
                                                 </ToolBar>
                                              </children>
                                           </AnchorPane>
-                                        <AnchorPane fx:id="PianoCase" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                                        <AnchorPane fx:id="PianoCase" minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="947.0" />
                                       </items>
                                     </SplitPane>
                                  </children>
