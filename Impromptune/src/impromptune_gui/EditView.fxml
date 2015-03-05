@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.ImpromptuneInitializer">
    <children>
       <MenuBar fx:id="Menubar" prefWidth="600.0">
@@ -71,6 +70,20 @@
                   <MenuItem mnemonicParsing="false" text="Delete" />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onZOUT" text="Zoom In">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="PLUS" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#onZIN" text="Zoom Out">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="MINUS" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" text="Impromptune Help" />
@@ -79,7 +92,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="869.0" prefWidth="1252.0">
+      <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="869.0" prefWidth="1252.0" VBox.vgrow="ALWAYS">
          <children>
             <SplitPane dividerPositions="0.6992" layoutX="242.0" layoutY="110.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>

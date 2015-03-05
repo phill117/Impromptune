@@ -4,19 +4,14 @@ package impromptune_gui;
  */
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Impromptune extends Application {
 
     private static Stage primaryStage;
-    private BorderPane baseLayout;
-    private AnchorPane editView;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
