@@ -23,6 +23,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
+import io_handler.IOHandler;
 
 import static com.xenoage.zong.desktop.App.app;
 
@@ -113,7 +114,10 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onOpen(ActionEvent event) {
-           // content.loadNextScore();
+        String file = IOHandler.load(stage);
+        if(file != null)
+             mainWindow.getContent().loadScore(file);
+
         }
 
 
