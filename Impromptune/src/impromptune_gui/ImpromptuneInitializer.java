@@ -1,6 +1,9 @@
 package impromptune_gui;
 
 import Renderer.MainWindow;
+import com.xenoage.zong.commands.desktop.dialog.AudioSettingsDialogShow;
+import com.xenoage.zong.commands.player.convert.DirToMidiConvert;
+import com.xenoage.zong.commands.player.convert.FileToMidiConvert;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.player.Player;
@@ -8,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.AnchorPane;
@@ -16,13 +20,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import com.xenoage.utils.jse.javafx.Dialog;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import piano.PianoHolder;
+
+import static com.xenoage.zong.desktop.App.app;
 
 /**
  * Created by Sean on 2/27/2015.
  */
 public class ImpromptuneInitializer implements Initializable{
 
+    @FXML Parent root;
     @FXML AnchorPane PianoCase;
     @FXML AnchorPane PlayerCase;
     @FXML AnchorPane RendererCase;
@@ -37,12 +45,14 @@ public class ImpromptuneInitializer implements Initializable{
     MainWindow mainWindow;
     public static final String appName = "Impromptune";
 
-
+    Stage stage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
+
+            stage = Impromptune.getStage();
 
             fxmlLoader = new FXMLLoader();
             sp = fxmlLoader.load(getClass().getClassLoader().getResource("piano/PianoHolder.fxml").openStream());
@@ -98,5 +108,19 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onREM(ActionEvent event) {
         mainWindow.getContent().undo();
+    }
+
+
+    /**
+     * Necessary Ported Methods from the Player MenuBar
+     */
+    @FXML void onSettingsAudio(ActionEvent event) {app().execute(new AudioSettingsDialogShow(stage)); }
+
+    @FXML void onConvertFileToMidi(ActionEvent event) {
+        app().execute(new FileToMidiConvert(stage));
+    }
+
+    @FXML void onConvertDirToMidi(ActionEvent event) {
+        app().execute(new DirToMidiConvert(stage));
     }
 }
