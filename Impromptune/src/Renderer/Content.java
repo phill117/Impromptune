@@ -128,6 +128,18 @@ public class Content
         Playback.openScore(comp.getCurrentScore());
     }
 
+    //Called by eventhandler
+    public void addRest(char rest) {
+        // comp.
+        comp.addRest(rest);
+        layout = comp.getLayout();
+        layout.updateScoreLayouts(comp.getCurrentScore());
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+        Playback.openScore(comp.getCurrentScore());
+    }
 
     //LOAD FROM REVOLUTIONARY FILE
     public void loadScore() {

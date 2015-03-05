@@ -143,10 +143,11 @@ public class Quill implements CommandListener {
 
     void startTie() {
 
+        cursor.openSlur();
     }
 
     void endTie() {
-
+        cursor.closeSlur();
     }
 
     void writeRest(char r) {
