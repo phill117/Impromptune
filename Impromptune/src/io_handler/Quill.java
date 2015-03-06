@@ -84,8 +84,16 @@ public class Quill implements CommandListener {
         }
     }
 
+    boolean checkMeasure(char d) {
+        Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
+        Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
+//        if (cur.compareTo(tot) == -1 && tot.add(cur) > 0)
+//            return true;
+        return false;
+    }
+
     void writeNote(String note) {
-        //Score.getMeasureBeats()
+
         char p = note.charAt(0); //pitch
         char a = note.charAt(1); //alteration
         char r = note.charAt(2); //register
@@ -95,12 +103,11 @@ public class Quill implements CommandListener {
         String s = new String();
         s += r;
         int o = Integer.parseInt(s);
-
-//        System.out.println("p" + p + " " + a + " " + r + " " + o);
+        o -= 1;
+        System.out.println("p" + p + " " + a + " " + r + " " + o);
 
         switch (d) {
             case 'w':
-                //check getPositionoffset
                 fr = fr(1, 1);
                 break;
             case 'h':
@@ -251,7 +258,7 @@ public class Quill implements CommandListener {
 
     @Override
     public void commandExecuted(Document document, Command command) {
-
+        System.out.println("Did shit");
     }
 
     @Override
