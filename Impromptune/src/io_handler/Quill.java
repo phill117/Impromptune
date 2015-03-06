@@ -84,16 +84,18 @@ public class Quill implements CommandListener {
         }
     }
 
-    boolean checkMeasure(char d) {
+    boolean checkMeasure(Fraction f) {
         Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
         Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
-//        if (cur.compareTo(tot) == -1 && tot.add(cur) > 0)
-//            return true;
+        Fraction tally = cur.add(f);
+        System.err.println(tally + " " + f);
+        if (!tally.sub(tot).isGreater0())
+            return true;
         return false;
     }
 
     void writeNote(String note) {
-
+        //Score.getMeasureBeats()
         char p = note.charAt(0); //pitch
         char a = note.charAt(1); //alteration
         char r = note.charAt(2); //register
@@ -104,10 +106,11 @@ public class Quill implements CommandListener {
         s += r;
         int o = Integer.parseInt(s);
         o -= 1;
-        System.out.println("p" + p + " " + a + " " + r + " " + o);
+//        System.out.println("p" + p + " " + a + " " + r + " " + o);
 
         switch (d) {
             case 'w':
+                //check getPositionoffset
                 fr = fr(1, 1);
                 break;
             case 'h':
@@ -132,6 +135,7 @@ public class Quill implements CommandListener {
                 System.err.println("Invalid duration");
                 return;
         }
+//        System.out.println(checkMeasure(fr));
 
         switch(a) {
             case '#'://sharp           //accents go in array as second arg to chord
@@ -258,7 +262,7 @@ public class Quill implements CommandListener {
 
     @Override
     public void commandExecuted(Document document, Command command) {
-        System.out.println("Did shit");
+
     }
 
     @Override
