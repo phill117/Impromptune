@@ -81,11 +81,11 @@ public class ImpromptuneInitializer implements Initializable{
             fxmlLoader = new FXMLLoader();
             sp = fxmlLoader.load(getClass().getClassLoader().getResource("piano/PianoHolder.fxml").openStream());
             PianoCase.getChildren().add(sp);
-            PianoHolder ph = (PianoHolder) fxmlLoader.getController();  //Get the controller object created
-            PianoCase.setTopAnchor(sp,0.0);
-            PianoCase.setBottomAnchor(sp,0.0);
-            PianoCase.setLeftAnchor(sp,0.0);
-            PianoCase.setRightAnchor(sp,0.0);
+            PianoHolder ph = fxmlLoader.getController();  //Get the controller object created
+            AnchorPane.setTopAnchor(sp, 0.0);
+            AnchorPane.setBottomAnchor(sp, 0.0);
+            AnchorPane.setLeftAnchor(sp, 0.0);
+            AnchorPane.setRightAnchor(sp, 0.0);
 
 
            // PianoCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("piano/PianoHolder.fxml")));
@@ -93,6 +93,11 @@ public class ImpromptuneInitializer implements Initializable{
             frame = Dialog.dialog(PlayerFrame.class, null);
             player.setPlayerController(frame);
             PlayerCase.getChildren().add(frame.getRoot());
+            AnchorPane.setTopAnchor(frame.getRoot(), 0.0);
+            AnchorPane.setBottomAnchor(frame.getRoot(), 0.0);
+            AnchorPane.setLeftAnchor(frame.getRoot(), 0.0);
+            AnchorPane.setRightAnchor(frame.getRoot(), 0.0);
+
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
@@ -103,13 +108,13 @@ public class ImpromptuneInitializer implements Initializable{
             bp = fxmlLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml").openStream());
             RendererCase.getChildren().add(bp);
 
-            RendererCase.setTopAnchor(bp,0.0);
-            RendererCase.setBottomAnchor(bp,0.0);
-            RendererCase.setLeftAnchor(bp,0.0);
-            RendererCase.setRightAnchor(bp,0.0);
+            AnchorPane.setTopAnchor(bp, 0.0);
+            AnchorPane.setBottomAnchor(bp, 0.0);
+            AnchorPane.setLeftAnchor(bp, 0.0);
+            AnchorPane.setRightAnchor(bp, 0.0);
            // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
 
-            MainWindow mw = (MainWindow) fxmlLoader.getController();
+            MainWindow mw = fxmlLoader.getController();
 
             ph.mw = mw; //Set the current piano window to current renderer window
             mainWindow = mw;

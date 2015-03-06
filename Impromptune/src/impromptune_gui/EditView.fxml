@@ -137,7 +137,7 @@
                      </children>
                   </AnchorPane>
                   <Separator orientation="VERTICAL" prefHeight="761.0" prefWidth="0.0" />
-                <AnchorPane maxWidth="541.0" minHeight="0.0" minWidth="541.0" prefHeight="160.0" prefWidth="541.0">
+                <AnchorPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="450.0">
                      <children>
                         <VBox minWidth="444.0" prefHeight="867.0" prefWidth="444.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
