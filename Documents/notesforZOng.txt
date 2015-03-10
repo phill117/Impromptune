@@ -1,0 +1,13 @@
+Download the lombok plugin for intellij
+from inside intellij
+
+go into settings->compiler -> annotation processors 
+check enable annotation processing
+
+other settings-> lombok
+make sure it is checked for all projects
+
+need latest
+http://fxexperience.com/controlsfx/
+
+need java sdk > 8.20
