@@ -6,6 +6,8 @@ import com.xenoage.zong.core.music.annotation.Annotation;
 import com.xenoage.zong.core.music.annotation.Articulation;
 import com.xenoage.zong.core.music.annotation.ArticulationType;
 import com.xenoage.zong.core.music.chord.Chord;
+import com.xenoage.zong.core.music.format.BezierPoint;
+import com.xenoage.zong.core.music.slur.SlurWaypoint;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.time.TimeType;
 
@@ -127,5 +129,9 @@ public class QuillUtils {
         }
 
         return chord;
+    }
+
+    public static SlurWaypoint clwp(Chord c, BezierPoint bezierPoint) {
+        return new SlurWaypoint(c, null, bezierPoint);
     }
 }

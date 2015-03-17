@@ -4,6 +4,7 @@ import com.xenoage.utils.document.Document;
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.CommandListener;
 import com.xenoage.utils.math.Fraction;
+import com.xenoage.zong.commands.core.music.slur.SlurAdd;
 import com.xenoage.zong.core.music.ColumnElement;
 import com.xenoage.zong.core.music.MeasureElement;
 import com.xenoage.zong.core.music.Pitch;
@@ -14,6 +15,7 @@ import com.xenoage.zong.core.music.chord.*;
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.direction.*;
+import com.xenoage.zong.core.music.format.BezierPoint;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.time.TimeSymbol;
@@ -31,6 +33,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.math.Fraction.fr;
 import static com.xenoage.zong.core.music.Pitch.G;
 import static com.xenoage.zong.core.music.Pitch.pi;
+import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
  * Created by ben on 2/25/15.
@@ -67,34 +70,14 @@ public class Quill implements CommandListener {
         cursor.write((ColumnElement) new Tempo(QuillUtils.getFraction(timeSig), bpm));
     }
 
-    void writeTime (String option) { //time option selected, arguments should be in following format: "4/4"
-        switch(option) {
-            case "2/2":
-                cursor.write(new Time(TimeType.time_2_2));
-                break;
-            case "3/4":
-                cursor.write(new Time(TimeType.time_3_4));
-                break;
-            case "4/4":
-                cursor.write(new Time(TimeType.time_4_4));
-                break;
-            case "6/8":
-                cursor.write(new Time(TimeType.time_6_8));
-                break;
-            default: //custom
-                String values[] = option.split("/");
-                int num = Integer.parseInt(values[0]);
-                int den = Integer.parseInt(values[1]);
-                cursor.write(new Time(TimeType.timeType(num, den)));
-                break;
-        }
+    void writeTime (String timeSig) { //time option selected, arguments should be in following format: "4/4"
+        cursor.write(QuillUtils.getTime(timeSig));
     }
 
     boolean checkMeasure(Fraction f) {
         Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
         Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
         Fraction rem = tot.sub(cur);
-
 
         System.err.println("beats remaining in measure: " + rem);
         System.err.println("duration to be inserted: " + f);
@@ -129,9 +112,6 @@ public class Quill implements CommandListener {
         return    fr(--num, fr.getDenominator());
     }
 
-
-
-
     void writeNote(String note) {
         //Score.getMeasureBeats()
         char p = note.charAt(0); //pitch
@@ -153,15 +133,19 @@ public class Quill implements CommandListener {
         Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
         Fraction rem = tot.sub(cur);
 
-//        System.err.println(" " + rem + " " + fr);
-
         if (rem.isGreater0() && rem.compareTo(fr) < 0) {
+            Chord attachC, firstSlurC, lastSlurC;
+            BezierPoint firstSlurB, lastSlurB;
 //            write Chord with rem and fr - rem
             System.out.println("fr: "  + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
 //            startSlur();
-            cursor.write(QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
-            cursor.write(QuillUtils.chord(fr.sub(rem), QuillUtils.getPitch(p, a, o)));
+            cursor.write(firstSlurC = QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
+            cursor.write(lastSlurC = QuillUtils.chord(fr.sub(rem), QuillUtils.getPitch(p, a, o)));
 //            closeSlur();
+            float is = getCursor().getScore().getFormat().getInterlineSpace();
+            firstSlurB = new BezierPoint(sp(is * 0.8f, is * 7.6f), sp(is, is * 0.8f));
+            lastSlurB = new BezierPoint(sp(0, is * 6f), sp(-is, is));
+            new SlurAdd(new Slur(SlurType.Slur, QuillUtils.clwp(firstSlurC, firstSlurB), QuillUtils.clwp(lastSlurC, lastSlurB), null)).execute();
         } else {
             cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
         }
