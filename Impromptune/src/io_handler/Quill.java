@@ -14,11 +14,15 @@ import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.rest.Rest;
+import com.xenoage.zong.core.music.time.TimeSymbol;
 import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.io.selection.Cursor;
 import com.xenoage.zong.musiclayout.notations.TimeNotation;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.time.TimeType;
+
+import com.xenoage.zong.core.music.slur.SlurType;
+import com.xenoage.zong.core.music.slur.Slur;
 
 import org.jfugue.*;
 import org.jfugue.Note;
@@ -37,13 +41,13 @@ public class Quill implements CommandListener {
 
     String partName = null;
 
+    private boolean openBeam = false;
+    private Cursor cursor = null;
+
     public Quill(Cursor cursor, String instr) {
         this.cursor = cursor;
         this.partName = instr;
     }
-
-    private boolean openBeam = false;
-    private Cursor cursor = null;
 
     Cursor getCursor() {
         return this.cursor;
@@ -79,7 +83,7 @@ public class Quill implements CommandListener {
                 String values[] = option.split("/");
                 int num = Integer.parseInt(values[0]);
                 int den = Integer.parseInt(values[1]);
-//                cursor.write(new Time(TimeType(num, den)));
+                cursor.write(new Time(TimeType.timeType(num, den)));
                 break;
         }
     }
@@ -87,11 +91,96 @@ public class Quill implements CommandListener {
     boolean checkMeasure(Fraction f) {
         Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
         Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
-        Fraction tally = cur.add(f);
-        System.err.println(tally + " " + f);
-        if (!tally.sub(tot).isGreater0())
+        Fraction rem = tot.sub(cur);
+
+
+        System.err.println("beats remaining in measure: " + rem);
+        System.err.println("duration to be inserted: " + f);
+
+        if (rem.compareTo(f) >= 0)
             return true;
+
         return false;
+    }
+
+    Fraction getRemainingBeats() {
+        Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
+        Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
+        return tot.sub(cur);
+    }
+
+    Fraction chomp(Fraction fr, Fraction rem, char p, char a, char o) {
+        int num = 0;
+        num = fr.getNumerator();
+//        cursor.write(chord(fr, pi(p, 1, o)));//last arg is octave
+        if (num != 1) {//fraction is > 1/2...chomp half of it
+            Fraction chunk =  fr(1, fr.getDenominator());
+            switch(a) {
+                case '#'://sharp           //accents go in array as second arg to chord
+                    cursor.write(chord(chunk, pi(p, 1, o)));//last arg is octave
+                    break;
+                case 'f'://flat
+                    cursor.write(chord(chunk, pi(p, -1, o)));
+                    break;
+                case 'n': //natural
+                    cursor.write(chord(chunk, pi(p, 0, o)));
+                    break;
+                default:
+                    System.err.println("Invalid alteration");
+                    return null;
+            }
+        }
+        return    fr(--num, fr.getDenominator());
+    }
+
+    //return fraction based on char input
+    Fraction getFraction(char d) {
+        switch (d) {
+            case 'w':
+                if (openBeam) closeBeam();
+                return fr(1, 1);
+
+            case 'h':
+                if (openBeam) closeBeam();
+                return fr(1, 2);
+
+            case 'q':
+                if (openBeam) closeBeam();
+                return fr(1, 4);
+
+            case 'i':
+                if (!openBeam) openBeam();
+                return fr(1, 8);
+
+            case 's':
+                if (!openBeam) openBeam();
+                return fr(1, 16);
+
+            case 't':
+                if (!openBeam) openBeam();
+                return fr(1, 32);
+
+            case 'x':
+                if (!openBeam) openBeam();
+                return fr(1,64);
+        }
+
+        System.err.println("Invalid duration: " + d);
+        return null;
+    }
+
+    Pitch getPitch(char p, char a, int o) {
+
+        switch(a) {
+            case '#'://sharp
+                return pi(p, 1, o);
+            case 'f'://flat
+                return pi(p, -1, o);
+            case 'n': //natural
+                return pi(p, 0, o);
+        }
+        System.err.println("Invalid alteration: " + p);
+        return null;
     }
 
     void writeNote(String note) {
@@ -101,65 +190,52 @@ public class Quill implements CommandListener {
         char r = note.charAt(2); //register
         char d = note.charAt(3); //duration
 
-        Fraction fr = null;
+        Fraction fr =  getFraction(d);
         String s = new String();
         s += r;
         int o = Integer.parseInt(s);
-        o -= 1;
+        o--;
+        //accents go in array as second arg to chord
+        cursor.write(chord(fr, getPitch(p, a , o)));
 //        System.out.println("p" + p + " " + a + " " + r + " " + o);
 
-        switch (d) {
-            case 'w':
-                //check getPositionoffset
-                fr = fr(1, 1);
-                break;
-            case 'h':
-                fr = fr(1, 2);
-                break;
-            case 'q':
-                fr = fr(1, 4);
-                break;
-            case 'i':
-                fr = fr(1, 8);
-                break;
-            case 's':
-                fr = fr(1, 16);
-                break;
-            case 't':
-                fr = fr(1, 32);
-                break;
-            case 'x':
-                fr = fr(1, 64);
-                break;
-            default:
-                System.err.println("Invalid duration");
-                return;
-        }
-//        System.out.println(checkMeasure(fr));
+        System.out.println(checkMeasure(fr));
+        Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
+        Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
+        Fraction rem = tot.sub(cur);
 
-        switch(a) {
-            case '#'://sharp           //accents go in array as second arg to chord
-                cursor.write(chord(fr, pi(p, 1, o)));//last arg is octave
-                break;
-            case 'f'://flat
-                cursor.write(chord(fr, pi(p, -1, o)));
-                break;
-            case 'n': //natural
-                cursor.write(chord(fr, pi(p, 0, o)));
-                break;
-            default:
-                System.err.println("Invalid alteration");
-                return;
+//        System.err.println(" " + rem + " " + fr);
+
+        if (rem.compareTo(fr) < 0) {
+//            write Chord with rem and fr - rem
+            System.out.println("fr: "  + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
         }
     }
 
     void startTie() {
-
-//        cursor.openSlur();
+        cursor.openSlur(SlurType.Tie);
     }
 
     void endTie() {
         cursor.closeSlur();
+    }
+
+    void startSlur() {
+        cursor.openSlur(SlurType.Slur);
+    }
+
+    void closeSlur(){
+        cursor.closeSlur();
+    }
+
+    void openBeam() {
+        openBeam = true;
+        cursor.openBeam();
+    }
+
+    void closeBeam() {
+        openBeam = false;
+        cursor.closeBeam();
     }
 
     void writeRest(char r) {
@@ -191,7 +267,7 @@ public class Quill implements CommandListener {
                 System.err.println("Invalid duration");
                 return;
         }
-
+        closeBeam();
         cursor.write(new Rest(fr));
     }
 
