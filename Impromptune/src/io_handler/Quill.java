@@ -6,14 +6,7 @@ import com.xenoage.utils.document.command.CommandListener;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.commands.core.music.slur.SlurAdd;
 import com.xenoage.zong.core.music.ColumnElement;
-import com.xenoage.zong.core.music.MeasureElement;
-import com.xenoage.zong.core.music.Pitch;
-import com.xenoage.zong.core.music.annotation.Annotation;
-import com.xenoage.zong.core.music.annotation.Articulation;
-import com.xenoage.zong.core.music.annotation.ArticulationType;
 import com.xenoage.zong.core.music.chord.*;
-import com.xenoage.zong.core.music.clef.Clef;
-import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
 import com.xenoage.zong.core.music.key.TraditionalKey;
@@ -21,17 +14,12 @@ import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.time.TimeSymbol;
 import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.io.selection.Cursor;
-import com.xenoage.zong.musiclayout.notations.TimeNotation;
-import com.xenoage.zong.core.music.time.Time;
-import com.xenoage.zong.core.music.time.TimeType;
 
 import com.xenoage.zong.core.music.slur.SlurType;
 import com.xenoage.zong.core.music.slur.Slur;
 
 import java.lang.Integer;
-import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.math.Fraction.fr;
-import static com.xenoage.zong.core.music.Pitch.G;
 import static com.xenoage.zong.core.music.Pitch.pi;
 import static com.xenoage.zong.core.music.format.SP.sp;
 
@@ -62,8 +50,9 @@ public class Quill implements CommandListener {
 //        cursor.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
 //    }
 
-    void writeClef(Clef clef) {
-        cursor.write(clef);
+    //format of string should be "bass" || "treble" || "tenor" || "alto"
+    void writeClef(String clef) {
+        cursor.write(QuillUtils.getClef(clef));
     }
 
     void writeTempo(String timeSig, int bpm) {
@@ -122,8 +111,8 @@ public class Quill implements CommandListener {
         Fraction fr =  QuillUtils.getFraction(d);
         String s = new String();
         s += r;
-        int o = Integer.parseInt(s);
-        o--;
+        int o = Integer.parseInt(s) - 1;
+//        o--;
         //accents go in array as second arg to chord
 //        cursor.write(chord(fr, getPitch(p, a , o)));
 //        System.out.println("p" + p + " " + a + " " + r + " " + o);
@@ -145,7 +134,7 @@ public class Quill implements CommandListener {
             float is = getCursor().getScore().getFormat().getInterlineSpace();
             firstSlurB = new BezierPoint(sp(is * 0.8f, is * 7.6f), sp(is, is * 0.8f));
             lastSlurB = new BezierPoint(sp(0, is * 6f), sp(-is, is));
-            new SlurAdd(new Slur(SlurType.Slur, QuillUtils.clwp(firstSlurC, firstSlurB), QuillUtils.clwp(lastSlurC, lastSlurB), null)).execute();
+            new SlurAdd(new Slur(SlurType.Tie, QuillUtils.clwp(firstSlurC, firstSlurB), QuillUtils.clwp(lastSlurC, lastSlurB), null)).execute();
         } else {
             cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
         }

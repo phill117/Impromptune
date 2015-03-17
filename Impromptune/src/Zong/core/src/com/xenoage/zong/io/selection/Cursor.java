@@ -61,7 +61,7 @@ public final class Cursor
 	/** True, when the cursor is moved when the write method is executed. */
 	@Getter @Setter private boolean moving;
 	/** True, when empty space should be filled with invisible rests. Defaults to false. */
-	@Getter @Setter private boolean fillWithHiddenRests = false;
+	@Getter @Setter private boolean fillWithHiddenRests = true;
 
 
 	private ArrayList<BeamWaypoint> openBeamWaypoints = null;

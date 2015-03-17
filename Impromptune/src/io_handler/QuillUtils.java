@@ -6,6 +6,8 @@ import com.xenoage.zong.core.music.annotation.Annotation;
 import com.xenoage.zong.core.music.annotation.Articulation;
 import com.xenoage.zong.core.music.annotation.ArticulationType;
 import com.xenoage.zong.core.music.chord.Chord;
+import com.xenoage.zong.core.music.clef.Clef;
+import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.format.BezierPoint;
 import com.xenoage.zong.core.music.slur.SlurWaypoint;
 import com.xenoage.zong.core.music.time.Time;
@@ -95,6 +97,20 @@ public class QuillUtils {
         return null;
     }
 
+    static Clef getClef(String clef) {
+        switch (clef) {
+            case "clefBass":
+                return new Clef(ClefType.clefBass);
+            case "clefTreble":
+                return new Clef(ClefType.clefTreble);
+            case "clefAlto":
+                return new Clef(ClefType.clefAlto);
+            case "clefTenor":
+                return new Clef(ClefType.clefTenor);
+            default:
+                return null;
+        }
+    }
     static Time getTime(String timeSig) {
         switch(timeSig) {
             case "2/2":
