@@ -9,6 +9,9 @@ import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.format.BezierPoint;
+import com.xenoage.zong.core.music.key.Key;
+import com.xenoage.zong.core.music.key.TraditionalKey;
+import com.xenoage.zong.core.music.key.TraditionalKey.Mode;
 import com.xenoage.zong.core.music.slur.SlurWaypoint;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.time.TimeType;
@@ -23,9 +26,6 @@ import static com.xenoage.zong.core.music.Pitch.pi;
  * Created by ben on 3/16/2015.
  */
 public class QuillUtils {
-
-
-
     static Fraction getFraction(String fraction) {
         switch (fraction) {
             case "1/1":
@@ -97,6 +97,41 @@ public class QuillUtils {
         return null;
     }
 
+    static Key getKeySig(String keySig, String mode) {
+        Mode m = null;
+        switch (mode) {
+            case "major":
+                m = Mode.Major;
+                break;
+            case "minor":
+                m = Mode.Minor;
+                break;
+            case "ionian":
+                m = Mode.Ionian;
+                break;
+            case "dorian":
+                m = Mode.Dorian;
+                break;
+            case "phrygian":
+                m = Mode.Phrygian;
+                break;
+            case "lydian":
+                m = Mode.Lydian;
+                break;
+            case "mixolydian":
+                m = Mode.Mixolydian;
+                break;
+            case "aeolian":
+                m = Mode.Aeolian;
+                break;
+            case "locrian":
+                m = Mode.Locrian;
+                break;
+        }
+
+        return new TraditionalKey(-3, m);
+    }
+
     static Clef getClef(String clef) {
         switch (clef) {
             case "clefBass":
@@ -111,6 +146,7 @@ public class QuillUtils {
                 return null;
         }
     }
+
     static Time getTime(String timeSig) {
         switch(timeSig) {
             case "2/2":
@@ -128,7 +164,6 @@ public class QuillUtils {
                 return new Time(TimeType.timeType(num, den));
         }
     }
-
 
     public static Chord chord(Fraction fraction, Pitch... pitches) {
         return chord(fraction, null, pitches);

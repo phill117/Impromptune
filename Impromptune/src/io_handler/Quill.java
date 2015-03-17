@@ -6,6 +6,8 @@ import com.xenoage.utils.document.command.CommandListener;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.commands.core.music.slur.SlurAdd;
 import com.xenoage.zong.core.music.ColumnElement;
+import com.xenoage.zong.core.music.Measure;
+import com.xenoage.zong.core.music.MeasureElement;
 import com.xenoage.zong.core.music.chord.*;
 import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
@@ -32,23 +34,27 @@ public class Quill implements CommandListener {
 
     private boolean openBeam = false;
     private Cursor cursor = null;
+    private float is = 0;
 
     public Quill(Cursor cursor, String instr) {
         this.cursor = cursor;
         this.partName = instr;
+        this.is = cursor.getScore().getFormat().getInterlineSpace();
     }
 
     Cursor getCursor() {
         return this.cursor;
     }
-    Fraction getRemainingBeats() {
-        Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
-        Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
-        return tot.sub(cur);
+
+    //starting at this measure
+    void writeMeasureKeySig(String keySig, String mode) {
+        cursor.write((MeasureElement) QuillUtils.getKeySig(keySig, mode));
     }
-//    void writeKeySig(KeySignature key) {
-//        cursor.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-//    }
+
+    //for the entire staff, ie composition initialization
+    void writeStaffKeySig(String keySig, String mode) {
+        cursor.write((ColumnElement) QuillUtils.getKeySig(keySig, mode));
+    }
 
     //format of string should be "bass" || "treble" || "tenor" || "alto"
     void writeClef(String clef) {
@@ -77,6 +83,11 @@ public class Quill implements CommandListener {
         return false;
     }
 
+    Fraction getRemainingBeats() {
+        Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
+        Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
+        return tot.sub(cur);
+    }
 
     Fraction chomp(Fraction fr, Fraction rem, char p, char a, char o) {
         int num = fr.getNumerator();
@@ -118,9 +129,8 @@ public class Quill implements CommandListener {
 //        System.out.println("p" + p + " " + a + " " + r + " " + o);
 
         System.out.println(checkMeasure(fr));
-        Fraction tot = cursor.getScore().getMeasureBeats(cursor.getScore().getMeasuresCount() - 1);
-        Fraction cur = cursor.getScore().getMeasureFilledBeats(cursor.getScore().getMeasuresCount() - 1);
-        Fraction rem = tot.sub(cur);
+
+        Fraction rem = getRemainingBeats();
 
         if (rem.isGreater0() && rem.compareTo(fr) < 0) {
             Chord attachC, firstSlurC, lastSlurC;
@@ -131,7 +141,7 @@ public class Quill implements CommandListener {
             cursor.write(firstSlurC = QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
             cursor.write(lastSlurC = QuillUtils.chord(fr.sub(rem), QuillUtils.getPitch(p, a, o)));
 //            closeSlur();
-            float is = getCursor().getScore().getFormat().getInterlineSpace();
+
             firstSlurB = new BezierPoint(sp(is * 0.8f, is * 7.6f), sp(is, is * 0.8f));
             lastSlurB = new BezierPoint(sp(0, is * 6f), sp(-is, is));
             new SlurAdd(new Slur(SlurType.Tie, QuillUtils.clwp(firstSlurC, firstSlurB), QuillUtils.clwp(lastSlurC, lastSlurB), null)).execute();
@@ -148,13 +158,13 @@ public class Quill implements CommandListener {
         cursor.closeSlur();
     }
 
-    void startSlur() {
-        cursor.openSlur(SlurType.Slur);
-    }
+//    void startSlur() {
+//        cursor.openSlur(SlurType.Slur);
+//    }
 
-    void closeSlur(){
-        cursor.closeSlur();
-    }
+//    void closeSlur(){
+//        cursor.closeSlur();
+//    }
 
     void openBeam() {
         openBeam = true;
