@@ -13,6 +13,7 @@ import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.rest.Rest;
+import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.time.TimeSymbol;
 import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.io.selection.Cursor;
@@ -35,9 +36,7 @@ public class Quill implements CommandListener {
 
     private boolean openBeam = false;
     private Fraction beamCounter = null;
-    private Fraction wholeFr = null;
-    private Fraction halfFr = null;
-    private Fraction quartFr = null;
+    private Fraction theBeat = null;
 
     private Cursor cursor = null;
     private float is = 0;
@@ -50,9 +49,6 @@ public class Quill implements CommandListener {
         this.is = cursor.getScore().getFormat().getInterlineSpace();
         this.startBp =  new BezierPoint(sp(is * 0.8f, is * 7.6f), sp(is, is * 0.8f));
         this.endBp = new BezierPoint(sp(0, is * 6f), sp(-is, is));
-        this.wholeFr = fr(1,1);
-        this.halfFr = fr(1,2);
-        this.quartFr = fr(1,4);
     }
 
     Cursor getCursor() {
@@ -79,7 +75,10 @@ public class Quill implements CommandListener {
     }
 
     void writeTime (String timeSig) { //time option selected, arguments should be in following format: "4/4"
-        cursor.write(QuillUtils.getTime(timeSig));
+        Time time =  QuillUtils.getTime(timeSig);
+        theBeat = fr(1, time.getType().getDenominator());
+        cursor.write(time);
+        System.out.println("theBeat: " + theBeat);
     }
 
     boolean checkMeasure(Fraction f) {
@@ -136,36 +135,39 @@ public class Quill implements CommandListener {
         String s = new String();
         s += r;
         int o = Integer.parseInt(s) - 1;
-        if (d == 'w' || d == 'h'|| d == 'q') {
-            if (openBeam)
-                closeBeam();
-        }
-//        o--;
-        //accents go in array as second arg to chord
-//        cursor.write(chord(fr, getPitch(p, a , o)));
-//        System.out.println("p" + p + " " + a + " " + r + " " + o);
-
-//        System.out.println(checkMeasure(fr));
-
         Fraction rem = getRemainingBeats();
 
         if (rem.isGreater0() && rem.compareTo(fr) < 0) {
-            Chord attachC, firstSlurC, lastSlurC;
-            BezierPoint firstSlurB, lastSlurB;
+            Chord firstSlurC, lastSlurC;
 //            write Chord with rem and fr - rem
-            System.out.println("fr: "  + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
+            System.out.println("[splitting note] \nfr: "  + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
 //            startSlur();
-//            openBeam(rem);
             cursor.write(firstSlurC = QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
-
             cursor.write(lastSlurC = QuillUtils.chord(fr.sub(rem), QuillUtils.getPitch(p, a, o)));
 //            closeSlur();
-
-            firstSlurB = startBp;
-            lastSlurB = endBp;
-            new SlurAdd(new Slur(SlurType.Tie, QuillUtils.clwp(firstSlurC, firstSlurB), QuillUtils.clwp(lastSlurC, lastSlurB), null)).execute();
+            writeTied(firstSlurC, lastSlurC);
         } else {
-            cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
+            if (d == 'w' || d == 'h' || d == 'q') {
+                if (openBeam)
+                    closeBeam();
+                cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
+            } else {
+                if (openBeam) {
+                    beamCounter = beamCounter.add(fr);
+                    if (beamCounter.compareTo(theBeat) >= 0) {
+                        cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
+                        closeBeam();
+                    } else {
+                        cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
+                    }
+
+                } else {
+                    openBeam = true;
+                    beamCounter = fr;
+                    cursor.openBeam();
+                    cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
+                }
+            }
         }
     }
 
@@ -177,31 +179,34 @@ public class Quill implements CommandListener {
         cursor.closeSlur();
     }
 
+    void writeTied(Chord firstSlurC, Chord lastSlurC) {
+        new SlurAdd(new Slur(SlurType.Tie, QuillUtils.clwp(firstSlurC, startBp), QuillUtils.clwp(lastSlurC, endBp), null)).execute();
+    }
+
 //    void startSlur() {
 //        cursor.openSlur(SlurType.Slur);
 //    }
+//    void attachSlur() {
 
+//    }
 //    void closeSlur(){
 //        cursor.closeSlur();
 //    }
 
     void openBeam(Fraction curNote) {
 
-        if (openBeam) {
-            Fraction tmp = beamCounter.add(curNote);
-            if (tmp.compareTo(fr(1)) > 0)
-                closeBeam();
-
-        } else {
-            openBeam = true;
-            beamCounter = curNote.mult(fr(4 * beamCounter.getNumerator(), beamCounter.getDenominator()));
-            cursor.openBeam();
-        }
     }
 
     void closeBeam() {
+        if (openBeam) {
+            openBeam = false;
+            cursor.safeCloseBeam();
+        }
+    }
+
+    void safeCloseBeam() {
         openBeam = false;
-        cursor.closeBeam();
+        cursor.safeCloseBeam();
     }
 
     void writeRest(char r) {
@@ -249,11 +254,11 @@ public class Quill implements CommandListener {
     7+5-9 (dominant) dom7>5<9           0, 4, 8, 10, 13
     7+5+9 (dominant) dom7>5>9           0, 4, 8, 10, 15
     */
-    void writeChord(Chord chord) {
+    void writeChord(String chord) {
 
     }
 
-    void writeTriplet(Tuplet tuplet) {
+    void writeTriplet(String triplet) {
 
     }
 

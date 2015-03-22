@@ -30,22 +30,22 @@ public class QuillUtils {
     static Fraction getFraction(String fraction) {
         switch (fraction) {
             case "1/1":
-                return fr(1, 1);
+                return fr(1,1);
 
             case "1/2":
-                return fr(1, 2);
+                return fr(1,2);
 
             case "1/4":
-                return fr(1, 4);
+                return fr(1,4);
 
             case "1/8":
-                return fr(1, 8);
+                return fr(1,8);
 
             case "1/16":
-                return fr(1, 16);
+                return fr(1,16);
 
             case "1/32":
-                return fr(1, 32);
+                return fr(1,32);
 
             case "1/64":
                 return fr(1,64);
@@ -102,15 +102,15 @@ public class QuillUtils {
 
                 case 'x':
                     return fr(1, 64);
+            }
         }
-    }
 
         System.err.println("Invalid duration: " + d);
         return null;
     }
 
     static Fraction getDottedFraction(char d) {
-    return null;
+        return null;
     }
 
     static Pitch getPitch(char p, char a, int o) {
@@ -159,18 +159,18 @@ public class QuillUtils {
                 break;
         }
 
-        return new TraditionalKey(-3, m);
+        return new TraditionalKey(0, m);
     }
 
     static Clef getClef(String clef) {
         switch (clef) {
-            case "clefBass":
+            case "bass":
                 return new Clef(ClefType.clefBass);
-            case "clefTreble":
+            case "treble":
                 return new Clef(ClefType.clefTreble);
-            case "clefAlto":
+            case "alto":
                 return new Clef(ClefType.clefAlto);
-            case "clefTenor":
+            case "tenor":
                 return new Clef(ClefType.clefTenor);
             default:
                 return null;

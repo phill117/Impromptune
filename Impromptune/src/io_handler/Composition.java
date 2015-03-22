@@ -55,7 +55,7 @@ public class Composition {
 
     //internal zong score
     private Score currentComp = null;
-    private ArrayList<Quill> cursorList = null;
+    private ArrayList<Quill> quills = null;
 
     //for viewage
     private LayoutSettings layoutSettings = null;
@@ -72,35 +72,35 @@ public class Composition {
     private final float SPACING = 9;
 
     public Composition() {
-        cursorList = new ArrayList<Quill>();
+        quills = new ArrayList<Quill>();
         currentComp = initializeEmptyScore();
         setLayoutFormat(currentComp);
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
         currentIndex = 0;
-        currentComp.getCommandPerformer().addCommandListener(cursorList.get(0)); //first one for now
+        currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
     }
 
     public Composition(String fileName) {
-        cursorList = new ArrayList<Quill>();
+        quills = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
-        currentComp.getCommandPerformer().addCommandListener(cursorList.get(0)); //first one for now
+        currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
         //currentIndex = ??
     }
 
     public void addNote(String str) {
 
-        cursorList.get(currentIndex).writeNote(str);
+        quills.get(currentIndex).writeNote(str);
 //        Barline barlineEnd = Barline.barline(BarlineStyle.LightHeavy);
 //        new ColumnElementWrite(barlineEnd, currentComp.getColumnHeader(0), null, MeasureSide.Right).execute();
     }
 
     public void addRest(char r) {
-        cursorList.get(currentIndex).writeRest(r);
+        quills.get(currentIndex).writeRest(r);
     }
 
     public Quill getCurrentPart() {
-        return cursorList.get(currentIndex);
+        return quills.get(currentIndex);
     }
 
     public ScoreDoc getCurrentScoreDoc() {
@@ -141,7 +141,7 @@ public class Composition {
         Instrument instr = Instrument.defaultInstrument;
         Part part = new Part(instrName, null, staffSpan, alist(instr));
         new PartAdd(comp, part, 0, null).execute();
-        cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
+        quills.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
     }
 
     public void removeLast() {
@@ -170,19 +170,14 @@ public class Composition {
         Part pianoPart = new Part("Piano", null, 1, alist(instr));
         new PartAdd(currentComp, pianoPart, 0, null).execute();
 
-        cursorList.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
-        //cursorList.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true)));
+        quills.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
 
-        Cursor cursorStaff1 = cursorList.get(0).getCursor();
-        //Cursor cursorStaff2 = cursorList.get(1).getCursor();
+        Quill quil1 = quills.get(0);
 
-        //first staff: treble clef
-        cursorStaff1.write(new Clef(ClefType.clefTreble));
-
+        quil1.writeClef("treble");
 //        //C major default, C (4/4) time
-        cursorStaff1.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-        cursorStaff1.write(new Time(TimeType.time_4_4));
-
+        quil1.writeStaffKeySig("C", "major");
+        quil1.writeTime("4/4");
         //second staff: bass clef
      //   cursorStaff2.write(new Clef(ClefType.clefBass));
 
@@ -251,3 +246,4 @@ public class Composition {
         return scoreDoc;
     }
 }
+
