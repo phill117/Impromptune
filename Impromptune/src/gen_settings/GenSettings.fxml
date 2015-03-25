@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gen_settings.GenSettings">
+   <children>
+      <Label layoutX="14.0" layoutY="26.0" text="Order" />
+      <Slider fx:id="order_scroll" blockIncrement="1.0" layoutX="14.0" layoutY="70.0" majorTickUnit="1.0" max="7.0" min="1.0" minorTickCount="0" prefHeight="17.0" prefWidth="378.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Label layoutX="14.0" layoutY="143.0" text="Repetitiveness" />
+      <Slider fx:id="repetitiveness_scroll" blockIncrement="1.0" layoutX="14.0" layoutY="186.0" majorTickUnit="1.0" max="7.0" min="1.0" minorTickCount="0" prefHeight="17.0" prefWidth="378.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Button fx:id="generate_btn" layoutX="98.0" layoutY="372.0" mnemonicParsing="false" onMouseClicked="#handle" prefHeight="100.0" prefWidth="208.0" text="Generate" underline="true">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Button>
+      <Slider fx:id="voices_scroll" blockIncrement="1.0" layoutX="14.0" layoutY="293.0" majorTickUnit="1.0" max="4.0" min="1.0" minorTickCount="0" prefHeight="17.0" prefWidth="378.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Label layoutX="16.0" layoutY="243.0" text="Number of Voices" />
+   </children>
+</Pane>

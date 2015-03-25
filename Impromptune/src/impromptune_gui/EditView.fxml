@@ -143,7 +143,7 @@
                            <children>
                               <AnchorPane fx:id="PlayerCase" minHeight="179.0" prefHeight="179.0" prefWidth="506.0" />
                               <Separator prefWidth="200.0" />
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                              <AnchorPane fx:id="GenSettingsCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>

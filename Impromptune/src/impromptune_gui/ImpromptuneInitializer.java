@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -38,9 +39,12 @@ import static com.xenoage.zong.desktop.App.app;
 public class ImpromptuneInitializer implements Initializable{
 
     @FXML Parent root;
+
     @FXML AnchorPane PianoCase;
     @FXML AnchorPane PlayerCase;
     @FXML AnchorPane RendererCase;
+    @FXML AnchorPane GenSettingsCase;
+
     @FXML ToolBar NoteSelection;
     @FXML BorderPane bp;
     @FXML ScrollPane sp;
@@ -78,6 +82,7 @@ public class ImpromptuneInitializer implements Initializable{
 
             stage = Impromptune.getStage();
 
+            //Piano
             fxmlLoader = new FXMLLoader();
             sp = fxmlLoader.load(getClass().getClassLoader().getResource("piano/PianoHolder.fxml").openStream());
             PianoCase.getChildren().add(sp);
@@ -87,8 +92,7 @@ public class ImpromptuneInitializer implements Initializable{
             AnchorPane.setLeftAnchor(sp, 0.0);
             AnchorPane.setRightAnchor(sp, 0.0);
 
-
-           // PianoCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("piano/PianoHolder.fxml")));
+            //Player
             player = new Player();
             frame = Dialog.dialog(PlayerFrame.class, null);
             player.setPlayerController(frame);
@@ -97,6 +101,11 @@ public class ImpromptuneInitializer implements Initializable{
             AnchorPane.setBottomAnchor(frame.getRoot(), 0.0);
             AnchorPane.setLeftAnchor(frame.getRoot(), 0.0);
             AnchorPane.setRightAnchor(frame.getRoot(), 0.0);
+
+            //GenSettings
+            fxmlLoader = new FXMLLoader();
+            Node settingsDisplay = fxmlLoader.load(getClass().getClassLoader().getResource("gen_settings/GenSettings.fxml").openStream());
+            GenSettingsCase.getChildren().add(settingsDisplay);
 
 
             //Renderer
@@ -119,10 +128,15 @@ public class ImpromptuneInitializer implements Initializable{
             ph.mw = mw; //Set the current piano window to current renderer window
             mainWindow = mw;
 
-        }catch (Exception e){
+        }catch (IOException e){
             System.out.println("WAHT HAPPENED");
             e.printStackTrace();
+            System.out.println(e.getLocalizedMessage());
+            System.out.println(e.getMessage());
             System.exit(1);
+        }catch (Exception e){
+            System.out.println("could not create player");
+            e.printStackTrace();
         }
 
     }
