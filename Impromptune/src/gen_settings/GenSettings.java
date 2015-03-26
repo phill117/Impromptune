@@ -6,8 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseEvent;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+import xml_parser.MXMLContentHandler;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,5 +50,31 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
          * 3. determine possible inner voices
          */
 
+        SAXParser mxp;
+        try {
+            mxp = SAXParserFactory.newInstance().newSAXParser();
+        }catch(Exception e){
+            System.out.println("Could not make parser");
+            e.printStackTrace();
+            return;
+        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("started");
+                    DefaultHandler handler = new MXMLContentHandler();
+                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/Chant.xml"));
+                    mxp.parse(inputSource, handler);
+                } catch (SAXException e) {
+                    System.out.println("SAX");
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    System.out.println("IO");
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

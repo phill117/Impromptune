@@ -168,9 +168,7 @@ public class ImpromptuneInitializer implements Initializable{
         if(file != null)
              mainWindow.getContent().loadScore(file);
 
-        }
-
-
+    }
 
     @FXML void onNEW(ActionEvent event) {
             mainWindow.getContent().loadBlank();
