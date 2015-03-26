@@ -13,6 +13,7 @@ import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.rest.Rest;
+import com.xenoage.zong.core.music.slur.SlurWaypoint;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.time.TimeSymbol;
 import com.xenoage.zong.core.music.tuplet.Tuplet;
@@ -23,6 +24,8 @@ import com.xenoage.zong.core.music.slur.Slur;
 import piano.PianoHolder;
 
 import java.lang.Integer;
+import java.util.ArrayList;
+
 import static com.xenoage.utils.math.Fraction.fr;
 import static com.xenoage.zong.core.music.Pitch.pi;
 import static com.xenoage.zong.core.music.format.SP.sp;
@@ -33,7 +36,7 @@ import static com.xenoage.zong.core.music.format.SP.sp;
 public class Quill implements CommandListener {
 
     String partName = null;
-
+    private Chord firstSlurC, lastSlurC;
     private boolean openBeam = false;
     private Fraction beamCounter = null;
     private Fraction theBeat = null;
@@ -42,6 +45,7 @@ public class Quill implements CommandListener {
     private float is = 0;
     private BezierPoint startBp = null;
     private BezierPoint endBp = null;
+    private ArrayList<SlurWaypoint> openSlurWaypoints = null;
 
     public Quill(Cursor cursor, String instr) {
         this.cursor = cursor;
@@ -49,6 +53,7 @@ public class Quill implements CommandListener {
         this.is = cursor.getScore().getFormat().getInterlineSpace();
         this.startBp =  new BezierPoint(sp(is * 0.8f, is * 7.6f), sp(is, is * 0.8f));
         this.endBp = new BezierPoint(sp(0, is * 6f), sp(-is, is));
+        this.openSlurWaypoints = new ArrayList<>();
     }
 
     Cursor getCursor() {
@@ -131,43 +136,53 @@ public class Quill implements CommandListener {
         char r = note.charAt(2); //register
         char d = note.charAt(3); //duration
 
-        Fraction fr =  QuillUtils.getFraction(d);
+        Fraction fr = QuillUtils.getFraction(d);
         String s = new String();
         s += r;
         int o = Integer.parseInt(s) - 1;
         Fraction rem = getRemainingBeats();
 
         if (rem.isGreater0() && rem.compareTo(fr) < 0) {
-            Chord firstSlurC, lastSlurC;
+
 //            write Chord with rem and fr - rem
-            System.out.println("[splitting note] \nfr: "  + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
+            System.out.println("[splitting note]");
+            System.out.println("fr: " + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
 //            startSlur();
+
             cursor.write(firstSlurC = QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
+            closeBeam();
             cursor.write(lastSlurC = QuillUtils.chord(fr.sub(rem), QuillUtils.getPitch(p, a, o)));
 //            closeSlur();
-            writeTied(firstSlurC, lastSlurC);
+            writeTied();
+        } else if (rem.isGreater0() && rem.compareTo(fr) == 0) { //last note of the measure
+            Chord curChord = QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o));
+
+            if (d == 'w' || d == 'h' || d == 'q')
+                closeBeam();
+
+            cursor.write(curChord);
+            closeBeam();
         } else {
-            if (d == 'w' || d == 'h' || d == 'q') {
-                if (openBeam)
-                    closeBeam();
-                cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
-            } else {
+            Chord curChord = QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o));
+
+            if (d == 'w' || d == 'h' || d == 'q')
+                closeBeam();
+            else {
                 if (openBeam) {
                     beamCounter = beamCounter.add(fr);
                     if (beamCounter.compareTo(theBeat) >= 0) {
-                        cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
+                        cursor.write(curChord);
                         closeBeam();
-                    } else {
-                        cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
+                        return;
                     }
 
                 } else {
                     openBeam = true;
                     beamCounter = fr;
                     cursor.openBeam();
-                    cursor.write(QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o)));
                 }
             }
+            cursor.write(curChord);
         }
     }
 
@@ -179,8 +194,10 @@ public class Quill implements CommandListener {
         cursor.closeSlur();
     }
 
-    void writeTied(Chord firstSlurC, Chord lastSlurC) {
+    void writeTied() {
         new SlurAdd(new Slur(SlurType.Tie, QuillUtils.clwp(firstSlurC, startBp), QuillUtils.clwp(lastSlurC, endBp), null)).execute();
+        firstSlurC = null;
+        lastSlurC = null;
     }
 
 //    void startSlur() {
