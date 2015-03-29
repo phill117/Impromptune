@@ -55,8 +55,6 @@ public class Content
 
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
-       // comp = new Composition(); // create blank
-       // scoreDoc = comp.getCurrentScoreDoc();
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
 	}
@@ -84,8 +82,9 @@ public class Content
     public void refresh(){
         layout = comp.getLayout();
         scoreDoc = comp.getCurrentScoreDoc();
+        // layout.updateScoreLayouts(comp.getCurrentScore());
+        //Sets up the blue playback cursor
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-        comp.setLayouter(playbackLayouter);
         mainWindow.renderLayout(layout);
 
         //load score into MIDI playback
@@ -116,37 +115,7 @@ public class Content
         refresh();
     }
 
-    //LOAD FROM REVOLUTIONARY FILE
-    public void loadScore() {
-        try {
-            //stop current playback
-            Playback.stop();
 
-            Score test = new ScoreRevolutionary().createScore();
-
-            LayoutFormat layoutFormat = new LayoutFormatReader(
-                    null, test.format.getInterlineSpace() / 10).read();
-
-            test.setMetaData("layoutformat", layoutFormat); //TIDY
-
-            ScoreDoc test2 = test(test);
-
-            layout = test2.getLayout();
-
-            Score score = test2.getScore();
-            layout.updateScoreLayouts(score);
-            //create playback layouter for the playback cursor
-            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
-            //set image to view
-            mainWindow.renderLayout(layout);
-            //load score into MIDI playback
-            Playback.openScore(test2.getScore());
-
-        }
-        catch (Exception ex) {
-            Err.handle(Report.error(ex));
-        }
-    }
 
 	/**
 	 * Loads the MusicXML score from the given file path.
@@ -219,6 +188,50 @@ public class Content
 
         return ret;
     }
+
+
+
+
+
+
+
+
+    //LOAD FROM REVOLUTIONARY FILE
+    public void loadScore() {
+        try {
+            //stop current playback
+            Playback.stop();
+
+            Score test = new ScoreRevolutionary().createScore();
+
+            LayoutFormat layoutFormat = new LayoutFormatReader(
+                    null, test.format.getInterlineSpace() / 10).read();
+
+            test.setMetaData("layoutformat", layoutFormat); //TIDY
+
+            ScoreDoc test2 = test(test);
+
+            layout = test2.getLayout();
+
+            Score score = test2.getScore();
+            layout.updateScoreLayouts(score);
+            //create playback layouter for the playback cursor
+            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
+            //set image to view
+            mainWindow.renderLayout(layout);
+            //load score into MIDI playback
+            Playback.openScore(test2.getScore());
+
+        }
+        catch (Exception ex) {
+            Err.handle(Report.error(ex));
+        }
+    }
+
+
+
+
+
 
 //End Jacob
 

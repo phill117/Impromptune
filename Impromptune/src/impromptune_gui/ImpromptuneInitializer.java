@@ -31,8 +31,6 @@ import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
 import io_handler.IOHandler;
 
-//import javax.swing.filechooser.FileNameExtensionFilter; //WTF SWING!!!
-
 
 import static com.xenoage.zong.desktop.App.app;
 
@@ -113,9 +111,6 @@ public class ImpromptuneInitializer implements Initializable{
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
-         //   Log.init(new DesktopLogProcessing(appName + " " + appVersion));
-          //  Err.init(new GuiErrorProcessing());
-          //  SynthManager.init(false)
             fxmlLoader = new FXMLLoader();
             bp = fxmlLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml").openStream());
             RendererCase.getChildren().add(bp);

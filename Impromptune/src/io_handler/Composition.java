@@ -128,37 +128,7 @@ public class Composition {
         quills.get(currentIndex).writeRest(r);
     }
 
-    public Quill getCurrentPart() {
-        return quills.get(currentIndex);
-    }
 
-    public ScoreDoc getCurrentScoreDoc() {
-        return currentScoreDoc;
-    }
-
-    public Score getCurrentScore() {
-        return currentComp;
-    }
-
-    public void setCurrentScoreDoc(ScoreDoc scoreDoc) {
-        currentScoreDoc = scoreDoc;
-    }
-
-    public void setCurrentScore(Score score) {
-        currentComp = score;
-    }
-
-    public void setCurrentLayout(Layout l) {
-        layout = l;
-    }
-
-    public void setLayouter(PlaybackLayouter pl) {
-        playbackLayouter = pl;
-    }
-
-    public void setScoreIndex(int i) {
-        scoreIndex = i;
-    }
 
     public Layout getLayout() {
         layout.updateScoreLayouts(currentComp);
@@ -285,6 +255,39 @@ public class Composition {
         }
 
         return scoreDoc;
+    }
+
+
+    public Quill getCurrentPart() {
+        return quills.get(currentIndex);
+    }
+
+    public ScoreDoc getCurrentScoreDoc() {
+        return currentScoreDoc;
+    }
+
+    public Score getCurrentScore() {
+        return currentComp;
+    }
+
+    public void setCurrentScoreDoc(ScoreDoc scoreDoc) {
+        currentScoreDoc = scoreDoc;
+    }
+
+    public void setCurrentScore(Score score) {
+        currentComp = score;
+    }
+
+    public void setCurrentLayout(Layout l) {
+        layout = l;
+    }
+
+    public void setLayouter(PlaybackLayouter pl) {
+        playbackLayouter = pl;
+    }
+
+    public void setScoreIndex(int i) {
+        scoreIndex = i;
     }
 }
 
