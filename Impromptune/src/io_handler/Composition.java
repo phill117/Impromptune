@@ -77,7 +77,6 @@ public class Composition {
         setLayoutFormat(currentComp);
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
-        currentIndex = 0;
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
     }
 
@@ -87,9 +86,26 @@ public class Composition {
         currentComp = currentScoreDoc.getScore();
         layout = currentScoreDoc.getLayout();
         layout.updateScoreLayouts(currentComp);
+//        Part pianoPart = new Part("Piano", null, 1, alist(Instrument.defaultInstrument));
+//        new PartAdd(currentComp, pianoPart, 0, null).execute();
+        MP mp = getLastMeasure();
+        if (mp == null) {
+            System.out.println("FAILED, bad MP");
+            return;
+        }
+        quills.add(currentIndex++, new Quill(new Cursor(currentComp, mp, true), "Piano"));
+        currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
 
-//        quills.add(parts++, new Quill(new Cursor(currentComp, currentComp.clipToMeasure(currentComp.getMeasuresCount() - 1, MP.atMeasure(currentComp.getMeasuresCount() - 1)), true), "Piano"));
-//        currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
+    }
+
+    public MP getLastMeasure() {
+        MP mp = MP.atMeasure(currentComp.getMeasuresCount() - 1);
+        if (currentComp.isMPExisting(mp))
+            return currentComp.clipToMeasure(currentComp.getMeasuresCount() - 1, mp);
+        else {
+            System.out.println("invalid MP @ measure: " + currentComp.getMeasuresCount());
+            return null;
+        }
 
     }
 
@@ -216,9 +232,7 @@ public class Composition {
 
     ScoreDoc initializeScoreDocFromFile(String filePath) {
         try {
-            ScoreDoc score = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
-
-            return score;
+            return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
         } catch(IOException e) { e.printStackTrace(); }
 
         return null;
