@@ -5,10 +5,11 @@ package data_objects;
  */
 public class Note {
 
-    int ocatave;
+    int octave;
     char pitch;
-    float duration;   //shall be counted as a fraction of one beat
-
+    int accidental;
+    int duration;   //shall be counted as a fraction of one beat
+    boolean tied = false;
 
     public Note(){
 
@@ -17,6 +18,18 @@ public class Note {
     public boolean isRest(){
         return pitch == 'r';
     }
+
+    public void setAccidental(int accidental) {this.accidental = accidental;}
+
+    public void setDuration(int duration) {this.duration = duration;}
+
+    public void setOctave(int octave) {this.octave = octave;}
+
+    public void setPitch(char pitch) {this.pitch = pitch;}
+
+    public void setTied(boolean tied) {this.tied = tied;}
+
+
 
     public boolean isChordTone(){
 
