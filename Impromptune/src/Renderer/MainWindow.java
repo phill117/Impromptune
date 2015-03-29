@@ -70,6 +70,7 @@ public class MainWindow {
     //Handles saving file as musicXML
     public void save(File outFile) {
 
+        System.out.println("hi");
         //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
         MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
 

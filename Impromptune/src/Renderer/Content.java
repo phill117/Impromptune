@@ -206,6 +206,12 @@ public class Content
             playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
             //set image to view
             mainWindow.renderLayout(layout);
+            //Set to composition
+            comp.setCurrentScore(score);
+            comp.setCurrentScoreDoc(scoreDoc);
+            comp.setCurrentLayout(layout);
+            comp.setLayouter(playbackLayouter);
+          //  comp.setScoreIndex(score.getMeasuresCount());
             //load score into MIDI playback
             Playback.openScore(scoreDoc.getScore());
 		}

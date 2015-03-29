@@ -4,7 +4,6 @@ import Renderer.MainWindow;
 import com.xenoage.zong.commands.desktop.dialog.AudioSettingsDialogShow;
 import com.xenoage.zong.commands.player.convert.DirToMidiConvert;
 import com.xenoage.zong.commands.player.convert.FileToMidiConvert;
-import com.xenoage.zong.desktop.io.ScoreDocIO;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
@@ -33,7 +32,7 @@ import piano.PianoHolder;
 import io_handler.IOHandler;
 
 //import javax.swing.filechooser.FileNameExtensionFilter; //WTF SWING!!!
-//import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 import static com.xenoage.zong.desktop.App.app;
 
@@ -162,7 +161,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onABOUT(ActionEvent event) {
-        showMessageDialog("Impromptune Version Sprint 1\n" +
+        showMessageDialog("Impromptune Version Sprint 2\n" +
                 "This product would have been endorsed by Ludwig von Beethoven, but...\n" +
                 "someone keeps pushing workspace.xml and .iml files and messing up the build, so he didn't.");
     }
@@ -181,37 +180,17 @@ public class ImpromptuneInitializer implements Initializable{
 
 
     @FXML void onSAVEAS(ActionEvent event) {
-     //   String file = "C:\\Save\\testfile.xml";
-     //   File custom = new File(file);
         FileChooser chooser = new FileChooser();
-       // FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                 // "MusicXML files", "mxl", "xml");
-       // FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("MusicXML files", "mxl", "xml");
-
 
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML", "*.xml"),
                 new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
         );
 
-
-
-       // chooser.setSelectedExtensionFilter(filter);
-      //  FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
-      //  "MusicXML files", "mxl", "xml");
-       // chooser.setSelectedExtensionFilter(filter);
         chooser.setTitle("Save Composition as MusicXML");
-       // System.out.println("hi");
+
         File file = chooser.showSaveDialog(stage);
 
-       /* if (file != null) {
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(pic.getImage(),
-                        null), "png", file);
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }*/
         mainWindow.save(file);
     }
 
