@@ -76,7 +76,7 @@ public class Content
 		try {
 			//stop current playback
 			Playback.stop();
-/*
+
             //CUSTOM JACOB
             //get manual score
 
@@ -121,8 +121,8 @@ public class Content
 
 
             //END JACOB
-*/
 
+/*
 			//load the score
 			scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
 			//layout the first page
@@ -134,7 +134,7 @@ public class Content
 			//set image to view
 			mainWindow.renderLayout(layout);
 			//load score into MIDI playback
-			Playback.openScore(scoreDoc.getScore());
+			Playback.openScore(scoreDoc.getScore());*/
 		}
 		catch (Exception ex) {
 			Err.handle(Report.error(ex));

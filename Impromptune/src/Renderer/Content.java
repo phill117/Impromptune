@@ -94,7 +94,13 @@ public class Content
 
 
     public void refresh(){
-        mainWindow.renderLayout( comp.getLayout());
+        layout = comp.getLayout();
+        layout.updateScoreLayouts(comp.getCurrentScore());
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+        Playback.openScore(comp.getCurrentScore());
     }
 
 
@@ -195,6 +201,7 @@ public class Content
             layout = scoreDoc.getLayout();
             Score score = scoreDoc.getScore();
             layout.updateScoreLayouts(score);
+
             //create playback layouter for the playback cursor
             playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
             //set image to view

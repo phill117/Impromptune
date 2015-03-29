@@ -24,12 +24,19 @@ import java.io.InputStreamReader;
 public class IOHandler {
     public static String load(Stage s) {
         FileChooser chooser = new FileChooser();
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
-                "MusicXML files", "mxl", "xml");
+     //   FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
+       //         "MusicXML files", "mxl", "xml");
+
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Files", "*.*"),
+                new FileChooser.ExtensionFilter("XML", "*.xml"),
+                new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
+        );
+
 
         File custom = new File("C:\\");
         chooser.setInitialDirectory(custom);
-        chooser.setSelectedExtensionFilter(filter);
+        //chooser.setSelectedExtensionFilter(filter);
         chooser.setTitle("Select a file to load...");
 
 
@@ -68,23 +75,23 @@ public class IOHandler {
         }
     }
 
-    public void saveAs() {
+    public void saveAs(Stage s) {
         FileChooser chooser = new FileChooser();
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
-                "MusicXML files", "mxl", "xml");
-        chooser.setSelectedExtensionFilter(filter);
-        chooser.setTitle("Select a file to load...");
-//        File f = chooser.showOpenDialog(parent);
+       // FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
+          //      "MusicXML files", "mxl", "xml");
+      //  chooser.setSelectedExtensionFilter(filter);
+        chooser.setTitle("Save Image");
+        System.out.println("hi");
+        File file = chooser.showSaveDialog(s);
 
-//        if (f != null) {
-//            String filePath = f.toURI().toURL().toString();
-//            try {
-//                ScoreDocIO.write(currentScoreDoc, new File(filePath), out);
-//                Impromptune.PrimaryStage.showMessageDialog(filePath + " saved.");
-//            } catch (Exception ex) {
-//                Err.handle(Report.error(ex));
-//            }
-//        }
+       /* if (file != null) {
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(pic.getImage(),
+                        null), "png", file);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }*/
     }
 
     public void save() {

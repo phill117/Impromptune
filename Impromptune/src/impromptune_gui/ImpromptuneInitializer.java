@@ -26,10 +26,14 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import com.xenoage.utils.jse.javafx.Dialog;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
 import io_handler.IOHandler;
+
+//import javax.swing.filechooser.FileNameExtensionFilter; //WTF SWING!!!
+//import javax.swing.filechooser.FileNameExtensionFilter;
 
 import static com.xenoage.zong.desktop.App.app;
 
@@ -176,28 +180,39 @@ public class ImpromptuneInitializer implements Initializable{
 
 
 
-
-
-
-
-
-
-
-
-
     @FXML void onSAVEAS(ActionEvent event) {
-        String file = "C:\\Save\\testfile.xml";
-        File custom = new File(file);
+     //   String file = "C:\\Save\\testfile.xml";
+     //   File custom = new File(file);
+        FileChooser chooser = new FileChooser();
+       // FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                 // "MusicXML files", "mxl", "xml");
+       // FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("MusicXML files", "mxl", "xml");
 
-        //need (FileOutput<ScoreDoc> output) then output.write
-      //  try {
-     //       ScoreDocIO.write(mainWindow.getContent().getSD(), custom, null);
-      //  }
-     //   catch (Exception e)
-     //   {
-      //      System.out.println("Saving error");
-      //      e.printStackTrace();
-      //  }
+
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("XML", "*.xml"),
+                new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
+        );
+
+
+
+       // chooser.setSelectedExtensionFilter(filter);
+      //  FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
+      //  "MusicXML files", "mxl", "xml");
+       // chooser.setSelectedExtensionFilter(filter);
+        chooser.setTitle("Save Composition as MusicXML");
+       // System.out.println("hi");
+        File file = chooser.showSaveDialog(stage);
+
+       /* if (file != null) {
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(pic.getImage(),
+                        null), "png", file);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }*/
+        mainWindow.save(file);
     }
 
     @FXML void onPRINT(ActionEvent event) {
