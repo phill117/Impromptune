@@ -16,6 +16,7 @@ import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.music.ColumnElement;
 import com.xenoage.zong.core.music.MeasureSide;
 import com.xenoage.zong.core.music.Part;
+import com.xenoage.zong.core.music.Staff;
 import com.xenoage.zong.core.music.barline.Barline;
 import com.xenoage.zong.core.music.barline.BarlineStyle;
 import com.xenoage.zong.core.music.clef.Clef;
@@ -59,12 +60,12 @@ public class Composition {
 
     //for viewage
     private LayoutSettings layoutSettings = null;
-    private int scoreIndex = 0;
     private ScoreDoc currentScoreDoc = null;
     private Layout layout = null;
     private PlaybackLayouter playbackLayouter = null;
     private LayoutDefaults layoutDefaults = null;
     private SymbolPool symbolPool = null;
+    private int scoreIndex = 0;
     private int currentIndex = 0;
     private int parts = 0;
 
@@ -93,15 +94,20 @@ public class Composition {
             System.out.println("FAILED, bad MP");
             return;
         }
-        quills.add(currentIndex++, new Quill(new Cursor(currentComp, mp, true), "Piano"));
+
+        quills.add(parts++, new Quill(new Cursor(currentComp, mp, true), "Piano"));
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
 
     }
 
     public MP getLastMeasure() {
-        MP mp = MP.atMeasure(currentComp.getMeasuresCount() - 1);
+//
+//        MP mp = MP.atMeasure();
+        MP mp = MP.atVoice(0, currentComp.getMeasuresCount() - 1, 0);
+        mp = mp.getWithBeat(currentComp);
+//        Staff staff = currentComp.getStaff(0);
         if (currentComp.isMPExisting(mp))
-            return currentComp.clipToMeasure(currentComp.getMeasuresCount() - 1, mp);
+            return currentComp.clipToMeasure(currentComp.getMeasuresCount(), mp);
         else {
             System.out.println("invalid MP @ measure: " + currentComp.getMeasuresCount());
             return null;
