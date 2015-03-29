@@ -101,18 +101,14 @@ public class Composition {
     }
 
     public MP getLastMeasure() {
-//
-//        MP mp = MP.atMeasure();
         MP mp = MP.atVoice(0, currentComp.getMeasuresCount() - 1, 0);
         mp = mp.getWithBeat(currentComp);
-//        Staff staff = currentComp.getStaff(0);
         if (currentComp.isMPExisting(mp))
             return currentComp.clipToMeasure(currentComp.getMeasuresCount(), mp);
         else {
             System.out.println("invalid MP @ measure: " + currentComp.getMeasuresCount());
             return null;
         }
-
     }
 
     public void addNote(String str) {
@@ -159,6 +155,7 @@ public class Composition {
     }
 
     public Layout getLayout() {
+        layout.updateScoreLayouts(currentComp);
         return layout;
     }
 

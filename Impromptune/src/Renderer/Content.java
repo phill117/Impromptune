@@ -75,28 +75,17 @@ public class Content
 		scoreIndex = (scoreIndex + 1) % files.length;
 	}
 
-
     public void loadBlank() {
-
-
         comp = new Composition();
         scoreDoc = comp.getCurrentScoreDoc();
-
-
-        layout = comp.getLayout();
-        layout.updateScoreLayouts(comp.getCurrentScore());
-        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-        mainWindow.renderLayout(layout);
-
-        //load score into MIDI playback
-        Playback.openScore(comp.getCurrentScore());
+        refresh();
     }
-
 
     public void refresh(){
         layout = comp.getLayout();
-        layout.updateScoreLayouts(comp.getCurrentScore());
+        scoreDoc = comp.getCurrentScoreDoc();
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        comp.setLayouter(playbackLayouter);
         mainWindow.renderLayout(layout);
 
         //load score into MIDI playback
@@ -106,50 +95,26 @@ public class Content
 
     public void undo() {
         comp.removeLast();
-        layout = comp.getLayout();
-        layout.updateScoreLayouts(comp.getCurrentScore());
-        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-        mainWindow.renderLayout(layout);
-
-        //load score into MIDI playback
-        Playback.openScore(comp.getCurrentScore());
+        refresh();
     }
 
     public void redo() {
         comp.addLast();
-        layout = comp.getLayout();
-        layout.updateScoreLayouts(comp.getCurrentScore());
-        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-        mainWindow.renderLayout(layout);
-
-        //load score into MIDI playback
-        Playback.openScore(comp.getCurrentScore());
+        refresh();
     }
 
     //Called by eventhandler
     public void addNote(String note) {
        // comp.
         comp.addNote(note);
-        layout = comp.getLayout();
-        layout.updateScoreLayouts(comp.getCurrentScore());
-        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-        mainWindow.renderLayout(layout);
-
-        //load score into MIDI playback
-        Playback.openScore(comp.getCurrentScore());
+        refresh();
     }
 
     //Called by eventhandler
     public void addRest(char rest) {
         // comp.
         comp.addRest(rest);
-        layout = comp.getLayout();
-        layout.updateScoreLayouts(comp.getCurrentScore());
-        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-        mainWindow.renderLayout(layout);
-
-        //load score into MIDI playback
-        Playback.openScore(comp.getCurrentScore());
+        refresh();
     }
 
     //LOAD FROM REVOLUTIONARY FILE
@@ -184,10 +149,6 @@ public class Content
         }
     }
 
-
-
-
-
 	/**
 	 * Loads the MusicXML score from the given file path.
 	 */
@@ -197,20 +158,10 @@ public class Content
 			Playback.stop();
             //load the score
             comp = new Composition(filePath);
-//            scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
-            //layout the first page
-            scoreDoc = comp.getCurrentScoreDoc();
-            layout = comp.getLayout();
-            //create playback layouter for the playback cursor
-            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-            //set image to view
-            mainWindow.renderLayout(layout);
-            comp.setLayouter(playbackLayouter);
-            //load score into MIDI playback
-            Playback.openScore(comp.getCurrentScore());
-		}
-		catch (Exception ex) {
-			Err.handle(Report.error(ex));
+            refresh();
+
+		}	catch (Exception ex) {
+			    Err.handle(Report.error(ex));
 		}
 	}
 
@@ -272,10 +223,6 @@ public class Content
 
 //End Jacob
 
-
-
-
-	
 	/**
 	 * This method is called by the MIDI playback whenever a new
 	 * musical position is reached.
