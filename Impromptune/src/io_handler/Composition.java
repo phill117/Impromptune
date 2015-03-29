@@ -84,13 +84,13 @@ public class Composition {
     public Composition(String fileName) {
         quills = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
+        setLayoutFormat(currentScoreDoc.getScore());
+        float is = currentScoreDoc.getScore().getFormat().getInterlineSpace();
+        currentScoreDoc.getScore().getFormat().setStaffLayoutOther(new StaffLayout(is * SPACING));
+        currentScoreDoc.getLayout().updateScoreLayouts(currentScoreDoc.getScore());
+        currentScoreDoc = initializeScoreDoc(currentScoreDoc.getScore());
         currentComp = currentScoreDoc.getScore();
-        float is = currentComp.getFormat().getInterlineSpace();
-        StaffLayout staffLayout = new StaffLayout(is * SPACING); // Was 9, changes distance between staves
-        currentComp.getFormat().setStaffLayoutOther(staffLayout);
         layout = currentScoreDoc.getLayout();
-        layout.updateScoreLayouts(currentComp);
-        currentScoreDoc = initializeScoreDoc(currentComp);
 
 //        Part pianoPart = new Part("Piano", null, 1, alist(Instrument.defaultInstrument));
 //        new PartAdd(currentComp, pianoPart, 0, null).execute();
