@@ -196,24 +196,18 @@ public class Content
 			//stop current playback
 			Playback.stop();
             //load the score
-            scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
+            comp = new Composition(filePath);
+//            scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
             //layout the first page
-            layout = scoreDoc.getLayout();
-            Score score = scoreDoc.getScore();
-            layout.updateScoreLayouts(score);
-
+            scoreDoc = comp.getCurrentScoreDoc();
+            layout = comp.getLayout();
             //create playback layouter for the playback cursor
-            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
+            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
             //set image to view
             mainWindow.renderLayout(layout);
-            //Set to composition
-            comp.setCurrentScore(score);
-            comp.setCurrentScoreDoc(scoreDoc);
-            comp.setCurrentLayout(layout);
             comp.setLayouter(playbackLayouter);
-          //  comp.setScoreIndex(score.getMeasuresCount());
             //load score into MIDI playback
-            Playback.openScore(scoreDoc.getScore());
+            Playback.openScore(comp.getCurrentScore());
 		}
 		catch (Exception ex) {
 			Err.handle(Report.error(ex));

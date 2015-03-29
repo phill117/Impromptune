@@ -84,8 +84,13 @@ public class Composition {
     public Composition(String fileName) {
         quills = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
-        currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
-        //currentIndex = ??
+        currentComp = currentScoreDoc.getScore();
+        layout = currentScoreDoc.getLayout();
+        layout.updateScoreLayouts(currentComp);
+
+//        quills.add(parts++, new Quill(new Cursor(currentComp, currentComp.clipToMeasure(currentComp.getMeasuresCount() - 1, MP.atMeasure(currentComp.getMeasuresCount() - 1)), true), "Piano"));
+//        currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
+
     }
 
     public void addNote(String str) {
@@ -111,20 +116,25 @@ public class Composition {
         return currentComp;
     }
 
-
-    public void setCurrentScoreDoc(ScoreDoc sd) { currentScoreDoc = sd;}
-
-    public void setCurrentScore(Score s) {
-        currentComp = s;
+    public void setCurrentScoreDoc(ScoreDoc scoreDoc) {
+        currentScoreDoc = scoreDoc;
     }
 
-    //Jacob added setters for modifying a loaded comp
-    public void setQuillCursor(MP mp) {
-        quills.get(0).getCursor().setMP(mp);}
+    public void setCurrentScore(Score score) {
+        currentComp = score;
+    }
 
-    public void setCurrentLayout(Layout l) {layout = l;}
-    public void setLayouter(PlaybackLayouter pl) {playbackLayouter = pl;}
-    public void setScoreIndex(int i) {currentIndex = i;}
+    public void setCurrentLayout(Layout l) {
+        layout = l;
+    }
+
+    public void setLayouter(PlaybackLayouter pl) {
+        playbackLayouter = pl;
+    }
+
+    public void setScoreIndex(int i) {
+        scoreIndex = i;
+    }
 
     public Layout getLayout() {
         return layout;
@@ -206,9 +216,9 @@ public class Composition {
 
     ScoreDoc initializeScoreDocFromFile(String filePath) {
         try {
+            ScoreDoc score = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
 
-            return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
-
+            return score;
         } catch(IOException e) { e.printStackTrace(); }
 
         return null;
