@@ -85,8 +85,13 @@ public class Composition {
         quills = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
         currentComp = currentScoreDoc.getScore();
+        float is = currentComp.getFormat().getInterlineSpace();
+        StaffLayout staffLayout = new StaffLayout(is * SPACING); // Was 9, changes distance between staves
+        currentComp.getFormat().setStaffLayoutOther(staffLayout);
         layout = currentScoreDoc.getLayout();
         layout.updateScoreLayouts(currentComp);
+        currentScoreDoc = initializeScoreDoc(currentComp);
+
 //        Part pianoPart = new Part("Piano", null, 1, alist(Instrument.defaultInstrument));
 //        new PartAdd(currentComp, pianoPart, 0, null).execute();
         MP mp = getLastMeasure();
@@ -103,6 +108,7 @@ public class Composition {
     public MP getLastMeasure() {
         MP mp = MP.atVoice(0, currentComp.getMeasuresCount() - 1, 0);
         mp = mp.getWithBeat(currentComp);
+        mp = mp.withElement(0);
         if (currentComp.isMPExisting(mp))
             return currentComp.clipToMeasure(currentComp.getMeasuresCount(), mp);
         else {
@@ -222,13 +228,6 @@ public class Composition {
 //        //C major default, C (4/4) time
         quil1.writeStaffKeySig("C", "major");
         quil1.writeTime("4/4");
-        //second staff: bass clef
-     //   cursorStaff2.write(new Clef(ClefType.clefBass));
-
-//        //C major default, C (4/4) time
-       // cursorStaff2.write((ColumnElement) new TraditionalKey(3, TraditionalKey.Mode.Major));
-      //  cursorStaff2.write(new Time(TimeType.timeCommon));
-        //end line
 
         return currentComp;
     }

@@ -92,7 +92,6 @@ public class Content
         Playback.openScore(comp.getCurrentScore());
     }
 
-
     public void undo() {
         comp.removeLast();
         refresh();
