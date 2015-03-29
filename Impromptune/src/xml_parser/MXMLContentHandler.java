@@ -11,7 +11,7 @@ public class MXMLContentHandler extends DefaultHandler{
 
     int tab;
 
-    
+
 
     //called at the start of the doc
     @Override

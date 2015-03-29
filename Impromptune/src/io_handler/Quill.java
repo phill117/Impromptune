@@ -56,7 +56,7 @@ public class Quill implements CommandListener {
         this.openSlurWaypoints = new ArrayList<>();
     }
 
-    Cursor getCursor() {
+    public Cursor getCursor() {
         return this.cursor;
     }
 

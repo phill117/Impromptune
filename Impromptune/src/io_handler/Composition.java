@@ -111,6 +111,21 @@ public class Composition {
         return currentComp;
     }
 
+
+    public void setCurrentScoreDoc(ScoreDoc sd) { currentScoreDoc = sd;}
+
+    public void setCurrentScore(Score s) {
+        currentComp = s;
+    }
+
+    //Jacob added setters for modifying a loaded comp
+    public void setQuillCursor(MP mp) {
+        quills.get(0).getCursor().setMP(mp);}
+
+    public void setCurrentLayout(Layout l) {layout = l;}
+    public void setLayouter(PlaybackLayouter pl) {playbackLayouter = pl;}
+    public void setScoreIndex(int i) {currentIndex = i;}
+
     public Layout getLayout() {
         return layout;
     }
