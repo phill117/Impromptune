@@ -77,15 +77,36 @@ public class Composition {
         setLayoutFormat(currentComp);
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
-        currentIndex = 0;
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
     }
 
     public Composition(String fileName) {
         quills = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
+        currentComp = currentScoreDoc.getScore();
+        layout = currentScoreDoc.getLayout();
+        layout.updateScoreLayouts(currentComp);
+//        Part pianoPart = new Part("Piano", null, 1, alist(Instrument.defaultInstrument));
+//        new PartAdd(currentComp, pianoPart, 0, null).execute();
+        MP mp = getLastMeasure();
+        if (mp == null) {
+            System.out.println("FAILED, bad MP");
+            return;
+        }
+        quills.add(currentIndex++, new Quill(new Cursor(currentComp, mp, true), "Piano"));
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
-        //currentIndex = ??
+
+    }
+
+    public MP getLastMeasure() {
+        MP mp = MP.atMeasure(currentComp.getMeasuresCount() - 1);
+        if (currentComp.isMPExisting(mp))
+            return currentComp.clipToMeasure(currentComp.getMeasuresCount() - 1, mp);
+        else {
+            System.out.println("invalid MP @ measure: " + currentComp.getMeasuresCount());
+            return null;
+        }
+
     }
 
     public void addNote(String str) {
@@ -109,6 +130,26 @@ public class Composition {
 
     public Score getCurrentScore() {
         return currentComp;
+    }
+
+    public void setCurrentScoreDoc(ScoreDoc scoreDoc) {
+        currentScoreDoc = scoreDoc;
+    }
+
+    public void setCurrentScore(Score score) {
+        currentComp = score;
+    }
+
+    public void setCurrentLayout(Layout l) {
+        layout = l;
+    }
+
+    public void setLayouter(PlaybackLayouter pl) {
+        playbackLayouter = pl;
+    }
+
+    public void setScoreIndex(int i) {
+        scoreIndex = i;
     }
 
     public Layout getLayout() {
@@ -191,9 +232,7 @@ public class Composition {
 
     ScoreDoc initializeScoreDocFromFile(String filePath) {
         try {
-
             return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
-
         } catch(IOException e) { e.printStackTrace(); }
 
         return null;

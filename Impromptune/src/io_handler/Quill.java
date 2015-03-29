@@ -56,7 +56,7 @@ public class Quill implements CommandListener {
         this.openSlurWaypoints = new ArrayList<>();
     }
 
-    Cursor getCursor() {
+    public Cursor getCursor() {
         return this.cursor;
     }
 
@@ -228,7 +228,20 @@ public class Quill implements CommandListener {
 
     void writeRest(char r) {
         closeBeam();
-        cursor.write(new Rest(QuillUtils.getFraction(r)));
+
+        Fraction fr = QuillUtils.getFraction(r);
+        Fraction rem = getRemainingBeats();
+
+        if (rem.isGreater0() && rem.compareTo(fr) < 0) {
+            System.out.println("[splitting note]");
+            System.out.println("fr: " + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
+
+            cursor.write(new Rest(fr.sub(rem)));
+            cursor.write(new Rest(fr));
+        } else {
+
+            cursor.write(new Rest(fr));
+        }
     }
 
 //    void writePitchBend(PitchBend pitchBend) {

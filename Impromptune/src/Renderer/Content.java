@@ -94,7 +94,13 @@ public class Content
 
 
     public void refresh(){
-        mainWindow.renderLayout( comp.getLayout());
+        layout = comp.getLayout();
+        layout.updateScoreLayouts(comp.getCurrentScore());
+        playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+        mainWindow.renderLayout(layout);
+
+        //load score into MIDI playback
+        Playback.openScore(comp.getCurrentScore());
     }
 
 
@@ -190,17 +196,18 @@ public class Content
 			//stop current playback
 			Playback.stop();
             //load the score
-            scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
+            comp = new Composition(filePath);
+//            scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
             //layout the first page
-            layout = scoreDoc.getLayout();
-            Score score = scoreDoc.getScore();
-            layout.updateScoreLayouts(score);
+            scoreDoc = comp.getCurrentScoreDoc();
+            layout = comp.getLayout();
             //create playback layouter for the playback cursor
-            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
+            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
             //set image to view
             mainWindow.renderLayout(layout);
+            comp.setLayouter(playbackLayouter);
             //load score into MIDI playback
-            Playback.openScore(scoreDoc.getScore());
+            Playback.openScore(comp.getCurrentScore());
 		}
 		catch (Exception ex) {
 			Err.handle(Report.error(ex));

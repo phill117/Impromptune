@@ -29,7 +29,7 @@
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#onSAVEAS" text="Save As..." visible="false">
+                  <MenuItem mnemonicParsing="false" onAction="#onSAVEAS" text="Save As..." visible="true">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
                      </accelerator>
