@@ -7,27 +7,23 @@ import java.util.ArrayList;
  */
 public class Measure {
 
-    private ArrayList<Beat> beats;
-    private int beatNums;
+    private ArrayList<Note> notes;
+    private int measureNo;
 
-    public Measure(int beatNums){
-        this.beatNums = beatNums;
-        beats = new ArrayList<>();
+    public Measure(int measureNo){
+        this.measureNo = measureNo;
+        notes = new ArrayList<>();
     }
 
-    public int getBeatCount(){
-        return beatNums;
+    public Note noteAt(int b){
+        return notes.get(b);
     }
 
-    public Beat beatAt(int b){
-        return beats.get(b);
+    public void addNote(Note note){
+        notes.add(note);
     }
 
-    public void addBeat(Beat beat){
-        beats.add(beat);
-    }
-
-    public void addBeatAt(int n, Beat beat){
-        beats.add(n, beat);
+    public void addNoteAt(int n, Note note){
+        notes.add(n, note);
     }
 }
