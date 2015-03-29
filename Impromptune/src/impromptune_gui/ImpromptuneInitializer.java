@@ -126,6 +126,7 @@ public class ImpromptuneInitializer implements Initializable{
             ph.mw = mw; //Set the current piano window to current renderer window
             mainWindow = mw;
 
+
         }catch (IOException e){
             System.out.println("WAHT HAPPENED");
             e.printStackTrace();
@@ -172,7 +173,9 @@ public class ImpromptuneInitializer implements Initializable{
             mainWindow.getContent().loadBlank();
     }
 
-
+    @FXML void onNext(ActionEvent event) {
+        mainWindow.nextPage();
+    }
 
     @FXML void onSAVEAS(ActionEvent event) {
         FileChooser chooser = new FileChooser();

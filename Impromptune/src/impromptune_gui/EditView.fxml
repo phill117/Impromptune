@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.input.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -129,6 +130,12 @@
                                     <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="dot" />
                                     <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
                                     <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" text="rest" />
+                                    <Separator layoutX="369.0" layoutY="10.0" prefHeight="44.0" prefWidth="14.0" />
+                                    <Button mnemonicParsing="false" text="Next Page"  onAction="#onNext">
+                                       <effect>
+                                          <Glow />
+                                       </effect>
+                                    </Button>
                                 </items>
                               </ToolBar>
                               <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />

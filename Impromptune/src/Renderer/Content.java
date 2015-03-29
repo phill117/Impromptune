@@ -231,7 +231,7 @@ public class Content
 
 
 
-
+    public Layout  getLayout(){return layout;}
 
 //End Jacob
 

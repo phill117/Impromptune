@@ -32,6 +32,7 @@ public class MainWindow {
 	private Content content = new Content(this);
 	private WritableImage scoreImage = null;
 
+    public int pageIndex = 0;
     public Content getContent() { return content;}
 
     private float zoomFactor = 1.25f;
@@ -40,6 +41,15 @@ public class MainWindow {
     {
         zoomFactor = z;
         content.refresh();
+    }
+
+    public void nextPage() {
+        if(content.getLayout().getPages().size()-1 > pageIndex)
+            pageIndex++;
+        else
+            pageIndex = 0;
+
+        renderLayout(content.getLayout());
     }
 
     public float getZoom()
@@ -80,19 +90,13 @@ public class MainWindow {
     }
 
 
-
-
-
-
-
-
-
-
-
 	public void renderLayout(Layout layout) {
+
 		//run in JavaFX application thread
 		Platform.runLater(() -> {
-			scoreImage = JfxLayoutRenderer.paintToImage(layout, 0, zoomFactor);
+
+
+			scoreImage = JfxLayoutRenderer.paintToImage(layout, pageIndex, zoomFactor);
 			scoreView.setImage(scoreImage);
 			scoreView.setFitWidth(scoreImage.getWidth());
 			scoreView.setFitHeight(scoreImage.getHeight());
