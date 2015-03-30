@@ -174,6 +174,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNEW(ActionEvent event) {
+        mainWindow.loadedFile = null;
             mainWindow.getContent().loadBlank();
     }
 
