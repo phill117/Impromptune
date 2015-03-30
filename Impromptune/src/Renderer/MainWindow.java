@@ -13,6 +13,9 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 import java.io.File;
 
 
@@ -35,6 +38,7 @@ public class MainWindow {
     public int pageIndex = 0;
     public Content getContent() { return content;}
 
+    public String loadedFile;
     private float zoomFactor = 1.25f;
 
     public void setZoom(float z)
@@ -70,7 +74,50 @@ public class MainWindow {
     }
 
     //Handles saving file as musicXML
-    public void save(File outFile) {
+    public void save(Stage s) {
+
+        File outFile;
+        if(loadedFile != null)
+            outFile = new File(loadedFile);
+        else
+        {
+            FileChooser chooser = new FileChooser();
+
+            chooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("XML", "*.xml"),
+                    new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
+            );
+
+            chooser.setTitle("Save Composition as MusicXML");
+
+            File file = chooser.showSaveDialog(s);
+
+            saveAs(file);
+            return;
+        }
+
+
+        //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
+        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
+
+        //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
+        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
+
+        try {
+            JseOutputStream oStream = new JseOutputStream(outFile);
+            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
+            newXML.write(xmlWrite);
+        }
+        catch (Exception e)
+        {
+            //blah
+        }
+    }
+
+
+    //Change above to save-as, save will just get the current filename loaded?
+    //Handles saving file as musicXML
+    public void saveAs(File outFile) {
 
         //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
         MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");

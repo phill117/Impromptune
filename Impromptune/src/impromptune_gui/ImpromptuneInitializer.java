@@ -165,7 +165,11 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML void onOpen(ActionEvent event) {
         String file = IOHandler.load(stage);
         if(file != null)
+        {
+            mainWindow.loadedFile = file;
              mainWindow.getContent().loadScore(file);
+
+        }
 
     }
 
@@ -189,8 +193,23 @@ public class ImpromptuneInitializer implements Initializable{
 
         File file = chooser.showSaveDialog(stage);
 
-        mainWindow.save(file);
+        mainWindow.saveAs(file);
     }
+
+
+
+    @FXML void onSAVE(ActionEvent event) {
+        mainWindow.save(stage);
+    }
+
+
+
+
+
+
+
+
+
 
     @FXML void onPRINT(ActionEvent event) {
         Layout layout = mainWindow.getContent().getSD().getLayout();
