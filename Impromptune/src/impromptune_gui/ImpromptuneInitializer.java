@@ -163,6 +163,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onOpen(ActionEvent event) {
+        mainWindow.pageIndex = 0;
         String file = IOHandler.load(stage);
         if(file != null)
         {
@@ -175,6 +176,7 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onNEW(ActionEvent event) {
         mainWindow.loadedFile = null;
+        mainWindow.pageIndex = 0;
             mainWindow.getContent().loadBlank();
     }
 
@@ -183,6 +185,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
+
         FileChooser chooser = new FileChooser();
 
         chooser.getExtensionFilters().addAll(
