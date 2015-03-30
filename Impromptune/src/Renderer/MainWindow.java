@@ -48,6 +48,8 @@ public class MainWindow {
     }
 
     public void nextPage() {
+
+        //System.out.println("Pages:" + content.getLayout().getPages().size());
         if(content.getLayout().getPages().size()-1 > pageIndex)
             pageIndex++;
         else

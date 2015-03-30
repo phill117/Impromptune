@@ -120,6 +120,9 @@ public class Composition {
     public void addNote(String str) {
 
         quills.get(currentIndex).writeNote(str);
+
+        currentScoreDoc = initializeScoreDoc(currentComp);
+        layout = currentScoreDoc.getLayout();
 //        Barline barlineEnd = Barline.barline(BarlineStyle.LightHeavy);
 //        new ColumnElementWrite(barlineEnd, currentComp.getColumnHeader(0), null, MeasureSide.Right).execute();
     }
@@ -220,7 +223,7 @@ public class Composition {
         }
 
         //load layout settings
-        if (layoutSettings == null)
+      //  if (layoutSettings == null)
             loadLayout(layoutFormat);
 
         //create the document
@@ -239,12 +242,14 @@ public class Composition {
 
         //create and fill at least one page
         ScoreFrameChain chain = null;
+        //System.out.println("Frames:" + scoreLayout.frames.size());
         for (int i = 0; i < scoreLayout.frames.size(); i++) {
             Page page = new Page(pageFormat);
             layout.addPage(page);
             ScoreFrame frame = new ScoreFrame();
             frame.setPosition(framePos);
             frame.setSize(frameSize);
+           // frame.
             //TEST frame = frame.withHFill(NoHorizontalSystemFillingStrategy.getInstance());
             page.addFrame(frame);
             if (chain == null) {
