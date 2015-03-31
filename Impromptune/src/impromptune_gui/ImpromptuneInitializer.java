@@ -185,6 +185,10 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindow.nextPage();
     }
 
+    @FXML void onNewTab(ActionEvent event) {
+
+    }
+
     @FXML void onSAVEAS(ActionEvent event) {
 
         FileChooser chooser = new FileChooser();
