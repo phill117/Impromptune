@@ -9,7 +9,6 @@ import com.xenoage.utils.jse.javafx.Dialog;
  * Title
  * Author
  * Tempo
- * Key Signature
  * etc.
  * of the composition
  */
