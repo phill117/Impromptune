@@ -44,6 +44,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML AnchorPane PianoCase;
     @FXML AnchorPane PlayerCase;
     @FXML AnchorPane RendererCase;
+    @FXML TabPane RendererTabs;
     @FXML AnchorPane GenSettingsCase;
 
     @FXML ToolBar NoteSelection;

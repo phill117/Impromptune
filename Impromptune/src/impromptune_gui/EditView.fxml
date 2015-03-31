@@ -121,8 +121,16 @@
                      <children>
                         <VBox prefHeight="759.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                            <AnchorPane fx:id="RendererCase" minWidth="0.0" prefHeight="589.0" prefWidth="849.0">
+                              <TabPane fx:id="RendererTabs">
+                                 <tabs>
+                                    <Tab>
+                                       <content>
+                                        <AnchorPane fx:id="RendererCase" minWidth="0.0" prefHeight="589.0" prefWidth="849.0">
                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                 </tabs>
+                              </TabPane>
                               <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="794.0" VBox.vgrow="ALWAYS">
                                 <items>
                                     <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="whole" />
@@ -136,7 +144,7 @@
                                     <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
                                     <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" text="rest" />
                                     <Separator layoutX="369.0" layoutY="10.0" prefHeight="44.0" prefWidth="14.0" />
-                                    <Button mnemonicParsing="false" text="Next Page"  onAction="#onNext">
+                                    <Button mnemonicParsing="false" onAction="#onNext" text="Next Page">
                                        <effect>
                                           <Glow />
                                        </effect>
