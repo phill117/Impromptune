@@ -44,6 +44,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML AnchorPane PianoCase;
     @FXML AnchorPane PlayerCase;
     @FXML AnchorPane RendererCase;
+    @FXML TabPane RendererTabs;
     @FXML AnchorPane GenSettingsCase;
 
     @FXML ToolBar NoteSelection;
@@ -182,6 +183,10 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onNext(ActionEvent event) {
         mainWindow.nextPage();
+    }
+
+    @FXML void onNewTab(ActionEvent event) {
+
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
