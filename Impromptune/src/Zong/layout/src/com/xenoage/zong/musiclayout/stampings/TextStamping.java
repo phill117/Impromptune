@@ -9,6 +9,8 @@ import com.xenoage.zong.core.music.MusicElement;
 import com.xenoage.zong.core.text.FormattedText;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkNotNull;
 
 /**
@@ -17,7 +19,7 @@ import static com.xenoage.utils.CheckUtils.checkNotNull;
  * @author Andreas Wenger
  */
 @Const public abstract class TextStamping
-	extends Stamping {
+	extends Stamping implements Serializable {
 
 	/** The formatted text. */
 	@NonNull @Getter protected final FormattedText text;

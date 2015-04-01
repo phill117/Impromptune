@@ -22,6 +22,7 @@ import com.xenoage.zong.core.util.InconsistentScoreException;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ import static java.util.Collections.emptyList;
  */
 @Getter @Setter
 public class Chord
-	implements VoiceElement, DirectionContainer {
+	implements VoiceElement, DirectionContainer, Serializable {
 
 	/** The notes within this chord, sorted ascending (begin with lowest notated pitch). */
 	@NonNull @NonEmpty private List<Note> notes;

@@ -3,6 +3,8 @@ package com.xenoage.zong.musiclayout.stampings.bitmap;
 import com.xenoage.utils.color.Color;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
 
+import java.io.Serializable;
+
 /**
  * This class contains some information that is
  * useful to draw a staff on a bitmap, like on the
@@ -14,7 +16,7 @@ import com.xenoage.zong.musiclayout.stampings.StaffStamping;
  * 
  * @author Andreas Wenger
  */
-public final class StaffStampingBitmapInfo {
+public final class StaffStampingBitmapInfo implements Serializable{
 
 	private final StaffStamping parentStaff;
 

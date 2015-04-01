@@ -4,6 +4,7 @@ import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Rectangle2f;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  * 
  * @author Andreas Wenger
  */
-public class Path {
+public class Path implements Serializable{
 	
 	@Getter private final List<PathElement> elements;
 	@Getter private final Rectangle2f bounds;

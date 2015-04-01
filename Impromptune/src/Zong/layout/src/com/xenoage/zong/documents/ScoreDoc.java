@@ -10,6 +10,8 @@ import com.xenoage.zong.layout.frames.ScoreFrameChain;
 import com.xenoage.zong.musiclayout.ScoreLayout;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * Class for a score document.
  * 
@@ -20,7 +22,7 @@ import lombok.Getter;
  * @author Andreas Wenger
  */
 public class ScoreDoc
-	implements Document {
+	implements Document, Serializable {
 
 	/** The score. */
 	@Getter private Score score;

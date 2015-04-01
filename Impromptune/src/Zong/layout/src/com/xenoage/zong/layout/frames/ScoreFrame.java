@@ -10,6 +10,8 @@ import com.xenoage.zong.musiclayout.layouter.verticalframefilling.VerticalFrameF
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 /**
  * A {@link ScoreFrame} is a frame that contains a musical score.
  * 
@@ -20,7 +22,7 @@ import lombok.EqualsAndHashCode;
  * @author Andreas Wenger
  */
 @Data @EqualsAndHashCode(callSuper = true) public class ScoreFrame
-	extends Frame {
+	extends Frame implements Serializable {
 
 	/** The chain of frames for the score, or null when the frame is unused. */
 	@MaybeNull private ScoreFrameChain scoreFrameChain = null;

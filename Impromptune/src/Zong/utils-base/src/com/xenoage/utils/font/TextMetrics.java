@@ -1,11 +1,13 @@
 package com.xenoage.utils.font;
 
+import java.io.Serializable;
+
 /**
  * Metrics of text measured with a {@link TextMeasurer}.
  * 
  * @author Andreas Wenger
  */
-public class TextMetrics {
+public class TextMetrics implements Serializable{
 	
 	private float ascent, descent, leading, width;
 	

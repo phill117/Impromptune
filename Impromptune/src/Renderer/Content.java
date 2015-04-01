@@ -29,9 +29,11 @@ import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.utils.demo.ScoreRevolutionary;
 import io_handler.Composition;
+import sun.misc.Unsafe;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 
 import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
 import static com.xenoage.zong.util.ZongPlatformUtils.zongPlatformUtils;
@@ -53,15 +55,79 @@ public class Content
 
     private Composition comp = null;
 
+    private int undoIndex = -1;
+    private int addIndex = -1;
+    private int redoIndex = -1;
+    private LinkedList<Composition> undoList = new LinkedList<Composition>();
+   // private LinkedList<Composition> redoList = new LinkedList<Composition>();
+
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
 	}
 
-    public ScoreDoc getSD(){
-        return scoreDoc;
+
+
+
+    private void addAction() {
+
+        //Composition newc = new Composition();
+       // Unsafe.copyMemory(newc.get,comp);
+        addIndex++;
+        undoIndex = -1;
+        redoIndex = -1;
+
+        try {
+            undoList.add(addIndex, comp.deepCopy());
+
+        }
+        catch (Exception e)
+        {
+            //wtfdeadbeefs
+            System.out.println("DEADBEEF");
+            e.printStackTrace();
+
+        }
+
+
+
     }
+
+
+    public void undoAction(){
+
+        redoIndex = undoIndex;
+       // addIndex = undoIndex;
+        if(undoIndex == -1 || undoIndex == 0){
+         //   loadBlank();
+         //   addAction();
+         //   addIndex = 0;
+            undoIndex = addIndex;
+        }
+
+            //addIndex = undoIndex;
+            undoIndex--;
+            comp = undoList.get(undoIndex);
+
+
+        comp.resync();
+        refresh();
+    }
+
+
+    public void redoAction(){
+
+        if(++redoIndex < addIndex) {
+            comp = undoList.get(redoIndex);
+        }
+
+        comp.resync();
+        refresh();
+
+    }
+
+
 
 
 	/**
@@ -77,12 +143,14 @@ public class Content
         comp = new Composition();
         scoreDoc = comp.getCurrentScoreDoc();
         refresh();
+        addAction();
+
     }
 
     public void refresh(){
         layout = comp.getLayout();
         scoreDoc = comp.getCurrentScoreDoc();
-        // layout.updateScoreLayouts(comp.getCurrentScore());
+        //layout.updateScoreLayouts(comp.getCurrentScore());
         //Sets up the blue playback cursor
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
         mainWindow.renderLayout(layout);
@@ -91,7 +159,7 @@ public class Content
         Playback.openScore(comp.getCurrentScore());
     }
 
-    public void undo() {
+   /* public void undo() {
         comp.removeLast();
         refresh();
     }
@@ -99,20 +167,25 @@ public class Content
     public void redo() {
         comp.addLast();
         refresh();
-    }
+    }*/
 
     //Called by eventhandler
     public void addNote(String note) {
        // comp.
         comp.addNote(note);
+        addAction();
         refresh();
+
+
     }
 
     //Called by eventhandler
     public void addRest(char rest) {
         // comp.
         comp.addRest(rest);
+
         refresh();
+        addAction();
     }
 
 
@@ -230,7 +303,9 @@ public class Content
 
 
 
-
+    public ScoreDoc getSD(){
+        return scoreDoc;
+    }
     public Layout  getLayout(){return layout;}
 
 //End Jacob

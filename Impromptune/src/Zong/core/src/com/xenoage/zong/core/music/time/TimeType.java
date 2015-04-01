@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.Fraction;
 import lombok.Data;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.math.Fraction.fr;
 
 
@@ -17,7 +19,7 @@ import static com.xenoage.utils.math.Fraction.fr;
  * 
  * @author Andreas Wenger
  */
-@Const @Data public final class TimeType {
+@Const @Data public final class TimeType implements Serializable{
 
 	/** 2/2 time. */
 	public static final TimeType time_2_2 = new TimeType(2, 2,

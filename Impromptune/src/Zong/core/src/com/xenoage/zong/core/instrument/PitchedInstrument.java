@@ -6,6 +6,8 @@ import com.xenoage.zong.core.music.Pitch;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 
 /**
  * Pitched instrument, like piano or trumpet.
@@ -14,7 +16,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data @EqualsAndHashCode(callSuper = true)
 public class PitchedInstrument
-	extends Instrument {
+	extends Instrument implements Serializable {
 
 	/** The MIDI program used for playback */
 	private int midiProgram = 0;
@@ -30,7 +32,7 @@ public class PitchedInstrument
 	public PitchedInstrument(String id) {
 		super(id);
 	}
-	
+
 	public void setMidiProgram(int midiProgram) {
 		if (midiProgram < 0 || midiProgram > 128)
 			throw new IllegalArgumentException("MIDI program must be between 0 and 127");

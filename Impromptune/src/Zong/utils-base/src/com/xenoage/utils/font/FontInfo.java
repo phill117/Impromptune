@@ -3,6 +3,7 @@ package com.xenoage.utils.font;
 import com.xenoage.utils.annotations.*;
 import com.xenoage.utils.collections.IList;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.NullUtils.notNull;
@@ -17,7 +18,7 @@ import static com.xenoage.utils.collections.CList.ilist;
  * 
  * @author Andreas Wenger
  */
-@Const public final class FontInfo {
+@Const public final class FontInfo implements Serializable {
 
 	private final IList<String> families;
 	private final Float size;

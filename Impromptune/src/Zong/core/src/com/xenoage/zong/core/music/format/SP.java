@@ -2,6 +2,8 @@ package com.xenoage.zong.core.music.format;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Staff position.
@@ -11,7 +13,7 @@ import lombok.Data;
  * 
  * @author Andreas Wenger
  */
-@Data public final class SP {
+@Data public final class SP implements Serializable {
 
 	/** Position on x-axis in mm. */
 	public final float xMm;

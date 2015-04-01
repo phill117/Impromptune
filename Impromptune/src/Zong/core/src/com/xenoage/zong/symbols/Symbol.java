@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.math.geom.Rectangle2f;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.NullUtils.notNull;
 
 /**
@@ -12,7 +14,7 @@ import static com.xenoage.utils.NullUtils.notNull;
  *
  * @author Andreas Wenger
  */
-public abstract class Symbol {
+public abstract class Symbol implements Serializable {
 
 	public static float DEFAULT_BASELINE = 0;
 	public static float DEFAULT_ASCENT = 2f;

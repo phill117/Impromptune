@@ -5,6 +5,8 @@ import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.geom.Size2f;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.collections.CollectionUtils.containsNull;
 
 /**
@@ -13,7 +15,7 @@ import static com.xenoage.utils.collections.CollectionUtils.containsNull;
  *
  * @author Andreas Wenger
  */
-@Const @Getter public final class FrameArrangement {
+@Const @Getter public final class FrameArrangement implements Serializable {
 
 	/** The systems on this frame. */
 	public final IList<SystemArrangement> systems;

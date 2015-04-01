@@ -8,6 +8,8 @@ import com.xenoage.utils.font.FontInfo;
 import lombok.Data;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.NullUtils.notNull;
 
 /**
@@ -19,7 +21,7 @@ import static com.xenoage.utils.NullUtils.notNull;
  *
  * @author Andreas Wenger
  */
-@Const @Data public class FormattedTextStyle {
+@Const @Data public class FormattedTextStyle implements Serializable {
 
 	//default values
 	public static final Superscript defaultSuperscript = Superscript.Normal;

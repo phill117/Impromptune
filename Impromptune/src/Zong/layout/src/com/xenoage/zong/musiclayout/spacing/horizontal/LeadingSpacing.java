@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.collections.IList;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * This class contains the leading spacing
  * of a measure of a single staff.
@@ -13,7 +15,7 @@ import lombok.Getter;
  *
  * @author Andreas Wenger
  */
-@Const @Getter public final class LeadingSpacing {
+@Const @Getter public final class LeadingSpacing implements Serializable{
 
 	/** The spacing elements of this measure leading. */
 	private final IList<SpacingElement> spacingElements;

@@ -21,6 +21,7 @@ import com.xenoage.zong.utils.exceptions.IllegalMPException;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,7 @@ import static com.xenoage.zong.core.position.MP.atVoice;
  * @author Andreas Wenger
  */
 public class Measure
-	implements MPContainer, DirectionContainer {
+	implements MPContainer, DirectionContainer, Serializable {
 
 	/** The list of voices (at least one). */
 	@Getter @NonEmpty private List<Voice> voices;

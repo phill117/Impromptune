@@ -10,6 +10,8 @@ import com.xenoage.zong.musiclayout.StaffMarks;
 import com.xenoage.zong.musiclayout.stampings.bitmap.StaffStampingBitmapInfo;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * Class for a staff stamping.
  *
@@ -17,7 +19,7 @@ import lombok.ToString;
  */
 @Const @ToString
 public final class StaffStamping
-	extends Stamping {
+	extends Stamping implements Serializable {
 
 	/** Top-left (TODO: really?) position (top line) of the staff in mm. */
 	public final Point2f position;

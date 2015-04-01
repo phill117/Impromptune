@@ -6,6 +6,8 @@ import com.xenoage.zong.core.music.MusicElement;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * Stampings can be visible objects like notes, clefs, texts, but
  * also invisible objects like empty rooms between staves and so on are possible.
@@ -17,7 +19,7 @@ import lombok.ToString;
  * @author Andreas Wenger
  */
 @Const @AllArgsConstructor @ToString
-public abstract class Stamping {
+public abstract class Stamping implements Serializable{
 
 	/**
 	 * The musical level to which a stamping belongs to.

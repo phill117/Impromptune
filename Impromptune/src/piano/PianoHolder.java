@@ -124,7 +124,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             jNoteToPlay += "h";
             zongNote += duration;
 
-            System.out.println("jNote played:" + jNoteToPlay);
+           // System.out.println("jNote played:" + jNoteToPlay);
 
             mw.getContent().addNote(zongNote);
 

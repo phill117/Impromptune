@@ -5,6 +5,7 @@ import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.lang.Lang;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -22,7 +23,7 @@ import static java.util.Collections.emptyList;
  * @author Uli Teschemacher
  * @author Andreas Wenger
  */
-@Data public abstract class Instrument {
+@Data public abstract class Instrument implements Serializable{
 
 	/** The ID of the instrument (e.g. "instrument_piano"). */
 	private final String id;

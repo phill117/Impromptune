@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.NonNull;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Settings for the musical layout.
  * 
@@ -18,7 +20,7 @@ import lombok.Data;
  * 
  * @author Andreas Wenger
  */
-@Const @Data public final class LayoutSettings {
+@Const @Data public final class LayoutSettings implements Serializable{
 
 	//chord settings
 	@NonNull public final ChordWidths chordWidths;

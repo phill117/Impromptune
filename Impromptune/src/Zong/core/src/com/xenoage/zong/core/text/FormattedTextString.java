@@ -7,6 +7,8 @@ import com.xenoage.utils.font.FontInfo;
 import com.xenoage.utils.font.TextMetrics;
 import lombok.Data;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 import static com.xenoage.utils.PlatformUtils.platformUtils;
 
@@ -16,7 +18,7 @@ import static com.xenoage.utils.PlatformUtils.platformUtils;
  * @author Andreas Wenger
  */
 @Const @Data public class FormattedTextString
-	implements FormattedTextElement {
+	implements FormattedTextElement, Serializable {
 
 	/** The text */
 	@NonEmpty private final String text;

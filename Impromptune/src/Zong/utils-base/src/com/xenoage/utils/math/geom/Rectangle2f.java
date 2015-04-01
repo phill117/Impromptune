@@ -1,5 +1,7 @@
 package com.xenoage.utils.math.geom;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.math.geom.Point2f.p;
 
 /**
@@ -8,7 +10,7 @@ import static com.xenoage.utils.math.geom.Point2f.p;
  * @author Andreas Wenger
  */
 public final class Rectangle2f
-	implements Shape {
+	implements Shape, Serializable {
 
 	public final Point2f position;
 	public final Size2f size;

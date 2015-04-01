@@ -3,6 +3,8 @@ package com.xenoage.zong.musiclayout.layouter.verticalframefilling;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.musiclayout.FrameArrangement;
 
+import java.io.Serializable;
+
 /**
  * This vertical frame filling strategy changes nothing.
  * It simply returns the given frame arrangement.
@@ -10,7 +12,7 @@ import com.xenoage.zong.musiclayout.FrameArrangement;
  * @author Andreas Wenger
  */
 public class NoVerticalFrameFillingStrategy
-	implements VerticalFrameFillingStrategy {
+	implements VerticalFrameFillingStrategy, Serializable {
 
 	public static final NoVerticalFrameFillingStrategy instance = new NoVerticalFrameFillingStrategy();
 

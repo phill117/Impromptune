@@ -23,6 +23,7 @@ import com.xenoage.zong.core.music.slur.SlurType;
 import com.xenoage.zong.core.music.slur.Slur;
 import piano.PianoHolder;
 
+import java.io.Serializable;
 import java.lang.Integer;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ import static com.xenoage.zong.core.music.format.SP.sp;
 /**
  * Created by ben on 2/25/15.
  */
-public class Quill implements CommandListener {
+public class Quill implements CommandListener, Serializable {
 
     String partName = null;
     private Chord firstSlurC, lastSlurC;

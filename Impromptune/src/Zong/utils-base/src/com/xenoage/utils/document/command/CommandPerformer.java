@@ -6,6 +6,7 @@ import com.xenoage.utils.document.exceptions.CancelledException;
 import com.xenoage.utils.document.exceptions.PropertyAlreadySetException;
 import com.xenoage.utils.document.exceptions.UselessException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import static com.xenoage.utils.log.Report.remark;
  * 
  * @author Andreas Wenger
  */
-public class CommandPerformer {
+public class CommandPerformer implements Serializable {
 
 	@MaybeNull private Document document;
 	private CommandHistory history = new CommandHistory();

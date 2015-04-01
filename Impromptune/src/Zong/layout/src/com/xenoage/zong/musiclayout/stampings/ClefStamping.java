@@ -5,6 +5,8 @@ import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.common.CommonSymbol;
 
+import java.io.Serializable;
+
 import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
@@ -13,7 +15,7 @@ import static com.xenoage.zong.core.music.format.SP.sp;
  * @author Andreas Wenger
  */
 @Const public final class ClefStamping
-	extends StaffSymbolStamping {
+	extends StaffSymbolStamping implements Serializable {
 
 	public ClefStamping(Clef clef, StaffStamping parentStaff, float xPosition, float scaling,
 		SymbolPool symbolPool) {

@@ -1,5 +1,6 @@
 package com.xenoage.utils.math;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Comparator;
  * @author Uli Teschemacher
  */
 public final class Fraction
-	implements Comparable<Fraction> {
+	implements Comparable<Fraction>, Serializable {
 
 	public static final Fraction _0 = fr(0);
 	public static final Fraction _1 = fr(1);

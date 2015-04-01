@@ -214,8 +214,12 @@ public class ImpromptuneInitializer implements Initializable{
 
 
 
-
-
+    @FXML void onUndo(ActionEvent event) {
+        mainWindow.undo();
+    }
+    @FXML void onRedo(ActionEvent event) {
+        mainWindow.redo();
+    }
 
 
 
@@ -227,9 +231,9 @@ public class ImpromptuneInitializer implements Initializable{
         IOHandler.print(layout);
     }
 
-    @FXML void onREM(ActionEvent event) {
-        mainWindow.getContent().undo();
-    }
+   // @FXML void onREM(ActionEvent event) {
+    //    mainWindow.getContent().undo();
+   // }
 
     public void showMessageDialog(String message) {
         dialog().message(message).showInformation();

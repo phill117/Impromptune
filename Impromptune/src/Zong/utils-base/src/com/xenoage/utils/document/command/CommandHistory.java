@@ -1,5 +1,6 @@
 package com.xenoage.utils.document.command;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import static com.xenoage.utils.kernel.Range.rangeReverse;
  * 
  * @author Andreas Wenger
  */
-public class CommandHistory {
+public class CommandHistory implements Serializable {
 
 	private ArrayList<Command> history = new ArrayList<Command>();
 	private int historyPosition = -1;

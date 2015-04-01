@@ -11,6 +11,7 @@ import com.xenoage.zong.musiclayout.stampings.Stamping;
 import com.xenoage.zong.symbols.SymbolPool;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +25,7 @@ import static com.xenoage.utils.kernel.Range.range;
  * @author Andreas Wenger
  */
 @ToString
-public class ScoreLayout {
+public class ScoreLayout implements Serializable {
 
 	/** The score */
 	public final Score score;

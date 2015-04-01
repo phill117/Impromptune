@@ -4,6 +4,7 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.barline.Barline;
 import com.xenoage.zong.core.music.group.BarlineGroup;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ import java.util.List;
  * @author Andreas Wenger
  */
 @Const public final class BarlineStamping
-	extends Stamping {
+	extends Stamping implements Serializable {
 
 	/** The musical element, including the repeat and line style. */
 	public final Barline barline;

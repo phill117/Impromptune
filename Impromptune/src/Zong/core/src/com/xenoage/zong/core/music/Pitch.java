@@ -3,6 +3,8 @@ package com.xenoage.zong.core.music;
 import com.xenoage.utils.annotations.Const;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Pitch is represented as a combination of the step of the
@@ -18,7 +20,7 @@ import lombok.Data;
  * @author Andreas Wenger
  */
 @Const @Data public final class Pitch
-	implements Comparable<Pitch> {
+	implements Comparable<Pitch>, Serializable {
 
 	public static final byte C = 0;
 	public static final byte D = 1;

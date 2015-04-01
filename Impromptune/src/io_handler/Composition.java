@@ -1,7 +1,6 @@
 package io_handler;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import com.xenoage.utils.math.geom.Point2f;
@@ -52,7 +51,7 @@ import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
 /**
  * Created by ben on 2/25/15.
  */
-public class Composition {
+public class Composition implements Serializable{
 
     //internal zong score
     private Score currentComp = null;
@@ -71,6 +70,9 @@ public class Composition {
 
     //const
     private final float SPACING = 9;
+
+    //DEADBEEF
+    private static final long serialVersionUID = 3735928559L;
 
     public Composition() {
         quills = new ArrayList<Quill>();
@@ -126,6 +128,15 @@ public class Composition {
 //        Barline barlineEnd = Barline.barline(BarlineStyle.LightHeavy);
 //        new ColumnElementWrite(barlineEnd, currentComp.getColumnHeader(0), null, MeasureSide.Right).execute();
     }
+
+
+
+    public void resync() {
+        currentScoreDoc = initializeScoreDoc(currentComp);
+        layout = currentScoreDoc.getLayout();
+    }
+
+
 
     public void addRest(char r) {
         quills.get(currentIndex).writeRest(r);
@@ -261,6 +272,22 @@ public class Composition {
 
         return scoreDoc;
     }
+
+    public Composition deepCopy() throws Exception{
+
+        //Serialization of object
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(bos);
+        out.writeObject(this);
+
+        //De-serialization of object
+        ByteArrayInputStream bis = new   ByteArrayInputStream(bos.toByteArray());
+        ObjectInputStream in = new ObjectInputStream(bis);
+        Composition copied = (Composition) in.readObject();
+
+        return copied;
+    }
+
 
 
     public Quill getCurrentPart() {

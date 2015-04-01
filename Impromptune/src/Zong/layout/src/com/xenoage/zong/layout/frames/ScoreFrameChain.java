@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -19,7 +20,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  * 
  * @author Andreas Wenger
  */
-@RequiredArgsConstructor public class ScoreFrameChain {
+@RequiredArgsConstructor public class ScoreFrameChain implements Serializable {
 
 	/** The list of frames */
 	@Getter private ArrayList<ScoreFrame> frames = alist();

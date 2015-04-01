@@ -3,10 +3,12 @@ package com.xenoage.zong.core.info;
 import com.xenoage.utils.annotations.MaybeEmpty;
 import com.xenoage.utils.annotations.MaybeNull;
 import com.xenoage.utils.annotations.NonNull;
+import com.xenoage.zong.io.selection.ScoreSelection;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.NullUtils.notNull;
@@ -19,7 +21,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  * @author Andreas Wenger
  */
 @AllArgsConstructor @RequiredArgsConstructor @Data
-public class ScoreInfo {
+public class ScoreInfo implements Serializable {
 
 	/** Title of the work. */
 	@MaybeNull private String workTitle;

@@ -93,7 +93,7 @@ public class Content
             //read layout format
          //   MxlLayout mxlLayout = (mxlDefaults != null ? mxlDefaults.getLayout() : null);
 
-
+/*
             Score test = new ScoreRevolutionary().createScore();
 
             ScoreDoc scoreDoc2 = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
@@ -117,12 +117,12 @@ public class Content
             //load score into MIDI playback
             Playback.openScore(test2.getScore());
 
-
+*/
 
 
             //END JACOB
 
-/*
+
 			//load the score
 			scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
 			//layout the first page
@@ -134,7 +134,7 @@ public class Content
 			//set image to view
 			mainWindow.renderLayout(layout);
 			//load score into MIDI playback
-			Playback.openScore(scoreDoc.getScore());*/
+			Playback.openScore(scoreDoc.getScore());
 		}
 		catch (Exception ex) {
 			Err.handle(Report.error(ex));

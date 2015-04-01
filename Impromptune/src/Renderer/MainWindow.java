@@ -17,7 +17,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-
+import java.util.LinkedList;
 
 
 /**
@@ -40,6 +40,7 @@ public class MainWindow {
 
     public String loadedFile;
     private float zoomFactor = 1.25f;
+
 
     public void setZoom(float z)
     {
@@ -139,6 +140,32 @@ public class MainWindow {
     }
 
 
+
+    public void undo()
+    {
+        content.undoAction();
+       // content.refresh();
+    /*     if(content.getSD().getScore().getCommandPerformer().isUndoPossible())
+            System.out.println("yes");
+        else
+            System.out.println("NO SCORE");
+
+
+        if(content.getSD().getCommandPerformer().isUndoPossible())
+            System.out.println("yes");
+        else
+            System.out.println("NO DOC");
+    */
+       // content.getSD().getScore().getCommandPerformer().isUndoPossible();
+
+
+
+    }
+
+
+    public void redo() {
+        content.redoAction();
+    }
 	public void renderLayout(Layout layout) {
 
 		//run in JavaFX application thread

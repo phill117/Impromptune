@@ -3,6 +3,7 @@ package com.xenoage.zong.musiclayout.settings;
 import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.math.Fraction;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
@@ -14,7 +15,7 @@ import static com.xenoage.utils.math.Fraction._0;
  * 
  * @author Andreas Wenger
  */
-public class ChordSpacings {
+public class ChordSpacings implements Serializable {
 
 	//duration-to-width mapping
 	private Map<Fraction, Float> durationWidths;

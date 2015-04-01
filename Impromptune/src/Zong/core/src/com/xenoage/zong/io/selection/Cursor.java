@@ -22,6 +22,7 @@ import com.xenoage.zong.utils.exceptions.MeasureFullException;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
@@ -52,7 +53,7 @@ import static com.xenoage.zong.core.position.MP.mp;
  * @author Uli Teschemacher
  */
 public final class Cursor
-	implements ScoreSelection {
+	implements ScoreSelection, Serializable {
 
 	/** The score which will be modified. */
 	@Getter private final Score score;

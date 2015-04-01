@@ -13,12 +13,14 @@ import com.xenoage.utils.collections.SortedList;
 import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.position.MP;
 
+import java.io.Serializable;
+
 /**
  * This class contains the spacing of a measure of a single staff.
  * 
  * @author Andreas Wenger
  */
-@Const @Getter public final class MeasureSpacing {
+@Const @Getter public final class MeasureSpacing implements Serializable {
 
 	/** The musical position of the measure. */
 	@NonNull private final MP mp;

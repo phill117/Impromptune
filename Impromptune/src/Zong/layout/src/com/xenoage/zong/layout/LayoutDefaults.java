@@ -7,12 +7,14 @@ import com.xenoage.zong.symbols.SymbolPool;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * Default settings within a {@link Layout}.
  * 
  * @author Andreas Wenger
  */
-@AllArgsConstructor @Getter public class LayoutDefaults {
+@AllArgsConstructor @Getter public class LayoutDefaults implements Serializable {
 
 	/** The default page formats. */
 	@NonNull private LayoutFormat format;

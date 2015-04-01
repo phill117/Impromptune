@@ -3,6 +3,8 @@ package com.xenoage.zong.musiclayout.stampings;
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.chord.Chord;
 
+import java.io.Serializable;
+
 /**
  * Class for a leger line stamping.
  * 
@@ -13,7 +15,7 @@ import com.xenoage.zong.core.music.chord.Chord;
  * @author Andreas Wenger
  */
 @Const public final class LegerLineStamping
-	extends Stamping {
+	extends Stamping implements Serializable {
 
 	/** The horizontal position of this leger line in mm. */
 	public final float x;

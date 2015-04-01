@@ -3,6 +3,8 @@ package com.xenoage.zong.core.format;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Layout information for a staff.
@@ -10,7 +12,7 @@ import lombok.Data;
  * @author Andreas Wenger
  */
 @AllArgsConstructor @Data
-public class StaffLayout {
+public class StaffLayout implements Serializable {
 	
   /** Default top distance: 10 mm. */
   public static final StaffLayout defaultValue = new StaffLayout(10);

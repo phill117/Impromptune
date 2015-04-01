@@ -1,11 +1,13 @@
 package com.xenoage.utils.math.geom;
 
+import java.io.Serializable;
+
 /**
  * Class for a 2D size.
  *
  * @author Andreas Wenger
  */
-public final class Size2f {
+public final class Size2f implements Serializable{
 	
 	/** Size with width and height of 0. */
 	public static final Size2f size0 = new Size2f(0, 0);
