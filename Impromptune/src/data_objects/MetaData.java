@@ -13,6 +13,11 @@ public class MetaData {
     boolean major = true;
     int beats = 4;
     int beattype = 4;
+
+    //'sign' and line not implemented to change
+    String sign = "G";
+    String line = "2";
+
     ArrayList<Measure> measures = new ArrayList<>();
 
     private static MetaData data;
@@ -26,16 +31,20 @@ public class MetaData {
 
     private MetaData(){}
 
-    public int getDivisions() {
-        return divisions;
+    public String getLine() {
+        return line;
     }
 
-    public int getSharps() {
-        return sharps;
+    public String getSign() {
+        return sign;
     }
 
     public boolean isMajor() {
         return major;
+    }
+
+    public int getDivisions() {
+        return divisions;
     }
 
     public void setDivisions(int divisions) {
@@ -46,16 +55,32 @@ public class MetaData {
         this.major = major;
     }
 
+    public int getSharps() {
+        return sharps;
+    }
+
     public void setSharps(int sharps) {
         this.sharps = sharps;
+    }
+
+    public int getBeats() {
+        return beats;
     }
 
     public void setBeats(int beats) {
         this.beats = beats;
     }
 
+    public int getBeattype() {
+        return beattype;
+    }
+
     public void setBeattype(int beattype) {
         this.beattype = beattype;
+    }
+
+    public int getTempo() {
+        return tempo;
     }
 
     public void setTempo(int tempo) {
@@ -64,5 +89,9 @@ public class MetaData {
 
     public void addMeasure(Measure m){
         measures.add(m);
+    }
+
+    public ArrayList<Measure> getMeasures() {
+        return measures;
     }
 }

@@ -22,9 +22,11 @@ public class MXMLContentHandler extends DefaultHandler{
 
     private enum MXML{
         //Used
-        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type,
+        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type, Type,
         //Not Used
         Chord, Barline, Repeat, NONE
+
+        //NOTE MODE IS IMPLEMENTED IN FINALE, I BELIVE WE SHOULD ALSO USE IT, BECAUSE ANALYSIS
     }
 
     //called at the start of the doc
@@ -51,6 +53,7 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("octave")){currentFlag = MXML.Octave; return;}
         if(qName.equals("alter")){currentFlag = MXML.Alter; return;}
         if(qName.equals("duration")){currentFlag = MXML.Duration; return;}
+        if(qName.equals("type")){currentFlag = MXML.Type; return;}
         if(qName.equals("rest")){currentNote.setPitch('r');return;}
 
         if(qName.equals("measure")){
@@ -95,6 +98,9 @@ public class MXMLContentHandler extends DefaultHandler{
                 break;
             case Duration:
                 currentNote.setDuration(Integer.parseInt(data));
+                break;
+            case Type:
+                currentNote.setType(data);
                 break;
             case Actual_Notes:
                 break;

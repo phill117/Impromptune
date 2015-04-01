@@ -45,7 +45,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
 
         //Generate some music!!
         /**
-         * 1. parse the xml for the melody
+         * 1. parse the xml for the melody *DONE*
          * 2. analyze using markov models to determine base
          * 3. determine possible inner voices
          */

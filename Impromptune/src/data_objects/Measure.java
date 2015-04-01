@@ -15,6 +15,14 @@ public class Measure {
         notes = new ArrayList<>();
     }
 
+    public int getMeasureNo() {
+        return measureNo;
+    }
+
+    public ArrayList<Note> getNotes() {
+        return notes;
+    }
+
     public Note noteAt(int b){
         return notes.get(b);
     }
