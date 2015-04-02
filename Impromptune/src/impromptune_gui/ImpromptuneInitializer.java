@@ -9,6 +9,7 @@ import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
 import gen_settings.GenSettings;
+import impromptune_gui.Dialogs.CompositionPropertiesDialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,7 +77,6 @@ public class ImpromptuneInitializer implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         try {
             half.setSelected(true);
             durationGroup = new ArrayList<>();
@@ -247,7 +247,8 @@ public class ImpromptuneInitializer implements Initializable{
         return Dialogs.create().title(appName).styleClass(org.controlsfx.dialog.Dialog.STYLE_CLASS_NATIVE);
     }
 
-    @FXML void openCompositionSettings(ActionEvent event){}
+    @FXML void openCompositionSettings(ActionEvent event){
+    }
 
     /**
      * Necessary Ported Methods from the Player MenuBar
