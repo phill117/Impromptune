@@ -1,18 +1,25 @@
 package gen_settings;
 
+import Renderer.MainWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import xml_parser.MXMLContentHandler;
+import xml_parser.MXMLWriter;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,6 +34,9 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
     @FXML Slider voices_scroll;
     @FXML Button generate_btn;
 
+    MainWindow mainWindow;
+    Stage stage;
+
     int repetitiveness;
     int order;
     int voices;
@@ -40,6 +50,13 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
 
     }
 
+    public void setMainWindow(MainWindow mainWindow) {
+        this.mainWindow = mainWindow;
+    }
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     @Override
     public void handle(ActionEvent event) {
 
@@ -51,6 +68,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
          */
 
         SAXParser mxp;
+        MXMLWriter mxmlWriter = new MXMLWriter();
         try {
             mxp = SAXParserFactory.newInstance().newSAXParser();
         }catch(Exception e){
@@ -59,14 +77,33 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
             return;
         }
 
+
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("XML", "*.xml"),
+                new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
+        );
+        chooser.setTitle("Save Composition as MusicXML");
+        File file = chooser.showSaveDialog(stage);
+        mainWindow.saveAs(file);
+
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+
                     System.out.println("started");
                     DefaultHandler handler = new MXMLContentHandler();
-                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/Chant.xml"));
+                    //InputSource inputSource = new InputSource(new FileReader((file)));
+                    //      THIS IS A TEMP INPUT SOURCE
+                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
                     mxp.parse(inputSource, handler);
+
+                    //analyze
+
+                    File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
+
                 } catch (SAXException e) {
                     System.out.println("SAX");
                     e.printStackTrace();

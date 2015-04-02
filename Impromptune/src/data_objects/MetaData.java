@@ -20,7 +20,7 @@ public class MetaData {
 
     ArrayList<Measure> measures = new ArrayList<>();
 
-    private static MetaData data;
+    private static MetaData data = null;
 
 
     public static MetaData getInstance(){

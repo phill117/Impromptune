@@ -6,17 +6,21 @@ import data_objects.Note;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.StringWriter;
+import java.util.ArrayList;
 
 /**
  * Created by Sean on 3/30/2015.
  */
 public class MXMLWriter {
 
-    public void createMXML(){
+    public File createMXML(){
         StringWriter stringWriter = new StringWriter();
         XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
         MetaData data = MetaData.getInstance();
+        File tempFile = null;
 
         try{
             XMLStreamWriter writer = xmlOutputFactory.createXMLStreamWriter(stringWriter);
@@ -41,6 +45,7 @@ public class MXMLWriter {
             writer.writeAttribute("id","P1");
 
             boolean isFirst = true;
+            System.out.println("number of Measures: "+data.getMeasures().size());
             for(Measure measure : data.getMeasures()){
 
                 writer.writeStartElement("measure");
@@ -101,36 +106,42 @@ public class MXMLWriter {
 
                 }
 
-                for(Note note : measure.getNotes()){
+                for(ArrayList<Note> chord : measure.getChords()) {
+                    boolean putChord = false;
+                    for (Note note : chord) {
 
-                    writer.writeStartElement("note");
+                        writer.writeStartElement("note");
 
-                    if(!note.isRest()){
-                        writer.writeStartElement("pitch");
-                        //step
-                        writer.writeStartElement("step");
-                        writer.writeCharacters(Character.toString(note.getPitch()));
+                        if (!note.isRest()) {
+                            if(!putChord)putChord = true;
+                            else writer.writeEmptyElement("chord");
+
+                            writer.writeStartElement("pitch");
+                            //step
+                            writer.writeStartElement("step");
+                            writer.writeCharacters(Character.toString(note.getPitch()));
+                            writer.writeEndElement();
+                            //octave
+                            writer.writeStartElement("octave");
+                            writer.writeCharacters(Integer.toString(note.getOctave()));
+                            writer.writeEndElement();
+                            writer.writeEndElement();
+                        } else writer.writeEmptyElement("rest");
+
+                        //duration
+                        writer.writeStartElement("duration");
+                        writer.writeCharacters(Integer.toString(note.getDuration()));
                         writer.writeEndElement();
-                        //octave
-                        writer.writeStartElement("octave");
-                        writer.writeCharacters(Integer.toString(note.getOctave()));
+                        //type
+                        writer.writeStartElement("type");
+                        writer.writeCharacters(note.getType());
                         writer.writeEndElement();
+
                         writer.writeEndElement();
+
                     }
-                    else writer.writeEmptyElement("rest");
-
-                    //duration
-                    writer.writeStartElement("duration");
-                    writer.writeCharacters(Integer.toString(note.getDuration()));
-                    writer.writeEndElement();
-                    //type
-                    writer.writeStartElement("type");
-                    writer.writeCharacters(note.getType());
-                    writer.writeEndElement();
-
-                    writer.writeEndElement();
-
                 }
+                //end measure
                 writer.writeEndElement();
             }
 
@@ -142,15 +153,19 @@ public class MXMLWriter {
             writer.writeEndDocument();
 
             String xmlString = stringWriter.getBuffer().toString();
+            tempFile = File.createTempFile("creation","xml");
+            FileOutputStream outputStream = new FileOutputStream(tempFile);
+            outputStream.write(xmlString.getBytes("UTF-8"));
 
             writer.flush();
             writer.close();
 
             System.out.println(xmlString);
+            return tempFile;
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        return tempFile;
     }
 
 }

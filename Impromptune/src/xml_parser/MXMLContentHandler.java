@@ -17,6 +17,8 @@ public class MXMLContentHandler extends DefaultHandler{
     Measure currentMeasure;
     Note currentNote;
 
+    boolean isChord = false;
+
     MetaData metaData;
     MXML currentFlag = MXML.Measure;
 
@@ -24,7 +26,7 @@ public class MXMLContentHandler extends DefaultHandler{
         //Used
         Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type, Type,
         //Not Used
-        Chord, Barline, Repeat, NONE
+        Barline, Repeat, NONE
 
         //NOTE MODE IS IMPLEMENTED IN FINALE, I BELIVE WE SHOULD ALSO USE IT, BECAUSE ANALYSIS
     }
@@ -55,6 +57,7 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("duration")){currentFlag = MXML.Duration; return;}
         if(qName.equals("type")){currentFlag = MXML.Type; return;}
         if(qName.equals("rest")){currentNote.setPitch('r');return;}
+        if(qName.equals("chord")){isChord = true;}
 
         if(qName.equals("measure")){
             currentFlag = MXML.Measure;
@@ -128,8 +131,16 @@ public class MXMLContentHandler extends DefaultHandler{
         for(int i = 0; i < tab; i++) s+="\t";
         System.out.println(s+"End Element: "+qName);
 
-        if (qName.equals("note")){currentMeasure.addNote(currentNote); return;}
-        if (qName.equals("measue")){metaData.addMeasure(currentMeasure);return;}
+        if (qName.equals("note")){
+            if(isChord){
+                currentMeasure.addNote(currentNote);
+            }else{
+                currentMeasure.addChord(currentNote);
+            }
+            isChord = false;
+            return;
+        }
+        if (qName.equals("measure")){metaData.addMeasure(currentMeasure);return;}
     }
 
     //called at the end of document

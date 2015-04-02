@@ -8,6 +8,7 @@ import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
+import gen_settings.GenSettings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -108,6 +109,7 @@ public class ImpromptuneInitializer implements Initializable{
             fxmlLoader = new FXMLLoader();
             Node settingsDisplay = fxmlLoader.load(getClass().getClassLoader().getResource("gen_settings/GenSettings.fxml").openStream());
             GenSettingsCase.getChildren().add(settingsDisplay);
+            GenSettings settings = fxmlLoader.getController();
 
 
             //Renderer
@@ -127,6 +129,8 @@ public class ImpromptuneInitializer implements Initializable{
             ph.mw = mw; //Set the current piano window to current renderer window
             mainWindow = mw;
 
+            settings.setMainWindow(mainWindow);
+            settings.setStage(stage);
 
         }catch (IOException e){
             System.out.println("WAHT HAPPENED");
