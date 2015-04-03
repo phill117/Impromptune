@@ -33,6 +33,7 @@ import sun.misc.Unsafe;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
@@ -54,10 +55,10 @@ public class Content
 	private PlaybackLayouter playbackLayouter = null;
 
     private Composition comp = null;
-
-    private int undoIndex = -1;
-    private int addIndex = -1;
-    private int redoIndex = -1;
+    private int undo = 0;
+    private int undoIndex = 0;
+    private int addIndex = 0;
+    private int maxIndex = 0;
     private LinkedList<Composition> undoList = new LinkedList<Composition>();
    // private LinkedList<Composition> redoList = new LinkedList<Composition>();
 
@@ -71,15 +72,25 @@ public class Content
 
 
     private void addAction() {
-
-        //Composition newc = new Composition();
-       // Unsafe.copyMemory(newc.get,comp);
-        addIndex++;
-        undoIndex = -1;
-        redoIndex = -1;
-
         try {
-            undoList.add(addIndex, comp.deepCopy());
+
+
+            if(maxIndex > addIndex || undo == 1)
+                undoList.set(addIndex,comp.deepCopy());
+            else {
+                maxIndex++;
+                undoList.add(comp.deepCopy());
+
+            }
+
+            if(undo == 1)
+                undoIndex = addIndex - 1;
+            else
+                undoIndex = addIndex;
+
+            addIndex++;
+            undo = 0;
+
 
         }
         catch (Exception e)
@@ -89,27 +100,26 @@ public class Content
             e.printStackTrace();
 
         }
-
-
-
     }
 
 
     public void undoAction(){
-
-        redoIndex = undoIndex;
-       // addIndex = undoIndex;
-        if(undoIndex == -1 || undoIndex == 0){
-         //   loadBlank();
-         //   addAction();
-         //   addIndex = 0;
-            undoIndex = addIndex;
+        undo = 1;
+        if(undoIndex == 0){
+            comp = undoList.get(undoIndex);
+            comp.resync();
+            refresh();
+            addIndex = 1;
+            return;
         }
 
-            //addIndex = undoIndex;
-            undoIndex--;
-            comp = undoList.get(undoIndex);
 
+
+        addIndex = undoIndex;
+
+        undoIndex--;
+
+        comp = undoList.get(undoIndex);
 
         comp.resync();
         refresh();
@@ -118,10 +128,12 @@ public class Content
 
     public void redoAction(){
 
-        if(++redoIndex < addIndex) {
-            comp = undoList.get(redoIndex);
-        }
+        if(undoIndex >= addIndex)
+            return;
 
+        addIndex++;
+        undoIndex++;
+        comp = undoList.get(undoIndex);
         comp.resync();
         refresh();
 
@@ -142,9 +154,14 @@ public class Content
     public void loadBlank() {
         comp = new Composition();
         scoreDoc = comp.getCurrentScoreDoc();
+        undoList.clear();
+        undoIndex = 0;
+        addIndex =0;
+        maxIndex = 0;
+        undo = 0;
+
         refresh();
         addAction();
-
     }
 
     public void refresh(){
@@ -159,23 +176,14 @@ public class Content
         Playback.openScore(comp.getCurrentScore());
     }
 
-   /* public void undo() {
-        comp.removeLast();
-        refresh();
-    }
-
-    public void redo() {
-        comp.addLast();
-        refresh();
-    }*/
 
     //Called by eventhandler
     public void addNote(String note) {
        // comp.
         comp.addNote(note);
-        addAction();
-        refresh();
 
+        refresh();
+        addAction();
 
     }
 

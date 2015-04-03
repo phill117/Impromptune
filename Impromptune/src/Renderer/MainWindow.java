@@ -135,7 +135,9 @@ public class MainWindow {
         }
         catch (Exception e)
         {
-            //blah
+           //Sorry BEN!!!!
+            //Jacob = 50 DKP MINUS
+            e.printStackTrace();
         }
     }
 
@@ -144,22 +146,6 @@ public class MainWindow {
     public void undo()
     {
         content.undoAction();
-       // content.refresh();
-    /*     if(content.getSD().getScore().getCommandPerformer().isUndoPossible())
-            System.out.println("yes");
-        else
-            System.out.println("NO SCORE");
-
-
-        if(content.getSD().getCommandPerformer().isUndoPossible())
-            System.out.println("yes");
-        else
-            System.out.println("NO DOC");
-    */
-       // content.getSD().getScore().getCommandPerformer().isUndoPossible();
-
-
-
     }
 
 
