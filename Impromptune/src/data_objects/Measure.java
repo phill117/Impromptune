@@ -7,23 +7,39 @@ import java.util.ArrayList;
  */
 public class Measure {
 
-    private ArrayList<Note> notes;
+    private ArrayList<ArrayList<Note>> chords;
+    private ArrayList<Note> lastChordAdded;
     private int measureNo;
 
     public Measure(int measureNo){
         this.measureNo = measureNo;
-        notes = new ArrayList<>();
+        chords = new ArrayList<>();
     }
 
-    public Note noteAt(int b){
-        return notes.get(b);
+    public int getMeasureNo() {
+        return measureNo;
     }
 
-    public void addNote(Note note){
-        notes.add(note);
+    public ArrayList<ArrayList<Note>> getChords() {
+        return chords;
+    }
+
+    public ArrayList<Note> chordAt(int b){
+        return chords.get(b);
+    }
+
+    public void addChord(Note firstNote){
+        ArrayList<Note> chord = new ArrayList<>();
+        chord.add(firstNote);
+        chords.add(chord);
+        lastChordAdded = chord;
     }
 
     public void addNoteAt(int n, Note note){
-        notes.add(n, note);
+        chords.get(n).add(note);
+    }
+
+    public void addNote(Note n){
+        lastChordAdded.add(n);
     }
 }

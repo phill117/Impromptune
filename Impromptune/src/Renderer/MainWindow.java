@@ -7,8 +7,7 @@ import io_handler.ScoreMXLBuilder;
 import com.xenoage.utils.jse.io.JseFile;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.utils.jse.xml.JseXmlWriter;
-import com.xenoage.utils.jse.xml.XMLWriter;
-import com.xenoage.utils.xml.XmlWriter;
+
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.musicxml.MusicXMLDocument;
 import com.xenoage.zong.musicxml.types.MxlScorePartwise;
@@ -17,12 +16,14 @@ import io_handler.ScoreMXLBuilder;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
-import java.io.File;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.util.LinkedList;
 
 
 /**
@@ -40,8 +41,10 @@ public class MainWindow {
 	private Content content = new Content(this);
 	private WritableImage scoreImage = null;
 
+    public int pageIndex = 0;
     public Content getContent() { return content;}
 
+    public String loadedFile;
     private float zoomFactor = 1.25f;
 
     public void setZoom(float z)
@@ -50,16 +53,25 @@ public class MainWindow {
         content.refresh();
     }
 
+    public void nextPage() {
+
+        //System.out.println("Pages:" + content.getLayout().getPages().size());
+        if(content.getLayout().getPages().size()-1 > pageIndex)
+            pageIndex++;
+        else
+            pageIndex = 0;
+
+        renderLayout(content.getLayout());
+    }
+
     public float getZoom()
     {
         return zoomFactor;
     }
 
 	@FXML public void initialize() {
-
 		//content.loadNextScore();
        // content.loadScore();  // TO LOAD REVOLUTIONARY
-
         //Load blank composition
         content.loadBlank();
 	}
@@ -70,14 +82,34 @@ public class MainWindow {
     }
 
     //Handles saving file as musicXML
-    public void save(File outFile) {
+    public void save(Stage s) {
 
-//        System.out.println("hi");
+        File outFile;
+        if(loadedFile != null)
+            outFile = new File(loadedFile);
+        else
+        {
+            FileChooser chooser = new FileChooser();
+
+            chooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("XML", "*.xml"),
+                    new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
+            );
+
+            chooser.setTitle("Save Composition as MusicXML");
+
+            File file = chooser.showSaveDialog(s);
+
+            saveAs(file);
+            return;
+        }
+
+
         //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
-//        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
+        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
 
         //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
-//        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
+        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
 
         try {
 //            JseOutputStream oStream = new JseOutputStream(outFile);
@@ -92,19 +124,47 @@ public class MainWindow {
     }
 
 
+    //Change above to save-as, save will just get the current filename loaded?
+    //Handles saving file as musicXML
+    public void saveAs(File outFile) {
+
+        //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
+        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
+
+        //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
+        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
+
+        try {
+            JseOutputStream oStream = new JseOutputStream(outFile);
+            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
+            newXML.write(xmlWrite);
+        }
+        catch (Exception e)
+        {
+           //Sorry BEN!!!!
+            //Jacob = 50 DKP MINUS
+            e.printStackTrace();
+        }
+    }
 
 
 
+    public void undo()
+    {
+        content.undoAction();
+    }
 
 
-
-
-
-
+    public void redo() {
+        content.redoAction();
+    }
 	public void renderLayout(Layout layout) {
+
 		//run in JavaFX application thread
 		Platform.runLater(() -> {
-			scoreImage = JfxLayoutRenderer.paintToImage(layout, 0, zoomFactor);
+
+
+			scoreImage = JfxLayoutRenderer.paintToImage(layout, pageIndex, zoomFactor);
 			scoreView.setImage(scoreImage);
 			scoreView.setFitWidth(scoreImage.getWidth());
 			scoreView.setFitHeight(scoreImage.getHeight());

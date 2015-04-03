@@ -8,6 +8,8 @@ import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
+import gen_settings.GenSettings;
+import impromptune_gui.Dialogs.CompositionPropertiesDialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,8 +33,6 @@ import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
 import io_handler.IOHandler;
 
-//import javax.swing.filechooser.FileNameExtensionFilter; //WTF SWING!!!
-
 
 import static com.xenoage.zong.desktop.App.app;
 
@@ -46,6 +46,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML AnchorPane PianoCase;
     @FXML AnchorPane PlayerCase;
     @FXML AnchorPane RendererCase;
+    @FXML TabPane RendererTabs;
     @FXML AnchorPane GenSettingsCase;
 
     @FXML ToolBar NoteSelection;
@@ -76,7 +77,6 @@ public class ImpromptuneInitializer implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         try {
             half.setSelected(true);
             durationGroup = new ArrayList<>();
@@ -109,13 +109,11 @@ public class ImpromptuneInitializer implements Initializable{
             fxmlLoader = new FXMLLoader();
             Node settingsDisplay = fxmlLoader.load(getClass().getClassLoader().getResource("gen_settings/GenSettings.fxml").openStream());
             GenSettingsCase.getChildren().add(settingsDisplay);
+            GenSettings settings = fxmlLoader.getController();
 
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
-         //   Log.init(new DesktopLogProcessing(appName + " " + appVersion));
-          //  Err.init(new GuiErrorProcessing());
-          //  SynthManager.init(false)
             fxmlLoader = new FXMLLoader();
             bp = fxmlLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml").openStream());
             RendererCase.getChildren().add(bp);
@@ -130,6 +128,9 @@ public class ImpromptuneInitializer implements Initializable{
 
             ph.mw = mw; //Set the current piano window to current renderer window
             mainWindow = mw;
+
+            settings.setMainWindow(mainWindow);
+            settings.setStage(stage);
 
         }catch (IOException e){
             System.out.println("WAHT HAPPENED");
@@ -167,19 +168,33 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onOpen(ActionEvent event) {
+        mainWindow.pageIndex = 0;
         String file = IOHandler.load(stage);
         if(file != null)
+        {
+            mainWindow.loadedFile = file;
              mainWindow.getContent().loadScore(file);
+
+        }
 
     }
 
     @FXML void onNEW(ActionEvent event) {
+        mainWindow.loadedFile = null;
+        mainWindow.pageIndex = 0;
             mainWindow.getContent().loadBlank();
     }
 
+    @FXML void onNext(ActionEvent event) {
+        mainWindow.nextPage();
+    }
 
+    @FXML void onNewTab(ActionEvent event) {
+
+    }
 
     @FXML void onSAVEAS(ActionEvent event) {
+
         FileChooser chooser = new FileChooser();
 
         chooser.getExtensionFilters().addAll(
@@ -191,8 +206,27 @@ public class ImpromptuneInitializer implements Initializable{
 
         File file = chooser.showSaveDialog(stage);
 
-        mainWindow.save(file);
+        mainWindow.saveAs(file);
     }
+
+
+
+    @FXML void onSAVE(ActionEvent event) {
+        mainWindow.save(stage);
+    }
+
+
+
+
+    @FXML void onUndo(ActionEvent event) {
+        mainWindow.undo();
+    }
+    @FXML void onRedo(ActionEvent event) {
+        mainWindow.redo();
+    }
+
+
+
 
     @FXML void onPRINT(ActionEvent event) {
         Layout layout = mainWindow.getContent().getSD().getLayout();
@@ -201,9 +235,9 @@ public class ImpromptuneInitializer implements Initializable{
         IOHandler.print(layout);
     }
 
-    @FXML void onREM(ActionEvent event) {
-        mainWindow.getContent().undo();
-    }
+   // @FXML void onREM(ActionEvent event) {
+    //    mainWindow.getContent().undo();
+   // }
 
     public void showMessageDialog(String message) {
         dialog().message(message).showInformation();
@@ -213,7 +247,8 @@ public class ImpromptuneInitializer implements Initializable{
         return Dialogs.create().title(appName).styleClass(org.controlsfx.dialog.Dialog.STYLE_CLASS_NATIVE);
     }
 
-    @FXML void openCompositionSettings(ActionEvent event){}
+    @FXML void openCompositionSettings(ActionEvent event){
+    }
 
     /**
      * Necessary Ported Methods from the Player MenuBar

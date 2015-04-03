@@ -5,6 +5,8 @@ import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Offset of a beat in mm.
  * 
@@ -18,7 +20,7 @@ import lombok.Data;
  *
  * @author Andreas Wenger
  */
-@Const @Data public final class BeatOffset {
+@Const @Data public final class BeatOffset implements Serializable {
 
 	/** The beat. */
 	private final Fraction beat;

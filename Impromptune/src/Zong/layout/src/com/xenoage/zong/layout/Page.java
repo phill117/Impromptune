@@ -8,6 +8,7 @@ import com.xenoage.zong.layout.frames.Frame;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -20,7 +21,7 @@ import static com.xenoage.utils.kernel.Range.rangeReverse;
  * @author Uli Teschemacher
  */
 @Getter @Setter public final class Page
-	implements LayoutContainer {
+	implements LayoutContainer, Serializable {
 
 	/** The parent layout of the page, or null if not part of a layout. */
 	@MaybeNull private Layout parentLayout = null;

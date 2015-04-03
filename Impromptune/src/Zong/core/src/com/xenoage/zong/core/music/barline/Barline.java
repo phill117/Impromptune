@@ -7,6 +7,8 @@ import com.xenoage.zong.core.music.Measure;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 /**
@@ -22,7 +24,7 @@ import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
  */
 @Data @EqualsAndHashCode(exclude = "parent")
 public final class Barline
-	implements ColumnElement {
+	implements ColumnElement, Serializable {
 
 	/** The style of the line(s). */
 	@NonNull private BarlineStyle style;

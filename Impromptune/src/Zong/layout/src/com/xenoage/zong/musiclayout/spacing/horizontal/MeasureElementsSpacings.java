@@ -9,6 +9,8 @@ import com.xenoage.zong.core.music.MeasureElement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * This class contains the spacings of the {@link MeasureElement}s
  * and {@link ColumnElement}s of a single measure, like clefs
@@ -16,7 +18,7 @@ import lombok.Getter;
  * 
  * @author Andreas Wenger
  */
-@Const @Getter @AllArgsConstructor public class MeasureElementsSpacings {
+@Const @Getter @AllArgsConstructor public class MeasureElementsSpacings implements Serializable{
 
 	@MaybeEmpty private final IList<SpacingElement> elements;
 

@@ -4,6 +4,7 @@ import com.xenoage.zong.core.instrument.Instrument;
 import lombok.Data;
 import lombok.NonNull;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
@@ -21,7 +22,7 @@ import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
  * 
  * @author Andreas Wenger
  */
-@Data public final class Part {
+@Data public final class Part implements Serializable {
 
 	/** The name of the part. */
 	@NonNull private String name;

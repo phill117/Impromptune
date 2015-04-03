@@ -4,6 +4,8 @@ import com.xenoage.utils.math.Fraction;
 import lombok.Data;
 import lombok.NonNull;
 
+import java.io.Serializable;
+
 
 /**
  * Element at a beat.
@@ -13,7 +15,7 @@ import lombok.NonNull;
  * 
  * @author Andreas Wenger
  */
-@Data public final class BeatE<T> {
+@Data public final class BeatE<T> implements Serializable {
 
 	/** The element at the beat */
 	@NonNull public final T element;

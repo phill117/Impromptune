@@ -27,6 +27,8 @@ import com.xenoage.zong.core.position.MPContainer;
 import com.xenoage.zong.core.position.MPElement;
 import lombok.Data;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 import static com.xenoage.utils.CheckUtils.checkNotNull;
 import static com.xenoage.utils.collections.CList.clist;
@@ -49,7 +51,7 @@ import static com.xenoage.zong.core.position.MP.atColumnBeat;
  */
 @Data
 public final class ColumnHeader
-	implements DirectionContainer, MPContainer {
+	implements DirectionContainer, MPContainer, Serializable {
 
 	/** The time signature at the beginning of this measure. */
 	@MaybeNull private Time time;

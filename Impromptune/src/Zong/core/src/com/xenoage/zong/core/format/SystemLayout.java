@@ -3,6 +3,7 @@ package com.xenoage.zong.core.format;
 import com.xenoage.utils.annotations.MaybeNull;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.setExtend;
@@ -13,7 +14,7 @@ import static com.xenoage.utils.collections.CollectionUtils.setExtend;
  * @author Andreas Wenger
  */
 @Data
-public final class SystemLayout {
+public final class SystemLayout implements Serializable {
 
 	/** The distance between the bottom line
 	 * of the previous system to the top line of this system in mm.

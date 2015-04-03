@@ -5,6 +5,8 @@ import com.xenoage.utils.math.Fraction;
 import com.xenoage.zong.core.music.chord.Accidental;
 import lombok.AllArgsConstructor;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.math.Fraction._1;
 import static com.xenoage.utils.math.Fraction._1$2;
 
@@ -13,7 +15,7 @@ import static com.xenoage.utils.math.Fraction._1$2;
  * 
  * @author Andreas Wenger
  */
-@Const @AllArgsConstructor public class ChordWidths {
+@Const @AllArgsConstructor public class ChordWidths implements Serializable {
 
 	/** Whole notehead */
 	public final float whole;

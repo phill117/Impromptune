@@ -1,11 +1,13 @@
 package com.xenoage.utils.math.geom;
 
+import java.io.Serializable;
+
 /**
  * Class for a 2D point.
  *
  * @author Andreas Wenger
  */
-public final class Point2f {
+public final class Point2f implements Serializable {
 
 	/** Origin point, (0, 0). */
 	public static final Point2f origin = new Point2f(0, 0);

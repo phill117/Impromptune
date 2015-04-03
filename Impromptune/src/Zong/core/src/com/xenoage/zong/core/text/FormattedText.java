@@ -7,6 +7,8 @@ import com.xenoage.utils.math.geom.Rectangle2f;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.collections.CList.clist;
 import static com.xenoage.utils.collections.CList.ilist;
 import static com.xenoage.zong.core.text.FormattedTextParagraph.fPara;
@@ -21,7 +23,7 @@ import static com.xenoage.zong.core.text.FormattedTextString.fString;
  * @author Andreas Wenger
  */
 @Const @EqualsAndHashCode public class FormattedText
-	implements Text {
+	implements Text, Serializable {
 	
 	/** An empty text. */
 	public static final FormattedText empty = fText(); 

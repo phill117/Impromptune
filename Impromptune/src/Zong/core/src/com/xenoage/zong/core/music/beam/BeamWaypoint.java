@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.music.chord.Chord;
 import lombok.Data;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
@@ -21,7 +23,7 @@ import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
  *
  * @author Andreas Wenger
  */
-@Data public final class BeamWaypoint {
+@Data public final class BeamWaypoint implements Serializable {
 
 	/** The chord belonging to this waypoint. */
 	@NonNull private Chord chord;

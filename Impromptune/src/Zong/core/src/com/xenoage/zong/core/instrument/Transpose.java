@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Transposition of an instrument.
@@ -21,7 +23,7 @@ import lombok.Data;
  * 
  * @author Andreas Wenger
  */
-@Const @Data public final class Transpose
+@Const @Data public final class Transpose implements Serializable
 {
 	
 	/** The number of chromatic steps to add to the pitch */

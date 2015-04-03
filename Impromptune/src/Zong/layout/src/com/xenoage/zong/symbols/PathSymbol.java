@@ -3,13 +3,15 @@ package com.xenoage.zong.symbols;
 import com.xenoage.zong.symbols.path.Path;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * Symbols which consist of a complex path.
  *
  * @author Andreas Wenger
  */
 public final class PathSymbol
-	extends Symbol {
+	extends Symbol implements Serializable {
 	
 	/** The geometric path describing this symbol. */
 	@Getter public final Path path;

@@ -5,6 +5,7 @@ import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.zong.core.music.Pitch;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Andreas Wenger
  */
-@Const @Data public final class Note {
+@Const @Data public final class Note implements Serializable {
 
 	@NonNull private final Pitch pitch;
 

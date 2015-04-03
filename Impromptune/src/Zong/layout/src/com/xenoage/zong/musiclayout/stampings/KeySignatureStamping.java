@@ -9,6 +9,8 @@ import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.common.CommonSymbol;
 
+import java.io.Serializable;
+
 import static com.xenoage.zong.core.music.key.TraditionalKey.getLinePosition;
 
 /**
@@ -20,7 +22,7 @@ import static com.xenoage.zong.core.music.key.TraditionalKey.getLinePosition;
  * @author Andreas Wenger
  */
 @Const public final class KeySignatureStamping
-	extends Stamping {
+	extends Stamping implements Serializable {
 
 	/** The horizontal position in mm. */
 	public final float positionX;

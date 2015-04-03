@@ -17,14 +17,18 @@ public class MXMLContentHandler extends DefaultHandler{
     Measure currentMeasure;
     Note currentNote;
 
+    boolean isChord = false;
+
     MetaData metaData;
     MXML currentFlag = MXML.Measure;
 
     private enum MXML{
         //Used
-        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type,
+        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type, Type,
         //Not Used
-        Chord, Barline, Repeat, NONE
+        Barline, Repeat, NONE
+
+        //NOTE MODE IS IMPLEMENTED IN FINALE, I BELIVE WE SHOULD ALSO USE IT, BECAUSE ANALYSIS
     }
 
     //called at the start of the doc
@@ -51,7 +55,9 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("octave")){currentFlag = MXML.Octave; return;}
         if(qName.equals("alter")){currentFlag = MXML.Alter; return;}
         if(qName.equals("duration")){currentFlag = MXML.Duration; return;}
+        if(qName.equals("type")){currentFlag = MXML.Type; return;}
         if(qName.equals("rest")){currentNote.setPitch('r');return;}
+        if(qName.equals("chord")){isChord = true;}
 
         if(qName.equals("measure")){
             currentFlag = MXML.Measure;
@@ -96,6 +102,9 @@ public class MXMLContentHandler extends DefaultHandler{
             case Duration:
                 currentNote.setDuration(Integer.parseInt(data));
                 break;
+            case Type:
+                currentNote.setType(data);
+                break;
             case Actual_Notes:
                 break;
             case Normal_Notes:
@@ -122,8 +131,16 @@ public class MXMLContentHandler extends DefaultHandler{
         for(int i = 0; i < tab; i++) s+="\t";
         System.out.println(s+"End Element: "+qName);
 
-        if (qName.equals("note")){currentMeasure.addNote(currentNote); return;}
-        if (qName.equals("measue")){metaData.addMeasure(currentMeasure);return;}
+        if (qName.equals("note")){
+            if(isChord){
+                currentMeasure.addNote(currentNote);
+            }else{
+                currentMeasure.addChord(currentNote);
+            }
+            isChord = false;
+            return;
+        }
+        if (qName.equals("measure")){metaData.addMeasure(currentMeasure);return;}
     }
 
     //called at the end of document

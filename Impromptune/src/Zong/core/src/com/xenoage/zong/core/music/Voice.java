@@ -15,6 +15,7 @@ import com.xenoage.zong.utils.exceptions.IllegalMPException;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +43,7 @@ import static com.xenoage.zong.core.position.MP.atVoice;
  * @author Andreas Wenger
  */
 public final class Voice
-	implements MPContainer {
+	implements MPContainer, Serializable {
 
 	/** The list of rests and chords, sorted by time */
 	@MaybeEmpty @Getter private List<VoiceElement> elements;

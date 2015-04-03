@@ -17,6 +17,7 @@ import com.xenoage.zong.util.event.ScoreChangedEvent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ import static com.xenoage.zong.layout.LP.lp;
  * @author Andreas Wenger
  * @author Uli Teschemacher
  */
-@Data @AllArgsConstructor public class Layout {
+@Data @AllArgsConstructor public class Layout implements Serializable{
 
 	/** Default settings */
 	private LayoutDefaults defaults;

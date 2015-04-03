@@ -16,7 +16,7 @@ import com.xenoage.zong.musiclayout.layouter.ScoreLayouterStrategy;
  * @author Andreas Wenger
  */
 public interface HorizontalSystemFillingStrategy
-	extends ScoreLayouterStrategy {
+	extends ScoreLayouterStrategy  {
 
 	public SystemArrangement computeSystemArrangement(SystemArrangement systemArrangement,
 		float usableWidth);

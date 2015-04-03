@@ -5,6 +5,7 @@ import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.math.Fraction;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -21,7 +22,7 @@ import static com.xenoage.zong.core.music.util.BeatE.beatE;
  * @author Andreas Wenger
  */
 @Data public final class BeatEList<T>
-	implements Iterable<BeatE<T>> {
+	implements Iterable<BeatE<T>>, Serializable {
 
 	/** The list of elements, sorted in ascending beat order. */
 	private ArrayList<BeatE<T>> elements;

@@ -5,6 +5,8 @@ import com.xenoage.utils.collections.IList;
 import com.xenoage.zong.musiclayout.spacing.ColumnSpacing;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.collections.ArrayUtils.sum;
 
 /**
@@ -20,7 +22,7 @@ import static com.xenoage.utils.collections.ArrayUtils.sum;
  *
  * @author Andreas Wenger
  */
-@Const @Getter public final class SystemArrangement {
+@Const @Getter public final class SystemArrangement implements Serializable {
 
 	/** The index of the first measure of the system. */
 	public final int startMeasureIndex;

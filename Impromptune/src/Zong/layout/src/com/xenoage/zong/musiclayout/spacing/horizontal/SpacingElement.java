@@ -8,6 +8,8 @@ import com.xenoage.zong.core.music.MusicElement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * A spacing element stores the beat and the position (offset)
  * of a given {@link MusicElement} in a layout.
@@ -16,7 +18,7 @@ import lombok.Data;
  *
  * @author Andreas Wenger
  */
-@Const @Data @AllArgsConstructor public final class SpacingElement {
+@Const @Data @AllArgsConstructor public final class SpacingElement implements Serializable{
 
 	/** The corresponding music element, e.g. a chord. May be null, e.g. when this
 	 * element denotes the end point of the measure. */

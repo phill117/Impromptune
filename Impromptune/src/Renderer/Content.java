@@ -29,9 +29,12 @@ import com.xenoage.zong.musiclayout.settings.LayoutSettings;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.utils.demo.ScoreRevolutionary;
 import io_handler.Composition;
+import sun.misc.Unsafe;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
 import static com.xenoage.zong.util.ZongPlatformUtils.zongPlatformUtils;
@@ -52,18 +55,91 @@ public class Content
 	private PlaybackLayouter playbackLayouter = null;
 
     private Composition comp = null;
+    private int undo = 0;
+    private int undoIndex = 0;
+    private int addIndex = 0;
+    private int maxIndex = 0;
+    private LinkedList<Composition> undoList = new LinkedList<Composition>();
+   // private LinkedList<Composition> redoList = new LinkedList<Composition>();
 
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
-       // comp = new Composition(); // create blank
-       // scoreDoc = comp.getCurrentScoreDoc();
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
 	}
 
-    public ScoreDoc getSD(){
-        return scoreDoc;
+
+
+
+    private void addAction() {
+        try {
+
+
+            if(maxIndex > addIndex || undo == 1)
+                undoList.set(addIndex,comp.deepCopy());
+            else {
+                maxIndex++;
+                undoList.add(comp.deepCopy());
+
+            }
+
+            if(undo == 1)
+                undoIndex = addIndex - 1;
+            else
+                undoIndex = addIndex;
+
+            addIndex++;
+            undo = 0;
+
+
+        }
+        catch (Exception e)
+        {
+            //wtfdeadbeefs
+            System.out.println("DEADBEEF");
+            e.printStackTrace();
+
+        }
     }
+
+
+    public void undoAction(){
+        undo = 1;
+        if(undoIndex == 0){
+            comp = undoList.get(undoIndex);
+            comp.resync();
+            refresh();
+            addIndex = 1;
+            return;
+        }
+
+
+
+        addIndex = undoIndex;
+
+        undoIndex--;
+
+        comp = undoList.get(undoIndex);
+
+        comp.resync();
+        refresh();
+    }
+
+
+    public void redoAction(){
+
+        if(undoIndex >= addIndex)
+            return;
+
+        addIndex++;
+        undoIndex++;
+        comp = undoList.get(undoIndex);
+        comp.resync();
+        refresh();
+
+    }
+
+
 
 
 	/**
@@ -78,75 +154,49 @@ public class Content
     public void loadBlank() {
         comp = new Composition();
         scoreDoc = comp.getCurrentScoreDoc();
+        undoList.clear();
+        undoIndex = 0;
+        addIndex =0;
+        maxIndex = 0;
+        undo = 0;
+
         refresh();
+        addAction();
     }
 
     public void refresh(){
         layout = comp.getLayout();
         scoreDoc = comp.getCurrentScoreDoc();
+        //layout.updateScoreLayouts(comp.getCurrentScore());
+        //Sets up the blue playback cursor
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-        comp.setLayouter(playbackLayouter);
         mainWindow.renderLayout(layout);
 
         //load score into MIDI playback
         Playback.openScore(comp.getCurrentScore());
     }
 
-    public void undo() {
-        comp.removeLast();
-        refresh();
-    }
-
-    public void redo() {
-        comp.addLast();
-        refresh();
-    }
 
     //Called by eventhandler
     public void addNote(String note) {
        // comp.
         comp.addNote(note);
+
         refresh();
+        addAction();
+
     }
 
     //Called by eventhandler
     public void addRest(char rest) {
         // comp.
         comp.addRest(rest);
+
         refresh();
+        addAction();
     }
 
-    //LOAD FROM REVOLUTIONARY FILE
-    public void loadScore() {
-        try {
-            //stop current playback
-            Playback.stop();
 
-            Score test = new ScoreRevolutionary().createScore();
-
-            LayoutFormat layoutFormat = new LayoutFormatReader(
-                    null, test.format.getInterlineSpace() / 10).read();
-
-            test.setMetaData("layoutformat", layoutFormat); //TIDY
-
-            ScoreDoc test2 = test(test);
-
-            layout = test2.getLayout();
-
-            Score score = test2.getScore();
-            layout.updateScoreLayouts(score);
-            //create playback layouter for the playback cursor
-            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
-            //set image to view
-            mainWindow.renderLayout(layout);
-            //load score into MIDI playback
-            Playback.openScore(test2.getScore());
-
-        }
-        catch (Exception ex) {
-            Err.handle(Report.error(ex));
-        }
-    }
 
 	/**
 	 * Loads the MusicXML score from the given file path.
@@ -219,6 +269,52 @@ public class Content
 
         return ret;
     }
+
+
+
+
+
+
+
+
+    //LOAD FROM REVOLUTIONARY FILE
+    public void loadScore() {
+        try {
+            //stop current playback
+            Playback.stop();
+
+            Score test = new ScoreRevolutionary().createScore();
+
+            LayoutFormat layoutFormat = new LayoutFormatReader(
+                    null, test.format.getInterlineSpace() / 10).read();
+
+            test.setMetaData("layoutformat", layoutFormat); //TIDY
+
+            ScoreDoc test2 = test(test);
+
+            layout = test2.getLayout();
+
+            Score score = test2.getScore();
+            layout.updateScoreLayouts(score);
+            //create playback layouter for the playback cursor
+            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(score).getScoreLayout());
+            //set image to view
+            mainWindow.renderLayout(layout);
+            //load score into MIDI playback
+            Playback.openScore(test2.getScore());
+
+        }
+        catch (Exception ex) {
+            Err.handle(Report.error(ex));
+        }
+    }
+
+
+
+    public ScoreDoc getSD(){
+        return scoreDoc;
+    }
+    public Layout  getLayout(){return layout;}
 
 //End Jacob
 

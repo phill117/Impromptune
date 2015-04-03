@@ -12,6 +12,8 @@ import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * This class contains the horizontal spacing
  * for one measure column, that means
@@ -29,7 +31,7 @@ import lombok.Getter;
  *
  * @author Andreas Wenger
  */
-@Const @Getter public final class ColumnSpacing {
+@Const @Getter public final class ColumnSpacing implements Serializable {
 
 	/** The score this spacing belongs to. */
 	private final Score score;

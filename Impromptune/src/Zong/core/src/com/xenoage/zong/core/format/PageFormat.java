@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Size2f;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Class for a page format, containing
@@ -11,7 +13,7 @@ import lombok.Data;
  *
  * @author Andreas Wenger
  */
-@Const @Data public final class PageFormat {
+@Const @Data public final class PageFormat implements Serializable {
 
 	private final Size2f size;
 	private final PageMargins margins;

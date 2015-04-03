@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
+import java.io.Serializable;
+
 
 /**
  * Class for a clef.
@@ -15,7 +17,7 @@ import lombok.NonNull;
  */
 @Data @EqualsAndHashCode(exclude="parent")
 public final class Clef
-	implements MeasureElement
+	implements MeasureElement, Serializable
 {
 
 	/** The type of the clef. */

@@ -24,8 +24,6 @@ import java.io.InputStreamReader;
 public class IOHandler {
     public static String load(Stage s) {
         FileChooser chooser = new FileChooser();
-     //   FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
-       //         "MusicXML files", "mxl", "xml");
 
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("All Files", "*.*"),
@@ -33,12 +31,10 @@ public class IOHandler {
                 new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
         );
 
-
         File custom = new File("C:\\");
         chooser.setInitialDirectory(custom);
-        //chooser.setSelectedExtensionFilter(filter);
-        chooser.setTitle("Select a file to load...");
 
+        chooser.setTitle("Select a file to load...");
 
         File f = chooser.showOpenDialog(s);
         if (f!=null)

@@ -5,6 +5,7 @@ import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.WarningSymbol;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -16,7 +17,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  * 
  * @author Andreas Wenger
  */
-public class CommonSymbolPool {
+public class CommonSymbolPool implements Serializable {
 
 	private List<Symbol> symbols;
 	

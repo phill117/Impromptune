@@ -7,6 +7,8 @@ import com.xenoage.utils.math.MathUtils;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * A {@link MeasureMarks} class stores positioning
  * information on the elements of a measure within
@@ -24,7 +26,7 @@ import lombok.Getter;
  * 
  * @author Andreas Wenger
  */
-@Const @Getter public class MeasureMarks {
+@Const @Getter public class MeasureMarks implements Serializable {
 
 	public final int measure;
 	public final float startMm;

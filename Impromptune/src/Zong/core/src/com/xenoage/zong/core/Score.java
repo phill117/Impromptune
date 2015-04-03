@@ -24,6 +24,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +47,7 @@ import static com.xenoage.zong.core.position.MP.mpb0;
  * @author Andreas Wenger
  */
 public final class Score
-	implements Document {
+	implements Document, Serializable {
 
 	/** General information about the score. */
 	@Getter @Setter @NonNull public ScoreInfo info = new ScoreInfo();

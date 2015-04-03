@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.geom.Point2f;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Line segment.
  * 
@@ -11,7 +13,7 @@ import lombok.Data;
  */
 @Const @Data
 public final class LineTo
-	implements PathElement {
+	implements PathElement, Serializable {
 
 	private final PathElementType type = PathElementType.LineTo;
 	public final Point2f p;

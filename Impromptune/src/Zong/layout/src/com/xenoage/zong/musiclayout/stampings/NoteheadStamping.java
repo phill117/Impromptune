@@ -9,6 +9,8 @@ import com.xenoage.zong.symbols.Symbol;
 import com.xenoage.zong.symbols.SymbolPool;
 import com.xenoage.zong.symbols.common.CommonSymbol;
 
+import java.io.Serializable;
+
 import static com.xenoage.zong.core.music.format.SP.sp;
 
 /**
@@ -17,7 +19,7 @@ import static com.xenoage.zong.core.music.format.SP.sp;
  * @author Andreas Wenger
  */
 @Const public final class NoteheadStamping
-	extends StaffSymbolStamping {
+	extends StaffSymbolStamping implements Serializable {
 
 	public static final int NOTEHEAD_WHOLE = 0;
 	public static final int NOTEHEAD_HALF = 1;

@@ -2,12 +2,14 @@ package com.xenoage.utils.font;
 
 import com.xenoage.utils.annotations.Const;
 
+import java.io.Serializable;
+
 /**
  * Enumeration of different font styles like bold or italic.
  * 
  * @author Andreas Wenger
  */
-@Const public class FontStyle {
+@Const public class FontStyle implements Serializable {
 
 	public static final int Bold = 1 << 0;
 	public static final int Italic = 1 << 1;

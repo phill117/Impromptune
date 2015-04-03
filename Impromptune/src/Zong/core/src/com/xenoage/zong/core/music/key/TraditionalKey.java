@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.NullUtils.notNull;
 import static com.xenoage.zong.core.music.Pitch.pi;
 
@@ -19,7 +21,7 @@ import static com.xenoage.zong.core.music.Pitch.pi;
  */
 @EqualsAndHashCode(exclude="parent")
 public final class TraditionalKey
-	implements Key {
+	implements Key, Serializable {
 
 	/** Major, minor and other modes. */
 	public enum Mode {

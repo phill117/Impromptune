@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Wither;
 
+import java.io.Serializable;
+
 
 /**
  * Musical Position within a score.
@@ -20,7 +22,7 @@ import lombok.experimental.Wither;
  * @author Andreas Wenger
  */
 @Data @AllArgsConstructor public class MP
-	implements Comparable<MP> {
+	implements Comparable<MP>, Serializable {
 
 	/** The staff index, or {@link #unknown}. */
 	@Wither public final int staff;

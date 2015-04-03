@@ -1,5 +1,6 @@
 package com.xenoage.utils.collections;
 
+import java.io.Serializable;
 import java.util.*;
 
 import static com.xenoage.utils.iterators.It.it;
@@ -28,7 +29,7 @@ import static com.xenoage.utils.iterators.ListIt.listIt;
  * @author Andreas Wenger
  */
 public final class CList<T>
-	implements IList<T> {
+	implements IList<T>, Serializable {
 
 	private List<T> array;
 	private boolean closed = false;

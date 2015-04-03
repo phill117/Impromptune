@@ -4,6 +4,8 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.chord.StemDirection;
 
+import java.io.Serializable;
+
 /**
  * Class for a stem stamping.
  * 
@@ -15,7 +17,7 @@ import com.xenoage.zong.core.music.chord.StemDirection;
  * @author Andreas Wenger
  */
 @Const public final class StemStamping
-	extends Stamping {
+	extends Stamping implements Serializable {
 
 	/** The horizontal position in mm. */
 	public final float xMm;

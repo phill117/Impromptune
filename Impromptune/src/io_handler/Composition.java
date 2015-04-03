@@ -3,6 +3,7 @@ package io_handler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import com.xenoage.utils.math.geom.Point2f;
@@ -43,7 +44,7 @@ import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
 /**
  * Created by ben on 2/25/15.
  */
-public class Composition {
+public class Composition implements Serializable{
 
     //internal zong score
     private Score currentComp = null;
@@ -62,6 +63,9 @@ public class Composition {
 
     //const
     private final float SPACING = 9;
+
+    //DEADBEEF
+    private static final long serialVersionUID = 3735928559L;
 
     public Composition() {
         quills = new ArrayList<Quill>();
@@ -111,6 +115,9 @@ public class Composition {
     public void addNote(String str) {
 
         quills.get(currentIndex).writeNote(str);
+
+        currentScoreDoc = initializeScoreDoc(currentComp);
+        layout = currentScoreDoc.getLayout();
 //        Barline barlineEnd = Barline.barline(BarlineStyle.LightHeavy);
 //        new ColumnElementWrite(barlineEnd, currentComp.getColumnHeader(0), null, MeasureSide.Right).execute();
     }
@@ -119,37 +126,12 @@ public class Composition {
         quills.get(currentIndex).writeRest(r);
     }
 
-    public Quill getCurrentPart() {
-        return quills.get(currentIndex);
+    public void resync() {
+        currentScoreDoc = initializeScoreDoc(currentComp);
+        layout = currentScoreDoc.getLayout();
     }
+    
 
-    public ScoreDoc getCurrentScoreDoc() {
-        return currentScoreDoc;
-    }
-
-    public Score getCurrentScore() {
-        return currentComp;
-    }
-
-    public void setCurrentScoreDoc(ScoreDoc scoreDoc) {
-        currentScoreDoc = scoreDoc;
-    }
-
-    public void setCurrentScore(Score score) {
-        currentComp = score;
-    }
-
-    public void setCurrentLayout(Layout l) {
-        layout = l;
-    }
-
-    public void setLayouter(PlaybackLayouter pl) {
-        playbackLayouter = pl;
-    }
-
-    public void setScoreIndex(int i) {
-        scoreIndex = i;
-    }
 
     public Layout getLayout() {
         layout.updateScoreLayouts(currentComp);
@@ -242,7 +224,7 @@ public class Composition {
         }
 
         //load layout settings
-        if (layoutSettings == null)
+      //  if (layoutSettings == null)
             loadLayout(layoutFormat);
 
         //create the document
@@ -261,12 +243,14 @@ public class Composition {
 
         //create and fill at least one page
         ScoreFrameChain chain = null;
+        //System.out.println("Frames:" + scoreLayout.frames.size());
         for (int i = 0; i < scoreLayout.frames.size(); i++) {
             Page page = new Page(pageFormat);
             layout.addPage(page);
             ScoreFrame frame = new ScoreFrame();
             frame.setPosition(framePos);
             frame.setSize(frameSize);
+           // frame.
             //TEST frame = frame.withHFill(NoHorizontalSystemFillingStrategy.getInstance());
             page.addFrame(frame);
             if (chain == null) {
@@ -277,6 +261,55 @@ public class Composition {
         }
 
         return scoreDoc;
+    }
+
+    public Composition deepCopy() throws Exception{
+
+        //Serialization of object
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(bos);
+        out.writeObject(this);
+
+        //De-serialization of object
+        ByteArrayInputStream bis = new   ByteArrayInputStream(bos.toByteArray());
+        ObjectInputStream in = new ObjectInputStream(bis);
+        Composition copied = (Composition) in.readObject();
+
+        return copied;
+    }
+
+
+
+    public Quill getCurrentPart() {
+        return quills.get(currentIndex);
+    }
+
+    public ScoreDoc getCurrentScoreDoc() {
+        return currentScoreDoc;
+    }
+
+    public Score getCurrentScore() {
+        return currentComp;
+    }
+
+    public void setCurrentScoreDoc(ScoreDoc scoreDoc) {
+        currentScoreDoc = scoreDoc;
+    }
+
+    public void setCurrentScore(Score score) {
+        currentComp = score;
+    }
+
+    public void setCurrentLayout(Layout l) {
+        layout = l;
+    }
+
+    public void setLayouter(PlaybackLayouter pl) {
+        playbackLayouter = pl;
+    }
+
+    public void setScoreIndex(int i) {
+        scoreIndex = i;
     }
 }
 

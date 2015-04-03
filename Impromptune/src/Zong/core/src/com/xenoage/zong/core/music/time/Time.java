@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 
 /**
  * A time signature.
@@ -14,7 +16,7 @@ import lombok.Setter;
  * @author Andreas Wenger
  */
 @RequiredArgsConstructor public class Time
-	implements ColumnElement {
+	implements ColumnElement, Serializable {
 	
 	/** Implicit senza misura object. Do not use it within a score,
 	 * but only as a return value to indicate that there is no time signature. */

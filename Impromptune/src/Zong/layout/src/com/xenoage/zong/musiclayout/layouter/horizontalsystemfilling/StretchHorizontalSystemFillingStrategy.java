@@ -9,6 +9,8 @@ import com.xenoage.zong.musiclayout.spacing.horizontal.MeasureSpacing;
 import com.xenoage.zong.musiclayout.spacing.horizontal.SpacingElement;
 import com.xenoage.zong.musiclayout.spacing.horizontal.VoiceSpacing;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.collections.CList.clist;
 import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
 
@@ -21,7 +23,7 @@ import static com.xenoage.utils.iterators.ReverseIterator.reverseIt;
  * @author Andreas Wenger
  */
 public class StretchHorizontalSystemFillingStrategy
-	implements HorizontalSystemFillingStrategy {
+	implements HorizontalSystemFillingStrategy, Serializable {
 
 	public static final StretchHorizontalSystemFillingStrategy instance =
 		new StretchHorizontalSystemFillingStrategy();

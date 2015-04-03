@@ -1,5 +1,7 @@
 package com.xenoage.utils.color;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.math.MathUtils.clamp;
 
 /**
@@ -8,7 +10,7 @@ import static com.xenoage.utils.math.MathUtils.clamp;
  * 
  * @author Andreas Wenger
  */
-public class Color {
+public class Color implements Serializable {
 
 	public static final Color black = new Color(0, 0, 0);
 	public static final Color blue = new Color(0, 0, 255);

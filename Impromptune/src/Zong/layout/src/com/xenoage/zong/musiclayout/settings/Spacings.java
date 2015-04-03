@@ -4,12 +4,14 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.NonNull;
 import lombok.AllArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Settings for spacings (distances) in IS.
  * 
  * @author Andreas Wenger
  */
-@Const @AllArgsConstructor public class Spacings {
+@Const @AllArgsConstructor public class Spacings implements Serializable {
 
 	//chord spacings
 	@NonNull public final ChordSpacings normalChordSpacings;

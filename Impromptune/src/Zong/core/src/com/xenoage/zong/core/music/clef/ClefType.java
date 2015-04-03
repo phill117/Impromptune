@@ -3,6 +3,7 @@ package com.xenoage.zong.core.music.clef;
 import com.xenoage.zong.core.music.Pitch;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ import java.util.Map;
  *
  * @author Andreas Wenger
  */
-@Data public class ClefType {
+@Data public class ClefType implements Serializable {
 
 	/** Treble clef. */
 	public static final ClefType clefTreble = new ClefType(ClefSymbol.G, 2);

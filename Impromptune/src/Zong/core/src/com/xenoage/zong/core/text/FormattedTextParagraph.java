@@ -7,6 +7,7 @@ import com.xenoage.utils.collections.IList;
 import com.xenoage.utils.font.TextMetrics;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import static com.xenoage.utils.collections.CList.clist;
@@ -22,7 +23,7 @@ import static com.xenoage.utils.collections.CollectionUtils.llist;
  * 
  * @author Andreas Wenger
  */
-@Const @Data public class FormattedTextParagraph {
+@Const @Data public class FormattedTextParagraph implements Serializable {
 
 	/** The elemens of this paragraph */
 	private final IList<FormattedTextElement> elements;

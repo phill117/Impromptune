@@ -7,6 +7,8 @@ import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.musiclayout.stampings.StaffStamping;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.collections.CollectionUtils.containsNull;
 import static com.xenoage.utils.kernel.Range.range;
 import static com.xenoage.zong.core.position.MP.atBeat;
@@ -28,7 +30,7 @@ import static com.xenoage.zong.core.position.MP.atBeat;
  * 
  * @author Andreas Wenger
  */
-@Const @Getter public class StaffMarks {
+@Const @Getter public class StaffMarks implements Serializable {
 
 	/** The system index relative to the frame. */
 	public int systemIndex;

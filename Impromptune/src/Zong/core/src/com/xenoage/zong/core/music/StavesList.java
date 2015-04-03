@@ -12,6 +12,7 @@ import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.utils.exceptions.IllegalMPException;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import static com.xenoage.utils.kernel.Range.rangeReverse;
  * @author Andreas Wenger
  */
 @Data
-public final class StavesList {
+public final class StavesList implements Serializable {
 
 	/** The parent score. */
 	private Score score = null;

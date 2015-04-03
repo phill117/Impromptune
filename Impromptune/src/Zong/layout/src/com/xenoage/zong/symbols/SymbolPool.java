@@ -4,6 +4,7 @@ import com.xenoage.zong.symbols.common.CommonSymbol;
 import com.xenoage.zong.symbols.common.CommonSymbolPool;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Map;
  *
  * @author Andreas Wenger
  */
-public final class SymbolPool {
+public final class SymbolPool implements Serializable {
 
 	/** The id of this symbol pool. */
 	@Getter private final String id;

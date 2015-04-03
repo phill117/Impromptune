@@ -3,6 +3,8 @@ package com.xenoage.zong.musiclayout.stampings;
 import com.xenoage.utils.annotations.Const;
 import com.xenoage.zong.core.music.time.Time;
 
+import java.io.Serializable;
+
 /**
  * Class for a time signature stamping.
  * It consists of a fraction, like "4/4" or "7/16".
@@ -10,7 +12,7 @@ import com.xenoage.zong.core.music.time.Time;
  * @author Andreas Wenger
  */
 @Const public final class NormalTimeStamping
-	extends Stamping {
+	extends Stamping implements Serializable {
 
 	/** The horizontal position in mm. */
 	public final float positionX;

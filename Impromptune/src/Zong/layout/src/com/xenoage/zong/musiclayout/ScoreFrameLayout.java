@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  * @author Andreas Wenger
  */
 @ToString
-public final class ScoreFrameLayout {
+public final class ScoreFrameLayout implements Serializable {
 
 	/** Information about the systems in this frame. */
 	@Getter private FrameArrangement frameArrangement;

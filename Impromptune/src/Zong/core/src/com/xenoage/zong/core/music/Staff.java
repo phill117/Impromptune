@@ -8,6 +8,7 @@ import com.xenoage.zong.utils.exceptions.IllegalMPException;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ import static java.lang.Math.max;
  *
  * @author Andreas Wenger
  */
-public final class Staff {
+public final class Staff implements Serializable{
 
 	/** The measures from the beginning to the ending of the score (even the invisible ones). */
 	@Getter private List<Measure> measures;

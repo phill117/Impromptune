@@ -6,6 +6,7 @@ import com.xenoage.utils.font.FontInfo;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.NullUtils.notNull;
@@ -19,7 +20,7 @@ import static com.xenoage.zong.core.format.Defaults.defaultFont;
  * @author Andreas Wenger
  */
 @RequiredArgsConstructor @Data
-public class ScoreFormat {
+public class ScoreFormat implements Serializable {
 	
 	public static final float defaultInterlineSpace = 1.6f;
 	public static final float defaultTopSystemDistance = 15f;
