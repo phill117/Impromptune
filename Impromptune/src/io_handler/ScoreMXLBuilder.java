@@ -1,0 +1,392 @@
+package io_handler;
+
+import com.xenoage.utils.annotations.MaybeNull;
+import com.xenoage.utils.annotations.NonNull;
+import com.xenoage.utils.jse.io.JseOutputStream;
+import com.xenoage.utils.jse.xml.JseXmlWriter;
+import com.xenoage.utils.math.Fraction;
+import com.xenoage.zong.core.header.ScoreHeader;
+import com.xenoage.zong.core.info.ScoreInfo;
+import com.xenoage.zong.core.music.*;
+import com.xenoage.zong.core.music.chord.Chord;
+import com.xenoage.zong.core.music.chord.Stem;
+import com.xenoage.zong.core.music.chord.StemDirection;
+import com.xenoage.zong.core.music.clef.Clef;
+import com.xenoage.zong.core.music.key.Key;
+import com.xenoage.zong.core.music.key.TraditionalKey;
+import com.xenoage.zong.core.music.rest.Rest;
+import com.xenoage.zong.core.music.time.Time;
+import com.xenoage.zong.core.music.util.BeatEList;
+import com.xenoage.zong.core.position.MP;
+import com.xenoage.zong.documents.ScoreDoc;
+import com.xenoage.zong.musicxml.MusicXMLDocument;
+import com.xenoage.zong.musicxml.types.*;
+import com.xenoage.zong.musicxml.types.attributes.MxlColor;
+import com.xenoage.zong.musicxml.types.attributes.MxlPosition;
+import com.xenoage.zong.musicxml.types.choice.*;
+import com.xenoage.zong.musicxml.types.enums.*;
+import com.xenoage.zong.musicxml.types.groups.MxlEditorialVoice;
+import com.xenoage.zong.musicxml.types.groups.MxlFullNote;
+import com.xenoage.zong.musicxml.types.groups.MxlMusicData;
+import com.xenoage.zong.musicxml.types.groups.MxlScoreHeader;
+import com.xenoage.zong.musicxml.types.partwise.MxlMeasure;
+import com.xenoage.zong.musicxml.types.partwise.MxlPart;
+import static com.xenoage.zong.core.music.util.Interval.At;
+import static com.xenoage.zong.core.music.util.Interval.Before;
+import static com.xenoage.zong.core.music.util.Interval.BeforeOrAt;
+import static com.xenoage.zong.core.music.util.BeatE.selectLatest;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by ben on 3/30/2015.
+ */
+public class ScoreMXLBuilder {
+    private ScoreDoc scoreDoc = null;
+    private JseOutputStream outputStream = null;
+    private JseXmlWriter xmlWriter = null;
+    private MusicXMLDocument xmlDoc = null;
+
+    public ScoreMXLBuilder(ScoreDoc scoreDoc) {
+        File file = null;
+        file = new File(System.getProperty("user.home") + System.getProperty("file.separator") + "test.xml");
+        try {
+            file.createNewFile();
+            this.outputStream = new JseOutputStream(file);
+            this.xmlWriter =  new JseXmlWriter(outputStream);
+            this.scoreDoc = scoreDoc;
+            buildXmlScore();
+            xmlDoc.write(xmlWriter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    void buildXmlScore() {
+        //write partwise MxlScorePartwise()
+        //part list
+        // List<MxlPart> parts
+        //score part
+        //part name
+        //part 1
+        //measure # MxlMeasure
+        //attributes
+//                MxlMusicData musicData;
+//        @NonNull private String number;
+//
+//MxlMusicDataContent, MxlMusicDataContentType
+        //divisions
+        //clef
+        //sign
+        //line
+        //direction
+        //note
+        //pitch
+        //octave
+        //duration
+        //voice
+        //type
+        //stem
+        //notations
+        //lyric
+        List<MxlPart> parts = new ArrayList<MxlPart>();
+        parts.add(buildPart());
+        xmlDoc = new MusicXMLDocument(new MxlScorePartwise(buildMeta(), parts, "piano"));
+
+    }
+
+    MxlScoreHeader buildMeta() {
+        ScoreInfo scoreInfo = scoreDoc.getScore().getInfo();
+        //write meta data @NonNull private MxlScoreHeader scoreHeader;
+        MxlScoreHeader mxlScoreHeader = new MxlScoreHeader();
+        MxlWork work;
+        String title = scoreInfo.getTitle();
+        if (title == null) {
+            work = MxlWork.empty;
+        } else {
+            work = new MxlWork(title , "stuff");
+        }
+
+        mxlScoreHeader.setWork(work);
+//        mxlScoreHeader.setMovementTitle("deeznutz");
+//        mxlScoreHeader.setCredits(new ArrayList<MxlCredit>(new MxlCredit(scoreInfo.getComposer(), null)));
+
+
+        String movementNumber = new Integer(0).toString();
+        String movementTitle = "deeznutz";
+        MxlTypedText mxlTypedText = new MxlTypedText(movementNumber, movementTitle);
+        List<MxlTypedText> mxlTypedTexts = new ArrayList<MxlTypedText>();
+        mxlTypedTexts.add(mxlTypedText);
+        MxlIdentification identification = new MxlIdentification(mxlTypedTexts,mxlTypedTexts);
+        MxlDefaults defaults;
+        List<MxlCredit> credits;
+        MxlScorePart mxlScorePart = new MxlScorePart(identification, "piano", "piano",
+                new ArrayList<MxlScoreInstrument>(), new ArrayList<MxlMidiInstrument>(), "piano");
+        ArrayList<MxlPartListContent> mxlScoreParts = new ArrayList<MxlPartListContent>();
+        mxlScoreParts.add(mxlScorePart);
+        MxlPartList partList = new MxlPartList(mxlScoreParts);
+
+//        partList.add(mxlScorePart);
+        //movement title
+        //-rights
+        //-encoding
+        mxlScoreHeader.setPartList(partList);
+        return mxlScoreHeader;
+    }
+
+    MxlPart buildPart() {
+
+        Staff staff = scoreDoc.getScore().getStaff(0);
+        List<MxlMeasure> partList = new ArrayList<MxlMeasure>();
+        for (int i = 0; i < scoreDoc.getScore().getMeasuresCount(); i++) {
+
+            partList.add(buildMeasure(staff.getMeasure(i), i+1));
+
+//                mxlMusicData.getContent().add(mxlAttributes);
+
+        }
+
+        MxlPart mxlPart = new MxlPart(partList, "piano");
+//        mxlPart.setMeasures();
+        return mxlPart;
+    }
+
+    MxlAttributes buildAttributes(Staff staff) {
+//        MusicContext context = scoreDoc.getScore().getMusicContext(getLastMeasure(),At ,At);
+        Time time = scoreDoc.getScore().getHeader().getTimeAtOrBefore(0);
+        boolean numed = false;
+        int num = 0, den = 0;
+        String stuff = time.getType().toString();
+        for (char c : stuff.toCharArray()) {
+            if (c > '0' && c < '9')
+                if(!numed) {
+                    num  = c - 48;
+                    numed = true;
+                } else
+                    den  = c - 48;
+        }
+//        int num = Integer.parseInt(time.getType().toString());
+//        int den =  Integer.parseInt(time.getType().toString());
+        Integer j = null;
+
+        MxlTranspose mxlTranspose = null;
+//        TraditionalKey key = scoreDoc.getScore().getKey(getLastMeasure(), BeforeOrAt).element;
+//        BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(getLastMeasure().measure).getKeys();
+//        key = list.get(QuillUtils.getFraction('x'));
+        MxlKey mxlKey =null;
+//                new MxlKey();
+        MxlAttributes mxlAttributes = new MxlAttributes(
+            //divisions
+            new Integer(staff.getParent().computeDivisions()),
+//            new MxlKey(0, MxlMode.Major),
+                mxlKey,
+            new MxlTime(new MxlNormalTime(num,den), MxlTimeSymbol.Normal),
+            new Integer(1),
+            buildClefs(),
+            mxlTranspose
+//            new MxlTranspose( j, 0, j, false)
+        );
+
+        return mxlAttributes;
+    }
+
+    MxlMeasure buildMeasure(Measure measure, int i) {
+
+        MxlMusicData mxlMusicData = new MxlMusicData();
+        if (i == 1)
+            mxlMusicData.getContent().add(buildAttributes(measure.getParent()));
+
+        for (Voice voice : measure.getVoices()) {
+            for (VoiceElement element : voice.getElements()) {
+
+                mxlMusicData.getContent().add(buildNote(element)); //=musicdata -- list of musicDataContent
+            }
+        }
+
+        MxlMeasure mxlMeasure = new MxlMeasure(mxlMusicData, new Integer(i).toString());
+
+        return mxlMeasure;
+    }
+
+    MxlMusicDataContent buildNote(VoiceElement element) {
+        MxlNoteContent mxlNoteContent = buildNoteContent(element);
+        MxlNoteTypeValue f = null;
+        Fraction fr = element.getDuration();
+        if (fr.compareTo(MxlNoteTypeValue.Whole.getDuration()) == 0) {
+            f = MxlNoteTypeValue.Whole;
+        } else if (fr.compareTo(MxlNoteTypeValue.Half.getDuration()) == 0) {
+            f = MxlNoteTypeValue.Half;
+        } else if (fr.compareTo(MxlNoteTypeValue.Quarter.getDuration()) == 0) {
+            f = MxlNoteTypeValue.Quarter;
+        } else if (fr.compareTo(MxlNoteTypeValue.Eighth.getDuration()) == 0) {
+            f = MxlNoteTypeValue.Eighth;
+        } else if (fr.compareTo(MxlNoteTypeValue._16th.getDuration()) == 0) {
+            f = MxlNoteTypeValue._16th;
+        } else if (fr.compareTo(MxlNoteTypeValue._32nd.getDuration()) == 0) {
+            f = MxlNoteTypeValue._32nd;
+        }
+
+        MxlStem mxlStem = buildStem(element);
+        Integer mxlStaff = buildStaff();
+        List<MxlBeam> beamList = new ArrayList<MxlBeam>();
+        List<MxlNotations> notationsList = new ArrayList<MxlNotations>();
+        List<MxlLyric> mxlLyrics = new ArrayList<MxlLyric>();
+        MxlNote mxlNote =
+                new MxlNote(mxlNoteContent,
+                        buildInstr(),
+                        buildEdit(),
+                        f,
+                        1,
+                        mxlStem,
+                        mxlStaff,
+                        beamList,
+                        notationsList,
+                        mxlLyrics );
+
+        return mxlNote;
+    }
+
+    MxlNoteContent buildNoteContent(VoiceElement element) { //ignoring grace, cue
+//        MxlNoteContent.MxlNoteContentType mxlNoteContentType = MxlNoteContent.MxlNoteContentType.Normal;
+        MxlNormalNote mxlNormalNote = new MxlNormalNote( );
+        mxlNormalNote.setFullNote(buildFullNote(element));
+        mxlNormalNote.setDuration(scoreDoc.getScore().getDivisions());
+//        mxlNoteContent.setContent(buildFullNoteContent(element));
+        System.out.println("building normal note");
+        return mxlNormalNote;
+    }
+
+/////////////////////////////////////begin note
+    MxlFullNote buildFullNote(VoiceElement element) {
+        MxlFullNote mxlFullNote = new MxlFullNote();
+        if (element instanceof Chord) {
+            mxlFullNote.setChord(true);
+            mxlFullNote.setContent(buildFullNoteContent(element));
+            System.out.println("building chord");
+        } else {
+            mxlFullNote.setChord(false);
+            mxlFullNote.setContent(buildFullNoteContent(element));
+            System.out.println("building note");
+        }
+
+        return mxlFullNote;
+    }
+
+    MxlFullNoteContent buildFullNoteContent(VoiceElement element) {
+        if (element instanceof Chord) {
+            MxlPitch pitch = new MxlPitch(((Chord)element).getPitches().get(0));
+//            new MxlNote(
+//                    MxlNoteContent content,
+//                    MxlInstrument instrument,
+//                    MxlEditorialVoice editorialVoice,
+//                    MxlNoteTypeValue noteType,
+//                    int dots,
+//                    MxlStem stem,
+//                    Integer staff,
+//                    java.util.List<MxlBeam> beams,
+//                    List<MxlNotations> notations,
+//                    List<MxlLyric> lyrics);
+//
+//            MxlNoteTypeValue mxlDur = new MxlNoteTypeValue(((Chord)element).getDuration());
+//            pitch.setStem(buildStem(element));
+            return pitch;
+        } else if (element instanceof Rest) {
+            MxlRest rest = new MxlRest();
+            return rest;
+        }
+        return null;
+    }
+
+    MxlInstrument buildInstr() {
+        MxlInstrument mxlInstrument = new MxlInstrument("piano");
+//        mxlInstrument.setId("piano");
+//        return mxlInstrument;
+        return null;
+    }
+
+    MxlEditorialVoice buildEdit() {
+        MxlEditorialVoice mxlEditorialVoice = new MxlEditorialVoice();
+        mxlEditorialVoice.setVoice("1");
+        return mxlEditorialVoice;
+    }
+
+    MxlStem buildStem(VoiceElement element) {
+        MxlStemValue mxlStemValue = null;
+        MxlPosition position = null;
+        Stem stem = null;
+        if (element instanceof Chord)
+            stem = ((Chord)element).getStem();
+
+        if (stem == null) {
+            mxlStemValue = MxlStemValue.Up;
+        } else if (stem.direction.getSign() == -1) {
+            mxlStemValue = MxlStemValue.Down;
+        } else if ( stem.direction.getSign() == 0) {
+            mxlStemValue = MxlStemValue.None;
+        } else if (stem.direction.getSign() == 1) {
+            mxlStemValue = MxlStemValue.Up;
+        }
+//        switch (stem.getDirection()) {
+//            case StemDirection.None:
+//                mxlStemValue = MxlStemValue.None;
+//                break;
+//            case StemDirection.Up:
+//                mxlStemValue = MxlStemValue.Up;
+//                break;
+//            case StemDirection.Down:
+//                mxlStemValue = MxlStemValue.Down;
+//                break;
+//        }
+        MxlStem mxlStem = new MxlStem(mxlStemValue, MxlPosition.noPosition, MxlColor.noColor);
+        return mxlStem;
+    }
+
+    Integer buildStaff() {
+        return new Integer(1);
+    }
+
+    java.util.List<MxlBeam> buildBeams() {
+        return null;
+    }
+
+    List<MxlNotations> buildNotations() {
+        return null;
+    }
+
+    List<MxlLyric> buildLyrics() {
+        return null;
+    }
+/////////////////////////////////////end note
+    ////attributes
+
+    List<MxlClef> buildClefs() {
+//        Clef clef =  scoreDoc.getScore().getClef(getLastMeasure(), At);
+//        clef.getClefType();
+        MxlClef mxlClef = new MxlClef(MxlClefSign.G, new Integer(2), 0, 1);
+        List<MxlClef> clefs = new ArrayList<MxlClef>();
+        clefs.add(mxlClef);
+        return clefs;
+    }
+
+    ////end attributes
+
+    MP getLastMeasure() {
+        MP mp = MP.atVoice(0, scoreDoc.getScore().getMeasuresCount()-1, 0);
+        mp = mp.getWithBeat(scoreDoc.getScore());
+        mp = mp.withElement(0);
+
+        if (scoreDoc.getScore().isMPExisting(mp))
+            return mp;
+//            return scoreDoc.getScore().clipToMeasure(scoreDoc.getScore().getMeasuresCount(), mp);
+        else {
+            System.out.println("invalid MP @ measure: " + scoreDoc.getScore().getMeasuresCount());
+            return null;
+        }
+    }
+}

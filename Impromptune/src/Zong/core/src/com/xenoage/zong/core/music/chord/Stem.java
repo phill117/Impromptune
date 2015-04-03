@@ -13,10 +13,14 @@ import lombok.Data;
 @Const @Data public final class Stem {
 
 	/** The direction of the stem, or null for default. */
-	@MaybeNull private final StemDirection direction;
+	@MaybeNull public final StemDirection direction;
 
 	/** The length of the stem, measured from the outermost chord not at the stem side
 	 * to the end of the stem, in interline spaces, or null for default. */
 	@MaybeNull private final Float length;
+
+//    public StemDirection getStemDirection() {
+//        return direction;
+//    }
 
 }

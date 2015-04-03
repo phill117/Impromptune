@@ -25,7 +25,12 @@ public final class MxlStem
 	@NonNull private MxlStemValue value;
 	private MxlPosition position;
 	private MxlColor color;
-
+//
+//    public MxlStem(MxlStemValue mxlStemValue, MxlPosition mxlPosition, MxlColor mxlColor) {
+//        this.value = mxlStemValue;
+//        this.position = mxlPosition;
+//        this.color = mxlColor;
+//    }
 
 	@NonNull public static MxlStem read(XmlReader reader) {
 		MxlPosition yPosition = MxlPosition.read(reader);

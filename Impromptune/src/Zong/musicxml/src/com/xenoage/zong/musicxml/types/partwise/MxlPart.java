@@ -55,5 +55,4 @@ public final class MxlPart {
 		writer.writeLineBreak();
 		writer.writeComment("=======================================================");
 	}
-
 }

@@ -1,29 +1,19 @@
 package io_handler;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Size2f;
-import com.xenoage.zong.commands.core.music.ColumnElementWrite;
 import com.xenoage.zong.commands.core.music.PartAdd;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.format.LayoutFormat;
 import com.xenoage.zong.core.format.PageFormat;
 import com.xenoage.zong.core.format.StaffLayout;
 import com.xenoage.zong.core.instrument.Instrument;
-import com.xenoage.zong.core.music.ColumnElement;
-import com.xenoage.zong.core.music.MeasureSide;
-import com.xenoage.zong.core.music.Part;
-import com.xenoage.zong.core.music.Staff;
-import com.xenoage.zong.core.music.barline.Barline;
-import com.xenoage.zong.core.music.barline.BarlineStyle;
-import com.xenoage.zong.core.music.clef.Clef;
-import com.xenoage.zong.core.music.clef.ClefType;
-import com.xenoage.zong.core.music.key.TraditionalKey;
-import com.xenoage.zong.core.music.time.Time;
-import com.xenoage.zong.core.music.time.TimeType;
+import com.xenoage.zong.core.music.*;
 
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.desktop.io.ScoreDocIO;
@@ -42,6 +32,7 @@ import com.xenoage.zong.musiclayout.ScoreLayout;
 import com.xenoage.zong.musiclayout.layouter.PlaybackLayouter;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
+import com.xenoage.zong.musicxml.MusicXMLDocument;
 import com.xenoage.zong.symbols.SymbolPool;
 
 import static com.xenoage.utils.math.Fraction._0;
@@ -172,6 +163,7 @@ public class Composition {
 
        score.setMetaData("layoutformat", layoutFormat); //TIDY
     }
+
 
     void loadLayout(LayoutFormat layoutFormat) {
         try {

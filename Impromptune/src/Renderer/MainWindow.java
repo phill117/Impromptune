@@ -3,6 +3,7 @@ package Renderer;
 
 import Renderer.Content;
 import Renderer.Playback;
+import io_handler.ScoreMXLBuilder;
 import com.xenoage.utils.jse.io.JseFile;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.utils.jse.xml.JseXmlWriter;
@@ -12,6 +13,7 @@ import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.musicxml.MusicXMLDocument;
 import com.xenoage.zong.musicxml.types.MxlScorePartwise;
 import com.xenoage.zong.renderer.javafx.JfxLayoutRenderer;
+import io_handler.ScoreMXLBuilder;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,21 +72,22 @@ public class MainWindow {
     //Handles saving file as musicXML
     public void save(File outFile) {
 
-        System.out.println("hi");
+//        System.out.println("hi");
         //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
-        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
+//        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
 
         //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
-        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
+//        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
 
         try {
-            JseOutputStream oStream = new JseOutputStream(outFile);
-            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
-            newXML.write(xmlWrite);
+//            JseOutputStream oStream = new JseOutputStream(outFile);
+//            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
+//            newXML.write(xmlWrite);
+            ScoreMXLBuilder mxlBuilder = new ScoreMXLBuilder(content.getSD());
         }
         catch (Exception e)
         {
-            //blah
+            e.printStackTrace();
         }
     }
 

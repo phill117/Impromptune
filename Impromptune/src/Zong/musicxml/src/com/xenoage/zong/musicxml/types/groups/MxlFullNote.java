@@ -19,7 +19,6 @@ import lombok.Setter;
 @IncompleteMusicXML(children = "unpitched,rest")
 @Getter @Setter
 public final class MxlFullNote {
-
 	private boolean chord;
 	@NonNull private MxlFullNoteContent content;
 

@@ -127,6 +127,27 @@ public class QuillUtils {
         return null;
     }
 
+    static int getFifth(String keySig) {
+        switch(keySig) {
+            case "F":
+                return 0;
+            case "C":
+                return 1;
+            case "G":
+                return 2;
+            case "D":
+                return 3;
+            case "A":
+                return 4;
+            case "E":
+                return 5;
+            case "B":
+                return 6;
+            default:
+                return 1;
+        }
+    }
+
     static Key getKeySig(String keySig, String mode) {
         Mode m = null;
         switch (mode) {
