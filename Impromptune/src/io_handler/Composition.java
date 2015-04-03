@@ -79,7 +79,7 @@ public class Composition {
         float is = currentScoreDoc.getScore().getFormat().getInterlineSpace();
         currentScoreDoc.getScore().getFormat().setStaffLayoutOther(new StaffLayout(is * SPACING));
         currentScoreDoc.getLayout().updateScoreLayouts(currentScoreDoc.getScore());
-        currentScoreDoc = initializeScoreDoc(currentScoreDoc.getScore());
+//        currentScoreDoc = initializeScoreDoc(currentScoreDoc.getScore());
         currentComp = currentScoreDoc.getScore();
         layout = currentScoreDoc.getLayout();
 

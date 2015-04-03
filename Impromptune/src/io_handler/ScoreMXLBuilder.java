@@ -126,8 +126,13 @@ public class ScoreMXLBuilder {
         MxlIdentification identification = new MxlIdentification(mxlTypedTexts,mxlTypedTexts);
         MxlDefaults defaults;
         List<MxlCredit> credits;
-        MxlScorePart mxlScorePart = new MxlScorePart(identification, "piano", "piano",
-                new ArrayList<MxlScoreInstrument>(), new ArrayList<MxlMidiInstrument>(), "piano");
+        List<MxlScoreInstrument> scoreInstruments = new ArrayList<MxlScoreInstrument>();
+        String abbr = null;
+        scoreInstruments.add(new MxlScoreInstrument("Acoustic Grand Piano", abbr,"P1-T1"));
+        List<MxlMidiInstrument> mxlMidiInstruments = new ArrayList<MxlMidiInstrument>();
+        mxlMidiInstruments.add(new MxlMidiInstrument(new Integer(1), new Integer(1), 1.0f, 1.0f,"P1-T1"));
+        MxlScorePart mxlScorePart = new MxlScorePart(identification, "Piano", abbr,
+                scoreInstruments, mxlMidiInstruments, "P1");
         ArrayList<MxlPartListContent> mxlScoreParts = new ArrayList<MxlPartListContent>();
         mxlScoreParts.add(mxlScorePart);
         MxlPartList partList = new MxlPartList(mxlScoreParts);
@@ -152,7 +157,7 @@ public class ScoreMXLBuilder {
 
         }
 
-        MxlPart mxlPart = new MxlPart(partList, "piano");
+        MxlPart mxlPart = new MxlPart(partList, "P1");
 //        mxlPart.setMeasures();
         return mxlPart;
     }
@@ -176,11 +181,11 @@ public class ScoreMXLBuilder {
         Integer j = null;
 
         MxlTranspose mxlTranspose = null;
-//        TraditionalKey key = scoreDoc.getScore().getKey(getLastMeasure(), BeforeOrAt).element;
-//        BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(getLastMeasure().measure).getKeys();
-//        key = list.get(QuillUtils.getFraction('x'));
-        MxlKey mxlKey =null;
-//                new MxlKey();
+        Key key = null;
+//  TraditionalKey key = scoreDoc.getScore().getKey(getLastMeasure(), BeforeOrAt).element;
+        BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(getLastMeasure().measure).getKeys();
+        key = list.get(QuillUtils.getFraction('x'));
+        MxlKey mxlKey = new MxlKey(3, MxlMode.Major);
         MxlAttributes mxlAttributes = new MxlAttributes(
             //divisions
             new Integer(staff.getParent().computeDivisions()),
@@ -256,17 +261,35 @@ public class ScoreMXLBuilder {
 //        MxlNoteContent.MxlNoteContentType mxlNoteContentType = MxlNoteContent.MxlNoteContentType.Normal;
         MxlNormalNote mxlNormalNote = new MxlNormalNote( );
         mxlNormalNote.setFullNote(buildFullNote(element));
-        mxlNormalNote.setDuration(scoreDoc.getScore().getDivisions());
+//        mxlNormalNote.setDuration(scoreDoc.getScore().getDivisions());
 //        mxlNoteContent.setContent(buildFullNoteContent(element));
-        System.out.println("building normal note");
+        mxlNormalNote.setDuration(getDuration(element));
+//        System.out.println("building normal note");
         return mxlNormalNote;
     }
 
+    int getDuration(VoiceElement element) {
+//        int div = scoreDoc.getScore().getDivisions();
+        System.out.println(element.getDuration());
+        Fraction fr = QuillUtils.getFraction('q');
+        int stuff = 0;
+//        stuff =  div* Fraction._1$4.divideBy(element.getDuration());
+        if (element.getDuration().isGreater0() && (element instanceof Chord || element instanceof Rest)) {
+            System.out.println(Fraction._1$4.divideBy(element.getDuration()));
+//        return Float.floatToIntBits(stuff);
+            stuff = Fraction._1$4.divideBy(element.getDuration()).getDenominator();
+            if (stuff < 0) {
+                stuff *= -1;
+            } else if (stuff == 0)
+                stuff = 1;
+        } else stuff = 1;
+        return stuff;
+    }
 /////////////////////////////////////begin note
     MxlFullNote buildFullNote(VoiceElement element) {
         MxlFullNote mxlFullNote = new MxlFullNote();
         if (element instanceof Chord) {
-            mxlFullNote.setChord(true);
+            mxlFullNote.setChord(false);
             mxlFullNote.setContent(buildFullNoteContent(element));
             System.out.println("building chord");
         } else {
@@ -324,12 +347,12 @@ public class ScoreMXLBuilder {
             stem = ((Chord)element).getStem();
 
         if (stem == null) {
-            mxlStemValue = MxlStemValue.Up;
-        } else if (stem.direction.getSign() == -1) {
-            mxlStemValue = MxlStemValue.Down;
-        } else if ( stem.direction.getSign() == 0) {
             mxlStemValue = MxlStemValue.None;
-        } else if (stem.direction.getSign() == 1) {
+        } else if (stem.getDirection().getSign() == -1) {
+            mxlStemValue = MxlStemValue.Down;
+        } else if ( stem.getDirection().getSign() == 0) {
+            mxlStemValue = MxlStemValue.None;
+        } else if (stem.getDirection().getSign() == 1) {
             mxlStemValue = MxlStemValue.Up;
         }
 //        switch (stem.getDirection()) {
