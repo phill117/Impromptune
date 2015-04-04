@@ -212,6 +212,7 @@ public class ScoreMXLBuilder {
     MxlMusicDataContent buildNote(VoiceElement element) {
         MxlNoteContent mxlNoteContent = buildNoteContent(element);
         MxlNoteTypeValue f = null;
+
         Fraction fr = element.getDuration();
         if (fr.compareTo(MxlNoteTypeValue.Whole.getDuration()) == 0) {
             f = MxlNoteTypeValue.Whole;
@@ -259,22 +260,47 @@ public class ScoreMXLBuilder {
     }
 
     int getDuration(VoiceElement element) {
-//        int div = scoreDoc.getScore().getDivisions();
-        System.out.println(element.getDuration());
-        Fraction fr = QuillUtils.getFraction('q');
-        int stuff = 0;
-//        stuff =  div* Fraction._1$4.divideBy(element.getDuration());
-        if (element.getDuration().isGreater0() && (element instanceof Chord || element instanceof Rest)) {
-            System.out.println(Fraction._1$4.divideBy(element.getDuration()));
-//        return Float.floatToIntBits(stuff);
-            stuff = Fraction._1$4.divideBy(element.getDuration()).getDenominator();
-            if (stuff < 0) {
-                stuff *= -1;
-            } else if (stuff == 0)
-                stuff = 1;
-        } else stuff = 1;
-        return stuff;
+        MxlNoteTypeValue f = null;
+        int div = scoreDoc.getScore().getDivisions();
+
+        Fraction fr = element.getDuration();
+        if (fr.compareTo(MxlNoteTypeValue.Whole.getDuration()) == 0) {
+           div *= 4;
+        } else if (fr.compareTo(MxlNoteTypeValue.Half.getDuration()) == 0) {
+           div *= 2;
+        } else if (fr.compareTo(MxlNoteTypeValue.Quarter.getDuration()) == 0) {
+           div *= 1;
+        } else if (fr.compareTo(MxlNoteTypeValue.Eighth.getDuration()) == 0) {
+           div /= 2;
+        } else if (fr.compareTo(MxlNoteTypeValue._16th.getDuration()) == 0) {
+           div /= 4;
+        } else if (fr.compareTo(MxlNoteTypeValue._32nd.getDuration()) == 0) {
+           div /= 8;
+        }
+
+        if (div == 0)
+            div = 1;
+//        System.out.println();
+        return div;
     }
+
+//    int getDuration(VoiceElement element) {
+////        int div = scoreDoc.getScore().getDivisions();
+//        System.out.println(element.getDuration());
+//        Fraction fr = QuillUtils.getFraction('q');
+//        int stuff = 0;
+////        stuff =  div* Fraction._1$4.divideBy(element.getDuration());
+//        if (element.getDuration().isGreater0() && (element instanceof Chord || element instanceof Rest)) {
+//            System.out.println(Fraction._1$4.divideBy(element.getDuration()));
+////        return Float.floatToIntBits(stuff);
+//            stuff = Fraction._1$4.divideBy(element.getDuration()).getDenominator();
+//            if (stuff < 0) {
+//                stuff *= -1;
+//            } else if (stuff == 0)
+//                stuff = 1;
+//        } else stuff = 1;
+//        return stuff;
+//    }
 /////////////////////////////////////begin note
     MxlFullNote buildFullNote(VoiceElement element) {
         MxlFullNote mxlFullNote = new MxlFullNote();
