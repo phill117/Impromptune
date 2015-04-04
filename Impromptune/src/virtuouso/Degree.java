@@ -1,4 +1,4 @@
-package virtouso;
+package virtuouso;
 
 /**
  * Created by ben on 4/3/2015.

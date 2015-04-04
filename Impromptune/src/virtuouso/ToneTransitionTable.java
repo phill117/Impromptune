@@ -1,10 +1,7 @@
-package virtouso;
-
-import data_objects.Note;
+package virtuouso;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by ben on 4/3/2015.
