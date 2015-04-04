@@ -105,46 +105,29 @@ public class MainWindow {
         }
 
 
-        //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
-        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
-
-        //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
-        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
-
-        try {
-//            JseOutputStream oStream = new JseOutputStream(outFile);
-//            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
-//            newXML.write(xmlWrite);
-            ScoreMXLBuilder mxlBuilder = new ScoreMXLBuilder(content.getSD());
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+//        //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
+//        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
+//
+//        //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
+//        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
+//
+//        try {
+////            JseOutputStream oStream = new JseOutputStream(outFile);
+////            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
+////            newXML.write(xmlWrite);
+//            ScoreMXLBuilder mxlBuilder = new ScoreMXLBuilder(content.getSD());
+//        }
+//        catch (Exception e)
+//        {
+//            e.printStackTrace();
+//        }
     }
 
 
     //Change above to save-as, save will just get the current filename loaded?
     //Handles saving file as musicXML
     public void saveAs(File outFile) {
-
-        //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
-        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
-
-        //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
-        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
-
-        try {
-            JseOutputStream oStream = new JseOutputStream(outFile);
-            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
-            newXML.write(xmlWrite);
-        }
-        catch (Exception e)
-        {
-           //Sorry BEN!!!!
-            //Jacob = 50 DKP MINUS
-            e.printStackTrace();
-        }
+        ScoreMXLBuilder mxlBuilder = new ScoreMXLBuilder(content.getSD(), outFile);
     }
 
 
