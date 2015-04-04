@@ -238,7 +238,7 @@ public class ScoreMXLBuilder {
                         buildInstr(),
                         buildEdit(),
                         f,
-                        1,
+                        0,
                         mxlStem,
                         mxlStaff,
                         beamList,
@@ -284,23 +284,6 @@ public class ScoreMXLBuilder {
         return div;
     }
 
-//    int getDuration(VoiceElement element) {
-////        int div = scoreDoc.getScore().getDivisions();
-//        System.out.println(element.getDuration());
-//        Fraction fr = QuillUtils.getFraction('q');
-//        int stuff = 0;
-////        stuff =  div* Fraction._1$4.divideBy(element.getDuration());
-//        if (element.getDuration().isGreater0() && (element instanceof Chord || element instanceof Rest)) {
-//            System.out.println(Fraction._1$4.divideBy(element.getDuration()));
-////        return Float.floatToIntBits(stuff);
-//            stuff = Fraction._1$4.divideBy(element.getDuration()).getDenominator();
-//            if (stuff < 0) {
-//                stuff *= -1;
-//            } else if (stuff == 0)
-//                stuff = 1;
-//        } else stuff = 1;
-//        return stuff;
-//    }
 /////////////////////////////////////begin note
     MxlFullNote buildFullNote(VoiceElement element) {
         MxlFullNote mxlFullNote = new MxlFullNote();
@@ -320,20 +303,6 @@ public class ScoreMXLBuilder {
     MxlFullNoteContent buildFullNoteContent(VoiceElement element) {
         if (element instanceof Chord) {
             MxlPitch pitch = new MxlPitch(((Chord)element).getPitches().get(0));
-//            new MxlNote(
-//                    MxlNoteContent content,
-//                    MxlInstrument instrument,
-//                    MxlEditorialVoice editorialVoice,
-//                    MxlNoteTypeValue noteType,
-//                    int dots,
-//                    MxlStem stem,
-//                    Integer staff,
-//                    java.util.List<MxlBeam> beams,
-//                    List<MxlNotations> notations,
-//                    List<MxlLyric> lyrics);
-//
-//            MxlNoteTypeValue mxlDur = new MxlNoteTypeValue(((Chord)element).getDuration());
-//            pitch.setStem(buildStem(element));
             return pitch;
         } else if (element instanceof Rest) {
             MxlRest rest = new MxlRest();
@@ -360,7 +329,7 @@ public class ScoreMXLBuilder {
         MxlPosition position = null;
         Stem stem = null;
         if (element instanceof Chord)
-            stem = ((Chord)element).getStem();
+//            stem = QuillUtils.getClef("treble").get;
 
         if (stem == null) {
             mxlStemValue = MxlStemValue.None;
@@ -407,6 +376,7 @@ public class ScoreMXLBuilder {
     List<MxlClef> buildClefs() {
 //        Clef clef =  scoreDoc.getScore().getClef(getLastMeasure(), At);
 //        clef.getClefType();
+//        QuillUtils.getClef("treble")
         MxlClef mxlClef = new MxlClef(MxlClefSign.G, new Integer(2), 0, 1);
         List<MxlClef> clefs = new ArrayList<MxlClef>();
         clefs.add(mxlClef);
