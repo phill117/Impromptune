@@ -58,28 +58,7 @@ public class QuillUtils {
     //return fraction based on char input
     static Fraction getFraction(char d) {
         if (PianoHolder.getDotted()) {
-            switch (d) {
-                case 'w':
-                    return fr(1, 1).add(fr(1,2));
-
-                case 'h':
-                    return fr(1, 2).add(fr(1,4));
-
-                case 'q':
-                    return fr(1, 4).add(fr(1,8));
-
-                case 'i':
-                    return fr(1, 8).add(fr(1,16));
-
-                case 's':
-                    return fr(1, 16).add(fr(1,32));
-
-                case 't':
-                    return fr(1, 32).add(fr(1, 64));
-
-                case 'x':
-                    return fr(1, 64).add(fr(1,128));
-            }
+            getDottedFraction(d);
         } else {
             switch (d) {
                 case 'w':
@@ -110,7 +89,31 @@ public class QuillUtils {
     }
 
     static Fraction getDottedFraction(char d) {
-        return null;
+        switch (d) {
+            case 'w':
+                return fr(1, 1).add(fr(1,2));
+
+            case 'h':
+                return fr(1, 2).add(fr(1,4));
+
+            case 'q':
+                return fr(1, 4).add(fr(1,8));
+
+            case 'i':
+                return fr(1, 8).add(fr(1,16));
+
+            case 's':
+                return fr(1, 16).add(fr(1,32));
+
+            case 't':
+                return fr(1, 32).add(fr(1, 64));
+
+            case 'x':
+                return fr(1, 64).add(fr(1,128));
+
+            default:
+                return null;
+        }
     }
 
     static Pitch getPitch(char p, char a, int o) {

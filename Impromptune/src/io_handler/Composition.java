@@ -1,7 +1,6 @@
 package io_handler;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.*;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ import com.xenoage.zong.musiclayout.ScoreLayout;
 import com.xenoage.zong.musiclayout.layouter.PlaybackLayouter;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
-import com.xenoage.zong.musicxml.MusicXMLDocument;
 import com.xenoage.zong.symbols.SymbolPool;
 
 import static com.xenoage.utils.math.Fraction._0;
@@ -79,21 +77,10 @@ public class Composition implements Serializable{
     public Composition(String fileName) {
         quills = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
-        setLayoutFormat(currentScoreDoc.getScore());
-        float is = currentScoreDoc.getScore().getFormat().getInterlineSpace();
-        currentScoreDoc.getScore().getFormat().setStaffLayoutOther(new StaffLayout(is * SPACING));
-        currentScoreDoc.getLayout().updateScoreLayouts(currentScoreDoc.getScore());
-//        currentScoreDoc = initializeScoreDoc(currentScoreDoc.getScore());
         currentComp = currentScoreDoc.getScore();
         layout = currentScoreDoc.getLayout();
 
-//        Part pianoPart = new Part("Piano", null, 1, alist(Instrument.defaultInstrument));
-//        new PartAdd(currentComp, pianoPart, 0, null).execute();
         MP mp = getLastMeasure();
-        if (mp == null) {
-            System.out.println("FAILED, bad MP");
-            return;
-        }
 
         quills.add(parts++, new Quill(new Cursor(currentComp, mp, true), "Piano"));
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
@@ -130,8 +117,6 @@ public class Composition implements Serializable{
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
     }
-    
-
 
     public Layout getLayout() {
         layout.updateScoreLayouts(currentComp);
@@ -208,7 +193,13 @@ public class Composition implements Serializable{
 
     ScoreDoc initializeScoreDocFromFile(String filePath) {
         try {
-            return ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
+            ScoreDoc scoreDoc = ScoreDocIO.read(new File(filePath), new MusicXmlScoreDocFileInput());
+            setLayoutFormat(scoreDoc.getScore());
+            float is = scoreDoc.getScore().getFormat().getInterlineSpace();
+            scoreDoc.getScore().getFormat().setStaffLayoutOther(new StaffLayout(is * SPACING));
+            scoreDoc.getLayout().updateScoreLayouts(scoreDoc.getScore());
+
+            return scoreDoc;
         } catch(IOException e) { e.printStackTrace(); }
 
         return null;
@@ -224,7 +215,7 @@ public class Composition implements Serializable{
         }
 
         //load layout settings
-      //  if (layoutSettings == null)
+//        if (layoutSettings == null)
             loadLayout(layoutFormat);
 
         //create the document

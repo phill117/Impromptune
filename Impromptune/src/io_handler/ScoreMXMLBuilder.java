@@ -211,34 +211,21 @@ public class ScoreMXMLBuilder {
 
     MxlMusicDataContent buildNote(VoiceElement element) {
         MxlNoteContent mxlNoteContent = buildNoteContent(element);
-        MxlNoteTypeValue f = null;
-
-        Fraction fr = element.getDuration();
-
-        if (fr.compareTo(MxlNoteTypeValue.Whole.getDuration()) == 0) {
-            f = MxlNoteTypeValue.Whole;
-        } else if (fr.compareTo(MxlNoteTypeValue.Half.getDuration()) == 0) {
-            f = MxlNoteTypeValue.Half;
-        } else if (fr.compareTo(MxlNoteTypeValue.Quarter.getDuration()) == 0) {
-            f = MxlNoteTypeValue.Quarter;
-        } else if (fr.compareTo(MxlNoteTypeValue.Eighth.getDuration()) == 0) {
-            f = MxlNoteTypeValue.Eighth;
-        } else if (fr.compareTo(MxlNoteTypeValue._16th.getDuration()) == 0) {
-            f = MxlNoteTypeValue._16th;
-        } else if (fr.compareTo(MxlNoteTypeValue._32nd.getDuration()) == 0) {
-            f = MxlNoteTypeValue._32nd;
-        }
+        MxlInstrument mxlInstrument = buildInstr();
+        MxlEditorialVoice mxlEditorialVoice = buildEdit();
+        MxlNoteTypeValue mxlNoteTypeValue = getNoteTypeValue(element);
 
         MxlStem mxlStem = buildStem(element);
         Integer mxlStaff = buildStaff();
+
         List<MxlBeam> beamList = new ArrayList<MxlBeam>();
         List<MxlNotations> notationsList = new ArrayList<MxlNotations>();
         List<MxlLyric> mxlLyrics = new ArrayList<MxlLyric>();
         MxlNote mxlNote =
                 new MxlNote(mxlNoteContent,
-                        buildInstr(),
-                        buildEdit(),
-                        f,
+                        mxlInstrument,
+                        mxlEditorialVoice,
+                        mxlNoteTypeValue,
                         0,
                         mxlStem,
                         mxlStaff,
@@ -254,6 +241,27 @@ public class ScoreMXMLBuilder {
         mxlNormalNote.setFullNote(buildFullNote(element));
         mxlNormalNote.setDuration(getDuration(element));
         return mxlNormalNote;
+    }
+
+    MxlNoteTypeValue getNoteTypeValue(VoiceElement element) {
+        Fraction fr = element.getDuration();
+        MxlNoteTypeValue mxlNoteTypeValue = null;
+
+        if (fr.compareTo(MxlNoteTypeValue.Whole.getDuration()) == 0) {
+            mxlNoteTypeValue = MxlNoteTypeValue.Whole;
+        } else if (fr.compareTo(MxlNoteTypeValue.Half.getDuration()) == 0) {
+            mxlNoteTypeValue = MxlNoteTypeValue.Half;
+        } else if (fr.compareTo(MxlNoteTypeValue.Quarter.getDuration()) == 0) {
+            mxlNoteTypeValue = MxlNoteTypeValue.Quarter;
+        } else if (fr.compareTo(MxlNoteTypeValue.Eighth.getDuration()) == 0) {
+            mxlNoteTypeValue = MxlNoteTypeValue.Eighth;
+        } else if (fr.compareTo(MxlNoteTypeValue._16th.getDuration()) == 0) {
+            mxlNoteTypeValue = MxlNoteTypeValue._16th;
+        } else if (fr.compareTo(MxlNoteTypeValue._32nd.getDuration()) == 0) {
+            mxlNoteTypeValue = MxlNoteTypeValue._32nd;
+        }
+
+        return mxlNoteTypeValue;
     }
 
     int getDuration(VoiceElement element) {
