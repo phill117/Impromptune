@@ -248,6 +248,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void openCompositionSettings(ActionEvent event){
+        new CompositionPropertiesDialog(mainWindow);
     }
 
     /**

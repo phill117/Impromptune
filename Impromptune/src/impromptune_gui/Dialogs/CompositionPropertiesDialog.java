@@ -5,7 +5,11 @@ import com.xenoage.zong.core.Score;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -34,12 +38,20 @@ public class CompositionPropertiesDialog {
     private MainWindow mainWindow;
     private Stage stage;
 
-    public CompositionPropertiesDialog(Window owner){
+    public CompositionPropertiesDialog(MainWindow mw){
+        mainWindow = mw;
+        this.stage = new Stage();
+        FXMLLoader fxmlLoader;
+        fxmlLoader = new FXMLLoader();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("CompositionPropertiesDialog.fxml"));
+            Parent root = (BorderPane) FXMLLoader.load(getClass().getResource("CompositionPropertiesDialog.fxml"));
+            stage.setScene(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.setTitle("Composition Properties");
+        stage.show();
     }
 
     @FXML void onOkay(ActionEvent event){
