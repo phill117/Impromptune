@@ -51,12 +51,11 @@ public class ScoreMXLBuilder {
     private JseXmlWriter xmlWriter = null;
     private MusicXMLDocument xmlDoc = null;
 
-    public ScoreMXLBuilder(ScoreDoc scoreDoc) {
-        File file = null;
-        file = new File(System.getProperty("user.home") + System.getProperty("file.separator") + "test.xml");
+    public ScoreMXLBuilder(ScoreDoc scoreDoc, File outFile) {
+//        File outFile = new File(file);
+//        file = new File(System.getProperty("user.home") + System.getProperty("file.separator") + "test.xml");
         try {
-            file.createNewFile();
-            this.outputStream = new JseOutputStream(file);
+            this.outputStream = new JseOutputStream(outFile);
             this.xmlWriter =  new JseXmlWriter(outputStream);
             this.scoreDoc = scoreDoc;
             buildXmlScore();
@@ -64,101 +63,92 @@ public class ScoreMXLBuilder {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     void buildXmlScore() {
-        //write partwise MxlScorePartwise()
-        //part list
-        // List<MxlPart> parts
-        //score part
-        //part name
-        //part 1
-        //measure # MxlMeasure
-        //attributes
-//                MxlMusicData musicData;
-//        @NonNull private String number;
-//
-//MxlMusicDataContent, MxlMusicDataContentType
-        //divisions
-        //clef
-        //sign
-        //line
-        //direction
-        //note
-        //pitch
-        //octave
-        //duration
-        //voice
-        //type
-        //stem
-        //notations
-        //lyric
         List<MxlPart> parts = new ArrayList<MxlPart>();
-        parts.add(buildPart());
-        xmlDoc = new MusicXMLDocument(new MxlScorePartwise(buildMeta(), parts, "piano"));
 
+        for (int i = 0; i < scoreDoc.getScore().getStavesCount(); i++)
+            parts.add(buildPart(i));
+
+        String version = "1.0";
+
+        xmlDoc = new MusicXMLDocument(new MxlScorePartwise(buildMeta(), parts, version));
     }
 
     MxlScoreHeader buildMeta() {
         ScoreInfo scoreInfo = scoreDoc.getScore().getInfo();
-        //write meta data @NonNull private MxlScoreHeader scoreHeader;
         MxlScoreHeader mxlScoreHeader = new MxlScoreHeader();
-        MxlWork work;
-        String title = scoreInfo.getTitle();
-        if (title == null) {
-            work = MxlWork.empty;
-        } else {
-            work = new MxlWork(title , "stuff");
-        }
 
-        mxlScoreHeader.setWork(work);
-//        mxlScoreHeader.setMovementTitle("deeznutz");
-//        mxlScoreHeader.setCredits(new ArrayList<MxlCredit>(new MxlCredit(scoreInfo.getComposer(), null)));
+        mxlScoreHeader.setWork(buildMxlWork(scoreInfo));
+        mxlScoreHeader.setPartList(buildMxlPartList(scoreInfo));
 
-
-        String movementNumber = new Integer(0).toString();
-        String movementTitle = "deeznutz";
-        MxlTypedText mxlTypedText = new MxlTypedText(movementNumber, movementTitle);
-        List<MxlTypedText> mxlTypedTexts = new ArrayList<MxlTypedText>();
-        mxlTypedTexts.add(mxlTypedText);
-        MxlIdentification identification = new MxlIdentification(mxlTypedTexts,mxlTypedTexts);
-        MxlDefaults defaults;
-        List<MxlCredit> credits;
-        List<MxlScoreInstrument> scoreInstruments = new ArrayList<MxlScoreInstrument>();
-        String abbr = null;
-        scoreInstruments.add(new MxlScoreInstrument("Acoustic Grand Piano", abbr,"P1-T1"));
-        List<MxlMidiInstrument> mxlMidiInstruments = new ArrayList<MxlMidiInstrument>();
-        mxlMidiInstruments.add(new MxlMidiInstrument(new Integer(1), new Integer(1), 1.0f, 1.0f,"P1-T1"));
-        MxlScorePart mxlScorePart = new MxlScorePart(identification, "Piano", abbr,
-                scoreInstruments, mxlMidiInstruments, "P1");
-        ArrayList<MxlPartListContent> mxlScoreParts = new ArrayList<MxlPartListContent>();
-        mxlScoreParts.add(mxlScorePart);
-        MxlPartList partList = new MxlPartList(mxlScoreParts);
-
-//        partList.add(mxlScorePart);
-        //movement title
-        //-rights
-        //-encoding
-        mxlScoreHeader.setPartList(partList);
         return mxlScoreHeader;
     }
 
-    MxlPart buildPart() {
+    MxlWork buildMxlWork(ScoreInfo scoreInfo) {
+        MxlWork work;
+        String workTitle = scoreInfo.getWorkTitle();
+        String workNumber = scoreInfo.getWorkNumber();
 
-        Staff staff = scoreDoc.getScore().getStaff(0);
+        if (workTitle == null)
+            work = MxlWork.empty;
+        else
+            work = new MxlWork(workNumber, workTitle);
+
+        return work;
+    }
+
+    MxlPartList buildMxlPartList(ScoreInfo scoreInfo) {
+
+        //        mxlScoreHeader.setCredits(new ArrayList<MxlCredit>(new MxlCredit(scoreInfo.getComposer(), null)));
+
+        String movementNumber = scoreInfo.getMovementNumber();
+        String movementTitle = scoreInfo.getMovementTitle();
+
+        if (movementNumber == null)
+            movementNumber = "I";
+
+        if (movementTitle == null)
+            movementTitle = "default movement";
+
+        MxlTypedText mxlTypedText = new MxlTypedText(movementNumber, movementTitle);
+        List<MxlTypedText> mxlTypedTexts = new ArrayList<MxlTypedText>();
+        mxlTypedTexts.add(mxlTypedText);
+        MxlIdentification identification = new MxlIdentification(mxlTypedTexts, mxlTypedTexts);
+        MxlDefaults defaults;
+
+//        List<MxlCredit> credits = scoreInfo.getCreators();
+
+        List<MxlScoreInstrument> scoreInstruments = new ArrayList<MxlScoreInstrument>();
+        String instr = "Acoustic Grand Piano";
+        String part = "piano";
+        String abbr = "piano";
+        scoreInstruments.add(new MxlScoreInstrument(instr, abbr,"P1-T1"));
+
+        List<MxlMidiInstrument> mxlMidiInstruments = new ArrayList<MxlMidiInstrument>();
+        mxlMidiInstruments.add(new MxlMidiInstrument(new Integer(1), new Integer(1), 1.0f, 1.0f,"P1-T1"));
+
+        MxlScorePart mxlScorePart = new MxlScorePart(identification, part, abbr,
+                scoreInstruments, mxlMidiInstruments, "P1");
+
+
+        ArrayList<MxlPartListContent> mxlScoreParts = new ArrayList<MxlPartListContent>();
+        mxlScoreParts.add(mxlScorePart);
+        MxlPartList partList = new MxlPartList(mxlScoreParts);
+        return partList;
+    }
+
+    MxlPart buildPart(int staffIndex) {
+
+        Staff staff = scoreDoc.getScore().getStaff(staffIndex);
         List<MxlMeasure> partList = new ArrayList<MxlMeasure>();
-        for (int i = 0; i < scoreDoc.getScore().getMeasuresCount(); i++) {
 
+        for (int i = 0; i < scoreDoc.getScore().getMeasuresCount(); i++)
             partList.add(buildMeasure(staff.getMeasure(i), i+1));
 
-//                mxlMusicData.getContent().add(mxlAttributes);
-
-        }
-
         MxlPart mxlPart = new MxlPart(partList, "P1");
-//        mxlPart.setMeasures();
+
         return mxlPart;
     }
 
