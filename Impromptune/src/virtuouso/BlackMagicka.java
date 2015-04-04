@@ -3,8 +3,7 @@ package virtuouso;
 import data_objects.Measure;
 import data_objects.Note;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ben on 4/4/2015.
@@ -12,13 +11,14 @@ import java.util.List;
 public class BlackMagicka {
     public static void main(String[] args) {
 
-        assert(minorChord("B").equals("A C E"));
-        assert(minorChord("B").equals("B D F#"));
-        assert(majorScale("A").equals("A B C D E F G"));
-        assert(majorScale("B").equals("B C# D E F# G A"));
-        assert(majorChord("C").equals("C E G"));
-        assert(majorScale("A").equals("A B C# D E F# G#"));
-        
+        assert(minorChord("A").toString().equals("[A, C, E]")) : "failed";
+        assert(minorChord("B").toString().equals("[B, D, F#]")): "failed";
+        assert(majorScale("A").toString().equals("[A, B, C#, D, E, F#, G#]")): "failed";
+        assert(majorScale("B").toString().equals("[B, C#, D#, E, F#, G#, A#]")): "failed";
+        assert(majorChord("C").toString().equals("[C, E, G]")): "failed";
+        assert(majorScale("A").toString().equals("[A, B, C#, D, E, F#, G#]")): "failed";
+        assert((getEntropy(majorChord("C")) - 1.58496) < 0.00001): "failed";
+
     }
     //build list of tones as string for utilities
     List<String> buildStringPhrase(ArrayList<Measure> list) {
@@ -36,22 +36,26 @@ public class BlackMagicka {
         return cos;
     }
 
-    double entropy(List<String> phrase) {
+    static double getEntropy(List<String> phrase) {
         double entropy = 0;
-//        TreeSet<String> histogram = new TreeSet<String>();
-        List<String> map = new ArrayList<>();
-        int histogram [] = new int[phrase.size()];
 
-        for (int i = 0; i < phrase.size(); i++) {
-            String str = phrase.get(i);
-            for (int j = 0; j < map.size(); i++) {
-                String s = map.get(j);
-                if (str.compareTo(s) == 0)
-                    histogram[j]++;
-            }
+        Map<String, Integer> freq = new TreeMap<>();
+
+        for (String str : phrase) {
+            freq.put(str, 0);
         }
 
-        //finish
+        int histogram [] = new int[freq.size()];
+
+        for (String str : phrase) {
+            int count = freq.containsKey(str) ? freq.get(str) : 0;
+            freq.put(str, count + 1);
+        }
+
+        for (String sequence : freq.keySet()) {
+            Double frequency = (double) freq.get(sequence) / freq.size();
+            entropy -= frequency * (Math.log(frequency) / Math.log(2));
+        }
 
         return entropy;
     }
@@ -225,14 +229,13 @@ public class BlackMagicka {
         return noteIndex(note) + 1;
     }
 
-    static String majorScale(String note) {
-        StringBuilder scale = new StringBuilder();
+    static List<String> majorScale(String note) {
+        List<String> scale = new LimitedQueue<>(7);
         int noteIndex = noteIndex(note);
         int [] majorSteps = {2,2,1,2,2,2,1};
 
         for (int i = 0; i < 7; i++) {
-            scale.append(noteIndexToString(noteIndex));
-            scale.append(" ");
+            scale.add(noteIndexToString(noteIndex));
 
             switch (majorSteps[i]) {
                 case 1:
@@ -245,17 +248,16 @@ public class BlackMagicka {
         }
 
         System.out.println(scale.toString());
-        return scale.toString();
+        return scale;
     }
 
-    static String minorScale(String note) {
-        StringBuilder scale = new StringBuilder();
+    static List<String> minorScale(String note) {
+        List<String> scale = new LimitedQueue<>(7);
         int noteIndex = noteIndex(note);
         int [] minorSteps = {2, 1, 2, 2, 1, 2, 2};
 
         for (int i = 0; i < 7; i++) {
-            scale.append(noteIndexToString(noteIndex));
-            scale.append(" ");
+            scale.add(noteIndexToString(noteIndex));
             switch (minorSteps[i]) {
                 case 1:
                     noteIndex += 1; //getHalfStep(noteIndexToString(noteIndex));
@@ -267,7 +269,7 @@ public class BlackMagicka {
         }
 
         System.out.println(scale.toString());
-        return scale.toString();
+        return scale;
     }
 
     static List<String> majorChord(String note) {
