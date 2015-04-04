@@ -12,8 +12,7 @@ import java.util.TreeSet;
  * Created by ben on 4/4/2015.
  */
 public class CompositionHeader {
-    CompositionHeader theInstance = null;
-
+    Composition composition = null;
     Map<String, Object> metaData = null;
 
     ScoreDoc scoreDoc;
@@ -26,9 +25,13 @@ public class CompositionHeader {
     String timeSig;
     int divisions;
 
-    //expand this to required parameters
     public CompositionHeader() {
         metaData = new TreeMap<String, Object>();
+        composition = new Composition();
+    }
+
+    public CompositionHeader(String fileName) {
+        
     }
 
     Key getKey() {
