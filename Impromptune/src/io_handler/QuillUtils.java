@@ -130,28 +130,53 @@ public class QuillUtils {
         return null;
     }
 
-    static int getFifth(String keySig) {
-        switch(keySig) {
-            case "F":
-                return 0;
-            case "C":
-                return 1;
-            case "G":
-                return 2;
-            case "D":
-                return 3;
-            case "A":
-                return 4;
-            case "E":
-                return 5;
-            case "B":
-                return 6;
-            default:
-                return 1;
+    static int getFifth(String keyRoot, String mode) {
+
+        if (mode.equals("major")) {
+            switch(keyRoot) {
+                case "F":
+                    return 0;
+                case "C":
+                    return 1;
+                case "G":
+                    return 2;
+                case "D":
+                    return 3;
+                case "A":
+                    return 4;
+                case "E":
+                    return 5;
+                case "B":
+                    return 6;
+                default:
+                    return 1;
+            }
         }
+//        else if (mode.equals("minor")) {
+//            switch(keyRoot) {
+//                case "A":
+//                    return 0;
+//                case "E":
+//                    return 1;
+//                case "B":
+//                    return 2;
+//                case "F":
+//                    return 3;
+//                case "A":
+//                    return 4;
+//                case "E":
+//                    return 5;
+//                case "B":
+//                    return 6;
+//                default:
+//                    return 1;
+//            }
+//        }
+
+        return -1; //failed
     }
 
-    static Key getKeySig(String keySig, String mode) {
+    static Key getKeySig(String keyRoot, String mode) {
         Mode m = null;
         switch (mode) {
             case "major":
