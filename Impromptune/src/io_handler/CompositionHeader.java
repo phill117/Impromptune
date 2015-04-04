@@ -6,24 +6,24 @@ import com.xenoage.zong.documents.ScoreDoc;
 
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.TreeSet;
+
 
 /**
  * Created by ben on 4/4/2015.
  */
 public class CompositionHeader {
-    Composition composition = null;
-    Map<String, Object> metaData = null;
+    private Composition composition = null;
+    private Map<String, Object> metaData = null;
 
-    ScoreDoc scoreDoc;
-    String title;
-    String author;
+    private ScoreDoc scoreDoc;
+    private String title;
+    private String author;
 
-    String keyRoot;
-    String mode;
+    private String keyRoot;
+    private String mode;
 
-    String timeSig;
-    int divisions;
+    private String timeSig;
+    private int divisions;
 
     public CompositionHeader() {
         metaData = new TreeMap<String, Object>();
@@ -31,7 +31,8 @@ public class CompositionHeader {
     }
 
     public CompositionHeader(String fileName) {
-        
+        metaData = new TreeMap<String, Object>();
+        composition = new Composition(fileName);
     }
 
     Key getKey() {
