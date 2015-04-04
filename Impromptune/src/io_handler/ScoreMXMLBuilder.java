@@ -12,6 +12,7 @@ import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.chord.Stem;
 import com.xenoage.zong.core.music.chord.StemDirection;
 import com.xenoage.zong.core.music.clef.Clef;
+import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.Key;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.rest.Rest;
@@ -45,13 +46,13 @@ import java.util.List;
 /**
  * Created by ben on 3/30/2015.
  */
-public class ScoreMXLBuilder {
+public class ScoreMXMLBuilder {
     private ScoreDoc scoreDoc = null;
     private JseOutputStream outputStream = null;
     private JseXmlWriter xmlWriter = null;
     private MusicXMLDocument xmlDoc = null;
 
-    public ScoreMXLBuilder(ScoreDoc scoreDoc, File outFile) {
+    public ScoreMXMLBuilder(ScoreDoc scoreDoc, File outFile) {
 //        File outFile = new File(file);
 //        file = new File(System.getProperty("user.home") + System.getProperty("file.separator") + "test.xml");
         try {
@@ -166,8 +167,7 @@ public class ScoreMXLBuilder {
                 } else
                     den  = c - 48;
         }
-//        int num = Integer.parseInt(time.getType().toString());
-//        int den =  Integer.parseInt(time.getType().toString());
+
         Integer j = null;
 
         MxlTranspose mxlTranspose = null;
@@ -175,13 +175,13 @@ public class ScoreMXLBuilder {
 //  TraditionalKey key = scoreDoc.getScore().getKey(getLastMeasure(), BeforeOrAt).element;
         BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(getLastMeasure().measure).getKeys();
         key = list.get(QuillUtils.getFraction('x'));
-        MxlKey mxlKey = new MxlKey(3, MxlMode.Major);
+        MxlKey mxlKey = new MxlKey(0, MxlMode.Major);
         MxlAttributes mxlAttributes = new MxlAttributes(
             //divisions
             new Integer(staff.getParent().computeDivisions()),
 //            new MxlKey(0, MxlMode.Major),
                 mxlKey,
-            new MxlTime(new MxlNormalTime(num,den), MxlTimeSymbol.Normal),
+            new MxlTime(new MxlNormalTime(num, den), MxlTimeSymbol.Normal),
             new Integer(1),
             buildClefs(),
             mxlTranspose
@@ -194,12 +194,12 @@ public class ScoreMXLBuilder {
     MxlMeasure buildMeasure(Measure measure, int i) {
 
         MxlMusicData mxlMusicData = new MxlMusicData();
-        if (i == 1)
+
+        if (i == 1) //first measure, add the attributes for beats, keys, yadda
             mxlMusicData.getContent().add(buildAttributes(measure.getParent()));
 
         for (Voice voice : measure.getVoices()) {
             for (VoiceElement element : voice.getElements()) {
-
                 mxlMusicData.getContent().add(buildNote(element)); //=musicdata -- list of musicDataContent
             }
         }
@@ -214,6 +214,7 @@ public class ScoreMXLBuilder {
         MxlNoteTypeValue f = null;
 
         Fraction fr = element.getDuration();
+
         if (fr.compareTo(MxlNoteTypeValue.Whole.getDuration()) == 0) {
             f = MxlNoteTypeValue.Whole;
         } else if (fr.compareTo(MxlNoteTypeValue.Half.getDuration()) == 0) {
@@ -249,13 +250,9 @@ public class ScoreMXLBuilder {
     }
 
     MxlNoteContent buildNoteContent(VoiceElement element) { //ignoring grace, cue
-//        MxlNoteContent.MxlNoteContentType mxlNoteContentType = MxlNoteContent.MxlNoteContentType.Normal;
         MxlNormalNote mxlNormalNote = new MxlNormalNote( );
         mxlNormalNote.setFullNote(buildFullNote(element));
-//        mxlNormalNote.setDuration(scoreDoc.getScore().getDivisions());
-//        mxlNoteContent.setContent(buildFullNoteContent(element));
         mxlNormalNote.setDuration(getDuration(element));
-//        System.out.println("building normal note");
         return mxlNormalNote;
     }
 
@@ -284,7 +281,7 @@ public class ScoreMXLBuilder {
         return div;
     }
 
-/////////////////////////////////////begin note
+
     MxlFullNote buildFullNote(VoiceElement element) {
         MxlFullNote mxlFullNote = new MxlFullNote();
         if (element instanceof Chord) {
@@ -370,20 +367,27 @@ public class ScoreMXLBuilder {
     List<MxlLyric> buildLyrics() {
         return null;
     }
-/////////////////////////////////////end note
-    ////attributes
 
     List<MxlClef> buildClefs() {
-//        Clef clef =  scoreDoc.getScore().getClef(getLastMeasure(), At);
-//        clef.getClefType();
-//        QuillUtils.getClef("treble")
-        MxlClef mxlClef = new MxlClef(MxlClefSign.G, new Integer(2), 0, 1);
+        Clef clef =  scoreDoc.getScore().getClef(getLastMeasure(), At);
+
+        MxlClef mxlClef = null;
+
+        if (clef.getType() == ClefType.clefBass)
+            mxlClef = new MxlClef(MxlClefSign.F, new Integer(clef.getType().getLp()), 0, 1);
+        else if (clef.getType() == ClefType.clefTreble)
+            mxlClef = new MxlClef(MxlClefSign.G, new Integer(clef.getType().getLp()), 0, 1);
+        else if (clef.getType() == ClefType.clefAlto)
+            mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, 1);
+        else if (clef.getType() == ClefType.clefTenor)
+            mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, 1);
+        else
+            System.err.println("bad clef");
+
         List<MxlClef> clefs = new ArrayList<MxlClef>();
         clefs.add(mxlClef);
         return clefs;
     }
-
-    ////end attributes
 
     MP getLastMeasure() {
         MP mp = MP.atVoice(0, scoreDoc.getScore().getMeasuresCount()-1, 0);

@@ -1,18 +1,10 @@
 package Renderer;
 
 
-import Renderer.Content;
-import Renderer.Playback;
-import io_handler.ScoreMXLBuilder;
-import com.xenoage.utils.jse.io.JseFile;
-import com.xenoage.utils.jse.io.JseOutputStream;
-import com.xenoage.utils.jse.xml.JseXmlWriter;
+import io_handler.ScoreMXMLBuilder;
 
 import com.xenoage.zong.layout.Layout;
-import com.xenoage.zong.musicxml.MusicXMLDocument;
-import com.xenoage.zong.musicxml.types.MxlScorePartwise;
 import com.xenoage.zong.renderer.javafx.JfxLayoutRenderer;
-import io_handler.ScoreMXLBuilder;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +15,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.LinkedList;
 
 
 /**
@@ -127,7 +118,7 @@ public class MainWindow {
     //Change above to save-as, save will just get the current filename loaded?
     //Handles saving file as musicXML
     public void saveAs(File outFile) {
-        ScoreMXLBuilder mxlBuilder = new ScoreMXLBuilder(content.getSD(), outFile);
+        ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(content.getSD(), outFile);
     }
 
 

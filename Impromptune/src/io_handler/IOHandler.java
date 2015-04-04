@@ -37,7 +37,7 @@ public class IOHandler {
         chooser.setTitle("Select a file to load...");
 
         File f = chooser.showOpenDialog(s);
-        if (f!=null)
+        if (f != null)
             return f.getAbsolutePath();
         else
             return null;
