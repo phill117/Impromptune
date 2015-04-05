@@ -20,7 +20,7 @@ public class ToneTransitionTable {
                 ttt.counts[i][j] = ttt.rand.nextInt(15);
             }
         }
-        
+
         double c[][] = ttt.normalize();
         for (int i = 0; i < c.length; i++) {
             for (int j = 0; j < c[0].length; j++) {
