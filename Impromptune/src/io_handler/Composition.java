@@ -167,26 +167,42 @@ public class Composition implements Serializable{
         }
     }
 
+    public void writeTimeSig(String time) {
+        quills.get(currentIndex).writeTime(time);
+    }
+
+    public void writeKeySig(String root, String mode) {
+        quills.get(currentIndex).writeStaffKeySig(root, mode);
+    }
+
+    public void writeClef(String clef) {
+        quills.get(currentIndex).writeClef(clef);
+    }
+
+    public void writeInstr(String instr) {
+        quills.get(currentIndex).writeInstrument(instr);
+    }
+
+    public void addPart(Score score, String part) {
+        Instrument instr = Instrument.defaultInstrument;
+        Part pianoPart = new Part("Piano", null, 1, alist(instr));
+        new PartAdd(score, pianoPart, 0, null).execute();
+    }
+
     Score initializeEmptyScore() {
         Score currentComp = new Score();
-
-        Instrument instr = Instrument.defaultInstrument;
 
         float is = currentComp.getFormat().getInterlineSpace();
         StaffLayout staffLayout = new StaffLayout(is * SPACING); // Was 9, changes distance between staves
         currentComp.getFormat().setStaffLayoutOther(staffLayout);
 
-        Part pianoPart = new Part("Piano", null, 1, alist(instr));
-        new PartAdd(currentComp, pianoPart, 0, null).execute();
+        addPart(currentComp, "Piano");
 
         quills.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
 
-        Quill quil1 = quills.get(0);
-
-        quil1.writeClef("treble");
-//        //C major default, C (4/4) time
-        quil1.writeStaffKeySig("C", "major");
-        quil1.writeTime("4/4");
+        writeClef("treble");
+        writeKeySig("Bb", "major");
+        writeTimeSig("4/4");
 
         return currentComp;
     }

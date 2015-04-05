@@ -3,6 +3,7 @@ package io_handler;
 import com.xenoage.zong.core.music.key.Key;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.documents.ScoreDoc;
+import virtuouso.Pair;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -25,6 +26,8 @@ public class CompositionHeader {
     private String timeSig;
     private int divisions;
 
+    boolean isFlat = false;
+
     public CompositionHeader() {
         metaData = new TreeMap<String, Object>();
         composition = new Composition();
@@ -44,11 +47,33 @@ public class CompositionHeader {
         return QuillUtils.getKeySig(keyRoot, mode);
     }
 
+    Pair<String, String> getKeyStr() {
+        return new Pair<>(keyRoot, mode);
+    }
+
+    void setKey(String key, String mode) {
+        this.keyRoot = key;
+        this.mode = mode;
+        composition.writeKeySig(key, mode);
+    }
+
     Time getTime() {
         return QuillUtils.getTime(timeSig);
+    }
+
+    String getTimeStr() { return timeSig; }
+
+    void setTime(String time) {
+        this.timeSig = time;
+    }
+
+    int calculateDivisions() {
+        return 0;
     }
 
     int getDivisions() {
         return scoreDoc.getScore().getDivisions();
     }
+
+    boolean isFlatKey() { return isFlat; }
 }
