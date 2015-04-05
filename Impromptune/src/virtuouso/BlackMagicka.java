@@ -408,6 +408,27 @@ public class BlackMagicka {
         return false;
     }
 
+    //is test in root mode scale
+    static boolean inScale(String root, String testNote, String mode) {
+        List<String> scale = null;
+        switch(mode) {
+            case "major":
+                scale = majorChord(root);
+                if (scale.contains(testNote))
+                    return true;
+                break;
+            case "minor":
+                scale = minorChord(root);
+                if (scale.contains(testNote))
+                    return true;
+                break;
+            default:
+                break;
+        }
+
+        return false;
+    }
+
     public static int min(int a, int b, int c) {
         return Math.min(Math.min(a, b), c);
     }
