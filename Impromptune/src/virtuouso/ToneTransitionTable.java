@@ -1,11 +1,11 @@
 package virtuouso;
 
 import utils.LimitedQueue;
+import utils.MersenneTwisterFast;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Random;
-import java.util.Scanner;
+
 
 /**
  * Created by ben on 4/3/2015.
@@ -35,7 +35,7 @@ public class ToneTransitionTable {
 
     private PitchAxis axis = null;
 
-    Random rand = new Random();
+    MersenneTwisterFast rand = new MersenneTwisterFast();
 
     private int order; //default
     private int statesCounter = 0;
