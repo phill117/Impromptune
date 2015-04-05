@@ -61,7 +61,7 @@ public class BlackMagicka {
         return 0.0f;
     }
 
-    //3 dimension melodic motion, can get more precise with 5 -- essentially pointless beyond that iirc
+    //3 dimensional melodic motion, can get more precise with 5 -- essentially pointless beyond that iirc
     public static String parsonsCode(List<String> phrase) {
         boolean skip = true;
         StringBuilder str = new StringBuilder();

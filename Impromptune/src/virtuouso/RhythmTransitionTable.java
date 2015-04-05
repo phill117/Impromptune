@@ -1,95 +1,81 @@
 package virtuouso;
 
 import utils.LimitedQueue;
+import utils.MersenneTwisterFast;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Random;
+import java.util.List;
 
 /**
  * Created by ben on 4/4/2015.
  */
 public class RhythmTransitionTable {
-    private double probMatrix[][] = {};
-    private int counts[][] = {};
+    private MersenneTwisterFast rand = new MersenneTwisterFast();
 
-    private PitchAxis axis = null;
-
-    Random rand = new Random();
-
-    private int order; //default
+    private int order;
     private int statesCounter = 0;
 
-    private ArrayList<int [][]> markov = null;
-    private LinkedList<String> lastKnotes = null;
+    private LinkedList<String> lastKnotes;
+    private LinkedList<MarkovState> markov;
 
     public RhythmTransitionTable(int order) {
-        this.axis = new PitchAxis();
         this.order = order;
-        this.counts = new int [12][12];
-        this.probMatrix = new double[12][12];
         this.lastKnotes = new LimitedQueue<>(order);
-        this.markov = new ArrayList<>();
+        this.markov = new LimitedQueue<>(order);
 
-        int i = 0;
-        do {
-            markov.add(counts);
-        } while (order - i++ > 0); //add k dimensions for model
+        int k = 0;
+        while (k++ < order) //add k dimensions for model
+            markov.add(new MarkovState());
     }
 
-    public void generateNextState(String currentPitch) {
+    //use the mxml parser and data objects...just as a quick way to sample other docs if we want to build a stronger model
+    public void trainFile() {
+
+    }
+
+    public void trainPhrase(List<String> phrase) {
+        for (String note : phrase)
+            trainNote(note);
+    }
+
+    public void trainNote(String currentPitch) {
         statesCounter++;
 
-        String lastPitch = lastKnotes.peekFirst();
-
-        if (lastKnotes.size() == 0)
+        if (lastKnotes.size() == 0) {
+            lastKnotes.add(currentPitch);
             return;
+        }
 
         updateKOrderLayers(currentPitch);
         lastKnotes.add(currentPitch);
     }
 
+    public String pickNote() {
+        return null;
+    }
+
     private void updateKOrderLayers(String currentPitch) {
-        for (int i = 0; i < order - 1; i++) //skip first one
-            markIndexFound(axis.getIndex(lastKnotes.get(i)),
-                    axis.getIndex(lastKnotes.get(i + 1)), i);
+        for (int i = 0; i < lastKnotes.size(); i++)
+            markov.get(i).updateLayer(currentPitch, lastKnotes.get(i));
     }
 
-    private void markIndexFound(int i, int j, int k) { //i = m, j = n, k = constant
-        markov.get(k)[i][j]++;
+    private int getRand(int i) {
+        return rand.nextInt(i);
     }
 
-    public double[][] normalize() {
-
-        for (int i = 0; i < 12; i++) {
-            int sum = 0;
-
-            for (int j = 0; j < 12; j++) {
-                sum += counts[i][j];
-            }
-
-            double likelihood = 1.0 / sum;
-
-            for (int j = 0; j < 12; j++) {
-                probMatrix[i][j] = likelihood * counts[i][j];
-            }
+    public void printHistogram() {
+        for (int k = 0; k < order; k++) {
+            System.out.println("-----------------------------------------");
+            markov.get(k).printStateHistogram();
+            System.out.println("-----------------------------------------");
         }
-
-        for (int i = 0; i < 12; i++) {
-            double val = 0.0;
-
-            for (int j = 0; j < 12; j++) {
-                val += probMatrix[i][j];
-            }
-
-            System.out.println(val);
-
-        }
-
-        return probMatrix;
     }
 
-    public void clear() {
-        this.probMatrix = new double[order][order];
+    public void printProbMatrix() {
+        for (int k = 0; k < order; k++) {
+            System.out.println("-----------------------------------------");
+            markov.get(k).printStateProbMatrix();
+            System.out.println("-----------------------------------------");
+        }
     }
 }

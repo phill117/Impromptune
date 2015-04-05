@@ -11,8 +11,22 @@ public class VirtuosoAgent {
         System.out.println(BlackMagicka.pickDominant("A"));
     }
 
+    private enum WeightType{Chord, Beat, PassingTone, Root, Inversion}
     //this should be our generic hook for different weight schemes, different weighting for choosing likely chord progression than for picking phrase notes
-    int heuristicCompare() {
+    int heuristicCompare(WeightType type) { //needs more parameters of course, just a sketch of using different comparisons for choosing notes
+        switch (type) {
+            case Chord:
+                break;
+            case Beat:
+                break;
+            case PassingTone:
+                break;
+            case Root:
+                break;
+            case Inversion:
+                break;
+        }
+
         return -1;
     }
 
@@ -57,6 +71,9 @@ public class VirtuosoAgent {
     }
 
 //    viterbi path
+    public void viterbiPath() {
+
+    }
 
     void gibbsSampling() {
 
