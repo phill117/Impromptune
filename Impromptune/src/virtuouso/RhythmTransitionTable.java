@@ -23,7 +23,7 @@ public class RhythmTransitionTable {
     private ArrayList<long [][]> markov = null;
     private LinkedList<String> lastKnotes = null;
 
-    public ToneTransitionTable(int order) {
+    public RhythmTransitionTable(int order) {
         this.axis = new PitchAxis();
         this.order = order;
         this.counts = new int [12][12];
