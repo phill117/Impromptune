@@ -7,13 +7,14 @@ public class PitchAxis {
     String pitchAxis [] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
     int getIndex(String pitch) {
-        int i = 0;
-
-        do {
+        for (int i = 0; i < pitchAxis.length; i++)
             if (pitch.compareTo(pitchAxis[i]) == 0)
                 return i;
-        } while (i-- > 0);
 
         return -1; //failed
+    }
+
+    String [] getPitchAxis() {
+        return pitchAxis;
     }
 }

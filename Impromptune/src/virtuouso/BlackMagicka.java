@@ -17,7 +17,7 @@ public class BlackMagicka {
         assert(majorScale("B").toString().equals("[B, C#, D#, E, F#, G#, A#]")): "failed";
         assert(majorChord("C").toString().equals("[C, E, G]")): "failed";
         assert(majorScale("A").toString().equals("[A, B, C#, D, E, F#, G#]")): "failed";
-        assert((getEntropy(majorChord("C")) - 1.58496) < 0.00001): "failed";
+        assert((entropy(majorChord("C")) - 1.58496) < 0.00001): "failed";
 
     }
     //build list of tones as string for utilities

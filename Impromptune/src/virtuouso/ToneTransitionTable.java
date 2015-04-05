@@ -15,19 +15,12 @@ public class ToneTransitionTable {
     public static void main (String args[]) {
         ToneTransitionTable ttt = new ToneTransitionTable(1);
 
-        for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
-                ttt.counts[i][j] = ttt.rand.nextInt(15);
-            }
+        for (int i = 0; i < 144; i++) {
+            ttt.generateNextState(BlackMagicka.noteIndexToString(ttt.rand.nextInt(12)));
         }
 
-        double c[][] = ttt.normalize();
-        for (int i = 0; i < c.length; i++) {
-            for (int j = 0; j < c[0].length; j++) {
-                System.out.printf("%.2f,", c[i][j]);
-            }
-            System.out.printf("\n");
-        }
+        ttt.printHistogram();
+        ttt.printProbMatrix();
     }
 
     private double probMatrix[][] = {};
@@ -40,7 +33,7 @@ public class ToneTransitionTable {
     private int order; //default
     private int statesCounter = 0;
 
-    private ArrayList<long [][]> markov = null;
+    private ArrayList<int [][]> markov = null;
     private LinkedList<String> lastKnotes = null;
 
     public ToneTransitionTable(int order) {
@@ -52,9 +45,9 @@ public class ToneTransitionTable {
         this.markov = new ArrayList<>();
 
         int i = 0;
-//        do {
-//            markov.add(counts);
-//        } while (order - i++ > 0); //add k dimensions for model
+        while (i++ < order) //add k dimensions for model
+            markov.add(counts);
+
     }
 
     public void generateNextState(String currentPitch) {
@@ -62,25 +55,27 @@ public class ToneTransitionTable {
 
         String lastPitch = lastKnotes.peekFirst();
 
-        if (lastKnotes.size() == 0)
+        if (lastKnotes.size() == 0) {
+            lastKnotes.add(currentPitch);
             return;
+        }
 
-//        markIndexFound(axis.getIndex(lastPitch), axis.getIndex(currentPitch), 0);
         updateKOrderLayers(currentPitch);
         lastKnotes.add(currentPitch);
     }
 
     private void updateKOrderLayers(String currentPitch) {
-        for (int i = 0; i < order - 1; i++) //skip first one
+        for (int i = 0; i < lastKnotes.size(); i++)
             markIndexFound(axis.getIndex(lastKnotes.get(i)),
-                    axis.getIndex(lastKnotes.get(i + 1)), i);
+                    axis.getIndex(currentPitch),
+                    i);
     }
 
     private void markIndexFound(int i, int j, int k) { //i = m, j = n, k = constant
         markov.get(k)[i][j]++;
     }
 
-    public double[][] normalize() {
+    public void normalize() {
 
         for (int i = 0; i < 12; i++) {
             int sum = 0;
@@ -99,17 +94,69 @@ public class ToneTransitionTable {
         for (int i = 0; i < 12; i++) {
             double val = 0.0;
 
-            for (int j = 0; j < 12; j++) {
+            for (int j = 0; j < 12; j++)
                 val += probMatrix[i][j];
-            }
 
-            System.out.println(val);
+//            System.out.println(val);
 
         }
 
-        return probMatrix;
+//        return probMatrix;
     }
+
     public void clear() {
         this.probMatrix = new double[order][order];
+    }
+
+    public void printHistogram() {
+        System.out.printf("    ");
+        String [] pitches = axis.getPitchAxis();
+        for (String s : pitches) {
+            if (s.length() == 2)
+                System.out.printf(" %s", s);
+            else
+                System.out.printf(" %s ", s);
+        }
+
+        System.out.printf("\n");
+
+        for (int i = 0; i < counts.length; i++) {
+            if (pitches[i].length() == 2)
+                System.out.printf(" %s ", pitches[i]);
+            else
+                System.out.printf(" %s  ", pitches[i]);
+
+            for (int j = 0; j < counts[0].length; j++)
+                System.out.printf(" %d,", counts[i][j]);
+
+            System.out.printf("\n");
+        }
+    }
+
+    public void printProbMatrix() {
+        normalize();
+
+        System.out.printf("    ");
+        String [] pitches = axis.getPitchAxis();
+        for (String s : pitches) {
+            if (s.length() == 2)
+                System.out.printf(" %s  ", s);
+            else
+                System.out.printf(" %s   ", s);
+        }
+
+        System.out.printf("\n");
+
+        for (int i = 0; i < probMatrix.length; i++) {
+            if (pitches[i].length() == 2)
+                System.out.printf(" %s  ", pitches[i]);
+            else
+                System.out.printf(" %s   ", pitches[i]);
+
+            for (int j = 0; j < probMatrix[0].length; j++) {
+                System.out.printf("%.2f,", probMatrix[i][j]);
+            }
+            System.out.printf("\n");
+        }
     }
 }

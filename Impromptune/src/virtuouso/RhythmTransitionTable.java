@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class RhythmTransitionTable {
     private double probMatrix[][] = {};
-    public int counts[][] = {};
+    private int counts[][] = {};
 
     private PitchAxis axis = null;
 
@@ -20,7 +20,7 @@ public class RhythmTransitionTable {
     private int order; //default
     private int statesCounter = 0;
 
-    private ArrayList<long [][]> markov = null;
+    private ArrayList<int [][]> markov = null;
     private LinkedList<String> lastKnotes = null;
 
     public RhythmTransitionTable(int order) {
@@ -32,9 +32,9 @@ public class RhythmTransitionTable {
         this.markov = new ArrayList<>();
 
         int i = 0;
-//        do {
-//            markov.add(counts);
-//        } while (order - i++ > 0); //add k dimensions for model
+        do {
+            markov.add(counts);
+        } while (order - i++ > 0); //add k dimensions for model
     }
 
     public void generateNextState(String currentPitch) {
@@ -45,7 +45,6 @@ public class RhythmTransitionTable {
         if (lastKnotes.size() == 0)
             return;
 
-//        markIndexFound(axis.getIndex(lastPitch), axis.getIndex(currentPitch), 0);
         updateKOrderLayers(currentPitch);
         lastKnotes.add(currentPitch);
     }
