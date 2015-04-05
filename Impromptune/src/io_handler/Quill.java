@@ -4,10 +4,13 @@ import com.xenoage.utils.document.Document;
 import com.xenoage.utils.document.command.Command;
 import com.xenoage.utils.document.command.CommandListener;
 import com.xenoage.utils.math.Fraction;
+import com.xenoage.zong.commands.core.music.PartAdd;
 import com.xenoage.zong.commands.core.music.slur.SlurAdd;
+import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.music.ColumnElement;
 import com.xenoage.zong.core.music.Measure;
 import com.xenoage.zong.core.music.MeasureElement;
+import com.xenoage.zong.core.music.Part;
 import com.xenoage.zong.core.music.chord.*;
 import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
@@ -27,6 +30,7 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.util.ArrayList;
 
+import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.math.Fraction.fr;
 import static com.xenoage.zong.core.music.Pitch.pi;
 import static com.xenoage.zong.core.music.format.SP.sp;
@@ -249,9 +253,12 @@ public class Quill implements CommandListener, Serializable {
 //
 //    }
 //
-//    void writeInstrument(Instrument instr) {
-//
-//    }
+    void writeInstrument(String instr) {
+        Instrument instrument = Instrument.defaultInstrument;
+        Part pianoPart = new Part("Piano", null, 1, alist(instrument));
+        new PartAdd(cursor.getScore(), pianoPart, 0, null).execute();
+//        cursor.write();
+    }
     /*
     Common Name      JFugue Name Intervals(0 = root)
     major           maj                 0, 4, 7

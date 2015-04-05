@@ -26,6 +26,8 @@ public class CompositionHeader {
     private String timeSig;
     private int divisions;
 
+    boolean isFlat = false;
+
     public CompositionHeader() {
         metaData = new TreeMap<String, Object>();
         composition = new Composition();
@@ -49,8 +51,10 @@ public class CompositionHeader {
         return new Pair<>(keyRoot, mode);
     }
 
-    void setKey(String key) {
+    void setKey(String key, String mode) {
         this.keyRoot = key;
+        this.mode = mode;
+        composition.writeKeySig(key, mode);
     }
 
     Time getTime() {
@@ -70,4 +74,6 @@ public class CompositionHeader {
     int getDivisions() {
         return scoreDoc.getScore().getDivisions();
     }
+
+    boolean isFlatKey() { return isFlat; }
 }
