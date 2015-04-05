@@ -5,6 +5,7 @@ import utils.LimitedQueue;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by ben on 4/3/2015.
@@ -14,10 +15,23 @@ public class ToneTransitionTable {
     public static void main (String args[]) {
         ToneTransitionTable ttt = new ToneTransitionTable(1);
 
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+                ttt.counts[i][j] = ttt.rand.nextInt(15);
+            }
+        }
+        
+        double c[][] = ttt.normalize();
+        for (int i = 0; i < c.length; i++) {
+            for (int j = 0; j < c[0].length; j++) {
+                System.out.printf("%.2f,", c[i][j]);
+            }
+            System.out.printf("\n");
+        }
     }
 
     private double probMatrix[][] = {};
-    private long counts[][] = {};
+    public int counts[][] = {};
 
     private PitchAxis axis = null;
 
@@ -32,14 +46,15 @@ public class ToneTransitionTable {
     public ToneTransitionTable(int order) {
         this.axis = new PitchAxis();
         this.order = order;
-        this.counts = new long [order][order];
+        this.counts = new int [12][12];
+        this.probMatrix = new double[12][12];
         this.lastKnotes = new LimitedQueue<>(order);
         this.markov = new ArrayList<>();
 
         int i = 0;
-        do {
-            markov.add(counts);
-        } while (order - i++ > 0); //add k dimensions for model
+//        do {
+//            markov.add(counts);
+//        } while (order - i++ > 0); //add k dimensions for model
     }
 
     public void generateNextState(String currentPitch) {
@@ -65,6 +80,35 @@ public class ToneTransitionTable {
         markov.get(k)[i][j]++;
     }
 
+    public double[][] normalize() {
+
+        for (int i = 0; i < 12; i++) {
+            int sum = 0;
+
+            for (int j = 0; j < 12; j++) {
+                sum += counts[i][j];
+            }
+
+            double likelihood = 1.0 / sum;
+
+            for (int j = 0; j < 12; j++) {
+                probMatrix[i][j] = likelihood * counts[i][j];
+            }
+        }
+
+        for (int i = 0; i < 12; i++) {
+            double val = 0.0;
+
+            for (int j = 0; j < 12; j++) {
+                val += probMatrix[i][j];
+            }
+
+            System.out.println(val);
+
+        }
+
+        return probMatrix;
+    }
     public void clear() {
         this.probMatrix = new double[order][order];
     }

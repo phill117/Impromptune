@@ -52,6 +52,10 @@ public class VirtuosoAgent {
 
 //    viterbi path
 
+    void gibbsSampling() {
+
+    }
+
     void pickChordProgression() {
 
     }
