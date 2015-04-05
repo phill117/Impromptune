@@ -390,6 +390,27 @@ public class BlackMagicka {
         return note;
     }
 
+    //is test in root mode chord
+    static boolean inChord(String root, String testNote, String mode) {
+        List<String> chord = null;
+        switch(mode) {
+            case "major":
+                chord = majorChord(root);
+                if (chord.contains(testNote))
+                    return true;
+                break;
+            case "minor":
+                chord = majorChord(root);
+                if (chord.contains(testNote))
+                    return true;
+                break;
+            default:
+                break;
+        }
+
+        return false;
+    }
+
     public static int min(int a, int b, int c) {
         return Math.min(Math.min(a, b), c);
     }
