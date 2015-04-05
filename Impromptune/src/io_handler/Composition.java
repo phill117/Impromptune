@@ -185,7 +185,7 @@ public class Composition implements Serializable{
 
         quil1.writeClef("treble");
 //        //C major default, C (4/4) time
-        quil1.writeStaffKeySig("C", "major");
+        quil1.writeStaffKeySig("Bb", "major");
         quil1.writeTime("4/4");
 
         return currentComp;

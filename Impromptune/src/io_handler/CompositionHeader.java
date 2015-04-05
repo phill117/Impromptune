@@ -3,6 +3,7 @@ package io_handler;
 import com.xenoage.zong.core.music.key.Key;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.documents.ScoreDoc;
+import virtuouso.Pair;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -44,8 +45,26 @@ public class CompositionHeader {
         return QuillUtils.getKeySig(keyRoot, mode);
     }
 
+    Pair<String, String> getKeyStr() {
+        return new Pair<>(keyRoot, mode);
+    }
+
+    void setKey(String key) {
+        this.keyRoot = key;
+    }
+
     Time getTime() {
         return QuillUtils.getTime(timeSig);
+    }
+
+    String getTimeStr() { return timeSig; }
+
+    void setTime(String time) {
+        this.timeSig = time;
+    }
+
+    int calculateDivisions() {
+        return 0;
     }
 
     int getDivisions() {

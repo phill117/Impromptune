@@ -134,50 +134,52 @@ public class QuillUtils {
 
         if (mode.equals("major")) {
             switch(keyRoot) {
-                case "F":
-                    return 0;
                 case "C":
-                    return 1;
+                    return 0;
                 case "G":
-                    return 2;
+                    return 1;
                 case "D":
-                    return 3;
+                    return 2;
                 case "A":
-                    return 4;
+                    return 3;
                 case "E":
-                    return 5;
+                    return 4;
                 case "B":
+                    return 5;
+                case "Gb":
+                    return 6;
+                default:
+                    return 0;
+            }
+        }
+        else if (mode.equals("minor")) {
+            switch(keyRoot) {
+                case "A":
+                    return 0;
+                case "E":
+                    return 1;
+                case "B":
+                    return 2;
+                case "F#":
+                    return 3;
+                case "C#":
+                    return 4;
+                case "G#":
+                    return 5;
+                case "D":
                     return 6;
                 default:
                     return 1;
             }
         }
-//        else if (mode.equals("minor")) {
-//            switch(keyRoot) {
-//                case "A":
-//                    return 0;
-//                case "E":
-//                    return 1;
-//                case "B":
-//                    return 2;
-//                case "F":
-//                    return 3;
-//                case "A":
-//                    return 4;
-//                case "E":
-//                    return 5;
-//                case "B":
-//                    return 6;
-//                default:
-//                    return 1;
-//            }
-//        }
 
         return -1; //failed
     }
 
     static Key getKeySig(String keyRoot, String mode) {
         Mode m = null;
+        int fifth = 0;
+
         switch (mode) {
             case "major":
                 m = Mode.Major;
@@ -208,7 +210,7 @@ public class QuillUtils {
                 break;
         }
 
-        return new TraditionalKey(0, m);
+        return new TraditionalKey(getFifth(keyRoot,mode), m);
     }
 
     static Clef getClef(String clef) {
