@@ -36,16 +36,13 @@ public class BlackMagicka {
         return cos;
     }
 
-    static double getEntropy(List<String> phrase) {
+    static double entropy(List<String> phrase) {
         double entropy = 0;
 
         Map<String, Integer> freq = new TreeMap<>();
 
-        for (String str : phrase) {
+        for (String str : phrase)
             freq.put(str, 0);
-        }
-
-        int histogram [] = new int[freq.size()];
 
         for (String str : phrase) {
             int count = freq.containsKey(str) ? freq.get(str) : 0;
@@ -400,7 +397,7 @@ public class BlackMagicka {
                     return true;
                 break;
             case "minor":
-                chord = majorChord(root);
+                chord = minorChord(root);
                 if (chord.contains(testNote))
                     return true;
                 break;
