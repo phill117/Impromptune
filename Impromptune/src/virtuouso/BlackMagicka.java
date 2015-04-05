@@ -312,6 +312,84 @@ public class BlackMagicka {
         return chord;
     }
 
+    void pickChordProgression() {
+
+    }
+
+    void pickBeats() {}
+
+    static String pickTonic(String root) {
+        List<String> scale = BlackMagicka.majorScale(root);
+        String note = scale.get(Degree.Tonic.toInt());
+        return note;
+    }
+
+    static String pickSuperTonic(String root) {
+        List<String> scale = BlackMagicka.majorScale(root);
+        String note = scale.get(Degree.Supertonic.toInt());
+        return note;
+    }
+
+    static String pickMediant(String root) {
+        List<String> scale = BlackMagicka.majorScale(root);
+        String note = scale.get(Degree.Mediant.toInt());
+        return note;
+    }
+
+    static String pickSubdominant(String root) {
+        List<String> scale = BlackMagicka.majorScale(root);
+        String note = scale.get(Degree.Subdominant.toInt());
+        return note;
+    }
+
+    static String pickDominant(String root) {
+        List<String> scale = BlackMagicka.majorScale(root);
+        String note = scale.get(Degree.Dominant.toInt());
+        return note;
+    }
+
+    static String pickSubmediant(String root) {
+        List<String> scale = BlackMagicka.majorScale(root);
+        String note = scale.get(Degree.Submediant.toInt());
+        return note;
+    }
+
+    static String pickLeading(String root) {
+        List<String> scale = BlackMagicka.majorScale(root);
+        String note = scale.get(Degree.Leading.toInt());
+        return note;
+    }
+
+    static String pickIthNote(String root, int index) {
+        String note = null;
+
+        switch(index) {
+            case 0:
+                note = pickTonic(root);
+                break;
+            case 1:
+                note = pickSuperTonic(root);
+                break;
+            case 2:
+                note = pickMediant(root);
+                break;
+            case 3:
+                note = pickSubdominant(root);
+                break;
+            case 4:
+                note = pickDominant(root);
+                break;
+            case 5:
+                note = pickSubmediant(root);
+                break;
+            case 6:
+                note = pickLeading(root);
+                break;
+        }
+
+        return note;
+    }
+
     public static int min(int a, int b, int c) {
         return Math.min(Math.min(a, b), c);
     }

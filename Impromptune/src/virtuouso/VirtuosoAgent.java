@@ -1,9 +1,15 @@
 package virtuouso;
 
+import java.util.List;
+
 /**
  * Created by ben on 3/29/2015.
  */
 public class VirtuosoAgent {
+
+    public static void main(String args[]) {
+        System.out.println(pickDominant("A"));
+    }
 
     //this should be our generic hook for different weight schemes, different weighting for choosing likely chord progression than for picking phrase notes
     int heuristicCompare() {
@@ -56,11 +62,7 @@ public class VirtuosoAgent {
 
     }
 
-    void pickChordProgression() {
 
-    }
-
-    void pickBeats() {}
 
 
 }
