@@ -35,6 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 
 import static com.xenoage.utils.jse.JsePlatformUtils.jsePlatformUtils;
 import static com.xenoage.zong.util.ZongPlatformUtils.zongPlatformUtils;
@@ -60,6 +61,8 @@ public class Content
     private int addIndex = 0;
     private int maxIndex = 0;
     private LinkedList<Composition> undoList = new LinkedList<Composition>();
+    private Stack<Composition> undoStack = new Stack<>();
+    private Stack<Composition> redoStack = new Stack<>();
    // private LinkedList<Composition> redoList = new LinkedList<Composition>();
 
 	public Content(MainWindow mainWindow) {
@@ -74,6 +77,8 @@ public class Content
     private void addAction() {
         try {
 
+//              undoStack.push(comp.deepCopy());
+//              while(!redoStack.empty()) redoStack.pop();
 
             if(maxIndex > addIndex || undo == 1)
                 undoList.set(addIndex,comp.deepCopy());
@@ -104,6 +109,11 @@ public class Content
 
 
     public void undoAction(){
+//        if(undoStack.isEmpty()){
+//            return;
+//        }else {
+//            redoStack.push(undoStack.pop());
+//        }
         undo = 1;
         if(undoIndex == 0){
             comp = undoList.get(undoIndex);
@@ -120,22 +130,32 @@ public class Content
         undoIndex--;
 
         comp = undoList.get(undoIndex);
-
+        //comp = undoStack.peek();
         comp.resync();
         refresh();
     }
 
 
     public void redoAction(){
-
+//        if(redoStack.isEmpty()) return;
+//        undoStack.push(redoStack.pop());
+//        comp = undoStack.peek();
+//        comp.resync();
+//        refresh();
         if(undoIndex >= addIndex)
             return;
 
         addIndex++;
         undoIndex++;
-        comp = undoList.get(undoIndex);
-        comp.resync();
-        refresh();
+        try {
+            comp = undoList.get(undoIndex);
+            comp.resync();
+            refresh();
+        }catch (Exception e){
+            addIndex--;
+            undoIndex--;
+        }
+
 
     }
 

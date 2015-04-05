@@ -101,10 +101,21 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             String jNoteToPlay = ""+id.charAt(0); //SEND TO JFUGUE PLAYER
             String zongNote = ""+id.charAt(0);    //SEND TO ZONG RENDERER
 
+            //todo : change this for when we get key retrieval
+            if(false /* when the key is flat*/){
+                jNoteToPlay = zongNote = ""+getNextKey(id.charAt(0));
+            }
+
             //decide if note is flat or sharp
             if(id.charAt(1) == 's') {
-                jNoteToPlay += '#';
-                zongNote += '#';
+                //todo : this one too
+                if(false /* when the key is flat*/){
+                    jNoteToPlay += 'b';
+                    zongNote += 'b';
+                }else {
+                    jNoteToPlay += '#';
+                    zongNote += '#';
+                }
             } else {
                 jNoteToPlay += 'n';
                 zongNote += 'n';
@@ -132,12 +143,8 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             final String musicString = jNoteToPlay;
 
             //start a new thread to play the note
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    player.play(musicString);
-                }
-            }).start();
+            Runnable play = () -> player.play(musicString);
+            new Thread(play).start();
         }
 
         if(et == MouseEvent.MOUSE_RELEASED){
@@ -146,4 +153,19 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             else pianoKey.setEffect(blackKeyEffect);
         }
     }
+
+    //method used for getting flats rather than sharps
+    char getNextKey(char note){
+        switch (note){
+            case 'A': note = 'B'; break;
+            case 'B': note = 'C'; break;
+            case 'C': note = 'D'; break;
+            case 'D': note = 'E'; break;
+            case 'E': note = 'F'; break;
+            case 'F': note = 'G'; break;
+            case 'G': note = 'A'; break;
+        }
+        return note;
+    }
+
 }
