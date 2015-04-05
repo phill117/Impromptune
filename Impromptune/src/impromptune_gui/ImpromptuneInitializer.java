@@ -121,6 +121,10 @@ public class ImpromptuneInitializer implements Initializable{
             sixteenth.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/sixteenth.png"), 25,25,false,false)));
             thirtysecond.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/thirtysecond.png"), 25,25,false,false)));
 
+            rest.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/rest.png"), 25,25,false,false)));
+            dot.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/dot.png"), 25,25,false,false)));
+            tie.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/tie.png"), 25,25,false,false)));
+
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
             fxmlLoader = new FXMLLoader();

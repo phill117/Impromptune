@@ -159,9 +159,9 @@
                                     <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" text="Sixteenth" />
                                     <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" text="Thirty-Second" />
                                     <Separator prefHeight="44.0" prefWidth="14.0" />
-                                    <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="dot" />
-                                    <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
-                                    <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" text="rest" />
+                                    <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="Dot" />
+                                    <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="Tie" />
+                                    <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" text="Rest" />
                                 </items>
                               </ToolBar>
                               <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
