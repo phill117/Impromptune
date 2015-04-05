@@ -8,23 +8,18 @@ import com.xenoage.zong.commands.core.music.PartAdd;
 import com.xenoage.zong.commands.core.music.slur.SlurAdd;
 import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.music.ColumnElement;
-import com.xenoage.zong.core.music.Measure;
 import com.xenoage.zong.core.music.MeasureElement;
 import com.xenoage.zong.core.music.Part;
 import com.xenoage.zong.core.music.chord.*;
 import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
-import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.slur.SlurWaypoint;
 import com.xenoage.zong.core.music.time.Time;
-import com.xenoage.zong.core.music.time.TimeSymbol;
-import com.xenoage.zong.core.music.tuplet.Tuplet;
 import com.xenoage.zong.io.selection.Cursor;
 
 import com.xenoage.zong.core.music.slur.SlurType;
 import com.xenoage.zong.core.music.slur.Slur;
-import piano.PianoHolder;
 
 import java.io.Serializable;
 import java.lang.Integer;

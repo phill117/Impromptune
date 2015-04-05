@@ -1,7 +1,7 @@
 package virtuouso;
 
 import data_objects.Measure;
-import data_objects.Note;
+import utils.LimitedQueue;
 
 import java.util.*;
 
@@ -247,7 +247,6 @@ public class BlackMagicka {
             }
         }
 
-        System.out.println(scale.toString());
         return scale;
     }
 
@@ -268,7 +267,6 @@ public class BlackMagicka {
             }
         }
 
-        System.out.println(scale.toString());
         return scale;
     }
 
@@ -287,7 +285,6 @@ public class BlackMagicka {
             i++;
         }
 
-        System.out.println(chord.get(0) + " " + chord.get(1) + " " + chord.get(2));
         return chord;
     }
 
@@ -309,11 +306,9 @@ public class BlackMagicka {
                 noteIndex += minorSteps[4] + minorSteps[5];
             }
 
-
             i++;
         }
 
-        System.out.println(chord.get(0) + " " + chord.get(1) + " " + chord.get(2));
         return chord;
     }
 

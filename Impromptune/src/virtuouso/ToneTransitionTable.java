@@ -1,19 +1,29 @@
 package virtuouso;
 
+import utils.LimitedQueue;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
 
 /**
  * Created by ben on 4/3/2015.
  */
 public class ToneTransitionTable {
 
+    public static void main (String args[]) {
+        ToneTransitionTable ttt = new ToneTransitionTable(1);
+
+    }
+
     private double probMatrix[][] = {};
     private long counts[][] = {};
 
     private PitchAxis axis = null;
 
-    private int order = 1; //default
+    Random rand = new Random();
+
+    private int order; //default
     private int statesCounter = 0;
 
     private ArrayList<long [][]> markov = null;

@@ -201,7 +201,7 @@ public class Composition implements Serializable{
         quills.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
 
         writeClef("treble");
-        writeKeySig("Bb", "major");
+        writeKeySig("B", "major");
         writeTimeSig("4/4");
 
         return currentComp;

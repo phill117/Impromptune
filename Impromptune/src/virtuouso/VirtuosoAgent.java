@@ -51,4 +51,12 @@ public class VirtuosoAgent {
     }
 
 //    viterbi path
+
+    void pickChordProgression() {
+
+    }
+
+    void pickBeats() {}
+
+
 }

@@ -3,7 +3,7 @@ package io_handler;
 import com.xenoage.zong.core.music.key.Key;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.documents.ScoreDoc;
-import virtuouso.Pair;
+import utils.Pair;
 
 import java.util.Map;
 import java.util.TreeMap;

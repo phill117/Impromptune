@@ -1,22 +1,19 @@
 package io_handler;
 
-import com.xenoage.utils.annotations.MaybeNull;
-import com.xenoage.utils.annotations.NonNull;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.utils.jse.xml.JseXmlWriter;
 import com.xenoage.utils.math.Fraction;
-import com.xenoage.zong.core.header.ScoreHeader;
 import com.xenoage.zong.core.info.ScoreInfo;
 import com.xenoage.zong.core.music.*;
 import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.chord.Stem;
-import com.xenoage.zong.core.music.chord.StemDirection;
 import com.xenoage.zong.core.music.clef.Clef;
 import com.xenoage.zong.core.music.clef.ClefType;
 import com.xenoage.zong.core.music.key.Key;
 import com.xenoage.zong.core.music.key.TraditionalKey;
 import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.time.Time;
+import com.xenoage.zong.core.music.util.BeatE;
 import com.xenoage.zong.core.music.util.BeatEList;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.documents.ScoreDoc;
@@ -32,14 +29,11 @@ import com.xenoage.zong.musicxml.types.groups.MxlMusicData;
 import com.xenoage.zong.musicxml.types.groups.MxlScoreHeader;
 import com.xenoage.zong.musicxml.types.partwise.MxlMeasure;
 import com.xenoage.zong.musicxml.types.partwise.MxlPart;
+
 import static com.xenoage.zong.core.music.util.Interval.At;
-import static com.xenoage.zong.core.music.util.Interval.Before;
-import static com.xenoage.zong.core.music.util.Interval.BeforeOrAt;
-import static com.xenoage.zong.core.music.util.BeatE.selectLatest;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,10 +166,12 @@ public class ScoreMXMLBuilder {
 
         MxlTranspose mxlTranspose = null;
         Key key = null;
+        BeatE<Key> keyBeatE;
 //  TraditionalKey key = scoreDoc.getScore().getKey(getLastMeasure(), BeforeOrAt).element;
-        BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(getLastMeasure().measure).getKeys();
-        key = list.get(QuillUtils.getFraction('x'));
-        MxlKey mxlKey = new MxlKey(0, MxlMode.Major);
+        BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(0).getKeys();
+        keyBeatE = list.getFirst();
+//        System.out.println(((TraditionalKey)keyBeatE.element).getFifths());
+        MxlKey mxlKey = new MxlKey(((TraditionalKey)keyBeatE.element).getFifths(), MxlMode.Major);
         MxlAttributes mxlAttributes = new MxlAttributes(
             //divisions
             new Integer(staff.getParent().computeDivisions()),
@@ -337,7 +333,7 @@ public class ScoreMXMLBuilder {
 //            stem = QuillUtils.getClef("treble").get;
 
         if (stem == null) {
-            mxlStemValue = MxlStemValue.None;
+            mxlStemValue = MxlStemValue.Up;
         } else if (stem.getDirection().getSign() == -1) {
             mxlStemValue = MxlStemValue.Down;
         } else if ( stem.getDirection().getSign() == 0) {

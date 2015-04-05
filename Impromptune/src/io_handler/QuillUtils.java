@@ -176,7 +176,7 @@ public class QuillUtils {
         return -1; //failed
     }
 
-    static Key getKeySig(String keyRoot, String mode) {
+    public static Key getKeySig(String keyRoot, String mode) {
         Mode m = null;
         int fifth = 0;
 
@@ -213,7 +213,7 @@ public class QuillUtils {
         return new TraditionalKey(getFifth(keyRoot,mode), m);
     }
 
-    static Clef getClef(String clef) {
+    public static Clef getClef(String clef) {
         switch (clef) {
             case "bass":
                 return new Clef(ClefType.clefBass);
@@ -228,7 +228,7 @@ public class QuillUtils {
         }
     }
 
-    static Time getTime(String timeSig) {
+    public static Time getTime(String timeSig) {
         switch(timeSig) {
             case "2/2":
                 return new Time(TimeType.time_2_2);
