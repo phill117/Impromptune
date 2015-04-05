@@ -17,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -111,6 +113,13 @@ public class ImpromptuneInitializer implements Initializable{
             GenSettingsCase.getChildren().add(settingsDisplay);
             GenSettings settings = fxmlLoader.getController();
 
+            //Set pictures to toggle buttons
+            whole.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/whole.png"), 25,25,false,false)));
+            half.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/half.png"), 25,25,false,false)));
+            quarter.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/quarter.png"), 25,25,false,false)));
+            eighth.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/eighth.png"), 25,25,false,false)));
+            sixteenth.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/sixteenth.png"), 25,25,false,false)));
+            thirtysecond.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/thirtysecond.png"), 25,25,false,false)));
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!

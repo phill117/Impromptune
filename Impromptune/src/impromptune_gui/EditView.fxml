@@ -62,7 +62,7 @@
                         <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Redo" onAction="#onRedo">
+                  <MenuItem mnemonicParsing="false" onAction="#onRedo" text="Redo">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
@@ -152,12 +152,12 @@
                               </TabPane>
                               <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="794.0" VBox.vgrow="NEVER">
                                 <items>
-                                    <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="whole" />
-                                    <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" text="half" />
-                                    <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" text="quarter" />
-                                    <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" text="eighth" />
-                                    <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" text="sixteenth" />
-                                    <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" text="thirtysecond" />
+                                    <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="Whole" />
+                                    <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" text="Half" />
+                                    <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" text="Quarter" />
+                                    <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" text="Eighth" />
+                                    <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" text="Sixteenth" />
+                                    <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" text="Thirty-Second" />
                                     <Separator prefHeight="44.0" prefWidth="14.0" />
                                     <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="dot" />
                                     <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="tie" />
