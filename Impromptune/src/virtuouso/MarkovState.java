@@ -23,8 +23,6 @@ public class MarkovState {
     }
 
     public void printStateHistogram() {
-        System.out.println("-----------------------------------------");
-//        System.out.println("total notes in model: " + statesCounter + " of order: " + k);
 
         System.out.printf("    ");
         String[] pitches = pitchAxis.getPitchAxis();

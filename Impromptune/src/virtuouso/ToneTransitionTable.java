@@ -2,10 +2,9 @@ package virtuouso;
 
 import utils.LimitedQueue;
 import utils.MersenneTwisterFast;
-import utils.Pair;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -17,7 +16,7 @@ public class ToneTransitionTable {
         ToneTransitionTable ttt = new ToneTransitionTable(2);
 
         for (int i = 0; i < 1444; i++) {
-            ttt.generateNextState(BlackMagicka.noteIndexToString(ttt.getRand(12)));
+            ttt.trainNote(BlackMagicka.noteIndexToString(ttt.getRand(12)));
         }
 
         ttt.printHistogram();
@@ -37,12 +36,22 @@ public class ToneTransitionTable {
         this.lastKnotes = new LimitedQueue<>(order);
         this.markov = new LimitedQueue<>(order);
 
-        int i = 0;
-        while (i++ < order) //add k dimensions for model
+        int k = 0;
+        while (k++ < order) //add k dimensions for model
             markov.add(new MarkovState());
     }
 
-    public void generateNextState(String currentPitch) {
+    //use the mxml parser and data objects...just as a quick way to sample other docs if we want to build a stronger model
+    public void trainFile() {
+
+    }
+
+    public void trainPhrase(List<String> phrase) {
+        for (String note : phrase)
+            trainNote(note);
+    }
+
+    public void trainNote(String currentPitch) {
         statesCounter++;
 
         if (lastKnotes.size() == 0) {
@@ -52,6 +61,10 @@ public class ToneTransitionTable {
 
         updateKOrderLayers(currentPitch);
         lastKnotes.add(currentPitch);
+    }
+
+    public String pickNote() {
+        return null;
     }
 
     private void updateKOrderLayers(String currentPitch) {
