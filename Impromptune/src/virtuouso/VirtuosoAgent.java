@@ -8,7 +8,7 @@ import java.util.List;
 public class VirtuosoAgent {
 
     public static void main(String args[]) {
-        System.out.println(pickDominant("A"));
+        System.out.println(BlackMagicka.pickDominant("A"));
     }
 
     //this should be our generic hook for different weight schemes, different weighting for choosing likely chord progression than for picking phrase notes
