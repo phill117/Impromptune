@@ -115,20 +115,20 @@ public class ScoreMXMLBuilder {
 
 //        List<MxlCredit> credits = scoreInfo.getCreators();
 
-        List<MxlScoreInstrument> scoreInstruments = new ArrayList<MxlScoreInstrument>();
+        List<MxlScoreInstrument> scoreInstruments = new ArrayList<>();
         String instr = "Acoustic Grand Piano";
         String part = "piano";
         String abbr = "piano";
         scoreInstruments.add(new MxlScoreInstrument(instr, abbr,"P1-T1"));
 
-        List<MxlMidiInstrument> mxlMidiInstruments = new ArrayList<MxlMidiInstrument>();
+        List<MxlMidiInstrument> mxlMidiInstruments = new ArrayList<>();
         mxlMidiInstruments.add(new MxlMidiInstrument(new Integer(1), new Integer(1), 1.0f, 1.0f,"P1-T1"));
 
         MxlScorePart mxlScorePart = new MxlScorePart(identification, part, abbr,
                 scoreInstruments, mxlMidiInstruments, "P1");
 
 
-        ArrayList<MxlPartListContent> mxlScoreParts = new ArrayList<MxlPartListContent>();
+        ArrayList<MxlPartListContent> mxlScoreParts = new ArrayList<>();
         mxlScoreParts.add(mxlScorePart);
         MxlPartList partList = new MxlPartList(mxlScoreParts);
         return partList;
@@ -165,23 +165,15 @@ public class ScoreMXMLBuilder {
         Integer j = null;
 
         MxlTranspose mxlTranspose = null;
-        Key key = null;
-        BeatE<Key> keyBeatE;
-//  TraditionalKey key = scoreDoc.getScore().getKey(getLastMeasure(), BeforeOrAt).element;
-        BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(0).getKeys();
-        keyBeatE = list.getFirst();
-//        System.out.println(((TraditionalKey)keyBeatE.element).getFifths());
-        MxlKey mxlKey = new MxlKey(((TraditionalKey)keyBeatE.element).getFifths(), MxlMode.Major);
+
         MxlAttributes mxlAttributes = new MxlAttributes(
             //divisions
             new Integer(staff.getParent().computeDivisions()),
-//            new MxlKey(0, MxlMode.Major),
-                mxlKey,
+                buildKey(),
             new MxlTime(new MxlNormalTime(num, den), MxlTimeSymbol.Normal),
             new Integer(1),
             buildClefs(),
             mxlTranspose
-//            new MxlTranspose( j, 0, j, false)
         );
 
         return mxlAttributes;
@@ -316,7 +308,7 @@ public class ScoreMXMLBuilder {
         MxlInstrument mxlInstrument = new MxlInstrument("piano");
 //        mxlInstrument.setId("piano");
 //        return mxlInstrument;
-        return null;
+        return mxlInstrument;
     }
 
     MxlEditorialVoice buildEdit() {
@@ -341,17 +333,7 @@ public class ScoreMXMLBuilder {
         } else if (stem.getDirection().getSign() == 1) {
             mxlStemValue = MxlStemValue.Up;
         }
-//        switch (stem.getDirection()) {
-//            case StemDirection.None:
-//                mxlStemValue = MxlStemValue.None;
-//                break;
-//            case StemDirection.Up:
-//                mxlStemValue = MxlStemValue.Up;
-//                break;
-//            case StemDirection.Down:
-//                mxlStemValue = MxlStemValue.Down;
-//                break;
-//        }
+
         MxlStem mxlStem = new MxlStem(mxlStemValue, MxlPosition.noPosition, MxlColor.noColor);
         return mxlStem;
     }
@@ -391,6 +373,14 @@ public class ScoreMXMLBuilder {
         List<MxlClef> clefs = new ArrayList<MxlClef>();
         clefs.add(mxlClef);
         return clefs;
+    }
+
+    MxlKey buildKey() {
+        BeatE<Key> keyBeatE;
+        BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(0).getKeys();
+        keyBeatE = list.getFirst();
+        MxlKey mxlKey = new MxlKey(((TraditionalKey)keyBeatE.element).getFifths(), MxlMode.Major);
+        return mxlKey;
     }
 
     MP getLastMeasure() {
