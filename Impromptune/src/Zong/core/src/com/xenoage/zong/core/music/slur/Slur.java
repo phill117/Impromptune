@@ -6,6 +6,7 @@ import com.xenoage.zong.core.music.WaypointPosition;
 import com.xenoage.zong.core.music.chord.Chord;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
@@ -26,7 +27,7 @@ import static com.xenoage.utils.kernel.Range.range;
  * @author Andreas Wenger
  */
 @Data public final class Slur
-	implements MusicElement {
+	implements MusicElement, Serializable {
 
 	/** Slur or tie. */
 	private SlurType type;

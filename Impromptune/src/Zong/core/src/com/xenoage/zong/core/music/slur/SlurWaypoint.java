@@ -5,6 +5,8 @@ import com.xenoage.zong.core.music.chord.Chord;
 import com.xenoage.zong.core.music.format.BezierPoint;
 import lombok.Data;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
@@ -19,7 +21,7 @@ import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
  *
  * @author Andreas Wenger
  */
-@Data public final class SlurWaypoint {
+@Data public final class SlurWaypoint implements Serializable{
 
 	/** The chord belonging to this waypoint. */
 	@NonNull private Chord chord;
