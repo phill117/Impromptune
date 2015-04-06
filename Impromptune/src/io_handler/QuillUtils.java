@@ -130,6 +130,7 @@ public class QuillUtils {
         return null;
     }
 
+    //this is broke TODO fixme
     static int getFifth(String keyRoot, String mode) {
 
         if (mode.equals("major")) {
@@ -272,7 +273,5 @@ public class QuillUtils {
         public Beamer(Fraction initialNote) {
             counter = initialNote.mult(fr(4 * counter.getNumerator(), counter.getDenominator()));
         }
-
-
     }
 }
