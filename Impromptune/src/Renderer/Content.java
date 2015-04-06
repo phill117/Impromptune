@@ -61,17 +61,15 @@ public class Content
     private int addIndex = 0;
     private int maxIndex = 0;
     private LinkedList<Composition> undoList = new LinkedList<Composition>();
-    private Stack<Composition> undoStack = new Stack<>();
-    private Stack<Composition> redoStack = new Stack<>();
-   // private LinkedList<Composition> redoList = new LinkedList<Composition>();
 
+    boolean canUndo = false;
+    boolean canRedo = false;
+    private Composition blankComp;
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
         //listen for playback events (see method playbackAtMP)
         Playback.registerListener(this);
 	}
-
-
 
 
     private void addAction() {
@@ -80,21 +78,24 @@ public class Content
 //              undoStack.push(comp.deepCopy());
 //              while(!redoStack.empty()) redoStack.pop();
 
-            if(maxIndex > addIndex || undo == 1)
-                undoList.set(addIndex,comp.deepCopy());
-            else {
-                maxIndex++;
-                undoList.add(comp.deepCopy());
 
+            if(maxIndex > addIndex || canUndo == false) {
+              //  System.out.println("Set:" + maxIndex  + ":" + addIndex);
+                undoList.set(addIndex, comp.deepCopy());
+            }
+            else {
+              //  System.out.println("Add:" + maxIndex);
+                maxIndex++;
+                undoList.addLast(comp.deepCopy());
             }
 
-            if(undo == 1)
-                undoIndex = addIndex - 1;
-            else
-                undoIndex = addIndex;
 
+            undoIndex = addIndex;
             addIndex++;
+
+          //  System.out.println("Finished:" + addIndex + ":" + undoIndex);
             undo = 0;
+
 
 
         }
@@ -109,28 +110,37 @@ public class Content
 
 
     public void undoAction(){
-//        if(undoStack.isEmpty()){
-//            return;
-//        }else {
-//            redoStack.push(undoStack.pop());
-//        }
+
+        if(!canUndo || addIndex == 1)
+        {// System.out.println("No undo:" + addIndex + ":" + undoIndex);
+            return;}
+
         undo = 1;
-        if(undoIndex == 0){
-            comp = undoList.get(undoIndex);
+
+        if(undoIndex == 1){
+
+            canUndo = false;
+            try {
+                comp = blankComp.deepCopy();
+            }
+            catch (Exception e)
+            {
+                System.out.print("DEADBEEF");
+            }
+            addIndex = 1;
+          //  System.out.println("Blank:" + addIndex + ":" + undoIndex);
             comp.resync();
             refresh();
-            addIndex = 1;
             return;
         }
-
-
-
+       // System.out.println("Undo");
         addIndex = undoIndex;
-
         undoIndex--;
 
         comp = undoList.get(undoIndex);
-        //comp = undoStack.peek();
+
+       // System.out.println("Undo:" + addIndex + ":" + undoIndex);
+
         comp.resync();
         refresh();
     }
@@ -142,6 +152,7 @@ public class Content
 //        comp = undoStack.peek();
 //        comp.resync();
 //        refresh();
+
         if(undoIndex >= addIndex)
             return;
 
@@ -176,12 +187,21 @@ public class Content
         scoreDoc = comp.getCurrentScoreDoc();
         undoList.clear();
         undoIndex = 0;
-        addIndex =0;
-        maxIndex = 0;
+        addIndex = 1;
+        maxIndex = 1;
         undo = 0;
-
+        comp.resync();
         refresh();
-        addAction();
+
+        try {
+            blankComp = comp.deepCopy();
+            undoList.add(comp.deepCopy());
+        }
+        catch   (Exception e)
+        {
+            System.out.print("deadbeef");
+        }
+       // addAction();
     }
 
     public void refresh(){
@@ -201,9 +221,11 @@ public class Content
     public void addNote(String note) {
        // comp.
         comp.addNote(note);
-
+        comp.resync();
         refresh();
+        canUndo = true;
         addAction();
+
 
     }
 
@@ -211,9 +233,11 @@ public class Content
     public void addRest(char rest) {
         // comp.
         comp.addRest(rest);
-
+        comp.resync();
         refresh();
+        canUndo = true;
         addAction();
+
     }
 
 
