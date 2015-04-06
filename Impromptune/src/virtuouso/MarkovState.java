@@ -50,7 +50,6 @@ public class MarkovState {
 
             System.out.printf(" " + sum + "\n");
         }
-
     }
 
     public void printStateProbMatrix() {
@@ -99,13 +98,14 @@ public class MarkovState {
                 probMatrix[i][j] = likelihood * histogram[i][j];
             }
         }
+    }
 
-        for (int i = 0; i < 12; i++) {
-            double val = 0.0;
+    private double sumRow(int i) {
+        double val = 0.0;
 
-            for (int j = 0; j < 12; j++)
-                val += probMatrix[i][j];
+        for (int j = 0; j < 12; j++)
+            val += probMatrix[i][j];
 
-        }
+        return val;
     }
 }

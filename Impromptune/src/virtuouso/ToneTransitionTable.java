@@ -13,7 +13,7 @@ import java.util.List;
 public class ToneTransitionTable {
 
     public static void main (String args[]) {
-        ToneTransitionTable ttt = new ToneTransitionTable(2);
+        ToneTransitionTable ttt = new ToneTransitionTable(7);
 
         for (int i = 0; i < 1444; i++) {
             ttt.trainNote(BlackMagicka.noteIndexToString(ttt.getRand(12)));
@@ -41,8 +41,8 @@ public class ToneTransitionTable {
             markov.add(new MarkovState());
     }
 
-    //use the mxml parser and data objects...just as a quick way to sample other docs if we want to build a stronger model
-    public void trainFile() {
+    //use the mxml parser and note/measure data objects...just as a quick way to sample other docs if we want to build a stronger model
+    public void trainFile(String fileName) {
 
     }
 
@@ -79,6 +79,7 @@ public class ToneTransitionTable {
     public void printHistogram() {
         for (int k = 0; k < order; k++) {
             System.out.println("-----------------------------------------");
+            System.out.println("              order: "+ k +"               ");
             markov.get(k).printStateHistogram();
             System.out.println("-----------------------------------------");
         }
@@ -87,6 +88,7 @@ public class ToneTransitionTable {
     public void printProbMatrix() {
         for (int k = 0; k < order; k++) {
             System.out.println("-----------------------------------------");
+            System.out.println("              order: "+ k +"               ");
             markov.get(k).printStateProbMatrix();
             System.out.println("-----------------------------------------");
         }
