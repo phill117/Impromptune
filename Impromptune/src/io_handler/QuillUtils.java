@@ -58,7 +58,7 @@ public class QuillUtils {
     //return fraction based on char input
     static Fraction getFraction(char d) {
         if (PianoHolder.getDotted()) {
-            getDottedFraction(d);
+            return getDottedFraction(d);
         } else {
             switch (d) {
                 case 'w':

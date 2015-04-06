@@ -10,6 +10,7 @@ import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.core.util.InconsistentScoreException;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +25,7 @@ import static com.xenoage.utils.kernel.Range.range;
  * @author Andreas Wenger
  */
 public final class Beam
-	implements MusicElement {
+	implements MusicElement,Serializable {
 
 	/** Spread of this beam within a staff. */
 	public enum HorizontalSpan {
