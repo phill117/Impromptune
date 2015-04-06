@@ -76,11 +76,11 @@ public class Content
         try {
 
             if(maxIndex > addIndex  || canUndo == false) {
-                System.out.println("Set:" + maxIndex  + ":" + addIndex);
+             //   System.out.println("Set:" + maxIndex  + ":" + addIndex);
                 undoList.set(addIndex, comp.deepCopy());
             }
             else {
-                System.out.println("Add:" + maxIndex);
+              //  System.out.println("Add:" + maxIndex);
                 maxIndex++;
                 undoList.addLast(comp.deepCopy());
             }
@@ -89,7 +89,7 @@ public class Content
             undoIndex = addIndex;
             addIndex++;
 
-            System.out.println("Finished:" + addIndex + ":" + undoIndex);
+           // System.out.println("Finished:" + addIndex + ":" + undoIndex);
         }
         catch (Exception e)
         {
@@ -104,26 +104,30 @@ public class Content
     public void undoAction(){
 
         if(!canUndo || addIndex == 1)
-        { System.out.println("No undo:" + addIndex + ":" + undoIndex);
+        { //System.out.println("No undo:" + addIndex + ":" + undoIndex);
             return;}
 
-
+        canRedo = true;
         if(undoIndex == 1){
 
             canUndo = false;
+
             try {
                 comp = blankComp.deepCopy();
             }
             catch (Exception e)
             {
+                System.out.println("DEADBEEF");
+                e.printStackTrace();
+
             }
             addIndex = 1;
-            System.out.println("Blank:" + addIndex + ":" + undoIndex);
+          //  System.out.println("Blank:" + addIndex + ":" + undoIndex);
             comp.resync();
             refresh();
             return;
         }
-       // System.out.println("Undo");
+
         addIndex = undoIndex;
         undoIndex--;
         try {
@@ -131,10 +135,10 @@ public class Content
          }
          catch (Exception e)
         {
-
-
+            System.out.println("DEADBEEF");
+            e.printStackTrace();
          }
-        System.out.println("Undo:" + addIndex + ":" + undoIndex);
+       // System.out.println("Undo:" + addIndex + ":" + undoIndex);
 
         comp.resync();
         refresh();
@@ -142,21 +146,32 @@ public class Content
 
 
     public void redoAction(){
-        if(undoIndex >= addIndex || canRedo)
-            return;
+        if(undoIndex > addIndex || !canRedo)
+        {  //System.out.println("NO redo" + addIndex + ":" + undoIndex);
+            return;}
 
-        addIndex++;
-        undoIndex++;
+       if(canUndo == false) {
+
+           canUndo = true;
+           undoIndex = 1;
+           addIndex = 2;
+       }
+        else
+       {
+           addIndex++;
+           undoIndex++;
+       }
         try {
-            comp = undoList.get(undoIndex);
+            comp = undoList.get(undoIndex).deepCopy();
             comp.resync();
             refresh();
+
         }catch (Exception e){
             addIndex--;
             undoIndex--;
         }
 
-
+       // System.out.println("redo" + addIndex + ":" + undoIndex);
     }
 
 
@@ -190,7 +205,6 @@ public class Content
         {
             System.out.print("deadbeef");
         }
-       // addAction();
     }
 
     public void refresh(){
@@ -213,6 +227,7 @@ public class Content
         comp.resync();
         refresh();
         canUndo = true;
+        canRedo = false;
         addAction();
 
 
@@ -225,6 +240,7 @@ public class Content
         comp.resync();
         refresh();
         canUndo = true;
+        canRedo = false;
         addAction();
 
     }
