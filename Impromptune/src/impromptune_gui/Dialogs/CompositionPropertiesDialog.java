@@ -1,6 +1,8 @@
 package impromptune_gui.Dialogs;
 
+import Renderer.Content;
 import Renderer.MainWindow;
+import com.sun.org.apache.xml.internal.security.Init;
 import com.xenoage.zong.core.Score;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -12,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import sample.Controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by cdoak_000 on 3/31/2015.
+ * Created by doak on 3/31/2015.
  * This is for the dialog box that allows the user to choose:
  * Title
  * Author
@@ -28,30 +31,17 @@ import java.util.ResourceBundle;
  * of the composition
  */
 
-public class CompositionPropertiesDialog {
+public class CompositionPropertiesDialog implements Initializable{
 
     /* Instance Variables and FXML Components */
     @FXML TextField titleField;
     @FXML TextField composerField;
     @FXML TextField tempoField;
 
-    private MainWindow mainWindow;
-    private Stage stage;
+    private static MainWindow mainWindow;
 
-    public CompositionPropertiesDialog(MainWindow mw){
+    public static void setMainWindow(MainWindow mw){
         mainWindow = mw;
-        this.stage = new Stage();
-        FXMLLoader fxmlLoader;
-        fxmlLoader = new FXMLLoader();
-        try {
-            Parent root = (BorderPane) FXMLLoader.load(getClass().getResource("CompositionPropertiesDialog.fxml"));
-            stage.setScene(new Scene(root));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.setTitle("Composition Properties");
-        stage.show();
     }
 
     @FXML void onOkay(ActionEvent event){
@@ -60,5 +50,11 @@ public class CompositionPropertiesDialog {
 
     @FXML void onCancel(ActionEvent event){
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Content content = mainWindow.getContent();
+        content.getComp().get
     }
 }

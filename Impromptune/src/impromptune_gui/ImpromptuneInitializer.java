@@ -10,6 +10,7 @@ import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
 import gen_settings.GenSettings;
 import impromptune_gui.Dialogs.CompositionPropertiesDialog;
+import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -261,7 +262,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void openCompositionSettings(ActionEvent event){
-        new CompositionPropertiesDialog(mainWindow);
+        new CompositionPropertiesLaunch(mainWindow);
     }
 
     /**
