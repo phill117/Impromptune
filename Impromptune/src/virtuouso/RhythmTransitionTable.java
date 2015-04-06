@@ -10,13 +10,13 @@ import java.util.List;
  * Created by ben on 4/4/2015.
  */
 public class RhythmTransitionTable {
-    private MersenneTwisterFast rand = new MersenneTwisterFast();
+    private MersenneTwisterFast rand = new MersenneTwisterFast(); //rng
 
     private int order;
     private int statesCounter = 0;
 
-    private LinkedList<String> lastKnotes;
-    private LinkedList<MarkovState> markov;
+    private LinkedList<String> lastKnotes; //last K order notes
+    private LinkedList<MarkovState> markov; //list of the K order markov states
 
     public RhythmTransitionTable(int order) {
         this.order = order;
@@ -33,11 +33,13 @@ public class RhythmTransitionTable {
 
     }
 
+    //adds notes within phrase list to model and updates state
     public void trainPhrase(List<String> phrase) {
         for (String note : phrase)
             trainNote(note);
     }
 
+    //adds note to model and updates state
     public void trainNote(String currentPitch) {
         statesCounter++;
 

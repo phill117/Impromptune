@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * Created by ben on 3/29/2015.
  */
+
+//the rational decision making agent
 public class VirtuosoAgent {
 
     public static void main(String args[]) {
@@ -78,8 +80,4 @@ public class VirtuosoAgent {
     void gibbsSampling() {
 
     }
-
-
-
-
 }

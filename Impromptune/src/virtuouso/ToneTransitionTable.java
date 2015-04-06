@@ -28,8 +28,8 @@ public class ToneTransitionTable {
     private int order;
     private int statesCounter = 0;
 
-    private LinkedList<String> lastKnotes;
-    private LinkedList<MarkovState> markov;
+    private LinkedList<String> lastKnotes; //last K order notes
+    private LinkedList<MarkovState> markov; //list of the K order markov states
 
     public ToneTransitionTable(int order) {
         this.order = order;
@@ -46,11 +46,13 @@ public class ToneTransitionTable {
 
     }
 
+    //adds notes within phrase list to model and updates state
     public void trainPhrase(List<String> phrase) {
         for (String note : phrase)
             trainNote(note);
     }
 
+    //adds note to model and updates state
     public void trainNote(String currentPitch) {
         statesCounter++;
 
@@ -63,6 +65,7 @@ public class ToneTransitionTable {
         lastKnotes.add(currentPitch);
     }
 
+    //will eventually generate notes based on the model
     public String pickNote() {
         return null;
     }

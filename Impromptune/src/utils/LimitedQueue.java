@@ -5,6 +5,7 @@ package utils;
  */
 import java.util.LinkedList;
 
+//size limited queue, auto removes elements at the end of the list as you pass the limit
 public class LimitedQueue<E> extends LinkedList<E> {
     private int limit;
 

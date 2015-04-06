@@ -8,6 +8,8 @@ import java.util.*;
 /**
  * Created by ben on 4/4/2015.
  */
+
+//static api for generation of scales/chords/notes/IR analysis algorithms
 public class BlackMagicka {
     public static void main(String[] args) {
 
@@ -20,7 +22,8 @@ public class BlackMagicka {
         assert((entropy(majorChord("C")) - 1.58496) < 0.00001): "failed";
 
     }
-    //build list of tones as string for utilities
+
+    //build list of tones as string for generation vectors based on data objects -- TODO
     List<String> buildStringPhrase(ArrayList<Measure> list) {
         List<String> phrase = new ArrayList<>();
 
@@ -30,12 +33,14 @@ public class BlackMagicka {
         return null;
     }
 
+    //how similar are these phrases?
     double cosineSimilarity(List<String> phrase1, List<String> phrase2) {
         double cos = 0.0f;
 
         return cos;
     }
 
+    //phrase entropy
     static double entropy(List<String> phrase) {
         double entropy = 0;
 
@@ -57,11 +62,15 @@ public class BlackMagicka {
         return entropy;
     }
 
+    //calculates entropy difference by performing this operation (like adding removing notes from a phrase)
     double informationGain() {
         return 0.0f;
     }
 
     //3 dimensional melodic motion, can get more precise with 5 -- essentially pointless beyond that iirc
+    //for instance D C A A B == *UURD -- good for comparing the tonal similarity of phrases despite different keys or notes
+    //use with levenshtein distance function, generate two parsons code strings and use that w/a max edit distance of
+    //say 10, 25, depending on the lengths of the phrases could be much larger
     public static String parsonsCode(List<String> phrase) {
         boolean skip = true;
         StringBuilder str = new StringBuilder();
@@ -129,6 +138,7 @@ public class BlackMagicka {
         return ret;
     }
 
+    //given an index, return the corresponding note, scale/chord functions use these
     static String noteIndexToString(int note) {
         if (note > 11) note = note % 12;
 
@@ -162,6 +172,7 @@ public class BlackMagicka {
         return null;
     }
 
+    //reverses a string form of the note to its' corresponding index
     static int noteIndex(String note) {
         switch(note) {
             case "C":
@@ -193,20 +204,22 @@ public class BlackMagicka {
         return -1;
     }
 
-    static byte noteShift(byte note, byte shift) {
-        byte offset = 0;
+    //convert midi indices to this scheme
+    static int noteShift(int note, int shift) {
+        int offset = 0;
         if (note + shift > 11) {
-            offset = (byte)(note + shift - 11);
+            offset = note + shift - 11;
         }
 
         return offset;
     }
 
+    //whole steps or half steps in terms of the 12 notes in chromatic scale, either string or ints starting with C
     static String getWholeStepStr(String note) {
         if (note.equals("B") || note.equals("E")) {
-            return noteIndexToString((byte)(noteIndex(note) + 1));
+            return noteIndexToString(noteIndex(note) + 1);
         } else {
-            return noteIndexToString((byte)(noteIndex(note) + 2));
+            return noteIndexToString(noteIndex(note) + 2);
         }
     }
 
@@ -226,10 +239,11 @@ public class BlackMagicka {
         return noteIndex(note) + 1;
     }
 
+    //the following methods return scales/chords in the form of lists of strings
     static List<String> majorScale(String note) {
         List<String> scale = new LimitedQueue<>(7);
         int noteIndex = noteIndex(note);
-        int [] majorSteps = {2,2,1,2,2,2,1};
+        int [] majorSteps = {2,2,1,2,2,2,1}; //maps chromatic to major diatonic scale
 
         for (int i = 0; i < 7; i++) {
             scale.add(noteIndexToString(noteIndex));
@@ -250,7 +264,7 @@ public class BlackMagicka {
     static List<String> minorScale(String note) {
         List<String> scale = new LimitedQueue<>(7);
         int noteIndex = noteIndex(note);
-        int [] minorSteps = {2, 1, 2, 2, 1, 2, 2};
+        int [] minorSteps = {2, 1, 2, 2, 1, 2, 2}; //maps chromatic to minor diatonic scale
 
         for (int i = 0; i < 7; i++) {
             scale.add(noteIndexToString(noteIndex));
@@ -288,7 +302,7 @@ public class BlackMagicka {
     static List<String> minorChord(String note) {
         int i = 0;
 
-        int [] minorSteps = {2, 1, 2, 2, 1, 2, 2};
+        int [] minorSteps = {2, 1, 2, 2, 1, 2, 2}; //maps chromatic to minor diatonic scale
         int noteIndex = noteIndex(note);
         List<String> chord = new LimitedQueue<>(3);
         while (i < 3) {
@@ -315,48 +329,53 @@ public class BlackMagicka {
 
     void pickBeats() {}
 
+
+    //these build major scales (need to generalize for minor and others) and use the degree class to return said note
+    //pick ith should be preferred as it calls these anyway
     static String pickTonic(String root) {
-        List<String> scale = BlackMagicka.majorScale(root);
+        List<String> scale = majorScale(root);
         String note = scale.get(Degree.Tonic.toInt());
         return note;
     }
 
     static String pickSuperTonic(String root) {
-        List<String> scale = BlackMagicka.majorScale(root);
+        List<String> scale = majorScale(root);
         String note = scale.get(Degree.Supertonic.toInt());
         return note;
     }
 
     static String pickMediant(String root) {
-        List<String> scale = BlackMagicka.majorScale(root);
+        List<String> scale = majorScale(root);
         String note = scale.get(Degree.Mediant.toInt());
         return note;
     }
 
     static String pickSubdominant(String root) {
-        List<String> scale = BlackMagicka.majorScale(root);
+        List<String> scale = majorScale(root);
         String note = scale.get(Degree.Subdominant.toInt());
         return note;
     }
 
     static String pickDominant(String root) {
-        List<String> scale = BlackMagicka.majorScale(root);
+        List<String> scale = majorScale(root);
         String note = scale.get(Degree.Dominant.toInt());
         return note;
     }
 
     static String pickSubmediant(String root) {
-        List<String> scale = BlackMagicka.majorScale(root);
+        List<String> scale = majorScale(root);
         String note = scale.get(Degree.Submediant.toInt());
         return note;
     }
 
     static String pickLeading(String root) {
-        List<String> scale = BlackMagicka.majorScale(root);
+        List<String> scale = majorScale(root);
         String note = scale.get(Degree.Leading.toInt());
         return note;
     }
 
+
+    //pick ith degree note based on root, ie root = C, index = 5, return the fifth -- G
     static String pickIthNote(String root, int index) {
         String note = null;
 
@@ -387,8 +406,8 @@ public class BlackMagicka {
         return note;
     }
 
-    //is test in root mode chord
-    static boolean inChord(String root, String testNote, String mode) {
+    //is this note in this root mode chord?
+    static boolean noteInChord(String root, String testNote, String mode) {  //note = this note, root = root of chord, mode = mode
         List<String> chord = null;
         switch(mode) {
             case "major":
@@ -408,18 +427,18 @@ public class BlackMagicka {
         return false;
     }
 
-    //is test in root mode scale
-    static boolean inScale(String root, String testNote, String mode) {
+    //is this note in this root mode scale?
+    static boolean noteInScale(String note, String root, String mode) { //note = this note, root = root of scale, mode = mode
         List<String> scale = null;
         switch(mode) {
             case "major":
-                scale = majorChord(root);
-                if (scale.contains(testNote))
+                scale = majorScale(root); //build a major scale, based on root
+                if (scale.contains(note))
                     return true;
                 break;
             case "minor":
-                scale = minorChord(root);
-                if (scale.contains(testNote))
+                scale = minorScale(root);
+                if (scale.contains(note))
                     return true;
                 break;
             default:

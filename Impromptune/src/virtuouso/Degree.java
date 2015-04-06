@@ -3,6 +3,8 @@ package virtuouso;
 /**
  * Created by ben on 4/3/2015.
  */
+
+//scale degrees used by scale/chord building functions
 public enum Degree {
     Tonic(0),
     Supertonic(1),

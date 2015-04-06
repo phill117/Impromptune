@@ -4,8 +4,11 @@ package virtuouso;
  * Created by ben on 4/5/2015.
  */
 public class MarkovState {
+    //the notes of the model, currently only considers sharp keys
     private PitchAxis pitchAxis;
+    //the set of probability vectors
     private double probMatrix[][];
+    //note counts
     private int histogram[][];
 
     public MarkovState() {
@@ -18,6 +21,7 @@ public class MarkovState {
         histogram[i][j]++;
     }
 
+    //update THIS order of the model, transition tables build K of these
     public void updateLayer(String currentPitch, String lastPitch) {
         markIndexFound(pitchAxis.getIndex(currentPitch), pitchAxis.getIndex(lastPitch));
     }
@@ -79,6 +83,7 @@ public class MarkovState {
         }
     }
 
+    //given the histogram, normalizes rows such that the sum of the row is ~= 1.0
     public void normalize() {
 
         for (int i = 0; i < 12; i++) {

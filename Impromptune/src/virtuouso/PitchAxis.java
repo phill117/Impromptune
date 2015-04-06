@@ -3,6 +3,8 @@ package virtuouso;
 /**
  * Created by ben on 4/3/2015.
  */
+
+//the notes plotted in markovian transition tables
 public class PitchAxis {
 
     String pitchAxis [];
