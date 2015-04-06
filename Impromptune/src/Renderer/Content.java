@@ -75,16 +75,12 @@ public class Content
     private void addAction() {
         try {
 
-//              undoStack.push(comp.deepCopy());
-//              while(!redoStack.empty()) redoStack.pop();
-
-
-            if(maxIndex > addIndex || canUndo == false) {
-              //  System.out.println("Set:" + maxIndex  + ":" + addIndex);
+            if(maxIndex > addIndex  || canUndo == false) {
+                System.out.println("Set:" + maxIndex  + ":" + addIndex);
                 undoList.set(addIndex, comp.deepCopy());
             }
             else {
-              //  System.out.println("Add:" + maxIndex);
+                System.out.println("Add:" + maxIndex);
                 maxIndex++;
                 undoList.addLast(comp.deepCopy());
             }
@@ -93,11 +89,7 @@ public class Content
             undoIndex = addIndex;
             addIndex++;
 
-          //  System.out.println("Finished:" + addIndex + ":" + undoIndex);
-            undo = 0;
-
-
-
+            System.out.println("Finished:" + addIndex + ":" + undoIndex);
         }
         catch (Exception e)
         {
@@ -112,10 +104,9 @@ public class Content
     public void undoAction(){
 
         if(!canUndo || addIndex == 1)
-        {// System.out.println("No undo:" + addIndex + ":" + undoIndex);
+        { System.out.println("No undo:" + addIndex + ":" + undoIndex);
             return;}
 
-        undo = 1;
 
         if(undoIndex == 1){
 
@@ -125,10 +116,9 @@ public class Content
             }
             catch (Exception e)
             {
-                System.out.print("DEADBEEF");
             }
             addIndex = 1;
-          //  System.out.println("Blank:" + addIndex + ":" + undoIndex);
+            System.out.println("Blank:" + addIndex + ":" + undoIndex);
             comp.resync();
             refresh();
             return;
@@ -136,10 +126,15 @@ public class Content
        // System.out.println("Undo");
         addIndex = undoIndex;
         undoIndex--;
+        try {
+         comp = undoList.get(undoIndex).deepCopy();
+         }
+         catch (Exception e)
+        {
 
-        comp = undoList.get(undoIndex);
 
-       // System.out.println("Undo:" + addIndex + ":" + undoIndex);
+         }
+        System.out.println("Undo:" + addIndex + ":" + undoIndex);
 
         comp.resync();
         refresh();
@@ -147,13 +142,7 @@ public class Content
 
 
     public void redoAction(){
-//        if(redoStack.isEmpty()) return;
-//        undoStack.push(redoStack.pop());
-//        comp = undoStack.peek();
-//        comp.resync();
-//        refresh();
-
-        if(undoIndex >= addIndex)
+        if(undoIndex >= addIndex || canRedo)
             return;
 
         addIndex++;
