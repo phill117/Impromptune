@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
 	children = "beam,editorial-voice,notations,lyric", partly = "type,dot")
 @AllArgsConstructor @Getter @Setter
 public final class MxlNote
-	implements MxlMusicDataContent {
+	implements MxlMusicDataContent, Serializable {
 
 	public static final String elemName = "note";
 

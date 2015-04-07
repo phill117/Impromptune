@@ -56,7 +56,6 @@ public class Content
 	private PlaybackLayouter playbackLayouter = null;
 
     private Composition comp = null;
-    private int undo = 0;
     private int undoIndex = 0;
     private int addIndex = 0;
     private int maxIndex = 0;
@@ -65,6 +64,7 @@ public class Content
     boolean canUndo = false;
     boolean canRedo = false;
     private Composition blankComp;
+
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
         //listen for playback events (see method playbackAtMP)
@@ -193,7 +193,6 @@ public class Content
         undoIndex = 0;
         addIndex = 1;
         maxIndex = 1;
-        undo = 0;
         comp.resync();
         refresh();
 
@@ -210,7 +209,7 @@ public class Content
     public void refresh(){
         layout = comp.getLayout();
         scoreDoc = comp.getCurrentScoreDoc();
-        //layout.updateScoreLayouts(comp.getCurrentScore());
+       // layout.updateScoreLayouts(comp.getCurrentScore());
         //Sets up the blue playback cursor
         playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
         mainWindow.renderLayout(layout);
@@ -256,14 +255,32 @@ public class Content
 			Playback.stop();
             //load the score
             comp = new Composition(filePath);
-            refresh();
+            comp.resync();
+            //refresh();
+
+
+            layout = comp.getLayout();
+            scoreDoc = comp.getCurrentScoreDoc();
+            // layout.updateScoreLayouts(comp.getCurrentScore());
+            //Sets up the blue playback cursor
+            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
+            mainWindow.renderLayout(layout);
+
+            //load score into MIDI playback
+            Playback.openScore(comp.getCurrentScore());
+
+
+
+
+
+
 
 		}	catch (Exception ex) {
 			    Err.handle(Report.error(ex));
 		}
 	}
 
-    ///JACOB CUSTOM
+    /*///JACOB CUSTOM
     public ScoreDoc test(Score score)
             throws InvalidFormatException, IOException
     {
@@ -356,7 +373,7 @@ public class Content
         catch (Exception ex) {
             Err.handle(Report.error(ex));
         }
-    }
+    }*/
 
 
 

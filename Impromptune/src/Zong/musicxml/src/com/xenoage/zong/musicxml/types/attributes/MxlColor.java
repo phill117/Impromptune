@@ -7,6 +7,8 @@ import com.xenoage.utils.xml.XmlWriter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.color.ColorUtils.getColor;
 import static com.xenoage.utils.color.ColorUtils.getHex;
 
@@ -16,7 +18,7 @@ import static com.xenoage.utils.color.ColorUtils.getHex;
  * @author Andreas Wenger
  */
 @AllArgsConstructor @Getter
-public final class MxlColor {
+public final class MxlColor implements Serializable {
 
 	@MaybeNull private final Color value;
 

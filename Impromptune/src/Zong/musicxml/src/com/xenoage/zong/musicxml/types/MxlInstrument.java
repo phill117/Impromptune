@@ -7,13 +7,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML instrument.
  * 
  * @author Andreas Wenger
  */
 @AllArgsConstructor @Getter @Setter
-public final class MxlInstrument {
+public final class MxlInstrument implements Serializable {
 
 	public static final String elemName = "instrument";
 

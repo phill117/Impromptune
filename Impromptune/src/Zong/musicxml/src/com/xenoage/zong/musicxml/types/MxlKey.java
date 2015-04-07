@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML key.
  * 
@@ -20,7 +22,7 @@ import lombok.Setter;
 @IncompleteMusicXML(missing = "non-traditional-key,key-octave,number,print-style,print-object",
 	partly = "traditional-key")
 @AllArgsConstructor @Getter @Setter
-public final class MxlKey {
+public final class MxlKey implements Serializable {
 
 	public static final String elemName = "key";
 

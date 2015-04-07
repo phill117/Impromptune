@@ -82,6 +82,9 @@ public class MainWindow {
         {
             FileChooser chooser = new FileChooser();
 
+            File custom = new File(".");
+            chooser.setInitialDirectory(custom);
+
             chooser.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("XML", "*.xml"),
                     new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
@@ -90,8 +93,8 @@ public class MainWindow {
             chooser.setTitle("Save Composition as MusicXML");
 
             File file = chooser.showSaveDialog(s);
-
-            saveAs(file);
+            if(file != null)
+                saveAs(file);
             return;
         }
 

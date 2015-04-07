@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML midi-instrument.
  * 
@@ -16,7 +18,7 @@ import lombok.Setter;
  */
 @IncompleteMusicXML(missing = "midi-name,midi-bank,midi-unpitched,elevation")
 @AllArgsConstructor @Getter @Setter
-public final class MxlMidiInstrument {
+public final class MxlMidiInstrument implements Serializable {
 
 	public static final String elemName = "midi-instrument";
 

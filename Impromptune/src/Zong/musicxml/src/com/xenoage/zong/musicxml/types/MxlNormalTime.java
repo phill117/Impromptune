@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.Parser.parseIntegerNull;
 
 /**
@@ -21,7 +23,7 @@ import static com.xenoage.utils.Parser.parseIntegerNull;
 @IncompleteMusicXML(partly = "beats,beat-type")
 @AllArgsConstructor @Getter @Setter
 public final class MxlNormalTime
-	implements MxlTimeContent {
+	implements MxlTimeContent, Serializable {
 
 	private int beats;
 	private int beatType;

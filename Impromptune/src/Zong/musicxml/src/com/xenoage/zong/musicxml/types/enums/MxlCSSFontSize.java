@@ -5,6 +5,8 @@ import com.xenoage.utils.xml.EnumWithXmlNames;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML css-font-size.
  * 
@@ -12,7 +14,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor @Getter
 public enum MxlCSSFontSize
-	implements EnumWithXmlNames {
+	implements EnumWithXmlNames, Serializable {
 
 	XXSmall("xx-small"),
 	XSmall("x-small"),

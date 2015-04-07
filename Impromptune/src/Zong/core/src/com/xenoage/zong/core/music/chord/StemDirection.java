@@ -2,12 +2,14 @@ package com.xenoage.zong.core.music.chord;
 
 import com.xenoage.utils.math.VSide;
 
+import java.io.Serializable;
+
 /**
  * Direction of a chord stem.
  *
  * @author Andreas Wenger
  */
-public enum StemDirection {
+public enum StemDirection implements Serializable {
 	/** No stem. */
 	None,
 	/** Upward stem. */

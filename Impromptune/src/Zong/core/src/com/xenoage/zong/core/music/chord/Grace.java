@@ -4,13 +4,15 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.math.Fraction;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Grace chord with slash (acciaccatura) or without (appoggiatura).
  * 
  * @author Andreas Wenger
  */
-@Const @Data public final class Grace {
+@Const @Data public final class Grace implements Serializable {
 
 	/** True for acciaccatura, false for appoggiatura. */
 	private final boolean slash;

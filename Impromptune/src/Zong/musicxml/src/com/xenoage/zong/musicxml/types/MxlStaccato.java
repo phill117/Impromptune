@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML staccato.
  * 
@@ -16,7 +18,7 @@ import lombok.Setter;
  */
 @AllArgsConstructor @Getter @Setter
 public class MxlStaccato
-	implements MxlArticulationsContent {
+	implements MxlArticulationsContent, Serializable {
 
 	public static final String elemName = "staccato";
 

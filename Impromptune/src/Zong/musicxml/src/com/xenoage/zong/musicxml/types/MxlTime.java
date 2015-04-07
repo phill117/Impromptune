@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML time.
  * 
@@ -18,7 +20,7 @@ import lombok.Setter;
  */
 @IncompleteMusicXML(missing = "number,print-style,print-object", partly = "beats,beat-type")
 @AllArgsConstructor @Getter @Setter
-public final class MxlTime {
+public final class MxlTime implements Serializable {
 
 	public static final String elemName = "time";
 

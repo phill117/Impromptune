@@ -3,13 +3,15 @@ package com.xenoage.zong.musicxml.types.enums;
 import com.xenoage.utils.xml.XmlDataException;
 import com.xenoage.utils.xml.XmlWriter;
 
+import java.io.Serializable;
+
 /**
  * Reader and writer methods for MusicXML's yes-no,
  * since yes-no is represented by boolean values in this project.
  * 
  * @author Andreas Wenger
  */
-public enum MxlYesNo {
+public enum MxlYesNo implements Serializable {
 	
 	Yes,
 	No,

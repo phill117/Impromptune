@@ -5,6 +5,8 @@ import com.xenoage.utils.math.Fraction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.math.Fraction.fr;
 
 /**
@@ -13,7 +15,7 @@ import static com.xenoage.utils.math.Fraction.fr;
  * @author Andreas Wenger
  */
 @AllArgsConstructor @Getter
-public enum MxlNoteTypeValue {
+public enum MxlNoteTypeValue implements Serializable {
 
 	_256th(fr(1, 256)),
 	_128th(fr(1, 128)),

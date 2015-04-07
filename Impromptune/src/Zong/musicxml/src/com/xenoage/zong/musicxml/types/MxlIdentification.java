@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @IncompleteMusicXML(missing = "encoding,source,relation,miscellaneous")
 @AllArgsConstructor @Getter @Setter
-public final class MxlIdentification {
+public final class MxlIdentification implements Serializable {
 
 	public static final String elemName = "identification";
 

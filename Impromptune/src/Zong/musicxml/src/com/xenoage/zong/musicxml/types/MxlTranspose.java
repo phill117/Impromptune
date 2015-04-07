@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.Parser.parseInt;
 
 
@@ -17,7 +19,7 @@ import static com.xenoage.utils.Parser.parseInt;
  * @author Andreas Wenger
  */
 @AllArgsConstructor @Getter @Setter
-public final class MxlTranspose {
+public final class MxlTranspose implements Serializable {
 
 	public static final String elemName = "transpose";
 

@@ -9,6 +9,7 @@ import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  */
 @AllArgsConstructor @Getter
 @IncompleteMusicXML(partly="font-family") //font-family: enum for font names like "handwritten, cursive, fantasy"
-public final class MxlFont {
+public final class MxlFont implements Serializable {
 
 	/** Generated from the comma-separated list of font names. */
 	@MaybeEmpty private final List<String> fontFamily;

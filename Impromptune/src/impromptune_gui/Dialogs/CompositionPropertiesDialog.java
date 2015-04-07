@@ -55,6 +55,6 @@ public class CompositionPropertiesDialog implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Content content = mainWindow.getContent();
-        content.getComp().get
+        //content.getComp().get
     }
 }

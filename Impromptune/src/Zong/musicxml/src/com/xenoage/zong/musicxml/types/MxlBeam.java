@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.NullUtils.notNull;
 
 /**
@@ -18,7 +20,7 @@ import static com.xenoage.utils.NullUtils.notNull;
  */
 @IncompleteMusicXML(missing = "repeater,fan,color")
 @AllArgsConstructor @Getter @Setter
-public final class MxlBeam {
+public final class MxlBeam implements Serializable {
 
 	public static final String elemName = "beam";
 
