@@ -94,7 +94,9 @@ public class Content
         catch (Exception e)
         {
             //wtfdeadbeefs
-            System.out.println("DEADBEEF");
+          //  System.out.println("DEADBEEF");
+
+            e.getMessage();
             e.printStackTrace();
 
         }
@@ -255,6 +257,24 @@ public class Content
 			Playback.stop();
             //load the score
             comp = new Composition(filePath);
+
+
+            undoList.clear();
+            undoIndex = 0;
+            addIndex = 1;
+            maxIndex = 1;
+            comp.resync();
+            refresh();
+
+            try {
+                blankComp = comp.deepCopy();
+                undoList.add(comp.deepCopy());
+            }
+            catch   (Exception e)
+            {
+                System.out.print("deadbeef");
+            }
+
             comp.resync();
             //refresh();
 
