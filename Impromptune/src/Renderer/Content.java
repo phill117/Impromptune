@@ -85,20 +85,13 @@ public class Content
                 undoList.addLast(comp.deepCopy());
             }
 
-
             undoIndex = addIndex;
             addIndex++;
-
            // System.out.println("Finished:" + addIndex + ":" + undoIndex);
         }
         catch (Exception e)
         {
-            //wtfdeadbeefs
-          //  System.out.println("DEADBEEF");
-
-            e.getMessage();
             e.printStackTrace();
-
         }
     }
 
@@ -119,9 +112,7 @@ public class Content
             }
             catch (Exception e)
             {
-                System.out.println("DEADBEEF");
                 e.printStackTrace();
-
             }
             addIndex = 1;
           //  System.out.println("Blank:" + addIndex + ":" + undoIndex);
@@ -133,15 +124,13 @@ public class Content
         addIndex = undoIndex;
         undoIndex--;
         try {
-         comp = undoList.get(undoIndex).deepCopy();
+            comp = undoList.get(undoIndex).deepCopy();
          }
          catch (Exception e)
         {
-            System.out.println("DEADBEEF");
             e.printStackTrace();
-         }
+        }
        // System.out.println("Undo:" + addIndex + ":" + undoIndex);
-
         comp.resync();
         refresh();
     }
@@ -258,7 +247,6 @@ public class Content
             //load the score
             comp = new Composition(filePath);
 
-
             undoList.clear();
             undoIndex = 0;
             addIndex = 1;
@@ -272,27 +260,8 @@ public class Content
             }
             catch   (Exception e)
             {
-                System.out.print("deadbeef");
+                e.getStackTrace();
             }
-
-            comp.resync();
-            //refresh();
-
-
-            layout = comp.getLayout();
-            scoreDoc = comp.getCurrentScoreDoc();
-            // layout.updateScoreLayouts(comp.getCurrentScore());
-            //Sets up the blue playback cursor
-            playbackLayouter = new PlaybackLayouter(layout.getScoreFrameChain(comp.getCurrentScore()).getScoreLayout());
-            mainWindow.renderLayout(layout);
-
-            //load score into MIDI playback
-            Playback.openScore(comp.getCurrentScore());
-
-
-
-
-
 
 
 		}	catch (Exception ex) {
@@ -396,13 +365,11 @@ public class Content
     }*/
 
 
-
     public ScoreDoc getSD(){
         return scoreDoc;
     }
     public Layout  getLayout(){return layout;}
 
-//End Jacob
 
 	/**
 	 * This method is called by the MIDI playback whenever a new

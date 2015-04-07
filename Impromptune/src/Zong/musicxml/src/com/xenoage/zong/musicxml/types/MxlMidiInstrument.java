@@ -57,7 +57,7 @@ public final class MxlMidiInstrument implements Serializable {
 		writer.writeAttribute("id", id);
 		writer.writeElementText("midi-channel", midiChannel);
 		writer.writeElementText("midi-program", midiProgram);
-		writer.writeElementText("volume", volume);
+		//writer.writeElementText("volume", volume);
 		writer.writeElementText("pan", pan);
 		writer.writeElementEnd();
 	}

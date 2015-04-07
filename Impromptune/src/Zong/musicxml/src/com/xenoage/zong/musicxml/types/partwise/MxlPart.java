@@ -54,6 +54,6 @@ public final class MxlPart implements Serializable {
 
 	private void writeSeparatorComment(XmlWriter writer) {
 		writer.writeLineBreak();
-		writer.writeComment("=======================================================");
+		//writer.writeComment("=======================================================");
 	}
 }
