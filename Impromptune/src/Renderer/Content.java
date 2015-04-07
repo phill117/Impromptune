@@ -370,6 +370,7 @@ public class Content
     }
     public Layout  getLayout(){return layout;}
 
+    public Composition getComposition(){return comp;}
 
 	/**
 	 * This method is called by the MIDI playback whenever a new
