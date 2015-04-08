@@ -2,6 +2,8 @@ package com.xenoage.zong.musicxml.types.choice;
 
 import com.xenoage.utils.xml.XmlWriter;
 
+import java.io.Serializable;
+
 /**
  * Interface for all types of content that may appear within
  * a MusicXML time.

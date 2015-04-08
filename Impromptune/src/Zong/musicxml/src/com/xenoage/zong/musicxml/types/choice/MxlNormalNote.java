@@ -7,6 +7,8 @@ import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML normal note content.
  * 
@@ -15,7 +17,7 @@ import lombok.Setter;
 @IncompleteMusicXML(missing = "tie")
 @Getter @Setter
 public final class MxlNormalNote
-	implements MxlNoteContent {
+	implements MxlNoteContent, Serializable {
 
 	private MxlFullNote fullNote = new MxlFullNote();
 	private int duration = 0;

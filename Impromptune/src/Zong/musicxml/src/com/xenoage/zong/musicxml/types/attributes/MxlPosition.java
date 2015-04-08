@@ -8,13 +8,15 @@ import com.xenoage.utils.xml.XmlWriter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML x-position and y-position.
  * 
  * @author Andreas Wenger
  */
 @AllArgsConstructor @Getter
-public final class MxlPosition {
+public final class MxlPosition implements Serializable {
 
 	@MaybeNull private final Float defaultX, defaultY, relativeX, relativeY;
 	

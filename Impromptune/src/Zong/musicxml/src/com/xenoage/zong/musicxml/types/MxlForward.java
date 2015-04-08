@@ -12,6 +12,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML forward.
  * 
@@ -20,7 +22,7 @@ import lombok.Setter;
 @IncompleteMusicXML(missing = "staff", children = "editorial-voice")
 @AllArgsConstructor @Getter @Setter
 public final class MxlForward
-	implements MxlMusicDataContent {
+	implements MxlMusicDataContent, Serializable {
 
 	public static final String elemName = "forward";
 

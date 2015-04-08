@@ -31,7 +31,7 @@ public class IOHandler {
                 new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
         );
 
-        File custom = new File("C:\\");
+        File custom = new File(".");
         chooser.setInitialDirectory(custom);
 
         chooser.setTitle("Select a file to load...");

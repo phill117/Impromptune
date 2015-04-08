@@ -9,6 +9,7 @@ import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -20,7 +21,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  */
 @IncompleteMusicXML(missing = "harmony,figured-bass,sound,grouping,link,bookmark", children = "note,backup,forward,direction,attributes,print,barline")
 @Getter @Setter
-public final class MxlMusicData {
+public final class MxlMusicData implements Serializable {
 
 	@NonEmpty private List<MxlMusicDataContent> content = alist();
 

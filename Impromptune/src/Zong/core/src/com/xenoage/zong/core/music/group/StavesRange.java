@@ -3,6 +3,8 @@ package com.xenoage.zong.core.music.group;
 import com.xenoage.utils.kernel.Range;
 import lombok.Data;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.kernel.Range.range;
 
 /**
@@ -11,7 +13,7 @@ import static com.xenoage.utils.kernel.Range.range;
  * @author Andreas Wenger
  */
 @Data
-public final class StavesRange {
+public final class StavesRange implements Serializable {
 
 	/** The index of the first staff of the range. */
 	private int start;

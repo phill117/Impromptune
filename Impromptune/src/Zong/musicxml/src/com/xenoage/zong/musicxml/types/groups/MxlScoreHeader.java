@@ -9,6 +9,7 @@ import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @IncompleteMusicXML(children = "work,identification,defaults,part-list")
 @Getter @Setter
-public final class MxlScoreHeader {
+public final class MxlScoreHeader implements Serializable {
 
 	@MaybeNull private MxlWork work;
 	@MaybeNull private String movementNumber;

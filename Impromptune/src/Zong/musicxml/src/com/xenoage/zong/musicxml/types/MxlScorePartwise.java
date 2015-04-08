@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.NullUtils.notNull;
@@ -23,7 +24,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  */
 @IncompleteMusicXML(children = "score-header,part")
 @AllArgsConstructor @Getter @Setter
-public final class MxlScorePartwise {
+public final class MxlScorePartwise implements Serializable {
 
 	public static final String elemName = "score-partwise";
 
@@ -67,7 +68,7 @@ public final class MxlScorePartwise {
 
 	private void writeSeparatorComment(XmlWriter writer) {
 		writer.writeLineBreak();
-		writer.writeComment("=======================================================");
+		//writer.writeComment("=======================================================");
 	}
 
 }

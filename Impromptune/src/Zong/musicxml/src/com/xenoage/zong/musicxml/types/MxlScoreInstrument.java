@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML score-instrument.
  * 
@@ -16,7 +18,7 @@ import lombok.Setter;
  */
 @IncompleteMusicXML(missing = "solo,ensemble")
 @AllArgsConstructor @Getter @Setter
-public final class MxlScoreInstrument {
+public final class MxlScoreInstrument implements Serializable {
 
 	public static final String elemName = "score-instrument";
 

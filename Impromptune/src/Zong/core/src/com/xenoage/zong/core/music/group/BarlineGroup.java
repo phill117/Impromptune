@@ -3,13 +3,15 @@ package com.xenoage.zong.core.music.group;
 import com.xenoage.utils.annotations.NonNull;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Group of staves with a common barline.
  * 
  * @author Andreas Wenger
  */
-@Data public final class BarlineGroup {
+@Data public final class BarlineGroup implements Serializable {
 
 	/** Visual styles of barline grouping. */
 	public enum Style {

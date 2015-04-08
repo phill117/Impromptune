@@ -8,6 +8,8 @@ import com.xenoage.zong.musicxml.types.util.MxlPrintStyleContent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.zong.musicxml.types.attributes.MxlPrintStyle.noPrintStyle;
 import static com.xenoage.zong.musicxml.types.enums.MxlPlacement.Unknown;
 
@@ -18,7 +20,7 @@ import static com.xenoage.zong.musicxml.types.enums.MxlPlacement.Unknown;
  */
 @AllArgsConstructor @Getter
 public final class MxlEmptyPlacement
-	implements MxlPrintStyleContent, MxlPlacementContent {
+	implements MxlPrintStyleContent, MxlPlacementContent, Serializable {
 	
 	public static final MxlEmptyPlacement noEmptyPlacement = new MxlEmptyPlacement(
 		noPrintStyle, Unknown);

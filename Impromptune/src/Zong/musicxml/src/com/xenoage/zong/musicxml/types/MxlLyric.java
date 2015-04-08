@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML lyric.
  * 
@@ -21,7 +23,7 @@ import lombok.Setter;
 @IncompleteMusicXML(missing = "end-line,end-paragraph,editorial,name,justify,position,"
 	+ "placement,color", children = "")
 @AllArgsConstructor @Getter @Setter
-public final class MxlLyric {
+public final class MxlLyric implements Serializable {
 
 	public static final String elemName = "lyric";
 

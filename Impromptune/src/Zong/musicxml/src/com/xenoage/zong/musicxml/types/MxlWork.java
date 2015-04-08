@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML work.
  * 
@@ -15,7 +17,7 @@ import lombok.Setter;
  */
 @IncompleteMusicXML(missing = "opus")
 @AllArgsConstructor @Getter @Setter
-public final class MxlWork {
+public final class MxlWork implements Serializable {
 
 	public static final String elemName = "work";
 	public static final MxlWork empty = new MxlWork(null, null);

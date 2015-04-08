@@ -6,6 +6,8 @@ import com.xenoage.zong.musicxml.types.util.MxlPositionContent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 import static com.xenoage.zong.musicxml.types.attributes.MxlColor.noColor;
 import static com.xenoage.zong.musicxml.types.attributes.MxlFont.noFont;
 import static com.xenoage.zong.musicxml.types.attributes.MxlPosition.noPosition;
@@ -17,7 +19,7 @@ import static com.xenoage.zong.musicxml.types.attributes.MxlPosition.noPosition;
  */
 @AllArgsConstructor @Getter
 public final class MxlPrintStyle
-	implements MxlPositionContent {
+	implements MxlPositionContent, Serializable {
 
 	public static final MxlPrintStyle noPrintStyle = new MxlPrintStyle(noPosition, noFont, noColor);
 	

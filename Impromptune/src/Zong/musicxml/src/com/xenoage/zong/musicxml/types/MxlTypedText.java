@@ -8,13 +8,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML typed-text.
  * 
  * @author Andreas Wenger
  */
 @AllArgsConstructor @Getter @Setter
-public final class MxlTypedText {
+public final class MxlTypedText implements Serializable {
 
 	@NonNull private String value;
 	@MaybeNull private String type;

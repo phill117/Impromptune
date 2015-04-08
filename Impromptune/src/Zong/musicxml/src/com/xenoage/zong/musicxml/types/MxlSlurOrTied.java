@@ -15,6 +15,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.NullUtils.notNull;
 
 /**
@@ -25,7 +27,7 @@ import static com.xenoage.utils.NullUtils.notNull;
 @IncompleteMusicXML(missing = "line-type,orientation,color")
 @AllArgsConstructor @Getter @Setter
 public final class MxlSlurOrTied
-	implements MxlNotationsContent, MxlPositionContent, MxlPlacementContent {
+	implements MxlNotationsContent, MxlPositionContent, MxlPlacementContent, Serializable {
 
 	public static final String elemNameSlur = "slur";
 	public static final String elemNameTied = "tied";

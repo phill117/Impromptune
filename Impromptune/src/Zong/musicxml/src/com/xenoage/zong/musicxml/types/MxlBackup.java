@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML backup.
  * 
@@ -18,7 +20,7 @@ import lombok.Setter;
 @IncompleteMusicXML(missing = "editorial")
 @AllArgsConstructor @Getter @Setter
 public final class MxlBackup
-	implements MxlMusicDataContent {
+	implements MxlMusicDataContent, Serializable {
 
 	public static final String elemName = "backup";
 

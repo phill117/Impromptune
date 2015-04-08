@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML measure in a partwise score.
  * 
@@ -16,7 +18,7 @@ import lombok.Setter;
  */
 @IncompleteMusicXML(partly = "measure-attributes", children = "music-data")
 @AllArgsConstructor @Getter @Setter
-public final class MxlMeasure {
+public final class MxlMeasure implements Serializable {
 
 	public static final String elemName = "measure";
 

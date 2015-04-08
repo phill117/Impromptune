@@ -7,6 +7,8 @@ import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML editorial-voice and editorial-voice-direction
  * (they have equal content).
@@ -15,7 +17,7 @@ import lombok.Setter;
  */
 @IncompleteMusicXML(missing = "footnote,level")
 @Getter @Setter
-public final class MxlEditorialVoice {
+public final class MxlEditorialVoice implements Serializable {
 
 	@MaybeNull private String voice;
 	

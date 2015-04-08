@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -24,7 +25,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
 	+ "caesura,stress,unstress,other-articulation")
 @AllArgsConstructor @Getter @Setter
 public final class MxlArticulations
-	implements MxlNotationsContent {
+	implements MxlNotationsContent, Serializable {
 
 	public static final String elemName = "articulations";
 

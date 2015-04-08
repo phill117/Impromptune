@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -24,7 +25,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
 	children = "score-instrument,midi-instrument")
 @AllArgsConstructor @Getter @Setter
 public class MxlScorePart
-	implements MxlPartListContent {
+	implements MxlPartListContent, Serializable {
 
 	public static final String elemName = "score-part";
 

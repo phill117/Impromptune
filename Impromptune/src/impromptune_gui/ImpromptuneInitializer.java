@@ -211,6 +211,10 @@ public class ImpromptuneInitializer implements Initializable{
 
         FileChooser chooser = new FileChooser();
 
+        File custom = new File(".");
+        chooser.setInitialDirectory(custom);
+
+
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML", "*.xml"),
                 new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
@@ -220,7 +224,8 @@ public class ImpromptuneInitializer implements Initializable{
 
         File file = chooser.showSaveDialog(stage);
 
-        mainWindow.saveAs(file);
+        if(file != null)
+            mainWindow.saveAs(file);
     }
 
 

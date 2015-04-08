@@ -11,6 +11,8 @@ import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML full-note.
  * 
@@ -18,7 +20,7 @@ import lombok.Setter;
  */
 @IncompleteMusicXML(children = "unpitched,rest")
 @Getter @Setter
-public final class MxlFullNote {
+public final class MxlFullNote implements Serializable {
 	private boolean chord;
 	@NonNull private MxlFullNoteContent content;
 

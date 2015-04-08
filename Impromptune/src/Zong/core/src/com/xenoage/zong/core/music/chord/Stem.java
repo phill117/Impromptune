@@ -4,13 +4,15 @@ import com.xenoage.utils.annotations.Const;
 import com.xenoage.utils.annotations.MaybeNull;
 import lombok.Data;
 
+import java.io.Serializable;
+
 
 /**
  * Class for a stem, that is belongs to a chord.
  *
  * @author Andreas Wenger
  */
-@Const @Data public final class Stem {
+@Const @Data public final class Stem implements Serializable {
 
 	/** The direction of the stem, or null for default. */
 	@MaybeNull public final StemDirection direction;

@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.zong.core.music.Pitch.pi;
 import static com.xenoage.zong.musicxml.util.InvalidCore.invalidCore;
 
@@ -19,7 +21,7 @@ import static com.xenoage.zong.musicxml.util.InvalidCore.invalidCore;
  */
 @AllArgsConstructor @Getter @Setter
 public final class MxlPitch
-	implements MxlFullNoteContent {
+	implements MxlFullNoteContent, Serializable {
 
 	public static final String elemName = "pitch";
 

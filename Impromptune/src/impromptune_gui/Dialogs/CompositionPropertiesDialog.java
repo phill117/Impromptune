@@ -4,6 +4,7 @@ import Renderer.Content;
 import Renderer.MainWindow;
 import com.sun.org.apache.xml.internal.security.Init;
 import com.xenoage.zong.core.Score;
+import com.xenoage.zong.core.info.ScoreInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Parent;
@@ -54,7 +55,9 @@ public class CompositionPropertiesDialog implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Content content = mainWindow.getContent();
-        content.getComp().get
+        ScoreInfo scoreInfo = mainWindow.getContent().getComposition().getCurrentScore().info;
+        titleField.setText(scoreInfo.getTitle());
+        composerField.setText(scoreInfo.getComposer());
+        tempoField.setText("");
     }
 }

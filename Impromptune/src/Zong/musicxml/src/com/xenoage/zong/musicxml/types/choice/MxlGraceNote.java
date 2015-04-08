@@ -8,6 +8,8 @@ import com.xenoage.zong.musicxml.util.IncompleteMusicXML;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML grace note content.
  * 
@@ -16,7 +18,7 @@ import lombok.Setter;
 @IncompleteMusicXML(missing = "tie,steal-time-previous,steal-time-following,make-time", children = "full-note")
 @Getter @Setter
 public final class MxlGraceNote
-	implements MxlNoteContent {
+	implements MxlNoteContent, Serializable {
 	
 	public static final String elemName = "grace";
 

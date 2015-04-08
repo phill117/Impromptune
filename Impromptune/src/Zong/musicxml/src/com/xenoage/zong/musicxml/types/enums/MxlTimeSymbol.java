@@ -7,6 +7,8 @@ import com.xenoage.utils.xml.XmlWriter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML time-symbol.
  * 
@@ -14,7 +16,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor @Getter
 public enum MxlTimeSymbol
-	implements EnumWithXmlNames {
+	implements EnumWithXmlNames, Serializable{
 
 	Common("common"),
 	Cut("cut"),

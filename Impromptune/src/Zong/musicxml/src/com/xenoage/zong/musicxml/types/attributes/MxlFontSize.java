@@ -7,13 +7,15 @@ import com.xenoage.zong.musicxml.types.enums.MxlCSSFontSize;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * MusicXML font-size.
  * 
  * @author Andreas Wenger
  */
 @RequiredArgsConstructor @Getter
-public final class MxlFontSize {
+public final class MxlFontSize implements Serializable {
 
 	public static final String attrName = "font-size";
 	public static final MxlFontSize noFontSize = new MxlFontSize(null, null);

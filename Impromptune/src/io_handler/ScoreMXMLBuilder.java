@@ -15,6 +15,7 @@ import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.time.Time;
 import com.xenoage.zong.core.music.util.BeatE;
 import com.xenoage.zong.core.music.util.BeatEList;
+import com.xenoage.zong.core.music.util.DurationInfo;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.musicxml.MusicXMLDocument;
@@ -209,12 +210,13 @@ public class ScoreMXMLBuilder {
         List<MxlBeam> beamList = new ArrayList<MxlBeam>();
         List<MxlNotations> notationsList = new ArrayList<MxlNotations>();
         List<MxlLyric> mxlLyrics = new ArrayList<MxlLyric>();
+        int dots = DurationInfo.getDots(element.getDuration());
         MxlNote mxlNote =
                 new MxlNote(mxlNoteContent,
                         mxlInstrument,
                         mxlEditorialVoice,
                         mxlNoteTypeValue,
-                        0,
+                        dots,
                         mxlStem,
                         mxlStaff,
                         beamList,
@@ -256,7 +258,11 @@ public class ScoreMXMLBuilder {
         MxlNoteTypeValue f = null;
         int div = scoreDoc.getScore().getDivisions();
 
-        Fraction fr = element.getDuration();
+
+
+        Fraction fr = DurationInfo.getBaseDuration( element.getDuration());
+        int dots = DurationInfo.getDots(element.getDuration());
+        div = scoreDoc.getScore().getDivisions();
         if (fr.compareTo(MxlNoteTypeValue.Whole.getDuration()) == 0) {
            div *= 4;
         } else if (fr.compareTo(MxlNoteTypeValue.Half.getDuration()) == 0) {
@@ -270,10 +276,19 @@ public class ScoreMXMLBuilder {
         } else if (fr.compareTo(MxlNoteTypeValue._32nd.getDuration()) == 0) {
            div /= 8;
         }
-
+//
         if (div == 0)
             div = 1;
-//        System.out.println();
+
+        if (dots == 1) {
+            int i = div / 2;
+            div *= 2;
+            div -= i;
+        }
+
+
+
+////        System.out.println();
         return div;
     }
 

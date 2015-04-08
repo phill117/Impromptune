@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.NullUtils.notNull;
 import static com.xenoage.utils.Parser.parseIntegerNull;
 
@@ -20,7 +22,7 @@ import static com.xenoage.utils.Parser.parseIntegerNull;
  */
 @IncompleteMusicXML(missing = "additional,size,print-style,print-object")
 @AllArgsConstructor @Getter @Setter
-public final class MxlClef {
+public final class MxlClef implements Serializable {
 
 	public static final String elemName = "clef";
 

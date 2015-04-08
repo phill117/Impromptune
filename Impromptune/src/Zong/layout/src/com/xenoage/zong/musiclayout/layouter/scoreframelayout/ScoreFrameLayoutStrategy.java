@@ -608,8 +608,8 @@ public class ScoreFrameLayoutStrategy
 			return systemStaves;
 		else {
 			//use efficient sublist
-			return systemStaves.subList(barlineGroup.getStaves().getStart(),
-				barlineGroup.getStaves().getStop() + 1);
+			return new ArrayList<StaffStamping>(systemStaves.subList(barlineGroup.getStaves().getStart(),
+				barlineGroup.getStaves().getStop() + 1));
 		}
 	}
 

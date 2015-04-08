@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -21,7 +22,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
 @IncompleteMusicXML(missing = "tuplet,glissando,slide,technical,arpeggiate," +
  "non-arpeggiate,other-notation", children = "slur,tied,articulations,dynamics,ornaments")
 @AllArgsConstructor @Getter @Setter
-public final class MxlNotations {
+public final class MxlNotations implements Serializable {
 
 	public static final String elemName = "notations";
 

@@ -6,6 +6,8 @@ import com.xenoage.utils.xml.XmlWriter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML clef-sign.
  * 
@@ -13,7 +15,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor @Getter
 public enum MxlClefSign
-	implements EnumWithXmlNames {
+	implements EnumWithXmlNames, Serializable {
 
 	G("G"),
 	F("F"),

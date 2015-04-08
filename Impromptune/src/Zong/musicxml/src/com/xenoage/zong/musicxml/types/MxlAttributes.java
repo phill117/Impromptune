@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import static com.xenoage.utils.Parser.parseIntegerNull;
 	+ "directive,measure-style", partly = "time,clef", children = "key,time,clef")
 @AllArgsConstructor @Getter @Setter
 public final class MxlAttributes
-	implements MxlMusicDataContent {
+	implements MxlMusicDataContent, Serializable{
 
 	public static final String elemName = "attributes";
 

@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static com.xenoage.utils.collections.CollectionUtils.alist;
@@ -21,7 +22,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
  */
 @IncompleteMusicXML(children = "part-group,score-part")
 @AllArgsConstructor @Getter @Setter
-public final class MxlPartList {
+public final class MxlPartList implements Serializable {
 
 	public static final String elemName = "part-list";
 
