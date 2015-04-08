@@ -24,4 +24,12 @@ public class Beat {
     public Note noteAt(int n){
         return notes.get(n);
     }
+
+    public void setNotes(ArrayList<Note> notes) {
+        this.notes = notes;
+    }
+    //cause for each > life lulz
+    public ArrayList<Note> getNotes() {
+        return notes;
+    }
 }

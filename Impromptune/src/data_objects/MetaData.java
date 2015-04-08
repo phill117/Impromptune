@@ -254,7 +254,7 @@ public class MetaData {
 
     private Degree getChoice(HashSet<Degree> actualPossibilities, HashSet<Degree> notPossibilities){
         if(actualPossibilities.size() == 1){ for(Degree d : actualPossibilities) return d;}
-        else if(actualPossibilities.size() > 0){
+        else if(actualPossibilities.size() > 0) {
 
             //TODO : make the choice of the actual possible choices weighted
 
@@ -262,7 +262,7 @@ public class MetaData {
             Degree[] degrees = new Degree[0];
             actualPossibilities.toArray(degrees);
             return degrees[random.nextInt(degrees.length)];
-        }else{ //only not possibilities has elements
+        } else { //only not possibilities has elements
             Random random = new Random();
             Degree[] degrees = new Degree[0];
             notPossibilities.toArray(degrees);

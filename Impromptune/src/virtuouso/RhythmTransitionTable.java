@@ -57,8 +57,8 @@ public class RhythmTransitionTable {
     }
 
     private void updateKOrderLayers(String currentPitch) {
-        for (int i = 0; i < lastKnotes.size(); i++)
-            markov.get(i).updateLayer(currentPitch, lastKnotes.get(i));
+//        for (int i = 0; i < lastKnotes.size(); i++)
+//            markov.get(i).updateLayer(currentPitch, lastKnotes.get(i));
     }
 
     private int getRand(int i) {
