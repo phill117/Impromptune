@@ -26,7 +26,7 @@ public class NewCompositionLaunch {
         root = new BorderPane();
         FXMLLoader loader = new FXMLLoader();
         loader.setRoot(root);
-        stage.alwaysOnTopProperty();
+        stage.setAlwaysOnTop(true);
         NewCompositionDialog.setMainWindow(mw);
         NewCompositionDialog.setStage(stage);
 

@@ -34,6 +34,7 @@ public class NewCompositionDialog implements Initializable{
     @FXML ComboBox key;
     @FXML ComboBox mode;
 
+
     @FXML Button OK;
    private static Stage stage;
     private static MainWindow mainWindow;
@@ -63,6 +64,7 @@ public class NewCompositionDialog implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         titleField.setText("Untitled");
         composerField.setText("Anonymous");
+
         timeSig.setItems(observableArrayList("4/4","3/4","6/8","4/2","3/2","2/2"));
         key.setItems(observableArrayList("A","B","C","D","E","F","G"));
         mode.setItems(observableArrayList("Major","Minor"));

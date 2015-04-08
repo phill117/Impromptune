@@ -84,7 +84,7 @@ public class Quill implements CommandListener, Serializable {
         int num = Integer.parseInt(values[0]);
         int den = Integer.parseInt(values[1]);
 
-       Fraction fr = Fraction.fr(num, den);
+        Fraction fr = Fraction.fr(num, den);
         Tempo tempo = new Tempo(fr, bpm);
         tempo.setText(ut(getTempoName(bpm)));
         tempo.setPositioning(new Position(null, 22f, -5f, -5f));
@@ -341,9 +341,6 @@ Allegrissimo (172–176 BPM)
 Presto –  (168–200 BPM)
 Prestissimo – (200 BPM and over)
 */
-
-
-
 
     }
 
