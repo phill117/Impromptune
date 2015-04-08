@@ -1,6 +1,8 @@
 package data_objects;
 
-import java.util.ArrayList;
+import virtuouso.Degree;
+
+import java.util.*;
 
 /**
  * Created by Sean on 3/28/2015.
@@ -157,5 +159,117 @@ public class MetaData {
         }
 
         return beats;
+    }
+
+    //ignore this for now
+    double chordFrequencies[][] =
+            //1     2       3       4       5       6       7
+            {{1/7,  1/7,    1/7,    1/7,    1/7,    1/7,    1/7}, //tonic to ...
+             {0,    .3,     0,      0,      .6,     0,      .1}, //supertonic to ...
+             {0,    0,      .2,     .4,      0,     .4,     0}, //mediant to ...
+             {.3,   .2,     0,      .2,      .2,    0,      .1}, //etc...
+             {.5,   0,      0,      0,       .3,    .2,     0},
+             {0,    .5,     0,      .3,      0,     .2,     0},
+             {.9,   0,      0,      0,       0,     0,      .1}};
+
+    /**
+     * returns a degree that is the root of the next chord in the progression
+     * NOTE: look below for an overloaded method
+     * @param degree : the degree to transition away from
+     * @param order : the order (or memory) of the markov model
+     * @return : the next Degree (effectively the next chord) in the progression
+     */
+
+    public Degree transition(Degree degree, Set<Degree> possibilities, int order){
+
+        // there is only one compatible chord, choose that one
+        if(possibilities.size() == 1) for(Degree d : possibilities) return d;
+        HashSet<Degree> notPossibilities = new HashSet<>();
+        HashSet<Degree> actualPossibilities = new HashSet<>();
+
+        //separate the set of given next chords into possible (from the graph) and not possible
+        //for both major and minor
+        if(MetaData.getInstance().isMajor()) {
+            switch (degree) {
+                default:
+                case Tonic: //all
+                    for (Degree d : possibilities)
+                        actualPossibilities.add(d);
+                    break;
+                case Supertonic: // 2 5 7
+                    for (Degree d : possibilities) {
+                        int i = d.toInt();
+                        if (i != 2 && i != 5 && i != 7) notPossibilities.add(d);
+                        else actualPossibilities.add(d);
+                    }
+                    break;
+                case Mediant: // 3 4 6
+                    for (Degree d : possibilities) {
+                        int i = d.toInt();
+                        if (i != 3 && i != 4 && i != 6) notPossibilities.add(d);
+                        else actualPossibilities.add(d);
+                    }
+                    break;
+                case Subdominant: // 1 2 4 5 7
+                    for (Degree d : possibilities) {
+                        int i = d.toInt();
+                        if (i != 2 && i != 5 && i != 7 && i != 1 && i != 4) notPossibilities.add(d);
+                        else actualPossibilities.add(d);
+                    }
+                    break;
+                case Dominant: // 1 5 6
+                    for (Degree d : possibilities) {
+                        int i = d.toInt();
+                        if (i != 1 && i != 5 && i != 6) notPossibilities.add(d);
+                        else actualPossibilities.add(d);
+                    }
+                    break;
+                case Submediant: // 2 4 6
+                    for (Degree d : possibilities) {
+                        int i = d.toInt();
+                        if (i != 2 && i != 4 && i != 6) notPossibilities.add(d);
+                        else actualPossibilities.add(d);
+                    }
+                    break;
+                case Leading: // 1 7
+                    for (Degree d : possibilities) {
+                        int i = d.toInt();
+                        if (i != 1 && i != 7) notPossibilities.add(d);
+                        else actualPossibilities.add(d);
+                    }
+                    break;
+            }
+        }
+
+        //return a choice based on the resulting sets
+        return getChoice(actualPossibilities,notPossibilities);
+    }
+
+    /**
+     * Double argument wrapper for method above
+     */
+    public Degree transition(Degree degree, Set<Degree> possibilities){
+        return transition(degree,possibilities,1);
+    }
+
+    private Degree getChoice(HashSet<Degree> actualPossibilities, HashSet<Degree> notPossibilities){
+        if(actualPossibilities.size() == 1){ for(Degree d : actualPossibilities) return d;}
+        else if(actualPossibilities.size() > 0){
+
+            //TODO : make the choice of the actual possible choices weighted
+
+            Random random = new Random();
+            Degree[] degrees = new Degree[0];
+            actualPossibilities.toArray(degrees);
+            return degrees[random.nextInt(degrees.length)];
+        }else{ //only not possibilities has elements
+            Random random = new Random();
+            Degree[] degrees = new Degree[0];
+            notPossibilities.toArray(degrees);
+            return degrees[random.nextInt(degrees.length)];
+        }
+
+        //will never happen (making the compiler happy)
+        return Degree.Tonic;
     }
 }
