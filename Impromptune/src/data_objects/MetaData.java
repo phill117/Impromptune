@@ -118,7 +118,7 @@ public class MetaData {
         ArrayList<Note> currentBeat = null;
         int leftover = 0;
 
-        if(beattype == 4){
+        if(beattype == 4){ // for n/4 times
             for(Note currentNote : noteList){
                 if(currentDuration == 0 || leftover > 0){
                     //if got overfilled...
@@ -151,7 +151,9 @@ public class MetaData {
                 }
             }
         }else{ // its n/8 time
+            for(Note currentNote : noteList){
 
+            }
         }
 
         return beats;

@@ -1,6 +1,8 @@
 package gen_settings;
 
 import Renderer.MainWindow;
+import data_objects.MetaData;
+import data_objects.Note;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,6 +24,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -101,6 +104,8 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     mxp.parse(inputSource, handler);
 
                     //analyze
+                    MetaData data = MetaData.getInstance();
+                    ArrayList<ArrayList<Note>> beats = data.getBeatList();
 
                     File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
 
