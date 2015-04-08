@@ -170,12 +170,18 @@ public class ImpromptuneInitializer implements Initializable{
         System.exit(1);
     }
 
+    int zoomCounter = 0;
     @FXML void onZIN(ActionEvent event) {
-        mainWindow.setZoom(mainWindow.getZoom() - .25f);
+        if(zoomCounter <= 3) {
+            mainWindow.setZoom(mainWindow.getZoom() - .25f);
+            zoomCounter++;
+        }
     }
-
     @FXML void onZOUT(ActionEvent event) {
-        mainWindow.setZoom(mainWindow.getZoom() + .25f);
+        if(zoomCounter >= -3){
+            mainWindow.setZoom(mainWindow.getZoom() + .25f);
+            zoomCounter--;
+        }
     }
 
     @FXML void onABOUT(ActionEvent event) {
