@@ -16,7 +16,7 @@ public enum Degree {
 
     private int degree;
 
-    private Degree(int degree) { this.degree = degree; }
+    Degree(int degree) { this.degree = degree; }
 
     public int toInt() { return this.degree; }
 }

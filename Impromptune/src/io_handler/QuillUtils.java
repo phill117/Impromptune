@@ -137,17 +137,17 @@ public class QuillUtils {
             switch(keyRoot) {
                 case "C":
                     return 0;
-                case "G":
+                case "F":
                     return 1;
-                case "D":
+                case "G":
                     return 2;
-                case "A":
+                case "D":
                     return 3;
-                case "E":
+                case "A":
                     return 4;
-                case "B":
+                case "E":
                     return 5;
-                case "Gb":
+                case "B":
                     return 6;
                 default:
                     return 0;
@@ -161,11 +161,11 @@ public class QuillUtils {
                     return 1;
                 case "B":
                     return 2;
-                case "F#":
+                case "F":
                     return 3;
-                case "C#":
+                case "C":
                     return 4;
-                case "G#":
+                case "G":
                     return 5;
                 case "D":
                     return 6;

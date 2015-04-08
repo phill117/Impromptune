@@ -23,9 +23,9 @@ public class RhythmTransitionTable {
         this.lastKnotes = new LimitedQueue<>(order);
         this.markov = new LimitedQueue<>(order);
 
-        int k = 0;
-        while (k++ < order) //add k dimensions for model
-            markov.add(new MarkovState());
+//        int k = 0;
+//        while (k++ < order) //add k dimensions for model
+//            markov.add(new MarkovState());
     }
 
     //use the mxml parser and data objects...just as a quick way to sample other docs if we want to build a stronger model
@@ -57,8 +57,8 @@ public class RhythmTransitionTable {
     }
 
     private void updateKOrderLayers(String currentPitch) {
-        for (int i = 0; i < lastKnotes.size(); i++)
-            markov.get(i).updateLayer(currentPitch, lastKnotes.get(i));
+//        for (int i = 0; i < lastKnotes.size(); i++)
+//            markov.get(i).updateLayer(currentPitch, lastKnotes.get(i));
     }
 
     private int getRand(int i) {

@@ -380,30 +380,52 @@ public class BlackMagicka {
         String note = null;
 
         switch(index) {
-            case 0:
+            case 1:
                 note = pickTonic(root);
                 break;
-            case 1:
+            case 2:
                 note = pickSuperTonic(root);
                 break;
-            case 2:
+            case 3:
                 note = pickMediant(root);
                 break;
-            case 3:
+            case 4:
                 note = pickSubdominant(root);
                 break;
-            case 4:
+            case 5:
                 note = pickDominant(root);
                 break;
-            case 5:
+            case 6:
                 note = pickSubmediant(root);
                 break;
-            case 6:
+            case 7:
                 note = pickLeading(root);
                 break;
         }
 
         return note;
+    }
+
+    static private int getIndexOfScale(List<String> scale, String tone) {
+        int i = 0;
+
+        for (String s : scale) {
+            if (s.equals(tone))
+                return i;
+            i++;
+        }
+
+        return -1;
+    }
+
+    static Degree getDegreeIndex(String tonic, String mode, String tone) {
+        if (mode.equals("major")) {
+            return Degree.values()[getIndexOfScale(majorScale(tonic), tone)];
+        } else if (mode.equals("minor")) {
+            return Degree.values()[getIndexOfScale(minorScale(tonic), tone)];
+        }
+
+        return null;
     }
 
     //is this note in this root mode chord?

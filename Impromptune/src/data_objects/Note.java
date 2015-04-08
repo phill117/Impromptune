@@ -12,7 +12,7 @@ public class Note {
     String type;
     String tied = null;
 
-    public Note(){
+    public Note() {
 
     }
 
@@ -72,5 +72,25 @@ public class Note {
         //TODO - impement this crap later
 
         return 1;
+    }
+
+    @Override
+    public String toString() {
+        String str = new String();
+        char c = this.getPitch();
+        c -= 32;
+        str += c;
+        switch (this.getAccidental()) {
+            case 1:
+                str += '#';
+                break;
+            case 0:
+                break;
+            case -1:
+                str += 'b';
+                break;
+        }
+
+        return str;
     }
 }

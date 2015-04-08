@@ -1,5 +1,9 @@
 package virtuouso;
 
+import data_objects.Beat;
+import data_objects.Note;
+import utils.Pair;
+
 /**
  * Created by ben on 4/5/2015.
  */
@@ -11,19 +15,24 @@ public class MarkovState {
     //note counts
     private int histogram[][];
 
-    public MarkovState() {
+    public MarkovState(Pair<String, String> keySig) {
         this.histogram = new int [12][12];
         this.probMatrix = new double [12][12];
-        this.pitchAxis = new PitchAxis();
+        this.pitchAxis = new PitchAxis(keySig);
     }
 
     private void markIndexFound(int i, int j) {
         histogram[i][j]++;
     }
 
+    public double getIndexLikeliness(int i, int j) { normalize(); return probMatrix[i][j]; }
+
     //update THIS order of the model, transition tables build K of these
-    public void updateLayer(String currentPitch, String lastPitch) {
-        markIndexFound(pitchAxis.getIndex(currentPitch), pitchAxis.getIndex(lastPitch));
+    public void updateLayer(Beat currentBeat, Beat lastBeat) {
+        for (Note curr : currentBeat.getNotes()) {
+            for (Note prev : lastBeat.getNotes())
+                markIndexFound(pitchAxis.getIndex(curr.toString()), pitchAxis.getIndex(prev.toString()));
+        }
     }
 
     public void printStateHistogram() {
@@ -71,6 +80,7 @@ public class MarkovState {
         System.out.printf("\n");
 
         for (int i = 0; i < probMatrix.length; i++) {
+            double sum = 0.0;
             if (pitches[i].length() == 2)
                 System.out.printf(" %s  ", pitches[i]);
             else
@@ -78,8 +88,10 @@ public class MarkovState {
 
             for (int j = 0; j < probMatrix[0].length; j++) {
                 System.out.printf("%.2f,", probMatrix[i][j]);
+                sum += probMatrix[i][j];
             }
-            System.out.printf("\n");
+
+            System.out.printf(" %.2f\n", sum);
         }
     }
 
@@ -112,5 +124,9 @@ public class MarkovState {
             val += probMatrix[i][j];
 
         return val;
+    }
+
+    public PitchAxis getPitchAxis() {
+        return pitchAxis;
     }
 }
