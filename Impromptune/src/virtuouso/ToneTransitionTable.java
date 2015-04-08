@@ -17,10 +17,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 
 /**
@@ -55,7 +52,8 @@ public class ToneTransitionTable {
                     MetaData data = MetaData.getInstance();
                     ArrayList<ArrayList<Note>> beats = data.getBeatList();
 
-                    ToneTransitionTable ttt = new ToneTransitionTable(1);
+                    Pair<String, String> keySig = new Pair<>("C", "major");
+                    ToneTransitionTable ttt = new ToneTransitionTable(1,keySig);
 
 //                    for (int i = 0; i < 1000; i++) {
                         ttt.trainPiece(beats);
@@ -80,8 +78,6 @@ public class ToneTransitionTable {
 //        for (int i = 0; i < 4; i++) {
 //            beat.addNote(BlackMagicka.noteIndexToString(ttt.getRand(12)));
 //        }
-
-
     }
 
     private MersenneTwisterFast rand = new MersenneTwisterFast();
@@ -92,14 +88,14 @@ public class ToneTransitionTable {
     private LinkedList<Beat> lastKBeats; //last K order notes
     private LinkedList<MarkovState> markov; //list of the K order markov states
 
-    public ToneTransitionTable(int order) {
+    public ToneTransitionTable(int order, Pair<String, String> keySig) {
         this.order = order;
         this.lastKBeats = new LimitedQueue<>(order);
         this.markov = new LimitedQueue<>(order);
 
         int k = 0;
         while (k++ < order) //add k dimensions for model
-            markov.add(new MarkovState());
+            markov.add(new MarkovState(keySig));
     }
 
     //use the mxml parser and note/measure data objects...just as a quick way to sample other docs if we want to build a stronger model
@@ -125,12 +121,10 @@ public class ToneTransitionTable {
             Beat beat = new Beat();
             beat.setNotes(n);
             trainBeat(beat);
-            pickNote(beat, beat);
-            pickNote(beat, beat);
-            pickNote(beat, beat);
+//            pickNote(beat, beat);
+//            pickNote(beat, beat);
+//            pickNote(beat, beat);
         }
-
-
     }
 
     public void trainMeasure(Measure measure) {
@@ -185,10 +179,24 @@ public class ToneTransitionTable {
         return markov.get(k).getIndexLikeliness(i, j);
     }
 
-    //will eventually generate notes based on the model
-    public TreeMap<Degree, Pair<Note, Double>> pickNote(Beat beat, Beat beat1) {
+
+    //convert tone distribution to degree for decision
+    public HashMap<Degree, Double> possibleNotestoDegree(HashMap<Note, Double> toneDist) {
+        HashMap<Degree, Double> degreeDist = new HashMap<>();
+        Iterator it = toneDist.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            degreeDist.put(markov.getFirst().getPitchAxis().degreeIndex((Note)pair.getKey()), 1.0);
+        }
+
+        return degreeDist;
+    }
+
+    private HashMap<Note, Double>
+        pickNote(Beat beat, Beat beat1) {
         //getdegree from beats
-        TreeMap<Degree, Pair<Note, Double>> distribution = new TreeMap<>();
+        HashMap<Note, Double> distribution = new HashMap<>();
         System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[0]);
 
 //        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[1]);
@@ -198,10 +206,8 @@ public class ToneTransitionTable {
     }
 
     private void updateKOrderLayers(Beat beat) {
-        for (int i = 0; i < lastKBeats.size(); i++) {
+        for (int i = 0; i < lastKBeats.size(); i++)
             markov.get(i).updateLayer(beat, lastKBeats.get(i));
-        }
-
     }
 
     private int getRand(int i) {

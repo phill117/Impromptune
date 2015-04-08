@@ -406,6 +406,28 @@ public class BlackMagicka {
         return note;
     }
 
+    static private int getIndexOfScale(List<String> scale, String tone) {
+        int i = 0;
+
+        for (String s : scale) {
+            if (s.equals(tone))
+                return i;
+            i++;
+        }
+
+        return -1;
+    }
+
+    static Degree getDegreeIndex(String tonic, String mode, String tone) {
+        if (mode.equals("major")) {
+            return Degree.values()[getIndexOfScale(majorScale(tonic), tone)];
+        } else if (mode.equals("minor")) {
+            return Degree.values()[getIndexOfScale(minorScale(tonic), tone)];
+        }
+
+        return null;
+    }
+
     //is this note in this root mode chord?
     static boolean noteInChord(String root, String testNote, String mode) {  //note = this note, root = root of chord, mode = mode
         List<String> chord = null;

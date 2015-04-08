@@ -2,6 +2,7 @@ package virtuouso;
 
 import data_objects.Beat;
 import data_objects.Note;
+import utils.Pair;
 
 /**
  * Created by ben on 4/5/2015.
@@ -14,10 +15,10 @@ public class MarkovState {
     //note counts
     private int histogram[][];
 
-    public MarkovState() {
+    public MarkovState(Pair<String, String> keySig) {
         this.histogram = new int [12][12];
         this.probMatrix = new double [12][12];
-        this.pitchAxis = new PitchAxis();
+        this.pitchAxis = new PitchAxis(keySig);
     }
 
     private void markIndexFound(int i, int j) {

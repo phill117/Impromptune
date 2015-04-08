@@ -1,6 +1,7 @@
 package virtuouso;
 
 import data_objects.Note;
+import utils.Pair;
 
 /**
  * Created by ben on 4/3/2015.
@@ -10,22 +11,28 @@ import data_objects.Note;
 public class PitchAxis {
 
     String pitchAxis [];
+    String tonic = null;
+    String mode = null;
+
     boolean sharp = true; //sharp by default
 
-    public PitchAxis(char a) {
+    public PitchAxis(char a, Pair<String, String> keySig) {
         if (a == '#')
             pitchAxis = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
         else if (a == 'b')
             pitchAxis = new String[]{"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
     }
 
-    public PitchAxis() { //default
+    public PitchAxis(Pair<String, String> keySig) { //default
         pitchAxis = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+        tonic = keySig.t;
+        mode = keySig.u;
     }
 
     int getIndex(String pitch) {
         for (int i = 0; i < pitchAxis.length; i++)
             if (pitch.compareTo(pitchAxis[i]) == 0)
+
                 return i;
 
         return -1; //failed
@@ -109,5 +116,11 @@ public class PitchAxis {
         }
 
         return -1;
+    }
+
+    Degree degreeIndex(Note note) {
+        return BlackMagicka.getDegreeIndex(tonic, mode, note.toString());
+
+//        return degree;
     }
 }
