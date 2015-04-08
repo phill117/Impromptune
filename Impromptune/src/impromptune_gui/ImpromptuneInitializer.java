@@ -9,8 +9,9 @@ import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
 import gen_settings.GenSettings;
-import impromptune_gui.Dialogs.CompositionPropertiesDialog;
+import impromptune_gui.Dialogs.NewCompositionDialog;
 import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
+import impromptune_gui.Dialogs.NewCompositionLaunch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -146,6 +147,8 @@ public class ImpromptuneInitializer implements Initializable{
             settings.setMainWindow(mainWindow);
             settings.setStage(stage);
 
+            new NewCompositionLaunch(mainWindow, stage);
+
         }catch (IOException e){
             System.out.println("WAHT HAPPENED");
             e.printStackTrace();
@@ -194,9 +197,10 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNEW(ActionEvent event) {
+        new NewCompositionLaunch(mainWindow, stage);
         mainWindow.loadedFile = null;
         mainWindow.pageIndex = 0;
-            mainWindow.getContent().loadBlank();
+        //mainWindow.getContent().loadBlank();
     }
 
     @FXML void onNext(ActionEvent event) {
@@ -204,7 +208,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNewTab(ActionEvent event) {
-
+        new NewCompositionLaunch(mainWindow,stage);
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
@@ -239,6 +243,7 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onUndo(ActionEvent event) {
         mainWindow.undo();
+
     }
     @FXML void onRedo(ActionEvent event) {
         mainWindow.redo();

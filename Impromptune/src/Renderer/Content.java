@@ -63,6 +63,7 @@ public class Content
 
     boolean canUndo = false;
     boolean canRedo = false;
+    public boolean canSave = false;
     private Composition blankComp;
 
 	public Content(MainWindow mainWindow) {
@@ -197,6 +198,39 @@ public class Content
         }
     }
 
+
+
+    public void loadNew(String clef, String key, String keyType, String keyMod, String Time, int bpm) {
+        comp = new Composition(clef, key, keyType, keyMod, Time, bpm);
+        scoreDoc = comp.getCurrentScoreDoc();
+        undoList.clear();
+        undoIndex = 0;
+        addIndex = 1;
+        maxIndex = 1;
+        comp.resync();
+        refresh();
+        canSave = false;
+
+        try {
+            blankComp = comp.deepCopy();
+            undoList.add(comp.deepCopy());
+        }
+        catch   (Exception e)
+        {
+            System.out.print("deadbeef");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
     public void refresh(){
         layout = comp.getLayout();
         scoreDoc = comp.getCurrentScoreDoc();
@@ -219,6 +253,7 @@ public class Content
         canUndo = true;
         canRedo = false;
         addAction();
+        canSave = true;
 
 
     }
@@ -232,6 +267,7 @@ public class Content
         canUndo = true;
         canRedo = false;
         addAction();
+        canSave = true;
 
     }
 

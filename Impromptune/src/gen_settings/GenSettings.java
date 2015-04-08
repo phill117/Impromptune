@@ -3,11 +3,13 @@ package gen_settings;
 import Renderer.MainWindow;
 import data_objects.MetaData;
 import data_objects.Note;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.stage.FileChooser;
@@ -70,6 +72,10 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
          * 3. determine possible inner voices
          */
 
+        //disable the generation button
+        generate_btn.setDisable(true);
+
+        //make xml parser
         SAXParser mxp;
         MXMLWriter mxmlWriter = new MXMLWriter();
         try {
@@ -80,7 +86,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
             return;
         }
 
-
+        //save current file to xml
         FileChooser chooser = new FileChooser();
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML", "*.xml"),
@@ -96,6 +102,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
             public void run() {
                 try {
 
+                    //read the file (that is now xml)
                     System.out.println("started");
                     DefaultHandler handler = new MXMLContentHandler();
                     //InputSource inputSource = new InputSource(new FileReader((file)));
@@ -103,11 +110,20 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
                     mxp.parse(inputSource, handler);
 
-                    //analyze
+                    //get the list of beats
                     MetaData data = MetaData.getInstance();
                     ArrayList<ArrayList<Note>> beats = data.getBeatList();
 
+                    //get list of set of possible chords
+
+                    //get chord progression
+
+                    //sprint 3: make notes and add to "MetaData" structures
+
+                    //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
+
+                    //load file back to screen
 
                 } catch (SAXException e) {
                     System.out.println("SAX");
@@ -115,6 +131,14 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                 } catch (IOException e) {
                     System.out.println("IO");
                     e.printStackTrace();
+                }finally {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            generate_btn.setDisable(false);
+                        }
+                    });
+
                 }
             }
         }).start();

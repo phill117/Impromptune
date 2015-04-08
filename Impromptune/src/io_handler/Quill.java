@@ -13,6 +13,7 @@ import com.xenoage.zong.core.music.Part;
 import com.xenoage.zong.core.music.chord.*;
 import com.xenoage.zong.core.music.direction.*;
 import com.xenoage.zong.core.music.format.BezierPoint;
+import com.xenoage.zong.core.music.format.Position;
 import com.xenoage.zong.core.music.rest.Rest;
 import com.xenoage.zong.core.music.slur.SlurWaypoint;
 import com.xenoage.zong.core.music.time.Time;
@@ -29,6 +30,7 @@ import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.utils.math.Fraction.fr;
 import static com.xenoage.zong.core.music.Pitch.pi;
 import static com.xenoage.zong.core.music.format.SP.sp;
+import static com.xenoage.zong.core.text.UnformattedText.ut;
 
 /**
  * Created by ben on 2/25/15.
@@ -46,6 +48,7 @@ public class Quill implements CommandListener, Serializable {
     private BezierPoint startBp = null;
     private BezierPoint endBp = null;
     private ArrayList<SlurWaypoint> openSlurWaypoints = null;
+    private Tempo tempo = null;
 
     public Quill(Cursor cursor, String instr) {
         this.cursor = cursor;
@@ -76,7 +79,17 @@ public class Quill implements CommandListener, Serializable {
     }
 
     void writeTempo(String timeSig, int bpm) {
-        cursor.write((ColumnElement) new Tempo(QuillUtils.getFraction(timeSig), bpm));
+
+        String values[] = timeSig.split("/");
+        int num = Integer.parseInt(values[0]);
+        int den = Integer.parseInt(values[1]);
+
+        Fraction fr = Fraction.fr(num, den);
+        Tempo tempo = new Tempo(fr, bpm);
+        tempo.setText(ut(getTempoName(bpm)));
+        tempo.setPositioning(new Position(null, 22f, -5f, -5f));
+        this.tempo = tempo;
+        cursor.write((ColumnElement) tempo);
     }
 
     void writeTime (String timeSig) { //time option selected, arguments should be in following format: "4/4"
@@ -294,6 +307,44 @@ public class Quill implements CommandListener, Serializable {
     void writeTriplet(String triplet) {
 
     }
+
+    private String getTempoName(int bpm){
+        switch (bpm) {
+            case 20:
+                return "Larghissimo";
+            case 30:
+                return "Grave";
+            case 200:
+                return "Presto";
+            default:
+                return null;
+        }
+            /*
+          Larghissimo –  (24 BPM and under)
+Grave – w (25–45 BPM)
+Largo –(40–60 BPM)
+Lento – (45–60 BPM)
+Larghetto – (60–66 BPM)
+Adagio – (66–76 BPM)
+Adagietto – (72–76 BPM)
+Andante –(76–108 BPM)
+Andantino – (80–108 BPM)
+Marcia moderato –  (83–85 BPM)
+Andante moderato – (92–112 BPM)
+Moderato – (108–120 BPM)
+Allegretto – (112–120 BPM)
+Allegro moderato – (116–120 BPM)
+Allegro –(120–168 BPM)
+Vivace – (168–176 BPM)
+Vivacissimo –  (172–176 BPM)
+Allegrissimo (172–176 BPM)
+Presto –  (168–200 BPM)
+Prestissimo – (200 BPM and over)
+*/
+
+    }
+
+
 
     @Override
     public void commandExecuted(Document document, Command command) {

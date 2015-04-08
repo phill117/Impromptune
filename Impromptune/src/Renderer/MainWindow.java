@@ -64,7 +64,7 @@ public class MainWindow {
 		//content.loadNextScore();
        // content.loadScore();  // TO LOAD REVOLUTIONARY
         //Load blank composition
-        content.loadBlank();
+       // content.loadBlank();
 	}
 
 
@@ -74,6 +74,9 @@ public class MainWindow {
 
     //Handles saving file as musicXML
     public void save(Stage s) {
+
+        if(!content.canSave)
+            return;
 
         File outFile;
         if(loadedFile != null)
@@ -121,6 +124,11 @@ public class MainWindow {
     //Change above to save-as, save will just get the current filename loaded?
     //Handles saving file as musicXML
     public void saveAs(File outFile) {
+
+        if(!content.canSave || outFile == null)
+            return;
+
+
         ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(content.getSD(), outFile);
     }
 
