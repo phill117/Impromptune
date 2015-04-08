@@ -180,6 +180,7 @@ public class QuillUtils {
     public static Key getKeySig(String keyRoot, String mode) {
         Mode m = null;
         int fifth = 0;
+        mode = mode.toLowerCase();
 
         switch (mode) {
             case "major":
