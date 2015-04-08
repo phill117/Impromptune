@@ -7,6 +7,8 @@ import com.xenoage.zong.core.music.VoiceElement;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
@@ -16,7 +18,7 @@ import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
  * @author Andreas Wenger
  */
 public final class Rest
-	implements VoiceElement {
+	implements VoiceElement,Serializable {
 
 	/** The duration of this rest. */
 	@Getter @Setter @NonNull private Fraction duration;

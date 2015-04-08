@@ -42,15 +42,16 @@
                         <TextField fx:id="composerField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <ComboBox fx:id="timeSig" prefHeight="39.0" prefWidth="109.0" />
+                        <ComboBox fx:id="timeSig" prefHeight="39.0" prefWidth="109.0" value="4/4" />
                      </children>
                         </HBox>
                   <Label text="Time Signature" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                   <Label text="Key Signature" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <ComboBox fx:id="key" prefHeight="39.0" prefWidth="80.0" />
-                        <ComboBox fx:id="mode" prefWidth="150.0" />
+                        <ComboBox fx:id="key" prefHeight="32.0" prefWidth="80.0" value="A" />
+                        <ComboBox fx:id="symbol" prefHeight="31.0" prefWidth="77.0" />
+                        <ComboBox fx:id="mode" prefHeight="31.0" prefWidth="107.0" value="Major" />
                      </children>
                   </HBox>
                     </children>
