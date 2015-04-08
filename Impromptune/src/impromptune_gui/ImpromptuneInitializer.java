@@ -9,8 +9,9 @@ import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
 import gen_settings.GenSettings;
-import impromptune_gui.Dialogs.CompositionPropertiesDialog;
+import impromptune_gui.Dialogs.NewCompositionDialog;
 import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
+import impromptune_gui.Dialogs.NewCompositionLaunch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -194,6 +195,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNEW(ActionEvent event) {
+        new NewCompositionLaunch(mainWindow);
         mainWindow.loadedFile = null;
         mainWindow.pageIndex = 0;
             mainWindow.getContent().loadBlank();
@@ -204,7 +206,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNewTab(ActionEvent event) {
-
+        new NewCompositionLaunch(mainWindow);
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
