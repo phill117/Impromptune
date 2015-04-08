@@ -37,6 +37,7 @@ public class NewCompositionDialog implements Initializable{
 
     @FXML Button OK;
    private static Stage stage;
+    private static Stage parent;
     private static MainWindow mainWindow;
 
     public static void setMainWindow(MainWindow mw){
@@ -46,13 +47,16 @@ public class NewCompositionDialog implements Initializable{
     public static void setStage(Stage s){
         stage = s;
     }
+    public static void setParent(Stage s){
+        parent = s;
+    }
 
     @FXML void onOkay(ActionEvent event){
-        //(String clef, String key, String keyType, String keyMod, String Time, int bpm)
+        //                                  clef, key,                      keyMode,                  keyType          Time,            bpm)
         mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),null,timeSig.getValue().toString(),200);
         //mainWindow.getContent().loadNew("treble","A","Major",null,"4/4",200);
+        parent.setTitle("Impromptune - " +titleField.getText() + " - " + composerField.getText());
         stage.close();
-
     }
 
     @FXML void onCancel(ActionEvent event){

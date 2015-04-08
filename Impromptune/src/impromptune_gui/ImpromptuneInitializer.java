@@ -147,7 +147,7 @@ public class ImpromptuneInitializer implements Initializable{
             settings.setMainWindow(mainWindow);
             settings.setStage(stage);
 
-            new NewCompositionLaunch(mainWindow);
+            new NewCompositionLaunch(mainWindow, stage);
 
         }catch (IOException e){
             System.out.println("WAHT HAPPENED");
@@ -197,7 +197,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNEW(ActionEvent event) {
-        new NewCompositionLaunch(mainWindow);
+        new NewCompositionLaunch(mainWindow, stage);
         mainWindow.loadedFile = null;
         mainWindow.pageIndex = 0;
         //mainWindow.getContent().loadBlank();
@@ -208,7 +208,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNewTab(ActionEvent event) {
-        new NewCompositionLaunch(mainWindow);
+        new NewCompositionLaunch(mainWindow,stage);
     }
 
     @FXML void onSAVEAS(ActionEvent event) {

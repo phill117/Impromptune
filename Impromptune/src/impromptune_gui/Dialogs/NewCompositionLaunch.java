@@ -19,7 +19,7 @@ public class NewCompositionLaunch {
     private Stage stage;
     private BorderPane root;
 
-    public NewCompositionLaunch(MainWindow mw){
+    public NewCompositionLaunch(MainWindow mw, Stage parent){
         CompositionPropertiesDialog.setMainWindow(mw);
 
         this.stage = new Stage();
@@ -29,7 +29,7 @@ public class NewCompositionLaunch {
         stage.setAlwaysOnTop(true);
         NewCompositionDialog.setMainWindow(mw);
         NewCompositionDialog.setStage(stage);
-
+        NewCompositionDialog.setParent(parent);
         try {
             root = loader.load(getClass().getResource("NewCompositionDialog.fxml"));
             stage.setScene(new Scene(root));

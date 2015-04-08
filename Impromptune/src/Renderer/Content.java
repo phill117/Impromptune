@@ -63,6 +63,7 @@ public class Content
 
     boolean canUndo = false;
     boolean canRedo = false;
+    public boolean canSave = false;
     private Composition blankComp;
 
 	public Content(MainWindow mainWindow) {
@@ -208,6 +209,7 @@ public class Content
         maxIndex = 1;
         comp.resync();
         refresh();
+        canSave = false;
 
         try {
             blankComp = comp.deepCopy();
@@ -251,6 +253,7 @@ public class Content
         canUndo = true;
         canRedo = false;
         addAction();
+        canSave = true;
 
 
     }
@@ -264,6 +267,7 @@ public class Content
         canUndo = true;
         canRedo = false;
         addAction();
+        canSave = true;
 
     }
 
