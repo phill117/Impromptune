@@ -58,6 +58,7 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("type")){currentFlag = MXML.Type; return;}
         if(qName.equals("rest")){currentNote.setPitch('r');return;}
         if(qName.equals("chord")){isChord = true;}
+        if(qName.equals("tie")){currentNote.setTied(attributes.getValue("type"));return;}
 
         if(qName.equals("measure")){
             currentFlag = MXML.Measure;
@@ -70,6 +71,7 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("divisions")){currentFlag = MXML.Divisions; return;}
         if(qName.equals("fifths")){currentFlag = MXML.Fifths; return;}
         if(qName.equals("sound")){metaData.setTempo(Integer.parseInt(attributes.getValue("tempo")));return;}
+
         currentFlag = MXML.NONE;
 
     }

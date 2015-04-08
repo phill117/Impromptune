@@ -132,6 +132,11 @@ public class MXMLWriter {
                         writer.writeStartElement("duration");
                         writer.writeCharacters(Integer.toString(note.getDuration()));
                         writer.writeEndElement();
+                        //tie
+                        if(note.isTied()) {
+                            writer.writeEmptyElement("tie");
+                            writer.writeAttribute("type", note.getTiedType());
+                        }
                         //type
                         writer.writeStartElement("type");
                         writer.writeCharacters(note.getType());

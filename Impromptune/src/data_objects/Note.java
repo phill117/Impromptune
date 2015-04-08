@@ -10,7 +10,7 @@ public class Note {
     int accidental;
     int duration;   //shall be counted as a fraction of one beat
     String type;
-    boolean tied = false;
+    String tied = null;
 
     public Note(){
 
@@ -45,10 +45,12 @@ public class Note {
     public void setPitch(char pitch) {this.pitch = pitch;}
 
     public boolean isTied() {
-        return tied;
+        return tied != null;
     }
 
-    public void setTied(boolean tied) {this.tied = tied;}
+    public void setTied(String tied) {this.tied = tied;}
+
+    public String getTiedType(){return this.tied;}
 
     public String getType() {
         return type;
