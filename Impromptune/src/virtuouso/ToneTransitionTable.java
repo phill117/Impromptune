@@ -157,15 +157,15 @@ public class ToneTransitionTable {
 //        updateKOrderLayers(currentPitch);
     }
 
-    private double [] getBeatLikelihoods(Beat beat, int k) {
-        double [] dbl = new double[beat.getNotes().size()];
-        int i = 0;
+    HashMap<Note, Double> getBeatLikelihoods(Beat beat, int k) {
+        HashMap<Note, Double> distribution = new HashMap<>();
+//        int i = 0;
 
         for (Note n : beat.getNotes()) {
-            dbl[i] = getKthLikelihood(n, k);
+            distribution.put(n, getKthLikelihood(n, k));
         }
 
-        return dbl;
+        return distribution;
     }
 
     private double getKthLikelihood(Note note, int k) { //k == index of order
@@ -181,23 +181,23 @@ public class ToneTransitionTable {
 
 
     //convert tone distribution to degree for decision
-    public HashMap<Degree, Double> possibleNotestoDegree(HashMap<Note, Double> toneDist) {
+    private HashMap<Degree, Double> possibleNotestoDegree(HashMap<Note, Double> toneDist) {
         HashMap<Degree, Double> degreeDist = new HashMap<>();
         Iterator it = toneDist.entrySet().iterator();
 
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            degreeDist.put(markov.getFirst().getPitchAxis().degreeIndex((Note)pair.getKey()), 1.0);
+            degreeDist.put(markov.getFirst().getPitchAxis().degreeIndex((Note) pair.getKey()), 1.0);
         }
 
         return degreeDist;
     }
 
-    private HashMap<Note, Double>
-        pickNote(Beat beat, Beat beat1) {
+    private HashMap<Note, Double> pickNote(Beat beat) {
         //getdegree from beats
+//        lastKBeats.getFirst();
         HashMap<Note, Double> distribution = new HashMap<>();
-        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[0]);
+        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0).keySet());
 
 //        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[1]);
 //        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[2]);

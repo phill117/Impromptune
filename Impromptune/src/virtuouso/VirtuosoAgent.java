@@ -3,8 +3,15 @@ package virtuouso;
 import data_objects.Beat;
 import data_objects.MetaData;
 import data_objects.Note;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 import utils.Pair;
+import xml_parser.MXMLContentHandler;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -15,7 +22,50 @@ import java.util.*;
 public class VirtuosoAgent {
 
     public static void main(String args[]) {
-        System.out.println(BlackMagicka.pickDominant("A"));
+
+//        System.out.println(BlackMagicka.pickDominant("A"));
+
+        SAXParser mxp;
+        try {
+            mxp = SAXParserFactory.newInstance().newSAXParser();
+        }catch(Exception e){
+            System.out.println("Could not make parser");
+            e.printStackTrace();
+            return;
+        }
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    System.out.println("started");
+                    DefaultHandler handler = new MXMLContentHandler();
+                    //InputSource inputSource = new InputSource(new FileReader((file)));
+                    //      THIS IS A TEMP INPUT SOURCE
+                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
+                    mxp.parse(inputSource, handler);
+
+                    //analyze
+                    MetaData data = MetaData.getInstance();
+                    ArrayList<ArrayList<Note>> beats = data.getBeatList();
+
+                    VirtuosoAgent agent = new VirtuosoAgent();
+                    agent.getInstance().pickNote(MetaData.getInstance().getNoteList().get(0));
+
+                } catch (SAXException e) {
+                    System.out.println("SAX");
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    System.out.println("IO");
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+
     }
 
     private VirtuosoAgent rationalAgent;
@@ -105,8 +155,10 @@ public class VirtuosoAgent {
 //
 //    }
 
-    void pickNote () {
-
+    void pickNote (Note note) {
+        Beat beat = new Beat();
+        beat.addNote(note);
+        model.pickNote(beat);
     }
 
     /*******
