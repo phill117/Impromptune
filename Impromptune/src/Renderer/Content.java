@@ -197,6 +197,38 @@ public class Content
         }
     }
 
+
+
+    public void loadNew(String clef, String key, String keyType, String keyMod, String Time, int bpm) {
+        comp = new Composition(clef, key, keyType, keyMod, Time, bpm);
+        scoreDoc = comp.getCurrentScoreDoc();
+        undoList.clear();
+        undoIndex = 0;
+        addIndex = 1;
+        maxIndex = 1;
+        comp.resync();
+        refresh();
+
+        try {
+            blankComp = comp.deepCopy();
+            undoList.add(comp.deepCopy());
+        }
+        catch   (Exception e)
+        {
+            System.out.print("deadbeef");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
     public void refresh(){
         layout = comp.getLayout();
         scoreDoc = comp.getCurrentScoreDoc();

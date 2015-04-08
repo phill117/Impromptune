@@ -87,6 +87,27 @@ public class Composition implements Serializable{
 
     }
 
+
+
+
+    public Composition(String clef, String key, String keyType, String keyMod, String Time, int bpm) {
+        quills = new ArrayList<Quill>();
+        currentComp = initializeEmptyScore(clef, key, keyType, keyMod, Time, bpm);
+        setLayoutFormat(currentComp);
+        currentScoreDoc = initializeScoreDoc(currentComp);
+        layout = currentScoreDoc.getLayout();
+        currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
+    }
+
+
+
+
+
+
+
+
+
+
     public MP getLastMeasure() {
         MP mp = MP.atVoice(0, currentComp.getMeasuresCount() - 1, 0);
         mp = mp.getWithBeat(currentComp);
@@ -183,6 +204,10 @@ public class Composition implements Serializable{
         quills.get(currentIndex).writeInstrument(instr);
     }
 
+    public void writeTempo(String time, int bpm) {
+        quills.get(currentIndex).writeTempo(time, bpm);
+    }
+
     public void addPart(Score score, String part) {
         Instrument instr = Instrument.defaultInstrument;
         Part pianoPart = new Part("Piano", null, 1, alist(instr));
@@ -203,9 +228,42 @@ public class Composition implements Serializable{
         writeClef("treble");
         writeKeySig("B", "major");
         writeTimeSig("4/4");
-
         return currentComp;
     }
+
+
+    Score initializeEmptyScore(String clef, String key, String keyType, String keyMod, String Time, int bpm) {
+        Score currentComp = new Score();
+
+        float is = currentComp.getFormat().getInterlineSpace();
+        StaffLayout staffLayout = new StaffLayout(is * SPACING); // Was 9, changes distance between staves
+        currentComp.getFormat().setStaffLayoutOther(staffLayout);
+
+        addPart(currentComp, "Piano");
+
+        quills.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
+
+        writeClef(clef);
+        writeKeySig(key, keyType);
+        writeTimeSig(Time);
+        writeTempo(Time,bpm);
+        return currentComp;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     ScoreDoc initializeScoreDocFromFile(String filePath) {
         try {

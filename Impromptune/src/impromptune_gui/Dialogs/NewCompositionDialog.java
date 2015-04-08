@@ -5,8 +5,10 @@ import com.xenoage.zong.core.info.ScoreInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,18 +34,29 @@ public class NewCompositionDialog implements Initializable{
     @FXML ComboBox key;
     @FXML ComboBox mode;
 
+    @FXML Button OK;
+   private static Stage stage;
     private static MainWindow mainWindow;
 
     public static void setMainWindow(MainWindow mw){
         mainWindow = mw;
     }
 
+    public static void setStage(Stage s){
+        stage = s;
+    }
+
     @FXML void onOkay(ActionEvent event){
+        //(String clef, String key, String keyType, String keyMod, String Time, int bpm)
+        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),null,timeSig.getValue().toString(),200);
+        //mainWindow.getContent().loadNew("treble","A","Major",null,"4/4",200);
+        stage.close();
 
     }
 
     @FXML void onCancel(ActionEvent event){
 
+        stage.close();
     }
 
     @Override

@@ -21,10 +21,15 @@ public class NewCompositionLaunch {
 
     public NewCompositionLaunch(MainWindow mw){
         CompositionPropertiesDialog.setMainWindow(mw);
+
         this.stage = new Stage();
         root = new BorderPane();
         FXMLLoader loader = new FXMLLoader();
         loader.setRoot(root);
+        stage.alwaysOnTopProperty();
+        NewCompositionDialog.setMainWindow(mw);
+        NewCompositionDialog.setStage(stage);
+
         try {
             root = loader.load(getClass().getResource("NewCompositionDialog.fxml"));
             stage.setScene(new Scene(root));

@@ -9,6 +9,8 @@ import com.xenoage.zong.core.text.Text;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 
 
@@ -25,7 +27,7 @@ import static com.xenoage.utils.CheckUtils.checkArgsNotNull;
 @Data @EqualsAndHashCode(callSuper=false)
 public final class Tempo
 	extends Direction
-	implements TextElement, ColumnElement {
+	implements TextElement, ColumnElement, Serializable {
 
 	/** The musical meaning: which beat per minute. */
 	@NonNull private Fraction baseBeat;

@@ -64,7 +64,7 @@ public class MainWindow {
 		//content.loadNextScore();
        // content.loadScore();  // TO LOAD REVOLUTIONARY
         //Load blank composition
-        content.loadBlank();
+       // content.loadBlank();
 	}
 
 
