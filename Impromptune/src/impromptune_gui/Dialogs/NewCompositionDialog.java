@@ -54,10 +54,6 @@ public class NewCompositionDialog implements Initializable{
     }
 
     @FXML void onOkay(ActionEvent event){
-        //                                  clef, key,                      keyMode,                  keyType          Time,            bpm)
-        //System.out.print(tempo.getValue().toString().indexOf('–'));
-       // System.out.print(tempo.getValue().toString().substring((tempo.getValue().toString().indexOf('–')) + 1));
-
 
         if(!isValidKey()){
             ImpromptuneInitializer.showMessageDialogStat("Oh No! There are too many sharps or flats in the key you've chosen. Please choose a new one.");
@@ -66,16 +62,8 @@ public class NewCompositionDialog implements Initializable{
 
         int bpm = Integer.parseInt(tempo.getValue().toString().substring((tempo.getValue().toString().indexOf('–')) + 1).trim());
 
-        //                                  clef, key,                      keyMode,                  keyType(flat, sharp etc)          Time,            bpm)
         mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),bpm);
 
-
-
-
-
-
-       // mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),120);
-        //mainWindow.getContent().loadNew("treble","A","Major",null,"4/4",200);
         parent.setTitle("Impromptune - " +titleField.getText() + " - " + composerField.getText());
         stage.close();
     }
@@ -111,8 +99,6 @@ public class NewCompositionDialog implements Initializable{
                 "Vivace – 170",
                 "Presto – 185",
                 "Prestissimo – 200"));
-
-
     }
 
     private boolean isValidKey(){
