@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+import virtuouso.VirtuosoAgent;
 import xml_parser.MXMLContentHandler;
 import xml_parser.MXMLWriter;
 
@@ -107,30 +108,22 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     DefaultHandler handler = new MXMLContentHandler();
                     //InputSource inputSource = new InputSource(new FileReader((file)));
                     //      THIS IS A TEMP INPUT SOURCE
-                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
-                    mxp.parse(inputSource, handler);
+//                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
+//                    mxp.parse(inputSource, handler);
 
-                    //get the list of beats
-                    MetaData data = MetaData.getInstance();
-                    ArrayList<ArrayList<Note>> beats = data.getBeatList();
-
-                    //get list of set of possible chords
-
-                    //get chord progression
-
-                    //sprint 3: make notes and add to "MetaData" structures
-
+                    VirtuosoAgent agent = new VirtuosoAgent(file.getName());
+                    System.out.println(agent.buildChordProgression());
                     //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
 
                     //load file back to screen
 
-                } catch (SAXException e) {
-                    System.out.println("SAX");
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    System.out.println("IO");
-                    e.printStackTrace();
+//                } catch (SAXException e) {
+//                    System.out.println("SAX");
+//                    e.printStackTrace();
+//                } catch (IOException e) {
+//                    System.out.println("IO");
+//                    e.printStackTrace();
                 }finally {
                     Platform.runLater(new Runnable() {
                         @Override

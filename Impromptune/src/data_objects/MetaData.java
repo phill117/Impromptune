@@ -1,7 +1,16 @@
 package data_objects;
 
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 import virtuouso.Degree;
+import xml_parser.MXMLContentHandler;
+import xml_parser.MXMLWriter;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -34,6 +43,38 @@ public class MetaData {
     }
 
     private MetaData(){}
+
+    public MetaData(String fileName) {
+
+        //make xml parser
+        SAXParser mxp;
+        MXMLWriter mxmlWriter = new MXMLWriter();
+        try {
+            mxp = SAXParserFactory.newInstance().newSAXParser();
+        }catch(Exception e){
+            System.out.println("Could not make parser");
+            e.printStackTrace();
+            return;
+        }
+
+        try {
+
+            //read the file (that is now xml)
+            System.out.println("started");
+            DefaultHandler handler = new MXMLContentHandler(this);
+            //InputSource inputSource = new InputSource(new FileReader((file)));
+            //      THIS IS A TEMP INPUT SOURCE
+            InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream(fileName));
+            mxp.parse(inputSource, handler);
+
+        } catch (SAXException e) {
+            System.out.println("SAX");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("IO");
+            e.printStackTrace();
+        }
+    }
 
     public String getLine() {
         return line;

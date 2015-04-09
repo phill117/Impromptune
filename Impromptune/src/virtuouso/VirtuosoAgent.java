@@ -3,16 +3,10 @@ package virtuouso;
 import data_objects.Beat;
 import data_objects.MetaData;
 import data_objects.Note;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
+
 import utils.LimitedQueue;
 import utils.Pair;
-import xml_parser.MXMLContentHandler;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -25,25 +19,25 @@ public class VirtuosoAgent {
     public static void main(String args[]) {
 
 //        System.out.println(BlackMagicka.pickDominant("A"));
-        VirtuosoAgent agent = new VirtuosoAgent();
-        agent.build("gen_settings/MozartPianoSonata.xml");
+        VirtuosoAgent agent = new VirtuosoAgent("gen_settings/MozartPianoSonata.xml");
+//        agent.build("gen_settings/MozartPianoSonata.xml");
         System.out.println(agent.chordProgression);
 
-        MetaData data = MetaData.getInstance();
+        MetaData data = new MetaData("gen_settings/MozartPianoSonata.xml");
         ArrayList<ArrayList<Note>> beats = data.getBeatList();
 
 //        VirtuosoAgent agent = new VirtuosoAgent();
         List<String> possibleChords = new ArrayList<>();
         for (ArrayList<Note> notes : beats) {
             for (Note n : notes) {
-                String s = agent.getInstance().pickNote(n);
+                String s = agent.pickNote(n);
                 if (s == null) //not in key
                     continue;
                 possibleChords.add(s);
             }
         }
 
-        agent.chordProgression = agent.buildChordProgression(possibleChords);
+        agent.chordProgression = agent.buildChordProgression();
         System.out.println(agent.chordProgression);
     }
 
@@ -53,23 +47,22 @@ public class VirtuosoAgent {
     private String mode;
     private Set<String> chordProgression;
 
-
-    private VirtuosoAgent() {
+    public VirtuosoAgent(String fileName) {
         keyTonic = "C";
         mode = "major";
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
         model = new ToneTransitionTable(2, keySig);
-        model.trainPiece(MetaData.getInstance().getBeatList());
+        model.trainFile("gen_settings/MozartPianoSonata.xml");
 //        chordProgression = new HashSet<>();
 //        possibleChords = new ArrayList<>();
 
     }
 
-    public VirtuosoAgent getInstance() {
-        if (rationalAgent == null)
-            rationalAgent = new VirtuosoAgent();
-        return rationalAgent;
-    }
+//    public VirtuosoAgent getInstance() {
+//        if (rationalAgent == null)
+//            rationalAgent = new VirtuosoAgent();
+//        return rationalAgent;
+//    }
 
     public Pair<String, Integer> getMaxPair(List<Pair<String, Integer>> chords) {
         Pair <String, Integer> max = chords.get(0);
@@ -80,15 +73,30 @@ public class VirtuosoAgent {
         return max;
     }
 
-    public Set<String> buildChordProgression(List<String> chords) {
-        Set<String> tmp =  new HashSet<String>(chords);
+    public Set<String> buildChordProgression() {
+
+        ArrayList<ArrayList<Note>> beats = new MetaData("gen_settings/MozartPianoSonata.xml").getBeatList();
+
+//        VirtuosoAgent agent = new VirtuosoAgent();
+        List<String> possibleChords = new ArrayList<>();
+        for (ArrayList<Note> notes : beats) {
+            for (Note n : notes) {
+                String s = pickNote(n);
+                if (s == null) //not in key
+                    continue;
+                possibleChords.add(s);
+            }
+        }
+//        chordProgression = buildChordProgression();
+
+        Set<String> tmp =  new HashSet<String>(possibleChords);
         List<Pair<String, Integer>> prog = new LimitedQueue<>(7);
 
         for (String s : tmp) {
-            int i = Collections.frequency(chords, s);
+            int i = Collections.frequency(possibleChords, s);
             prog.add(new Pair<>(s, i));
 
-            System.out.println(Collections.frequency(chords, s) + " " + s);
+            System.out.println(Collections.frequency(possibleChords, s) + " " + s);
         }
 
         Set<String> ret = new HashSet();
@@ -105,13 +113,15 @@ public class VirtuosoAgent {
 //        possibleChords.add(tone);
     }
 
-    private enum WeightType{Chord, Beat, PassingTone, Root, Inversion}
+    private enum WeightType{Chord, StrongBeat, NeighborTone, PassingTone, Root, Inversion}
     //this should be our generic hook for different weight schemes, different weighting for choosing likely chord progression than for picking phrase notes
     int heuristicCompare(WeightType type) { //needs more parameters of course, just a sketch of using different comparisons for choosing notes
         switch (type) {
             case Chord:
                 break;
-            case Beat:
+            case StrongBeat:
+                break;
+            case NeighborTone:
                 break;
             case PassingTone:
                 break;
@@ -190,13 +200,34 @@ public class VirtuosoAgent {
         return BlackMagicka.pickIthNote(keyTonic, degree.toInt());
     }
 
+    //ignore this for now
+    int degreeWeight[][] =
+            //1   2     3     4     5    6     7
+            {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
+            {0,   3,    0,    0,    4,   0,    1}, //supertonic to ...
+            {0,   0,    2,    4,    9,   4,    0}, //mediant to ...
+            {4,   2,    0,    2,    2,   0,    1}, //etc...
+            {5,   0,    0,    0,    3,   2,    0},
+            {0,   5,    0,    3,    0,   2,    0},
+            {9,   0,    0,    0,    0,   0,    1}};
+
+
     //this should calculate the decision weighting for a degree with respect to the probable tones
     double calcScore(Degree degree, HashMap<Degree, Double> dist) {
-        return 0.0;
+        double score = 0.0;
+        Iterator it = dist.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            Degree from = (Degree)pair.getKey();
+            score = (double) pair.getValue() * degreeWeight[from.toInt()][degree.toInt()];
+        }
+
+        return score;
     }
 
     Pair<Degree, Double> getMaxWeight(HashMap<Degree, Double> distribution) {
-        HashMap<Degree, Double> degreeDist = new HashMap<>();
+//        HashMap<Degree, Double> degreeDist = new HashMap<>();
         Iterator it = distribution.entrySet().iterator();
 
         Double value = new Double(0);
@@ -213,23 +244,11 @@ public class VirtuosoAgent {
         return max;
     }
 
+
+    //just a wrapper for above
     Degree getMaxWeightDegree(HashMap<Degree, Double> distribution) {
         return getMaxWeight(distribution).t;
     }
-
-    /*******
-     * Moved from MetaData:
-     *******/
-    //ignore this for now
-    double chordFrequencies[][] =
-            //1     2       3       4       5       6       7
-            {{1/7,  1/7,    1/7,    1/7,    1/7,    1/7,    1/7}, //tonic to ...
-            {0,    .3,     0,      0,      .6,     0,      .1}, //supertonic to ...
-            {0,    0,      .2,     .4,      0,     .4,     0}, //mediant to ...
-            {.3,   .2,     0,      .2,      .2,    0,      .1}, //etc...
-            {.5,   0,      0,      0,       .3,    .2,     0},
-            {0,    .5,     0,      .3,      0,     .2,     0},
-            {.9,   0,      0,      0,       0,     0,      .1}};
 
     /**
      * returns a degree that is the root of the next chord in the progression
@@ -315,8 +334,6 @@ public class VirtuosoAgent {
         if(actualPossibilities.size() == 1){ for(Degree d : actualPossibilities.keySet()) return d; }
         else if(actualPossibilities.size() > 0) {
 
-            //TODO : make the choice of the actual possible choices weighted
-
 //            Random random = new Random();
 //            Degree[] degrees = new Degree[0];
 
@@ -332,34 +349,5 @@ public class VirtuosoAgent {
 
         //will never happen (making the compiler happy)
         return Degree.Tonic;
-    }
-
-    private void build(String fileName) {
-        SAXParser mxp;
-        try {
-            mxp = SAXParserFactory.newInstance().newSAXParser();
-        }catch(Exception e){
-            System.out.println("Could not make parser");
-            e.printStackTrace();
-            return;
-        }
-        try {
-
-            System.out.println("started");
-            DefaultHandler handler = new MXMLContentHandler();
-            //InputSource inputSource = new InputSource(new FileReader((file)));
-            //      THIS IS A TEMP INPUT SOURCE
-            InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream(fileName));
-            mxp.parse(inputSource, handler);
-
-            //analyze
-
-        } catch (SAXException e) {
-            System.out.println("SAX");
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("IO");
-            e.printStackTrace();
-        }
     }
 }

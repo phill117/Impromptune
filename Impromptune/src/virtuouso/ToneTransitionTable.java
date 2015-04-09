@@ -25,61 +25,6 @@ import java.util.*;
  */
 public class ToneTransitionTable {
 
-    public static void main (String args[]) {
-        SAXParser mxp;
-        try {
-            mxp = SAXParserFactory.newInstance().newSAXParser();
-        }catch(Exception e){
-            System.out.println("Could not make parser");
-            e.printStackTrace();
-            return;
-        }
-
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-
-                    System.out.println("started");
-                    DefaultHandler handler = new MXMLContentHandler();
-                    //InputSource inputSource = new InputSource(new FileReader((file)));
-                    //      THIS IS A TEMP INPUT SOURCE
-                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
-                    mxp.parse(inputSource, handler);
-
-                    //analyze
-                    MetaData data = MetaData.getInstance();
-                    ArrayList<ArrayList<Note>> beats = data.getBeatList();
-
-                    Pair<String, String> keySig = new Pair<>("C", "major");
-                    ToneTransitionTable ttt = new ToneTransitionTable(1,keySig);
-
-//                    for (int i = 0; i < 1000; i++) {
-                        ttt.trainPiece(beats);
-//                    }
-
-                    ttt.printHistogram();
-                    ttt.printProbMatrix();
-
-                } catch (SAXException e) {
-                    System.out.println("SAX");
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    System.out.println("IO");
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-//        MetaData.getInstance();
-//        Beat beat = new LimitedQueue(4);
-//        Beat beat = new Beat();
-//        for (int i = 0; i < 4; i++) {
-//            beat.addNote(BlackMagicka.noteIndexToString(ttt.getRand(12)));
-//        }
-    }
-
     private MersenneTwisterFast rand = new MersenneTwisterFast();
 
     private int order;
@@ -100,7 +45,9 @@ public class ToneTransitionTable {
 
     //use the mxml parser and note/measure data objects...just as a quick way to sample other docs if we want to build a stronger model
     public void trainFile(String fileName) {
-
+        MetaData data = new MetaData(fileName);
+        ArrayList<ArrayList<Note>> beats = data.getBeatList();
+        trainPiece(beats);
     }
 
     //adds notes within phrase list to model and updates state
@@ -196,12 +143,8 @@ public class ToneTransitionTable {
     public HashMap<Note, Double> pickNote(Beat beat) {
         //getdegree from beats
 //        lastKBeats.getFirst();
-        HashMap<Note, Double> distribution = getBeatLikelihoods(beat, 0);
-        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0).keySet() + getBeatLikelihoods(beat, 0).values());
-
-//        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[1]);
-//        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[2]);
-
+        HashMap<Note, Double> distribution = getBeatLikelihoods(beat, 1);
+        System.out.println(beat.getNotes() + ": has likelihood of = " + getBeatLikelihoods(beat, 0).keySet() + getBeatLikelihoods(beat, 0).values());
         return distribution;
     }
 

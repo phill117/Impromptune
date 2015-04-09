@@ -31,11 +31,18 @@ public class MXMLContentHandler extends DefaultHandler{
         //NOTE MODE IS IMPLEMENTED IN FINALE, I BELIVE WE SHOULD ALSO USE IT, BECAUSE ANALYSIS
     }
 
+    public MXMLContentHandler(MetaData data) {
+        metaData = data;
+    }
+
+    public MXMLContentHandler() {
+        metaData = MetaData.getInstance();
+    }
+
     //called at the start of the doc
     @Override
     public void startDocument() throws SAXException {
         tab = 0;
-        metaData = MetaData.getInstance();
         System.out.println("Start");
         super.startDocument();
     }
