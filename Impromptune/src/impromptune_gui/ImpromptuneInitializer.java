@@ -12,6 +12,7 @@ import gen_settings.GenSettings;
 import impromptune_gui.Dialogs.NewCompositionDialog;
 import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
 import impromptune_gui.Dialogs.NewCompositionLaunch;
+import impromptune_gui.Dialogs.NewOrOpenLaunch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -155,7 +156,20 @@ public class ImpromptuneInitializer implements Initializable{
             settings.setMainWindow(mainWindow);
             settings.setStage(stage);
 
-            new NewCompositionLaunch(mainWindow, stage);
+
+            String newOrOpen = new NewOrOpenLaunch().getResult();
+            if (newOrOpen.equals("new")){
+                new NewCompositionLaunch(mainWindow, stage);
+            } else {
+                mainWindow.pageIndex = 0;
+                String file = IOHandler.load(stage);
+                if(file != null)
+                {
+                    mainWindow.loadedFile = file;
+                    mainWindow.getContent().loadScore(file);
+
+                }
+            }
 
 
         }catch (IOException e){
