@@ -35,6 +35,7 @@ public class NewCompositionDialog implements Initializable{
     @FXML ComboBox key;
     @FXML ComboBox mode;
     @FXML ComboBox symbol;
+    @FXML ComboBox tempo;
 
     @FXML Button OK;
    private static Stage stage;
@@ -53,14 +54,27 @@ public class NewCompositionDialog implements Initializable{
     }
 
     @FXML void onOkay(ActionEvent event){
+        //                                  clef, key,                      keyMode,                  keyType          Time,            bpm)
+        //System.out.print(tempo.getValue().toString().indexOf('–'));
+       // System.out.print(tempo.getValue().toString().substring((tempo.getValue().toString().indexOf('–')) + 1));
+
 
         if(!isValidKey()){
             ImpromptuneInitializer.showMessageDialogStat("Oh No! There are too many sharps or flats in the key you've chosen. Please choose a new one.");
             return;
         }
 
+        int bpm = Integer.parseInt(tempo.getValue().toString().substring((tempo.getValue().toString().indexOf('–')) + 1).trim());
+
         //                                  clef, key,                      keyMode,                  keyType(flat, sharp etc)          Time,            bpm)
-        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),120);
+        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),bpm);
+
+
+
+
+
+
+       // mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),120);
         //mainWindow.getContent().loadNew("treble","A","Major",null,"4/4",200);
         parent.setTitle("Impromptune - " +titleField.getText() + " - " + composerField.getText());
         stage.close();
@@ -76,11 +90,29 @@ public class NewCompositionDialog implements Initializable{
         titleField.setText("Untitled");
         composerField.setText("Anonymous");
         symbol.setValue("♮");
+        tempo.setValue("Moderato – 110");
 
         timeSig.setItems(observableArrayList("4/4","3/4","6/8","4/2","3/2","2/2"));
         key.setItems(observableArrayList("A","B","C","D","E","F","G"));
         mode.setItems(observableArrayList("Major","Minor"));
-        symbol.setItems(observableArrayList("♮","♭","♯"));
+        symbol.setItems(observableArrayList("♮", "♭", "♯"));
+
+
+        tempo.setItems(observableArrayList("Larghissimo - 24",
+                "Grave – 30",
+                "Largo – 45",
+                "Larghetto – 60",
+                "Adagio – 70",
+                "Andante – 80",
+                "Andante moderato - 95",
+                "Moderato – 110",
+                "Allegretto – 120",
+                "Allegro – 135",
+                "Vivace – 170",
+                "Presto – 185",
+                "Prestissimo – 200"));
+
+
     }
 
     private boolean isValidKey(){
@@ -104,5 +136,7 @@ public class NewCompositionDialog implements Initializable{
             }
         }
         return true;
+
+
     }
 }
