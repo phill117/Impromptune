@@ -37,15 +37,8 @@
                     <children>
                         <Label text="Title" GridPane.halignment="CENTER" />
                         <Label text="Composer" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Label text="Tempo" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                         <TextField fx:id="titleField" GridPane.columnIndex="1" />
                         <TextField fx:id="composerField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <children>
-                                <TextField fx:id="tempoField" prefWidth="64.0" />
-                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="65.0" text="BPM" />
-                            </children>
-                        </HBox>
                     </children>
                 </GridPane>
             </children>
