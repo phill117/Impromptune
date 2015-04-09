@@ -181,23 +181,23 @@ public class ToneTransitionTable {
 
 
     //convert tone distribution to degree for decision
-    private HashMap<Degree, Double> possibleNotestoDegree(HashMap<Note, Double> toneDist) {
+    public HashMap<Degree, Double> possibleNotestoDegree(HashMap<Note, Double> toneDist) {
         HashMap<Degree, Double> degreeDist = new HashMap<>();
         Iterator it = toneDist.entrySet().iterator();
 
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            degreeDist.put(markov.getFirst().getPitchAxis().degreeIndex((Note) pair.getKey()), 1.0);
+            degreeDist.put(getDegree((Note)pair.getKey()), 1.0);
         }
 
         return degreeDist;
     }
 
-    private HashMap<Note, Double> pickNote(Beat beat) {
+    public HashMap<Note, Double> pickNote(Beat beat) {
         //getdegree from beats
 //        lastKBeats.getFirst();
-        HashMap<Note, Double> distribution = new HashMap<>();
-        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0).keySet());
+        HashMap<Note, Double> distribution = getBeatLikelihoods(beat, 0);
+        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0).keySet() + getBeatLikelihoods(beat, 0).values());
 
 //        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[1]);
 //        System.out.println(beat + ": has likelihood of = " + getBeatLikelihoods(beat, 0)[2]);
@@ -230,5 +230,9 @@ public class ToneTransitionTable {
             markov.get(k).printStateProbMatrix();
             System.out.println("-----------------------------------------");
         }
+    }
+
+    public Degree getDegree(Note note) {
+        return markov.getFirst().getPitchAxis().degreeIndex(note);
     }
 }

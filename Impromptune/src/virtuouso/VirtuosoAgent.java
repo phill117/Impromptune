@@ -52,7 +52,7 @@ public class VirtuosoAgent {
                     ArrayList<ArrayList<Note>> beats = data.getBeatList();
 
                     VirtuosoAgent agent = new VirtuosoAgent();
-                    agent.getInstance().pickNote(MetaData.getInstance().getNoteList().get(0));
+                    agent.getInstance().pickNote(data.getNoteList().get(0));
 
                 } catch (SAXException e) {
                     System.out.println("SAX");
@@ -74,8 +74,10 @@ public class VirtuosoAgent {
     private String mode;
 
     private VirtuosoAgent() {
+        keyTonic = "C#";
+        mode = "major";
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
-        model = new ToneTransitionTable(1, keySig);
+        model = new ToneTransitionTable(2, keySig);
         model.trainPiece(MetaData.getInstance().getBeatList());
 
 
@@ -159,6 +161,10 @@ public class VirtuosoAgent {
         Beat beat = new Beat();
         beat.addNote(note);
         //model.pickNote(beat);
+        HashMap<Degree, Double> hash = model.possibleNotestoDegree(model.pickNote(beat));
+        Degree d = model.getDegree(note);
+        Degree n = transition(d, hash);
+        System.out.println("more");
     }
 
     /*******
@@ -197,48 +203,48 @@ public class VirtuosoAgent {
                 default:
                 case Tonic: //all
                     for (Degree d : possibilities.keySet())
-                        actualPossibilities.put(d, possibilities.get((Degree)d));
+                        actualPossibilities.put(d, possibilities.get(d));
                     break;
                 case Supertonic: // 2 5 7
                     for (Degree d : possibilities.keySet()) {
                         int i = d.toInt();
-                        if (i != 2 && i != 5 && i != 7) notPossibilities.put(d, possibilities.get((Degree) d));
-                        else actualPossibilities.put(d, possibilities.get((Degree) d));
+                        if (i != 2 && i != 5 && i != 7) notPossibilities.put(d, possibilities.get(d));
+                        else actualPossibilities.put(d, possibilities.get(d));
                     }
                     break;
                 case Mediant: // 3 4 6
                     for (Degree d : possibilities.keySet()) {
                         int i = d.toInt();
-                        if (i != 3 && i != 4 && i != 6) notPossibilities.put(d, possibilities.get((Degree) d));
-                        else actualPossibilities.put(d, possibilities.get((Degree) d));
+                        if (i != 3 && i != 4 && i != 6) notPossibilities.put(d, possibilities.get(d));
+                        else actualPossibilities.put(d, possibilities.get(d));
                     }
                     break;
                 case Subdominant: // 1 2 4 5 7
                     for (Degree d : possibilities.keySet()) {
                         int i = d.toInt();
-                        if (i != 2 && i != 5 && i != 7 && i != 1 && i != 4) notPossibilities.put(d, possibilities.get((Degree) d));
-                        else actualPossibilities.put(d, possibilities.get((Degree) d));
+                        if (i != 2 && i != 5 && i != 7 && i != 1 && i != 4) notPossibilities.put(d, possibilities.get(d));
+                        else actualPossibilities.put(d, possibilities.get(d));
                     }
                     break;
                 case Dominant: // 1 5 6
                     for (Degree d : possibilities.keySet()) {
                         int i = d.toInt();
-                        if (i != 1 && i != 5 && i != 6) notPossibilities.put(d, possibilities.get((Degree) d));
-                        else actualPossibilities.put(d, possibilities.get((Degree) d));
+                        if (i != 1 && i != 5 && i != 6) notPossibilities.put(d, possibilities.get(d));
+                        else actualPossibilities.put(d, possibilities.get(d));
                     }
                     break;
                 case Submediant: // 2 4 6
                     for (Degree d : possibilities.keySet()) {
                         int i = d.toInt();
-                        if (i != 2 && i != 4 && i != 6) notPossibilities.put(d, possibilities.get((Degree) d));
-                        else actualPossibilities.put(d, possibilities.get((Degree) d));
+                        if (i != 2 && i != 4 && i != 6) notPossibilities.put(d, possibilities.get(d));
+                        else actualPossibilities.put(d, possibilities.get(d));
                     }
                     break;
                 case Leading: // 1 7
                     for (Degree d : possibilities.keySet()) {
                         int i = d.toInt();
-                        if (i != 1 && i != 7) notPossibilities.put(d, possibilities.get((Degree) d));
-                        else actualPossibilities.put(d, possibilities.get((Degree) d));
+                        if (i != 1 && i != 7) notPossibilities.put(d, possibilities.get(d));
+                        else actualPossibilities.put(d, possibilities.get(d));
                     }
                     break;
             }
