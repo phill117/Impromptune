@@ -97,11 +97,11 @@ public class Content
     }
 
 
-    public void undoAction(){
+    public int undoAction(){
 
         if(!canUndo || addIndex == 1)
         { //System.out.println("No undo:" + addIndex + ":" + undoIndex);
-            return;}
+            return 0;}
 
         canRedo = true;
         if(undoIndex == 1){
@@ -119,28 +119,31 @@ public class Content
           //  System.out.println("Blank:" + addIndex + ":" + undoIndex);
             comp.resync();
             refresh();
-            return;
+            return 1;
         }
 
         addIndex = undoIndex;
         undoIndex--;
         try {
             comp = undoList.get(undoIndex).deepCopy();
+            comp.resync();
+            refresh();
+            return 1;
          }
          catch (Exception e)
         {
             e.printStackTrace();
+            return 0;
         }
        // System.out.println("Undo:" + addIndex + ":" + undoIndex);
-        comp.resync();
-        refresh();
+
     }
 
 
-    public void redoAction(){
+    public int redoAction(){
         if(undoIndex > addIndex || !canRedo)
         {  //System.out.println("NO redo" + addIndex + ":" + undoIndex);
-            return;}
+            return 0;}
 
        if(canUndo == false) {
 
@@ -153,14 +156,17 @@ public class Content
            addIndex++;
            undoIndex++;
        }
+
         try {
             comp = undoList.get(undoIndex).deepCopy();
             comp.resync();
             refresh();
+            return 1;
 
         }catch (Exception e){
             addIndex--;
             undoIndex--;
+            return 0;
         }
 
        // System.out.println("redo" + addIndex + ":" + undoIndex);

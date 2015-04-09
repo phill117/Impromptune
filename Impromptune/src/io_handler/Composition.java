@@ -87,9 +87,6 @@ public class Composition implements Serializable{
 
     }
 
-
-
-
     public Composition(String clef, String key, String keyType, String keyMod, String Time, int bpm) {
         quills = new ArrayList<Quill>();
         currentComp = initializeEmptyScore(clef, key, keyType, keyMod, Time, bpm);
@@ -98,13 +95,6 @@ public class Composition implements Serializable{
         layout = currentScoreDoc.getLayout();
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
     }
-
-
-
-
-
-
-
 
 
 
@@ -174,19 +164,6 @@ public class Composition implements Serializable{
         quills.add(parts++, new Quill(new Cursor(currentComp, mp(1, 0, 0, _0, 0), true), instrName));
     }
 
-    public void removeLast() {
-        if(currentComp.getCommandPerformer().isUndoPossible()) {
-            currentComp.getCommandPerformer().undo();
-            System.out.print(("Composition: COMMAND [IS UNDOABLE]"));
-        }
-    }
-
-    public void addLast() {
-        if (currentComp.getCommandPerformer().isRedoPossible()) {
-            currentComp.getCommandPerformer().redo();
-            System.out.print(("Composition: COMMAND [IS REDOABLE]"));
-        }
-    }
 
     public void writeTimeSig(String time) {
         quills.get(currentIndex).writeTime(time);
@@ -249,19 +226,6 @@ public class Composition implements Serializable{
         writeTempo(Time,bpm);
         return currentComp;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -344,6 +308,19 @@ public class Composition implements Serializable{
     }
 
 
+    public void removeLast() {
+        if(currentComp.getCommandPerformer().isUndoPossible()) {
+            currentComp.getCommandPerformer().undo();
+            System.out.print(("Composition: COMMAND [IS UNDOABLE]"));
+        }
+    }
+
+    public void addLast() {
+        if (currentComp.getCommandPerformer().isRedoPossible()) {
+            currentComp.getCommandPerformer().redo();
+            System.out.print(("Composition: COMMAND [IS REDOABLE]"));
+        }
+    }
 
     public Quill getCurrentPart() {
         return quills.get(currentIndex);
