@@ -192,8 +192,8 @@ public class Composition implements Serializable{
         quills.get(currentIndex).writeTime(time);
     }
 
-    public void writeKeySig(String root, String mode) {
-        quills.get(currentIndex).writeStaffKeySig(root, mode);
+    public void writeKeySig(String root, String mode, String keyMod) {
+        quills.get(currentIndex).writeStaffKeySig(root, mode, keyMod);
     }
 
     public void writeClef(String clef) {
@@ -226,7 +226,7 @@ public class Composition implements Serializable{
         quills.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
 
         writeClef("treble");
-        writeKeySig("B", "major");
+        writeKeySig("B", "major", "♮");
         writeTimeSig("4/4");
         return currentComp;
     }
@@ -244,7 +244,7 @@ public class Composition implements Serializable{
         quills.add(parts++, new Quill( new Cursor(currentComp, MP.mp0, true), "Piano"));
 
         writeClef(clef);
-        writeKeySig(key, keyType);
+        writeKeySig(key, keyType, keyMod);
         writeTimeSig(Time);
         writeTempo(Time,bpm);
         return currentComp;

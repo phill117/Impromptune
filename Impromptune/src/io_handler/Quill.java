@@ -64,13 +64,13 @@ public class Quill implements CommandListener, Serializable {
     }
 
     //starting at this measure
-    void writeMeasureKeySig(String keySig, String mode) {
-        cursor.write((MeasureElement) QuillUtils.getKeySig(keySig, mode));
+    void writeMeasureKeySig(String keySig, String mode, String keyMod) {
+        cursor.write((MeasureElement) QuillUtils.getKeySig(keySig, mode, keyMod));
     }
 
     //for the entire staff, ie composition initialization
-    void writeStaffKeySig(String keySig, String mode) {
-        cursor.write((ColumnElement) QuillUtils.getKeySig(keySig, mode));
+    void writeStaffKeySig(String keySig, String mode, String keyMod) {
+        cursor.write((ColumnElement) QuillUtils.getKeySig(keySig, mode, keyMod));
     }
 
     //format of string should be "bass" || "treble" || "tenor" || "alto"
@@ -314,33 +314,46 @@ public class Quill implements CommandListener, Serializable {
                 return "Larghissimo";
             case 30:
                 return "Grave";
-            case 200:
+            case 45:
+                return "Largo";
+            case 60:
+                return "Larghetto";
+            case 70:
+                return "Adagio";
+            case 80:
+                return "Andante";
+            case 95:
+                return "Andante moderato";
+            case 110:
+                return "Moderato";
+            case 120:
+                return "Allegretto";
+            case 135:
+                return "Allegro";
+            case 170:
+                return "Vivace";
+            case 185:
                 return "Presto";
+            case 200:
+                return "Prestissimo";
             default:
-                return null;
+                return "Custom";
         }
-            /*
-          Larghissimo –  (24 BPM and under)
-Grave – w (25–45 BPM)
-Largo –(40–60 BPM)
-Lento – (45–60 BPM)
-Larghetto – (60–66 BPM)
-Adagio – (66–76 BPM)
-Adagietto – (72–76 BPM)
-Andante –(76–108 BPM)
-Andantino – (80–108 BPM)
-Marcia moderato –  (83–85 BPM)
-Andante moderato – (92–112 BPM)
-Moderato – (108–120 BPM)
-Allegretto – (112–120 BPM)
-Allegro moderato – (116–120 BPM)
-Allegro –(120–168 BPM)
-Vivace – (168–176 BPM)
-Vivacissimo –  (172–176 BPM)
-Allegrissimo (172–176 BPM)
-Presto –  (168–200 BPM)
-Prestissimo – (200 BPM and over)
-*/
+                        /*
+            Larghissimo –  (24 BPM and under)
+            Grave – w 30
+            Largo –45
+            Larghetto – 60
+            Adagio – 70
+            Andante – 80
+            Andante moderato 95
+            Moderato – 110
+            Allegretto – (120
+            Allegro –135
+            Vivace – 170
+            Presto –  185
+            Prestissimo – (200
+            */
 
     }
 

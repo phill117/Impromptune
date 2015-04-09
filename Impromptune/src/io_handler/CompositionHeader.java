@@ -22,6 +22,7 @@ public class CompositionHeader {
 
     private String keyRoot;
     private String mode;
+    private String keyMod;
 
     private String timeSig;
     private int divisions;
@@ -44,17 +45,18 @@ public class CompositionHeader {
             return null;
         }
 
-        return QuillUtils.getKeySig(keyRoot, mode);
+        return QuillUtils.getKeySig(keyRoot, mode, keyMod);
     }
 
     Pair<String, String> getKeyStr() {
         return new Pair<>(keyRoot, mode);
     }
 
-    void setKey(String key, String mode) {
+    void setKey(String key, String mode, String keyMod) {
         this.keyRoot = key;
         this.mode = mode;
-        composition.writeKeySig(key, mode);
+        this.keyMod = keyMod;
+        composition.writeKeySig(key, mode, keyMod);
     }
 
     Time getTime() {

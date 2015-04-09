@@ -160,6 +160,7 @@ public class VirtuosoAgent {
     void pickNote (Note note) {
         Beat beat = new Beat();
         beat.addNote(note);
+        //model.pickNote(beat);
         HashMap<Degree, Double> hash = model.possibleNotestoDegree(model.pickNote(beat));
         Degree d = model.getDegree(note);
         Degree n = transition(d, hash);
