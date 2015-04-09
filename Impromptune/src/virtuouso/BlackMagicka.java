@@ -380,25 +380,25 @@ public class BlackMagicka {
         String note = null;
 
         switch(index) {
-            case 1:
+            case 0:
                 note = pickTonic(root);
                 break;
-            case 2:
+            case 1:
                 note = pickSuperTonic(root);
                 break;
-            case 3:
+            case 2:
                 note = pickMediant(root);
                 break;
-            case 4:
+            case 3:
                 note = pickSubdominant(root);
                 break;
-            case 5:
+            case 4:
                 note = pickDominant(root);
                 break;
-            case 6:
+            case 5:
                 note = pickSubmediant(root);
                 break;
-            case 7:
+            case 6:
                 note = pickLeading(root);
                 break;
         }

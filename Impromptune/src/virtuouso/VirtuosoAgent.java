@@ -163,7 +163,29 @@ public class VirtuosoAgent {
         HashMap<Degree, Double> hash = model.possibleNotestoDegree(model.pickNote(beat));
         Degree d = model.getDegree(note);
         Degree n = transition(d, hash);
-        System.out.println("more");
+        System.out.println(degreeTone(n));
+    }
+
+    String degreeTone(Degree degree) {
+        return BlackMagicka.pickIthNote(keyTonic, degree.toInt());
+    }
+
+    Pair<Degree, Double> getMax(HashMap<Degree, Double> distribution) {
+        HashMap<Degree, Double> degreeDist = new HashMap<>();
+        Iterator it = distribution.entrySet().iterator();
+
+        Double value = new Double(0);
+        Pair<Degree, Double> max = null;
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+
+            if (Double.valueOf(value) < (Double)pair.getValue()) {
+                max = new Pair(pair.getKey(), pair.getValue());
+                value =(Double)pair.getValue();
+            }
+        }
+
+        return max;
     }
 
     /*******
@@ -266,15 +288,17 @@ public class VirtuosoAgent {
 
             //TODO : make the choice of the actual possible choices weighted
 
-            Random random = new Random();
-            Degree[] degrees = new Degree[0];
-            actualPossibilities.keySet().toArray(degrees);
-            return degrees[random.nextInt(degrees.length)];
+//            Random random = new Random();
+//            Degree[] degrees = new Degree[0];
+
+//            actualPossibilities.keySet().toArray(degrees);
+//            return degrees[random.nextInt(degrees.length)];
+            return getMax(actualPossibilities).t;
         } else { //only not possibilities has elements
-            Random random = new Random();
-            Degree[] degrees = new Degree[0];
-            notPossibilities.keySet().toArray(degrees);
-            return degrees[random.nextInt(degrees.length)];
+//            Random random = new Random();
+//            Degree[] degrees = new Degree[0];
+//            notPossibilities.keySet().toArray(degrees);
+            return getMax(notPossibilities).t;
         }
 
         //will never happen (making the compiler happy)
