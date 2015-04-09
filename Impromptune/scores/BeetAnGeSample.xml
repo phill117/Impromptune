@@ -7,8 +7,7 @@
     <work-title>An die ferne Geliebte (Page 1)</work-title>
   </work>
   <identification>
-    <creator type="composer">Ludwig van Beethoven</creator>
-    <creator type="lyricist">Aloys Jeitteles</creator>
+
     <rights>Copyright © 2002 Recordare LLC</rights>
     <encoding>
       <software>Finale 2005 for Windows</software>
@@ -72,7 +71,7 @@
     <credit-words default-x="680" default-y="65" font-size="9" justify="center" valign="bottom">Copyright © 2002 Recordare LLC</credit-words>
   </credit>
   <credit page="1">
-    <credit-words default-x="80" default-y="1545" font-size="12" valign="top">Aloys Jeitteles</credit-words>
+    <credit-words default-x="80" default-y="1545" font-size="12" valign="top">BOB Jeitteles</credit-words>
   </credit>
   <credit page="1">
     <credit-words default-x="1280" default-y="1545" font-size="12" halign="right" justify="center" valign="top">Ludwig van Beethoven</credit-words>

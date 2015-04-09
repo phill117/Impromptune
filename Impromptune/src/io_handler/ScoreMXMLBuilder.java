@@ -21,9 +21,7 @@ import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.musicxml.MusicXMLDocument;
 import com.xenoage.zong.musicxml.types.*;
-import com.xenoage.zong.musicxml.types.attributes.MxlColor;
-import com.xenoage.zong.musicxml.types.attributes.MxlPosition;
-import com.xenoage.zong.musicxml.types.attributes.MxlPrintStyle;
+import com.xenoage.zong.musicxml.types.attributes.*;
 import com.xenoage.zong.musicxml.types.choice.*;
 import com.xenoage.zong.musicxml.types.enums.*;
 import com.xenoage.zong.musicxml.types.groups.MxlEditorialVoice;
@@ -92,41 +90,44 @@ public class ScoreMXMLBuilder {
     //MxlCredit
     // ->content = MxlCreditWords
     List<MxlCredit> buildMxlCredits(ScoreInfo scoreInfo) {
+
         List<MxlCredit> credits = CollectionUtils.alist();
+
+        //need to grab this shit from somewhere
         String Title = "DeadBeef";
-        String Creator = "bob vila";
+        String Creator = "By: Ludwig von Beefoven";
+
         MxlCredit credit;
         MxlCreditWords cwords;  //set credit.content to this
         List<MxlFormattedText> items = CollectionUtils.alist(); //WTF
-        MxlPosition pos1 = new MxlPosition(680.0f,null,1678.0f,null);
-        MxlPrintStyle ps1 = new MxlPrintStyle(pos1,null,null);
 
-        MxlPosition pos2 = new MxlPosition(680.0f,null,65.0f,null);
-        MxlPrintStyle ps2 = new MxlPrintStyle(pos2,null,null);
+        MxlFontSize fontSize1 = new MxlFontSize(24f,null);
+        MxlFont font1 = new MxlFont(null,null,fontSize1,MxlFontWeight.Bold);
+
+
+        MxlPosition pos1 = new MxlPosition(680.0f,1850.0f,null,null);
+        MxlPrintStyle ps1 = new MxlPrintStyle(pos1,font1,null);
+
+
+      //  MxlFont font2 = new MxlFont(null,null,14,MxlFontWeight.Bold);
+
+        MxlPosition pos2 = new MxlPosition(null,null,null,null);  //use noposition
+        MxlPrintStyle ps2 = new MxlPrintStyle(pos2,font1,null);
 
         MxlFormattedText title = new MxlFormattedText(Title,MxlLeftCenterRight.Center,null,MxlVAlign.Top,ps1) ;
+        MxlFormattedText newline = new MxlFormattedText("\n",null,null,null,ps2) ;
         MxlFormattedText creator = new MxlFormattedText(Creator,null,null,MxlVAlign.Top,ps2) ;
 
         items.add(title);
+        items.add(newline);
         items.add(creator);
 
         cwords = new MxlCreditWords(items);
         credit = new MxlCredit(cwords,1);
 
-      // if (workTitle == null)
-      //      work = MxlWork.empty;
-      //  else
-       //     work = new MxlWork(workNumber, workTitle);
         credits.add(credit);
         return credits;
     }
-
-
-
-
-
-
-
 
 
     MxlWork buildMxlWork(ScoreInfo scoreInfo) {
