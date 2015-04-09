@@ -40,9 +40,12 @@ public final class MxlFormattedText
 	}
 
 	public void write(XmlWriter writer) {
-		justify.write(writer, "justify");
-		hAlign.write(writer, "halign");
-		vAlign.write(writer);
+        if(justify != null)
+		    justify.write(writer, "justify");
+        if(hAlign != null)
+		    hAlign.write(writer, "halign");
+        if(vAlign != null)
+		    vAlign.write(writer);
 		printStyle.write(writer);
 		writer.writeText(value);
 	}
