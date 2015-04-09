@@ -50,7 +50,6 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML AnchorPane PianoCase;
     @FXML AnchorPane PlayerCase;
-    @FXML AnchorPane RendererCase;
     @FXML TabPane RendererTabs;
     @FXML AnchorPane GenSettingsCase;
 
@@ -79,8 +78,11 @@ public class ImpromptuneInitializer implements Initializable{
     Player player = null;
     static PlayerFrame frame = null;
 
+    PianoHolder piano;
+    GenSettings genSettings;
     FXMLLoader fxmlLoader;
-    MainWindow mainWindow;
+    MainWindow mainWindow; //The MainWindow of the currently selected tab.
+    ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
     public static final String appName = "Impromptune";
 
     Stage stage;
@@ -100,6 +102,7 @@ public class ImpromptuneInitializer implements Initializable{
             sp = fxmlLoader.load(getClass().getClassLoader().getResource("piano/PianoHolder.fxml").openStream());
             PianoCase.getChildren().add(sp);
             PianoHolder ph = fxmlLoader.getController();  //Get the controller object created
+            piano = ph;
             AnchorPane.setTopAnchor(sp, 0.0);
             AnchorPane.setBottomAnchor(sp, 0.0);
             AnchorPane.setLeftAnchor(sp, 0.0);
@@ -119,7 +122,7 @@ public class ImpromptuneInitializer implements Initializable{
             fxmlLoader = new FXMLLoader();
             Node settingsDisplay = fxmlLoader.load(getClass().getClassLoader().getResource("gen_settings/GenSettings.fxml").openStream());
             GenSettingsCase.getChildren().add(settingsDisplay);
-            GenSettings settings = fxmlLoader.getController();
+            genSettings = fxmlLoader.getController();
 
             //Set pictures to toggle buttons
             whole.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/whole.png"), 25,25,false,false)));
@@ -135,14 +138,13 @@ public class ImpromptuneInitializer implements Initializable{
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
+            UNDO = undo;
+            REDO = redo;
+            newTab();
+            /*
             fxmlLoader = new FXMLLoader();
             bp = fxmlLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml").openStream());
-            RendererCase.getChildren().add(bp);
 
-            AnchorPane.setTopAnchor(bp, 0.0);
-            AnchorPane.setBottomAnchor(bp, 0.0);
-            AnchorPane.setLeftAnchor(bp, 0.0);
-            AnchorPane.setRightAnchor(bp, 0.0);
            // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
 
             MainWindow mw = fxmlLoader.getController();
@@ -169,7 +171,7 @@ public class ImpromptuneInitializer implements Initializable{
                     mainWindow.getContent().loadScore(file);
 
                 }
-            }
+            }*/
 
 
         }catch (IOException e){
@@ -183,6 +185,57 @@ public class ImpromptuneInitializer implements Initializable{
             e.printStackTrace();
         }
 
+    }
+
+    public Tab getSelectedTab(){
+        for (Tab t : RendererTabs.getTabs()){
+            if (t.isSelected()) return t;
+        }
+        return null;
+    }
+
+    /*
+    * Method for adding a new tab to the RendererTabs
+    */
+    public void newTab(){
+        fxmlLoader = new FXMLLoader();
+        try {
+            bp = fxmlLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml").openStream());
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        Tab add = new Tab();
+        add.setContent(bp);
+        RendererTabs.getTabs().add(add);
+        SelectionModel sm = RendererTabs.getSelectionModel();
+        sm.select(RendererTabs.getTabs().size() - 1);
+
+        // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
+
+        MainWindow mw = fxmlLoader.getController();
+
+        piano.mw = mw; //Set the current piano window to current renderer window
+        mainWindows.add(mw);
+        mainWindow = mw;
+
+        undo.setDisable(true);
+        redo.setDisable(true);
+        genSettings.setMainWindow(mainWindow);
+        genSettings.setStage(stage);
+
+        String newOrOpen = new NewOrOpenLaunch().getResult();
+        if (newOrOpen.equals("new")){
+            new NewCompositionLaunch(mainWindow, stage);
+        } else {
+            mainWindow.pageIndex = 0;
+            String file = IOHandler.load(stage);
+            if(file != null)
+            {
+                mainWindow.loadedFile = file;
+                mainWindow.getContent().loadScore(file);
+
+            }
+        }
     }
 
     public static PlayerFrame getFrame() {
@@ -237,6 +290,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onNewTab(ActionEvent event) {
+        newTab();
         new NewCompositionLaunch(mainWindow,stage);
     }
 
