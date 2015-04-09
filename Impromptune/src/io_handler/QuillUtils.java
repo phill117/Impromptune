@@ -169,12 +169,13 @@ public class QuillUtils {
                 break;
         }
 
-        if(mode.equals("minor")) base -=3;
-
         if(keyMod.equals("♭"))mod = 1;
         if(keyMod.equals("♯"))mod = 2;
 
-        return fifthTable[base][mod];
+        int fifths = fifthTable[base][mod];
+        if(mode.equals("minor")) fifths -=3;
+
+        return fifths;
     }
 
     public static Key getKeySig(String keyRoot, String mode, String keyMod) {
