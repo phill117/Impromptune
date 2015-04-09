@@ -54,7 +54,7 @@
                         <ComboBox fx:id="mode" prefHeight="31.0" prefWidth="107.0" value="Major" />
                      </children>
                   </HBox>
-                  <ComboBox fx:id="tempo" prefHeight="25.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="tempo" prefHeight="33.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label text="Tempo" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>

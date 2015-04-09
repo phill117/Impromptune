@@ -37,7 +37,6 @@ public class CompositionPropertiesDialog implements Initializable{
     /* Instance Variables and FXML Components */
     @FXML TextField titleField;
     @FXML TextField composerField;
-    @FXML TextField tempoField;
 
     private static MainWindow mainWindow;
 
@@ -58,6 +57,5 @@ public class CompositionPropertiesDialog implements Initializable{
         ScoreInfo scoreInfo = mainWindow.getContent().getComposition().getCurrentScore().info;
         titleField.setText(scoreInfo.getTitle());
         composerField.setText(scoreInfo.getComposer());
-        tempoField.setText("");
     }
 }

@@ -2,6 +2,7 @@ package impromptune_gui.Dialogs;
 
 import Renderer.MainWindow;
 import com.xenoage.zong.core.info.ScoreInfo;
+import data_objects.MetaData;
 import impromptune_gui.ImpromptuneInitializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +39,8 @@ public class NewCompositionDialog implements Initializable{
     @FXML ComboBox tempo;
 
     @FXML Button OK;
-   private static Stage stage;
+
+    private static Stage stage;
     private static Stage parent;
     private static MainWindow mainWindow;
 
@@ -59,6 +61,9 @@ public class NewCompositionDialog implements Initializable{
             ImpromptuneInitializer.showMessageDialogStat("Oh No! There are too many sharps or flats in the key you've chosen. Please choose a new one.");
             return;
         }
+
+        MetaData metaData = MetaData.getInstance();
+        if(symbol.getValue().toString().equals("♭")) metaData.setFifthType("flat");
 
         int bpm = Integer.parseInt(tempo.getValue().toString().substring((tempo.getValue().toString().indexOf('–')) + 1).trim());
 

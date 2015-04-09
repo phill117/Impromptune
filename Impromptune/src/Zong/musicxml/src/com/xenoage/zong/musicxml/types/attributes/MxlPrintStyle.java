@@ -40,9 +40,12 @@ public final class MxlPrintStyle
 
 	public void write(XmlWriter writer) {
 		if (this != noPrintStyle) {
-			position.write(writer);
-			font.write(writer);
-			color.write(writer);
+            if(position != null)
+			    position.write(writer);
+            if(font != null)
+			    font.write(writer);
+            if(color != null)
+			    color.write(writer);
 		}
 	}
 

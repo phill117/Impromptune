@@ -1,5 +1,6 @@
 package io_handler;
 
+import com.xenoage.utils.collections.CollectionUtils;
 import com.xenoage.utils.jse.io.JseOutputStream;
 import com.xenoage.utils.jse.xml.JseXmlWriter;
 import com.xenoage.utils.math.Fraction;
@@ -22,6 +23,7 @@ import com.xenoage.zong.musicxml.MusicXMLDocument;
 import com.xenoage.zong.musicxml.types.*;
 import com.xenoage.zong.musicxml.types.attributes.MxlColor;
 import com.xenoage.zong.musicxml.types.attributes.MxlPosition;
+import com.xenoage.zong.musicxml.types.attributes.MxlPrintStyle;
 import com.xenoage.zong.musicxml.types.choice.*;
 import com.xenoage.zong.musicxml.types.enums.*;
 import com.xenoage.zong.musicxml.types.groups.MxlEditorialVoice;
@@ -79,8 +81,53 @@ public class ScoreMXMLBuilder {
         mxlScoreHeader.setWork(buildMxlWork(scoreInfo));
         mxlScoreHeader.setPartList(buildMxlPartList(scoreInfo));
 
+        //This is what is displays (title, authors)
+        mxlScoreHeader.setCredits(buildMxlCredits(scoreInfo));
         return mxlScoreHeader;
     }
+
+    //jacob -- no idea if i did this correctly
+    //List<MxlCredit> credits
+    //Layout
+    //MxlCredit
+    // ->content = MxlCreditWords
+    List<MxlCredit> buildMxlCredits(ScoreInfo scoreInfo) {
+        List<MxlCredit> credits = CollectionUtils.alist();
+        String Title = "DeadBeef";
+        String Creator = "bob vila";
+        MxlCredit credit;
+        MxlCreditWords cwords;  //set credit.content to this
+        List<MxlFormattedText> items = CollectionUtils.alist(); //WTF
+        MxlPosition pos1 = new MxlPosition(680.0f,null,1678.0f,null);
+        MxlPrintStyle ps1 = new MxlPrintStyle(pos1,null,null);
+
+        MxlPosition pos2 = new MxlPosition(680.0f,null,65.0f,null);
+        MxlPrintStyle ps2 = new MxlPrintStyle(pos2,null,null);
+
+        MxlFormattedText title = new MxlFormattedText(Title,MxlLeftCenterRight.Center,null,MxlVAlign.Top,ps1) ;
+        MxlFormattedText creator = new MxlFormattedText(Creator,null,null,MxlVAlign.Top,ps2) ;
+
+        items.add(title);
+        items.add(creator);
+
+        cwords = new MxlCreditWords(items);
+        credit = new MxlCredit(cwords,1);
+
+      // if (workTitle == null)
+      //      work = MxlWork.empty;
+      //  else
+       //     work = new MxlWork(workNumber, workTitle);
+        credits.add(credit);
+        return credits;
+    }
+
+
+
+
+
+
+
+
 
     MxlWork buildMxlWork(ScoreInfo scoreInfo) {
         MxlWork work;

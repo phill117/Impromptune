@@ -5,6 +5,8 @@ import java.util.Observable;
 import java.util.ResourceBundle;
 
 import Renderer.MainWindow;
+import impromptune_gui.ImpromptuneInitializer;
+import data_objects.MetaData;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,9 +42,13 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     @FXML private Slider registerSlider;
     @FXML private Pane pianoPane;
 
+    MetaData metaData;
+
     @Override
     public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
         // initialize your logic here: all @FXML variables will have been injected
+
+        metaData = MetaData.getInstance();
 
         pianoHolder = this;
 
@@ -95,6 +101,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
                 pianoKey.setEffect(new SepiaTone(0.8));
             }
 
+            System.out.println("id: "+id);
             //stores the desired register range
             Integer register = new Double(registerSlider.getValue()).intValue();
 
@@ -102,20 +109,18 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             String zongNote = ""+id.charAt(0);    //SEND TO ZONG RENDERER
 
             //todo : change this for when we get key retrieval
-            if(false /* when the key is flat*/){
-                jNoteToPlay = zongNote = ""+getNextKey(id.charAt(0));
+            if(metaData.getFifthType().equals("flat") && id.charAt(1) == 's'){
+                zongNote = ""+getNextKey(id.charAt(0));
             }
 
             //decide if note is flat or sharp
             if(id.charAt(1) == 's') {
                 //todo : this one too
-                if(false /* when the key is flat*/){
-                    jNoteToPlay += 'b';
-                    zongNote += 'b';
-                }else {
-                    jNoteToPlay += '#';
-                    zongNote += '#';
-                }
+                if(metaData.getFifthType().equals("flat")) zongNote += 'f';
+                else zongNote += '#';
+
+                jNoteToPlay += '#';
+
             } else {
                 jNoteToPlay += 'n';
                 zongNote += 'n';
@@ -136,8 +141,9 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             zongNote += duration;
 
            // System.out.println("jNote played:" + jNoteToPlay);
-
+            System.out.println("Zong played:" + zongNote);
             mw.getContent().addNote(zongNote);
+            ImpromptuneInitializer.UNDO.setDisable(false);
 
             //put the string into a final variable so that it can be used in a thread
             final String musicString = jNoteToPlay;
@@ -156,16 +162,18 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
 
     //method used for getting flats rather than sharps
     char getNextKey(char note){
+        char newNote;
         switch (note){
-            case 'A': note = 'B'; break;
-            case 'B': note = 'C'; break;
-            case 'C': note = 'D'; break;
-            case 'D': note = 'E'; break;
-            case 'E': note = 'F'; break;
-            case 'F': note = 'G'; break;
-            case 'G': note = 'A'; break;
+            default:
+            case 'A': newNote = 'B'; break;
+            case 'B': newNote = 'C'; break;
+            case 'C': newNote = 'D'; break;
+            case 'D': newNote = 'E'; break;
+            case 'E': newNote = 'F'; break;
+            case 'F': newNote = 'G'; break;
+            case 'G': newNote = 'A'; break;
         }
-        return note;
+        return newNote;
     }
 
 }

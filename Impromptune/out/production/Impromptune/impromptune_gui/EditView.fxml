@@ -57,12 +57,12 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onUndo" text="Undo">
+                  <MenuItem fx:id="undo" mnemonicParsing="false" onAction="#onUndo" text="Undo">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#onRedo" text="Redo">
+                  <MenuItem fx:id="redo" mnemonicParsing="false" onAction="#onRedo" text="Redo">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
