@@ -130,59 +130,60 @@ public class QuillUtils {
         return null;
     }
 
-    //this is broke TODO fixme
-    static int getFifth(String keyRoot, String mode) {
+    static int[][] fifthTable =
+            // natural, flat, sharp
+            {{-1,-8,6},//f
+            {0,-7,7},//c
+            {1,-6,8},//g
+            {2,-5,9},//d
+            {3,-4,10},//a
+            {4,-3,11},//e
+            {5,-2,12},//b
+            };
 
-        if (mode.equals("major")) {
-            switch(keyRoot) {
-                case "C":
-                    return 0;
-                case "F":
-                    return 1;
-                case "G":
-                    return 2;
-                case "D":
-                    return 3;
-                case "A":
-                    return 4;
-                case "E":
-                    return 5;
-                case "B":
-                    return 6;
-                default:
-                    return 0;
-            }
-        }
-        else if (mode.equals("minor")) {
-            switch(keyRoot) {
-                case "A":
-                    return 0;
-                case "E":
-                    return 1;
-                case "B":
-                    return 2;
-                case "F":
-                    return 3;
-                case "C":
-                    return 4;
-                case "G":
-                    return 5;
-                case "D":
-                    return 6;
-                default:
-                    return 1;
-            }
+    static int getFifth(String keyRoot, String mode, String keyMod) {
+        int base;
+        int mod = 0;
+        switch(keyRoot) {
+            default:
+            case "C":
+                base = 1;
+                break;
+            case "F":
+                base = 0;
+                break;
+            case "G":
+                base = 2;
+                break;
+            case "D":
+                base = 3;
+                break;
+            case "A":
+                base = 4;
+                break;
+            case "E":
+                base = 5;
+                break;
+            case "B":
+                base = 6;
+                break;
         }
 
-        return -1; //failed
+        if(mode.equals("minor")) base -=3;
+
+        if(keyMod.equals("♭"))mod = 1;
+        if(keyMod.equals("♯"))mod = 2;
+
+        return fifthTable[base][mod];
     }
 
-    public static Key getKeySig(String keyRoot, String mode) {
+    public static Key getKeySig(String keyRoot, String mode, String keyMod) {
         Mode m = null;
         int fifth = 0;
         mode = mode.toLowerCase();
 
         switch (mode) {
+            default:
             case "major":
                 m = Mode.Major;
                 break;
@@ -212,7 +213,7 @@ public class QuillUtils {
                 break;
         }
 
-        return new TraditionalKey(getFifth(keyRoot,mode), m);
+        return new TraditionalKey(getFifth(keyRoot,mode,keyMod), m);
     }
 
     public static Clef getClef(String clef) {

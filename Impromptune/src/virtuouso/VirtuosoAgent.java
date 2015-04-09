@@ -158,7 +158,7 @@ public class VirtuosoAgent {
     void pickNote (Note note) {
         Beat beat = new Beat();
         beat.addNote(note);
-        model.pickNote(beat);
+        //model.pickNote(beat);
     }
 
     /*******

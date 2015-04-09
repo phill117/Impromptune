@@ -269,6 +269,10 @@ public class ImpromptuneInitializer implements Initializable{
     //    mainWindow.getContent().undo();
    // }
 
+    public static void showMessageDialogStat(String message){
+        Dialogs.create().title(appName).styleClass(org.controlsfx.dialog.Dialog.STYLE_CLASS_NATIVE).message(message).showInformation();
+    }
+
     public void showMessageDialog(String message) {
         dialog().message(message).showInformation();
     }

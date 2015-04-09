@@ -2,6 +2,7 @@ package impromptune_gui.Dialogs;
 
 import Renderer.MainWindow;
 import com.xenoage.zong.core.info.ScoreInfo;
+import impromptune_gui.ImpromptuneInitializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,8 +53,14 @@ public class NewCompositionDialog implements Initializable{
     }
 
     @FXML void onOkay(ActionEvent event){
-        //                                  clef, key,                      keyMode,                  keyType          Time,            bpm)
-        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),null,timeSig.getValue().toString(),200);
+
+        if(!isValidKey()){
+            ImpromptuneInitializer.showMessageDialogStat("Oh No! There are too many sharps or flats in the key you've chosen. Please choose a new one.");
+            return;
+        }
+
+        //                                  clef, key,                      keyMode,                  keyType(flat, sharp etc)          Time,            bpm)
+        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),120);
         //mainWindow.getContent().loadNew("treble","A","Major",null,"4/4",200);
         parent.setTitle("Impromptune - " +titleField.getText() + " - " + composerField.getText());
         stage.close();
@@ -74,5 +81,28 @@ public class NewCompositionDialog implements Initializable{
         key.setItems(observableArrayList("A","B","C","D","E","F","G"));
         mode.setItems(observableArrayList("Major","Minor"));
         symbol.setItems(observableArrayList("♮","♭","♯"));
+    }
+
+    private boolean isValidKey(){
+        String letter = key.getValue().toString();
+        String majmin = mode.getValue().toString().toLowerCase();
+        String mod    = symbol.getValue().toString();
+
+        if(mod.equals("♮")) return true;
+
+        if(majmin.equals("major")){
+            if(mod.equals("♯")){
+                if(letter.equals("G") || letter.equals("D") || letter.equals("A") ||letter.equals("E") ||letter.equals("B")) return false;
+            }else{
+                if(letter.equals("F")) return false;
+            }
+        }else{
+            if(mod.equals("♯")){
+                if(letter.equals("E") || letter.equals("B")) return false;
+            }else{
+                if(letter.equals("F") || letter.equals("C") || letter.equals("G") || letter.equals("D")) return false;
+            }
+        }
+        return true;
     }
 }

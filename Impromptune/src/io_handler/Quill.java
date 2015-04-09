@@ -64,13 +64,13 @@ public class Quill implements CommandListener, Serializable {
     }
 
     //starting at this measure
-    void writeMeasureKeySig(String keySig, String mode) {
-        cursor.write((MeasureElement) QuillUtils.getKeySig(keySig, mode));
+    void writeMeasureKeySig(String keySig, String mode, String keyMod) {
+        cursor.write((MeasureElement) QuillUtils.getKeySig(keySig, mode, keyMod));
     }
 
     //for the entire staff, ie composition initialization
-    void writeStaffKeySig(String keySig, String mode) {
-        cursor.write((ColumnElement) QuillUtils.getKeySig(keySig, mode));
+    void writeStaffKeySig(String keySig, String mode, String keyMod) {
+        cursor.write((ColumnElement) QuillUtils.getKeySig(keySig, mode, keyMod));
     }
 
     //format of string should be "bass" || "treble" || "tenor" || "alto"
