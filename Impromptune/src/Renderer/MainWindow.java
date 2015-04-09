@@ -1,6 +1,7 @@
 package Renderer;
 
 
+import impromptune_gui.ImpromptuneInitializer;
 import io_handler.ScoreMXMLBuilder;
 
 import com.xenoage.zong.layout.Layout;
@@ -27,6 +28,7 @@ public class MainWindow {
 	//GUI elements
 	@FXML private BorderPane pnlCanvas;
 	@FXML private ImageView scoreView;
+
 
 	//loaded content
 	private Content content = new Content(this);
@@ -67,10 +69,6 @@ public class MainWindow {
        // content.loadBlank();
 	}
 
-
-    @FXML void onAddNote(ActionEvent event) {
-        content.addNote("Af3h");
-    }
 
     //Handles saving file as musicXML
     public void save(Stage s) {
@@ -124,11 +122,8 @@ public class MainWindow {
     //Change above to save-as, save will just get the current filename loaded?
     //Handles saving file as musicXML
     public void saveAs(File outFile) {
-
         if(!content.canSave || outFile == null)
             return;
-
-
         ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(content.getSD(), outFile);
     }
 
@@ -136,12 +131,21 @@ public class MainWindow {
 
     public void undo()
     {
-        content.undoAction();
+        if(content.undoAction() == 1) {
+            ImpromptuneInitializer.UNDO.setDisable(false);
+            ImpromptuneInitializer.REDO.setDisable(false);
+        }
+        else
+            ImpromptuneInitializer.UNDO.setDisable(true);
     }
 
 
     public void redo() {
-        content.redoAction();
+        if(content.redoAction() == 1){
+            ImpromptuneInitializer.REDO.setDisable(false);
+            ImpromptuneInitializer.UNDO.setDisable(false);}
+        else
+            ImpromptuneInitializer.REDO.setDisable(true);
     }
 	public void renderLayout(Layout layout) {
 

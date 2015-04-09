@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.ResourceBundle;
 
 import Renderer.MainWindow;
+import impromptune_gui.ImpromptuneInitializer;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -138,6 +139,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
            // System.out.println("jNote played:" + jNoteToPlay);
 
             mw.getContent().addNote(zongNote);
+            ImpromptuneInitializer.UNDO.setDisable(false);
 
             //put the string into a final variable so that it can be used in a thread
             final String musicString = jNoteToPlay;

@@ -68,6 +68,11 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML ToggleButton dot;
     @FXML Button rest;
 
+    public static MenuItem UNDO;
+    public static MenuItem REDO;
+
+    @FXML MenuItem undo;
+    @FXML MenuItem redo;
     ArrayList<ToggleButton> durationGroup;
 
     Player player = null;
@@ -143,11 +148,15 @@ public class ImpromptuneInitializer implements Initializable{
 
             ph.mw = mw; //Set the current piano window to current renderer window
             mainWindow = mw;
-
+            UNDO = undo;
+            REDO = redo;
+            undo.setDisable(true);
+            redo.setDisable(true);
             settings.setMainWindow(mainWindow);
             settings.setStage(stage);
 
             new NewCompositionLaunch(mainWindow, stage);
+
 
         }catch (IOException e){
             System.out.println("WAHT HAPPENED");
@@ -187,7 +196,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML void onABOUT(ActionEvent event) {
         showMessageDialog("Impromptune Version Sprint 2\n" +
                 "This product would have been endorsed by Ludwig von Beethoven, but...\n" +
-                "someone keeps pushing workspace.xml and .iml files and messing up the build, so he didn't.");
+                "Andrew Wenger");
     }
 
     @FXML void onOpen(ActionEvent event) {
@@ -249,10 +258,14 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onUndo(ActionEvent event) {
         mainWindow.undo();
+       //if(mainWindow.undo() == 0);
+          //  undo.setDisable(true);
 
     }
     @FXML void onRedo(ActionEvent event) {
         mainWindow.redo();
+       // if(mainWindow.redo() == 0)
+          //  redo.setDisable(true);
     }
 
 
