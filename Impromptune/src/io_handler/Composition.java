@@ -18,6 +18,7 @@ import com.xenoage.zong.core.music.*;
 import com.xenoage.zong.core.position.MP;
 import com.xenoage.zong.desktop.io.ScoreDocIO;
 
+import com.xenoage.zong.desktop.io.musicxml.in.CreditsReader;
 import com.xenoage.zong.desktop.io.musicxml.in.MusicXmlScoreDocFileInput;
 import com.xenoage.zong.documents.ScoreDoc;
 import com.xenoage.zong.io.musiclayout.LayoutSettingsReader;
@@ -32,6 +33,7 @@ import com.xenoage.zong.musiclayout.ScoreLayout;
 import com.xenoage.zong.musiclayout.layouter.PlaybackLayouter;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
+import com.xenoage.zong.musicxml.types.MxlScorePartwise;
 import com.xenoage.zong.symbols.SymbolPool;
 
 import static com.xenoage.utils.math.Fraction._0;
@@ -287,6 +289,13 @@ public class Composition implements Serializable{
                 chain.setScoreLayout(scoreLayout);
             }
             chain.add(frame);
+        }
+
+        //add credit elements - TIDY
+        Object o = score.getMetaData().get("mxldoc");
+        if (o != null && o instanceof MxlScorePartwise) {
+            MxlScorePartwise doc = (MxlScorePartwise) o;
+            CreditsReader.read(doc, layout, score.getFormat());
         }
 
         return scoreDoc;

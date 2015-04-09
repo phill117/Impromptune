@@ -55,11 +55,15 @@ public final class MxlFont implements Serializable {
 
 	public void write(XmlWriter writer) {
 		if (this != noFont) {
-			if (fontFamily.size() > 0)
-				writer.writeAttribute("font-family", concatenate(fontFamily, ","));
-			fontStyle.write(writer);
-			fontSize.write(writer);
-			fontWeight.write(writer);
+            if(fontFamily != null)
+			    if (fontFamily.size() > 0)
+				    writer.writeAttribute("font-family", concatenate(fontFamily, ","));
+            if(fontStyle != null)
+			    fontStyle.write(writer);
+            if(fontSize != null)
+			    fontSize.write(writer);
+            if(fontWeight != null)
+			    fontWeight.write(writer);
 		}
 	}
 

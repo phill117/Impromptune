@@ -39,22 +39,26 @@ public class CompositionPropertiesDialog implements Initializable{
     @FXML TextField composerField;
 
     private static MainWindow mainWindow;
+    private static Stage stage;
 
+    private ScoreInfo scoreInfo;
+
+    public static void setStage(Stage st){stage = st;}
     public static void setMainWindow(MainWindow mw){
         mainWindow = mw;
     }
 
     @FXML void onOkay(ActionEvent event){
-
+        stage.close();
     }
 
     @FXML void onCancel(ActionEvent event){
-
+        stage.close();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ScoreInfo scoreInfo = mainWindow.getContent().getComposition().getCurrentScore().info;
+        scoreInfo = mainWindow.getContent().getComposition().getCurrentScore().info;
         titleField.setText(scoreInfo.getTitle());
         composerField.setText(scoreInfo.getComposer());
     }
