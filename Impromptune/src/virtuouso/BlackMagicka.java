@@ -200,6 +200,11 @@ public class BlackMagicka {
             case "B":
                 return 11;
         }
+//        if (note.length() > 1) {
+//            String newNote = new String();
+//            newNote += note.charAt(0);
+//            return noteIndex(newNote);
+//        }
 
         return -1;
     }
@@ -258,6 +263,7 @@ public class BlackMagicka {
             }
         }
 
+//        System.out.println(scale);
         return scale;
     }
 
@@ -419,10 +425,15 @@ public class BlackMagicka {
     }
 
     static Degree getDegreeIndex(String tonic, String mode, String tone) {
+//        System.out.println("getting degree index" + tone);
         if (mode.equals("major")) {
-            return Degree.values()[getIndexOfScale(majorScale(tonic), tone)];
+            int i = getIndexOfScale(majorScale(tonic), tone);
+            if (i == -1) return null;
+            return Degree.values()[i];
         } else if (mode.equals("minor")) {
-            return Degree.values()[getIndexOfScale(minorScale(tonic), tone)];
+            int i = getIndexOfScale(minorScale(tonic), tone);
+            if (i == -1) return null;
+            return Degree.values()[i];
         }
 
         return null;
