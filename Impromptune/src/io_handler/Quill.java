@@ -149,6 +149,8 @@ public class Quill implements CommandListener, Serializable {
         char r = note.charAt(2); //register
         char d = note.charAt(3); //duration
 
+        System.out.printf("pitch %c alteration %c register %c duration %c\n",p,a,r,d);
+
         Fraction fr = QuillUtils.getFraction(d);
         String s = new String();
         s += r;
