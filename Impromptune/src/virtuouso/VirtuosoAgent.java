@@ -8,6 +8,7 @@ import data_objects.Note;
 import utils.LimitedQueue;
 import utils.Pair;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -20,7 +21,7 @@ public class VirtuosoAgent {
     public static void main(String args[]) {
 
 //        System.out.println(BlackMagicka.pickDominant("A"));
-        VirtuosoAgent agent = new VirtuosoAgent("gen_settings/MozartPianoSonata.xml");
+        VirtuosoAgent agent = new VirtuosoAgent(new File("C:\\Users\\shift_000\\IdeaProjects\\Impromptune\\Impromptune\\src\\gen_settings\\MozartPianoSonata.xml"));
 //        agent.build("gen_settings/MozartPianoSonata.xml");
 //        System.out.println(agent.chordProgression);
 //
@@ -37,7 +38,7 @@ public class VirtuosoAgent {
 //            }
 //        }
 
-        agent.chordProgression = agent.buildChordProgression();
+//        agent.chordProgression = agent.buildChordProgression();
         System.out.println("Chord progression: " + agent.chordProgression);
         System.out.print("generated chords:" + agent.getGeneratedTones());
 
@@ -51,16 +52,17 @@ public class VirtuosoAgent {
     private String mode;
     private Set<String> chordProgression;
     private MetaData data;
-    public VirtuosoAgent(String fileName) {
+    private File currentFile;
+    public VirtuosoAgent(File file) {
         keyTonic = "C";
         mode = "major";
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
         model = new ToneTransitionTable(2, keySig);
-        model.trainFile("gen_settings/MozartPianoSonata.xml");
+        model.trainFile(file);
 //        chordProgression = new HashSet<>();
 //        possibleChords = new ArrayList<>();
-        data = new MetaData("gen_settings/MozartPianoSonata.xml");
-
+        data = new MetaData(file);
+        currentFile = file;
         degreeWeight = new int[][] {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
                                     {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
                                     {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
@@ -101,9 +103,9 @@ public class VirtuosoAgent {
         return max;
     }
 
-    public Set<String> buildChordProgression() {
+    public void buildChordProgression() {
 
-        ArrayList<ArrayList<Note>> beats = new MetaData("gen_settings/MozartPianoSonata.xml").getBeatList();
+        ArrayList<ArrayList<Note>> beats = new MetaData(currentFile).getBeatList();
 
 //        VirtuosoAgent agent = new VirtuosoAgent();
         List<String> possibleChords = new ArrayList<>();
@@ -134,7 +136,8 @@ public class VirtuosoAgent {
             prog.remove(p);
         }
 
-        return ret;
+        chordProgression = ret;
+        System.out.println(ret);
     }
 
     private void addToChordProgression(String tone) {
@@ -232,7 +235,7 @@ public class VirtuosoAgent {
 //    BlackMagicka.getDegreeIndex(keyTonic, mode, note).toInt()
     //get tone with pairObject.t, get register with pairObject.u
     private String chooseChord(Note no) {
-
+        if (no == null) return null;
         Pair<String, Integer> chord = null;
 
         String [] str = chordProgression.toArray(new String[0]);

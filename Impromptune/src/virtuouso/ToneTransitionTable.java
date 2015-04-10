@@ -44,8 +44,8 @@ public class ToneTransitionTable {
     }
 
     //use the mxml parser and note/measure data objects...just as a quick way to sample other docs if we want to build a stronger model
-    public void trainFile(String fileName) {
-        MetaData data = new MetaData(fileName);
+    public void trainFile(File file) {
+        MetaData data = new MetaData(file);
         ArrayList<ArrayList<Note>> beats = data.getBeatList();
         trainPiece(beats);
     }

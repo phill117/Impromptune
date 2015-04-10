@@ -10,6 +10,7 @@ import xml_parser.MXMLWriter;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -44,7 +45,7 @@ public class MetaData {
 
     private MetaData(){}
 
-    public MetaData(String fileName) {
+    public MetaData(File file) {
 
         //make xml parser
         SAXParser mxp;
@@ -63,7 +64,7 @@ public class MetaData {
             DefaultHandler handler = new MXMLContentHandler(this);
             //InputSource inputSource = new InputSource(new FileReader((file)));
             //      THIS IS A TEMP INPUT SOURCE
-            InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream(fileName));
+            InputSource inputSource = new InputSource(new FileReader(file));
             mxp.parse(inputSource, handler);
 
         } catch (SAXException e) {
