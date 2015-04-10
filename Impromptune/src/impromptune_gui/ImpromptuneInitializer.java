@@ -1,6 +1,7 @@
 package impromptune_gui;
 
 import Renderer.MainWindow;
+import Renderer.Playback;
 import com.xenoage.utils.error.Err;
 import com.xenoage.utils.jse.log.DesktopLogProcessing;
 import com.xenoage.utils.log.Log;
@@ -17,6 +18,8 @@ import impromptune_gui.Dialogs.NewCompositionDialog;
 import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
 import impromptune_gui.Dialogs.NewCompositionLaunch;
 import impromptune_gui.Dialogs.NewOrOpenLaunch;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,12 +90,30 @@ public class ImpromptuneInitializer implements Initializable{
     FXMLLoader fxmlLoader;
     MainWindow mainWindow; //The MainWindow of the currently selected tab.
     ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
+
     public static final String appName = "Impromptune";
 
     Stage stage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try{
+        RendererTabs.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() < mainWindows.size() && mainWindows.size() != 0){
+                   //System.out.println(mainWindows.size());
+                    //System.out.println(newValue.intValue());
+                    mainWindow = mainWindows.get(newValue.intValue());
+                    piano.mw = mainWindow; //Set the current piano window to current renderer window
+                    genSettings.setMainWindow(mainWindow);
+                    genSettings.setStage(stage);
+                    Playback.registerListener(mainWindow.getContent());
+                    stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                            " - " + mainWindow.getContent().getSD().getScore().getCreator());
+                }
+            }
+        });}catch (Exception e){}
         try {
             half.setSelected(true);
             durationGroup = new ArrayList<>();
@@ -146,6 +167,7 @@ public class ImpromptuneInitializer implements Initializable{
            // Err.init(new GuiErrorProcessing());
             UNDO = undo;
             REDO = redo;
+
             newTab();
             /*
             fxmlLoader = new FXMLLoader();
@@ -194,10 +216,14 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     public Tab getSelectedTab(){
-        for (Tab t : RendererTabs.getTabs()){
-            if (t.isSelected()) return t;
+        return RendererTabs.getSelectionModel().getSelectedItem();
+    }
+    public int getSelectedTabIndex(){
+        for (int i = 0; i < RendererTabs.getTabs().size(); i++){
+            if(RendererTabs.getTabs().get(i).isSelected())
+                return i;
         }
-        return null;
+        return -1;
     }
 
     /*
@@ -239,9 +265,11 @@ public class ImpromptuneInitializer implements Initializable{
             {
                 mainWindow.loadedFile = file;
                 mainWindow.getContent().loadScore(file);
-
             }
         }
+        add.setText(mainWindow.getContent().getSD().getScore().getTitle());
+        stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                " - " + mainWindow.getContent().getSD().getScore().getCreator());
     }
 
     public static PlayerFrame getFrame() {
@@ -297,7 +325,19 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onNewTab(ActionEvent event) {
         newTab();
-        new NewCompositionLaunch(mainWindow,stage);
+    }
+
+    @FXML void onCloseTab(ActionEvent event){
+        RendererTabs.getTabs().remove(getSelectedTab());
+        RendererTabs.getSelectionModel().select(0);
+        mainWindows.remove(mainWindow);
+        mainWindow = mainWindows.get(0);
+        piano.mw = mainWindow; //Set the current piano window to current renderer window
+        genSettings.setMainWindow(mainWindow);
+        genSettings.setStage(stage);
+        Playback.registerListener(mainWindow.getContent());
+        stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                " - " + mainWindow.getContent().getSD().getScore().getCreator());
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
@@ -370,6 +410,9 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void openCompositionSettings(ActionEvent event){
         new CompositionPropertiesLaunch(mainWindow);
+        getSelectedTab().setText(mainWindow.getContent().getSD().getScore().getTitle());
+        stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                " - " + mainWindow.getContent().getSD().getScore().getCreator());
     }
 
     /**

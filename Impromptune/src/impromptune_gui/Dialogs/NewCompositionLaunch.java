@@ -37,7 +37,7 @@ public class NewCompositionLaunch {
             e.printStackTrace();
         }
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setTitle("Composition Properties");
-        stage.show();
+        stage.setTitle("New Composition");
+        stage.showAndWait();
     }
 }
