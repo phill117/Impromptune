@@ -21,7 +21,7 @@ public class VirtuosoAgent {
     public static void main(String args[]) {
 
 //        System.out.println(BlackMagicka.pickDominant("A"));
-        VirtuosoAgent agent = new VirtuosoAgent(new File("C:\\Users\\shift_000\\IdeaProjects\\Impromptune\\Impromptune\\src\\gen_settings\\MozartPianoSonata.xml"));
+        VirtuosoAgent agent = new VirtuosoAgent(new File("C:\\Users\\shift_000\\IdeaProjects\\Impromptune\\Impromptune\\data\\test\\scores\\musicxml20\\Telemann.xml"));
 //        agent.build("gen_settings/MozartPianoSonata.xml");
 //        System.out.println(agent.chordProgression);
 //
@@ -46,6 +46,166 @@ public class VirtuosoAgent {
 //            System.out.print(agent.chooseChord());
     }
 
+    static int[][] fifthTable =
+            // natural, flat, sharp
+            {{-1,-8,6},//f
+                    {0,-7,7},//c
+                    {1,-6,8},//g
+                    {2,-5,9},//d
+                    {3,-4,10},//a
+                    {4,-3,11},//e
+                    {5,-2,12},//b
+            };
+
+    static String getFifth(int fifth, char a, String mode) {
+        int base;
+        int mod = 0;
+        String root = null;
+        switch(fifth) {
+            case 0:
+                root = "F";
+//                base = 0;
+                break;
+            case 1:
+                root = "C";
+                break;
+            case 2:
+                root = "G";
+                break;
+            case 3:
+                root = "D";
+                break;
+            case 4:
+                root = "A";
+                break;
+            case 5:
+                root = "E";
+                break;
+            case 6:
+                root = "B";
+                break;
+        }
+
+        if(a == 'b')mod = 1;
+        if(a == '#')mod = 2;
+
+        int fifths = fifthTable[fifth][mod];
+        if(mode.equals("minor")) fifths -=3;
+        System.out.println("fifths: " + fifths + " " + fifthTable[fifth][mod]);
+        return root;
+    }
+
+    private String getKeyTonic(String mode) {
+        if (data == null) return null;
+        System.out.println("finding fifths " + data.getSharps());
+        String tonic = null;
+
+        if (mode.equals("major")) {
+            if (data.getFifthType().equals("sharp")) {
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "C";
+                        break;
+                    case 1:
+                        tonic = "G";
+                        break;
+                    case 2:
+                        tonic = "D";
+                        break;
+                    case 3:
+                        tonic = "A";
+                        break;
+                    case 4:
+                        tonic = "E";
+                        break;
+                    case 5:
+                        tonic = "B";
+                        break;
+                    case 6:
+                        tonic = "F#";
+                        break;
+                }
+            } else {
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "C";
+                        break;
+                    case 1:
+                        tonic = "F";
+                        break;
+                    case 2:
+                        tonic = "Bb";
+                        break;
+                    case 3:
+                        tonic = "Eb";
+                        break;
+                    case 4:
+                        tonic = "Ab";
+                        break;
+                    case 5:
+                        tonic = "Db";
+                        break;
+                    case 6:
+                        tonic = "Gb";
+                        break;
+                }
+            }
+        } else if (mode.equals("minor")) {
+            if (data.getFifthType().equals("sharp")) {
+
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "A";
+                        break;
+                    case 1:
+                        tonic = "E";
+                        break;
+                    case 2:
+                        tonic = "B";
+                        break;
+                    case 3:
+                        tonic = "F";
+                        break;
+                    case 4:
+                        tonic = "C";
+                        break;
+                    case 5:
+                        tonic = "G";
+                        break;
+                    case 6:
+                        tonic = "D#";
+                        break;
+                }
+            } else {
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "A";
+                        break;
+                    case 1:
+                        tonic = "G";
+                        break;
+                    case 2:
+                        tonic = "C";
+                        break;
+                    case 3:
+                        tonic = "F";
+                        break;
+                    case 4:
+                        tonic = "Bb";
+                        break;
+                    case 5:
+                        tonic = "Eb";
+                        break;
+                    case 6:
+                        tonic = "Ab";
+                        break;
+                }
+            }
+        }
+
+
+        return tonic;
+    }
     private VirtuosoAgent rationalAgent;
     private ToneTransitionTable model;
     private String keyTonic;
@@ -53,16 +213,35 @@ public class VirtuosoAgent {
     private Set<String> chordProgression;
     private MetaData data;
     private File currentFile;
+
     public VirtuosoAgent(File file) {
-        keyTonic = "C";
-        mode = "major";
+        data = new MetaData(file);
+        if (data.isMajor()) mode = "major";
+        else mode = "minor";
+
+        keyTonic = getKeyTonic(mode);
+
+        System.out.println("mode:" + mode + ", tonic: " + keyTonic);
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
-        model = new ToneTransitionTable(2, keySig);
+
+
+        if (data.getFifthType().equals("sharp")) {
+//            keyTonic = getFifth(data.getSharps(),'#' );
+            model = new ToneTransitionTable(2, keySig, '#');
+        }
+
+        else {
+//            keyTonic = getFifth(data.getSharps(),'b', );
+            model = new ToneTransitionTable(2, keySig, 'b');
+        }
         model.trainFile(file);
 //        chordProgression = new HashSet<>();
 //        possibleChords = new ArrayList<>();
-        data = new MetaData(file);
+
         currentFile = file;
+//        keyTonic = data.getSharps()
+
+
         degreeWeight = new int[][] {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
                                     {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
                                     {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
@@ -95,6 +274,8 @@ public class VirtuosoAgent {
     }
 
     private Pair<String, Integer> getMaxPair(List<Pair<String, Integer>> chords) {
+//        if (chords == null || chords.size() == 0) return null;
+
         Pair <String, Integer> max = chords.get(0);
         for (Pair<String, Integer> p : chords)
             if (p.u > max.u)
@@ -476,7 +657,7 @@ public class VirtuosoAgent {
                 //if they new duration and existing duration are the same....
                 if(existingDuration == addedDuration){
                     //add the new note to the current chord
-                    chord.add(Note.makeNote(chordProgTones.get(index),5,1));
+                    chord.add(Note.makeNote(chordProgTones.get(index),4,1));
                     index++;
                     if(chordProgTones.size() == index) return;
                     addedDuration = addedDuration + (divisions * 1);
@@ -485,7 +666,7 @@ public class VirtuosoAgent {
                 //the the existing duration is greater than the added duration...
                 while(existingDuration > addedDuration){
                     //catch up by adding those values that need to be inserted later.
-                    chordInsertionVals.add(new Pair<>(chordNo,Note.makeNote(chordProgTones.get(index),5,1) ));
+                    chordInsertionVals.add(new Pair<>(chordNo,Note.makeNote(chordProgTones.get(index),4,1) ));
                     index++;
                     if(chordProgTones.size() == index) return;
                     addedDuration = addedDuration + (divisions * 1);
@@ -503,8 +684,6 @@ public class VirtuosoAgent {
                 newChord.add((Note)pair.u);
                 measure.getChords().add((Integer) pair.t, newChord);
             }
-
-
         }
     }
 }

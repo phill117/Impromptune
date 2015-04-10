@@ -48,7 +48,7 @@ public class CompositionHeader {
         return QuillUtils.getKeySig(keyRoot, mode, keyMod);
     }
 
-    Pair<String, String> getKeyStr() {
+    public Pair<String, String> getKeyStr() {
         return new Pair<>(keyRoot, mode);
     }
 

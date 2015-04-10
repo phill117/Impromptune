@@ -25,7 +25,7 @@ public class MetaData {
     boolean major = true;
     int beats = 4;
     int beattype = 4;
-
+    int fifths = 0;
     String fifthType = "sharp";
 
     //'sign' and line not implemented to change
@@ -144,6 +144,13 @@ public class MetaData {
         this.fifthType = fifthType;
     }
 
+    public int getFifths() {
+        return fifths;
+    }
+
+    public void setFifths(int i ) {
+        fifths = i;
+    }
     public ArrayList<Measure> getMeasures() {
         return measures;
     }

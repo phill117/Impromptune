@@ -16,23 +16,25 @@ public class PitchAxis {
 
     boolean sharp = true; //sharp by default
 
-    public PitchAxis(char a, Pair<String, String> keySig) {
+    public PitchAxis(Pair<String, String> keySig, char a) {
         if (a == '#')
             pitchAxis = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
         else if (a == 'b')
             pitchAxis = new String[]{"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
-    }
 
-    public PitchAxis(Pair<String, String> keySig) { //default
-        pitchAxis = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
         tonic = keySig.t;
         mode = keySig.u;
     }
 
+//    public PitchAxis(Pair<String, String> keySig) { //default
+//        pitchAxis = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+//        tonic = keySig.t;
+//        mode = keySig.u;
+//    }
+
     int getIndex(String pitch) {
         for (int i = 0; i < pitchAxis.length; i++)
             if (pitch.compareTo(pitchAxis[i]) == 0)
-
                 return i;
 
         return -1; //failed
@@ -119,8 +121,27 @@ public class PitchAxis {
     }
 
     Degree degreeIndex(Note note) {
-        return BlackMagicka.getDegreeIndex(tonic, mode, note.toString());
 
+        System.out.println("PitchAxis note " + note.toString() + " tonic " +tonic+ " mode " +mode );
+//        switch(noteIndex(note)) {
+//                case 0:
+//                    return Degree.Tonic;
+//                case 1:
+//                    return Degree.Supertonic;
+//                case 2:
+//                    return Degree.Mediant;
+//                case 3:
+//                    return Degree.Subdominant;
+//                case 4:
+//                    return Degree.Dominant;
+//                case 5:
+//                    return Degree.Submediant;
+//                case 6:
+//                    return Degree.Leading;
+//        }
+//        return null;
+
+        return BlackMagicka.getDegreeIndex(tonic, mode, note.toString());
 //        return degree;
     }
 }

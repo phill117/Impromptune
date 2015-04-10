@@ -33,14 +33,14 @@ public class ToneTransitionTable {
     private LinkedList<Beat> lastKBeats; //last K order notes
     private LinkedList<MarkovState> markov; //list of the K order markov states
 
-    public ToneTransitionTable(int order, Pair<String, String> keySig) {
+    public ToneTransitionTable(int order, Pair<String, String> keySig, char a) {
         this.order = order;
         this.lastKBeats = new LimitedQueue<>(order);
         this.markov = new LimitedQueue<>(order);
 
         int k = 0;
         while (k++ < order) //add k dimensions for model
-            markov.add(new MarkovState(keySig));
+            markov.add(new MarkovState(keySig, a));
     }
 
     //use the mxml parser and note/measure data objects...just as a quick way to sample other docs if we want to build a stronger model

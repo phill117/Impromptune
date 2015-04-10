@@ -174,6 +174,7 @@ public class BlackMagicka {
 
     //reverses a string form of the note to its' corresponding index
     static int noteIndex(String note) {
+        System.out.println("BlackMagicka.NoteIndex() " + note);
         switch(note) {
             case "C":
                 return 0;
@@ -246,6 +247,7 @@ public class BlackMagicka {
 
     //the following methods return scales/chords in the form of lists of strings
     static List<String> majorScale(String note) {
+        System.out.println("building major scale based on tonic: " + note);
         List<String> scale = new LimitedQueue<>(7);
         int noteIndex = noteIndex(note);
         int [] majorSteps = {2,2,1,2,2,2,1}; //maps chromatic to major diatonic scale
@@ -425,7 +427,7 @@ public class BlackMagicka {
     }
 
     static Degree getDegreeIndex(String tonic, String mode, String tone) {
-//        System.out.println("getting degree index" + tone);
+        System.out.println("getting degree index " + tone + "from scale tonic: " + tonic + " from mode: " + mode);
         if (mode.equals("major")) {
             int i = getIndexOfScale(majorScale(tonic), tone);
             if (i == -1) return null;

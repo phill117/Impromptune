@@ -76,7 +76,12 @@ public class MXMLContentHandler extends DefaultHandler{
 
         if(qName.equals("mode")){currentFlag = MXML.Mode; return;}
         if(qName.equals("divisions")){currentFlag = MXML.Divisions; return;}
-        if(qName.equals("fifths")){currentFlag = MXML.Fifths; return;}
+//        if(qName.equals("fifths")) {
+//            currentFlag = MXML.Fifths;
+////            metaData.setFifths(Integer.parseInt(attributes.getValue("fifths")));
+//
+//            return;
+//        }
         if(qName.equals("sound")){metaData.setTempo(Integer.parseInt(attributes.getValue("tempo")));return;}
 
         currentFlag = MXML.NONE;

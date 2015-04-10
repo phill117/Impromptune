@@ -35,7 +35,7 @@ public class MainWindow {
 	private WritableImage scoreImage = null;
 
     public int pageIndex = 0;
-    public Content getContent() { return content;}
+    public Content getContent() { return content; }
 
     public String loadedFile;
     private float zoomFactor = 1.25f;

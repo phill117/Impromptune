@@ -15,10 +15,11 @@ public class MarkovState {
     //note counts
     private int histogram[][];
 
-    public MarkovState(Pair<String, String> keySig) {
+    public MarkovState(Pair<String, String> keySig, char a) {
+        System.out.println("keysig: " + keySig.t + " " + keySig.u + " " + a);
         this.histogram = new int [12][12];
         this.probMatrix = new double [12][12];
-        this.pitchAxis = new PitchAxis(keySig);
+        this.pitchAxis = new PitchAxis(keySig, a);
     }
 
     private void markIndexFound(int i, int j) {
