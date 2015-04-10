@@ -101,7 +101,8 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
         File file = chooser.showSaveDialog(stage);
 
         if(file == null)
-            return;
+        { generate_btn.setDisable(false);
+            return;}
 
         mainWindow.saveAs(file);
 
