@@ -140,7 +140,7 @@ public class ToneTransitionTable {
         return degreeDist;
     }
 
-    public HashMap<Note, Double> pickNote(Beat beat) {
+    public HashMap<Note, Double> generateBeatChoices(Beat beat) {
         //getdegree from beats
 //        lastKBeats.getFirst();
         HashMap<Note, Double> distribution = getBeatLikelihoods(beat, 1);
@@ -153,7 +153,7 @@ public class ToneTransitionTable {
             markov.get(i).updateLayer(beat, lastKBeats.get(i));
     }
 
-    private int getRand(int i) {
+    public int getRand(int i) {
         return rand.nextInt(i);
     }
 

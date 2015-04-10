@@ -21,24 +21,27 @@ public class VirtuosoAgent {
 //        System.out.println(BlackMagicka.pickDominant("A"));
         VirtuosoAgent agent = new VirtuosoAgent("gen_settings/MozartPianoSonata.xml");
 //        agent.build("gen_settings/MozartPianoSonata.xml");
-        System.out.println(agent.chordProgression);
-
-        MetaData data = new MetaData("gen_settings/MozartPianoSonata.xml");
-        ArrayList<ArrayList<Note>> beats = data.getBeatList();
-
-//        VirtuosoAgent agent = new VirtuosoAgent();
-        List<String> possibleChords = new ArrayList<>();
-        for (ArrayList<Note> notes : beats) {
-            for (Note n : notes) {
-                String s = agent.pickNote(n);
-                if (s == null) //not in key
-                    continue;
-                possibleChords.add(s);
-            }
-        }
+//        System.out.println(agent.chordProgression);
+//
+//
+//
+////        VirtuosoAgent agent = new VirtuosoAgent();
+//        List<String> possibleChords = new ArrayList<>();
+//        for (ArrayList<Note> notes : beats) {
+//            for (Note n : notes) {
+//                String s = agent.pickNote(n);
+//                if (s == null) //not in key
+//                    continue;
+//                possibleChords.add(s);
+//            }
+//        }
 
         agent.chordProgression = agent.buildChordProgression();
-        System.out.println(agent.chordProgression);
+        System.out.println("Chord progression: " + agent.chordProgression);
+        System.out.print("generated chords:" + agent.getGeneratedTones());
+
+//        for (int i = 0; i < 15; i++)
+//            System.out.print(agent.chooseChord());
     }
 
     private VirtuosoAgent rationalAgent;
@@ -46,7 +49,7 @@ public class VirtuosoAgent {
     private String keyTonic;
     private String mode;
     private Set<String> chordProgression;
-
+    private MetaData data;
     public VirtuosoAgent(String fileName) {
         keyTonic = "C";
         mode = "major";
@@ -55,7 +58,15 @@ public class VirtuosoAgent {
         model.trainFile("gen_settings/MozartPianoSonata.xml");
 //        chordProgression = new HashSet<>();
 //        possibleChords = new ArrayList<>();
+        data = new MetaData("gen_settings/MozartPianoSonata.xml");
 
+        degreeWeight = new int[][] {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
+                                    {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
+                                    {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
+                                    {4,  2,    0,    2,    2,   0,    1}, //etc...
+                                    {5,  0,    0,    0,    3,   2,    0},
+                                    {0,  5,    0,    3,    0,   2,    0},
+                                    {9,  0,    0,    0,    0,   0,    1}};
     }
 
 //    public VirtuosoAgent getInstance() {
@@ -64,7 +75,23 @@ public class VirtuosoAgent {
 //        return rationalAgent;
 //    }
 
-    public Pair<String, Integer> getMaxPair(List<Pair<String, Integer>> chords) {
+    public List<String> getGeneratedTones() {
+        List<String> tones = new ArrayList<>();
+        ArrayList<ArrayList<Note>> beats = data.getBeatList();
+        for (ArrayList<Note> notes : beats) {
+            for (Note n : notes) {
+                String s = chooseChord(n);
+                if (s == null) //not in key
+                    continue;
+                tones.add(s);
+//                System.out.print(s);
+            }
+        }
+
+        return tones;
+    }
+
+    private Pair<String, Integer> getMaxPair(List<Pair<String, Integer>> chords) {
         Pair <String, Integer> max = chords.get(0);
         for (Pair<String, Integer> p : chords)
             if (p.u > max.u)
@@ -183,50 +210,114 @@ public class VirtuosoAgent {
 //
 //    }
 
-    String pickNote (Note note) {
+
+    private String getMaxVote(Map<String, Integer> ballot) {
+        Iterator it = ballot.entrySet().iterator();
+
+        Integer value = new Integer(0);
+        String max = null;
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+
+            if (Integer.valueOf(value) < (Integer)pair.getValue()) {
+                max = (String)pair.getKey();
+                value = (Integer)pair.getValue();
+            }
+        }
+
+        return max;
+    }
+
+//    BlackMagicka.getDegreeIndex(keyTonic, mode, note).toInt()
+    //get tone with pairObject.t, get register with pairObject.u
+    private String chooseChord(Note no) {
+
+        Pair<String, Integer> chord = null;
+
+        String [] str = chordProgression.toArray(new String[0]);
+        HashMap<String, Integer> ballot = new HashMap<>();
+        for (int i = 0; i < 3; i++) {
+            String note = str[model.getRand(3)];
+            Integer count = ballot.get(note);
+            if (BlackMagicka.noteInChord("A", "major", no.toString()) == true) {
+                int m = BlackMagicka.getDegreeIndex(keyTonic, mode, no.toString()).toInt();
+                int n = BlackMagicka.getDegreeIndex(keyTonic, mode, note).toInt();
+                count *= degreeWeight[m][n];
+                System.out.print(count);
+            }
+
+            if (count == null) {
+                ballot.put(note, 1);
+            } else {
+                ballot.put(note, count + 1);
+            }
+        }
+
+        return getMaxVote(ballot);
+    }
+
+
+    private HashMap<Degree, Double> scorify(Degree degree, HashMap<Degree, Double> degrees) {
+        Iterator it = degrees.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            Degree d = (Degree)pair.getKey();
+            degrees.put(d, (Double)pair.getValue() * degreeWeight[degree.toInt()][d.toInt()]);
+        }
+
+        return degrees;
+    }
+
+    private String pickNote (Note note) {
         Beat beat = new Beat();
         beat.addNote(note);
         //model.pickNote(beat);
-        HashMap<Degree, Double> hash = model.possibleNotestoDegree(model.pickNote(beat));
+        HashMap<Degree, Double> hash = model.possibleNotestoDegree(model.generateBeatChoices(beat));
+
         Degree d = model.getDegree(note);
+
+        if (d == null) return null;
+        hash = scorify(d, hash);
+        System.out.println(calcScore(d, hash));
+
+
         Degree n = transition(d, hash);
+
 //        System.out.println(degreeTone(n));
         return degreeTone(n);
     }
 
-    String degreeTone(Degree degree) {
+    private String degreeTone(Degree degree) {
         if (degree == null)
             return null;
         return BlackMagicka.pickIthNote(keyTonic, degree.toInt());
     }
 
     //ignore this for now
-    int degreeWeight[][] =
+    private int degreeWeight[][]
             //1   2     3     4     5    6     7
-            {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
-            {0,   3,    0,    0,    4,   0,    1}, //supertonic to ...
-            {0,   0,    2,    4,    9,   4,    0}, //mediant to ...
-            {4,   2,    0,    2,    2,   0,    1}, //etc...
-            {5,   0,    0,    0,    3,   2,    0},
-            {0,   5,    0,    3,    0,   2,    0},
-            {9,   0,    0,    0,    0,   0,    1}};
+            ;
 
 
     //this should calculate the decision weighting for a degree with respect to the probable tones
-    double calcScore(Degree degree, HashMap<Degree, Double> dist) {
+    private double calcScore(Degree degree, HashMap<Degree, Double> dist) {
+        if (degree == null)
+            return 0.0;
         double score = 0.0;
         Iterator it = dist.entrySet().iterator();
 
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             Degree from = (Degree)pair.getKey();
-            score = (double) pair.getValue() * degreeWeight[from.toInt()][degree.toInt()];
+
+            score = (double) pair.getValue() *(double)  degreeWeight[from.toInt()][degree.toInt()];
         }
 
         return score;
     }
 
-    Pair<Degree, Double> getMaxWeight(HashMap<Degree, Double> distribution) {
+    private Pair<Degree, Double> getMaxWeight(HashMap<Degree, Double> distribution) {
 //        HashMap<Degree, Double> degreeDist = new HashMap<>();
         Iterator it = distribution.entrySet().iterator();
 
@@ -246,7 +337,7 @@ public class VirtuosoAgent {
 
 
     //just a wrapper for above
-    Degree getMaxWeightDegree(HashMap<Degree, Double> distribution) {
+    private Degree getMaxWeightDegree(HashMap<Degree, Double> distribution) {
         return getMaxWeight(distribution).t;
     }
 
@@ -258,7 +349,7 @@ public class VirtuosoAgent {
      * @return : the next Degree (effectively the next chord) in the progression
      */
 
-    public Degree transition(Degree degree, Map<Degree, Double> possibilities, int order){
+    private Degree transition(Degree degree, Map<Degree, Double> possibilities, int order){
 
         // there is only one compatible chord, choose that one
         if(possibilities.size() == 1) for(Degree d : possibilities.keySet()) return d;
