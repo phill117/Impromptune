@@ -476,7 +476,7 @@ public class VirtuosoAgent {
                 //if they new duration and existing duration are the same....
                 if(existingDuration == addedDuration){
                     //add the new note to the current chord
-                    chord.add(Note.makeNote(chordProgTones.get(index),5,1));
+                    chord.add(Note.makeNote(chordProgTones.get(index),3,1));
                     index++;
                     if(chordProgTones.size() == index) return;
                     addedDuration = addedDuration + (divisions * 1);
@@ -485,7 +485,7 @@ public class VirtuosoAgent {
                 //the the existing duration is greater than the added duration...
                 while(existingDuration > addedDuration){
                     //catch up by adding those values that need to be inserted later.
-                    chordInsertionVals.add(new Pair<>(chordNo,Note.makeNote(chordProgTones.get(index),5,1) ));
+                    chordInsertionVals.add(new Pair<>(chordNo,Note.makeNote(chordProgTones.get(index),3,1) ));
                     index++;
                     if(chordProgTones.size() == index) return;
                     addedDuration = addedDuration + (divisions * 1);
