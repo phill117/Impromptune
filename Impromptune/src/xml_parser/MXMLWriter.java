@@ -48,6 +48,8 @@ public class MXMLWriter {
             System.out.println("number of Measures: "+data.getMeasures().size());
             for(Measure measure : data.getMeasures()){
 
+                int divisions = data.getDivisions();
+
                 writer.writeStartElement("measure");
                 writer.writeAttribute("number",Integer.toString(measure.getMeasureNo()));
 
@@ -87,17 +89,37 @@ public class MXMLWriter {
                     //end of time
                     writer.writeEndElement();
 
-                    //clef
+                    //staves
+                    writer.writeStartElement("staves");
+                    writer.writeCharacters("2");
+                    writer.writeEndElement();
+
+                    //first clef
                     writer.writeStartElement("clef");
+                    writer.writeAttribute("number", "1");
                     //sign
                     writer.writeStartElement("sign");
-                    writer.writeCharacters(data.getSign());
+                    writer.writeCharacters("G");
                     writer.writeEndElement();
                     //line
                     writer.writeStartElement("line");
-                    writer.writeCharacters(data.getLine());
+                    writer.writeCharacters("2");
                     writer.writeEndElement();
-                    //end of clef
+                    //end of first clef
+                    writer.writeEndElement();
+
+                    //second clef
+                    writer.writeStartElement("clef");
+                    writer.writeAttribute("number","2");
+                    //sign
+                    writer.writeStartElement("sign");
+                    writer.writeCharacters("F");
+                    writer.writeEndElement();
+                    //line
+                    writer.writeStartElement("line");
+                    writer.writeCharacters("4");
+                    writer.writeEndElement();
+                    //end of second clef
                     writer.writeEndElement();
 
                     //end of attributes
@@ -109,6 +131,8 @@ public class MXMLWriter {
                 for(ArrayList<Note> chord : measure.getChords()) {
                     boolean putChord = false;
                     for (Note note : chord) {
+                        //this method sets the voice number and staff number for that note
+                        note.setStaffNo();
 
                         writer.writeStartElement("note");
 
@@ -137,9 +161,23 @@ public class MXMLWriter {
                             writer.writeEmptyElement("tie");
                             writer.writeAttribute("type", note.getTiedType());
                         }
+
+                        //voice
+                        writer.writeStartElement("voice");
+                        writer.writeCharacters(Integer.toString(note.getStaffNo()));
+                        writer.writeEndElement();
+
                         //type
                         writer.writeStartElement("type");
                         writer.writeCharacters(note.getType());
+                        writer.writeEndElement();
+
+                        //dot
+                        if(note.isDotted()) writer.writeEmptyElement("dot");
+
+                        //staff
+                        writer.writeStartElement("staff");
+                        writer.writeCharacters(Integer.toString(note.getStaffNo()));
                         writer.writeEndElement();
 
                         writer.writeEndElement();

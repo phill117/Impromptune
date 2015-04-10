@@ -106,24 +106,23 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     //read the file (that is now xml)
                     System.out.println("started");
                     DefaultHandler handler = new MXMLContentHandler();
-                    //InputSource inputSource = new InputSource(new FileReader((file)));
+                    InputSource inputSource = new InputSource(new FileReader((file)));
                     //      THIS IS A TEMP INPUT SOURCE
-//                    InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
-//                    mxp.parse(inputSource, handler);
+                    //InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
+                    mxp.parse(inputSource, handler);
 
                     VirtuosoAgent agent = new VirtuosoAgent(file.getName());
                     System.out.println(agent.buildChordProgression());
+
                     //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
 
+
                     //load file back to screen
 
-//                } catch (SAXException e) {
-//                    System.out.println("SAX");
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    System.out.println("IO");
-//                    e.printStackTrace();
+                } catch (Exception e) {
+                    System.out.println("IO");
+                    e.printStackTrace();
                 }finally {
                     Platform.runLater(new Runnable() {
                         @Override

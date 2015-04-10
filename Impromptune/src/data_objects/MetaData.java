@@ -48,7 +48,6 @@ public class MetaData {
 
         //make xml parser
         SAXParser mxp;
-        MXMLWriter mxmlWriter = new MXMLWriter();
         try {
             mxp = SAXParserFactory.newInstance().newSAXParser();
         }catch(Exception e){
@@ -205,10 +204,12 @@ public class MetaData {
             }
         }else{ // its n/8 time
             for(Note currentNote : noteList){
-
+                //TODO why haven't you done this yet !!!
             }
         }
 
         return beats;
     }
+
+
 }

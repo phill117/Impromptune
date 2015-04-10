@@ -140,16 +140,7 @@
                                     </Button>
                                 </items>
                               </ToolBar>
-                              <TabPane fx:id="RendererTabs" tabClosingPolicy="UNAVAILABLE">
-                                 <tabs>
-                                    <Tab>
-                                       <content>
-                                        <AnchorPane fx:id="RendererCase" minWidth="0.0" prefHeight="589.0" prefWidth="849.0">
-                         </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                 </tabs>
-                              </TabPane>
+                              <TabPane fx:id="RendererTabs" tabClosingPolicy="UNAVAILABLE" />
                               <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="794.0" VBox.vgrow="NEVER">
                                 <items>
                                     <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="Whole" />
