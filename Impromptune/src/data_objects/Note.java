@@ -5,15 +5,36 @@ package data_objects;
  */
 public class Note {
 
-    int octave;
-    char pitch;
-    int accidental;
+    int octave = 4;
+    char pitch = 'C';
+    int accidental = 0;
     int duration;   //shall be counted as a fraction of one beat
     String type;
     String tied = null;
 
-    public Note() {
+    boolean dotted = false; //TODO put into reader
 
+    int staffNo = 1; //default treble
+
+    public Note() {}
+
+    public Note(char pitch, int accidental ,int octave,int duration){
+        this.pitch = pitch;
+        this.accidental = accidental;
+        this.octave = octave;
+        this.duration = duration;
+    }
+
+
+
+    public static Note makeNote(String pitch ,int octave,int duration){
+        if(pitch.length() == 1)
+            return new Note(pitch.charAt(0),0,octave,duration);
+
+        int acc = 0;
+        if(pitch.charAt(1) == 'b') acc--;
+        else if(pitch.charAt(1) == '#') acc++;
+        return new Note(pitch.charAt(0),acc,octave,duration);
     }
 
     public boolean isRest(){
@@ -58,6 +79,30 @@ public class Note {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isDotted() {
+        return dotted;
+    }
+
+    public void setDotted(boolean dotted) {
+        this.dotted = dotted;
+    }
+
+    public int setStaffNo() {
+        if(this.octave < 4){
+            staffNo = 2;
+        }else if(this.octave > 4){
+            staffNo = 1;
+        }else{
+            if(pitch < 'C') staffNo = 2;
+            else staffNo = 1;
+        }
+        return staffNo;
+    }
+
+    public int getStaffNo() {
+        return staffNo;
     }
 
     public boolean isChordTone(){

@@ -1,6 +1,7 @@
 package virtuouso;
 
 import data_objects.Beat;
+import data_objects.Measure;
 import data_objects.MetaData;
 import data_objects.Note;
 
@@ -349,5 +350,67 @@ public class VirtuosoAgent {
 
         //will never happen (making the compiler happy)
         return Degree.Tonic;
+    }
+
+    /**
+     * This method was finished by Sean Phillips @ 9:53 PM EST with the sprint 2 demo taking place the next day at 12:30 PM EST.
+     * He was very displeased with the result.
+     * HE BELIEVES THAT THIS SHIT METHOD NEEDS TO BE REWRITTEN AND THE WHOLE DAMN PROJECT BE REWORKED (at least some parts).
+     * @param chordProgTones - The list of string representing notes to be added to the existing music.
+     */
+    public void addBackToMusic(ArrayList<String> chordProgTones){
+        MetaData metaData = MetaData.getInstance();
+        int beats = metaData.getBeats();
+        int divisions = metaData.getDivisions();
+
+        int index = 0;
+
+        ArrayList<Measure> existingMeasures = metaData.getMeasures();
+
+        for(Measure measure : existingMeasures){
+            int existingDuration = 0;
+            int addedDuration = 0;
+            int chordNo = 0;
+
+            //create a list to hold notes to be inserted
+            ArrayList<Pair<Integer,Note>> chordInsertionVals = new ArrayList<>();
+
+            //for every chord...
+            for(ArrayList<Note> chord : measure.getChords()){
+                //keep track of the chord number
+                chordNo++;
+                //if they new duration and existing duration are the same....
+                if(existingDuration == addedDuration){
+                    //add the new note to the current chord
+                    chord.add(Note.makeNote(chordProgTones.get(index),5,1));
+                    index++;
+                    if(chordProgTones.size() == index) return;
+                    addedDuration = addedDuration + (divisions * 1);
+                }
+
+                //the the existing duration is greater than the added duration...
+                while(existingDuration > addedDuration){
+                    //catch up by adding those values that need to be inserted later.
+                    chordInsertionVals.add(new Pair<>(chordNo,Note.makeNote(chordProgTones.get(index),5,1) ));
+                    index++;
+                    if(chordProgTones.size() == index) return;
+                    addedDuration = addedDuration + (divisions * 1);
+                }
+
+                //update existing duration
+                existingDuration += chord.get(0).getDuration();
+
+            }
+
+            //insert the new chords
+            for(Pair pair : chordInsertionVals){
+                Note note = (Note)pair.u;
+                ArrayList<Note> newChord = new ArrayList<>();
+                newChord.add((Note)pair.u);
+                measure.getChords().add((Integer) pair.t, newChord);
+            }
+
+
+        }
     }
 }
