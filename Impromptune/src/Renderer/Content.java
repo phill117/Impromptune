@@ -237,6 +237,7 @@ public class Content
         mainWindow.renderLayout(layout);
 
         //load score into MIDI playback
+        Playback.registerListener(this);
         Playback.openScore(comp.getCurrentScore());
     }
 

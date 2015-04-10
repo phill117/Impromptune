@@ -102,13 +102,13 @@ public class ImpromptuneInitializer implements Initializable{
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.intValue() < mainWindows.size() && mainWindows.size() != 0){
-                   //System.out.println(mainWindows.size());
+                    //System.out.println(mainWindows.size());
                     //System.out.println(newValue.intValue());
                     mainWindow = mainWindows.get(newValue.intValue());
                     piano.mw = mainWindow; //Set the current piano window to current renderer window
                     genSettings.setMainWindow(mainWindow);
                     genSettings.setStage(stage);
-                    Playback.registerListener(mainWindow.getContent());
+                    mainWindow.getContent().refresh();
                     stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                             " - " + mainWindow.getContent().getSD().getScore().getCreator());
                 }
@@ -335,7 +335,7 @@ public class ImpromptuneInitializer implements Initializable{
         piano.mw = mainWindow; //Set the current piano window to current renderer window
         genSettings.setMainWindow(mainWindow);
         genSettings.setStage(stage);
-        Playback.registerListener(mainWindow.getContent());
+        mainWindow.getContent().refresh();
         stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                 " - " + mainWindow.getContent().getSD().getScore().getCreator());
     }
