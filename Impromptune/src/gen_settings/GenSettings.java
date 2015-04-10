@@ -115,6 +115,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
 
                     agent.buildChordProgression();
                     System.out.print(agent.getGeneratedTones());
+                    agent.addBackToMusic(agent.getGeneratedTones());
                     //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
 

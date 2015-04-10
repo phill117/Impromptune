@@ -78,8 +78,8 @@ public class VirtuosoAgent {
 //        return rationalAgent;
 //    }
 
-    public List<String> getGeneratedTones() {
-        List<String> tones = new ArrayList<>();
+    public ArrayList<String> getGeneratedTones() {
+        ArrayList<String> tones = new ArrayList<>();
         ArrayList<ArrayList<Note>> beats = data.getBeatList();
         for (ArrayList<Note> notes : beats) {
             for (Note n : notes) {
