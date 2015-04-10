@@ -272,7 +272,7 @@ public class ImpromptuneInitializer implements Initializable{
         if(file != null)
         {
             mainWindow.loadedFile = file;
-             mainWindow.getContent().loadScore(file);
+            mainWindow.getContent().loadScore(file);
 
         }
 

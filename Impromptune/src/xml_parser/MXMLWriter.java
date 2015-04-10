@@ -9,6 +9,9 @@ import javax.xml.stream.XMLStreamWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.StringWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 /**
@@ -143,7 +146,7 @@ public class MXMLWriter {
                             writer.writeStartElement("pitch");
                             //step
                             writer.writeStartElement("step");
-                            writer.writeCharacters(Character.toString(note.getPitch()));
+                            writer.writeCharacters(Character.toString(note.getPitch()).toUpperCase());
                             writer.writeEndElement();
                             //octave
                             writer.writeStartElement("octave");
@@ -167,10 +170,12 @@ public class MXMLWriter {
                         writer.writeCharacters(Integer.toString(note.getStaffNo()));
                         writer.writeEndElement();
 
-                        //type
-                        writer.writeStartElement("type");
-                        writer.writeCharacters(note.getType());
-                        writer.writeEndElement();
+                        //type //TODO DODODOD it should always have a type (i guess the reader is wrong and therefore zong is wrong)
+                        if(note.getType() != null && !note.getType().equals("")) {
+                            writer.writeStartElement("type");
+                            writer.writeCharacters(note.getType());
+                            writer.writeEndElement();
+                        }
 
                         //dot
                         if(note.isDotted()) writer.writeEmptyElement("dot");
@@ -196,7 +201,11 @@ public class MXMLWriter {
             writer.writeEndDocument();
 
             String xmlString = stringWriter.getBuffer().toString();
+
+            //Path absPath = Files.createTempFile("creation","xml", StandardOpenOption.DELETE_ON_CLOSE);
+
             tempFile = File.createTempFile("creation","xml");
+            tempFile.deleteOnExit();
             FileOutputStream outputStream = new FileOutputStream(tempFile);
             outputStream.write(xmlString.getBytes("UTF-8"));
 
