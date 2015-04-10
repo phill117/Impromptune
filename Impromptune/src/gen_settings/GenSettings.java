@@ -89,12 +89,21 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
 
         //save current file to xml
         FileChooser chooser = new FileChooser();
+
+        File custom = new File(".");
+        chooser.setInitialDirectory(custom);
+
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML", "*.xml"),
                 new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
         );
         chooser.setTitle("Save Composition as MusicXML");
         File file = chooser.showSaveDialog(stage);
+
+        if(file == null)
+        { generate_btn.setDisable(false);
+            return;}
+
         mainWindow.saveAs(file);
 
 
