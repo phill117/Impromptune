@@ -67,7 +67,7 @@ public class NewCompositionDialog implements Initializable{
 
         int bpm = Integer.parseInt(tempo.getValue().toString().substring((tempo.getValue().toString().indexOf('–')) + 1).trim());
 
-        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),bpm);
+        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),bpm,titleField.getText(),composerField.getText());
 
         parent.setTitle("Impromptune - " +titleField.getText() + " - " + composerField.getText());
         stage.close();

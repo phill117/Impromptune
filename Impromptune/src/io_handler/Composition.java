@@ -4,13 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
+import com.xenoage.utils.collections.CollectionUtils;
+import com.xenoage.utils.color.Color;
 import com.xenoage.utils.math.geom.Point2f;
 import com.xenoage.utils.math.geom.Size2f;
 import com.xenoage.zong.commands.core.music.PartAdd;
 import com.xenoage.zong.core.Score;
 import com.xenoage.zong.core.format.LayoutFormat;
 import com.xenoage.zong.core.format.PageFormat;
+import com.xenoage.zong.core.format.ScoreFormat;
 import com.xenoage.zong.core.format.StaffLayout;
 import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.music.*;
@@ -33,9 +37,19 @@ import com.xenoage.zong.musiclayout.ScoreLayout;
 import com.xenoage.zong.musiclayout.layouter.PlaybackLayouter;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
 import com.xenoage.zong.musiclayout.settings.LayoutSettings;
+import com.xenoage.zong.musicxml.types.MxlCredit;
+import com.xenoage.zong.musicxml.types.MxlCreditWords;
+import com.xenoage.zong.musicxml.types.MxlFormattedText;
 import com.xenoage.zong.musicxml.types.MxlScorePartwise;
+import com.xenoage.zong.musicxml.types.attributes.*;
+import com.xenoage.zong.musicxml.types.enums.MxlFontStyle;
+import com.xenoage.zong.musicxml.types.enums.MxlFontWeight;
+import com.xenoage.zong.musicxml.types.enums.MxlLeftCenterRight;
+import com.xenoage.zong.musicxml.types.enums.MxlVAlign;
+import com.xenoage.zong.musicxml.types.groups.MxlScoreHeader;
 import com.xenoage.zong.symbols.SymbolPool;
 
+import static com.xenoage.utils.iterators.It.it;
 import static com.xenoage.utils.math.Fraction._0;
 import static com.xenoage.utils.collections.CollectionUtils.alist;
 import static com.xenoage.zong.core.position.MP.mp;
@@ -60,6 +74,10 @@ public class Composition implements Serializable{
     private int scoreIndex = 0;
     private int currentIndex = 0;
     private int parts = 0;
+
+    public String title;
+    public String creator;
+    public String timeSig;
 
     //const
     private final float SPACING = 9;
@@ -89,13 +107,18 @@ public class Composition implements Serializable{
 
     }
 
-    public Composition(String clef, String key, String keyType, String keyMod, String Time, int bpm) {
+    public Composition(String clef, String key, String keyType, String keyMod, String Time, int bpm,String title,String composer) {
+        this.timeSig = Time;
         quills = new ArrayList<Quill>();
         currentComp = initializeEmptyScore(clef, key, keyType, keyMod, Time, bpm);
         setLayoutFormat(currentComp);
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
+
+        setInfo(title,composer);
+
+
     }
 
 
@@ -135,6 +158,83 @@ public class Composition implements Serializable{
         layout.updateScoreLayouts(currentComp);
         return layout;
     }
+
+
+
+    public void setInfo(String title,String composer) {
+
+        resync();
+        //Build mxldoc object for title
+        MxlScoreHeader mxlScoreHeader = new MxlScoreHeader();
+
+        List<MxlCredit> credits = CollectionUtils.alist();
+
+        //need to grab this shit from somewhere
+        this.title = title;
+        this.creator = composer;
+
+        String Title = title;
+        String Creator = composer;
+
+        MxlCredit credit;
+        MxlCreditWords cwords;  //set credit.content to this
+        List<MxlFormattedText> items = CollectionUtils.alist(); //WTF
+
+       // MxlFontStyle fontStyle;
+        //MxlFontSize fontSize1 = new MxlFontSize(24f, null);
+       // MxlFont font1 = new MxlFont(null, null, fontSize1, MxlFontWeight.Bold);
+        MxlFont font1 = MxlFont.jFont;
+        MxlColor color = MxlColor.bColor;
+        MxlPosition pos1 = new MxlPosition(680.0f, 1850.0f, null, null);
+        MxlPrintStyle ps1 = new MxlPrintStyle(pos1, font1, color);
+
+
+        //  MxlFont font2 = new MxlFont(null,null,14,MxlFontWeight.Bold);
+
+        MxlPosition pos2 = MxlPosition.noPosition;  //use noposition
+        MxlPrintStyle ps2 = new MxlPrintStyle(pos2, font1, color);
+
+        MxlFormattedText titleT = new MxlFormattedText(Title, MxlLeftCenterRight.Center, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps1);
+        MxlFormattedText newline = new MxlFormattedText("\n", MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Unknown, ps2);
+        MxlFormattedText creator = new MxlFormattedText(Creator, MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps2);
+
+        items.add(titleT);
+        items.add(newline);
+        items.add(creator);
+
+        cwords = new MxlCreditWords(items);
+        credit = new MxlCredit(cwords, 1);
+        credits.add(credit);
+       // mxlScoreHeader.setCredits(credits);
+       // MxlScorePartwise mxlSP =new MxlScorePartwise( mxlScoreHeader, null, "1");
+     //   CreditsReader.read(mxlSP, layout, currentComp.getFormat());
+
+        //for (MxlCredit credit : it(mxlScorePartwise.getScoreHeader().getCredits())) {
+          //  addTextFrame(credit, ret, scoreFormat);
+      //  }
+       CreditsReader.addTextFrame(credit, layout, currentComp.getFormat());
+       // CreditsReader.addTextFrame(credits.get(1), layout, currentComp.getFormat());
+       // CreditsReader.addTextFrame(credits.get(2), layout, currentComp.getFormat());
+        //
+
+
+
+
+
+      //  currentComp.setMetaData("mxldoc", mxlSP);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     //Not sure what this does but we need it -- Jacob
     void setLayoutFormat(Score score) {

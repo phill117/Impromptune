@@ -32,7 +32,10 @@ public final class MxlFont implements Serializable {
 	private final MxlFontWeight fontWeight;
 
 	public static final MxlFont noFont = new MxlFont(Collections.<String>emptyList(), MxlFontStyle.Unknown,
-		MxlFontSize.noFontSize, MxlFontWeight.Unknown);
+            MxlFontSize.noFontSize, MxlFontWeight.Unknown);
+
+    public static final MxlFont jFont = new MxlFont(Collections.<String>emptyList(), MxlFontStyle.Unknown,
+            MxlFontSize.jFontSize, MxlFontWeight.Bold);
 	
 
 	public static MxlFont read(XmlReader reader) {
