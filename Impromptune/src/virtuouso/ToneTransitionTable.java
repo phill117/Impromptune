@@ -44,8 +44,8 @@ public class ToneTransitionTable {
     }
 
     //use the mxml parser and note/measure data objects...just as a quick way to sample other docs if we want to build a stronger model
-    public void trainFile(String fileName) {
-        MetaData data = new MetaData(fileName);
+    public void trainFile(File file) {
+        MetaData data = new MetaData(file);
         ArrayList<ArrayList<Note>> beats = data.getBeatList();
         trainPiece(beats);
     }
@@ -140,7 +140,7 @@ public class ToneTransitionTable {
         return degreeDist;
     }
 
-    public HashMap<Note, Double> pickNote(Beat beat) {
+    public HashMap<Note, Double> generateBeatChoices(Beat beat) {
         //getdegree from beats
 //        lastKBeats.getFirst();
         HashMap<Note, Double> distribution = getBeatLikelihoods(beat, 1);
@@ -153,7 +153,7 @@ public class ToneTransitionTable {
             markov.get(i).updateLayer(beat, lastKBeats.get(i));
     }
 
-    private int getRand(int i) {
+    public int getRand(int i) {
         return rand.nextInt(i);
     }
 

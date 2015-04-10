@@ -101,24 +101,22 @@ public class ScoreMXMLBuilder {
         MxlCreditWords cwords;  //set credit.content to this
         List<MxlFormattedText> items = CollectionUtils.alist(); //WTF
 
-        MxlFontSize fontSize1 = new MxlFontSize(24f,null);
-        MxlFont font1 = new MxlFont(null,null,fontSize1,MxlFontWeight.Bold);
+        MxlFont font1 = MxlFont.jFont;
+        MxlColor color = MxlColor.bColor;
+        MxlPosition pos1 = new MxlPosition(680.0f, 1850.0f, null, null);
+        MxlPrintStyle ps1 = new MxlPrintStyle(pos1, font1, color);
 
 
-        MxlPosition pos1 = new MxlPosition(680.0f,1850.0f,null,null);
-        MxlPrintStyle ps1 = new MxlPrintStyle(pos1,font1,null);
+        //  MxlFont font2 = new MxlFont(null,null,14,MxlFontWeight.Bold);
 
+        MxlPosition pos2 = MxlPosition.noPosition;  //use noposition
+        MxlPrintStyle ps2 = new MxlPrintStyle(pos2, font1, color);
 
-      //  MxlFont font2 = new MxlFont(null,null,14,MxlFontWeight.Bold);
+        MxlFormattedText titleT = new MxlFormattedText(Title, MxlLeftCenterRight.Center, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps1);
+        MxlFormattedText newline = new MxlFormattedText("\n", MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Unknown, ps2);
+        MxlFormattedText creator = new MxlFormattedText(Creator, MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps2);
 
-        MxlPosition pos2 = new MxlPosition(null,null,null,null);  //use noposition
-        MxlPrintStyle ps2 = new MxlPrintStyle(pos2,font1,null);
-
-        MxlFormattedText title = new MxlFormattedText(Title,MxlLeftCenterRight.Center,null,MxlVAlign.Top,ps1) ;
-        MxlFormattedText newline = new MxlFormattedText("\n",null,null,null,ps2) ;
-        MxlFormattedText creator = new MxlFormattedText(Creator,null,null,MxlVAlign.Top,ps2) ;
-
-        items.add(title);
+        items.add(titleT);
         items.add(newline);
         items.add(creator);
 

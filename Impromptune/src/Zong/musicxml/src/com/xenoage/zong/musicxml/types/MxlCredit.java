@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import static com.xenoage.utils.NullUtils.notNull;
 
 /**
@@ -21,7 +23,7 @@ import static com.xenoage.utils.NullUtils.notNull;
  */
 @IncompleteMusicXML(missing = "link,bookmark", children = "credit-words")
 @AllArgsConstructor @Getter @Setter
-public final class MxlCredit {
+public final class MxlCredit implements Serializable {
 
 	public static final String elemName = "credit";
 
