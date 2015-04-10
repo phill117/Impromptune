@@ -94,34 +94,33 @@ public class ScoreMXMLBuilder {
         List<MxlCredit> credits = CollectionUtils.alist();
 
         //need to grab this shit from somewhere
-        String Title = "DeadBeef";
-        String Creator = "By: Ludwig von Beefoven";
+        String Title = scoreDoc.getScore().getTitle();
+        String Creator = scoreDoc.getScore().getCreator();
 
         MxlCredit credit;
         MxlCreditWords cwords;  //set credit.content to this
         List<MxlFormattedText> items = CollectionUtils.alist(); //WTF
 
         MxlFont font1 = MxlFont.jFont;
+        MxlFont font2 = MxlFont.j2Font;
         MxlColor color = MxlColor.bColor;
+
         MxlPosition pos1 = new MxlPosition(680.0f, 1850.0f, null, null);
         MxlPrintStyle ps1 = new MxlPrintStyle(pos1, font1, color);
 
-
-        //  MxlFont font2 = new MxlFont(null,null,14,MxlFontWeight.Bold);
-
         MxlPosition pos2 = MxlPosition.noPosition;  //use noposition
-        MxlPrintStyle ps2 = new MxlPrintStyle(pos2, font1, color);
+        MxlPrintStyle ps2 = new MxlPrintStyle(pos2, font2, color);
 
         MxlFormattedText titleT = new MxlFormattedText(Title, MxlLeftCenterRight.Center, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps1);
         MxlFormattedText newline = new MxlFormattedText("\n", MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Unknown, ps2);
-        MxlFormattedText creator = new MxlFormattedText(Creator, MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps2);
+        MxlFormattedText creator = new MxlFormattedText("By:" + Creator, MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps2);
 
         items.add(titleT);
         items.add(newline);
         items.add(creator);
 
         cwords = new MxlCreditWords(items);
-        credit = new MxlCredit(cwords,1);
+        credit = new MxlCredit(cwords, 1);
 
         credits.add(credit);
         return credits;

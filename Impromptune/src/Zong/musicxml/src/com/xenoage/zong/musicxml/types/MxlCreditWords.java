@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ import java.util.List;
 @IncompleteMusicXML(missing = "link,bookmark", partly = "credit-words")
 @AllArgsConstructor @Getter @Setter
 public final class MxlCreditWords
-	implements MxlCreditContent {
+	implements MxlCreditContent, Serializable {
 	
 	public static final String elemName = "credit-words";
 

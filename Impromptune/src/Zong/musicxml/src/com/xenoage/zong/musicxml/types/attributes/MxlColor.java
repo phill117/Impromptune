@@ -24,7 +24,7 @@ public final class MxlColor implements Serializable {
 
 	public static final String attrName = "color";
 	public static final MxlColor noColor = new MxlColor(null);
-    public static final MxlColor bColor = new MxlColor(new Color(255,0,0));
+    public static final MxlColor bColor = new MxlColor(new Color(0,0,0));
 
 	public static MxlColor read(XmlReader reader) {
 		String s = reader.getAttribute(attrName);

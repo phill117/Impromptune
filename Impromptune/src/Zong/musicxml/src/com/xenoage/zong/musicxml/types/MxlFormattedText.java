@@ -12,6 +12,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * MusicXML formatted-text, including text-formatting.
  * 
@@ -21,7 +23,7 @@ import lombok.Setter;
 	+ "letter-spacing,line-height,xml:lang,text-direction,enclosure")
 @AllArgsConstructor @Getter @Setter
 public final class MxlFormattedText
-	implements MxlPrintStyleContent {
+	implements MxlPrintStyleContent, Serializable {
 
 	@NonNull private String value;
 	private MxlLeftCenterRight justify; //alignment within the text box

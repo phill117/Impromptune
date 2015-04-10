@@ -1,10 +1,14 @@
 package impromptune_gui;
 
 import Renderer.MainWindow;
+import com.xenoage.utils.error.Err;
+import com.xenoage.utils.jse.log.DesktopLogProcessing;
+import com.xenoage.utils.log.Log;
 import com.xenoage.zong.commands.desktop.dialog.AudioSettingsDialogShow;
 import com.xenoage.zong.commands.player.convert.DirToMidiConvert;
 import com.xenoage.zong.commands.player.convert.FileToMidiConvert;
 import com.xenoage.zong.desktop.utils.JseZongPlatformUtils;
+import com.xenoage.zong.desktop.utils.error.GuiErrorProcessing;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
@@ -138,6 +142,8 @@ public class ImpromptuneInitializer implements Initializable{
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
+           // Log.init(new DesktopLogProcessing(appName + " " + 1));
+           // Err.init(new GuiErrorProcessing());
             UNDO = undo;
             REDO = redo;
             newTab();

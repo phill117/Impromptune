@@ -75,6 +75,7 @@ public class Composition implements Serializable{
     private int currentIndex = 0;
     private int parts = 0;
 
+    private  MxlCredit credit;
     public String title;
     public String creator;
     public String timeSig;
@@ -116,6 +117,9 @@ public class Composition implements Serializable{
         layout = currentScoreDoc.getLayout();
         currentComp.getCommandPerformer().addCommandListener(quills.get(0)); //first one for now
 
+        currentComp.setTitle(title);
+        currentComp.setCreator(composer);
+
         setInfo(title,composer);
 
 
@@ -152,6 +156,10 @@ public class Composition implements Serializable{
     public void resync() {
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
+
+        //Redraw title cause wtf
+        if(this.credit != null)
+            CreditsReader.addTextFrame(this.credit, this.layout, currentComp.getFormat());
     }
 
     public Layout getLayout() {
@@ -162,10 +170,10 @@ public class Composition implements Serializable{
 
 
     public void setInfo(String title,String composer) {
-
-        resync();
         //Build mxldoc object for title
         MxlScoreHeader mxlScoreHeader = new MxlScoreHeader();
+
+
 
         List<MxlCredit> credits = CollectionUtils.alist();
 
@@ -175,28 +183,28 @@ public class Composition implements Serializable{
 
         String Title = title;
         String Creator = composer;
-
+       // currentScoreDoc.setTitle(title);
+        //currentScoreDoc.setCreator(composer);
         MxlCredit credit;
         MxlCreditWords cwords;  //set credit.content to this
         List<MxlFormattedText> items = CollectionUtils.alist(); //WTF
 
        // MxlFontStyle fontStyle;
-        //MxlFontSize fontSize1 = new MxlFontSize(24f, null);
+       // MxlFontSize fontSize2 = new MxlFontSize(14f, null);
        // MxlFont font1 = new MxlFont(null, null, fontSize1, MxlFontWeight.Bold);
         MxlFont font1 = MxlFont.jFont;
+        MxlFont font2 = MxlFont.j2Font;
         MxlColor color = MxlColor.bColor;
+
         MxlPosition pos1 = new MxlPosition(680.0f, 1850.0f, null, null);
         MxlPrintStyle ps1 = new MxlPrintStyle(pos1, font1, color);
 
-
-        //  MxlFont font2 = new MxlFont(null,null,14,MxlFontWeight.Bold);
-
         MxlPosition pos2 = MxlPosition.noPosition;  //use noposition
-        MxlPrintStyle ps2 = new MxlPrintStyle(pos2, font1, color);
+        MxlPrintStyle ps2 = new MxlPrintStyle(pos2, font2, color);
 
         MxlFormattedText titleT = new MxlFormattedText(Title, MxlLeftCenterRight.Center, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps1);
         MxlFormattedText newline = new MxlFormattedText("\n", MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Unknown, ps2);
-        MxlFormattedText creator = new MxlFormattedText(Creator, MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps2);
+        MxlFormattedText creator = new MxlFormattedText("By:" + Creator, MxlLeftCenterRight.Unknown, MxlLeftCenterRight.Unknown, MxlVAlign.Top, ps2);
 
         items.add(titleT);
         items.add(newline);
@@ -204,7 +212,12 @@ public class Composition implements Serializable{
 
         cwords = new MxlCreditWords(items);
         credit = new MxlCredit(cwords, 1);
+        this.credit = credit;
         credits.add(credit);
+
+        //TODO stuff this in the mxlscorepartwise
+
+
        // mxlScoreHeader.setCredits(credits);
        // MxlScorePartwise mxlSP =new MxlScorePartwise( mxlScoreHeader, null, "1");
      //   CreditsReader.read(mxlSP, layout, currentComp.getFormat());
@@ -212,14 +225,7 @@ public class Composition implements Serializable{
         //for (MxlCredit credit : it(mxlScorePartwise.getScoreHeader().getCredits())) {
           //  addTextFrame(credit, ret, scoreFormat);
       //  }
-       CreditsReader.addTextFrame(credit, layout, currentComp.getFormat());
-       // CreditsReader.addTextFrame(credits.get(1), layout, currentComp.getFormat());
-       // CreditsReader.addTextFrame(credits.get(2), layout, currentComp.getFormat());
-        //
-
-
-
-
+        //CreditsReader.addTextFrame(credit, layout, currentComp.getFormat());
 
       //  currentComp.setMetaData("mxldoc", mxlSP);
 
@@ -388,6 +394,8 @@ public class Composition implements Serializable{
             MxlScorePartwise doc = (MxlScorePartwise) o;
             CreditsReader.read(doc, layout, score.getFormat());
         }
+
+
 
         return scoreDoc;
     }
