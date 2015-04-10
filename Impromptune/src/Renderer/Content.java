@@ -239,6 +239,8 @@ public class Content
         //load score into MIDI playback
         Playback.registerListener(this);
         Playback.openScore(comp.getCurrentScore());
+        Playback.start();
+        Playback.stop();
     }
 
 

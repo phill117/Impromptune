@@ -97,11 +97,10 @@ public class ImpromptuneInitializer implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try{
         RendererTabs.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.intValue() < mainWindows.size() && mainWindows.size() != 0){
+                if (newValue.intValue() < mainWindows.size() && mainWindows.size() > 0){
                     //System.out.println(mainWindows.size());
                     //System.out.println(newValue.intValue());
                     mainWindow = mainWindows.get(newValue.intValue());
@@ -113,7 +112,7 @@ public class ImpromptuneInitializer implements Initializable{
                             " - " + mainWindow.getContent().getSD().getScore().getCreator());
                 }
             }
-        });}catch (Exception e){}
+        });
         try {
             half.setSelected(true);
             durationGroup = new ArrayList<>();
@@ -270,6 +269,7 @@ public class ImpromptuneInitializer implements Initializable{
         add.setText(mainWindow.getContent().getSD().getScore().getTitle());
         stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                 " - " + mainWindow.getContent().getSD().getScore().getCreator());
+        mainWindow.getContent().refresh();
     }
 
     public static PlayerFrame getFrame() {
@@ -328,16 +328,18 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onCloseTab(ActionEvent event){
-        RendererTabs.getTabs().remove(getSelectedTab());
-        RendererTabs.getSelectionModel().select(0);
-        mainWindows.remove(mainWindow);
-        mainWindow = mainWindows.get(0);
-        piano.mw = mainWindow; //Set the current piano window to current renderer window
-        genSettings.setMainWindow(mainWindow);
-        genSettings.setStage(stage);
-        mainWindow.getContent().refresh();
-        stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
-                " - " + mainWindow.getContent().getSD().getScore().getCreator());
+        if (!mainWindows.isEmpty() && !RendererTabs.getTabs().isEmpty()) {
+            mainWindows.remove(mainWindow);
+            if (!mainWindows.isEmpty()) mainWindow = mainWindows.get(0);
+            RendererTabs.getTabs().remove(getSelectedTab());
+            RendererTabs.getSelectionModel().select(0);
+            piano.mw = mainWindow; //Set the current piano window to current renderer window
+            genSettings.setMainWindow(mainWindow);
+            genSettings.setStage(stage);
+            mainWindow.getContent().refresh();
+            stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                    " - " + mainWindow.getContent().getSD().getScore().getCreator());
+        }
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
