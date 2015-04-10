@@ -227,15 +227,6 @@ public class Composition implements Serializable{
 
 
 
-
-
-
-
-
-
-
-
-
     //Not sure what this does but we need it -- Jacob
     void setLayoutFormat(Score score) {
         LayoutFormat layoutFormat = new LayoutFormatReader(
