@@ -47,7 +47,7 @@ public final class CreditsReader {
 	/**
 	 * Adds the given credit element as a {@link TextFrame} to the given {@link Layout}.
 	 */
-	private static void addTextFrame(MxlCredit credit, Layout layout, ScoreFormat scoreFormat) {
+	public static void addTextFrame(MxlCredit credit, Layout layout, ScoreFormat scoreFormat) {
 		if (credit.getContent().getCreditContentType() == MxlCreditContentType.CreditWords) {
 			MxlCreditWords mxlCreditWords = (MxlCreditWords) credit.getContent();
 			//create formatted text
