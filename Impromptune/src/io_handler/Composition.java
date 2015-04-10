@@ -157,6 +157,8 @@ public class Composition implements Serializable{
         currentScoreDoc = initializeScoreDoc(currentComp);
         layout = currentScoreDoc.getLayout();
 
+        if(currentComp.getTitle() != null && currentComp.getCreator() != null)
+            setInfo(currentComp.getTitle(),currentComp.getCreator());
         //Redraw title cause wtf
         if(this.credit != null)
             CreditsReader.addTextFrame(this.credit, this.layout, currentComp.getFormat());

@@ -49,6 +49,15 @@ public class CompositionPropertiesDialog implements Initializable{
     }
 
     @FXML void onOkay(ActionEvent event){
+
+        if(titleField.getText() != null)
+        {  System.out.println("YES");
+            mainWindow.getContent().getSD().getScore().setTitle(titleField.getText());}
+        if(composerField.getText() != null)
+            mainWindow.getContent().getSD().getScore().setCreator(composerField.getText());
+
+        mainWindow.getContent().getComposition().resync();
+        mainWindow.getContent().refresh();
         stage.close();
     }
 
@@ -59,7 +68,7 @@ public class CompositionPropertiesDialog implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         scoreInfo = mainWindow.getContent().getComposition().getCurrentScore().info;
-        titleField.setText(scoreInfo.getTitle());
-        composerField.setText(scoreInfo.getComposer());
+        titleField.setText(mainWindow.getContent().getSD().getScore().getTitle());
+        composerField.setText(mainWindow.getContent().getSD().getScore().getCreator());
     }
 }
