@@ -90,14 +90,11 @@ public class Note {
     }
 
     public int setStaffNo() {
-        if(this.octave < 4){
+        if(this.octave < 4)
             staffNo = 2;
-        }else if(this.octave > 4){
+        else
             staffNo = 1;
-        }else{
-            if(pitch < 'C') staffNo = 2;
-            else staffNo = 1;
-        }
+
         return staffNo;
     }
 

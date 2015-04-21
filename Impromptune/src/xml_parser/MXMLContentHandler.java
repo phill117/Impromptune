@@ -44,6 +44,7 @@ public class MXMLContentHandler extends DefaultHandler{
     public void startDocument() throws SAXException {
         tab = 0;
         System.out.println("Start");
+        metaData.replaceMeasures();
         super.startDocument();
     }
 

@@ -19,11 +19,12 @@ import java.util.ArrayList;
  */
 public class MXMLWriter {
 
+    private static File tempFile;
+
     public File createMXML(){
         StringWriter stringWriter = new StringWriter();
         XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
         MetaData data = MetaData.getInstance();
-        File tempFile = null;
 
         try{
             XMLStreamWriter writer = xmlOutputFactory.createXMLStreamWriter(stringWriter);
@@ -209,6 +210,8 @@ public class MXMLWriter {
             FileOutputStream outputStream = new FileOutputStream(tempFile);
             outputStream.write(xmlString.getBytes("UTF-8"));
 
+            outputStream.flush();
+            outputStream.close();
             writer.flush();
             writer.close();
 

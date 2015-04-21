@@ -148,6 +148,8 @@ public class MetaData {
         return measures;
     }
 
+    public void replaceMeasures(){ measures = new ArrayList<>();}
+
     //gets the first note of every chord (Impromptune only accepts one note at a time so this is default) and puts it in a list
     public ArrayList<Note> getNoteList(){
         ArrayList notes = new ArrayList<>();

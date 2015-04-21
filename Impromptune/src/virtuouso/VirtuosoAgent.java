@@ -500,7 +500,7 @@ public class VirtuosoAgent {
             for(Pair pair : chordInsertionVals){
                 Note note = (Note)pair.u;
                 ArrayList<Note> newChord = new ArrayList<>();
-                newChord.add((Note)pair.u);
+                newChord.add(note);
                 measure.getChords().add((Integer) pair.t, newChord);
             }
 
