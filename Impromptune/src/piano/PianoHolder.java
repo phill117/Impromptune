@@ -18,6 +18,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import org.jfugue.Player;
 
@@ -40,8 +41,8 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
     static boolean tie;
 
     @FXML private Slider registerSlider;
-    @FXML private Pane pianoPane;
-
+    @FXML private HBox whiteKeysCase;
+    @FXML private HBox blackKeysCase;
     MetaData metaData;
 
     @Override
@@ -60,11 +61,20 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
         //create the player
         player = new Player();
 
-        //assign 'this' as an event listener for mouse presses and releases for all keys
-        ObservableList<Node> keys = pianoPane.getChildren();
-        for(Node key : keys){
+        //assign 'this' as an event listener for mouse presses and releases for white keys
+        ObservableList<Node> whiteKeys = whiteKeysCase.getChildren();
+        for(Node key : whiteKeys){
             key.setOnMousePressed(this);
             key.setOnMouseReleased(this);
+        }
+
+        //assign 'this' as an event listener for mouse presses and releases for black keys
+        ObservableList<Node> blackKeys = blackKeysCase.getChildren();
+        for(Node key : blackKeys){
+            if (key.isVisible()) {
+                key.setOnMousePressed(this);
+                key.setOnMouseReleased(this);
+            }
         }
     }
 
