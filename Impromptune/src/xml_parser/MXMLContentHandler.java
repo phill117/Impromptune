@@ -17,8 +17,6 @@ public class MXMLContentHandler extends DefaultHandler{
     Measure currentMeasure;
     Note currentNote;
 
-    boolean isChord = false;
-
     MetaData metaData;
     MXML currentFlag = MXML.Measure;
 
@@ -65,7 +63,6 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("duration")){currentFlag = MXML.Duration; return;}
         if(qName.equals("type")){currentFlag = MXML.Type; return;}
         if(qName.equals("rest")){currentNote.setPitch('r');return;}
-        if(qName.equals("chord")){isChord = true;}
         if(qName.equals("tie")){currentNote.setTied(attributes.getValue("type"));return;}
 
         if(qName.equals("measure")){
@@ -142,12 +139,7 @@ public class MXMLContentHandler extends DefaultHandler{
         System.out.println(s+"End Element: "+qName);
 
         if (qName.equals("note")){
-            if(isChord){
-                currentMeasure.addNote(currentNote);
-            }else{
-                currentMeasure.addChord(currentNote);
-            }
-            isChord = false;
+            currentMeasure.addNoteToPart(currentNote,0);
             return;
         }
         if (qName.equals("measure")){metaData.addMeasure(currentMeasure);return;}

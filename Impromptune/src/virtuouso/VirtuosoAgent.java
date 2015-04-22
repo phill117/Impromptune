@@ -447,64 +447,59 @@ public class VirtuosoAgent {
     }
 
     /**
-     * This method was finished by Sean Phillips @ 9:53 PM EST with the sprint 2 demo taking place the next day at 12:30 PM EST.
-     * He was very displeased with the result.
-     * HE BELIEVES THAT THIS SHIT METHOD NEEDS TO BE REWRITTEN AND THE WHOLE DAMN PROJECT BE REWORKED (at least some parts).
+     * This method was finished by Sean Phillips @ 9:55 PM EST with the days left before the Final demo.
+     * He was very pleased with the result, for he had remade the Measure Class structure.
+     * HE BELIEVES THAT THIS GREAT METHOD NEEDS TO BE SHARED WITH THE WHOLE HUMAN RACE (at least some of it).
      * @param chordProgTones - The list of string representing notes to be added to the existing music.
      */
-    public void addBackToMusic(ArrayList<String> chordProgTones){
+
+    public void addBackToMusic(ArrayList<String> chordProgTones) {
+        addBackToMusic(chordProgTones,MetaData.getInstance().getPartCount() - 1);
+    }
+
+    public void addBackToMusic(ArrayList<String> chordProgTones, int part){
         MetaData metaData = MetaData.getInstance();
-        int beats = metaData.getBeats();
-        int divisions = metaData.getDivisions();
+        int divsPerMeasure = metaData.getDivisionsPerMeasure();
+        ArrayList<Measure> measures = metaData.getMeasures();
+        int k = 0;
+        int currentDuration = 0;
+        int rollOver = 0;
+        for(Measure measure : measures){
+            currentDuration = 0;
+            int duration = 0;
+            for(; k < chordProgTones.size(); k++) {
 
-        int index = 0;
-
-        ArrayList<Measure> existingMeasures = metaData.getMeasures();
-
-        for(Measure measure : existingMeasures){
-            int existingDuration = 0;
-            int addedDuration = 0;
-            int chordNo = 0;
-
-            //create a list to hold notes to be inserted
-            ArrayList<Pair<Integer,Note>> chordInsertionVals = new ArrayList<>();
-
-            //for every chord...
-            for(ArrayList<Note> chord : measure.getChords()){
-                //keep track of the chord number
-                chordNo++;
-                //if they new duration and existing duration are the same....
-                if(existingDuration == addedDuration){
-                    //add the new note to the current chord
-                    chord.add(Note.makeNote(chordProgTones.get(index),3,1));
-                    index++;
-                    if(chordProgTones.size() == index) return;
-                    addedDuration = addedDuration + (divisions * 1);
+                if(rollOver != 0){
+                    duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
+                    measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
+                    currentDuration += rollOver;
+                    rollOver = 0;
+                    if(currentDuration == divsPerMeasure) break;
+                    if(currentDuration > divsPerMeasure){
+                        rollOver = currentDuration - divsPerMeasure;
+                        break;
+                    }
+                    continue;
                 }
 
-                //the the existing duration is greater than the added duration...
-                while(existingDuration > addedDuration){
-                    //catch up by adding those values that need to be inserted later.
-                    chordInsertionVals.add(new Pair<>(chordNo,Note.makeNote(chordProgTones.get(index),3,1) ));
-                    index++;
-                    if(chordProgTones.size() == index) return;
-                    addedDuration = addedDuration + (divisions * 1);
+                duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
+                if(currentDuration == divsPerMeasure) break;
+
+                if(currentDuration + duration > divsPerMeasure){
+                    rollOver = currentDuration + duration - divsPerMeasure;
                 }
 
-                //update existing duration
-                existingDuration += chord.get(0).getDuration();
-
+                measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
+                currentDuration += duration;
             }
-
-            //insert the new chords
-            for(Pair pair : chordInsertionVals){
-                Note note = (Note)pair.u;
-                ArrayList<Note> newChord = new ArrayList<>();
-                newChord.add(note);
-                measure.getChords().add((Integer) pair.t, newChord);
-            }
-
-
         }
+
+        for(Measure m : measures){
+            System.out.println("NEW MEASURE");
+            for(Note n : m.getPart(part)){
+                System.out.println(n.getPitch());
+            }
+        }
+
     }
 }

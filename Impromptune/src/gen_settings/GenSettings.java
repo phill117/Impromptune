@@ -73,6 +73,10 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
          * 3. determine possible inner voices
          */
 
+        //set the number of voices for the new piece
+        int parts = new Double(voices_scroll.getValue()).intValue() + 1;
+        MetaData.getInstance().setParts(parts);
+
         //disable the generation button
         generate_btn.setDisable(true);
 

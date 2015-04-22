@@ -5,6 +5,7 @@ import data_objects.MetaData;
 import data_objects.Note;
 
 import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -63,7 +64,7 @@ public class MXMLWriter {
                     writer.writeStartElement("attributes");
                     //divisions
                     writer.writeStartElement("divisions");
-                    writer.writeCharacters(Integer.toString(data.getDivisions()));
+                    writer.writeCharacters(Integer.toString(divisions));
                     writer.writeEndElement();
 
                     //key
@@ -132,17 +133,22 @@ public class MXMLWriter {
 
                 }
 
-                for(ArrayList<Note> chord : measure.getChords()) {
-                    boolean putChord = false;
-                    for (Note note : chord) {
+                int partnum = 0;
+                for(ArrayList<Note> part : measure.getParts()) {
+                    partnum++;
+
+                    //set it so that it always backs up before the not first measure
+                    if(partnum != 1) backup(MetaData.getInstance().getDivisionsPerMeasure(),writer);
+
+                    for (Note note : part) {
                         //this method sets the voice number and staff number for that note
-                        note.setStaffNo();
+                        note.setStaffNo(partnum);
 
                         writer.writeStartElement("note");
 
                         if (!note.isRest()) {
-                            if(!putChord)putChord = true;
-                            else writer.writeEmptyElement("chord");
+//                            if(!putChord)putChord = true;
+//                            else writer.writeEmptyElement("chord");
 
                             writer.writeStartElement("pitch");
                             //step
@@ -168,7 +174,7 @@ public class MXMLWriter {
 
                         //voice
                         writer.writeStartElement("voice");
-                        writer.writeCharacters(Integer.toString(note.getStaffNo()));
+                        writer.writeCharacters(Integer.toString(partnum));
                         writer.writeEndElement();
 
                         //type //TODO DODODOD it should always have a type (i guess the reader is wrong and therefore zong is wrong)
@@ -221,6 +227,15 @@ public class MXMLWriter {
             e.printStackTrace();
         }
         return tempFile;
+    }
+
+
+    private void backup(int duration, XMLStreamWriter writer) throws XMLStreamException{
+        writer.writeStartElement("backup");
+        writer.writeStartElement("duration");
+        writer.writeCharacters(Integer.toString(duration));
+        writer.writeEndElement();
+        writer.writeEndElement();
     }
 
 }

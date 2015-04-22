@@ -28,6 +28,7 @@ public class Note {
 
 
     public static Note makeNote(String pitch ,int octave,int duration){
+        System.out.println("pitch : "+pitch);
         if(pitch.length() == 1)
             return new Note(pitch.charAt(0),0,octave,duration);
 
@@ -89,12 +90,14 @@ public class Note {
         this.dotted = dotted;
     }
 
-    public int setStaffNo() {
-        if(this.octave < 4)
-            staffNo = 2;
-        else
-            staffNo = 1;
+    public int setStaffNo(int part){
+        if(MetaData.getInstance().getPartCount() < 3){
+            staffNo = part;
+            return staffNo;
+        }
 
+        if(part < 3) staffNo = 1;
+        else staffNo = 2;
         return staffNo;
     }
 
