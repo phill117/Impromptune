@@ -34,6 +34,8 @@ public class MXMLWriter {
             writer.writeStartElement("score-partwise");
             writer.writeAttribute("version","3.0");
 
+            addTitleAndComp(writer);
+
             //the whole 'part-list' part
             writer.writeStartElement("part-list");
             writer.writeStartElement("score-part");
@@ -238,4 +240,36 @@ public class MXMLWriter {
         writer.writeEndElement();
     }
 
+    private void addTitleAndComp(XMLStreamWriter writer) throws XMLStreamException{
+        writer.writeStartElement("work"); writer.writeEndElement();
+        writer.writeStartElement("credit"); writer.writeAttribute("page","1");
+
+        writer.writeStartElement("credit-words");
+        writer.writeAttribute("justify", "center");
+        writer.writeAttribute("valign","top");
+        writer.writeAttribute("default-x","680.0");
+        writer.writeAttribute("default-y","1850.0");
+        writer.writeAttribute("font-size","24.0");
+        writer.writeAttribute("font-weight","bold");
+        writer.writeAttribute("color","#000000");
+        writer.writeCharacters(MetaData.getInstance().getTitle());
+        writer.writeEndElement();
+
+        writer.writeStartElement("credit-words");
+        writer.writeAttribute("font-size","14.0");
+        writer.writeAttribute("font-weight","normal");
+        writer.writeAttribute("color","#000000");
+        writer.writeCharacters("\n");
+        writer.writeEndElement();
+
+        writer.writeStartElement("credit-words");
+        writer.writeAttribute("valign","top");
+        writer.writeAttribute("font-size","14.0");
+        writer.writeAttribute("font-weight","normal");
+        writer.writeAttribute("color","#000000");
+        writer.writeCharacters(MetaData.getInstance().getComposer());
+        writer.writeEndElement();
+
+        writer.writeEndElement();
+    }
 }

@@ -16,13 +16,14 @@ public class MXMLContentHandler extends DefaultHandler{
     int measureNo;
     Measure currentMeasure;
     Note currentNote;
+    int creditCount = 0;
 
     MetaData metaData;
     MXML currentFlag = MXML.Measure;
 
     private enum MXML{
         //Used
-        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type, Type,
+        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type, Type, CreditWords,
         //Not Used
         Barline, Repeat, NONE
 
@@ -40,6 +41,7 @@ public class MXMLContentHandler extends DefaultHandler{
     //called at the start of the doc
     @Override
     public void startDocument() throws SAXException {
+        creditCount = 0;
         tab = 0;
         System.out.println("Start");
         metaData.replaceMeasures();
@@ -76,6 +78,7 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("divisions")){currentFlag = MXML.Divisions; return;}
         if(qName.equals("fifths")){currentFlag = MXML.Fifths; return;}
         if(qName.equals("sound")){metaData.setTempo(Integer.parseInt(attributes.getValue("tempo")));return;}
+        if(qName.equals("credit-words")){currentFlag = MXML.CreditWords; return;}
 
         currentFlag = MXML.NONE;
 
@@ -121,6 +124,18 @@ public class MXMLContentHandler extends DefaultHandler{
                 break;
             case Beat_Type:
                 metaData.setBeattype(Integer.parseInt(data));
+                break;
+            case CreditWords:
+                if(creditCount == 0){
+                    creditCount++;
+                    metaData.setTitle(data);
+                }
+                else if(creditCount == 1){creditCount++;}
+                else if(creditCount == 2){
+                    metaData.setComposer(data);
+                    creditCount++;
+                }
+
                 break;
 
             default:

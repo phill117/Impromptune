@@ -27,6 +27,9 @@ public class MetaData {
     int beattype = 4;
     int parts = 2;
 
+    String title = "";
+    String composer = "";
+
     String fifthType = "sharp";
 
     //'sign' and line not implemented to change
@@ -75,6 +78,22 @@ public class MetaData {
             System.out.println("IO");
             e.printStackTrace();
         }
+    }
+
+    public String getComposer() {
+        return composer;
+    }
+
+    public void setComposer(String composer) {
+        this.composer = composer;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setParts(int n){parts = n;}
