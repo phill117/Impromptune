@@ -64,6 +64,9 @@ public class ScoreMXMLBuilder {
     void buildXmlScore() {
         List<MxlPart> parts = new ArrayList<MxlPart>();
 
+        if(scoreDoc.getScore().getStavesCount() > 1)
+            System.out.println("MORE THAN ONE STAFF");
+        System.out.println("ONE STAFF");
         for (int i = 0; i < scoreDoc.getScore().getStavesCount(); i++)
             parts.add(buildPart(i));
 

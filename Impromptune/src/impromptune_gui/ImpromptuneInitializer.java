@@ -338,9 +338,12 @@ public class ImpromptuneInitializer implements Initializable{
         genSettings.setStage(stage);
 
         mainWindow.pageIndex = 0;
-        String fileString = file.getAbsolutePath();
-        mainWindow.loadedFile = fileString;
-        mainWindow.getContent().loadScore(fileString);
+        //String fileString = file.getAbsolutePath();
+       // System.out.println("generated file:" + fileString);
+        mainWindow.loadedFile = file.toString();
+        //Save here
+        ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), file);
+        mainWindow.getContent().loadScore(mainWindow.loadedFile);
 
         add.setText(MetaData.getInstance().getTitle() + "*");
         stage.setTitle("Impromptune - " + MetaData.getInstance().getTitle() +
@@ -378,7 +381,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onOpen(ActionEvent event) {
-        System.out.print("OnOPEN");
+        System.out.println("OnOPEN");
         mainWindow.pageIndex = 0;
         String file = IOHandler.load(stage);
         if(file != null)
@@ -418,7 +421,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
-
+        System.out.println("OnSAVEAS");
         FileChooser chooser = new FileChooser();
 
         File custom = new File(".");
@@ -442,19 +445,21 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onSAVE(ActionEvent event) {
-
+        System.out.println("OnSAVE");
 
         if(!mainWindow.getContent().canSave)
             return;
 
         if(mainWindow.loadedFile != null)
         {
+            System.out.println(" NOT NULL SAVE");
             File outFile;
             outFile = new File(mainWindow.loadedFile);
             ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), outFile);
         }
         else
         {
+            System.out.println("NULL SAVE");
             FileChooser chooser = new FileChooser();
 
             File custom = new File(".");

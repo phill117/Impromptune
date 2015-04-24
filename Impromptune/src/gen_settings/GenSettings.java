@@ -109,8 +109,8 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
         { generate_btn.setDisable(false);
             return;}
 
-        mainWindow.saveAs(file);
-
+        //We don't want to save yet do we?? -- Jacob, just use dialog box to get the actual filename to save to
+        //mainWindow.saveAs(file);
 
         new Thread(new Runnable() {
             @Override
