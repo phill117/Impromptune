@@ -21,12 +21,10 @@ public class NewCompositionLaunch {
 
     public NewCompositionLaunch(MainWindow mw, Stage parent){
         CompositionPropertiesDialog.setMainWindow(mw);
-
         this.stage = new Stage();
         root = new BorderPane();
         FXMLLoader loader = new FXMLLoader();
         loader.setRoot(root);
-       // stage.setAlwaysOnTop(true);
         NewCompositionDialog.setMainWindow(mw);
         NewCompositionDialog.setStage(stage);
         NewCompositionDialog.setParent(parent);

@@ -18,6 +18,7 @@ public class NewOrOpenLaunch {
 
     public NewOrOpenLaunch(){
         Stage stage = new Stage();
+        stage.setOnCloseRequest(e -> System.exit(0));
         NewOrOpenDialog.setStage(stage);
         BorderPane root = new BorderPane();
         FXMLLoader loader = new FXMLLoader();
@@ -31,6 +32,7 @@ public class NewOrOpenLaunch {
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setTitle("Welcome to Impromptune!");
         stage.showAndWait();
+
     }
 
     public String getResult() {

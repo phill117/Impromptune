@@ -262,18 +262,25 @@ public class ImpromptuneInitializer implements Initializable{
             genSettings.setMainWindow(mainWindow);
             genSettings.setStage(stage);
 
-            String newOrOpen = new NewOrOpenLaunch().getResult();
-            if (newOrOpen.equals("new")) {
-                new NewCompositionLaunch(mainWindow, stage);
-            } else {
-               // System.out.print("OnOPEN");
-                mainWindow.pageIndex = 0;
-                String file = IOHandler.load(stage);
-               // System.out.print("File" + file);
-                if (file != null) {
+            String newOrOpen;
 
-                    mainWindow.loadedFile = file;
-                    mainWindow.getContent().loadScore(file);
+            while(true)
+            {
+                newOrOpen = new NewOrOpenLaunch().getResult();
+                if (newOrOpen.equals("new")) {
+                    new NewCompositionLaunch(mainWindow, stage);
+                    break;
+                } else {
+                    mainWindow.pageIndex = 0;
+                    String file;
+                    file = IOHandler.load(stage);
+
+                    if (file != null) {
+                        mainWindow.loadedFile = file;
+                        mainWindow.getContent().loadScore(file);
+                        break;
+                    } else
+                        continue;
                 }
             }
             add.setText(mainWindow.getContent().getSD().getScore().getTitle());
