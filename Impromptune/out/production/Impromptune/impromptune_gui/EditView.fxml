@@ -142,7 +142,7 @@
                                     </Button>
                                 </items>
                               </ToolBar>
-                              <TabPane fx:id="RendererTabs" tabClosingPolicy="UNAVAILABLE" />
+                              <TabPane fx:id="RendererTabs" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" />
                               <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="794.0" VBox.vgrow="NEVER">
                                 <items>
                                     <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="Whole" />
@@ -157,7 +157,7 @@
                                     <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" text="Rest" />
                                 </items>
                               </ToolBar>
-                              <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                              <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="NEVER" />
                            </children>
                         </VBox>
                      </children>
