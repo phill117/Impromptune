@@ -322,6 +322,8 @@ public class ImpromptuneInitializer implements Initializable{
         //String fileString = file.getAbsolutePath();
        // System.out.println("generated file:" + fileString);
         mainWindow.loadedFile = file.toString();
+        //Save here
+        ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), file);
         mainWindow.getContent().loadScore(mainWindow.loadedFile);
 
         add.setText(MetaData.getInstance().getTitle() + "*");
