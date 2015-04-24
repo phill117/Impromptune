@@ -1,10 +1,12 @@
 package impromptune_gui.Dialogs;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -13,12 +15,22 @@ import java.io.IOException;
  */
 public class NewOrOpenLaunch {
     private static String result;
+    private static boolean firstTime = true;
+    private boolean hitX = false;
 
     public static void setResult(String res){result = res;}
 
     public NewOrOpenLaunch(){
         Stage stage = new Stage();
-        stage.setOnCloseRequest(e -> System.exit(0));
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                if(firstTime)
+                    System.exit(0);
+                else
+                    hitX = true;
+            }
+        });
         NewOrOpenDialog.setStage(stage);
         BorderPane root = new BorderPane();
         FXMLLoader loader = new FXMLLoader();
@@ -30,12 +42,19 @@ public class NewOrOpenLaunch {
             e.printStackTrace();
         }
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setTitle("Welcome to Impromptune!");
+        if(firstTime)
+            stage.setTitle("Welcome to Impromptune!");
+        else
+            stage.setTitle("Impromptune");
         stage.showAndWait();
-
+        firstTime = false;
     }
 
     public String getResult() {
         return result;
+    }
+
+    public boolean didHitX(){
+        return hitX;
     }
 }

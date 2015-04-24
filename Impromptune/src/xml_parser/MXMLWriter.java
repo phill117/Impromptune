@@ -31,6 +31,7 @@ public class MXMLWriter {
             XMLStreamWriter writer = xmlOutputFactory.createXMLStreamWriter(stringWriter);
 
             writer.writeStartDocument();
+            writer.writeDTD("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 2.0 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">");
             writer.writeStartElement("score-partwise");
             writer.writeAttribute("version","3.0");
 

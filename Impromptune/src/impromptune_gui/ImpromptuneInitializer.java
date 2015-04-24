@@ -46,6 +46,7 @@ import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
 import io_handler.IOHandler;
+import xml_parser.MXMLDocUtils;
 
 
 import static com.xenoage.zong.desktop.App.app;
@@ -243,34 +244,41 @@ public class ImpromptuneInitializer implements Initializable{
         }
 
         try {
-            Tab add = new Tab();
-            add.setContent(bp);
-            RendererTabs.getTabs().add(add);
-            SelectionModel sm = RendererTabs.getSelectionModel();
-            sm.select(RendererTabs.getTabs().size() - 1);
-
-            // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
-
-            MainWindow mw = fxmlLoader.getController();
-
-            piano.mw = mw; //Set the current piano window to current renderer window
-            mainWindows.add(mw);
-            mainWindow = mw;
-
-            undo.setDisable(true);
-            redo.setDisable(true);
-            genSettings.setMainWindow(mainWindow);
-            genSettings.setStage(stage);
 
             String newOrOpen;
 
-            while(true)
-            {
-                newOrOpen = new NewOrOpenLaunch().getResult();
+            while(true) {
+                NewOrOpenLaunch launcher = new NewOrOpenLaunch();
+                newOrOpen = launcher.getResult();
+                if(launcher.didHitX()) return;
                 if (newOrOpen.equals("new")) {
-                    new NewCompositionLaunch(mainWindow, stage);
+
+                    MainWindow mw = fxmlLoader.getController();
+
+                    piano.mw = mw; //Set the current piano window to current renderer window
+                    mainWindows.add(mw);
+                    mainWindow = mw;
+
+                    undo.setDisable(true);
+                    redo.setDisable(true);
+                    genSettings.setMainWindow(mainWindow);
+                    genSettings.setStage(stage);
+
+                    NewCompositionLaunch compLaunch = new NewCompositionLaunch(mainWindow, stage);
+                    
                     break;
                 } else {
+                    MainWindow mw = fxmlLoader.getController();
+
+                    piano.mw = mw; //Set the current piano window to current renderer window
+                    mainWindows.add(mw);
+                    mainWindow = mw;
+
+                    undo.setDisable(true);
+                    redo.setDisable(true);
+                    genSettings.setMainWindow(mainWindow);
+                    genSettings.setStage(stage);
+
                     mainWindow.pageIndex = 0;
                     String file;
                     file = IOHandler.load(stage);
@@ -283,6 +291,17 @@ public class ImpromptuneInitializer implements Initializable{
                         continue;
                 }
             }
+
+            Tab add = new Tab();
+            add.setContent(bp);
+            RendererTabs.getTabs().add(add);
+            SelectionModel sm = RendererTabs.getSelectionModel();
+            sm.select(RendererTabs.getTabs().size() - 1);
+
+            // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
+
+
+
             add.setText(mainWindow.getContent().getSD().getScore().getTitle());
             stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                     " - " + mainWindow.getContent().getSD().getScore().getCreator());
@@ -366,7 +385,7 @@ public class ImpromptuneInitializer implements Initializable{
         {
             mainWindow.loadedFile = file;
             mainWindow.getContent().loadScore(file);
-
+            RendererTabs.getSelectionModel().getSelectedItem().setText(new MXMLDocUtils().getPieceTitle(file));
         }
     }
 
