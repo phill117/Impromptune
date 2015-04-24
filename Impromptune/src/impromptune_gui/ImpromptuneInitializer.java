@@ -13,6 +13,7 @@ import com.xenoage.zong.desktop.utils.error.GuiErrorProcessing;
 import com.xenoage.zong.gui.PlayerFrame;
 import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
+import data_objects.MetaData;
 import gen_settings.GenSettings;
 import impromptune_gui.Dialogs.NewCompositionDialog;
 import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
@@ -90,6 +91,8 @@ public class ImpromptuneInitializer implements Initializable{
     FXMLLoader fxmlLoader;
     MainWindow mainWindow; //The MainWindow of the currently selected tab.
     ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
+
+    public static ImpromptuneInitializer self;
 
     public static final String appName = "Impromptune";
 
@@ -200,6 +203,7 @@ public class ImpromptuneInitializer implements Initializable{
                 }
             }*/
 
+        self = this;
 
         }catch (IOException e){
             System.out.println("WAHT HAPPENED");
@@ -217,6 +221,7 @@ public class ImpromptuneInitializer implements Initializable{
     public Tab getSelectedTab(){
         return RendererTabs.getSelectionModel().getSelectedItem();
     }
+
     public int getSelectedTabIndex(){
         for (int i = 0; i < RendererTabs.getTabs().size(); i++){
             if(RendererTabs.getTabs().get(i).isSelected())
@@ -235,13 +240,61 @@ public class ImpromptuneInitializer implements Initializable{
         } catch (IOException e){
             e.printStackTrace();
         }
+
+        try {
+            Tab add = new Tab();
+            add.setContent(bp);
+            RendererTabs.getTabs().add(add);
+            SelectionModel sm = RendererTabs.getSelectionModel();
+            sm.select(RendererTabs.getTabs().size() - 1);
+
+            // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
+
+            MainWindow mw = fxmlLoader.getController();
+
+            piano.mw = mw; //Set the current piano window to current renderer window
+            mainWindows.add(mw);
+            mainWindow = mw;
+
+            undo.setDisable(true);
+            redo.setDisable(true);
+            genSettings.setMainWindow(mainWindow);
+            genSettings.setStage(stage);
+
+            String newOrOpen = new NewOrOpenLaunch().getResult();
+            if (newOrOpen.equals("new")) {
+                new NewCompositionLaunch(mainWindow, stage);
+            } else {
+                mainWindow.pageIndex = 0;
+                String file = IOHandler.load(stage);
+                if (file != null) {
+                    mainWindow.loadedFile = file;
+                    mainWindow.getContent().loadScore(file);
+                }
+            }
+            add.setText(mainWindow.getContent().getSD().getScore().getTitle());
+            stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                    " - " + mainWindow.getContent().getSD().getScore().getCreator());
+            mainWindow.getContent().refresh();
+        }catch (Exception e){
+            System.out.println("dun messed up");
+            e.printStackTrace();
+        }
+    }
+
+    public void addGenerationToTab(File file){
+        fxmlLoader = new FXMLLoader();
+        try {
+            bp = fxmlLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml").openStream());
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        
         Tab add = new Tab();
         add.setContent(bp);
         RendererTabs.getTabs().add(add);
         SelectionModel sm = RendererTabs.getSelectionModel();
         sm.select(RendererTabs.getTabs().size() - 1);
-
-        // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
 
         MainWindow mw = fxmlLoader.getController();
 
@@ -254,22 +307,16 @@ public class ImpromptuneInitializer implements Initializable{
         genSettings.setMainWindow(mainWindow);
         genSettings.setStage(stage);
 
-        String newOrOpen = new NewOrOpenLaunch().getResult();
-        if (newOrOpen.equals("new")){
-            new NewCompositionLaunch(mainWindow, stage);
-        } else {
-            mainWindow.pageIndex = 0;
-            String file = IOHandler.load(stage);
-            if(file != null)
-            {
-                mainWindow.loadedFile = file;
-                mainWindow.getContent().loadScore(file);
-            }
-        }
-        add.setText(mainWindow.getContent().getSD().getScore().getTitle());
-        stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
-                " - " + mainWindow.getContent().getSD().getScore().getCreator());
+        mainWindow.pageIndex = 0;
+        String fileString = file.getAbsolutePath();
+        mainWindow.loadedFile = fileString;
+        mainWindow.getContent().loadScore(fileString);
+
+        add.setText(MetaData.getInstance().getTitle()+"*");
+        stage.setTitle("Impromptune - " + MetaData.getInstance().getTitle() +
+                " - " + MetaData.getInstance().getComposer());
         mainWindow.getContent().refresh();
+
     }
 
     public static PlayerFrame getFrame() {

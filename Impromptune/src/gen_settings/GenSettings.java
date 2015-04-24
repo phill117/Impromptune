@@ -3,6 +3,7 @@ package gen_settings;
 import Renderer.MainWindow;
 import data_objects.MetaData;
 import data_objects.Note;
+import impromptune_gui.ImpromptuneInitializer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -132,8 +133,9 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
 
-                    mainWindow.getContent().loadScore(createdFile.getAbsolutePath());
+//                    mainWindow.getContent().loadScore(createdFile.getAbsolutePath());
 
+                    Platform.runLater(() -> ImpromptuneInitializer.self.addGenerationToTab(createdFile));
                     //load file back to screen
 
                 } catch (Exception e) {
