@@ -320,7 +320,7 @@ public class ImpromptuneInitializer implements Initializable{
 
         mainWindow.pageIndex = 0;
         String fileString = file.getAbsolutePath();
-        mainWindow.loadedFile = fileString;
+        mainWindow.loadedFile = null;
         mainWindow.getContent().loadScore(fileString);
 
         add.setText(MetaData.getInstance().getTitle() + "*");
