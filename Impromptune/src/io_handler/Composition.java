@@ -20,6 +20,7 @@ import com.xenoage.zong.core.instrument.Instrument;
 import com.xenoage.zong.core.music.*;
 
 import com.xenoage.zong.core.position.MP;
+import com.xenoage.zong.core.text.FormattedText;
 import com.xenoage.zong.desktop.io.ScoreDocIO;
 
 import com.xenoage.zong.desktop.io.musicxml.in.CreditsReader;
@@ -33,6 +34,7 @@ import com.xenoage.zong.layout.LayoutDefaults;
 import com.xenoage.zong.layout.Page;
 import com.xenoage.zong.layout.frames.ScoreFrame;
 import com.xenoage.zong.layout.frames.ScoreFrameChain;
+import com.xenoage.zong.layout.frames.TextFrame;
 import com.xenoage.zong.musiclayout.ScoreLayout;
 import com.xenoage.zong.musiclayout.layouter.PlaybackLayouter;
 import com.xenoage.zong.musiclayout.layouter.ScoreLayouter;
@@ -79,7 +81,8 @@ public class Composition implements Serializable{
     public String title;
     public String creator;
     public String timeSig;
-
+    public boolean loaded = false;
+     public String clef;
     //const
     private final float SPACING = 9;
 
@@ -99,6 +102,10 @@ public class Composition implements Serializable{
         quills = new ArrayList<Quill>();
         currentScoreDoc = initializeScoreDocFromFile(fileName);
         currentComp = currentScoreDoc.getScore();
+
+        currentComp.setTitle(this.title);
+        currentComp.setCreator(this.creator);
+
         layout = currentScoreDoc.getLayout();
 
         MP mp = getLastMeasure();
@@ -161,8 +168,19 @@ public class Composition implements Serializable{
             setInfo(currentComp.getTitle(),currentComp.getCreator());
         //Redraw title cause wtf
         if(this.credit != null)
-            CreditsReader.addTextFrame(this.credit, this.layout, currentComp.getFormat());
+           CreditsReader.addTextFrame(this.credit, this.layout, currentComp.getFormat());
+
     }
+
+
+   // public void removeOldText()
+    //{
+        //FormattedText text = createFormattedText(mxlCreditWords, scoreFormat.getLyricFont());
+       // textFrame.setText();
+       // layout.getPages().get(0).removeFrame(textFrame);
+        //textFrame.setText(text);
+
+    //}
 
     public Layout getLayout() {
         layout.updateScoreLayouts(currentComp);
@@ -338,6 +356,22 @@ public class Composition implements Serializable{
             scoreDoc.getScore().getFormat().setStaffLayoutOther(new StaffLayout(is * SPACING));
             scoreDoc.getLayout().updateScoreLayouts(scoreDoc.getScore());
 
+            //Get title and creator from loaded file
+            Object o = scoreDoc.getScore().getMetaData().get("mxldoc");
+            if (o != null && o instanceof MxlScorePartwise) {
+                MxlScorePartwise doc = (MxlScorePartwise) o;
+                List<MxlCredit> cred = doc.getScoreHeader().getCredits();
+                if(cred != null ) {
+                    MxlCredit credit = cred.get(0);
+                    MxlCreditWords cw = (MxlCreditWords) credit.getContent();
+                    List<MxlFormattedText> items = cw.getItems();
+                    if(items.size()  == 3)
+                    {
+                        this.title = items.get(0).getValue();
+                        this.creator = items.get(2).getValue().substring(3);
+                    }
+                }
+            }
             return scoreDoc;
         } catch(IOException e) { e.printStackTrace(); }
 
@@ -391,12 +425,12 @@ public class Composition implements Serializable{
         }
 
         //add credit elements - TIDY
-        Object o = score.getMetaData().get("mxldoc");
-        if (o != null && o instanceof MxlScorePartwise) {
+       /* Object o = score.getMetaData().get("mxldoc");
+        if (o != null && o instanceof MxlScorePartwise && !loaded) {
             MxlScorePartwise doc = (MxlScorePartwise) o;
             CreditsReader.read(doc, layout, score.getFormat());
-        }
-
+        }*/
+        loaded = true;
 
 
         return scoreDoc;

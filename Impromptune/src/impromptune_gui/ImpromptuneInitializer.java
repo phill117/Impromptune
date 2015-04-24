@@ -384,8 +384,7 @@ public class ImpromptuneInitializer implements Initializable{
             genSettings.setMainWindow(mainWindow);
             genSettings.setStage(stage);
             mainWindow.getContent().refresh();
-            stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
-                    " - " + mainWindow.getContent().getSD().getScore().getCreator());
+            stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle());
         }
     }
 

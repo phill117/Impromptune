@@ -51,11 +51,11 @@ public class CompositionPropertiesDialog implements Initializable{
     @FXML void onOkay(ActionEvent event){
 
         if(titleField.getText() != null)
-        {  System.out.println("YES");
-            mainWindow.getContent().getSD().getScore().setTitle(titleField.getText());}
+            mainWindow.getContent().getSD().getScore().setTitle(titleField.getText());
         if(composerField.getText() != null)
             mainWindow.getContent().getSD().getScore().setCreator(composerField.getText());
 
+        mainWindow.getContent().getComposition().setInfo(mainWindow.getContent().getComposition().getCurrentScore().getTitle(),mainWindow.getContent().getComposition().getCurrentScore().getCreator());
         mainWindow.getContent().getComposition().resync();
         mainWindow.getContent().refresh();
         stage.close();
