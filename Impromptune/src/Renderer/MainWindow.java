@@ -68,39 +68,6 @@ public class MainWindow {
 
 
     //Handles saving file as musicXML
-    public void save(Stage s) {
-
-        if(!content.canSave)
-            return;
-
-        File outFile;
-        if(loadedFile != null)
-        {
-            outFile = new File(loadedFile);
-            ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(content.getSD(), outFile);
-        }
-        else
-        {
-            FileChooser chooser = new FileChooser();
-
-            File custom = new File(".");
-            chooser.setInitialDirectory(custom);
-
-            chooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("XML", "*.xml"),
-                    new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
-            );
-
-            chooser.setTitle("Save Composition as MusicXML");
-
-            File file = chooser.showSaveDialog(s);
-            if(file != null)
-                saveAs(file);
-            return;
-        }
-    }
-
-    //Handles saving file as musicXML
     public void saveAs(File outFile) {
         if(!content.canSave || outFile == null)
             return;

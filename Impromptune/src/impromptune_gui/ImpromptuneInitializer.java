@@ -19,6 +19,7 @@ import impromptune_gui.Dialogs.NewCompositionDialog;
 import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
 import impromptune_gui.Dialogs.NewCompositionLaunch;
 import impromptune_gui.Dialogs.NewOrOpenLaunch;
+import io_handler.ScoreMXMLBuilder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -165,8 +166,8 @@ public class ImpromptuneInitializer implements Initializable{
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
-           // Log.init(new DesktopLogProcessing(appName + " " + 1));
-           // Err.init(new GuiErrorProcessing());
+            Log.init(new DesktopLogProcessing(appName + " " + 1));
+            Err.init(new GuiErrorProcessing());
             UNDO = undo;
             REDO = redo;
 
@@ -265,9 +266,12 @@ public class ImpromptuneInitializer implements Initializable{
             if (newOrOpen.equals("new")) {
                 new NewCompositionLaunch(mainWindow, stage);
             } else {
+               // System.out.print("OnOPEN");
                 mainWindow.pageIndex = 0;
                 String file = IOHandler.load(stage);
+               // System.out.print("File" + file);
                 if (file != null) {
+
                     mainWindow.loadedFile = file;
                     mainWindow.getContent().loadScore(file);
                 }
@@ -312,7 +316,7 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindow.loadedFile = fileString;
         mainWindow.getContent().loadScore(fileString);
 
-        add.setText(MetaData.getInstance().getTitle()+"*");
+        add.setText(MetaData.getInstance().getTitle() + "*");
         stage.setTitle("Impromptune - " + MetaData.getInstance().getTitle() +
                 " - " + MetaData.getInstance().getComposer());
         mainWindow.getContent().refresh();
@@ -348,12 +352,14 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onOpen(ActionEvent event) {
+        System.out.print("OnOPEN");
         mainWindow.pageIndex = 0;
         String file = IOHandler.load(stage);
         if(file != null)
         {
             mainWindow.loadedFile = file;
             mainWindow.getContent().loadScore(file);
+
         }
     }
 
@@ -402,12 +408,43 @@ public class ImpromptuneInitializer implements Initializable{
 
         File file = chooser.showSaveDialog(stage);
 
-        if(file != null)
+        if(file != null) {
             mainWindow.saveAs(file);
+            mainWindow.loadedFile = file.toString();
+
+        }
     }
 
     @FXML void onSAVE(ActionEvent event) {
-        mainWindow.save(stage);
+
+
+        if(!mainWindow.getContent().canSave)
+            return;
+
+        if(mainWindow.loadedFile != null)
+        {
+            File outFile;
+            outFile = new File(mainWindow.loadedFile);
+            ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), outFile);
+        }
+        else
+        {
+            FileChooser chooser = new FileChooser();
+
+            File custom = new File(".");
+            chooser.setInitialDirectory(custom);
+
+            chooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("XML", "*.xml"),
+                    new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
+            );
+
+            chooser.setTitle("Save Composition as MusicXML");
+
+            File file = chooser.showSaveDialog(stage);
+            if(file != null)
+                mainWindow.saveAs(file);
+        }
     }
 
     @FXML void onUndo(ActionEvent event) {

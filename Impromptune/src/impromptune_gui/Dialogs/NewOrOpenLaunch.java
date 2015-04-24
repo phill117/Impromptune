@@ -29,7 +29,7 @@ public class NewOrOpenLaunch {
             e.printStackTrace();
         }
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.setTitle("Welcome");
+        stage.setTitle("Welcome to Impromptune!");
         stage.showAndWait();
     }
 
