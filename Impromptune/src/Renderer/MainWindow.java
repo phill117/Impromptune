@@ -29,7 +29,6 @@ public class MainWindow {
 	@FXML private BorderPane pnlCanvas;
 	@FXML private ImageView scoreView;
 
-
 	//loaded content
 	private Content content = new Content(this);
 	private WritableImage scoreImage = null;
@@ -47,8 +46,6 @@ public class MainWindow {
     }
 
     public void nextPage() {
-
-        //System.out.println("Pages:" + content.getLayout().getPages().size());
         if(content.getLayout().getPages().size()-1 > pageIndex)
             pageIndex++;
         else
@@ -78,7 +75,10 @@ public class MainWindow {
 
         File outFile;
         if(loadedFile != null)
+        {
             outFile = new File(loadedFile);
+            ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(content.getSD(), outFile);
+        }
         else
         {
             FileChooser chooser = new FileChooser();
@@ -98,36 +98,14 @@ public class MainWindow {
                 saveAs(file);
             return;
         }
-
-
-//        //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
-//        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
-//
-//        //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
-//        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
-//
-//        try {
-////            JseOutputStream oStream = new JseOutputStream(outFile);
-////            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
-////            newXML.write(xmlWrite);
-//            ScoreMXLBuilder mxlBuilder = new ScoreMXLBuilder(content.getSD());
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
     }
 
-
-    //Change above to save-as, save will just get the current filename loaded?
     //Handles saving file as musicXML
     public void saveAs(File outFile) {
         if(!content.canSave || outFile == null)
             return;
         ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(content.getSD(), outFile);
     }
-
-
 
     public void undo()
     {
@@ -148,11 +126,8 @@ public class MainWindow {
             ImpromptuneInitializer.REDO.setDisable(true);
     }
 	public void renderLayout(Layout layout) {
-
 		//run in JavaFX application thread
 		Platform.runLater(() -> {
-
-
 			scoreImage = JfxLayoutRenderer.paintToImage(layout, pageIndex, zoomFactor);
 			scoreView.setImage(scoreImage);
 			scoreView.setFitWidth(scoreImage.getWidth());
@@ -161,3 +136,21 @@ public class MainWindow {
 	}
 
 }
+
+//ORIGINAL SAVING OCODE
+//        //Get current ScoreDoc->Score->MetaData(hashmap)->mxldoc object
+//        MxlScorePartwise scoreOut = (MxlScorePartwise) content.getSD().getScore().getMetaData().get("mxldoc");
+//
+//        //YOU SUCK LOMBOK HOW DARE YOU TEMPT ME TO USE YOU
+//        MusicXMLDocument newXML = new MusicXMLDocument(scoreOut);
+//
+//        try {
+////            JseOutputStream oStream = new JseOutputStream(outFile);
+////            JseXmlWriter xmlWrite = new JseXmlWriter(oStream);
+////            newXML.write(xmlWrite);
+//            ScoreMXLBuilder mxlBuilder = new ScoreMXLBuilder(content.getSD());
+//        }
+//        catch (Exception e)
+//        {
+//            e.printStackTrace();
+//        }

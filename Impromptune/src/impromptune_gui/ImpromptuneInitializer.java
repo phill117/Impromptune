@@ -342,9 +342,9 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onABOUT(ActionEvent event) {
-        showMessageDialog("Impromptune Version Sprint 2\n" +
+        showMessageDialog("Impromptune Version Sprint 3\n" +
                 "This product would have been endorsed by Ludwig von Beethoven, but...\n" +
-                "Andrew Wenger");
+                "Flash hacks!");
     }
 
     @FXML void onOpen(ActionEvent event) {
@@ -354,16 +354,13 @@ public class ImpromptuneInitializer implements Initializable{
         {
             mainWindow.loadedFile = file;
             mainWindow.getContent().loadScore(file);
-
         }
-
     }
 
     @FXML void onNEW(ActionEvent event) {
         new NewCompositionLaunch(mainWindow, stage);
         mainWindow.loadedFile = null;
         mainWindow.pageIndex = 0;
-        //mainWindow.getContent().loadBlank();
     }
 
     @FXML void onNext(ActionEvent event) {
@@ -409,14 +406,9 @@ public class ImpromptuneInitializer implements Initializable{
             mainWindow.saveAs(file);
     }
 
-
-
     @FXML void onSAVE(ActionEvent event) {
         mainWindow.save(stage);
     }
-
-
-
 
     @FXML void onUndo(ActionEvent event) {
         mainWindow.undo();
@@ -430,19 +422,12 @@ public class ImpromptuneInitializer implements Initializable{
           //  redo.setDisable(true);
     }
 
-
-
-
     @FXML void onPRINT(ActionEvent event) {
         Layout layout = mainWindow.getContent().getSD().getLayout();
         if (layout == null)
             System.out.println("PRINT -- Score.getLayout() FAILED");
         IOHandler.print(layout);
     }
-
-   // @FXML void onREM(ActionEvent event) {
-    //    mainWindow.getContent().undo();
-   // }
 
     public static void showMessageDialogStat(String message){
         Dialogs.create().title(appName).styleClass(org.controlsfx.dialog.Dialog.STYLE_CLASS_NATIVE).message(message).showInformation();

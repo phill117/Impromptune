@@ -26,12 +26,7 @@
                   </MenuItem>
                   <Menu mnemonicParsing="false" text="Open Recent" visible="false" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Save">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                   <MenuItem mnemonicParsing="false" onAction="#onSAVE" text="Save..." visible="false">
+                   <MenuItem mnemonicParsing="false" onAction="#onSAVE" text="Save" visible="true">
                        <accelerator>
                            <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
                        </accelerator>
@@ -41,7 +36,6 @@
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Revert to Saved" visible="false" />
                    <MenuItem mnemonicParsing="false" onAction="#onPRINT" text="Print">
                        <accelerator>
                         <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
@@ -67,19 +61,6 @@
                         <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" visible="false">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Copy" visible="false">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Paste" visible="false" />
-                  <MenuItem mnemonicParsing="false" text="Delete" visible="false" />
                   <SeparatorMenuItem mnemonicParsing="false" visible="false" />
                   <MenuItem mnemonicParsing="false" onAction="#openCompositionSettings" text="Composition..." />
                </items>
