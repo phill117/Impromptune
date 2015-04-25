@@ -25,7 +25,11 @@ public class MetaData {
     boolean major = true;
     int beats = 4;
     int beattype = 4;
-    int fifths = 0;
+    int parts = 2;
+
+    String title = "";
+    String composer = "";
+
     String fifthType = "sharp";
 
     //'sign' and line not implemented to change
@@ -75,6 +79,26 @@ public class MetaData {
             e.printStackTrace();
         }
     }
+
+    public String getComposer() {
+        return composer;
+    }
+
+    public void setComposer(String composer) {
+        this.composer = composer;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setParts(int n){parts = n;}
+
+    public int getPartCount(){return  parts;}
 
     public String getLine() {
         return line;
@@ -144,24 +168,19 @@ public class MetaData {
         this.fifthType = fifthType;
     }
 
-    public int getFifths() {
-        return fifths;
-    }
-
-    public void setFifths(int i ) {
-        fifths = i;
-    }
     public ArrayList<Measure> getMeasures() {
         return measures;
     }
 
-    //gets the first note of every chord (Impromptune only accepts one note at a time so this is default) and puts it in a list
+    public void replaceMeasures(){ measures = new ArrayList<>();}
+
+    //gets the notes in the first part (Impromptune only accepts one note at a time so this is default) and puts it in a list
     public ArrayList<Note> getNoteList(){
-        ArrayList notes = new ArrayList<>();
+        ArrayList notes = new ArrayList<Note>();
 
         for(Measure measure : measures){
-            for(ArrayList<Note> chords : measure.getChords()){
-                notes.add(chords.get(0));
+            for(ArrayList<Note> part : measure.getParts()){
+                for(Note note : part) notes.add(note);
             }
         }
 
@@ -219,5 +238,14 @@ public class MetaData {
         return beats;
     }
 
+    public int getDivisionsPerMeasure(){
+        if(beattype == 4)
+            return divisions * beats;
+        else if(beattype == 2)
+            return divisions * beats * 2;
+        else if(beattype == 8)
+            return divisions * beats / 2;
+        else return divisions * beats;
+    }
 
 }

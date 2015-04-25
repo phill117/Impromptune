@@ -100,8 +100,12 @@ public final class CreditsReader {
 			textFrame.setPosition(position);
 			textFrame.setSize(size);
 			textFrame.setText(text);
+
 			layout.getPages().get(0).addFrame(textFrame);
+           // return textFrame;
+            //layout.getPages().get(0).removeFrame(textFrame);
 		}
+       // return null;
 	}
 
 	/**

@@ -5,6 +5,7 @@ import data_objects.MetaData;
 import data_objects.Note;
 
 import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,18 +20,22 @@ import java.util.ArrayList;
  */
 public class MXMLWriter {
 
+    private static File tempFile;
+
     public File createMXML(){
         StringWriter stringWriter = new StringWriter();
         XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
         MetaData data = MetaData.getInstance();
-        File tempFile = null;
 
         try{
             XMLStreamWriter writer = xmlOutputFactory.createXMLStreamWriter(stringWriter);
 
             writer.writeStartDocument();
+            writer.writeDTD("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 2.0 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">");
             writer.writeStartElement("score-partwise");
             writer.writeAttribute("version","3.0");
+
+            addTitleAndComp(writer);
 
             //the whole 'part-list' part
             writer.writeStartElement("part-list");
@@ -62,7 +67,7 @@ public class MXMLWriter {
                     writer.writeStartElement("attributes");
                     //divisions
                     writer.writeStartElement("divisions");
-                    writer.writeCharacters(Integer.toString(data.getDivisions()));
+                    writer.writeCharacters(Integer.toString(divisions));
                     writer.writeEndElement();
 
                     //key
@@ -131,17 +136,22 @@ public class MXMLWriter {
 
                 }
 
-                for(ArrayList<Note> chord : measure.getChords()) {
-                    boolean putChord = false;
-                    for (Note note : chord) {
+                int partnum = 0;
+                for(ArrayList<Note> part : measure.getParts()) {
+                    partnum++;
+
+                    //set it so that it always backs up before the not first measure
+                    if(partnum != 1) backup(MetaData.getInstance().getDivisionsPerMeasure(),writer);
+
+                    for (Note note : part) {
                         //this method sets the voice number and staff number for that note
-                        note.setStaffNo();
+                        note.setStaffNo(partnum);
 
                         writer.writeStartElement("note");
 
                         if (!note.isRest()) {
-                            if(!putChord)putChord = true;
-                            else writer.writeEmptyElement("chord");
+//                            if(!putChord)putChord = true;
+//                            else writer.writeEmptyElement("chord");
 
                             writer.writeStartElement("pitch");
                             //step
@@ -167,7 +177,7 @@ public class MXMLWriter {
 
                         //voice
                         writer.writeStartElement("voice");
-                        writer.writeCharacters(Integer.toString(note.getStaffNo()));
+                        writer.writeCharacters(Integer.toString(partnum));
                         writer.writeEndElement();
 
                         //type //TODO DODODOD it should always have a type (i guess the reader is wrong and therefore zong is wrong)
@@ -209,6 +219,8 @@ public class MXMLWriter {
             FileOutputStream outputStream = new FileOutputStream(tempFile);
             outputStream.write(xmlString.getBytes("UTF-8"));
 
+            outputStream.flush();
+            outputStream.close();
             writer.flush();
             writer.close();
 
@@ -220,4 +232,45 @@ public class MXMLWriter {
         return tempFile;
     }
 
+
+    private void backup(int duration, XMLStreamWriter writer) throws XMLStreamException{
+        writer.writeStartElement("backup");
+        writer.writeStartElement("duration");
+        writer.writeCharacters(Integer.toString(duration));
+        writer.writeEndElement();
+        writer.writeEndElement();
+    }
+
+    private void addTitleAndComp(XMLStreamWriter writer) throws XMLStreamException{
+        writer.writeStartElement("work"); writer.writeEndElement();
+        writer.writeStartElement("credit"); writer.writeAttribute("page","1");
+
+        writer.writeStartElement("credit-words");
+        writer.writeAttribute("justify", "center");
+        writer.writeAttribute("valign","top");
+        writer.writeAttribute("default-x","680.0");
+        writer.writeAttribute("default-y","1850.0");
+        writer.writeAttribute("font-size","24.0");
+        writer.writeAttribute("font-weight","bold");
+        writer.writeAttribute("color","#000000");
+        writer.writeCharacters(MetaData.getInstance().getTitle());
+        writer.writeEndElement();
+
+        writer.writeStartElement("credit-words");
+        writer.writeAttribute("font-size","14.0");
+        writer.writeAttribute("font-weight","normal");
+        writer.writeAttribute("color","#000000");
+        writer.writeCharacters("\n");
+        writer.writeEndElement();
+
+        writer.writeStartElement("credit-words");
+        writer.writeAttribute("valign","top");
+        writer.writeAttribute("font-size","14.0");
+        writer.writeAttribute("font-weight","normal");
+        writer.writeAttribute("color","#000000");
+        writer.writeCharacters(MetaData.getInstance().getComposer());
+        writer.writeEndElement();
+
+        writer.writeEndElement();
+    }
 }

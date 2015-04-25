@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
@@ -15,240 +16,269 @@
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.DropShadow?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="353.0" prefWidth="1195.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="piano.PianoHolder">
+<ScrollPane fitToHeight="true" maxHeight="200.0" minHeight="200.0" prefHeight="200.0" prefViewportHeight="200.0" prefViewportWidth="787.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="piano.PianoHolder">
 
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="1193.0">
+    <AnchorPane>
          <children>
-            <Line endX="175.0" layoutX="881.0" layoutY="78.0" rotate="90.0" startX="-175.0" stroke="#2800d6" strokeType="OUTSIDE" strokeWidth="3.0" translateY="100.0" />
-            <Slider fx:id="registerSlider" blockIncrement="1.0" layoutX="941.0" layoutY="52.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefHeight="28.0" prefWidth="191.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" />
-            <Label alignment="CENTER" layoutX="969.0" layoutY="14.0" prefHeight="21.0" prefWidth="136.0" text="Lowest Register" />
-            <Pane fx:id="pianoPane" prefHeight="353.0" prefWidth="881.0">
+            <HBox layoutY="-9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Rectangle fx:id="Cr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Dr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="49.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Er1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="97.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Fr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="146.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Gr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="195.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Br1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="293.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Ar1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="244.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Cr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="342.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Cs1" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="34.0" onMousePressed="#handle" onMouseReleased="#handle" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Ds1" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="83.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Fs1" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="180.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Gs1" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="229.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="As1" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="278.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Cr3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="685.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Dr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="391.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Gr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="538.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Er2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="440.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Ds2" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="425.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Fr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="489.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Ar2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="587.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Fs2" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="523.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Br2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="636.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="As2" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="621.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Gs2" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="572.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Dr3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="734.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Cs3" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="719.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Er3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="783.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <Rectangle fx:id="Cs2" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="376.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Ds3" arcHeight="5.0" arcWidth="5.0" height="224.0" layoutX="768.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="#404040" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                     <effect>
-                        <Bloom threshold="0.0">
-                           <input>
-                              <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
-                           </input>
-                        </Bloom>
-                     </effect>
-                  </Rectangle>
-                  <Rectangle fx:id="Fr3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="350.0" layoutX="832.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
+                  <AnchorPane AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox fx:id="whiteKeysCase" layoutY="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Rectangle fx:id="Cr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Dr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="49.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Er1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="97.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Fr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="146.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Gr1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="195.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Ar1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="244.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Br1" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="293.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Cr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="342.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Dr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="391.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Er2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="440.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Fr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="489.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Gr2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="538.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Ar2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="587.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Br2" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="636.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Cr3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="685.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Dr3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="734.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Er3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="783.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                              <Rectangle fx:id="Fr3" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f5" height="200.0" layoutX="832.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="blackKeysCase" layoutX="30.0" layoutY="9.0" spacing="19.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Rectangle fx:id="Cs1" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="34.0" onMousePressed="#handle" onMouseReleased="#handle" stroke="BLACK" strokeType="INSIDE" width="20.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle fx:id="Ds1" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="83.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0" />
+                              <Rectangle fx:id="Fs1" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="180.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle fx:id="Gs1" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="229.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle fx:id="As1" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="278.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0" />
+                              <Rectangle fx:id="Cs2" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="376.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle fx:id="Ds2" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="425.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0" />
+                              <Rectangle fx:id="Fs2" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="523.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle fx:id="Gs2" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="572.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle fx:id="As2" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="621.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0" />
+                              <Rectangle fx:id="Cs3" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="719.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                              <Rectangle fx:id="Ds3" arcHeight="5.0" arcWidth="5.0" height="125.0" layoutX="768.0" stroke="BLACK" strokeType="INSIDE" width="21.0">
+                                 <fill>
+                                    <LinearGradient endX="1.0" endY="0.02427184466019417" startX="0.7038834951456311" startY="0.9757281553398058">
+                                       <stops>
+                                          <Stop color="BLACK" />
+                                          <Stop color="#404040" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </fill>
+                                 <effect>
+                                    <Bloom threshold="0.0">
+                                       <input>
+                                          <DropShadow offsetX="2.0" radius="10.192499999999999" width="21.77" />
+                                       </input>
+                                    </Bloom>
+                                 </effect>
+                              </Rectangle>
+                           </children>
+                           <padding>
+                              <Insets left="30.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="941.0" layoutY="14.0">
+                     <children>
+                        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="28.0" text="Register" />
+                              <Slider fx:id="registerSlider" blockIncrement="1.0" layoutY="38.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="8.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
                </children>
-            </Pane>
+            </HBox>
          </children></AnchorPane>
   </content>
 </ScrollPane>

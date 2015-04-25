@@ -16,15 +16,14 @@ public class MXMLContentHandler extends DefaultHandler{
     int measureNo;
     Measure currentMeasure;
     Note currentNote;
-
-    boolean isChord = false;
+    int creditCount = 0;
 
     MetaData metaData;
     MXML currentFlag = MXML.Measure;
 
     private enum MXML{
         //Used
-        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type, Type,
+        Measure, Divisions, Fifths, Mode, Note, Pitch, Rest, Step, Alter, Octave, Duration, Tie, Actual_Notes, Normal_Notes, Beats, Beat_Type, Type, CreditWords,
         //Not Used
         Barline, Repeat, NONE
 
@@ -42,8 +41,10 @@ public class MXMLContentHandler extends DefaultHandler{
     //called at the start of the doc
     @Override
     public void startDocument() throws SAXException {
+        creditCount = 0;
         tab = 0;
         System.out.println("Start");
+        metaData.replaceMeasures();
         super.startDocument();
     }
 
@@ -64,7 +65,6 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("duration")){currentFlag = MXML.Duration; return;}
         if(qName.equals("type")){currentFlag = MXML.Type; return;}
         if(qName.equals("rest")){currentNote.setPitch('r');return;}
-        if(qName.equals("chord")){isChord = true;}
         if(qName.equals("tie")){currentNote.setTied(attributes.getValue("type"));return;}
 
         if(qName.equals("measure")){
@@ -83,6 +83,7 @@ public class MXMLContentHandler extends DefaultHandler{
 //            return;
 //        }
         if(qName.equals("sound")){metaData.setTempo(Integer.parseInt(attributes.getValue("tempo")));return;}
+        if(qName.equals("credit-words")){currentFlag = MXML.CreditWords; return;}
 
         currentFlag = MXML.NONE;
 
@@ -129,6 +130,18 @@ public class MXMLContentHandler extends DefaultHandler{
             case Beat_Type:
                 metaData.setBeattype(Integer.parseInt(data));
                 break;
+            case CreditWords:
+                if(creditCount == 0){
+                    creditCount++;
+                    metaData.setTitle(data);
+                }
+                else if(creditCount == 1){creditCount++;}
+                else if(creditCount == 2){
+                    metaData.setComposer(data);
+                    creditCount++;
+                }
+
+                break;
 
             default:
                 if(currentFlag != MXML.NONE)
@@ -146,12 +159,7 @@ public class MXMLContentHandler extends DefaultHandler{
         System.out.println(s+"End Element: "+qName);
 
         if (qName.equals("note")){
-            if(isChord){
-                currentMeasure.addNote(currentNote);
-            }else{
-                currentMeasure.addChord(currentNote);
-            }
-            isChord = false;
+            currentMeasure.addNoteToPart(currentNote,0);
             return;
         }
         if (qName.equals("measure")){metaData.addMeasure(currentMeasure);return;}

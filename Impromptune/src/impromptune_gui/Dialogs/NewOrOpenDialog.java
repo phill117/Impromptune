@@ -11,7 +11,7 @@ public class NewOrOpenDialog {
 
     private static Stage stage;
 
-    public static void setStage(Stage st){stage = st;};
+    public static void setStage(Stage st){stage = st;}
 
     @FXML void onNew(ActionEvent e){
         NewOrOpenLaunch.setResult("new");

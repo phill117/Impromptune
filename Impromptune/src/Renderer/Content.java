@@ -207,7 +207,9 @@ public class Content
 
 
     public void loadNew(String clef, String key, String keyType, String keyMod, String Time, int bpm, String title, String creator) {
+
         comp = new Composition(clef, key, keyType, keyMod, Time, bpm, title,creator);
+        comp.clef = clef;
         scoreDoc = comp.getCurrentScoreDoc();
         undoList.clear();
         undoIndex = 0;
@@ -247,6 +249,8 @@ public class Content
 
         //load score into MIDI playback
         Playback.openScore(comp.getCurrentScore());
+//        Playback.start();
+//        Playback.stop();
     }
 
 
@@ -261,6 +265,7 @@ public class Content
         addAction();
         canSave = true;
 
+        //System.out.println(comp.clef);
 
     }
 

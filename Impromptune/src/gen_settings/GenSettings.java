@@ -3,6 +3,7 @@ package gen_settings;
 import Renderer.MainWindow;
 import data_objects.MetaData;
 import data_objects.Note;
+import impromptune_gui.ImpromptuneInitializer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -73,6 +74,10 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
          * 3. determine possible inner voices
          */
 
+        //set the number of voices for the new piece
+        int parts = new Double(voices_scroll.getValue()).intValue() + 1;
+        MetaData.getInstance().setParts(parts);
+
         //disable the generation button
         generate_btn.setDisable(true);
 
@@ -89,14 +94,23 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
 
         //save current file to xml
         FileChooser chooser = new FileChooser();
+
+        File custom = new File(".");
+        chooser.setInitialDirectory(custom);
+
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML", "*.xml"),
                 new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
         );
         chooser.setTitle("Save Composition as MusicXML");
         File file = chooser.showSaveDialog(stage);
-        mainWindow.saveAs(file);
 
+        if(file == null)
+        { generate_btn.setDisable(false);
+            return;}
+
+        //We don't want to save yet do we?? -- Jacob, just use dialog box to get the actual filename to save to
+        //mainWindow.saveAs(file);
 
         new Thread(new Runnable() {
             @Override
@@ -119,8 +133,9 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
 
-                    mainWindow.getContent().loadScore(createdFile.getAbsolutePath());
+//                    mainWindow.getContent().loadScore(createdFile.getAbsolutePath());
 
+                    Platform.runLater(() -> ImpromptuneInitializer.self.addGenerationToTab(createdFile));
                     //load file back to screen
 
                 } catch (Exception e) {
