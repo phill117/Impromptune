@@ -69,7 +69,7 @@ public class MainWindow {
 
     //Handles saving file as musicXML
     public void saveAs(File outFile) {
-        if(!content.canSave || outFile == null)
+        if(outFile == null)
             return;
         ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(content.getSD(), outFile);
     }
