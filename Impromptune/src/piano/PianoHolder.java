@@ -69,12 +69,14 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
         }
 
         //assign 'this' as an event listener for mouse presses and releases for black keys
+        blackKeysCase.setPickOnBounds(false);
         ObservableList<Node> blackKeys = blackKeysCase.getChildren();
         for (Node key : blackKeys) {
-            //if (key.isVisible()) {
-            key.setOnMousePressed(this);
-            key.setOnMouseReleased(this);
-            //}
+            if (key.isVisible()) {
+                key.setOnMousePressed(this);
+                key.setOnMouseReleased(this);
+                key.setPickOnBounds(false);
+            }
         }
     }
 
