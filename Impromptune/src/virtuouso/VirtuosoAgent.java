@@ -48,14 +48,14 @@ public class VirtuosoAgent {
 
     static int[][] fifthTable =
             // natural, flat, sharp
-            {{-1,-8,6},//f
+                    {{-1,-8,6},//f
                     {0,-7,7},//c
                     {1,-6,8},//g
                     {2,-5,9},//d
                     {3,-4,10},//a
                     {4,-3,11},//e
                     {5,-2,12},//b
-            };
+                    };
 
     static String getFifth(int fifth, char a, String mode) {
         int base;
@@ -203,9 +203,9 @@ public class VirtuosoAgent {
             }
         }
 
-
         return tonic;
     }
+
     private VirtuosoAgent rationalAgent;
     private ToneTransitionTable model;
     private String keyTonic;
@@ -213,6 +213,7 @@ public class VirtuosoAgent {
     private Set<String> chordProgression;
     private MetaData data;
     private File currentFile;
+    private int degreeWeight[][];
 
     public VirtuosoAgent(File file) {
         data = new MetaData(file);
@@ -224,24 +225,20 @@ public class VirtuosoAgent {
         System.out.println("mode:" + mode + ", tonic: " + keyTonic);
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
 
-
         if (data.getFifthType().equals("sharp")) {
 //            keyTonic = getFifth(data.getSharps(),'#' );
             model = new ToneTransitionTable(2, keySig, '#');
-        }
-
-        else {
+        } else {
 //            keyTonic = getFifth(data.getSharps(),'b', );
             model = new ToneTransitionTable(2, keySig, 'b');
         }
+
         model.trainFile(file);
+//        model.trainPiece(data.getBeatList());
 //        chordProgression = new HashSet<>();
 //        possibleChords = new ArrayList<>();
-
         currentFile = file;
 //        keyTonic = data.getSharps()
-
-
         degreeWeight = new int[][] {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
                                     {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
                                     {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
@@ -260,6 +257,7 @@ public class VirtuosoAgent {
     public ArrayList<String> getGeneratedTones() {
         ArrayList<String> tones = new ArrayList<>();
         ArrayList<ArrayList<Note>> beats = data.getBeatList();
+
         for (ArrayList<Note> notes : beats) {
             for (Note n : notes) {
                 String s = chooseChord(n);
@@ -311,7 +309,8 @@ public class VirtuosoAgent {
         }
 
         Set<String> ret = new HashSet();
-        for (int i = 0; i < 3; i++) {
+
+        for (int i = 0; i < prog.size() && i < 3; i++) {
             Pair<String, Integer> p = getMaxPair(prog);
             ret.add(p.t);
             prog.remove(p);
@@ -326,6 +325,7 @@ public class VirtuosoAgent {
     }
 
     private enum WeightType{Chord, StrongBeat, NeighborTone, PassingTone, Root, Inversion}
+
     //this should be our generic hook for different weight schemes, different weighting for choosing likely chord progression than for picking phrase notes
     int heuristicCompare(WeightType type) { //needs more parameters of course, just a sketch of using different comparisons for choosing notes
         switch (type) {
@@ -422,19 +422,20 @@ public class VirtuosoAgent {
         String [] str = chordProgression.toArray(new String[0]);
         HashMap<String, Integer> ballot = new HashMap<>();
         for (int i = 0; i < 3; i++) {
-            String note = str[model.getRand(3)];
-            Integer count = ballot.get(note);
-            if (BlackMagicka.noteInChord("A", "major", no.toString()) == true) {
+            String noteVote = str[model.getRand(3)];
+            Integer count = ballot.get(noteVote);
+
+            if (BlackMagicka.noteInChord("C", "major", no.toString()) == true) {
                 int m = BlackMagicka.getDegreeIndex(keyTonic, mode, no.toString()).toInt();
-                int n = BlackMagicka.getDegreeIndex(keyTonic, mode, note).toInt();
+                int n = BlackMagicka.getDegreeIndex(keyTonic, mode, noteVote).toInt();
                 count *= degreeWeight[m][n];
                 System.out.print(count);
             }
 
             if (count == null) {
-                ballot.put(note, 1);
+                ballot.put(noteVote, 1);
             } else {
-                ballot.put(note, count + 1);
+                ballot.put(noteVote, count + 1);
             }
         }
 
@@ -466,7 +467,6 @@ public class VirtuosoAgent {
         hash = scorify(d, hash);
         System.out.println(calcScore(d, hash));
 
-
         Degree n = transition(d, hash);
 
 //        System.out.println(degreeTone(n));
@@ -479,12 +479,6 @@ public class VirtuosoAgent {
         return BlackMagicka.pickIthNote(keyTonic, degree.toInt());
     }
 
-    //ignore this for now
-    private int degreeWeight[][]
-            //1   2     3     4     5    6     7
-            ;
-
-
     //this should calculate the decision weighting for a degree with respect to the probable tones
     private double calcScore(Degree degree, HashMap<Degree, Double> dist) {
         if (degree == null)
@@ -496,7 +490,7 @@ public class VirtuosoAgent {
             Map.Entry pair = (Map.Entry)it.next();
             Degree from = (Degree)pair.getKey();
 
-            score = (double) pair.getValue() *(double)  degreeWeight[from.toInt()][degree.toInt()];
+            score = (double) pair.getValue() *(double) degreeWeight[from.toInt()][degree.toInt()];
         }
 
         return score;

@@ -16,7 +16,7 @@ public class MarkovState {
     private int histogram[][];
 
     public MarkovState(Pair<String, String> keySig, char a) {
-        System.out.println("keysig: " + keySig.t + " " + keySig.u + " " + a);
+        System.out.println("MarkovState keysig: " + keySig.t + " " + keySig.u + " " + a);
         this.histogram = new int [12][12];
         this.probMatrix = new double [12][12];
         this.pitchAxis = new PitchAxis(keySig, a);
@@ -31,8 +31,11 @@ public class MarkovState {
     //update THIS order of the model, transition tables build K of these
     public void updateLayer(Beat currentBeat, Beat lastBeat) {
         for (Note curr : currentBeat.getNotes()) {
-            for (Note prev : lastBeat.getNotes())
+            for (Note prev : lastBeat.getNotes()) {
+                System.out.println(pitchAxis.getIndex(curr.toString()) + " " +  pitchAxis.getIndex(prev.toString()));
                 markIndexFound(pitchAxis.getIndex(curr.toString()), pitchAxis.getIndex(prev.toString()));
+            }
+
         }
     }
 
