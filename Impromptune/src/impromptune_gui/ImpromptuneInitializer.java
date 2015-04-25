@@ -85,6 +85,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML MenuItem redo;
     ArrayList<ToggleButton> durationGroup;
 
+
     Player player = null;
     static PlayerFrame frame = null;
 
@@ -93,7 +94,7 @@ public class ImpromptuneInitializer implements Initializable{
     FXMLLoader fxmlLoader;
     MainWindow mainWindow; //The MainWindow of the currently selected tab.
     ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
-
+    ArrayList<String> recentFiles;
     public static ImpromptuneInitializer self;
 
     public static final String appName = "Impromptune";
@@ -342,7 +343,7 @@ public class ImpromptuneInitializer implements Initializable{
        // System.out.println("generated file:" + fileString);
         mainWindow.loadedFile = file.toString();
         //Save here
-        ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), file);
+       // ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), file);
         mainWindow.getContent().loadScore(mainWindow.loadedFile);
 
         add.setText(MetaData.getInstance().getTitle() + "*");
@@ -388,6 +389,7 @@ public class ImpromptuneInitializer implements Initializable{
         {
             mainWindow.loadedFile = file;
             mainWindow.getContent().loadScore(file);
+            recentFiles.add(file);
             RendererTabs.getSelectionModel().getSelectedItem().setText(new MXMLDocUtils().getPieceTitle(file));
         }
     }

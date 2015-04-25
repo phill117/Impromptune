@@ -22,7 +22,7 @@ public class MXMLWriter {
 
     private static File tempFile;
 
-    public File createMXML(){
+    public File createMXML(File outFile){
         StringWriter stringWriter = new StringWriter();
         XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
         MetaData data = MetaData.getInstance();
@@ -214,9 +214,9 @@ public class MXMLWriter {
 
             //Path absPath = Files.createTempFile("creation","xml", StandardOpenOption.DELETE_ON_CLOSE);
 
-            tempFile = File.createTempFile("creation","xml");
-            tempFile.deleteOnExit();
-            FileOutputStream outputStream = new FileOutputStream(tempFile);
+            //tempFile = File.createTempFile("creation","xml");
+           //tempFile.deleteOnExit();
+            FileOutputStream outputStream = new FileOutputStream(outFile);
             outputStream.write(xmlString.getBytes("UTF-8"));
 
             outputStream.flush();
@@ -225,11 +225,11 @@ public class MXMLWriter {
             writer.close();
 
             System.out.println(xmlString);
-            return tempFile;
+            return outFile;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return tempFile;
+        return outFile;
     }
 
 

@@ -110,7 +110,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
             return;}
 
         //We don't want to save yet do we?? -- Jacob, just use dialog box to get the actual filename to save to
-        //mainWindow.saveAs(file);
+        mainWindow.saveAs(file);
 
         new Thread(new Runnable() {
             @Override
@@ -131,10 +131,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     System.out.print(agent.getGeneratedTones());
                     agent.addBackToMusic(agent.getGeneratedTones());
                     //create a new xml file from the written data structures
-                    File createdFile = mxmlWriter.createMXML( /* create and argument for a file destination*/  );
-
-//                    mainWindow.getContent().loadScore(createdFile.getAbsolutePath());
-
+                    File createdFile = mxmlWriter.createMXML( file );
                     Platform.runLater(() -> ImpromptuneInitializer.self.addGenerationToTab(createdFile));
                     //load file back to screen
 
