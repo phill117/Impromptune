@@ -22,7 +22,7 @@ import java.io.InputStreamReader;
  * Created by ben on 2/22/15.
  */
 public class IOHandler {
-    public static String load(Stage s) {
+    public static File load(Stage s) {
         FileChooser chooser = new FileChooser();
 
         chooser.getExtensionFilters().addAll(
@@ -38,7 +38,8 @@ public class IOHandler {
 
         File f = chooser.showOpenDialog(s);
         if (f != null)
-            return f.getAbsolutePath();
+           // return f.getAbsolutePath();
+            return f;
         else
             return null;
     }

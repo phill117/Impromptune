@@ -3,6 +3,7 @@ package impromptune_gui;
 import Renderer.MainWindow;
 import Renderer.Playback;
 import com.xenoage.utils.error.Err;
+import com.xenoage.utils.jse.files.RecentFiles;
 import com.xenoage.utils.jse.log.DesktopLogProcessing;
 import com.xenoage.utils.log.Log;
 import com.xenoage.zong.commands.desktop.dialog.AudioSettingsDialogShow;
@@ -23,6 +24,8 @@ import io_handler.ScoreMXMLBuilder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,6 +35,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
@@ -43,6 +47,7 @@ import com.xenoage.utils.jse.javafx.Dialog;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
 import io_handler.IOHandler;
@@ -50,6 +55,7 @@ import xml_parser.MXMLDocUtils;
 
 
 import static com.xenoage.zong.desktop.App.app;
+import static javafx.collections.FXCollections.observableArrayList;
 
 /**
  * Created by Sean on 2/27/2015.
@@ -85,7 +91,7 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML MenuItem redo;
     ArrayList<ToggleButton> durationGroup;
 
-
+    @FXML Menu recent;
     Player player = null;
     static PlayerFrame frame = null;
 
@@ -94,7 +100,10 @@ public class ImpromptuneInitializer implements Initializable{
     FXMLLoader fxmlLoader;
     MainWindow mainWindow; //The MainWindow of the currently selected tab.
     ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
-    ArrayList<String> recentFiles;
+
+    boolean recented = false;
+
+
     public static ImpromptuneInitializer self;
 
     public static final String appName = "Impromptune";
@@ -126,6 +135,13 @@ public class ImpromptuneInitializer implements Initializable{
             durationGroup.add(eighth);durationGroup.add(sixteenth);durationGroup.add(thirtysecond);
 
             stage = Impromptune.getStage();
+
+
+            MenuItem newItem = new MenuItem("Empty");
+            recent.getItems().add(newItem);
+
+
+
 
             //Piano
             fxmlLoader = new FXMLLoader();
@@ -281,12 +297,13 @@ public class ImpromptuneInitializer implements Initializable{
                     genSettings.setStage(stage);
 
                     mainWindow.pageIndex = 0;
-                    String file;
+                   File file;
                     file = IOHandler.load(stage);
 
                     if (file != null) {
-                        mainWindow.loadedFile = file;
-                        mainWindow.getContent().loadScore(file);
+                        mainWindow.loadedFile = file.getAbsolutePath();
+                        RecentFiles.addRecentFile(file);
+                        mainWindow.getContent().loadScore(file.getAbsolutePath());
                         break;
                     } else
                         continue;
@@ -384,12 +401,13 @@ public class ImpromptuneInitializer implements Initializable{
     @FXML void onOpen(ActionEvent event) {
         System.out.println("OnOPEN");
         mainWindow.pageIndex = 0;
-        String file = IOHandler.load(stage);
+        File open = IOHandler.load(stage);
+        String file = open.getAbsolutePath();
         if(file != null)
         {
             mainWindow.loadedFile = file;
             mainWindow.getContent().loadScore(file);
-            recentFiles.add(file);
+            RecentFiles.addRecentFile(open);
             RendererTabs.getSelectionModel().getSelectedItem().setText(new MXMLDocUtils().getPieceTitle(file));
         }
     }
@@ -478,6 +496,27 @@ public class ImpromptuneInitializer implements Initializable{
             if(file != null)
                 mainWindow.saveAs(file);
         }
+    }
+
+
+    @FXML void onRecent(ActionEvent event){
+        System.out.println("RECENT");
+
+    }
+
+    @FXML void onRecent2(Event event){
+       // System.out.println("RSHOW");
+
+        recent.getItems().removeAll(); //Clear it out
+        recent.getItems().clear();
+        for( File f : RecentFiles.getRecentFiles())
+        {
+            MenuItem rf = new MenuItem(f.toString());
+            recent.getItems().add(rf);
+        }
+
+       // System.out.println("Rend");
+
     }
 
     @FXML void onUndo(ActionEvent event) {
