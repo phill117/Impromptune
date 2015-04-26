@@ -32,6 +32,8 @@ import com.xenoage.zong.musicxml.types.partwise.MxlMeasure;
 import com.xenoage.zong.musicxml.types.partwise.MxlPart;
 
 import static com.xenoage.zong.core.music.util.Interval.At;
+import static com.xenoage.zong.core.music.util.Interval.Before;
+import static com.xenoage.zong.core.music.util.Interval.BeforeOrAt;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +48,7 @@ public class ScoreMXMLBuilder {
     private JseOutputStream outputStream = null;
     private JseXmlWriter xmlWriter = null;
     private MusicXMLDocument xmlDoc = null;
+    private int timeDenom;
 
     public ScoreMXMLBuilder(ScoreDoc scoreDoc, File outFile) {
 //        File outFile = new File(file);
@@ -193,7 +196,7 @@ public class ScoreMXMLBuilder {
         }
 
         Integer j = null;
-
+        timeDenom = den;
         MxlTranspose mxlTranspose = null;
 
         MxlAttributes mxlAttributes = new MxlAttributes(
@@ -210,14 +213,12 @@ public class ScoreMXMLBuilder {
     }
 
 
-
     //We only want one part
     MxlPart buildPart() {
         List<MxlMeasure> partList = new ArrayList<MxlMeasure>();
 
         for (int j = 0; j < scoreDoc.getScore().getMeasuresCount(); j++)
         {
-
             partList.add(buildMeasure(j));
         }
 
@@ -226,10 +227,9 @@ public class ScoreMXMLBuilder {
     }
 
 
-    MxlMeasure buildMeasure( int i) {
+    MxlMeasure buildMeasure( int i ) {
 
         MxlMusicData mxlMusicData = new MxlMusicData();
-
 
         for (int j = 0; j < scoreDoc.getScore().getStavesCount(); j++)
         {
@@ -239,15 +239,18 @@ public class ScoreMXMLBuilder {
             if (i == 0 && j == 0) //first measure, add the attributes for beats, keys, yadda
                 mxlMusicData.getContent().add(buildAttributes(measure.getParent()));
 
-
             for (Voice voice : measure.getVoices()) {
                 for (VoiceElement element : voice.getElements())
                 {
                     mxlMusicData.getContent().add(buildNote(element,j)); //=musicdata -- list of musicDataContent
                 }
             }
-        }
 
+            //After each staff, we add in the <backup><duration>4</duration></backup>
+            if(scoreDoc.getScore().getStavesCount() > 1) {
+                MxlBackup backup = new MxlBackup(timeDenom);
+                mxlMusicData.getContent().add(backup);}
+            }
         MxlMeasure mxlMeasure = new MxlMeasure(mxlMusicData, new Integer(i+1).toString());
 
         return mxlMeasure;
@@ -425,18 +428,18 @@ public class ScoreMXMLBuilder {
 
         for (int i = 0; i < scoreDoc.getScore().getStavesCount(); i++) //Handle multiple staves
         {
-            Clef clef = scoreDoc.getScore().getClef(getLastMeasure(i), At);
+            Clef clef = scoreDoc.getScore().getClef(getLastMeasure(i,i), At); //WTF IS GOING ON
 
             MxlClef mxlClef = null;
 
             if (clef.getType() == ClefType.clefBass)
-                mxlClef = new MxlClef(MxlClefSign.F, new Integer(clef.getType().getLp()), 0, 1);
+                mxlClef = new MxlClef(MxlClefSign.F, new Integer(clef.getType().getLp()), 0, i+1);
             else if (clef.getType() == ClefType.clefTreble)
-                mxlClef = new MxlClef(MxlClefSign.G, new Integer(clef.getType().getLp()), 0, 1);
+                mxlClef = new MxlClef(MxlClefSign.G, new Integer(clef.getType().getLp()), 0, i+1);
             else if (clef.getType() == ClefType.clefAlto)
-                mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, 1);
+                mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, i+1);
             else if (clef.getType() == ClefType.clefTenor)
-                mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, 1);
+                mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, i+1);
             else
                 System.err.println("bad clef");
 
@@ -453,9 +456,10 @@ public class ScoreMXMLBuilder {
         return mxlKey;
     }
 
-    MP getLastMeasure(int staffIndex) {
+    MP getLastMeasure(int staffIndex, int voice) {
         MP mp = MP.atVoice(staffIndex, scoreDoc.getScore().getMeasuresCount()-1, 0);
-        mp = mp.getWithBeat(scoreDoc.getScore());
+        //MP mp = MP.atStaff(staffIndex+1);
+       mp = mp.getWithBeat(scoreDoc.getScore());
         mp = mp.withElement(0);
 
         if (scoreDoc.getScore().isMPExisting(mp))
