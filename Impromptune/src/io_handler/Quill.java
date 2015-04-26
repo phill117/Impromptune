@@ -21,6 +21,7 @@ import com.xenoage.zong.io.selection.Cursor;
 
 import com.xenoage.zong.core.music.slur.SlurType;
 import com.xenoage.zong.core.music.slur.Slur;
+import piano.PianoHolder;
 
 import java.io.Serializable;
 import java.lang.Integer;
@@ -43,6 +44,8 @@ public class Quill implements CommandListener, Serializable {
     private Fraction beamCounter = null;
     private Fraction theBeat = null;
 
+    private boolean tStart = false;
+    private boolean tEnd = false;
     private Cursor cursor = null;
     private float is = 0;
     private BezierPoint startBp = null;
@@ -149,7 +152,21 @@ public class Quill implements CommandListener, Serializable {
         char r = note.charAt(2); //register
         char d = note.charAt(3); //duration
 
-        System.out.printf("pitch %c alteration %c register %c duration %c\n",p,a,r,d);
+
+        if (PianoHolder.getTie()) {  //Set start TIE
+            //System.out.println("TIE");
+            tStart = true;
+        }
+
+        if ( (tStart) && !PianoHolder.getTie()) //Tie has ended
+        {
+           // System.out.println("TIE ENDED");
+            tEnd = true;
+            tStart = false;
+        }
+        //cursor.write(firstSlurC = QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
+
+       // System.out.printf("pitch %c alteration %c register %c duration %c\n",p,a,r,d);
 
         Fraction fr = QuillUtils.getFraction(d);
         String s = new String();
@@ -160,8 +177,8 @@ public class Quill implements CommandListener, Serializable {
         if (rem.isGreater0() && rem.compareTo(fr) < 0) {
 
 //            write Chord with rem and fr - rem
-            System.out.println("[splitting note]");
-            System.out.println("fr: " + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
+            //System.out.println("[splitting note]");
+          //  System.out.println("fr: " + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
 //            startSlur();
 
             cursor.write(firstSlurC = QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
@@ -177,7 +194,8 @@ public class Quill implements CommandListener, Serializable {
 
             cursor.write(curChord);
             closeBeam();
-        } else {
+        }
+        else {
             Chord curChord = QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o));
 
             if (d == 'w' || d == 'h' || d == 'q')
@@ -186,7 +204,10 @@ public class Quill implements CommandListener, Serializable {
                 if (openBeam) {
                     beamCounter = beamCounter.add(fr);
                     if (beamCounter.compareTo(theBeat) >= 0) {
-                        cursor.write(curChord);
+                        if(tEnd)
+                            writeTied();
+                        else
+                            cursor.write(curChord);
                         closeBeam();
                         return;
                     }

@@ -116,7 +116,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
                 pianoKey.setEffect(new SepiaTone(0.8));
             }
 
-            System.out.println("id: "+id);
+            //System.out.println("id: "+id);
             //stores the desired register range
             Integer register = new Double(registerSlider.getValue()).intValue();
 
@@ -154,7 +154,7 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             zongNote += duration;
 
            // System.out.println("jNote played:" + jNoteToPlay);
-            System.out.println("Zong played:" + zongNote);
+            //System.out.println("Zong played:" + zongNote);
             mw.getContent().addNote(zongNote);
             ImpromptuneInitializer.UNDO.setDisable(false);
 
