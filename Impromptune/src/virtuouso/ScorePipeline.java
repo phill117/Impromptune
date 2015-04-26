@@ -35,7 +35,7 @@ public class ScorePipeline {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             Degree from = (Degree)pair.getKey();
-            double score = (double) pair.getValue() * (double) ScorePipeline.degreeWeight[from.toInt()][degree.toInt()] * 2;
+            double score = (double) pair.getValue() * (double) ScorePipeline.degreeWeight[from.toInt()][degree.toInt()];
 
             if (score > max)
                 max = score;

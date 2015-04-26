@@ -28,7 +28,7 @@ public class VirtuosoAgent {
 
     boolean sharp = true;
 
-    public VirtuosoAgent(File file, String fifthType) {
+    public VirtuosoAgent(File file, String fifthType, int order) {
 
         this.fifthType = fifthType;
 
@@ -46,11 +46,11 @@ public class VirtuosoAgent {
 
         if (fifthType.equals("sharp")) {
 //            keyTonic = getFifth(data.getSharps(),'#' );
-            model = new ToneTransitionTable(2, keySig, '#');
+            model = new ToneTransitionTable(order, keySig, '#');
         } else {
             sharp = false;
 //            keyTonic = getFifth(data.getSharps(),'b', );
-            model = new ToneTransitionTable(2, keySig, 'b');
+            model = new ToneTransitionTable(order, keySig, 'b');
         }
 
         model.trainFile(file);
@@ -168,7 +168,7 @@ public class VirtuosoAgent {
 
                 int m = BlackMagicka.getDegreeIndex(keyTonic, mode, note.toString(), sharp).toInt();
                 int n = BlackMagicka.getDegreeIndex(keyTonic, mode, noteVote, sharp).toInt();
-                count *= ScorePipeline.getDegreeWeight(m, n);
+                count *= ScorePipeline.getDegreeWeight(m, n) * 2;
 //                System.out.print(count);
             }
 
