@@ -92,8 +92,8 @@ public class ScoreMXMLBuilder {
         List<MxlCredit> credits = CollectionUtils.alist();
 
         //need to grab this shit from somewhere
-        String Title = "DeadBeef";
-        String Creator = "By: Ludwig von Beefoven";
+        String Title = scoreDoc.getScore().getTitle();
+        String Creator = scoreDoc.getScore().getCreator();
 
         MxlCredit credit;
         MxlCreditWords cwords;  //set credit.content to this

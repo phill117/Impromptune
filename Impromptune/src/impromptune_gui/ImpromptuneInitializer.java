@@ -35,7 +35,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
@@ -51,8 +50,8 @@ import javafx.stage.WindowEvent;
 import org.controlsfx.dialog.Dialogs;
 import piano.PianoHolder;
 import io_handler.IOHandler;
-import xml_parser.MXMLDocUtils;
 
+import xml_parser.MXMLDocUtils;
 
 import static com.xenoage.zong.desktop.App.app;
 import static javafx.collections.FXCollections.observableArrayList;
