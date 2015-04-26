@@ -555,16 +555,16 @@ public class BlackMagicka {
         return null;
     }
     //is this note in this root mode chord?
-    static boolean noteInChord(String testNote, String keyTonic, String mode, boolean sharp) {  //note = this note, root = root of chord, mode = mode
+    static boolean noteInChord(String testNote, String root, String mode, boolean sharp) {  //note = this note, root = root of chord, mode = mode
         List<String> chord = null;
         switch(mode) {
             case "major":
-                chord = majorChord(keyTonic, sharp);
+                chord = majorChord(root, sharp);
                 if (chord.contains(testNote))
                     return true;
                 break;
             case "minor":
-                chord = minorChord(keyTonic, sharp);
+                chord = minorChord(root, sharp);
                 if (chord.contains(testNote))
                     return true;
                 break;
@@ -575,17 +575,17 @@ public class BlackMagicka {
         return false;
     }
 
-    static boolean noteIn7thChord(String testNote, String keyTonic, String mode, boolean sharp) {  //note = this note, root = root of chord, mode = mode
+    static boolean noteIn7thChord(String testNote, String root, String mode, boolean sharp) {  //note = this note, root = root of chord, mode = mode
         List<String> chord = null;
         switch(mode) {
             case "major":
-                chord = major7thChord(keyTonic, sharp);
+                chord = major7thChord(root, sharp);
 //                System.out.println(chord);
                 if (chord.contains(testNote))
                     return true;
                 break;
             case "minor":
-                chord = minor7thChord(keyTonic, sharp);
+                chord = minor7thChord(root, sharp);
 //                System.out.println(chord);
                 if (chord.contains(testNote))
                     return true;
