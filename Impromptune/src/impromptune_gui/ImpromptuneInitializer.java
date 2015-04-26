@@ -101,9 +101,6 @@ public class ImpromptuneInitializer implements Initializable{
     MainWindow mainWindow; //The MainWindow of the currently selected tab.
     ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
 
-    boolean recented = false;
-
-
     public static ImpromptuneInitializer self;
 
     public static final String appName = "Impromptune";
@@ -136,12 +133,9 @@ public class ImpromptuneInitializer implements Initializable{
 
             stage = Impromptune.getStage();
 
-
+            //Prime recent files
             MenuItem newItem = new MenuItem("Empty");
             recent.getItems().add(newItem);
-
-
-
 
             //Piano
             fxmlLoader = new FXMLLoader();
@@ -315,11 +309,6 @@ public class ImpromptuneInitializer implements Initializable{
             RendererTabs.getTabs().add(add);
             SelectionModel sm = RendererTabs.getSelectionModel();
             sm.select(RendererTabs.getTabs().size() - 1);
-
-            // RendererCase.getChildren().add(FXMLLoader.load(getClass().getClassLoader().getResource("Renderer/Renderer.fxml")));
-
-
-
             add.setText(mainWindow.getContent().getSD().getScore().getTitle());
             stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                     " - " + mainWindow.getContent().getSD().getScore().getCreator());
@@ -356,11 +345,7 @@ public class ImpromptuneInitializer implements Initializable{
         genSettings.setStage(stage);
 
         mainWindow.pageIndex = 0;
-        //String fileString = file.getAbsolutePath();
-       // System.out.println("generated file:" + fileString);
         mainWindow.loadedFile = file.toString();
-        //Save here
-       // ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), file);
         mainWindow.getContent().loadScore(mainWindow.loadedFile);
 
         add.setText(MetaData.getInstance().getTitle() + "*");
@@ -411,6 +396,19 @@ public class ImpromptuneInitializer implements Initializable{
             RendererTabs.getSelectionModel().getSelectedItem().setText(new MXMLDocUtils().getPieceTitle(file));
         }
     }
+
+    public void openFile(File file){
+        mainWindow.pageIndex = 0;
+        String f = file.getAbsolutePath();
+        if(f != null)
+        {
+            mainWindow.loadedFile = f;
+            mainWindow.getContent().loadScore(f);
+            RendererTabs.getSelectionModel().getSelectedItem().setText(new MXMLDocUtils().getPieceTitle(f));
+        }
+    }
+
+
 
     @FXML void onNEW(ActionEvent event) {
         new NewCompositionLaunch(mainWindow, stage);
@@ -499,24 +497,20 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
 
-    @FXML void onRecent(ActionEvent event){
-        System.out.println("RECENT");
-
-    }
-
-    @FXML void onRecent2(Event event){
-       // System.out.println("RSHOW");
-
+    @FXML void onRecent(Event event){
         recent.getItems().removeAll(); //Clear it out
         recent.getItems().clear();
         for( File f : RecentFiles.getRecentFiles())
         {
             MenuItem rf = new MenuItem(f.toString());
+
+            rf.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    openFile(f);
+                }
+            });
             recent.getItems().add(rf);
         }
-
-       // System.out.println("Rend");
-
     }
 
     @FXML void onUndo(ActionEvent event) {
