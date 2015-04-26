@@ -17,10 +17,12 @@ public class PitchAxis {
     boolean sharp = true; //sharp by default
 
     public PitchAxis(Pair<String, String> keySig, char a) {
-        if (a == '#')
+        if (a == '#') {
             pitchAxis = new String[]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
-        else if (a == 'b')
+        } else if (a == 'b') {
             pitchAxis = new String[]{"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
+            sharp = false;
+        }
 
         tonic = keySig.t;
         mode = keySig.u;
@@ -46,9 +48,11 @@ public class PitchAxis {
 
     //reverses a string form of the note to its' corresponding index
     int noteIndex(Note note) {
+
         String noteBuff = new String();
         noteBuff += note.getPitch();
         noteBuff.toUpperCase();
+
         switch (note.getAccidental()) {
             case 1:
                 noteBuff += '#';
@@ -122,7 +126,7 @@ public class PitchAxis {
 
     Degree degreeIndex(Note note) {
 
-        System.out.println("PitchAxis note " + note.toString() + " tonic " +tonic+ " mode " +mode );
+//        System.out.println("PitchAxis note " + note.toString() + " tonic " +tonic+ " mode " +mode );
 //        switch(noteIndex(note)) {
 //                case 0:
 //                    return Degree.Tonic;
@@ -141,7 +145,7 @@ public class PitchAxis {
 //        }
 //        return null;
 
-        return BlackMagicka.getDegreeIndex(tonic, mode, note.toString());
+        return BlackMagicka.getDegreeIndex(tonic, mode, note.toString(), sharp);
 //        return degree;
     }
 }

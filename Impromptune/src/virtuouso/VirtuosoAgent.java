@@ -18,217 +18,41 @@ import java.util.*;
 //the rational decision making agent
 public class VirtuosoAgent {
 
-    public static void main(String args[]) {
-
-//        System.out.println(BlackMagicka.pickDominant("A"));
-        VirtuosoAgent agent = new VirtuosoAgent(new File("C:\\Users\\shift_000\\IdeaProjects\\Impromptune\\Impromptune\\data\\test\\scores\\musicxml20\\Telemann.xml"));
-//        agent.build("gen_settings/MozartPianoSonata.xml");
-//        System.out.println(agent.chordProgression);
-//
-//
-//
-////        VirtuosoAgent agent = new VirtuosoAgent();
-//        List<String> possibleChords = new ArrayList<>();
-//        for (ArrayList<Note> notes : beats) {
-//            for (Note n : notes) {
-//                String s = agent.pickNote(n);
-//                if (s == null) //not in key
-//                    continue;
-//                possibleChords.add(s);
-//            }
-//        }
-
-//        agent.chordProgression = agent.buildChordProgression();
-        System.out.println("Chord progression: " + agent.chordProgression);
-        System.out.print("generated chords:" + agent.getGeneratedTones());
-
-//        for (int i = 0; i < 15; i++)
-//            System.out.print(agent.chooseChord());
-    }
-
-    static int[][] fifthTable =
-            // natural, flat, sharp
-                    {{-1,-8,6},//f
-                    {0,-7,7},//c
-                    {1,-6,8},//g
-                    {2,-5,9},//d
-                    {3,-4,10},//a
-                    {4,-3,11},//e
-                    {5,-2,12},//b
-                    };
-
-    static String getFifth(int fifth, char a, String mode) {
-        int base;
-        int mod = 0;
-        String root = null;
-        switch(fifth) {
-            case 0:
-                root = "F";
-//                base = 0;
-                break;
-            case 1:
-                root = "C";
-                break;
-            case 2:
-                root = "G";
-                break;
-            case 3:
-                root = "D";
-                break;
-            case 4:
-                root = "A";
-                break;
-            case 5:
-                root = "E";
-                break;
-            case 6:
-                root = "B";
-                break;
-        }
-
-        if(a == 'b')mod = 1;
-        if(a == '#')mod = 2;
-
-        int fifths = fifthTable[fifth][mod];
-        if(mode.equals("minor")) fifths -=3;
-        System.out.println("fifths: " + fifths + " " + fifthTable[fifth][mod]);
-        return root;
-    }
-
-    private String getKeyTonic(String mode) {
-        if (data == null) return null;
-        System.out.println("finding fifths " + data.getSharps());
-        String tonic = null;
-
-        if (mode.equals("major")) {
-            if (data.getFifthType().equals("sharp")) {
-                switch(data.getSharps()){
-                    case 0:
-                        tonic = "C";
-                        break;
-                    case 1:
-                        tonic = "G";
-                        break;
-                    case 2:
-                        tonic = "D";
-                        break;
-                    case 3:
-                        tonic = "A";
-                        break;
-                    case 4:
-                        tonic = "E";
-                        break;
-                    case 5:
-                        tonic = "B";
-                        break;
-                    case 6:
-                        tonic = "F#";
-                        break;
-                }
-            } else {
-                switch(data.getSharps()){
-                    case 0:
-                        tonic = "C";
-                        break;
-                    case 1:
-                        tonic = "F";
-                        break;
-                    case 2:
-                        tonic = "Bb";
-                        break;
-                    case 3:
-                        tonic = "Eb";
-                        break;
-                    case 4:
-                        tonic = "Ab";
-                        break;
-                    case 5:
-                        tonic = "Db";
-                        break;
-                    case 6:
-                        tonic = "Gb";
-                        break;
-                }
-            }
-        } else if (mode.equals("minor")) {
-            if (data.getFifthType().equals("sharp")) {
-
-                switch(data.getSharps()){
-                    case 0:
-                        tonic = "A";
-                        break;
-                    case 1:
-                        tonic = "E";
-                        break;
-                    case 2:
-                        tonic = "B";
-                        break;
-                    case 3:
-                        tonic = "F";
-                        break;
-                    case 4:
-                        tonic = "C";
-                        break;
-                    case 5:
-                        tonic = "G";
-                        break;
-                    case 6:
-                        tonic = "D#";
-                        break;
-                }
-            } else {
-                switch(data.getSharps()){
-                    case 0:
-                        tonic = "A";
-                        break;
-                    case 1:
-                        tonic = "G";
-                        break;
-                    case 2:
-                        tonic = "C";
-                        break;
-                    case 3:
-                        tonic = "F";
-                        break;
-                    case 4:
-                        tonic = "Bb";
-                        break;
-                    case 5:
-                        tonic = "Eb";
-                        break;
-                    case 6:
-                        tonic = "Ab";
-                        break;
-                }
-            }
-        }
-
-        return tonic;
-    }
-
-    private VirtuosoAgent rationalAgent;
     private ToneTransitionTable model;
     private String keyTonic;
     private String mode;
     private Set<String> chordProgression;
     private MetaData data;
     private File currentFile;
-    private int degreeWeight[][];
+    private int degreeWeight[][] = new int[][] {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
+                                                {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
+                                                {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
+                                                {4,  2,    0,    2,    2,   0,    1}, //etc...
+                                                {5,  0,    0,    0,    3,   2,    0},
+                                                {0,  5,    0,    3,    0,   2,    0},
+                                                {9,  0,    0,    0,    0,   0,    1}};
+
+    boolean sharp = true;
 
     public VirtuosoAgent(File file) {
+
         data = new MetaData(file);
-        if (data.isMajor()) mode = "major";
-        else mode = "minor";
+
+        if (MetaData.getInstance().isMajor())
+            mode = "major";
+        else
+            mode = "minor";
 
         keyTonic = getKeyTonic(mode);
 
-        System.out.println("mode:" + mode + ", tonic: " + keyTonic);
+        System.out.println("mode: " + mode + ", tonic: " + keyTonic);
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
 
-        if (data.getFifthType().equals("sharp")) {
+        if (MetaData.getInstance().getFifthType().equals("sharp")) {
 //            keyTonic = getFifth(data.getSharps(),'#' );
             model = new ToneTransitionTable(2, keySig, '#');
         } else {
+            sharp = false;
 //            keyTonic = getFifth(data.getSharps(),'b', );
             model = new ToneTransitionTable(2, keySig, 'b');
         }
@@ -239,20 +63,8 @@ public class VirtuosoAgent {
 //        possibleChords = new ArrayList<>();
         currentFile = file;
 //        keyTonic = data.getSharps()
-        degreeWeight = new int[][] {{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
-                                    {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
-                                    {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
-                                    {4,  2,    0,    2,    2,   0,    1}, //etc...
-                                    {5,  0,    0,    0,    3,   2,    0},
-                                    {0,  5,    0,    3,    0,   2,    0},
-                                    {9,  0,    0,    0,    0,   0,    1}};
-    }
 
-//    public VirtuosoAgent getInstance() {
-//        if (rationalAgent == null)
-//            rationalAgent = new VirtuosoAgent();
-//        return rationalAgent;
-//    }
+    }
 
     public ArrayList<String> getGeneratedTones() {
         ArrayList<String> tones = new ArrayList<>();
@@ -268,6 +80,7 @@ public class VirtuosoAgent {
             }
         }
 
+        System.out.println("chosen roots " + tones);
         return tones;
     }
 
@@ -283,7 +96,6 @@ public class VirtuosoAgent {
     }
 
     public void buildChordProgression() {
-
         ArrayList<ArrayList<Note>> beats = new MetaData(currentFile).getBeatList();
 
 //        VirtuosoAgent agent = new VirtuosoAgent();
@@ -310,14 +122,14 @@ public class VirtuosoAgent {
 
         Set<String> ret = new HashSet();
 
-        for (int i = 0; i < prog.size() && i < 3; i++) {
+        for (int i = 0; i < prog.size() && i < 4; i++) {
             Pair<String, Integer> p = getMaxPair(prog);
             ret.add(p.t);
             prog.remove(p);
         }
 
         chordProgression = ret;
-        System.out.println(ret);
+        System.out.println("chord progression chosen: " + ret);
     }
 
     private void addToChordProgression(String tone) {
@@ -346,56 +158,6 @@ public class VirtuosoAgent {
         return -1;
     }
 
-//    public StateNode minCost() {
-//        StateNode buff = fringe.removeFirst();
-//
-//        for (StateNode node : fringe) {
-//            if ((node.compareTo(buff)) < 0) {
-//                // if (node.heuristicCompare(buff) < 0) {
-//                buff = node;
-//            }
-//        }
-//
-//        // fringe.remove(buff);
-//        return buff;
-//    }
-//
-//    public StateNode DLS(int limit) {
-//
-//        while (!fringe.isEmpty()) {
-//            ArrayDeque<StateNode> successors = generateStateSet(minCost(), limit);
-//
-//            if (successors.isEmpty() || successors.getLast().depth > limit) //failed, go deeper
-//                return null;
-//
-//            if (goalPath(successors))
-//                return successors.getLast();
-//
-//            //for more blahblah, check if visited...
-//            for (StateNode node : successors)
-//                fringe.addLast(node);
-//        }
-//
-//        return null;
-//    }
-
-//    public static void AStarSearch(int maxDepth) {
-//        for (int i = 0; i < maxDepth; i++) {
-////            StateNode result = DLS(i);
-//            // System.out.println("limit hit -------------------");
-//        }
-//    }
-
-//    viterbi path
-//    public void viterbiPath() {
-//
-//    }
-//
-//    void gibbsSampling() {
-//
-//    }
-
-
     private String getMaxVote(Map<String, Integer> ballot) {
         Iterator it = ballot.entrySet().iterator();
 
@@ -415,22 +177,24 @@ public class VirtuosoAgent {
 
 //    BlackMagicka.getDegreeIndex(keyTonic, mode, note).toInt()
     //get tone with pairObject.t, get register with pairObject.u
-    private String chooseChord(Note no) {
-        if (no == null) return null;
+    private String chooseChord(Note note) {
+        if (note == null) return null;
         Pair<String, Integer> chord = null;
 
         String [] str = chordProgression.toArray(new String[0]);
         HashMap<String, Integer> ballot = new HashMap<>();
-        for (int i = 0; i < 3; i++) {
-            String noteVote = str[model.getRand(3)];
+        for (int i = 0; i < chordProgression.size(); i++) {
+            String noteVote = str[model.getRand(chordProgression.size())];
             Integer count = ballot.get(noteVote);
 
-            if (BlackMagicka.noteInChord("C", "major", no.toString()) == true) {
-                int m = BlackMagicka.getDegreeIndex(keyTonic, mode, no.toString()).toInt();
-                int n = BlackMagicka.getDegreeIndex(keyTonic, mode, noteVote).toInt();
-                count *= degreeWeight[m][n];
-                System.out.print(count);
-            }
+//            if (count != null &&
+//                    BlackMagicka.noteIn7thChord(note.toString(),keyTonic,  mode) == true
+//                    && BlackMagicka.noteInScale(noteVote, keyTonic, mode) == true) {
+//                int m = BlackMagicka.getDegreeIndex(keyTonic, mode, note.toString()).toInt();
+//                int n = BlackMagicka.getDegreeIndex(keyTonic, mode, noteVote).toInt();
+//                count *= degreeWeight[m][n];
+////                System.out.print(count);
+//            }
 
             if (count == null) {
                 ballot.put(noteVote, 1);
@@ -449,7 +213,8 @@ public class VirtuosoAgent {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             Degree d = (Degree)pair.getKey();
-            degrees.put(d, (Double)pair.getValue() * degreeWeight[degree.toInt()][d.toInt()]);
+//            degrees.put(d, (Double)pair.getValue() * degreeWeight[degree.toInt()][d.toInt()] * 2);
+            degrees.put(d, calcScore(d, degrees));
         }
 
         return degrees;
@@ -463,37 +228,42 @@ public class VirtuosoAgent {
 
         Degree d = model.getDegree(note);
 
-        if (d == null) return null;
+        if (d == null)
+            return null;
+
         hash = scorify(d, hash);
-        System.out.println(calcScore(d, hash));
+        System.out.println("degree: " + d.toInt() + " scored " + calcScore(d, hash));
 
         Degree n = transition(d, hash);
 
-//        System.out.println(degreeTone(n));
         return degreeTone(n);
     }
 
     private String degreeTone(Degree degree) {
         if (degree == null)
             return null;
-        return BlackMagicka.pickIthNote(keyTonic, degree.toInt());
+        return BlackMagicka.pickIthNote(keyTonic, degree.toInt(), sharp);
     }
 
     //this should calculate the decision weighting for a degree with respect to the probable tones
     private double calcScore(Degree degree, HashMap<Degree, Double> dist) {
         if (degree == null)
             return 0.0;
+
         double score = 0.0;
+        double max = 0.0;
         Iterator it = dist.entrySet().iterator();
 
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             Degree from = (Degree)pair.getKey();
+            score = (double) pair.getValue() * (double) degreeWeight[from.toInt()][degree.toInt()] * 2;
 
-            score = (double) pair.getValue() *(double) degreeWeight[from.toInt()][degree.toInt()];
+            if (score > max)
+                max = score;
         }
 
-        return score;
+        return max;
     }
 
     private Pair<Degree, Double> getMaxWeight(HashMap<Degree, Double> distribution) {
@@ -513,7 +283,6 @@ public class VirtuosoAgent {
 
         return max;
     }
-
 
     //just a wrapper for above
     private Degree getMaxWeightDegree(HashMap<Degree, Double> distribution) {
@@ -676,5 +445,176 @@ public class VirtuosoAgent {
             }
         }
 
+    }
+
+
+
+
+
+
+
+
+
+
+
+    static int[][] fifthTable =
+            // natural, flat, sharp
+            {{-1,-8,6},//f
+            {0,-7,7},//c
+            {1,-6,8},//g
+            {2,-5,9},//d
+            {3,-4,10},//a
+            {4,-3,11},//e
+            {5,-2,12},//b
+            };
+
+    static String getFifth(int fifth, char a, String mode) {
+        int base;
+        int mod = 0;
+        String root = null;
+        switch(fifth) {
+            case 0:
+                root = "F";
+//                base = 0;
+                break;
+            case 1:
+                root = "C";
+                break;
+            case 2:
+                root = "G";
+                break;
+            case 3:
+                root = "D";
+                break;
+            case 4:
+                root = "A";
+                break;
+            case 5:
+                root = "E";
+                break;
+            case 6:
+                root = "B";
+                break;
+        }
+
+        if(a == 'b')mod = 1;
+        if(a == '#')mod = 2;
+
+        int fifths = fifthTable[fifth][mod];
+        if(mode.equals("minor")) fifths -= 3;
+        System.out.println("fifths: " + fifths + " " + fifthTable[fifth][mod]);
+        return root;
+    }
+
+    private String getKeyTonic(String mode) {
+        MetaData data = MetaData.getInstance();
+        if (data == null) return null;
+        System.out.println("finding fifths " + data.getSharps());
+        String tonic = null;
+
+        if (mode.equals("major")) {
+            if (data.getFifthType().equals("sharp")) {
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "C";
+                        break;
+                    case 1:
+                        tonic = "G";
+                        break;
+                    case 2:
+                        tonic = "D";
+                        break;
+                    case 3:
+                        tonic = "A";
+                        break;
+                    case 4:
+                        tonic = "E";
+                        break;
+                    case 5:
+                        tonic = "B";
+                        break;
+                    case 6:
+                        tonic = "F#";
+                        break;
+                }
+            } else {
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "C";
+                        break;
+                    case -1:
+                        tonic = "F";
+                        break;
+                    case -2:
+                        tonic = "Bb";
+                        break;
+                    case -3:
+                        tonic = "Eb";
+                        break;
+                    case -4:
+                        tonic = "Ab";
+                        break;
+                    case -5:
+                        tonic = "Db";
+                        break;
+                    case -6:
+                        tonic = "Gb";
+                        break;
+                }
+            }
+        } else if (mode.equals("minor")) {
+            if (data.getFifthType().equals("sharp")) {
+
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "A";
+                        break;
+                    case 1:
+                        tonic = "E";
+                        break;
+                    case 2:
+                        tonic = "B";
+                        break;
+                    case 3:
+                        tonic = "F";
+                        break;
+                    case 4:
+                        tonic = "C";
+                        break;
+                    case 5:
+                        tonic = "G";
+                        break;
+                    case 6:
+                        tonic = "D#";
+                        break;
+                }
+            } else {
+                switch(data.getSharps()){
+                    case 0:
+                        tonic = "A";
+                        break;
+                    case 1:
+                        tonic = "G";
+                        break;
+                    case 2:
+                        tonic = "C";
+                        break;
+                    case 3:
+                        tonic = "F";
+                        break;
+                    case 4:
+                        tonic = "Bb";
+                        break;
+                    case 5:
+                        tonic = "Eb";
+                        break;
+                    case 6:
+                        tonic = "Ab";
+                        break;
+                }
+            }
+        }
+
+        return tonic;
     }
 }

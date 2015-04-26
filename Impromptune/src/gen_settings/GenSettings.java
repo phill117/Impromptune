@@ -128,7 +128,6 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     VirtuosoAgent agent = new VirtuosoAgent(file);
 
                     agent.buildChordProgression();
-                    System.out.print(agent.getGeneratedTones());
                     agent.addBackToMusic(agent.getGeneratedTones());
                     //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( file );

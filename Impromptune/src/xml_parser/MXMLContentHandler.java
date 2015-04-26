@@ -54,7 +54,7 @@ public class MXMLContentHandler extends DefaultHandler{
         String s = "";
         for(int i = 0; i < tab; i++) s+="\t";
         tab++;
-        System.out.println(s+"Start Element: "+qName);
+//        System.out.println(s+"Start Element: "+qName);
 
 
 
@@ -76,12 +76,7 @@ public class MXMLContentHandler extends DefaultHandler{
 
         if(qName.equals("mode")){currentFlag = MXML.Mode; return;}
         if(qName.equals("divisions")){currentFlag = MXML.Divisions; return;}
-//        if(qName.equals("fifths")) {
-//            currentFlag = MXML.Fifths;
-////            metaData.setFifths(Integer.parseInt(attributes.getValue("fifths")));
-//
-//            return;
-//        }
+        if(qName.equals("fifths")){currentFlag = MXML.Fifths; return;}
         if(qName.equals("sound")){metaData.setTempo(Integer.parseInt(attributes.getValue("tempo")));return;}
         if(qName.equals("credit-words")){currentFlag = MXML.CreditWords; return;}
 
@@ -93,7 +88,7 @@ public class MXMLContentHandler extends DefaultHandler{
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         String data = new String(ch,start,length);
-        System.out.println(data);
+//        System.out.println(data);
 
         switch (currentFlag){
             case Divisions:
@@ -156,7 +151,7 @@ public class MXMLContentHandler extends DefaultHandler{
         tab--;
         String s = "";
         for(int i = 0; i < tab; i++) s+="\t";
-        System.out.println(s+"End Element: "+qName);
+//        System.out.println(s+"End Element: "+qName);
 
         if (qName.equals("note")){
             currentMeasure.addNoteToPart(currentNote,0);

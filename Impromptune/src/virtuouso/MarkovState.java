@@ -32,10 +32,12 @@ public class MarkovState {
     public void updateLayer(Beat currentBeat, Beat lastBeat) {
         for (Note curr : currentBeat.getNotes()) {
             for (Note prev : lastBeat.getNotes()) {
-                System.out.println(pitchAxis.getIndex(curr.toString()) + " " +  pitchAxis.getIndex(prev.toString()));
-                markIndexFound(pitchAxis.getIndex(curr.toString()), pitchAxis.getIndex(prev.toString()));
+                int i = pitchAxis.getIndex(curr.toString());
+                int j = pitchAxis.getIndex(prev.toString());
+//                System.out.println(i + " " + j);
+                if (i >= 0 && j >= 0)
+                    markIndexFound(i, j);
             }
-
         }
     }
 

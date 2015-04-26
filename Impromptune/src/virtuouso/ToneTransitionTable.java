@@ -96,7 +96,7 @@ public class ToneTransitionTable {
     }
 
     public void trainNote(Note note) {
-        trainNote(BlackMagicka.noteIndexToString(markov.getFirst().getPitchAxis().noteIndex(note))); //ugliest evar
+        trainNote(BlackMagicka.noteIndexToString(markov.getFirst().getPitchAxis().noteIndex(note), markov.get(0).getPitchAxis().sharp)); //ugliest evar
     }
 
     //adds note to model and updates state
@@ -106,7 +106,6 @@ public class ToneTransitionTable {
 
     HashMap<Note, Double> getBeatLikelihoods(Beat beat, int k) {
         HashMap<Note, Double> distribution = new HashMap<>();
-//        int i = 0;
 
         for (Note n : beat.getNotes()) {
             distribution.put(n, getKthLikelihood(n, k));
@@ -118,8 +117,8 @@ public class ToneTransitionTable {
     private double getKthLikelihood(Note note, int k) { //k == index of order
         String lastNote = lastKBeats.get(k).getNotes().get(0).toString();
 
-        int i = BlackMagicka.noteIndex(note.toString());
-        int j = BlackMagicka.noteIndex(lastNote);
+        int i = BlackMagicka.noteIndex(note.toString(), markov.get(0).getPitchAxis().sharp);
+        int j = BlackMagicka.noteIndex(lastNote, markov.get(0).getPitchAxis().sharp);
         if (i < 0 || i > 11 || j < 0 || j > 11)
             return -1.0;
 
@@ -144,7 +143,7 @@ public class ToneTransitionTable {
         //getdegree from beats
 //        lastKBeats.getFirst();
         HashMap<Note, Double> distribution = getBeatLikelihoods(beat, 1);
-        System.out.println(beat.getNotes() + ": has likelihood of = " + getBeatLikelihoods(beat, 0).keySet() + getBeatLikelihoods(beat, 0).values());
+//        System.out.println(beat.getNotes() + ": has likelihood of = " + getBeatLikelihoods(beat, 0).keySet() + getBeatLikelihoods(beat, 0).values());
         return distribution;
     }
 
