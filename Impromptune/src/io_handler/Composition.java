@@ -66,6 +66,9 @@ public class Composition implements Serializable{
     private Score currentComp = null;
     private ArrayList<Quill> quills = null;
 
+    //for the piano
+    private String fifthtype = "sharp";
+
     //for viewage
     private LayoutSettings layoutSettings = null;
     private ScoreDoc currentScoreDoc = null;
@@ -115,7 +118,8 @@ public class Composition implements Serializable{
 
     }
 
-    public Composition(String clef, String key, String keyType, String keyMod, String Time, int bpm,String title,String composer) {
+    public Composition(String clef, String key, String keyType, String keyMod, String Time, int bpm,String title,String composer, String fifthtype) {
+        this.fifthtype = fifthtype;
         this.timeSig = Time;
         quills = new ArrayList<Quill>();
         currentComp = initializeEmptyScore(clef, key, keyType, keyMod, Time, bpm);
@@ -496,6 +500,12 @@ public class Composition implements Serializable{
 
     public void setScoreIndex(int i) {
         scoreIndex = i;
+    }
+
+    public String getFifthtype(){return fifthtype;}
+
+    public void setFifthtype(String fifthtype) {
+        this.fifthtype = fifthtype;
     }
 }
 

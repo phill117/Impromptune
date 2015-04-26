@@ -62,12 +62,20 @@ public class NewCompositionDialog implements Initializable{
             return;
         }
 
-        MetaData metaData = MetaData.getInstance();
-        if(symbol.getValue().toString().equals("♭")) metaData.setFifthType("flat");
+        String acc = symbol.getValue().toString();
+        String letter = key.getValue().toString();
+        boolean isMajor = mode.getValue().toString().equals("Major");
+
+        String fifthType = "sharp";
+
+        if(acc.equals("♯")) fifthType= "sharp";
+        else if(acc.equals("♭")) fifthType = "flat";
+        else if(letter.equals("F")) fifthType = "flat";
+        else if(!isMajor && (letter.equals("D") || letter.equals("G") || letter.equals("C")) )fifthType = "flat";
 
         int bpm = Integer.parseInt(tempo.getValue().toString().substring((tempo.getValue().toString().indexOf('–')) + 1).trim());
 
-        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),bpm,titleField.getText(),composerField.getText());
+        mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),bpm,titleField.getText(),composerField.getText(),fifthType);
 
         parent.setTitle("Impromptune - " +titleField.getText() + " - " + composerField.getText());
         stage.close();

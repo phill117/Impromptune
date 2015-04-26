@@ -206,9 +206,9 @@ public class Content
 
 
 
-    public void loadNew(String clef, String key, String keyType, String keyMod, String Time, int bpm, String title, String creator) {
+    public void loadNew(String clef, String key, String keyType, String keyMod, String Time, int bpm, String title, String creator , String fifthType) {
 
-        comp = new Composition(clef, key, keyType, keyMod, Time, bpm, title,creator);
+        comp = new Composition(clef, key, keyType, keyMod, Time, bpm, title,creator, fifthType);
         comp.clef = clef;
         scoreDoc = comp.getCurrentScoreDoc();
         undoList.clear();

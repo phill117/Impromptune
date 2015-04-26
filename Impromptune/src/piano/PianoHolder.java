@@ -102,6 +102,9 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
         EventType<MouseEvent> et = (EventType<MouseEvent>) event.getEventType();
 
         if(et == MouseEvent.MOUSE_PRESSED){
+
+            String fifthType = mw.getContent().getComposition().getFifthtype();
+
             pianoKey = (Node) event.getTarget();
             String id = pianoKey.getId();
 
@@ -120,13 +123,13 @@ public class PianoHolder implements Initializable, EventHandler<MouseEvent>{
             String jNoteToPlay = ""+id.charAt(0); //SEND TO JFUGUE PLAYER
             String zongNote = ""+id.charAt(0);    //SEND TO ZONG RENDERER
 
-            if(metaData.getFifthType().equals("flat") && id.charAt(1) == 's'){
+            if(fifthType.equals("flat") && id.charAt(1) == 's'){
                 zongNote = ""+getNextKey(id.charAt(0));
             }
 
             //decide if note is flat or sharp
             if(id.charAt(1) == 's') {
-                if(metaData.getFifthType().equals("flat")) zongNote += 'f';
+                if(fifthType.equals("flat")) zongNote += 'f';
                 else zongNote += '#';
 
                 jNoteToPlay += '#';

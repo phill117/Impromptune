@@ -30,8 +30,6 @@ public class MetaData {
     String title = "";
     String composer = "";
 
-    String fifthType = "sharp";
-
     //'sign' and line not implemented to change
     String sign = "G";
     String line = "2";
@@ -158,14 +156,6 @@ public class MetaData {
 
     public void addMeasure(Measure m){
         measures.add(m);
-    }
-
-    public String getFifthType() {
-        return fifthType;
-    }
-
-    public void setFifthType(String fifthType) {
-        this.fifthType = fifthType;
     }
 
     public ArrayList<Measure> getMeasures() {

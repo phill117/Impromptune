@@ -125,7 +125,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     //InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
                     mxp.parse(inputSource, handler);
 
-                    VirtuosoAgent agent = new VirtuosoAgent(file);
+                    VirtuosoAgent agent = new VirtuosoAgent(file,mainWindow.getContent().getComposition().getFifthtype());
 
                     agent.buildChordProgression();
                     agent.addBackToMusic(agent.getGeneratedTones());

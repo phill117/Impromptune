@@ -24,10 +24,13 @@ public class VirtuosoAgent {
     private Set<String> chordProgression;
     private MetaData data;
     private File currentFile;
+    private String fifthType;
 
     boolean sharp = true;
 
-    public VirtuosoAgent(File file) {
+    public VirtuosoAgent(File file, String fifthType) {
+
+        this.fifthType = fifthType;
 
         data = new MetaData(file);
 
@@ -41,7 +44,7 @@ public class VirtuosoAgent {
         System.out.println("mode: " + mode + ", tonic: " + keyTonic);
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
 
-        if (MetaData.getInstance().getFifthType().equals("sharp")) {
+        if (fifthType.equals("sharp")) {
 //            keyTonic = getFifth(data.getSharps(),'#' );
             model = new ToneTransitionTable(2, keySig, '#');
         } else {
@@ -336,7 +339,7 @@ public class VirtuosoAgent {
     private String getKeyTonic(String mode) {
         MetaData data = MetaData.getInstance();
         if (data == null) return null;
-        System.out.println("finding fifths " + data.getSharps() + " " + data.getFifthType());
+        System.out.println("finding fifths " + data.getSharps() + " " + fifthType);
         String tonic = null;
 
         int sharps = data.getSharps();
