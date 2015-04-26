@@ -249,6 +249,7 @@ public class Content
     //Called by eventhandler
     public void addNote(String note) {
        // comp.
+        if (comp == null) return;
         comp.addNote(note);
         comp.resync();
         refresh();

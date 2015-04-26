@@ -97,7 +97,7 @@ public class ImpromptuneInitializer implements Initializable{
     PianoHolder piano;
     GenSettings genSettings;
     FXMLLoader fxmlLoader;
-    MainWindow mainWindow; //The MainWindow of the currently selected tab.
+    MainWindow mainWindow = null; //The MainWindow of the currently selected tab.
     ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
 
     public static ImpromptuneInitializer self;
@@ -112,6 +112,7 @@ public class ImpromptuneInitializer implements Initializable{
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.intValue() < mainWindows.size() && mainWindows.size() > 0){
+                    if (mainWindow == null) return;
                     //System.out.println(mainWindows.size());
                     //System.out.println(newValue.intValue());
                     mainWindow = mainWindows.get(newValue.intValue());
@@ -120,7 +121,7 @@ public class ImpromptuneInitializer implements Initializable{
                     genSettings.setStage(stage);
                     mainWindow.getContent().refresh();
                     stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
-                            " - " + mainWindow.getContent().getSD().getScore().getCreator());
+                        " - " + mainWindow.getContent().getSD().getScore().getCreator());
                 }
             }
         });
@@ -265,6 +266,9 @@ public class ImpromptuneInitializer implements Initializable{
 
                     MainWindow mw = fxmlLoader.getController();
 
+                    NewCompositionLaunch compLaunch = new NewCompositionLaunch(mw, stage);
+                    if (compLaunch.getResult().equals("cancel")) return;
+
                     piano.mw = mw; //Set the current piano window to current renderer window
                     mainWindows.add(mw);
                     mainWindow = mw;
@@ -273,8 +277,6 @@ public class ImpromptuneInitializer implements Initializable{
                     redo.setDisable(true);
                     genSettings.setMainWindow(mainWindow);
                     genSettings.setStage(stage);
-
-                    NewCompositionLaunch compLaunch = new NewCompositionLaunch(mainWindow, stage);
                     
                     break;
                 } else {
@@ -303,15 +305,15 @@ public class ImpromptuneInitializer implements Initializable{
                 }
             }
 
+            mainWindow.getContent().refresh();
             Tab add = new Tab();
             add.setContent(bp);
+            add.setText(mainWindow.getContent().getSD().getScore().getTitle());
             RendererTabs.getTabs().add(add);
             SelectionModel sm = RendererTabs.getSelectionModel();
             sm.select(RendererTabs.getTabs().size() - 1);
-            add.setText(mainWindow.getContent().getSD().getScore().getTitle());
             stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                     " - " + mainWindow.getContent().getSD().getScore().getCreator());
-            mainWindow.getContent().refresh();
         }catch (Exception e){
             System.out.println("dun messed up");
             e.printStackTrace();

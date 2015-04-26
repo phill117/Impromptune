@@ -18,6 +18,10 @@ public class NewCompositionLaunch {
     /* Instance variables for this stage */
     private Stage stage;
     private BorderPane root;
+    private static String result;
+
+    public static void setResult(String res){result = res;}
+    public String getResult(){return result;}
 
     public NewCompositionLaunch(MainWindow mw, Stage parent){
         CompositionPropertiesDialog.setMainWindow(mw);

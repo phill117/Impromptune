@@ -78,11 +78,12 @@ public class NewCompositionDialog implements Initializable{
         mainWindow.getContent().loadNew("treble",key.getValue().toString(),mode.getValue().toString(),symbol.getValue().toString(),timeSig.getValue().toString(),bpm,titleField.getText(),composerField.getText(),fifthType);
 
         parent.setTitle("Impromptune - " +titleField.getText() + " - " + composerField.getText());
+        NewCompositionLaunch.setResult("okay");
         stage.close();
     }
 
     @FXML void onCancel(ActionEvent event){
-
+        NewCompositionLaunch.setResult("cancel");
         stage.close();
     }
 
