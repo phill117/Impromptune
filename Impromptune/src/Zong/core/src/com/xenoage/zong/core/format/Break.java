@@ -8,6 +8,8 @@ import com.xenoage.zong.core.music.layout.SystemBreak;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
 
 /**
  * Break information for a measure column:
@@ -18,7 +20,7 @@ import lombok.EqualsAndHashCode;
  */
 @Const @Data @EqualsAndHashCode(exclude="parent")
 public final class Break
-	implements ColumnElement {
+	implements ColumnElement, Serializable {
 
 	private final PageBreak pageBreak;
 	private final SystemBreak systemBreak;

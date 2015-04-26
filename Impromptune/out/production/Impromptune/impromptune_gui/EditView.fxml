@@ -24,7 +24,9 @@
                         <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <Menu mnemonicParsing="false" text="Open Recent" visible="false" />
+                  <Menu fx:id="recent" mnemonicParsing="false" onShowing="#onRecent" text="Open Recent">
+                      <items></items>
+                   </Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
                    <MenuItem mnemonicParsing="false" onAction="#onSAVE" text="Save" visible="true">
                        <accelerator>
@@ -110,11 +112,13 @@
                                           <Font size="12.0" />
                                        </font>
                                     </Button>
+                                    <Button mnemonicParsing="false" onAction="#onCloseTab" text="Close Tab">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Button>
                                     <Separator />
                                     <Button mnemonicParsing="false" onAction="#onNext" text="Next Page">
-                                       <effect>
-                                          <Glow />
-                                       </effect>
                                        <font>
                                           <Font size="12.0" />
                                        </font>

@@ -9,6 +9,7 @@ import com.xenoage.zong.layout.LayoutDefaults;
 import com.xenoage.zong.layout.frames.ScoreFrameChain;
 import com.xenoage.zong.musiclayout.ScoreLayout;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 

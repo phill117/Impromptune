@@ -34,6 +34,6 @@ public class CompositionPropertiesLaunch {
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setTitle("Composition Properties");
         CompositionPropertiesDialog.setStage(stage);
-        stage.show();
+        stage.showAndWait();
     }
 }

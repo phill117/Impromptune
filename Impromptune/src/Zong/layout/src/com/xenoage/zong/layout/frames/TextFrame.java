@@ -3,6 +3,8 @@ package com.xenoage.zong.layout.frames;
 import com.xenoage.zong.core.text.FormattedText;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 /**
  * A {@link TextFrame} is a frame that contains a {@link FormattedText}.
  * 
@@ -12,7 +14,7 @@ import lombok.Getter;
  * @author Andreas Wenger
  */
 public class TextFrame
-	extends Frame {
+	extends Frame implements Serializable {
 
 	
 	/**

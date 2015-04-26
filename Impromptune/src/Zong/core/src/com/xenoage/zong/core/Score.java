@@ -66,8 +66,10 @@ public final class Score
 	@Getter private CommandPerformer commandPerformer = new CommandPerformer(this);
 	/** Supported formats for reading scores from files and writing them to files. */
 	@Getter private SupportedFormats<Score> supportedFormats = null;
-	
-	
+
+    @Getter @Setter public String Title;
+    @Getter @Setter public String Creator;
+
 	public Score() {
 		stavesList.setScore(this);
 	}

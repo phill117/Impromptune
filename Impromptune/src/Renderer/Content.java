@@ -230,15 +230,6 @@ public class Content
     }
 
 
-
-
-
-
-
-
-
-
-
     public void refresh(){
         layout = comp.getLayout();
         scoreDoc = comp.getCurrentScoreDoc();
@@ -248,6 +239,7 @@ public class Content
         mainWindow.renderLayout(layout);
 
         //load score into MIDI playback
+        Playback.registerListener(this);
         Playback.openScore(comp.getCurrentScore());
 //        Playback.start();
 //        Playback.stop();
@@ -299,7 +291,7 @@ public class Content
             addIndex = 1;
             maxIndex = 1;
             comp.resync();
-            refresh();
+           refresh();
 
             try {
                 blankComp = comp.deepCopy();

@@ -21,6 +21,7 @@ public final class MxlFontSize implements Serializable {
 	public static final MxlFontSize noFontSize = new MxlFontSize(null, null);
 
     public static final MxlFontSize jFontSize = new MxlFontSize(24f,  MxlCSSFontSize.Medium);
+    public static final MxlFontSize j2FontSize = new MxlFontSize(14f,  MxlCSSFontSize.Small);
 	/** The font-size in points. */
 	@MaybeNull private final Float valuePt;
 	/** The font-size as a CSS font size. */
