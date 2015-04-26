@@ -453,7 +453,12 @@ public class ScoreMXMLBuilder {
         BeatE<Key> keyBeatE;
         BeatEList<Key> list = scoreDoc.getScore().getHeader().getColumnHeader(0).getKeys();
         keyBeatE = list.getFirst();
-        MxlKey mxlKey = new MxlKey(((TraditionalKey)keyBeatE.element).getFifths(), MxlMode.Major);
+        TraditionalKey.Mode mode = ((TraditionalKey)keyBeatE.element).getMode();
+        MxlKey mxlKey = null;
+        if (mode.equals(TraditionalKey.Mode.Major))
+            mxlKey = new MxlKey(((TraditionalKey)keyBeatE.element).getFifths(), MxlMode.Major);
+        else
+            mxlKey = new MxlKey(((TraditionalKey)keyBeatE.element).getFifths(), MxlMode.Minor);
         return mxlKey;
     }
 
