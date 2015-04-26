@@ -352,11 +352,11 @@ public class ScoreMXMLBuilder {
         if (element instanceof Chord) {
             mxlFullNote.setChord(false);
             mxlFullNote.setContent(buildFullNoteContent(element));
-            System.out.println("building chord");
+//            System.out.println("building chord");
         } else {
             mxlFullNote.setChord(false);
             mxlFullNote.setContent(buildFullNoteContent(element));
-            System.out.println("building note");
+//            System.out.println("building note");
         }
 
         return mxlFullNote;

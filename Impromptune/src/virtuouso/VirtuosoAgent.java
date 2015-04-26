@@ -62,17 +62,43 @@ public class VirtuosoAgent {
 
     }
 
+    public String mostHarmonicReasonation(String tonePlaying, String chosenRoot) {
+        String bestChoice = null;
+
+        if (MetaData.getInstance().isMajor()) {
+            if (BlackMagicka.noteInScale(tonePlaying, keyTonic, "major", sharp)) {
+                //do stuff
+                for (String tone : BlackMagicka.majorChord(chosenRoot, sharp)) {
+                    if (BlackMagicka.noteInChord(tone, tonePlaying, "major", sharp))
+                        bestChoice = tone;
+                }
+            } else {
+                bestChoice = chosenRoot;
+            }
+        } else {
+            if (BlackMagicka.noteInScale(tonePlaying, keyTonic, "minor", sharp)) {
+                for (String tone : BlackMagicka.minorChord(chosenRoot, sharp)) {
+                    if (BlackMagicka.noteInChord(tone, tonePlaying, "minor", sharp))
+                        bestChoice = tone;
+                }
+            } else {
+                bestChoice = chosenRoot;
+            }
+        }
+
+        return bestChoice;
+    }
+
     public ArrayList<String> getGeneratedTones() {
         ArrayList<String> tones = new ArrayList<>();
         ArrayList<ArrayList<Note>> beats = data.getBeatList();
 
         for (ArrayList<Note> notes : beats) {
             for (Note n : notes) {
-                String s = chooseChord(n);
-                if (s == null) //not in key
+                String nextTone = chooseChord(n);
+                if (nextTone == null) //not in key
                     continue;
-                tones.add(s);
-//                System.out.print(s);
+                tones.add(nextTone);
             }
         }
 
@@ -102,12 +128,14 @@ public class VirtuosoAgent {
             int i = Collections.frequency(possibleChords, s);
             prog.add(new Pair<>(s, i));
 
-            System.out.println(Collections.frequency(possibleChords, s) + " " + s);
+            System.out.println("freq:" + " " + i + " " + s);
         }
 
         Set<String> ret = new HashSet();
 
-        for (int i = 0; i < prog.size() && i < 4; i++) {
+        int lim = prog.size() < 4 ? prog.size() : 4;
+
+        for (int i = 0; i < lim; i++) {
             Pair<String, Integer> p = ScorePipeline.getMaxPair(prog);
             ret.add(p.t);
             prog.remove(p);
@@ -133,14 +161,16 @@ public class VirtuosoAgent {
             String noteVote = str[model.getRand(chordProgression.size())];
             Integer count = ballot.get(noteVote);
 
-//            if (count != null &&
-//                    BlackMagicka.noteIn7thChord(note.toString(),keyTonic,  mode) == true
-//                    && BlackMagicka.noteInScale(noteVote, keyTonic, mode) == true) {
-//                int m = BlackMagicka.getDegreeIndex(keyTonic, mode, note.toString()).toInt();
-//                int n = BlackMagicka.getDegreeIndex(keyTonic, mode, noteVote).toInt();
-//                count *= degreeWeight[m][n];
-////                System.out.print(count);
-//            }
+            if (count != null
+                    && BlackMagicka.noteInScale(noteVote, keyTonic, mode, sharp)
+                    && BlackMagicka.noteInScale(note.toString(), keyTonic, mode, sharp)
+                    && BlackMagicka.noteIn7thChord(note.toString(),keyTonic,  mode, sharp)) {
+
+                int m = BlackMagicka.getDegreeIndex(keyTonic, mode, note.toString(), sharp).toInt();
+                int n = BlackMagicka.getDegreeIndex(keyTonic, mode, noteVote, sharp).toInt();
+                count *= ScorePipeline.getDegreeWeight(m, n);
+//                System.out.print(count);
+            }
 
             if (count == null) {
                 ballot.put(noteVote, 1);
@@ -284,16 +314,20 @@ public class VirtuosoAgent {
         MetaData metaData = MetaData.getInstance();
         int divsPerMeasure = metaData.getDivisionsPerMeasure();
         ArrayList<Measure> measures = metaData.getMeasures();
+
         int k = 0;
         int currentDuration = 0;
         int rollOver = 0;
-        for(Measure measure : measures){
+
+        for(Measure measure : measures) {
             currentDuration = 0;
             int duration = 0;
             for(; k < chordProgTones.size(); k++) {
 
                 if(rollOver != 0){
                     duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
+
+                    System.out.println("first part" + measure.getPart(0));
                     measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
                     currentDuration += rollOver;
                     rollOver = 0;
@@ -311,7 +345,7 @@ public class VirtuosoAgent {
                 if(currentDuration + duration > divsPerMeasure){
                     rollOver = currentDuration + duration - divsPerMeasure;
                 }
-
+                System.out.println("first part" + measure.getPart(0));
                 measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
                 currentDuration += duration;
             }

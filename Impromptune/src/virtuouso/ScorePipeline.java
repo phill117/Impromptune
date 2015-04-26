@@ -20,6 +20,10 @@ public class ScorePipeline {
                                                 {0,  5,    0,    3,    0,   2,    0},
                                                 {9,  0,    0,    0,    0,   0,    1}};
 
+    public static int getDegreeWeight(int i, int j) {
+        return degreeWeight[i][j];
+    }
+
     //this should calculate the decision weighting for a degree with respect to the probable tones
     public static double calcScore(Degree degree, HashMap<Degree, Double> dist) {
         if (degree == null)
