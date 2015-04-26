@@ -28,8 +28,8 @@ import static com.xenoage.utils.log.Report.warning;
  */
 public class RecentFiles {
 
-	static final String filePath = "data/recentfiles";
-	static final int maxEntries = 5;
+	static final String filePath = "./recentfiles.log";
+	static final int maxEntries = 8;
 
 	private static List<RecentFilesListener> listeners = alist();
 

@@ -24,7 +24,9 @@
                         <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <Menu fx:id="recent" mnemonicParsing="false" text="Open Recent" />
+                  <Menu fx:id="recent" mnemonicParsing="false" onShowing="#onRecent" text="Open Recent">
+                      <items></items>
+                   </Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
                    <MenuItem mnemonicParsing="false" onAction="#onSAVE" text="Save" visible="true">
                        <accelerator>
