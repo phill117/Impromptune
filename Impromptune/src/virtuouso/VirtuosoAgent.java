@@ -89,31 +89,30 @@ public class VirtuosoAgent {
     }
 
     public List<String> arpeggiate153(String root) {
-        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.majorChord(root, sharp);
+        List<String> chord = BlackMagicka.majorChord(root, sharp);
         Collections.swap(chord, 2, 3);
         return chord;
     }
 
     public List<String> arpeggiate531(String root) {
-        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.majorChord(root, sharp);
+        List<String> chord = BlackMagicka.majorChord(root, sharp);
         Collections.reverse(chord);
         return chord;
     }
 
     public List<String> arpeggiate513(String root) {
-        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.majorChord(root, sharp);
+        List<String> chord = BlackMagicka.majorChord(root, sharp);
         Collections.swap(chord, 1,3);
         Collections.swap(chord, 2,3);
         return chord;
     }
 
     public List<String> arpeggiate1357(String root) {
-        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.major7thChord(root, sharp);
-        return chord;
+        return BlackMagicka.major7thChord(root, sharp);
     }
 
     public List<String> arpeggiate7531(String root) {
-        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.major7thChord(root, sharp);
+        List<String> chord = BlackMagicka.major7thChord(root, sharp);
         Collections.reverse(chord);
         return chord;
     }
