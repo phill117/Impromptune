@@ -158,6 +158,10 @@ public class MXMLWriter {
                             writer.writeStartElement("step");
                             writer.writeCharacters(Character.toString(note.getPitch()).toUpperCase());
                             writer.writeEndElement();
+                            //alter
+                            writer.writeStartElement("alter");
+                            writer.writeCharacters(Integer.toString(note.getAccidental()));
+                            writer.writeEndElement();
                             //octave
                             writer.writeStartElement("octave");
                             writer.writeCharacters(Integer.toString(note.getOctave()));
