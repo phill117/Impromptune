@@ -25,11 +25,11 @@ public class VirtuosoAgent {
     private MetaData data;
     private File currentFile;
     private String fifthType;
-    private int parts;
+    private int voices;
     boolean sharp = true;
 
     public VirtuosoAgent(File file, String fifthType, int order, int parts) {
-        this.parts = parts;
+        voices = parts;
         this.fifthType = fifthType;
 
         data = new MetaData(file);
