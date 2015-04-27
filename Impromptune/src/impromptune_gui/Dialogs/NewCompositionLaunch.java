@@ -4,6 +4,7 @@ import Renderer.MainWindow;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,6 +32,7 @@ public class NewCompositionLaunch {
         CompositionPropertiesDialog.setMainWindow(mw);
         this.stage = new Stage();
 
+        stage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Same Font (small).png")));
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
