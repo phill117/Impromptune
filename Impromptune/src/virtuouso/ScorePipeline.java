@@ -13,12 +13,12 @@ import java.util.Map;
 public class ScorePipeline {
 
     private static int degreeWeight[][] ={{3,  3,    3,    3,    3,   3,    3}, //tonic to ...
-                                                {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
-                                                {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
-                                                {4,  2,    0,    2,    2,   0,    1}, //etc...
-                                                {5,  0,    0,    0,    3,   2,    0},
-                                                {0,  5,    0,    3,    0,   2,    0},
-                                                {9,  0,    0,    0,    0,   0,    1}};
+                                        {0,  3,    0,    0,    4,   0,    1}, //supertonic to ...
+                                        {0,  0,    2,    4,    9,   4,    0}, //mediant to ...
+                                        {4,  2,    0,    2,    2,   0,    1}, //etc...
+                                        {5,  0,    0,    0,    3,   2,    0},
+                                        {0,  5,    0,    3,    0,   2,    0},
+                                        {9,  0,    0,    0,    0,   0,    1}};
 
     public static int getDegreeWeight(int i, int j) {
         return degreeWeight[i][j];
@@ -71,12 +71,12 @@ public class ScorePipeline {
     public static String getMaxVote(Map<String, Integer> ballot) {
         Iterator it = ballot.entrySet().iterator();
 
-        Integer value = new Integer(0);
+        Integer value = 0;
         String max = null;
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
 
-            if (Integer.valueOf(value) < (Integer)pair.getValue()) {
+            if (value < (Integer)pair.getValue()) {
                 max = (String)pair.getKey();
                 value = (Integer)pair.getValue();
             }

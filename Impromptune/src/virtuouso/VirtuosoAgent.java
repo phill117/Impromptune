@@ -25,11 +25,11 @@ public class VirtuosoAgent {
     private MetaData data;
     private File currentFile;
     private String fifthType;
-
+    private int parts;
     boolean sharp = true;
 
-    public VirtuosoAgent(File file, String fifthType, int order) {
-
+    public VirtuosoAgent(File file, String fifthType, int order, int parts) {
+        this.parts = parts;
         this.fifthType = fifthType;
 
         data = new MetaData(file);
@@ -45,21 +45,15 @@ public class VirtuosoAgent {
         Pair<String, String> keySig = new Pair<>(keyTonic, mode);
 
         if (fifthType.equals("sharp")) {
-//            keyTonic = getFifth(data.getSharps(),'#' );
             model = new ToneTransitionTable(order, keySig, '#');
         } else {
             sharp = false;
-//            keyTonic = getFifth(data.getSharps(),'b', );
             model = new ToneTransitionTable(order, keySig, 'b');
         }
 
         model.trainFile(file);
 //        model.trainPiece(data.getBeatList());
-//        chordProgression = new HashSet<>();
-//        possibleChords = new ArrayList<>();
         currentFile = file;
-//        keyTonic = data.getSharps()
-
     }
 
     public String mostHarmonicReasonation(String tonePlaying, String chosenRoot) {
@@ -67,7 +61,6 @@ public class VirtuosoAgent {
 
         if (MetaData.getInstance().isMajor()) {
             if (BlackMagicka.noteInScale(tonePlaying, keyTonic, "major", sharp)) {
-                //do stuff
                 for (String tone : BlackMagicka.majorChord(chosenRoot, sharp)) {
                     if (BlackMagicka.noteInChord(tone, tonePlaying, "major", sharp))
                         bestChoice = tone;
@@ -87,6 +80,58 @@ public class VirtuosoAgent {
         }
 
         return bestChoice;
+    }
+
+    //these should take into account what degree of the key the root of the chord is to choose major or minor
+    public List<String> arpeggiate135(String root) {
+        List<String> chord = BlackMagicka.majorChord(root, sharp);
+        return chord;
+    }
+
+    public List<String> arpeggiate153(String root) {
+        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.majorChord(root, sharp);
+        Collections.swap(chord, 2, 3);
+        return chord;
+    }
+
+    public List<String> arpeggiate531(String root) {
+        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.majorChord(root, sharp);
+        Collections.reverse(chord);
+        return chord;
+    }
+
+    public List<String> arpeggiate513(String root) {
+        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.majorChord(root, sharp);
+        Collections.swap(chord, 1,3);
+        Collections.swap(chord, 2,3);
+        return chord;
+    }
+
+    public List<String> arpeggiate1357(String root) {
+        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.major7thChord(root, sharp);
+        return chord;
+    }
+
+    public List<String> arpeggiate7531(String root) {
+        LimitedQueue<String> chord = (LimitedQueue)BlackMagicka.major7thChord(root, sharp);
+        Collections.reverse(chord);
+        return chord;
+    }
+
+    public String chooseSoprano(String root) {
+        return BlackMagicka.pickLeading(root, sharp);
+    }
+
+    public String chooseAlto(String root) {
+        return BlackMagicka.pickDominant(root, sharp);
+    }
+
+    public String chooseTenor(String root) {
+        return BlackMagicka.pickMediant(root, sharp);
+    }
+
+    public String chooseBass(String root) {
+        return BlackMagicka.pickTonic(root, sharp);
     }
 
     public ArrayList<String> getGeneratedTones() {
