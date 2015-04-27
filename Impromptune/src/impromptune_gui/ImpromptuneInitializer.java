@@ -16,11 +16,9 @@ import com.xenoage.zong.layout.Layout;
 import com.xenoage.zong.player.Player;
 import data_objects.MetaData;
 import gen_settings.GenSettings;
-import impromptune_gui.Dialogs.NewCompositionDialog;
-import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
-import impromptune_gui.Dialogs.NewCompositionLaunch;
-import impromptune_gui.Dialogs.NewOrOpenLaunch;
+import impromptune_gui.Dialogs.*;
 import io_handler.ScoreMXMLBuilder;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -112,7 +110,6 @@ public class ImpromptuneInitializer implements Initializable{
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.intValue() < mainWindows.size() && mainWindows.size() > 0){
-                    if (mainWindow == null) return;
                     //System.out.println(mainWindows.size());
                     //System.out.println(newValue.intValue());
                     mainWindow = mainWindows.get(newValue.intValue());
@@ -132,6 +129,17 @@ public class ImpromptuneInitializer implements Initializable{
             durationGroup.add(eighth);durationGroup.add(sixteenth);durationGroup.add(thirtysecond);
 
             stage = Impromptune.getStage();
+            Platform.setImplicitExit(false);
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event){
+                    event.consume();
+                    onExit(new ActionEvent());
+                    return;
+                }
+            });
+
+            //stage.getIcons().add(new Image());
 
             //Prime recent files
             MenuItem newItem = new MenuItem("Empty");
@@ -361,7 +369,45 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onExit(ActionEvent event) {
-        System.exit(1);
+        SaveOnCloseLaunch saveOnClose = new SaveOnCloseLaunch();
+        String result = saveOnClose.getResult();
+        //System.out.println(result);
+        if (result.equals("cancel")){
+            //System.out.println(result);
+            return;
+        }
+        if (result.equals("save")){
+            if(!mainWindow.getContent().canSave)
+                return;
+
+            if(mainWindow.loadedFile != null)
+            {
+                System.out.println(" NOT NULL SAVE");
+                File outFile;
+                outFile = new File(mainWindow.loadedFile);
+                ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), outFile);
+            }
+            else
+            {
+                System.out.println("NULL SAVE");
+                FileChooser chooser = new FileChooser();
+
+                File custom = new File(".");
+                chooser.setInitialDirectory(custom);
+
+                chooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("XML", "*.xml"),
+                        new FileChooser.ExtensionFilter("MusicXML", "*.mxl")
+                );
+
+                chooser.setTitle("Save Composition as MusicXML");
+
+                File file = chooser.showSaveDialog(stage);
+                if(file != null)
+                    mainWindow.saveAs(file);
+            }
+        }
+        System.exit(0);
     }
 
     int zoomCounter = 0;
@@ -426,6 +472,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onCloseTab(ActionEvent event){
+        if (mainWindows.size() == 1) return;
         if (!mainWindows.isEmpty() && !RendererTabs.getTabs().isEmpty()) {
             mainWindows.remove(mainWindow);
             if (!mainWindows.isEmpty()) mainWindow = mainWindows.get(0);

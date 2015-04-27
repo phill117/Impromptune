@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.Dialogs.NewOrOpenDialog">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.Dialogs.NewOrOpenDialog">
    <bottom>
-      <HBox alignment="CENTER" prefHeight="72.0" prefWidth="500.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="49.0" prefWidth="500.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#onNew" text="Create New Composition" />
             <Button mnemonicParsing="false" onAction="#onExisting" text="Open Existing Composition" />
@@ -15,10 +17,22 @@
       </HBox>
    </bottom>
    <center>
-      <Label text="What would you like to do?" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="logo" fitHeight="147.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Impromptune%20Logo%20Same%20Font%20(small).png" />
+               </image>
+            </ImageView>
+            <Label text="What would you like to do?">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
    </center>
 </BorderPane>
