@@ -106,9 +106,11 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
         File file = chooser.showSaveDialog(stage);
 
         if(file == null)
-        { generate_btn.setDisable(false);
-            return;}
-
+        {
+            generate_btn.setDisable(false);
+            return;
+        }
+        generate_btn.setText("Generating...");
         //We don't want to save yet do we?? -- Jacob, just use dialog box to get the actual filename to save to
         mainWindow.saveAs(file);
 
@@ -142,6 +144,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                         @Override
                         public void run() {
                             generate_btn.setDisable(false);
+                            generate_btn.setText("Generate");
                         }
                     });
 
