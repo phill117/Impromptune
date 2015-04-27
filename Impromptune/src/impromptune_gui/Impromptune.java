@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Impromptune extends Application {
@@ -17,9 +18,10 @@ public class Impromptune extends Application {
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("EditView.fxml"));
+        primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Same Font (small).png")));
         primaryStage.setTitle("Impromptune");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setOnCloseRequest(e -> System.exit(0)); // Exits program when X is closed (Jacob) make this a function to stopplayback
+        //primaryStage.setOnCloseRequest(e -> System.exit(0)); // Exits program when X is closed (Jacob) make this a function to stopplayback
         primaryStage.show();
     }
 
