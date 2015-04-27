@@ -27,6 +27,8 @@ public class MetaData {
     int beattype = 4;
     int parts = 2;
 
+    boolean multipliedDivs = false;
+
     String title = "";
     String composer = "";
 
@@ -164,6 +166,10 @@ public class MetaData {
 
     public void replaceMeasures(){ measures = new ArrayList<>();}
 
+    public boolean didMultiplyDivs(){return multipliedDivs;}
+
+    public void setMultipliedDivs(boolean d){ multipliedDivs = d;}
+
     //gets the notes in the first part (Impromptune only accepts one note at a time so this is default) and puts it in a list
     public ArrayList<Note> getNoteList(){
         ArrayList notes = new ArrayList<Note>();
@@ -182,12 +188,31 @@ public class MetaData {
         ArrayList<Note> noteList = getNoteList();
         ArrayList<ArrayList<Note>> beats = new ArrayList<>();
 
+        //if n/8, set mutliply the divisions by 2 to ensure whole numbers
+        MetaData metaData = getInstance();
+        if(metaData.getBeattype() == 8 && !metaData.didMultiplyDivs()){
+            metaData.setMultipliedDivs(true);
+            metaData.setDivisions(metaData.getDivisions()*2);
+            setDivisions(getDivisions()*2);
+            setMultipliedDivs(true);
+            for(Measure m: metaData.getMeasures()) {
+                for (Note n : m.getPart(0)) n.setDuration(n.getDuration() * 2);
+            }
+        }
+
+        if(metaData.getBeattype() !=8 && metaData.didMultiplyDivs()){
+            metaData.setMultipliedDivs(false);
+            metaData.setDivisions(metaData.getDivisions()/2);
+            setDivisions(getDivisions()/2);
+            setMultipliedDivs(false);
+        }
+
 
         int currentDuration = 0;
         ArrayList<Note> currentBeat = null;
         int leftover = 0;
 
-        if(beattype == 4){ // for n/4 times
+        if(beattype == 4 || beattype == 2){ // for n/4 times
             for(Note currentNote : noteList){
                 if(currentDuration == 0 || leftover > 0){
                     //if got overfilled...
@@ -205,6 +230,12 @@ public class MetaData {
                 //and add that notes duration to the running total
                 currentDuration += currentNote.getDuration();
 
+                if(currentDuration == divisions){
+                    currentDuration = 0;
+                    beats.add(currentBeat);
+                    currentBeat = null;
+                }
+
                 //if the running total exceeds the number of possible divisions...
                 if(currentDuration > divisions){
                     //cache the last note's duration
@@ -221,7 +252,51 @@ public class MetaData {
             }
         }else{ // its n/8 time
             for(Note currentNote : noteList){
-                //TODO why haven't you done this yet !!!
+                //TODO why haven't you done this yet !!! (DONE MAYBE)
+
+                if(currentDuration == 0 || leftover > 0){
+                    //if got overfilled...
+                    if(leftover > 0){
+                        currentDuration = leftover;
+                        leftover = 0;
+                    }
+                    //create a new beat set if the last one gets filled
+                    if(currentBeat != null) beats.add(currentBeat);
+                    currentBeat = new ArrayList<>();
+                }
+
+                //add the current note to the current beat
+                currentBeat.add(currentNote);
+                //and add that notes duration to the running total
+                currentDuration += currentNote.getDuration();
+
+                if(currentDuration == (divisions * 1.5)){
+                    currentDuration = 0;
+                    beats.add(currentBeat);
+                    currentBeat = null;
+                }
+
+                //if the running total exceeds the number of possible divisions...
+                if(currentDuration > (divisions * 1.5)){
+                    //cache the last note's duration
+                    int currentNoteDuration = currentNote.getDuration();
+                    //loop through to add whole beats in case the note has a beat larger than the division (whole note in 4/4)
+                    while(currentNoteDuration > (divisions * 1.5)){
+                        currentNoteDuration -= (divisions * 1.5);
+                        beats.add(currentBeat);
+                        currentBeat = new ArrayList<>();
+                        currentBeat.add(currentNote);
+                    }
+                    leftover = currentDuration % new Double(divisions * 1.5).intValue(); //or leftover = currentNoteDuration;
+                }
+            }
+        }
+
+        System.out.println("STARTING BEAT PRINTINGINGING");
+        for(ArrayList<Note> beat: beats) {
+            System.out.println("new Beat");
+            for (Note n : beat) {
+                System.out.println(n.getPitch());
             }
         }
 

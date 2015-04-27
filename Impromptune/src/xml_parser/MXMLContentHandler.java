@@ -66,6 +66,7 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("type")){currentFlag = MXML.Type; return;}
         if(qName.equals("rest")){currentNote.setPitch('r');return;}
         if(qName.equals("tie")){currentNote.setTied(attributes.getValue("type"));return;}
+        if(qName.equals("dot")){currentNote.setDotted(true);}
 
         if(qName.equals("measure")){
             currentFlag = MXML.Measure;
@@ -79,6 +80,8 @@ public class MXMLContentHandler extends DefaultHandler{
         if(qName.equals("fifths")){currentFlag = MXML.Fifths; return;}
         if(qName.equals("sound")){metaData.setTempo(Integer.parseInt(attributes.getValue("tempo")));return;}
         if(qName.equals("credit-words")){currentFlag = MXML.CreditWords; return;}
+        if(qName.equals("beats")){currentFlag = MXML.Beats; return;}
+        if(qName.equals("beat-type")){currentFlag = MXML.Beat_Type; return;}
 
         currentFlag = MXML.NONE;
 
@@ -135,9 +138,7 @@ public class MXMLContentHandler extends DefaultHandler{
                     metaData.setComposer(data);
                     creditCount++;
                 }
-
                 break;
-
             default:
                 if(currentFlag != MXML.NONE)
                     System.out.println("\ndefault case? : " + currentFlag);

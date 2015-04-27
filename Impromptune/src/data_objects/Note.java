@@ -12,7 +12,7 @@ public class Note {
     String type;
     String tied = null;
 
-    boolean dotted = false; //TODO put into reader
+    boolean dotted = false;
 
     int staffNo = 1; //default treble
 
