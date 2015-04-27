@@ -1,7 +1,9 @@
 package data_objects;
 
+import gen_settings.GenSettings;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import virtuouso.Degree;
 import xml_parser.MXMLContentHandler;
@@ -53,8 +55,11 @@ public class MetaData {
 
         //make xml parser
         SAXParser mxp;
+        XMLReader reader;
         try {
             mxp = SAXParserFactory.newInstance().newSAXParser();
+            reader = mxp.getXMLReader();
+            reader.setEntityResolver(new GenSettings.DTDEntityResolver());
         }catch(Exception e){
             System.out.println("Could not make parser");
             e.printStackTrace();
@@ -69,7 +74,9 @@ public class MetaData {
             //InputSource inputSource = new InputSource(new FileReader((file)));
             //      THIS IS A TEMP INPUT SOURCE
             InputSource inputSource = new InputSource(new FileReader(file));
-            mxp.parse(inputSource, handler);
+//            mxp.parse(inputSource, handler);
+            reader.setContentHandler(handler);
+            reader.parse(inputSource);
 
         } catch (SAXException e) {
             System.out.println("SAX");

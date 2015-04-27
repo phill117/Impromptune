@@ -92,7 +92,9 @@ public class MXMLContentHandler extends DefaultHandler{
     public void characters(char[] ch, int start, int length) throws SAXException {
         String data = new String(ch,start,length);
 //        System.out.println(data);
+        if(data.trim().isEmpty()) return;
 
+        //System.out.println("\'"+data+"\'");
         switch (currentFlag){
             case Divisions:
                 metaData.setDivisions(Integer.parseInt(data));

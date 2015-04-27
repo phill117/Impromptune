@@ -15,8 +15,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jdk.internal.org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import virtuouso.VirtuosoAgent;
 import xml_parser.MXMLContentHandler;
@@ -44,6 +46,9 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
     MainWindow mainWindow;
     Stage stage;
 
+    static String partwisePath;
+    static String commonmodPath;
+
     int repetitiveness;
     int order;
     int voices;
@@ -54,7 +59,9 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
         order = Double.valueOf(order_scroll.getValue()).intValue();
         voices = Double.valueOf(voices_scroll.getValue()).intValue();
 
-
+        //store the path of the partwise dtd
+        partwisePath = getClass().getResource("dtds/partwise.dtd").getPath();
+        partwisePath = getClass().getResource("dtds/common.mod").getPath();
     }
 
     public void setMainWindow(MainWindow mainWindow) {
@@ -84,8 +91,14 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
         //make xml parser
         SAXParser mxp;
         MXMLWriter mxmlWriter = new MXMLWriter();
+        XMLReader reader;
         try {
-            mxp = SAXParserFactory.newInstance().newSAXParser();
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+//            factory.setNamespaceAware(true);
+//            factory.setValidating(true);
+            mxp = factory.newSAXParser();
+            reader = mxp.getXMLReader();
+            reader.setEntityResolver(new DTDEntityResolver());
         }catch(Exception e){
             System.out.println("Could not make parser");
             e.printStackTrace();
@@ -124,8 +137,9 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     DefaultHandler handler = new MXMLContentHandler();
                     InputSource inputSource = new InputSource(new FileReader((file)));
                     //      THIS IS A TEMP INPUT SOURCE
-                    //InputSource inputSource = new InputSource(getClass().getClassLoader().getResourceAsStream("gen_settings/MozartPianoSonata.xml"));
-                    mxp.parse(inputSource, handler);
+                    //mxp.parse(inputSource, handler);
+                    reader.setContentHandler(handler);
+                    reader.parse(inputSource);
 
                     VirtuosoAgent agent = new VirtuosoAgent(file,mainWindow.getContent().getComposition().getFifthtype(), Double.valueOf(order_scroll.getValue()).intValue(), 0);
 
@@ -151,5 +165,21 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                 }
             }
         }).start();
+    }
+
+    public static class DTDEntityResolver implements org.xml.sax.EntityResolver{
+        @Override
+        public org.xml.sax.InputSource resolveEntity(String publicId, String systemId) throws org.xml.sax.SAXException, IOException {
+            System.out.println("SYSTEMID in RESOLVER "+systemId);
+            System.out.println("publicID in RESOLVER "+publicId);
+            if (systemId.equals("http://www.musicxml.org/dtds/partwise.dtd")) {
+                // return a special input source
+                FileReader reader = new FileReader(GenSettings.partwisePath);
+                return new org.xml.sax.InputSource(reader);
+            }else{
+                // use the default behaviour
+                return new org.xml.sax.InputSource(systemId);
+            }
+        }
     }
 }
