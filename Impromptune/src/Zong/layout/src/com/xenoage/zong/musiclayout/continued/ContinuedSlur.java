@@ -5,6 +5,8 @@ import com.xenoage.utils.math.VSide;
 import com.xenoage.zong.core.music.slur.Slur;
 import lombok.AllArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Continued slur or tie.
  * 
@@ -16,7 +18,7 @@ import lombok.AllArgsConstructor;
  * @author Andreas Wenger
  */
 @Const @AllArgsConstructor public final class ContinuedSlur
-	implements ContinuedElement {
+	implements ContinuedElement, Serializable {
 
 	public final Slur slur;
 	public final VSide side;

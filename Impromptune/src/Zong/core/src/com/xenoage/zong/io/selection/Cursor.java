@@ -65,9 +65,9 @@ public final class Cursor
 	@Getter @Setter private boolean fillWithHiddenRests = true;
 
 
-	private ArrayList<BeamWaypoint> openBeamWaypoints = null;
-	private ArrayList<SlurWaypoint> openSlurWaypoints = null;
-	private SlurType openSlurType = null;
+	 private ArrayList<BeamWaypoint> openBeamWaypoints = null;
+    @Getter private ArrayList<SlurWaypoint> openSlurWaypoints = null;
+    @Getter private SlurType openSlurType = null;
 
 
 	/**
@@ -295,7 +295,7 @@ public final class Cursor
 
 	/**
 	 * Closes a slur and adds it to the score.
-	 * @deprecated Does not work yet. Slur waypoints are not collected in this class.
+	 * Does not work yet. Slur waypoints are not collected in this class.
 	 */
 	public void closeSlur() {
 		if (openSlurWaypoints == null)

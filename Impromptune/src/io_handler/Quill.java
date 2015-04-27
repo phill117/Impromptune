@@ -45,7 +45,10 @@ public class Quill implements CommandListener, Serializable {
     private Fraction theBeat = null;
 
     private boolean tStart = false;
+    private boolean sChord = false;
+    private boolean eChord = false;
     private boolean tEnd = false;
+    private int slurWP = 0;
     private Cursor cursor = null;
     private float is = 0;
     private BezierPoint startBp = null;
@@ -154,15 +157,13 @@ public class Quill implements CommandListener, Serializable {
 
 
         if (PianoHolder.getTie()) {  //Set start TIE
-            //System.out.println("TIE");
             tStart = true;
         }
 
         if ( (tStart) && !PianoHolder.getTie()) //Tie has ended
         {
-           // System.out.println("TIE ENDED");
             tEnd = true;
-            tStart = false;
+            slurWP =0;
         }
         //cursor.write(firstSlurC = QuillUtils.chord(rem, QuillUtils.getPitch(p, a, o)));
 
@@ -175,7 +176,7 @@ public class Quill implements CommandListener, Serializable {
         Fraction rem = getRemainingBeats();
 
         if (rem.isGreater0() && rem.compareTo(fr) < 0) {
-
+           // System.out.print("YES1");
 //            write Chord with rem and fr - rem
             //System.out.println("[splitting note]");
           //  System.out.println("fr: " + fr + " rem: " + rem + " fr-rem: " + fr.sub(rem));
@@ -188,7 +189,7 @@ public class Quill implements CommandListener, Serializable {
             writeTied();
         } else if (rem.isGreater0() && rem.compareTo(fr) == 0) { //last note of the measure
             Chord curChord = QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o));
-
+           // System.out.print("YES2");
             if (d == 'w' || d == 'h' || d == 'q')
                 closeBeam();
 
@@ -198,16 +199,30 @@ public class Quill implements CommandListener, Serializable {
         else {
             Chord curChord = QuillUtils.chord(fr, QuillUtils.getPitch(p, a, o));
 
+            if(tStart && !sChord) {
+                cursor.openSlur(SlurType.Tie);
+                cursor.getOpenSlurWaypoints().add(new SlurWaypoint(curChord,  null, null));
+                sChord = true;
+            }
+            if(tStart && sChord && !tEnd)
+            {
+                cursor.getOpenSlurWaypoints().add(new SlurWaypoint(curChord, null, null));
+            }
+            if(tEnd && !eChord) {
+                cursor.getOpenSlurWaypoints().add(new SlurWaypoint(curChord, null, null));
+                cursor.closeSlur();
+                //eChord = true;
+                tEnd = tStart = sChord = eChord = false;
+                slurWP = 0;
+            }
+
             if (d == 'w' || d == 'h' || d == 'q')
                 closeBeam();
             else {
                 if (openBeam) {
                     beamCounter = beamCounter.add(fr);
                     if (beamCounter.compareTo(theBeat) >= 0) {
-                        if(tEnd)
-                            writeTied();
-                        else
-                            cursor.write(curChord);
+                        cursor.write(curChord);
                         closeBeam();
                         return;
                     }
@@ -218,7 +233,7 @@ public class Quill implements CommandListener, Serializable {
                     cursor.openBeam();
                 }
             }
-            cursor.write(curChord);
+                cursor.write(curChord);
         }
     }
 
