@@ -372,7 +372,7 @@ public class Composition implements Serializable{
                     if(items.size()  == 3)
                     {
                         this.title = items.get(0).getValue();
-                        this.creator = items.get(2).getValue().substring(3);
+                        this.creator = items.get(2).getValue();
                     }
                 }
             }

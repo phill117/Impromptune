@@ -292,13 +292,13 @@ public class MetaData {
             }
         }
 
-        System.out.println("STARTING BEAT PRINTINGINGING");
-        for(ArrayList<Note> beat: beats) {
-            System.out.println("new Beat");
-            for (Note n : beat) {
-                System.out.println(n.getPitch());
-            }
-        }
+//        System.out.println("STARTING BEAT PRINTINGINGING");
+//        for(ArrayList<Note> beat: beats) {
+//            System.out.println("new Beat");
+//            for (Note n : beat) {
+//                System.out.println(n.getPitch());
+//            }
+//        }
 
         return beats;
     }
