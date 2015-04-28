@@ -21,6 +21,8 @@ import io_handler.ScoreMXMLBuilder;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import impromptune_gui.Dialogs.CompositionPropertiesDialog;
+import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
