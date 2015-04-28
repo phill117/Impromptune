@@ -54,6 +54,15 @@ public class MainWindow {
         renderLayout(content.getLayout());
     }
 
+    public void prevPage() {
+        if(pageIndex > 0 )
+            pageIndex--;
+        else
+            pageIndex = 0;
+
+        renderLayout(content.getLayout());
+    }
+
     public float getZoom()
     {
         return zoomFactor;

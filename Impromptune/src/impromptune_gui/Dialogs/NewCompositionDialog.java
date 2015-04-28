@@ -84,7 +84,6 @@ public class NewCompositionDialog implements Initializable{
 
     @FXML void onCancel(ActionEvent event){
         NewCompositionLaunch.setResult("cancel");
-        if (NewCompositionLaunch.firstTime) System.exit(0);
         stage.close();
     }
 

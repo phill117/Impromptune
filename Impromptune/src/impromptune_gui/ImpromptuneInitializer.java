@@ -109,6 +109,7 @@ public class ImpromptuneInitializer implements Initializable{
         RendererTabs.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (RendererTabs.getTabs().isEmpty()) return;
                 if (newValue.intValue() < mainWindows.size() && mainWindows.size() > 0){
                     //System.out.println(mainWindows.size());
                     //System.out.println(newValue.intValue());
@@ -117,8 +118,12 @@ public class ImpromptuneInitializer implements Initializable{
                     genSettings.setMainWindow(mainWindow);
                     genSettings.setStage(stage);
                     mainWindow.getContent().refresh();
-                    stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+
+                    if(mainWindow.getContent().getSD().getScore().getTitle() != null)
+                        stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                         " - " + mainWindow.getContent().getSD().getScore().getCreator());
+                    else
+                        stage.setTitle("Impromptune");
                 }
             }
         });
@@ -186,8 +191,8 @@ public class ImpromptuneInitializer implements Initializable{
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
-            Log.init(new DesktopLogProcessing(appName + " " + 1));
-            Err.init(new GuiErrorProcessing());
+           //Log.init(new DesktopLogProcessing(appName + " " + 1));
+            //Err.init(new GuiErrorProcessing());
             UNDO = undo;
             REDO = redo;
 
@@ -275,7 +280,7 @@ public class ImpromptuneInitializer implements Initializable{
                     MainWindow mw = fxmlLoader.getController();
 
                     NewCompositionLaunch compLaunch = new NewCompositionLaunch(mw, stage);
-                    if (compLaunch.getResult().equals("cancel")) return;
+                    if (compLaunch.getResult().equals("cancel")) continue;
 
                     piano.mw = mw; //Set the current piano window to current renderer window
                     mainWindows.add(mw);
@@ -285,10 +290,20 @@ public class ImpromptuneInitializer implements Initializable{
                     redo.setDisable(true);
                     genSettings.setMainWindow(mainWindow);
                     genSettings.setStage(stage);
-                    
+
                     break;
                 } else {
+                    File file;
+                    file = IOHandler.load(stage);
                     MainWindow mw = fxmlLoader.getController();
+
+                    if (file != null) {
+                        mw.loadedFile = file.getAbsolutePath();
+                        RecentFiles.addRecentFile(file);
+                        mw.getContent().loadScore(file.getAbsolutePath());
+
+                    } else
+                        continue;
 
                     piano.mw = mw; //Set the current piano window to current renderer window
                     mainWindows.add(mw);
@@ -300,28 +315,32 @@ public class ImpromptuneInitializer implements Initializable{
                     genSettings.setStage(stage);
 
                     mainWindow.pageIndex = 0;
-                   File file;
-                    file = IOHandler.load(stage);
-
-                    if (file != null) {
-                        mainWindow.loadedFile = file.getAbsolutePath();
-                        RecentFiles.addRecentFile(file);
-                        mainWindow.getContent().loadScore(file.getAbsolutePath());
-                        break;
-                    } else
-                        continue;
+                    break;
                 }
             }
 
             mainWindow.getContent().refresh();
             Tab add = new Tab();
             add.setContent(bp);
-            add.setText(mainWindow.getContent().getSD().getScore().getTitle());
+
+            if(mainWindow.getContent().getSD().getScore().getTitle() != null)
+                add.setText(mainWindow.getContent().getSD().getScore().getTitle());
+            else
+                add.setText("Unnamed");
+
             RendererTabs.getTabs().add(add);
             SelectionModel sm = RendererTabs.getSelectionModel();
             sm.select(RendererTabs.getTabs().size() - 1);
-            stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
-                    " - " + mainWindow.getContent().getSD().getScore().getCreator());
+
+
+            if(mainWindow.getContent().getSD().getScore().getTitle() != null)
+                stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                        " - " + mainWindow.getContent().getSD().getScore().getCreator());
+            else
+                stage.setTitle("Impromptune");
+
+
+
         }catch (Exception e){
             System.out.println("dun messed up");
             e.printStackTrace();
@@ -358,8 +377,12 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindow.getContent().loadScore(mainWindow.loadedFile);
 
         add.setText(MetaData.getInstance().getTitle() + "*");
-        stage.setTitle("Impromptune - " + MetaData.getInstance().getTitle() +
+
+        if(MetaData.getInstance().getTitle() != null)
+            stage.setTitle("Impromptune - " + MetaData.getInstance().getTitle() +
                 " - " + MetaData.getInstance().getComposer());
+        else
+            stage.setTitle("Impromptune");
         mainWindow.getContent().refresh();
 
     }
@@ -467,6 +490,10 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindow.nextPage();
     }
 
+    @FXML void onPrev(ActionEvent event) {
+        mainWindow.prevPage();
+    }
+
     @FXML void onNewTab(ActionEvent event) {
         newTab();
     }
@@ -518,14 +545,14 @@ public class ImpromptuneInitializer implements Initializable{
 
         if(mainWindow.loadedFile != null)
         {
-            System.out.println(" NOT NULL SAVE");
+            //System.out.println(" NOT NULL SAVE");
             File outFile;
             outFile = new File(mainWindow.loadedFile);
             ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), outFile);
         }
         else
         {
-            System.out.println("NULL SAVE");
+           // System.out.println("NULL SAVE");
             FileChooser chooser = new FileChooser();
 
             File custom = new File(".");

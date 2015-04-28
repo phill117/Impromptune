@@ -310,6 +310,8 @@ public class ScoreMXMLBuilder {
             mxlNoteTypeValue = MxlNoteTypeValue._32nd;
         }
 
+
+
         return mxlNoteTypeValue;
     }
 
@@ -388,6 +390,10 @@ public class ScoreMXMLBuilder {
         MxlStemValue mxlStemValue = null;
         MxlPosition position = null;
         Stem stem = null;
+
+        if ( element instanceof Rest)
+            return null;
+
         if (element instanceof Chord)
 //            stem = QuillUtils.getClef("treble").get;
 
@@ -400,6 +406,8 @@ public class ScoreMXMLBuilder {
         } else if (stem.getDirection().getSign() == 1) {
             mxlStemValue = MxlStemValue.Up;
         }
+
+
 
         MxlStem mxlStem = new MxlStem(mxlStemValue, MxlPosition.noPosition, MxlColor.noColor);
         return mxlStem;
