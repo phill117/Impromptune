@@ -499,7 +499,10 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onCloseTab(ActionEvent event){
-        if (mainWindows.size() == 1) return;
+        if (mainWindows.size() == 1){
+            onExit(event);
+            return;
+        }
         if (!mainWindows.isEmpty() && !RendererTabs.getTabs().isEmpty()) {
             mainWindows.remove(mainWindow);
             if (!mainWindows.isEmpty()) mainWindow = mainWindows.get(0);

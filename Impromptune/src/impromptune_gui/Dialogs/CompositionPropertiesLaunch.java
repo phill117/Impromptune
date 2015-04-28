@@ -23,7 +23,7 @@ public class CompositionPropertiesLaunch {
     public CompositionPropertiesLaunch(MainWindow mw){
         CompositionPropertiesDialog.setMainWindow(mw);
         this.stage = new Stage();
-        stage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Same Font (small).png")));
+        stage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Icon.png")));
         root = new BorderPane();
         FXMLLoader loader = new FXMLLoader();
         loader.setRoot(root);

@@ -18,7 +18,7 @@ public class Impromptune extends Application {
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("EditView.fxml"));
-        primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Same Font (small).png")));
+        primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Icon.png")));
         primaryStage.setTitle("Impromptune");
         primaryStage.setScene(new Scene(root));
         //primaryStage.setOnCloseRequest(e -> System.exit(0)); // Exits program when X is closed (Jacob) make this a function to stopplayback
