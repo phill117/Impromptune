@@ -1,6 +1,4 @@
-package virtuouso;
-
-import java.util.List;
+package BeatTemplates;
 
 /**
  * Created by ben on 4/27/2015.

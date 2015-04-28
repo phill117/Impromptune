@@ -1,4 +1,4 @@
-package virtuouso;
+package BeatTemplates;
 
 import data_objects.Beat;
 

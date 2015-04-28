@@ -1,4 +1,4 @@
-package virtuouso;
+package BeatTemplates;
 
 /**
  * Created by ben on 4/27/2015.
