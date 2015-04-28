@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.Dialogs.SaveOnCloseDialog">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="49.0" prefWidth="540.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#onSave" text="Save" />
+            <Button mnemonicParsing="false" onAction="#onClose" text="Close Without Saving" />
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox alignment="TOP_CENTER" spacing="5.0">
+         <children>
+            <ImageView fitHeight="147.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Impromptune%20Logo%20Same%20Font%20(small).png" />
+               </image>
+            </ImageView>
+            <Label text="Would you like to save before closing?" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>
