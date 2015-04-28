@@ -21,7 +21,7 @@ public class SaveOnCloseLaunch {
 
     public SaveOnCloseLaunch(){
         Stage stage = new Stage();
-        stage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Same Font (small).png")));
+        stage.getIcons().add(new Image(getClass().getClassLoader().getResourceAsStream("impromptune_gui/logo/Impromptune Logo Icon.png")));
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {

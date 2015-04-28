@@ -21,6 +21,8 @@ import io_handler.ScoreMXMLBuilder;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import impromptune_gui.Dialogs.CompositionPropertiesDialog;
+import impromptune_gui.Dialogs.CompositionPropertiesLaunch;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -499,7 +501,10 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onCloseTab(ActionEvent event){
-        if (mainWindows.size() == 1) return;
+        if (mainWindows.size() == 1){
+            onExit(event);
+            return;
+        }
         if (!mainWindows.isEmpty() && !RendererTabs.getTabs().isEmpty()) {
             mainWindows.remove(mainWindow);
             if (!mainWindows.isEmpty()) mainWindow = mainWindows.get(0);
