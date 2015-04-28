@@ -171,10 +171,10 @@ public class VirtuosoAgent {
 
                 switch (i) {
                     case 0:
-                        pair = chooseAlto(tone);
+                        pair = chooseSoprano(tone);
                         break;
                     case 1:
-                        pair = chooseSoprano(tone);
+                        pair = chooseAlto(tone);
                         break;
                     case 2:
                         pair = chooseTenor(tone);
