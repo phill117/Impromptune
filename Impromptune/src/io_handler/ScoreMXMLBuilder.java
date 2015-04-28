@@ -162,8 +162,8 @@ public class ScoreMXMLBuilder {
 
         List<MxlScoreInstrument> scoreInstruments = new ArrayList<>();
         String instr = "Acoustic Grand Piano";
-        String part = "piano";
-        String abbr = "piano";
+        String part = "Piano";
+        String abbr = "Piano";
         scoreInstruments.add(new MxlScoreInstrument(instr, abbr,"P1-T1"));
 
         List<MxlMidiInstrument> mxlMidiInstruments = new ArrayList<>();
@@ -310,6 +310,8 @@ public class ScoreMXMLBuilder {
             mxlNoteTypeValue = MxlNoteTypeValue._32nd;
         }
 
+
+
         return mxlNoteTypeValue;
     }
 
@@ -388,6 +390,10 @@ public class ScoreMXMLBuilder {
         MxlStemValue mxlStemValue = null;
         MxlPosition position = null;
         Stem stem = null;
+
+        if ( element instanceof Rest)
+            return null;
+
         if (element instanceof Chord)
 //            stem = QuillUtils.getClef("treble").get;
 
@@ -429,17 +435,17 @@ public class ScoreMXMLBuilder {
 
         for (int i = 0; i < scoreDoc.getScore().getStavesCount(); i++) //Handle multiple staves
         {
-            Clef clef = scoreDoc.getScore().getClef(getLastMeasure(i,i), At); //WTF IS GOING ON
+            Clef clef = scoreDoc.getScore().getClef(getLastMeasure(i), At);
 
             MxlClef mxlClef = null;
 
-            if (clef.getType() == ClefType.clefBass)
-                mxlClef = new MxlClef(MxlClefSign.F, new Integer(clef.getType().getLp()), 0, i+1);
-            else if (clef.getType() == ClefType.clefTreble)
+            if (clef.getType().equals(ClefType.clefBass))
+                mxlClef = new MxlClef(MxlClefSign.F, new Integer(clef.getType().getLp()-2), 0, i+1);
+            else if (clef.getType().equals(ClefType.clefTreble))
                 mxlClef = new MxlClef(MxlClefSign.G, new Integer(clef.getType().getLp()), 0, i+1);
-            else if (clef.getType() == ClefType.clefAlto)
+            else if (clef.getType().equals(ClefType.clefAlto))
                 mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, i+1);
-            else if (clef.getType() == ClefType.clefTenor)
+            else if (clef.getType().equals(ClefType.clefTenor))
                 mxlClef = new MxlClef(MxlClefSign.C, new Integer(clef.getType().getLp()), 0, i+1);
             else
                 System.err.println("bad clef");
@@ -462,10 +468,9 @@ public class ScoreMXMLBuilder {
         return mxlKey;
     }
 
-    MP getLastMeasure(int staffIndex, int voice) {
-        MP mp = MP.atVoice(staffIndex, scoreDoc.getScore().getMeasuresCount()-1, 0);
-        //MP mp = MP.atStaff(staffIndex+1);
-       mp = mp.getWithBeat(scoreDoc.getScore());
+    MP getLastMeasure(int staffIndex) {
+        MP mp = MP.atVoice(staffIndex, 0, 0);
+        mp = mp.getWithBeat(scoreDoc.getScore());
         mp = mp.withElement(0);
 
         if (scoreDoc.getScore().isMPExisting(mp))

@@ -117,20 +117,32 @@ public class VirtuosoAgent {
         return chord;
     }
 
-    public String chooseSoprano(String root) {
-        return BlackMagicka.pickLeading(root, sharp);
+    public Pair<Degree, Integer> chooseSoprano(String root) {
+//        return new Pair(BlackMagicka.pickLeading(root, sharp), 4);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Soprano.values().length;
+        return new Pair(Degree.Leading, PartOctaveRanges.Soprano.values()[rand.nextInt(rangeSize)]);
     }
 
-    public String chooseAlto(String root) {
-        return BlackMagicka.pickDominant(root, sharp);
+    public Pair<Degree, Integer> chooseAlto(String root) {
+//        return new Pair(BlackMagicka.pickDominant(root, sharp), 0);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Alto.values().length;
+        return new Pair(Degree.Dominant, PartOctaveRanges.Alto.values()[rand.nextInt(rangeSize)]);
     }
 
-    public String chooseTenor(String root) {
-        return BlackMagicka.pickMediant(root, sharp);
+    public Pair<Degree, Integer> chooseTenor(String root) {
+//        return new Pair(BlackMagicka.pickMediant(root, sharp), 0);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Tenor.values().length;
+        return new Pair(Degree.Mediant, PartOctaveRanges.Tenor.values()[rand.nextInt(rangeSize)]);
     }
 
-    public String chooseBass(String root) {
-        return BlackMagicka.pickTonic(root, sharp);
+    public Pair<Degree, Integer> chooseBass(String root) {
+//        return new Pair(BlackMagicka.pickTonic(root, sharp), 0);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Bass.values().length;
+        return new Pair(Degree.Tonic, PartOctaveRanges.Bass.values()[rand.nextInt(rangeSize)]);
     }
 
     public ArrayList<String> getGeneratedTones() {
@@ -148,6 +160,48 @@ public class VirtuosoAgent {
 
         System.out.println("chosen roots " + tones);
         return tones;
+    }
+
+    public ArrayList<ArrayList<Pair<Degree, Integer>>> getGeneratedTonesDegrees() {
+        List<String> tones = getGeneratedTones();
+
+        ArrayList<ArrayList<Pair<Degree, Integer>>> partList = new ArrayList<ArrayList<Pair<Degree, Integer>>>();
+
+        int i = 0;
+
+        do {
+            ArrayList<Pair<Degree, Integer>> degrees = new ArrayList<>();
+
+            for (String tone : tones) {
+
+                if (!BlackMagicka.noteInScale(tone, keyTonic, mode, sharp))
+                    continue;
+
+                Pair<Degree, Integer> pair = null;
+
+                switch (i) {
+                    case 0:
+                        pair = chooseSoprano(tone);
+                        break;
+                    case 1:
+                        pair = chooseAlto(tone);
+                        break;
+                    case 2:
+                        pair = chooseTenor(tone);
+                        break;
+                    case 3:
+                        pair = chooseBass(tone);
+                        break;
+                }
+
+                degrees.add(pair);
+            }
+
+            partList.add(degrees);
+
+        } while (i++ < voices);
+
+        return partList;
     }
 
     public void buildChordProgression() {
