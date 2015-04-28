@@ -1,5 +1,7 @@
 package Analyzer;
 
+import com.itextpdf.text.Meta;
+import data_objects.MetaData;
 import utils.Pair;
 import virtuouso.Degree;
 
@@ -18,7 +20,7 @@ public class Validator {
         this.voiceCount = parts.size();
     }
 
-    public void validate(){
+    public ArrayList<ArrayList<Pair<Degree, Integer>>> validate(){
 
         for(int i = 0; i < parts.size(); i++){
             for(int k = i + 1; k < parts.size(); k++) {
@@ -33,6 +35,7 @@ public class Validator {
 
             }
         }
+        return parts;
     }
 
     private void doubleOctave(ArrayList<Pair<Degree, Integer>> first,ArrayList<Pair<Degree, Integer>> second){
@@ -114,6 +117,9 @@ public class Validator {
         }
     }
 
+    public int getDegreeDuration(){
+        return MetaData.getInstance().getDivisions();
+    }
     //"C[#|b|n][0-n]"
 
 }
