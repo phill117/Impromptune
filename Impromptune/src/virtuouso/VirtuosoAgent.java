@@ -119,22 +119,30 @@ public class VirtuosoAgent {
 
     public Pair<Degree, Integer> chooseSoprano(String root) {
 //        return new Pair(BlackMagicka.pickLeading(root, sharp), 4);
-        return new Pair(Degree.Leading, 5);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Soprano.values().length;
+        return new Pair(Degree.Leading, PartOctaveRanges.Soprano.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseAlto(String root) {
 //        return new Pair(BlackMagicka.pickDominant(root, sharp), 0);
-        return new Pair(Degree.Dominant, 4);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Alto.values().length;
+        return new Pair(Degree.Dominant, PartOctaveRanges.Alto.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseTenor(String root) {
 //        return new Pair(BlackMagicka.pickMediant(root, sharp), 0);
-        return new Pair(Degree.Mediant, 3);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Tenor.values().length;
+        return new Pair(Degree.Mediant, PartOctaveRanges.Tenor.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseBass(String root) {
 //        return new Pair(BlackMagicka.pickTonic(root, sharp), 0);
-        return new Pair(Degree.Tonic, 2);
+        Random rand = new Random();
+        int rangeSize = PartOctaveRanges.Bass.values().length;
+        return new Pair(Degree.Tonic, PartOctaveRanges.Bass.values()[rand.nextInt(rangeSize)]);
     }
 
     public ArrayList<String> getGeneratedTones() {
