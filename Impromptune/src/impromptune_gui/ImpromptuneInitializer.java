@@ -117,8 +117,12 @@ public class ImpromptuneInitializer implements Initializable{
                     genSettings.setMainWindow(mainWindow);
                     genSettings.setStage(stage);
                     mainWindow.getContent().refresh();
-                    stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+
+                    if(mainWindow.getContent().getSD().getScore().getTitle() != null)
+                        stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
                         " - " + mainWindow.getContent().getSD().getScore().getCreator());
+                    else
+                        stage.setTitle("Impromptune");
                 }
             }
         });
@@ -186,8 +190,8 @@ public class ImpromptuneInitializer implements Initializable{
 
             //Renderer
             JseZongPlatformUtils.init(appName); // JUST GOTTA DO IT MAN!!!
-            Log.init(new DesktopLogProcessing(appName + " " + 1));
-            Err.init(new GuiErrorProcessing());
+           //Log.init(new DesktopLogProcessing(appName + " " + 1));
+            //Err.init(new GuiErrorProcessing());
             UNDO = undo;
             REDO = redo;
 
@@ -316,12 +320,25 @@ public class ImpromptuneInitializer implements Initializable{
             mainWindow.getContent().refresh();
             Tab add = new Tab();
             add.setContent(bp);
-            add.setText(mainWindow.getContent().getSD().getScore().getTitle());
+
+            if(mainWindow.getContent().getSD().getScore().getTitle() != null)
+                add.setText(mainWindow.getContent().getSD().getScore().getTitle());
+            else
+                add.setText("Unnamed");
+
             RendererTabs.getTabs().add(add);
             SelectionModel sm = RendererTabs.getSelectionModel();
             sm.select(RendererTabs.getTabs().size() - 1);
-            stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
-                    " - " + mainWindow.getContent().getSD().getScore().getCreator());
+
+
+            if(mainWindow.getContent().getSD().getScore().getTitle() != null)
+                stage.setTitle("Impromptune - " + mainWindow.getContent().getSD().getScore().getTitle() +
+                        " - " + mainWindow.getContent().getSD().getScore().getCreator());
+            else
+                stage.setTitle("Impromptune");
+
+
+
         }catch (Exception e){
             System.out.println("dun messed up");
             e.printStackTrace();
@@ -358,8 +375,12 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindow.getContent().loadScore(mainWindow.loadedFile);
 
         add.setText(MetaData.getInstance().getTitle() + "*");
-        stage.setTitle("Impromptune - " + MetaData.getInstance().getTitle() +
+
+        if(MetaData.getInstance().getTitle() != null)
+            stage.setTitle("Impromptune - " + MetaData.getInstance().getTitle() +
                 " - " + MetaData.getInstance().getComposer());
+        else
+            stage.setTitle("Impromptune");
         mainWindow.getContent().refresh();
 
     }
@@ -465,6 +486,10 @@ public class ImpromptuneInitializer implements Initializable{
 
     @FXML void onNext(ActionEvent event) {
         mainWindow.nextPage();
+    }
+
+    @FXML void onPrev(ActionEvent event) {
+        mainWindow.prevPage();
     }
 
     @FXML void onNewTab(ActionEvent event) {
