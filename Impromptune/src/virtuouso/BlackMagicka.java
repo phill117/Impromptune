@@ -348,7 +348,7 @@ public class BlackMagicka {
         return scale;
     }
 
-    static List<String> majorChord(String note, boolean sharp) {
+    public static List<String> majorChord(String note, boolean sharp) {
         int i = 0;
         int noteIndex = noteIndex(note, sharp);
         List<String> chord = new LimitedQueue<>(3);
@@ -366,7 +366,7 @@ public class BlackMagicka {
         return chord;
     }
 
-    static List<String> major7thChord(String note, boolean sharp) {
+    public static List<String> major7thChord(String note, boolean sharp) {
         int i = 0;
         int noteIndex = noteIndex(note, sharp);
         List<String> chord = new LimitedQueue<>(4);
@@ -384,7 +384,7 @@ public class BlackMagicka {
         return chord;
     }
 
-    static List<String> minorChord(String note, boolean sharp) {
+    public static List<String> minorChord(String note, boolean sharp) {
         int i = 0;
 
         int [] minorSteps = {2, 1, 2, 2, 1, 2, 2}; //maps chromatic to minor diatonic scale
@@ -408,7 +408,7 @@ public class BlackMagicka {
         return chord;
     }
 
-    static List<String> minor7thChord(String note, boolean sharp) {
+    public static List<String> minor7thChord(String note, boolean sharp) {
         int i = 0;
 
         int [] minorSteps = {2, 1, 2, 2, 1, 2, 2}; //maps chromatic to minor diatonic scale
@@ -440,50 +440,50 @@ public class BlackMagicka {
 
     //these build major scales (need to generalize for minor and others) and use the degree class to return said note
     //pick ith should be preferred as it calls these anyway
-    static String pickTonic(String root, boolean sharp) {
+    public static String pickTonic(String root, boolean sharp) {
         List<String> scale = majorScale(root, sharp);
         String note = scale.get(Degree.Tonic.toInt());
         return note;
     }
 
-    static String pickSuperTonic(String root, boolean sharp) {
+    public static String pickSuperTonic(String root, boolean sharp) {
         List<String> scale = majorScale(root, sharp);
         String note = scale.get(Degree.Supertonic.toInt());
         return note;
     }
 
-    static String pickMediant(String root, boolean sharp) {
+    public static String pickMediant(String root, boolean sharp) {
         List<String> scale = majorScale(root, sharp);
         String note = scale.get(Degree.Mediant.toInt());
         return note;
     }
 
-    static String pickSubdominant(String root, boolean sharp) {
+    public static String pickSubdominant(String root, boolean sharp) {
         List<String> scale = majorScale(root, sharp);
         String note = scale.get(Degree.Subdominant.toInt());
         return note;
     }
 
-    static String pickDominant(String root, boolean sharp) {
+    public static String pickDominant(String root, boolean sharp) {
         List<String> scale = majorScale(root, sharp);
         String note = scale.get(Degree.Dominant.toInt());
         return note;
     }
 
-    static String pickSubmediant(String root, boolean sharp) {
+    public static String pickSubmediant(String root, boolean sharp) {
         List<String> scale = majorScale(root, sharp);
         String note = scale.get(Degree.Submediant.toInt());
         return note;
     }
 
-    static String pickLeading(String root, boolean sharp) {
+    public static String pickLeading(String root, boolean sharp) {
         List<String> scale = majorScale(root, sharp);
         String note = scale.get(Degree.Leading.toInt());
         return note;
     }
 
     //pick ith degree note based on root, ie root = C, index = 5, return the fifth -- G
-    static String pickIthNote(String root, int index, boolean sharp) {
+    public static String pickIthNote(String root, int index, boolean sharp) {
         String note = null;
 
         switch(index) {
@@ -540,7 +540,7 @@ public class BlackMagicka {
 //        return null;
 //    }
 
-    static Degree getDegreeIndex(String keyTonic, String mode, String tone, boolean sharp) {
+    public static Degree getDegreeIndex(String keyTonic, String mode, String tone, boolean sharp) {
 //        System.out.println("getting degree index " + tone + "from scale tonic: " + keyTonic + " from mode: " + mode);
         if (mode.equals("major")) {
             int i = getIndexOfScale(majorScale(keyTonic, sharp), tone);
