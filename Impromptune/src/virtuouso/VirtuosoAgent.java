@@ -82,66 +82,31 @@ public class VirtuosoAgent {
         return bestChoice;
     }
 
-    //these should take into account what degree of the key the root of the chord is to choose major or minor
-    public List<String> arpeggiate135(String root) {
-        List<String> chord = BlackMagicka.majorChord(root, sharp);
-        return chord;
-    }
-
-    public List<String> arpeggiate153(String root) {
-        List<String> chord = BlackMagicka.majorChord(root, sharp);
-        Collections.swap(chord, 2, 3);
-        return chord;
-    }
-
-    public List<String> arpeggiate531(String root) {
-        List<String> chord = BlackMagicka.majorChord(root, sharp);
-        Collections.reverse(chord);
-        return chord;
-    }
-
-    public List<String> arpeggiate513(String root) {
-        List<String> chord = BlackMagicka.majorChord(root, sharp);
-        Collections.swap(chord, 1,3);
-        Collections.swap(chord, 2,3);
-        return chord;
-    }
-
-    public List<String> arpeggiate1357(String root) {
-        return BlackMagicka.major7thChord(root, sharp);
-    }
-
-    public List<String> arpeggiate7531(String root) {
-        List<String> chord = BlackMagicka.major7thChord(root, sharp);
-        Collections.reverse(chord);
-        return chord;
-    }
-
     public Pair<Degree, Integer> chooseSoprano(String root) {
 //        return new Pair(BlackMagicka.pickLeading(root, sharp), 4);
         Random rand = new Random();
-        int rangeSize = PartOctaveRanges.Soprano.values().length;
+        Integer rangeSize = PartOctaveRanges.Soprano.values().length;
         return new Pair(Degree.Leading, PartOctaveRanges.Soprano.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseAlto(String root) {
 //        return new Pair(BlackMagicka.pickDominant(root, sharp), 0);
         Random rand = new Random();
-        int rangeSize = PartOctaveRanges.Alto.values().length;
+        Integer rangeSize = PartOctaveRanges.Alto.values().length;
         return new Pair(Degree.Dominant, PartOctaveRanges.Alto.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseTenor(String root) {
 //        return new Pair(BlackMagicka.pickMediant(root, sharp), 0);
         Random rand = new Random();
-        int rangeSize = PartOctaveRanges.Tenor.values().length;
+        Integer rangeSize = PartOctaveRanges.Tenor.values().length;
         return new Pair(Degree.Mediant, PartOctaveRanges.Tenor.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseBass(String root) {
 //        return new Pair(BlackMagicka.pickTonic(root, sharp), 0);
         Random rand = new Random();
-        int rangeSize = PartOctaveRanges.Bass.values().length;
+        Integer rangeSize = PartOctaveRanges.Bass.values().length;
         return new Pair(Degree.Tonic, PartOctaveRanges.Bass.values()[rand.nextInt(rangeSize)]);
     }
 
