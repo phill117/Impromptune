@@ -545,14 +545,14 @@ public class ImpromptuneInitializer implements Initializable{
 
         if(mainWindow.loadedFile != null)
         {
-            System.out.println(" NOT NULL SAVE");
+            //System.out.println(" NOT NULL SAVE");
             File outFile;
             outFile = new File(mainWindow.loadedFile);
             ScoreMXMLBuilder mxlBuilder = new ScoreMXMLBuilder(mainWindow.getContent().getSD(), outFile);
         }
         else
         {
-            System.out.println("NULL SAVE");
+           // System.out.println("NULL SAVE");
             FileChooser chooser = new FileChooser();
 
             File custom = new File(".");
