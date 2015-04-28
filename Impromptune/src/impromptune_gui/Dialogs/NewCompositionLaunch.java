@@ -38,6 +38,7 @@ public class NewCompositionLaunch {
             public void handle(WindowEvent event) {
                 if(firstTime)
                     System.exit(0);
+                else result = "cancel";
             }
         });
 

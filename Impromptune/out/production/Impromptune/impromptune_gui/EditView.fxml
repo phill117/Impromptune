@@ -91,7 +91,6 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Impromptune Help" visible="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onABOUT" text="About Impromptune" />
                </items>
             </Menu>
