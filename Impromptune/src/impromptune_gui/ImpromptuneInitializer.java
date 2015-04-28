@@ -109,6 +109,7 @@ public class ImpromptuneInitializer implements Initializable{
         RendererTabs.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (RendererTabs.getTabs().isEmpty()) return;
                 if (newValue.intValue() < mainWindows.size() && mainWindows.size() > 0){
                     //System.out.println(mainWindows.size());
                     //System.out.println(newValue.intValue());
@@ -275,7 +276,7 @@ public class ImpromptuneInitializer implements Initializable{
                     MainWindow mw = fxmlLoader.getController();
 
                     NewCompositionLaunch compLaunch = new NewCompositionLaunch(mw, stage);
-                    if (compLaunch.getResult().equals("cancel")) return;
+                    if (compLaunch.getResult().equals("cancel")) continue;
 
                     piano.mw = mw; //Set the current piano window to current renderer window
                     mainWindows.add(mw);
@@ -285,10 +286,20 @@ public class ImpromptuneInitializer implements Initializable{
                     redo.setDisable(true);
                     genSettings.setMainWindow(mainWindow);
                     genSettings.setStage(stage);
-                    
+
                     break;
                 } else {
+                    File file;
+                    file = IOHandler.load(stage);
                     MainWindow mw = fxmlLoader.getController();
+
+                    if (file != null) {
+                        mw.loadedFile = file.getAbsolutePath();
+                        RecentFiles.addRecentFile(file);
+                        mw.getContent().loadScore(file.getAbsolutePath());
+
+                    } else
+                        continue;
 
                     piano.mw = mw; //Set the current piano window to current renderer window
                     mainWindows.add(mw);
@@ -300,16 +311,7 @@ public class ImpromptuneInitializer implements Initializable{
                     genSettings.setStage(stage);
 
                     mainWindow.pageIndex = 0;
-                   File file;
-                    file = IOHandler.load(stage);
-
-                    if (file != null) {
-                        mainWindow.loadedFile = file.getAbsolutePath();
-                        RecentFiles.addRecentFile(file);
-                        mainWindow.getContent().loadScore(file.getAbsolutePath());
-                        break;
-                    } else
-                        continue;
+                    break;
                 }
             }
 
