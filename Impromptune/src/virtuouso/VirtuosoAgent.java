@@ -164,12 +164,14 @@ public class VirtuosoAgent {
 
     public ArrayList<ArrayList<Pair<Degree, Integer>>> getGeneratedTonesDegrees() {
         List<String> tones = getGeneratedTones();
-        ArrayList<Pair<Degree, Integer>> degrees = new ArrayList<>();
+
         ArrayList<ArrayList<Pair<Degree, Integer>>> partList = new ArrayList<ArrayList<Pair<Degree, Integer>>>();
 
         int i = 0;
 
         do {
+            ArrayList<Pair<Degree, Integer>> degrees = new ArrayList<>();
+
             for (String tone : tones) {
 
                 if (!BlackMagicka.noteInScale(tone, keyTonic, mode, sharp))
@@ -194,6 +196,9 @@ public class VirtuosoAgent {
 
                 degrees.add(pair);
             }
+
+            partList.add(degrees);
+
         } while (i++ < voices);
 
         return partList;
