@@ -1,5 +1,8 @@
 package Analyzer;
 
+import utils.Pair;
+import virtuouso.Degree;
+
 import java.util.ArrayList;
 
 /**
@@ -7,77 +10,110 @@ import java.util.ArrayList;
  */
 public class Validator {
 
+    ArrayList<ArrayList<Pair<Degree, Integer>>> parts;
     int voiceCount;
 
-    public Validator(int voiceCount){
-        this.voiceCount = voiceCount;
+    public Validator(ArrayList<ArrayList<Pair<Degree, Integer>>> parts){
+        this.parts = parts;
+        this.voiceCount = parts.size();
     }
 
-    public int validate(){
-        return 0;
+    public void validate(){
+
+        for(int i = 0; i < parts.size(); i++){
+            for(int k = i + 1; k < parts.size(); k++) {
+                doubleFifth(parts.get(i),parts.get(k));
+                doubleOctave(parts.get(i),parts.get(k));
+
+                if(k-1 == i){
+                    int thresh = 1;
+                    if(k == parts.size()-1) thresh++;
+                    spacingError(parts.get(i),parts.get(k),thresh);
+                }
+
+            }
+        }
     }
 
-    private void doubleOctave(ArrayList<String> first,ArrayList<String> second){
+    private void doubleOctave(ArrayList<Pair<Degree, Integer>> first,ArrayList<Pair<Degree, Integer>> second){
         for(int i = 0; i < first.size()-1; i++){
             if(i > second.size()-2) break;
             if(isOctave(first.get(i), second.get(i))){
                 if(isOctave(first.get(i + 1), second.get(i + 1))){
-                    //TODO
+                    second.set(i,createNew(second.get(i).first(),second.get(i).second(),2));
+                    i--;
                 }
             }
         }
     }
 
-    private void doubleFifth(ArrayList<String> first,ArrayList<String> second){
+    private void doubleFifth(ArrayList<Pair<Degree, Integer>> first,ArrayList<Pair<Degree, Integer>> second){
         for(int i = 0; i < first.size()-1; i++){
             if(i > second.size()-2) break;
             if(isFifth(first.get(i),second.get(i))){
                 if(isFifth(first.get(i+1),second.get(i+1))){
-                    //TODO
+                    second.set(i,createNew(second.get(i).first(),second.get(i).second(),2));
+                    i--;
                 }
             }
         }
     }
 
-    private void spacingError(ArrayList<String> first,ArrayList<String> second, int threshold){
+    private void spacingError(ArrayList<Pair<Degree, Integer>> first,ArrayList<Pair<Degree, Integer>> second, int threshold){
         for(int i = 0; i < first.size(); i++){
             if(i > second.size()-1) break;
-            if(distanceApart(first.get(i),second.get(i)) >= threshold){
-                //TODO
+            if(distanceApart(first.get(i), second.get(i)) >= threshold) {
+                second.set(i,createNew(second.get(i).first(),second.get(i).second(),7));
+                i--;
             }
         }
     }
 
     //returns full octaves apart
-    private int distanceApart(String s1, String s2){
-        int diff = getRegister(s1) - getRegister(s2);
-        if(getDegree(s1) < getDegree(s2)) return diff;
+    private int distanceApart(Pair<Degree, Integer> s1, Pair<Degree, Integer> s2){
+        int diff = s1.second() - s2.second();
+        if(getDegree(s1.first()) < getDegree(s2.first())) return diff;
         else return diff-1;
     }
 
-    private boolean isFifth(String s1, String s2){
-        if(getRegister(s1) < getRegister(s2))
-            if(Math.abs(getDegree(s2) - getDegree(s1)) == 4) return true;
-        else if(Math.abs(getDegree(s1) - getDegree(s2)) == 4) return true;
+    private boolean isFifth(Pair<Degree, Integer> s1, Pair<Degree, Integer> s2){
+        if(s1.second() < s2.second())
+            if(Math.abs(getDegree(s2.first()) - getDegree(s1.first())) == 4) return true;
+        else if(Math.abs(getDegree(s1.first()) - getDegree(s2.first())) == 4) return true;
         return false;
     }
 
-    private boolean isOctave(String s1,String s2){
-        if(getDegree(s1) == getDegree(s2)) return true;
+    private boolean isOctave(Pair<Degree, Integer> s1,Pair<Degree, Integer> s2){
+        if(getDegree(s1.first()) == getDegree(s2.first())) return true;
         else return false;
     }
 
-    private int getRegister(String s){
-        return Integer.parseInt(s.substring(2));
+    private int getDegree(Degree d){
+        return d.toInt()+1;
     }
 
-    private int getDegree(String s){
-        return 1;//TODO
+    private Pair<Degree, Integer> createNew(Degree d, int reg, int inc){
+        int newD = (d.toInt() + inc);
+        if(newD >= 7) reg++;
+        if(newD < 0) reg--;
+        newD = newD % 7;
+        Degree D = numToDegree(newD);
+        return new Pair<>(D, reg);
+    }
+
+    private Degree numToDegree(int i){
+        switch (i){
+            default:
+            case 0:return Degree.Tonic;
+            case 1:return Degree.Supertonic;
+            case 2:return Degree.Mediant;
+            case 3:return Degree.Subdominant;
+            case 4:return Degree.Dominant;
+            case 5:return Degree.Submediant;
+            case 6:return Degree.Leading;
+        }
     }
 
     //"C[#|b|n][0-n]"
-    private String createNew(String tone, String accidental, int register){
-        return tone+accidental+Integer.toString(register); //TODO account for scale degree
-    }
 
 }
