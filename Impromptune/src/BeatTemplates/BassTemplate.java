@@ -1,8 +1,5 @@
 package BeatTemplates;
 
-import data_objects.Note;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 /**

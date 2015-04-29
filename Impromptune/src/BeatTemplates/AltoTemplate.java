@@ -10,8 +10,8 @@ public class AltoTemplate extends AbstractVoiceTemplate {
 
     public AltoTemplate(String dominantTone, HarmonicMotion type, int repetions) {
         rand = new Random();
-        melodicType = type;
         rhythm = possibleRhythms[rand.nextInt(possibleRhythms.length)];
+        melodicType = type;
         repeats = repetions;
         tones.add(dominantTone);
     }

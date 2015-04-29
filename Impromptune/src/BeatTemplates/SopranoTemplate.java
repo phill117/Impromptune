@@ -7,12 +7,17 @@ import java.util.Random;
  */
 public class SopranoTemplate extends AbstractVoiceTemplate {
     Rhythm [] possibleRhythms = {Rhythm._211, Rhythm._112, Rhythm._121, Rhythm._1111};
+    String keyTonic;
+    String mode;
 
-    public SopranoTemplate(String leadingTone, HarmonicMotion type, int repetions) {
-        rand = new Random();
-        melodicType = type;
-        repeats = repetions;
-        rhythm = possibleRhythms[rand.nextInt(possibleRhythms.length)];
-        tones.add(leadingTone);
+    public SopranoTemplate(String leadingTone, HarmonicMotion type, int repetions, String keyTonic, String mode) {
+        this.rand = new Random();
+        this.rhythm = possibleRhythms[rand.nextInt(possibleRhythms.length)];
+        this.melodicType = type;
+        this.repeats = repetions;
+
+        this.tones.add(leadingTone);
+        this.keyTonic = keyTonic;
+        this.mode = mode;
     }
 }
