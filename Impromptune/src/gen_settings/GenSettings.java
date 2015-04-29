@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+import impromptune_gui.ImpromptuneInitializer;
 /**
  * Created by Sean on 3/24/2015.
  */
@@ -90,6 +90,14 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+
+        //Check for notes
+        if(mainWindow.noteCounter < 8)
+        {
+            ImpromptuneInitializer.showMessageDialogStat("Please add at least 8 voice elements before generating!");
+            return;
+        }
+
 
         //Generate some music!!
         /**

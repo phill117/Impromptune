@@ -39,6 +39,8 @@ public class MainWindow {
     public String loadedFile;
     private float zoomFactor = 1.25f;
 
+    public int noteCounter = 0;
+
     public void setZoom(float z)
     {
         zoomFactor = z;
@@ -88,6 +90,7 @@ public class MainWindow {
         if(content.undoAction() == 1) {
             ImpromptuneInitializer.UNDO.setDisable(false);
             ImpromptuneInitializer.REDO.setDisable(false);
+            noteCounter--;
         }
         else
             ImpromptuneInitializer.UNDO.setDisable(true);
@@ -97,7 +100,9 @@ public class MainWindow {
     public void redo() {
         if(content.redoAction() == 1){
             ImpromptuneInitializer.REDO.setDisable(false);
-            ImpromptuneInitializer.UNDO.setDisable(false);}
+            ImpromptuneInitializer.UNDO.setDisable(false);
+            noteCounter++;
+        }
         else
             ImpromptuneInitializer.REDO.setDisable(true);
     }
