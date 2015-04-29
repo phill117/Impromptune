@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Tooltip;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import jdk.internal.org.xml.sax.EntityResolver;
@@ -53,11 +54,27 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
     int order;
     int voices;
 
+    final Tooltip ttR = new Tooltip("A higher repetitiveness will result in less variability");
+
+    final Tooltip ttO = new Tooltip("A higher order will result in more variance");
+
+    final Tooltip ttV = new Tooltip("Choose the number of voices you want to generate.");
+
+
+
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         repetitiveness = Double.valueOf(repetitiveness_scroll.getValue()).intValue();
+        repetitiveness_scroll.setTooltip(ttR);
+
         order = Double.valueOf(order_scroll.getValue()).intValue();
+        order_scroll.setTooltip(ttO);
+
         voices = Double.valueOf(voices_scroll.getValue()).intValue();
+        voices_scroll.setTooltip(ttV);
 
         //store the path of the partwise dtd
         partwisePath = getClass().getResource("dtds/partwise.dtd").getPath();
