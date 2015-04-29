@@ -17,7 +17,7 @@ public class Measure {
         //chords = new ArrayList<>();
         parts = new ArrayList<>(partnum);
 
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < partnum; i++){
             parts.add(new ArrayList<>());
         }
     }

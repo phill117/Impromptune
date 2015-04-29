@@ -153,7 +153,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     System.out.println("started");
                     DefaultHandler handler = new MXMLContentHandler();
                     InputSource inputSource = new InputSource(new FileReader((file)));
-                    //      THIS IS A TEMP INPUT SOURCE
+
                     //mxp.parse(inputSource, handler);
                     reader.setContentHandler(handler);
                     reader.parse(inputSource);
@@ -163,7 +163,8 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     VirtuosoAgent agent = new VirtuosoAgent(file,mainWindow.getContent().getComposition().getFifthtype(), tehOrder, tehVoicez, tehRepetitz);
 
                     agent.buildChordProgression();
-                    agent.addBackToMusic(agent.getGeneratedTones());
+                    //agent.addBackToMusic(agent.getGeneratedTones());
+                    agent.addBackToMusic();
                     //create a new xml file from the written data structures
                     File createdFile = mxmlWriter.createMXML( file );
                     Platform.runLater(() -> ImpromptuneInitializer.self.addGenerationToTab(createdFile));
