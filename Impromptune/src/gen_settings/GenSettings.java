@@ -190,8 +190,8 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
     public static class DTDEntityResolver implements org.xml.sax.EntityResolver{
         @Override
         public org.xml.sax.InputSource resolveEntity(String publicId, String systemId) throws org.xml.sax.SAXException, IOException {
-            System.out.println("SYSTEMID in RESOLVER "+systemId);
-            System.out.println("publicID in RESOLVER "+publicId);
+//            System.out.println("SYSTEMID in RESOLVER "+systemId);
+//            System.out.println("publicID in RESOLVER "+publicId);
             if (systemId.equals("http://www.musicxml.org/dtds/partwise.dtd")) {
                 // return a special input source
                 FileReader reader = new FileReader(GenSettings.partwisePath);

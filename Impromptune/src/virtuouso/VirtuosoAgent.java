@@ -412,15 +412,12 @@ public class VirtuosoAgent {
 
                 }
 
-                if(doContinue) continue;
-                else break;
+                if(!doContinue)break;
 
             }
 
-
-
         }else{
-
+            //TODO n/8
         }
 
 

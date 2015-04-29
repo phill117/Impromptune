@@ -94,7 +94,7 @@ public class NewCompositionDialog implements Initializable{
         symbol.setValue("♮");
         tempo.setValue("Moderato – 110");
 
-        timeSig.setItems(observableArrayList("4/4","3/4","6/8","4/2","3/2","2/2"));
+        timeSig.setItems(observableArrayList("4/4","3/4","6/8","2/2"));
         key.setItems(observableArrayList("A","B","C","D","E","F","G"));
         mode.setItems(observableArrayList("Major","Minor"));
         symbol.setItems(observableArrayList("♮", "♭", "♯"));
