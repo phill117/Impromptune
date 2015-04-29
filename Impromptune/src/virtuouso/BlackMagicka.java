@@ -554,6 +554,8 @@ public class BlackMagicka {
 
         return null;
     }
+
+
     //is this note in this root mode chord?
     static boolean noteInChord(String testNote, String root, String mode, boolean sharp) {  //note = this note, root = root of chord, mode = mode
         List<String> chord = null;
