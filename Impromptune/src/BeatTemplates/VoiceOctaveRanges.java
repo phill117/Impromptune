@@ -4,14 +4,14 @@ package BeatTemplates;
  * Created by Ben on 4/27/2015.
  */
 public enum VoiceOctaveRanges {
-    Soprano(new int [] {4, 5, 6}),
-    Alto(new int [] {3, 4, 5}),
-    Tenor(new int [] {3, 4}),
-    Bass(new int [] {1, 2});
+    Soprano(new Integer [] {new Integer(4), new Integer(5), new Integer(6)}),
+    Alto(new Integer [] {new Integer(3), new Integer(4), new Integer(5)}),
+    Tenor(new Integer [] {new Integer(3), new Integer(4)}),
+    Bass(new Integer [] {new Integer(1), new Integer(2)});
 
-    VoiceOctaveRanges(int[] range) {
+    VoiceOctaveRanges(Integer [] range) {
         voiceRange = range;
     }
 
-    private int [] voiceRange;
+    private Integer [] voiceRange;
 }
