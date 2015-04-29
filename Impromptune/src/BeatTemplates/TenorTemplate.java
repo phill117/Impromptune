@@ -1,5 +1,6 @@
 package BeatTemplates;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,6 +14,7 @@ public class TenorTemplate extends AbstractVoiceTemplate {
         rhythm = possibleRhythms[rand.nextInt(possibleRhythms.length)];
         melodicType = type;
         repeats = repetions;
+        tones = new ArrayList<>();
         tones.add(leadingTone);
     }
 }

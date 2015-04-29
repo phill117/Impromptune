@@ -1,5 +1,6 @@
 package BeatTemplates;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -15,7 +16,7 @@ public class SopranoTemplate extends AbstractVoiceTemplate {
         this.rhythm = possibleRhythms[rand.nextInt(possibleRhythms.length)];
         this.melodicType = type;
         this.repeats = repetions;
-
+        this.tones = new ArrayList<>();
         this.tones.add(leadingTone);
         this.keyTonic = keyTonic;
         this.mode = mode;
