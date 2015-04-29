@@ -2,10 +2,10 @@ package BeatTemplates;
 
 import data_objects.Beat;
 import data_objects.Note;
-import utils.Pair;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by ben on 4/27/2015.
@@ -14,6 +14,8 @@ public abstract class AbstractVoiceTemplate {
     HarmonicMotion melodicType;
     List<String> tones;
     Rhythm rhythm;
+    int repeats;
+    Random rand;
 
     public Beat buildBeat(int duration, Integer register) {
         Beat beat = new Beat();

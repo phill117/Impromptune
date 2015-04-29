@@ -3,13 +3,12 @@ package BeatTemplates;
 import Analyzer.Validator;
 import data_objects.Beat;
 import data_objects.MetaData;
-import data_objects.Note;
+
 import utils.Pair;
 import virtuouso.BlackMagicka;
 import virtuouso.Degree;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ben on 4/27/2015.
@@ -35,9 +34,8 @@ public class VoiceFactory {
         ArrayList<ArrayList<Beat>> voiceBeats = new ArrayList<>();
         AxisMundi axis [] = AxisMundi.values();
 
-        for (int i = 0; i < voices.size(); i++) {
+        for (int i = 0; i < voices.size(); i++)
             voiceBeats.add(buildVoice(axis[i]));
-        }
 
         return voiceBeats;
     }
@@ -46,28 +44,44 @@ public class VoiceFactory {
         ArrayList<Beat> beats = new ArrayList<>();
         ArrayList<Pair<String, Integer>> arr = voices.get(index.toInt());
 
-        for (Pair<String, Integer> pair : arr) {
-            switch (index) {
-                case Bass:
-                    BassTemplate bass = new BassTemplate(pair.first(), HarmonicMotion.Parallel, Rhythm._wh);
+        switch (index) {
+
+            case Bass:
+
+                for (Pair<String, Integer> pair : arr) {
+                    BassTemplate bass = new BassTemplate(pair.first(), HarmonicMotion.Parallel, repetition);
                     beats.add(bass.buildBeat(MetaData.getInstance().getDivisions(), pair.second()));
-                    break;
+                }
 
-                case Tenor:
-                    TenorTemplate tenor = new TenorTemplate(pair.first(), HarmonicMotion.Parallel, Rhythm._wh);
+                break;
+
+
+            case Tenor:
+
+                for (Pair<String, Integer> pair : arr) {
+                    TenorTemplate tenor = new TenorTemplate(pair.first(), HarmonicMotion.Parallel, repetition);
                     beats.add(tenor.buildBeat(MetaData.getInstance().getDivisions(), pair.second()));
-                    break;
+                }
 
-                case Alto:
-                    AltoTemplate alto = new AltoTemplate(pair.first(), HarmonicMotion.Parallel, Rhythm._wh);
+                break;
+
+            case Alto:
+
+                for (Pair<String, Integer> pair : arr) {
+                    AltoTemplate alto = new AltoTemplate(pair.first(), HarmonicMotion.Parallel, repetition);
                     beats.add(alto.buildBeat(MetaData.getInstance().getDivisions(), pair.second()));
-                    break;
+                }
 
-                case Soprano:
-                    SopranoTemplate soprano = new SopranoTemplate(pair.first(), HarmonicMotion.Parallel, Rhythm._wh);
+                break;
+
+            case Soprano:
+
+                for (Pair<String, Integer> pair : arr) {
+                    SopranoTemplate soprano = new SopranoTemplate(pair.first(), HarmonicMotion.Parallel, repetition);
                     beats.add(soprano.buildBeat(MetaData.getInstance().getDivisions(), pair.second()));
-                    break;
-            }
+                }
+
+                break;
         }
 
         return beats;
