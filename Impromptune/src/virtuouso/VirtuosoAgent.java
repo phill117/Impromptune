@@ -376,109 +376,141 @@ public class VirtuosoAgent {
      * This method was finished by Sean Phillips @ 9:55 PM EST with the days left before the Final demo.
      * He was very pleased with the result, for he had remade the Measure Class structure.
      * HE BELIEVES THAT THIS GREAT METHOD NEEDS TO BE SHARED WITH THE WHOLE HUMAN RACE (at least some of it).
-     * @param chordProgTones - The list of string representing notes to be added to the existing music.
      */
 
-    public void addBackToMusic(ArrayList<String> chordProgTones) {
-        addBackToMusic(chordProgTones,MetaData.getInstance().getPartCount() - 1);
+    public void addBackToMusic() {
+        ArrayList<ArrayList<Beat>> beats = voiceFactory.kickStart(getGeneratedTonesDegrees());//this returns the beats we need to add, maybe doesn't need to be in here, will just return all the voices in this beat list
+        for(int i = 1; i < beats.size(); i++)
+            addBackToMusic(beats.get(i),i);
     }
 
-    public void addBackToMusic(ArrayList<String> chordProgTones, int part) {
+    public void addBackToMusic(ArrayList<Beat> beats, int part) {
 
-//        voiceFactory.kickStart(getGeneratedTonesDegrees());//this returns the beats we need to add, maybe doesn't need to be in here, will just return all the voices in this beat list
 
         MetaData metaData = MetaData.getInstance();
         int divsPerMeasure = metaData.getDivisionsPerMeasure();
         ArrayList<Measure> measures = metaData.getMeasures();
+        boolean doContinue = true;
 
-        if(metaData.getBeattype() != 8) {
+        if(metaData.getBeattype() != 8){
 
-            int k = 0;
-            int currentDuration = 0;
-            int rollOver = 0;
+            int beatPlace = 0;
 
-            for (Measure measure : measures) {
-                currentDuration = 0;
-                int duration = 0;
-                for (; k < chordProgTones.size(); k++) {
+            for(Measure measure : measures){
+                for(int i = 0; i < metaData.getBeats(); i++){
 
-                    if (rollOver != 0) {
-                        duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
-
-                        System.out.println("first part" + measure.getPart(0));
-                        measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-                        currentDuration += rollOver;
-                        rollOver = 0;
-                        if (currentDuration == divsPerMeasure) break;
-                        if (currentDuration > divsPerMeasure) {
-                            rollOver = currentDuration - divsPerMeasure;
-                            break;
-                        }
-                        continue;
+                    for(Note note : beats.get(beatPlace).getNotes()) measure.addNoteToPart(note,part);
+                    beatPlace+=i;
+                    if(beatPlace >= beats.size()){
+                        doContinue = false;
+                        break;
                     }
 
-                    duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
-                    if (currentDuration == divsPerMeasure) break;
-
-                    if (currentDuration + duration > divsPerMeasure) {
-                        rollOver = currentDuration + duration - divsPerMeasure;
-                    }
-                    System.out.println("first part" + measure.getPart(0));
-                    measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-                    currentDuration += duration;
                 }
+
+                if(doContinue) continue;
+                else break;
+
             }
 
-            for (Measure m : measures) {
-                System.out.println("NEW MEASURE");
-                for (Note n : m.getPart(part)) {
-                    System.out.println(n.getPitch());
-                }
-            }
+
+
         }else{
-            int k = 0;
-            int currentDuration = 0;
-            int rollOver = 0;
 
-            for (Measure measure : measures) {
-                currentDuration = 0;
-                int duration = 0;
-                for (; k < chordProgTones.size(); k++) {
-
-                    if (rollOver != 0) {
-                        duration = new Double(1.5 * metaData.getDivisions()).intValue();//TODO - dynamically change when adding rhythme
-
-                        System.out.println("first part" + measure.getPart(0));
-                        measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-                        currentDuration += rollOver;
-                        rollOver = 0;
-                        if (currentDuration == divsPerMeasure) break;
-                        if (currentDuration > divsPerMeasure) {
-                            rollOver = currentDuration - divsPerMeasure;
-                            break;
-                        }
-                        continue;
-                    }
-
-                    duration = new Double(1.5 * metaData.getDivisions()).intValue();//TODO - dynamically change when adding rhythme
-                    if (currentDuration == divsPerMeasure) break;
-
-                    if (currentDuration + duration > divsPerMeasure) {
-                        rollOver = currentDuration + duration - divsPerMeasure;
-                    }
-                    System.out.println("first part" + measure.getPart(0));
-                    measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-                    currentDuration += duration;
-                }
-            }
-
-            for (Measure m : measures) {
-                System.out.println("NEW MEASURE");
-                for (Note n : m.getPart(part)) {
-                    System.out.println(n.getPitch());
-                }
-            }
         }
+
+
+
+
+
+//        if(metaData.getBeattype() != 8) {
+//
+//            int k = 0;
+//            int currentDuration = 0;
+//            int rollOver = 0;
+//
+//            for (Measure measure : measures) {
+//                currentDuration = 0;
+//                int duration = 0;
+//                for (; k < chordProgTones.size(); k++) {
+//
+//                    if (rollOver != 0) {
+//                        duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
+//
+//                        System.out.println("first part" + measure.getPart(0));
+//                        measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
+//                        currentDuration += rollOver;
+//                        rollOver = 0;
+//                        if (currentDuration == divsPerMeasure) break;
+//                        if (currentDuration > divsPerMeasure) {
+//                            rollOver = currentDuration - divsPerMeasure;
+//                            break;
+//                        }
+//                        continue;
+//                    }
+//
+//                    duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
+//                    if (currentDuration == divsPerMeasure) break;
+//
+//                    if (currentDuration + duration > divsPerMeasure) {
+//                        rollOver = currentDuration + duration - divsPerMeasure;
+//                    }
+//                    System.out.println("first part" + measure.getPart(0));
+//                    measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
+//                    currentDuration += duration;
+//                }
+//            }
+//
+//            for (Measure m : measures) {
+//                System.out.println("NEW MEASURE");
+//                for (Note n : m.getPart(part)) {
+//                    System.out.println(n.getPitch());
+//                }
+//            }
+//        }else{
+//            int k = 0;
+//            int currentDuration = 0;
+//            int rollOver = 0;
+//
+//            for (Measure measure : measures) {
+//                currentDuration = 0;
+//                int duration = 0;
+//                for (; k < chordProgTones.size(); k++) {
+//
+//                    if (rollOver != 0) {
+//                        duration = new Double(1.5 * metaData.getDivisions()).intValue();//TODO - dynamically change when adding rhythme
+//
+//                        System.out.println("first part" + measure.getPart(0));
+//                        measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
+//                        currentDuration += rollOver;
+//                        rollOver = 0;
+//                        if (currentDuration == divsPerMeasure) break;
+//                        if (currentDuration > divsPerMeasure) {
+//                            rollOver = currentDuration - divsPerMeasure;
+//                            break;
+//                        }
+//                        continue;
+//                    }
+//
+//                    duration = new Double(1.5 * metaData.getDivisions()).intValue();//TODO - dynamically change when adding rhythme
+//                    if (currentDuration == divsPerMeasure) break;
+//
+//                    if (currentDuration + duration > divsPerMeasure) {
+//                        rollOver = currentDuration + duration - divsPerMeasure;
+//                    }
+//                    System.out.println("first part" + measure.getPart(0));
+//                    measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
+//                    currentDuration += duration;
+//                }
+//            }
+//
+//            for (Measure m : measures) {
+//                System.out.println("NEW MEASURE");
+//                for (Note n : m.getPart(part)) {
+//                    System.out.println(n.getPitch());
+//                }
+//            }
+//        }
     }
 
     static int[][] fifthTable =
