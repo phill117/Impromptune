@@ -77,7 +77,7 @@ public class VoiceFactory {
             case Soprano:
 
                 for (Pair<String, Integer> pair : arr) {
-                    SopranoTemplate soprano = new SopranoTemplate(pair.first(), HarmonicMotion.Parallel, repetition);
+                    SopranoTemplate soprano = new SopranoTemplate(pair.first(), HarmonicMotion.Parallel, repetition, keyTonic, mode);
                     beats.add(soprano.buildBeat(MetaData.getInstance().getDivisions(), pair.second()));
                 }
 

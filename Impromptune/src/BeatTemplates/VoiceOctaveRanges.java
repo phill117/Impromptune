@@ -1,5 +1,7 @@
 package BeatTemplates;
 
+import java.util.Random;
+
 /**
  * Created by Ben on 4/27/2015.
  */
@@ -14,4 +16,11 @@ public enum VoiceOctaveRanges {
     }
 
     private Integer [] voiceRange;
+
+    public Integer getOctave() {
+        Random rand = new Random();
+        int rangeSize = voiceRange.length;
+        return voiceRange[rand.nextInt(rangeSize)];
+//        return voiceRange;
+    }
 }

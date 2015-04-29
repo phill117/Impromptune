@@ -90,30 +90,34 @@ public class VirtuosoAgent {
 
     public Pair<Degree, Integer> chooseSoprano(String root) {
 //        return new Pair(BlackMagicka.pickLeading(root, sharp), 4);
-        Random rand = new Random();
-        Integer rangeSize = VoiceOctaveRanges.Soprano.values().length;
-        return new Pair(Degree.Leading, VoiceOctaveRanges.Soprano.values()[rand.nextInt(rangeSize)]);
+//        Random rand = new Random();
+//        Integer rangeSize = VoiceOctaveRanges.Soprano.values().length;
+        return new Pair(Degree.Leading, VoiceOctaveRanges.Soprano.getOctave());
+//        return new Pair(Degree.Leading, VoiceOctaveRanges.Soprano.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseAlto(String root) {
 //        return new Pair(BlackMagicka.pickDominant(root, sharp), 0);
-        Random rand = new Random();
-        Integer rangeSize = VoiceOctaveRanges.Alto.values().length;
-        return new Pair(Degree.Dominant, VoiceOctaveRanges.Alto.values()[rand.nextInt(rangeSize)]);
+//        Random rand = new Random();
+//        Integer rangeSize = VoiceOctaveRanges.Alto.values().length;
+//        return new Pair(Degree.Dominant, VoiceOctaveRanges.Alto.values()[rand.nextInt(rangeSize)]);
+        return new Pair(Degree.Dominant, VoiceOctaveRanges.Alto.getOctave());
     }
 
     public Pair<Degree, Integer> chooseTenor(String root) {
 //        return new Pair(BlackMagicka.pickMediant(root, sharp), 0);
-        Random rand = new Random();
-        Integer rangeSize = VoiceOctaveRanges.Tenor.values().length;
-        return new Pair(Degree.Mediant, VoiceOctaveRanges.Tenor.values()[rand.nextInt(rangeSize)]);
+//        Random rand = new Random();
+//        Integer rangeSize = VoiceOctaveRanges.Tenor.values().length;
+//        return new Pair(Degree.Mediant, VoiceOctaveRanges.Tenor.values()[rand.nextInt(rangeSize)]);
+        return new Pair(Degree.Mediant, VoiceOctaveRanges.Tenor.getOctave());
     }
 
     public Pair<Degree, Integer> chooseBass(String root) {
 //        return new Pair(BlackMagicka.pickTonic(root, sharp), 0);
-        Random rand = new Random();
-        Integer rangeSize = VoiceOctaveRanges.Bass.values().length;
-        return new Pair(Degree.Tonic, VoiceOctaveRanges.Bass.values()[rand.nextInt(rangeSize)]);
+//        Random rand = new Random();
+//        Integer rangeSize = VoiceOctaveRanges.Bass.values().length;
+        return new Pair(Degree.Tonic, VoiceOctaveRanges.Bass.getOctave());
+//        return new Pair(Degree.Tonic, VoiceOctaveRanges.Bass.values()[rand.nextInt(rangeSize)]);
     }
 
     public ArrayList<String> getGeneratedTones() {
