@@ -1,5 +1,7 @@
 package virtuouso;
 
+import BeatTemplates.VoiceFactory;
+import BeatTemplates.VoiceOctaveRanges;
 import data_objects.Beat;
 import data_objects.Measure;
 import data_objects.MetaData;
@@ -25,10 +27,12 @@ public class VirtuosoAgent {
     private MetaData data;
     private File currentFile;
     private String fifthType;
+
     private int voices;
     boolean sharp = true;
+    private VoiceFactory voiceFactory;
 
-    public VirtuosoAgent(File file, String fifthType, int order, int parts) {
+    public VirtuosoAgent(File file, String fifthType, int order, int parts, int repetition) {
         voices = parts;
         this.fifthType = fifthType;
 
@@ -54,6 +58,8 @@ public class VirtuosoAgent {
         model.trainFile(file);
 //        model.trainPiece(data.getBeatList());
         currentFile = file;
+
+        voiceFactory = new VoiceFactory(keyTonic, mode, sharp, repetition);
     }
 
     public String mostHarmonicReasonation(String tonePlaying, String chosenRoot) {
@@ -85,29 +91,29 @@ public class VirtuosoAgent {
     public Pair<Degree, Integer> chooseSoprano(String root) {
 //        return new Pair(BlackMagicka.pickLeading(root, sharp), 4);
         Random rand = new Random();
-        Integer rangeSize = PartOctaveRanges.Soprano.values().length;
-        return new Pair(Degree.Leading, PartOctaveRanges.Soprano.values()[rand.nextInt(rangeSize)]);
+        Integer rangeSize = VoiceOctaveRanges.Soprano.values().length;
+        return new Pair(Degree.Leading, VoiceOctaveRanges.Soprano.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseAlto(String root) {
 //        return new Pair(BlackMagicka.pickDominant(root, sharp), 0);
         Random rand = new Random();
-        Integer rangeSize = PartOctaveRanges.Alto.values().length;
-        return new Pair(Degree.Dominant, PartOctaveRanges.Alto.values()[rand.nextInt(rangeSize)]);
+        Integer rangeSize = VoiceOctaveRanges.Alto.values().length;
+        return new Pair(Degree.Dominant, VoiceOctaveRanges.Alto.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseTenor(String root) {
 //        return new Pair(BlackMagicka.pickMediant(root, sharp), 0);
         Random rand = new Random();
-        Integer rangeSize = PartOctaveRanges.Tenor.values().length;
-        return new Pair(Degree.Mediant, PartOctaveRanges.Tenor.values()[rand.nextInt(rangeSize)]);
+        Integer rangeSize = VoiceOctaveRanges.Tenor.values().length;
+        return new Pair(Degree.Mediant, VoiceOctaveRanges.Tenor.values()[rand.nextInt(rangeSize)]);
     }
 
     public Pair<Degree, Integer> chooseBass(String root) {
 //        return new Pair(BlackMagicka.pickTonic(root, sharp), 0);
         Random rand = new Random();
-        Integer rangeSize = PartOctaveRanges.Bass.values().length;
-        return new Pair(Degree.Tonic, PartOctaveRanges.Bass.values()[rand.nextInt(rangeSize)]);
+        Integer rangeSize = VoiceOctaveRanges.Bass.values().length;
+        return new Pair(Degree.Tonic, VoiceOctaveRanges.Bass.values()[rand.nextInt(rangeSize)]);
     }
 
     public ArrayList<String> getGeneratedTones() {
@@ -138,11 +144,15 @@ public class VirtuosoAgent {
             ArrayList<Pair<Degree, Integer>> degrees = new ArrayList<>();
 
             for (String tone : tones) {
-
-                if (!BlackMagicka.noteInScale(tone, keyTonic, mode, sharp))
-                    continue;
-
                 Pair<Degree, Integer> pair = null;
+
+                if (!BlackMagicka.noteInScale(tone, keyTonic, mode, sharp))  {
+                    Degree deg = Degree.NonScaleDegree;
+                    deg.setNonScaleDegree(tone);
+                    pair = new Pair<Degree, Integer>(deg, pair.second());
+                    degrees.add(pair);
+                    continue;
+                }
 
                 switch (i) {
                     case 0:
@@ -373,7 +383,10 @@ public class VirtuosoAgent {
         addBackToMusic(chordProgTones,MetaData.getInstance().getPartCount() - 1);
     }
 
-    public void addBackToMusic(ArrayList<String> chordProgTones, int part){
+    public void addBackToMusic(ArrayList<String> chordProgTones, int part) {
+
+//        voiceFactory.kickStart(getGeneratedTonesDegrees());//this returns the beats we need to add, maybe doesn't need to be in here, will just return all the voices in this beat list
+
         MetaData metaData = MetaData.getInstance();
         int divsPerMeasure = metaData.getDivisionsPerMeasure();
         ArrayList<Measure> measures = metaData.getMeasures();

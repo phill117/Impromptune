@@ -1,15 +1,15 @@
-package virtuouso;
+package BeatTemplates;
 
 /**
  * Created by Ben on 4/27/2015.
  */
-public enum PartOctaveRanges {
+public enum VoiceOctaveRanges {
     Soprano(new int [] {4, 5, 6}),
     Alto(new int [] {3, 4, 5}),
     Tenor(new int [] {3, 4}),
     Bass(new int [] {1, 2});
 
-    PartOctaveRanges(int [] range) {
+    VoiceOctaveRanges(int[] range) {
         voiceRange = range;
     }
 

@@ -18,7 +18,7 @@ public class Note {
 
     public Note() {}
 
-    public Note(char pitch, int accidental ,int octave,int duration){
+    public Note(char pitch, int accidental , int octave, int duration){
         this.pitch = pitch;
         this.accidental = accidental;
         this.octave = octave;

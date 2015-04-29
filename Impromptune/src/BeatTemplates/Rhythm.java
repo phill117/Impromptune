@@ -14,6 +14,7 @@ public enum Rhythm {
     Rhythm(int [] sequence) {
         beatSequence = sequence;
     }
-
+    public int [] getBeatSequence() { return beatSequence; }
     private int [] beatSequence;
+
 }

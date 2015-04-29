@@ -140,8 +140,10 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     //mxp.parse(inputSource, handler);
                     reader.setContentHandler(handler);
                     reader.parse(inputSource);
-
-                    VirtuosoAgent agent = new VirtuosoAgent(file,mainWindow.getContent().getComposition().getFifthtype(), Double.valueOf(order_scroll.getValue()).intValue(), Double.valueOf(voices_scroll.getValue()).intValue());
+                    int tehOrder = Double.valueOf(order_scroll.getValue()).intValue();
+                    int tehVoicez = Double.valueOf(voices_scroll.getValue()).intValue();
+                    int tehRepetitz = Double.valueOf(repetitiveness_scroll.getValue()).intValue();
+                    VirtuosoAgent agent = new VirtuosoAgent(file,mainWindow.getContent().getComposition().getFifthtype(), tehOrder, tehVoicez, tehRepetitz);
 
                     agent.buildChordProgression();
                     agent.addBackToMusic(agent.getGeneratedTones());

@@ -1,5 +1,9 @@
 package BeatTemplates;
 
+import data_objects.Note;
+
+import java.util.ArrayList;
+
 /**
  * Created by ben on 4/27/2015.
  */
