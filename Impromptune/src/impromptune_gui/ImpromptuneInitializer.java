@@ -162,7 +162,6 @@ public class ImpromptuneInitializer implements Initializable{
             AnchorPane.setTopAnchor(sp, 0.0);
             AnchorPane.setBottomAnchor(sp, 0.0);
             AnchorPane.setLeftAnchor(sp, 0.0);
-            AnchorPane.setRightAnchor(sp, 0.0);
 
             //Player
             player = new Player();
