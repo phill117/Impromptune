@@ -8,51 +8,10 @@
     -fx-background-color: #1d1d1d;
 }
 
-/*******************************************************************************
- *                                                                             *
- * TabPane                                                                     *
- *                                                                             *
- ******************************************************************************/
-.tab-pane *.tab-header-background {
-    -fx-background-color: derive(-fx-color, -40%);
-    -fx-border-color: derive(-fx-color, -40%);
-    -fx-border-width: 0;
-}
-
-.tab-pane *.tab{
-    -fx-background-color: #b2b2b2;
-        -fx-background-insets: 0;
-        -fx-background-radius: 0;
-        -fx-border-width: 0;
-        -fx-text-fill: #000000;
-}
-
-/* END TAB PANE STUFF */
-
-.separator {
-    -fx-skin: "com.sun.javafx.scene.control.skin.SeparatorSkin";
-}
-
-.separator .line {
-    -fx-border-style: solid;
-    -fx-border-width: 0.083333em; /* 1 */
-}
-
-.separator:horizontal .line {
-    -fx-background-color: null;
-    -fx-padding: 0.083333em 0.0em 0.0em 0.0em; /* 1 0 0 0 */
-    -fx-border-color: derive(-fx-background,-20%) transparent transparent transparent;
-}
-
-.separator:vertical .line {
-    -fx-background-color: null;
-    -fx-padding: 0.0em 0.083333em 0.0em 0.0em; /* 0 1 0 0 */
-    -fx-border-color:  transparent derive(-fx-background,-20%) transparent transparent;
-}
-
 .tool-bar {
     -fx-background-color: derive(#1d1d1d,30%);
 }
+
 
 .label {
     -fx-font-size: 11pt;
@@ -112,12 +71,6 @@
     -fx-background-color: -fx-focus-color;
 }
 
-.slider{
-    -fx-font-size: 15pt;
-    -fx-text-fill: white;
-    -fx-text-opacity: 1;
-}
-
 .split-pane:horizontal > .split-pane-divider {
     -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
     -fx-background-color: transparent, derive(#1d1d1d,20%);
@@ -149,23 +102,6 @@
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-background-radius: 0;
-}
-
-.combo-box {
-    -fx-background-radius: 0;
-    -fx-background-color: #dadada;
-}
-
-.combo-box-popup > .list-view {
-    -fx-radius: 0;
-    -fx-background-color: #bdbdbd;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 12, 0.0 , 0 , 8 );
-}
-
-.scroll-pane{
-    -fx-background-color: #f0f0f0;
 }
 
 /*
