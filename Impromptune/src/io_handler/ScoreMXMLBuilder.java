@@ -30,6 +30,7 @@ import com.xenoage.zong.musicxml.types.groups.MxlMusicData;
 import com.xenoage.zong.musicxml.types.groups.MxlScoreHeader;
 import com.xenoage.zong.musicxml.types.partwise.MxlMeasure;
 import com.xenoage.zong.musicxml.types.partwise.MxlPart;
+import impromptune_gui.ImpromptuneInitializer;
 
 import static com.xenoage.zong.core.music.util.Interval.At;
 import static com.xenoage.zong.core.music.util.Interval.Before;
@@ -67,8 +68,8 @@ public class ScoreMXMLBuilder {
     void buildXmlScore() {
         List<MxlPart> parts = new ArrayList<MxlPart>();
 
-        //for (int i = 0; i < scoreDoc.getScore().getStavesCount(); i++)
-        parts.add(buildPart()); //We only want ONE PART (seems to be the way it is done)
+        //for (int i = 0; i < ImpromptuneInitializer.totalParts; i++)
+            parts.add(buildPart()); //We only want ONE PART (seems to be the way it is done)
 
         String version = "1.0";
 
@@ -248,10 +249,12 @@ public class ScoreMXMLBuilder {
             }
 
             //After each staff, we add in the <backup><duration>4</duration></backup>
-            if(scoreDoc.getScore().getStavesCount() > 1) {
-                MxlBackup backup = new MxlBackup(timeDenom);
-                mxlMusicData.getContent().add(backup);}
-            }
+           // for(int k = 0; k < measure.getVoices().size(); k++)
+                if(scoreDoc.getScore().getStavesCount() > 1) {
+                    MxlBackup backup = new MxlBackup(timeDenom);
+                    mxlMusicData.getContent().add(backup);}
+
+        }
         MxlMeasure mxlMeasure = new MxlMeasure(mxlMusicData, new Integer(i+1).toString());
 
         return mxlMeasure;
