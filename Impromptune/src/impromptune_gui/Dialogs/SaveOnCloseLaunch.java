@@ -38,7 +38,7 @@ public class SaveOnCloseLaunch {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Would you like to save?");
         stage.showAndWait();
     }

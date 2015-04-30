@@ -33,7 +33,7 @@ public class CompositionPropertiesLaunch {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Composition Properties");
         CompositionPropertiesDialog.setStage(stage);
         stage.showAndWait();

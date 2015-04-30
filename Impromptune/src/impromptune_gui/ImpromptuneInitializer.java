@@ -180,12 +180,12 @@ public class ImpromptuneInitializer implements Initializable{
             genSettings = fxmlLoader.getController();
 
             //Set pictures to toggle buttons
-            whole.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/whole.png"), 25,25,false,false)));
-            half.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/half.png"), 25,25,false,false)));
-            quarter.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/quarter.png"), 25,25,false,false)));
-            eighth.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/eighth.png"), 25,25,false,false)));
-            sixteenth.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/sixteenth.png"), 25,25,false,false)));
-            thirtysecond.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/thirtysecond.png"), 25,25,false,false)));
+            whole.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/whole.png"), 25,25,true,true  )));
+            half.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/half.png"), 25,25,true,true)));
+            quarter.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/quarter.png"), 25,25,true,true)));
+            eighth.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/eighth.png"), 25,25,true,true)));
+            sixteenth.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/sixteenth.png"), 25,25,true,true)));
+            thirtysecond.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/thirtysecond.png"), 25,25,true,true)));
 
             rest.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/rest.png"), 25,25,false,false)));
             dot.setGraphic(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("PlayerPictures/dot.png"), 25,25,false,false)));
