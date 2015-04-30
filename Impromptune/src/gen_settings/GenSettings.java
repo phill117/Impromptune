@@ -93,11 +93,11 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         //Check for notes
-        if(mainWindow.noteCounter < 8)
-        {
-            ImpromptuneInitializer.showMessageDialogStat("Please add at least 8 voice elements before generating!");
-            return;
-        }
+      //  if(mainWindow.noteCounter < 8)
+       // {
+       //     ImpromptuneInitializer.showMessageDialogStat("Please add at least 8 voice elements before generating!");
+       //     return;
+      //  }
 
 
         //Generate some music!!
