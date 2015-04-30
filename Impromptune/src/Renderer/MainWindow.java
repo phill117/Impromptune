@@ -44,7 +44,7 @@ public class MainWindow {
     public void setZoom(float z)
     {
         zoomFactor = z;
-        content.refresh();
+        //content.refresh();
     }
 
     public void nextPage() {
