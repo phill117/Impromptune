@@ -9,12 +9,13 @@ import java.util.Random;
 public class BassTemplate extends AbstractVoiceTemplate {
     Rhythm [] possibleRhythms = {Rhythm._wh, Rhythm._11};
 
-    public BassTemplate(String tonicTone, HarmonicMotion type, int repetions) {
+    public BassTemplate(String tonicTone, HarmonicMotion type, int repetitions) {
         rand = new Random();
         rhythm = possibleRhythms[rand.nextInt(possibleRhythms.length)];
         melodicType = type;
-        repeats = repetions;
+        repeats = repetitions;
         tones = new ArrayList<>();
         tones.add(tonicTone);
+        voiceType = AxisMundi.Bass;
     }
 }

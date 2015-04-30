@@ -16,5 +16,6 @@ public class TenorTemplate extends AbstractVoiceTemplate {
         repeats = repetions;
         tones = new ArrayList<>();
         tones.add(leadingTone);
+        voiceType = AxisMundi.Tenor;
     }
 }
