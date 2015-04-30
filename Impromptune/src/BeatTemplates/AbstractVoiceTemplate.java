@@ -35,7 +35,7 @@ public abstract class AbstractVoiceTemplate {
 //            duration *= 4;
 //        else if (duration == 16)
 //            duration *= 2;
-
+        System.out.println(octave);
         switch(rhythm) {
 
             case _wh: {
@@ -43,8 +43,9 @@ public abstract class AbstractVoiceTemplate {
             }
 
             case _11: {
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration / 2));
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration / 2));
+                int baseDuration = duration / 2;
+                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
 //                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration));
             }
 
