@@ -43,7 +43,7 @@ public class NewOrOpenLaunch {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initModality(Modality.APPLICATION_MODAL);
         if(firstTime)
             stage.setTitle("Welcome to Impromptune!");
         else

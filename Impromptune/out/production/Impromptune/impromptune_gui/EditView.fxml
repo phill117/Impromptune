@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.ImpromptuneInitializer">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="background" stylesheets="@impromptune.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.ImpromptuneInitializer">
    <children>
       <MenuBar fx:id="Menubar" prefWidth="600.0" VBox.vgrow="NEVER">
          <menus>
@@ -130,18 +130,18 @@
                                 </items>
                               </ToolBar>
                               <TabPane fx:id="RendererTabs" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" />
-                              <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="794.0" VBox.vgrow="NEVER">
+                              <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" VBox.vgrow="NEVER">
                                 <items>
-                                    <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" text="Whole" />
-                                    <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" text="Half" />
-                                    <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" text="Quarter" />
-                                    <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" text="Eighth" />
-                                    <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" text="Sixteenth" />
-                                    <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" text="Thirty-Second" />
+                                    <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Whole" />
+                                    <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Half" />
+                                    <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Quarter" />
+                                    <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Eighth" />
+                                    <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Sixteenth" />
+                                    <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Thirty-Second" />
                                     <Separator prefHeight="44.0" prefWidth="14.0" />
-                                    <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" text="Dot" />
-                                    <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" text="Tie" />
-                                    <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" text="Rest" />
+                                    <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Dot" />
+                                    <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Tie" />
+                                    <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" prefHeight="35.0" text="Rest" />
                                 </items>
                               </ToolBar>
                               <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="NEVER" />
@@ -150,13 +150,13 @@
                      </children>
                   </AnchorPane>
                   <Separator orientation="VERTICAL" prefHeight="761.0" prefWidth="0.0" />
-                <AnchorPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="450.0">
+                <AnchorPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="350.0">
                      <children>
-                        <VBox minWidth="444.0" prefHeight="867.0" prefWidth="444.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox maxWidth="350.0" minWidth="350.0" prefHeight="867.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane fx:id="PlayerCase" minHeight="179.0" prefHeight="179.0" prefWidth="506.0" />
-                              <Separator prefWidth="200.0" />
-                              <AnchorPane fx:id="GenSettingsCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                              <AnchorPane fx:id="PlayerCase" minHeight="179.0" prefHeight="179.0" prefWidth="350.0" />
+                              <Separator prefWidth="350.0" />
+                              <AnchorPane fx:id="GenSettingsCase" prefHeight="200.0" prefWidth="350.0" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>

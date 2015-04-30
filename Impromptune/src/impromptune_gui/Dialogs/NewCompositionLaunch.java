@@ -54,7 +54,7 @@ public class NewCompositionLaunch {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("New Composition");
         stage.showAndWait();
         firstTime = false;

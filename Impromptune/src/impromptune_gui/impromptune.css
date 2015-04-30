@@ -1,0 +1,250 @@
+/*
+    This is a theme for impromptune based on a Windows 8
+    styling for javafx using css.
+    Changes started by Doak on 4/29/2015
+*/
+
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TabPane                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+.tab-pane *.tab-header-background {
+    -fx-background-color: derive(-fx-color, -40%);
+    -fx-border-color: derive(-fx-color, -40%);
+    -fx-border-width: 0;
+}
+
+.tab-pane *.tab{
+    -fx-background-color: #b2b2b2;
+        -fx-background-insets: 0;
+        -fx-background-radius: 0;
+        -fx-border-width: 0;
+        -fx-text-fill: #000000;
+}
+
+/* END TAB PANE STUFF */
+
+.separator {
+    -fx-skin: "com.sun.javafx.scene.control.skin.SeparatorSkin";
+}
+
+.separator .line {
+    -fx-border-style: solid;
+    -fx-border-width: 0.083333em; /* 1 */
+}
+
+.separator:horizontal .line {
+    -fx-background-color: null;
+    -fx-padding: 0.083333em 0.0em 0.0em 0.0em; /* 1 0 0 0 */
+    -fx-border-color: derive(-fx-background,-20%) transparent transparent transparent;
+}
+
+.separator:vertical .line {
+    -fx-background-color: null;
+    -fx-padding: 0.0em 0.083333em 0.0em 0.0em; /* 0 1 0 0 */
+    -fx-border-color:  transparent derive(-fx-background,-20%) transparent transparent;
+}
+
+.tool-bar {
+    -fx-background-color: derive(#1d1d1d,30%);
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color:
+        transparent
+        transparent
+        derive(-fx-base, 80%)
+        transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
+    -fx-background-color: transparent, derive(#1d1d1d,20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
+.menu-bar {
+    -fx-background-color: derive(#1d1d1d,20%);
+}
+
+.context-menu {
+    -fx-background-color: derive(#1d1d1d,50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+    -fx-background-color: black;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-background-radius: 0;
+}
+
+.combo-box {
+    -fx-background-radius: 0;
+    -fx-background-color: #dadada;
+}
+
+.combo-box-popup > .list-view {
+    -fx-radius: 0;
+    -fx-background-color: #bdbdbd;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 12, 0.0 , 0 , 8 );
+}
+
+.scroll-pane{
+    -fx-background-color: #f0f0f0;
+}
+
+/*
+ * Metro style Push Button
+ * Author: Pedro Duque Vieira
+ * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+ */
+.button {
+    -fx-padding: 2 10 2 10;
+    -fx-border-color: #a8a8a8;
+    -fx-border-width: 2;
+    -fx-background-radius: 1;
+    -fx-background-color: #dadada;
+    -fx-background-insets: 0;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #000000;
+}
+
+.button:hover {
+    -fx-background-color: #bdbdbd;
+}
+
+.button:pressed, .button:default:hover:pressed {
+    -fx-background-color: white;
+}
+
+.button:focused {
+    -fx-border-color: derive(-fx-focus-color, -20%);
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,-20%);
+}
+
+/* The same, except for with toggle button. */
+
+.toggle-button {
+    -fx-padding: 2 10 2 10;
+    -fx-border-color: #a8a8a8;
+    -fx-border-width: 2;
+    -fx-background-radius: 1;
+    -fx-background-color: #dadada;
+    -fx-background-insets: 0;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #000000;
+}
+
+.toggle-button:hover {
+    -fx-background-color: #bdbdbd;
+}
+
+.toggle-button:selected:hover {
+    -fx-background-color: #7c7c7c;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #6e6e6e;
+}
+.toggle-button:pressed {
+    -fx-background-color: white;
+}
+
+.toggle-button:selected:pressed {
+    -fx-background-color: white;
+}
+
+.toggle-button:disabled, .toggle-button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.toggle-button:focused {
+    -fx-border-color: derive(-fx-focus-color, -20%);
+}

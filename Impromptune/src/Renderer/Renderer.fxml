@@ -6,11 +6,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Renderer.MainWindow">
+<BorderPane stylesheets="@../impromptune_gui/impromptune.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Renderer.MainWindow">
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <content>
-            <AnchorPane>
+            <AnchorPane styleClass="background">
                <children>
                   <ImageView fx:id="scoreView" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
                </children>
