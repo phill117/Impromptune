@@ -16,9 +16,7 @@ public class AltoTemplate extends AbstractVoiceTemplate {
         rhythm = possibleRhythms[rand.nextInt(possibleRhythms.length)];
         melodicType = type;
         repeats = repetitions;
-        tones = new ArrayList<>();
 
-        tones.add(dominantTone);
 
         if (BlackMagicka.noteInScale(dominantTone, keyTonic, mode, sharp)) {
             int val = BlackMagicka.getDegreeIndex(keyTonic, mode, dominantTone, sharp).toInt();
@@ -39,6 +37,12 @@ public class AltoTemplate extends AbstractVoiceTemplate {
             }
 
         }
+
+        if (this.tones == null) {
+            tones = new ArrayList<>();
+            tones.add(dominantTone);
+        }
+
         voiceType = AxisMundi.Alto;
     }
 }
