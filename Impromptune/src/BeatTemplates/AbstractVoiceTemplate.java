@@ -35,7 +35,7 @@ public abstract class AbstractVoiceTemplate {
 //            duration *= 4;
 //        else if (duration == 16)
 //            duration *= 2;
-        System.out.println(octave);
+//        System.out.println(octave);
         switch(rhythm) {
 
             case _wh: {
@@ -52,7 +52,7 @@ public abstract class AbstractVoiceTemplate {
             case _121: {
                 int baseDuration = duration / 4;
 //                int baseDuration = duration;
-                if (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
+                if (tones.size() > 2 && voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration * 2));
                     beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
@@ -67,7 +67,7 @@ public abstract class AbstractVoiceTemplate {
             case _112: {
                 int baseDuration = duration / 4;
 //                int baseDuration = duration;
-                if (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
+                if (tones.size() > 2 && voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration * 2));
