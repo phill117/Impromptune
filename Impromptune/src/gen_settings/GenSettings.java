@@ -168,11 +168,12 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     reader.parse(inputSource);
 
                     //increment divisions
-                    ArrayList<Measure> measures = MetaData.getInstance().getMeasures();
-                    int currentDivisions = MetaData.getInstance().getDivisions();
-                    while(currentDivisions != 32){
-                        for(Measure measure : measures) for(Note note : measure.getPart(0)) note.setDuration(note.getDuration()*2);
-                    }
+//                    ArrayList<Measure> measures = MetaData.getInstance().getMeasures();
+//                    int currentDivisions = MetaData.getInstance().getDivisions();
+//                    while(currentDivisions < 32){
+//                        for(Measure measure : measures) for(Note note : measure.getPart(0)) note.setDuration(note.getDuration()*2);
+//                        currentDivisions*=2;
+//                    }
 
                     int tehOrder = Double.valueOf(order_scroll.getValue()).intValue();
                     int tehVoicez = Double.valueOf(voices_scroll.getValue()).intValue();
