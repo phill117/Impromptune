@@ -9,7 +9,7 @@
 }
 
 .tool-bar {
-    -fx-background-color: derive(#1d1d1d,30%);
+    -fx-background-color: derive(#646464,30%);
 }
 
 
@@ -17,7 +17,7 @@
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
-    -fx-opacity: 0.6;
+    -fx-opacity: 0.8;
 }
 
 .label-bright {
@@ -109,6 +109,7 @@
     -fx-tick-label-fill: white;
 
 }
+
 
 /*
  * Metro style Push Button

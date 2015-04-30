@@ -10,7 +10,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <content>
-            <AnchorPane styleClass="background">
+            <AnchorPane style="-fx-background-color: #dadada;">
                <children>
                   <ImageView fx:id="scoreView" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
                </children>

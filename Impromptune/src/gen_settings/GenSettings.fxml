@@ -6,7 +6,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="557.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gen_settings.GenSettings">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="3.0" spacing="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -17,7 +16,7 @@
             <Slider fx:id="repetitiveness_scroll" blockIncrement="1.0" layoutX="14.0" layoutY="186.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="6.0" VBox.vgrow="ALWAYS" />
             <Label layoutX="16.0" layoutY="243.0" text="Number of Additional Voices" />
             <Slider fx:id="voices_scroll" blockIncrement="1.0" layoutX="14.0" layoutY="293.0" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-            <Button fx:id="generate_btn" layoutX="71.0" layoutY="376.0" mnemonicParsing="false" onAction="#handle" prefHeight="100.0" prefWidth="208.0" text="Generate" underline="true">
+            <Button fx:id="generate_btn" layoutX="71.0" layoutY="376.0" mnemonicParsing="false" onAction="#handle" prefHeight="100.0" prefWidth="208.0" style="-fx-font-size: 20pt;" text="Generate" underline="true">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
