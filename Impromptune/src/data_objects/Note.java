@@ -58,6 +58,13 @@ public class Note {
         return octave;
     }
 
+//    public int getOctaveGivenPart(int partnum, int totalparts){
+//        if(partnum == 1) return octave;
+//        if(totalparts == 3){
+//            if(partnum == 2)
+//        }
+//    }
+
     public void setOctave(int octave) {this.octave = octave;}
 
     public char getPitch() {
@@ -90,15 +97,32 @@ public class Note {
         this.dotted = dotted;
     }
 
-    public int setStaffNo(int part){
-        if(MetaData.getInstance().getPartCount() < 3){
+    public void setStaffNo(int part){
+        int partcount = MetaData.getInstance().getPartCount();
+        if(partcount < 3){
             staffNo = part;
-            return staffNo;
+            return;
         }
 
-        if(part < 3) staffNo = 1;
-        else staffNo = 2;
-        return staffNo;
+        if(partcount == 3){
+            switch (part){
+                default:
+                case 1: staffNo = 1; return;
+                case 2: staffNo = 2;return;
+                case 3: if(octave>4) staffNo = 1; else staffNo = 2;return;
+            }
+        }
+
+        if(partcount == 4){
+            switch (part){
+                default:
+                case 1: staffNo = 1;return;
+                case 2: staffNo = 2;return;
+                case 3:
+                case 4: if(octave>4) staffNo = 1; else staffNo = 2;return;
+            }
+        }
+
     }
 
     public int getStaffNo() {
@@ -138,4 +162,8 @@ public class Note {
 
         return str;
     }
+
+//    public enum Type{
+//        Soprano,Alto,Tenor,Bass
+//    }
 }
