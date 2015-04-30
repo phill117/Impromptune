@@ -442,101 +442,26 @@ public class VirtuosoAgent {
             }
 
         }else{
-            //TODO n/8
+            int beatPlace = 0;
+            int beatnum = 2;
+            if(metaData.getBeats() == 3) beatnum = 1;
+
+            for(Measure measure : measures){
+                for(int i = 0; i < beatnum; i++){
+
+                    for(Note note : beats.get(beatPlace).getNotes()) measure.addNoteToPart(note,part);
+                    beatPlace+=i;
+                    if(beatPlace >= beats.size()){
+                        doContinue = false;
+                        break;
+                    }
+
+                }
+
+                if(!doContinue)break;
+
+            }
         }
-
-
-
-
-
-//        if(metaData.getBeattype() != 8) {
-//
-//            int k = 0;
-//            int currentDuration = 0;
-//            int rollOver = 0;
-//
-//            for (Measure measure : measures) {
-//                currentDuration = 0;
-//                int duration = 0;
-//                for (; k < chordProgTones.size(); k++) {
-//
-//                    if (rollOver != 0) {
-//                        duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
-//
-//                        System.out.println("first part" + measure.getPart(0));
-//                        measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-//                        currentDuration += rollOver;
-//                        rollOver = 0;
-//                        if (currentDuration == divsPerMeasure) break;
-//                        if (currentDuration > divsPerMeasure) {
-//                            rollOver = currentDuration - divsPerMeasure;
-//                            break;
-//                        }
-//                        continue;
-//                    }
-//
-//                    duration = 1 * metaData.getDivisions();//TODO - dynamically change when adding rhythme
-//                    if (currentDuration == divsPerMeasure) break;
-//
-//                    if (currentDuration + duration > divsPerMeasure) {
-//                        rollOver = currentDuration + duration - divsPerMeasure;
-//                    }
-//                    System.out.println("first part" + measure.getPart(0));
-//                    measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-//                    currentDuration += duration;
-//                }
-//            }
-//
-//            for (Measure m : measures) {
-//                System.out.println("NEW MEASURE");
-//                for (Note n : m.getPart(part)) {
-//                    System.out.println(n.getPitch());
-//                }
-//            }
-//        }else{
-//            int k = 0;
-//            int currentDuration = 0;
-//            int rollOver = 0;
-//
-//            for (Measure measure : measures) {
-//                currentDuration = 0;
-//                int duration = 0;
-//                for (; k < chordProgTones.size(); k++) {
-//
-//                    if (rollOver != 0) {
-//                        duration = new Double(1.5 * metaData.getDivisions()).intValue();//TODO - dynamically change when adding rhythme
-//
-//                        System.out.println("first part" + measure.getPart(0));
-//                        measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-//                        currentDuration += rollOver;
-//                        rollOver = 0;
-//                        if (currentDuration == divsPerMeasure) break;
-//                        if (currentDuration > divsPerMeasure) {
-//                            rollOver = currentDuration - divsPerMeasure;
-//                            break;
-//                        }
-//                        continue;
-//                    }
-//
-//                    duration = new Double(1.5 * metaData.getDivisions()).intValue();//TODO - dynamically change when adding rhythme
-//                    if (currentDuration == divsPerMeasure) break;
-//
-//                    if (currentDuration + duration > divsPerMeasure) {
-//                        rollOver = currentDuration + duration - divsPerMeasure;
-//                    }
-//                    System.out.println("first part" + measure.getPart(0));
-//                    measure.addNoteToPart(Note.makeNote(chordProgTones.get(k), 3, duration), part);
-//                    currentDuration += duration;
-//                }
-//            }
-//
-//            for (Measure m : measures) {
-//                System.out.println("NEW MEASURE");
-//                for (Note n : m.getPart(part)) {
-//                    System.out.println(n.getPitch());
-//                }
-//            }
-//        }
     }
 
     static int[][] fifthTable =
