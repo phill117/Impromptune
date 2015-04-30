@@ -150,8 +150,8 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
             return;
         }
         generate_btn.setText("Generating...");
-        //We don't want to save yet do we?? -- Jacob, just use dialog box to get the actual filename to save to
         mainWindow.saveAs(file);
+
 
         new Thread(new Runnable() {
             @Override
@@ -203,6 +203,7 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                 }
             }
         }).start();
+
     }
 
     public static class DTDEntityResolver implements org.xml.sax.EntityResolver{

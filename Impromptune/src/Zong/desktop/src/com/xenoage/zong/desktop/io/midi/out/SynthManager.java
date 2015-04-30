@@ -62,7 +62,7 @@ public class SynthManager {
 			float sampleRate = s.getSetting("samplerate", file, 44100);
 			int sampleSizeInBits = s.getSetting("bits", file, 16);
 			int channels = s.getSetting("channels", file, 2);
-			int latency = s.getSetting("latency", file, 100);
+			int latency = s.getSetting("latency", file, 400);
 			int polyphony = s.getSetting("polyphony", file, 64);
 			String interpolation = s.getSetting("interpolation", file, "linear");
 			String soundbank = s.getSetting("soundbank", file, null);

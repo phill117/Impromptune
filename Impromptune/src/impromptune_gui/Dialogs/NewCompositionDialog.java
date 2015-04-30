@@ -100,13 +100,13 @@ public class NewCompositionDialog implements Initializable{
         symbol.setItems(observableArrayList("♮", "♭", "♯"));
 
 
-        tempo.setItems(observableArrayList("Larghissimo - 24",
+        tempo.setItems(observableArrayList("Larghissimo – 24",
                 "Grave – 30",
                 "Largo – 45",
                 "Larghetto – 60",
                 "Adagio – 70",
                 "Andante – 80",
-                "Andante moderato - 95",
+                "Andante moderato – 95",
                 "Moderato – 110",
                 "Allegretto – 120",
                 "Allegro – 135",

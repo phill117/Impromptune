@@ -100,6 +100,7 @@ public class ImpromptuneInitializer implements Initializable{
     MainWindow mainWindow = null; //The MainWindow of the currently selected tab.
     ArrayList<MainWindow> mainWindows = new ArrayList<MainWindow>();
 
+    public static int totalParts = -1;
     public static ImpromptuneInitializer self;
 
     public static final String appName = "Impromptune";
@@ -369,8 +370,8 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindows.add(mw);
         mainWindow = mw;
 
-        undo.setDisable(true);
-        redo.setDisable(true);
+        //undo.setDisable(true);
+        //redo.setDisable(true);
         genSettings.setMainWindow(mainWindow);
         genSettings.setStage(stage);
 
@@ -378,6 +379,8 @@ public class ImpromptuneInitializer implements Initializable{
         mainWindow.loadedFile = file.toString();
         mainWindow.getContent().loadScore(mainWindow.loadedFile);
 
+        totalParts = MetaData.getInstance().getPartCount();
+        System.out.println("PARTS:" + totalParts);
         add.setText(MetaData.getInstance().getTitle() + "*");
 
         if(MetaData.getInstance().getTitle() != null)
