@@ -1,6 +1,7 @@
 package gen_settings;
 
 import Renderer.MainWindow;
+import data_objects.Measure;
 import data_objects.MetaData;
 import data_objects.Note;
 import impromptune_gui.ImpromptuneInitializer;
@@ -165,6 +166,14 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
                     //mxp.parse(inputSource, handler);
                     reader.setContentHandler(handler);
                     reader.parse(inputSource);
+
+                    //increment divisions
+                    ArrayList<Measure> measures = MetaData.getInstance().getMeasures();
+                    int currentDivisions = MetaData.getInstance().getDivisions();
+                    while(currentDivisions != 32){
+                        for(Measure measure : measures) for(Note note : measure.getPart(0)) note.setDuration(note.getDuration()*2);
+                    }
+
                     int tehOrder = Double.valueOf(order_scroll.getValue()).intValue();
                     int tehVoicez = Double.valueOf(voices_scroll.getValue()).intValue();
                     int tehRepetitz = Double.valueOf(repetitiveness_scroll.getValue()).intValue();

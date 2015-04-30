@@ -28,11 +28,11 @@ public class Validator {
                 doubleFifth(parts.get(k),parts.get(i));
                 doubleOctave(parts.get(k),parts.get(i));
 
-                if(k-1 == i){
-                    int thresh = 1;
-                    if(i == 0 && k == 1) thresh++;
-                    spacingError(parts.get(i),parts.get(k),thresh);
-                }
+//                if(k-1 == i){
+//                    int thresh = 1;
+//                    if(i == 0 && k == 1) thresh++;
+//                    spacingError(parts.get(i),parts.get(k),thresh);
+//                }//TODO add voice lowering if necessary
             }
         }
         return parts;

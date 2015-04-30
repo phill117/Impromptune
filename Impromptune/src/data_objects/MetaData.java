@@ -173,9 +173,9 @@ public class MetaData {
 
     public void replaceMeasures(){ measures = new ArrayList<>();}
 
-    public boolean didMultiplyDivs(){return multipliedDivs;}
-
-    public void setMultipliedDivs(boolean d){ multipliedDivs = d;}
+//    public boolean didMultiplyDivs(){return multipliedDivs;}
+//
+//    public void setMultipliedDivs(boolean d){ multipliedDivs = d;}
 
     //gets the notes in the first part (Impromptune only accepts one note at a time so this is default) and puts it in a list
     public ArrayList<Note> getNoteList(){
@@ -196,23 +196,23 @@ public class MetaData {
         ArrayList<ArrayList<Note>> beats = new ArrayList<>();
 
         //if n/8, set mutliply the divisions by 2 to ensure whole numbers
-        MetaData metaData = getInstance();
-        if(metaData.getBeattype() == 8 && !metaData.didMultiplyDivs()){
-            metaData.setMultipliedDivs(true);
-            metaData.setDivisions(metaData.getDivisions()*2);
-            setDivisions(getDivisions()*2);
-            setMultipliedDivs(true);
-            for(Measure m: metaData.getMeasures()) {
-                for (Note n : m.getPart(0)) n.setDuration(n.getDuration() * 2);
-            }
-        }
-
-        if(metaData.getBeattype() !=8 && metaData.didMultiplyDivs()){
-            metaData.setMultipliedDivs(false);
-            metaData.setDivisions(metaData.getDivisions()/2);
-            setDivisions(getDivisions()/2);
-            setMultipliedDivs(false);
-        }
+//        MetaData metaData = getInstance();
+//        if(metaData.getBeattype() == 8 && !metaData.didMultiplyDivs()){
+//            metaData.setMultipliedDivs(true);
+//            metaData.setDivisions(metaData.getDivisions()*2);
+//            setDivisions(getDivisions()*2);
+//            setMultipliedDivs(true);
+//            for(Measure m: metaData.getMeasures()) {
+//                for (Note n : m.getPart(0)) n.setDuration(n.getDuration() * 2);
+//            }
+//        }
+//
+//        if(metaData.getBeattype() !=8 && metaData.didMultiplyDivs()){
+//            metaData.setMultipliedDivs(false);
+//            metaData.setDivisions(metaData.getDivisions()/2);
+//            setDivisions(getDivisions()/2);
+//            setMultipliedDivs(false);
+//        }
 
 
         int currentDuration = 0;
