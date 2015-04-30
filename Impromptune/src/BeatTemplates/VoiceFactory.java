@@ -68,7 +68,7 @@ public class VoiceFactory {
             case Alto:
 
                 for (Pair<String, Integer> pair : arr) {
-                    AltoTemplate alto = new AltoTemplate(pair.first(), HarmonicMotion.Parallel, repetition);
+                    AltoTemplate alto = new AltoTemplate(pair.first(), HarmonicMotion.Parallel, repetition, keyTonic, mode, sharp);
                     beats.add(alto.buildBeat(MetaData.getInstance().getDivisions(), pair.second()));
                 }
 
@@ -77,7 +77,7 @@ public class VoiceFactory {
             case Soprano:
 
                 for (Pair<String, Integer> pair : arr) {
-                    SopranoTemplate soprano = new SopranoTemplate(pair.first(), HarmonicMotion.Parallel, repetition, keyTonic, mode);
+                    SopranoTemplate soprano = new SopranoTemplate(pair.first(), HarmonicMotion.Contrary, repetition, keyTonic, mode, sharp);
                     beats.add(soprano.buildBeat(MetaData.getInstance().getDivisions(), pair.second()));
                 }
 

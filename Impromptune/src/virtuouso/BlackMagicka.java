@@ -513,7 +513,7 @@ public class BlackMagicka {
         return note;
     }
 
-    static private int getIndexOfScale(List<String> scale, String tone) {
+    static private int getIndexOfScale(List<String> scale, String tone, boolean sharp) {
         int i = 0;
 
         for (String s : scale) {
@@ -543,11 +543,11 @@ public class BlackMagicka {
     public static Degree getDegreeIndex(String keyTonic, String mode, String tone, boolean sharp) {
 //        System.out.println("getting degree index " + tone + "from scale tonic: " + keyTonic + " from mode: " + mode);
         if (mode.equals("major")) {
-            int i = getIndexOfScale(majorScale(keyTonic, sharp), tone);
+            int i = getIndexOfScale(majorScale(keyTonic, sharp), tone, sharp);
             if (i == -1) return null;
             return Degree.values()[i];
         } else if (mode.equals("minor")) {
-            int i = getIndexOfScale(minorScale(keyTonic, sharp), tone);
+            int i = getIndexOfScale(minorScale(keyTonic, sharp), tone, sharp);
             if (i == -1) return null;
             return Degree.values()[i];
         }
@@ -599,7 +599,7 @@ public class BlackMagicka {
         return false;
     }
     //is this note in this root mode scale?
-    static boolean noteInScale(String note, String keyTonic, String mode, boolean sharp) { //note = this note, root = root of scale, mode = mode
+    public static boolean noteInScale(String note, String keyTonic, String mode, boolean sharp) { //note = this note, root = root of scale, mode = mode
         List<String> scale = null;
         switch(mode) {
             case "major":

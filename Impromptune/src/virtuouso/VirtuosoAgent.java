@@ -159,23 +159,40 @@ public class VirtuosoAgent {
                 if (!BlackMagicka.noteInScale(tone, keyTonic, mode, sharp))  {
                     Degree deg = Degree.NonScaleDegree;
                     deg.setNonScaleDegree(tone);
-                    pair = new Pair<Degree, Integer>(deg, pair.second());
+                    Integer register = 0;
+
+                    switch(i) {
+                        case 0:
+                            register = VoiceOctaveRanges.Bass.getOctave();
+                            break;
+                        case 1:
+                            register = VoiceOctaveRanges.Tenor.getOctave();
+                            break;
+                        case 2:
+                            register = VoiceOctaveRanges.Alto.getOctave();
+                            break;
+                        case 3:
+                            register = VoiceOctaveRanges.Soprano.getOctave();
+                            break;
+                    }
+
+                    pair = new Pair<Degree, Integer>(deg, register);
                     degrees.add(pair);
                     continue;
                 }
 
                 switch (i) {
                     case 0:
-                        pair = chooseSoprano(tone);
+                        pair = chooseBass(tone);
                         break;
                     case 1:
-                        pair = chooseAlto(tone);
-                        break;
-                    case 2:
                         pair = chooseTenor(tone);
                         break;
+                    case 2:
+                        pair = chooseAlto(tone);
+                        break;
                     case 3:
-                        pair = chooseBass(tone);
+                        pair = chooseSoprano(tone);
                         break;
                 }
 
@@ -183,7 +200,9 @@ public class VirtuosoAgent {
             }
 
             partList.add(degrees);
-
+            for (Pair<Degree, Integer> deg : degrees)
+                System.out.print(deg.t.toInt() + ",");
+            System.out.println();
         } while (i++ < voices);
 
         return partList;

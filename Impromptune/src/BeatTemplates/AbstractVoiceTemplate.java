@@ -2,6 +2,7 @@ package BeatTemplates;
 
 import data_objects.Beat;
 import data_objects.Note;
+import virtuouso.BlackMagicka;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,10 +18,23 @@ public abstract class AbstractVoiceTemplate {
     int repeats;
     Random rand;
 
+    AxisMundi voiceType;
+
     public Beat buildBeat(int duration, Integer register) {
         Beat beat = new Beat();
         int numNotes = rhythm.getBeatSequence().length;
         int octave = register;
+        duration *= 4;
+//        if (duration == 1)
+//            duration *= 32;
+//        else if (duration == 2)
+//            duration *= 16;
+//        else if (duration == 4)
+//            duration *= 8;
+//        else if (duration == 8)
+//            duration *= 4;
+//        else if (duration == 16)
+//            duration *= 2;
 
         switch(rhythm) {
 
@@ -29,41 +43,60 @@ public abstract class AbstractVoiceTemplate {
             }
 
             case _11: {
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration / 2));
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration / 2));
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration));
+                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration / 2));
+                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration / 2));
+//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, duration));
             }
 
             case _121: {
-//                int baseDuration = duration / 4;
-                int baseDuration = duration;
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                int baseDuration = duration / 4;
+//                int baseDuration = duration;
+                if (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(0)), octave, baseDuration));
+                } else {
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                }
+
             }
 
             case _112: {
-//                int baseDuration = duration / 4;
-                int baseDuration = duration;
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                int baseDuration = duration / 4;
+//                int baseDuration = duration;
+                if (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                } else {
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                }
             }
 
             case _211: {
-//                int baseDuration = duration / 4;
-                int baseDuration = duration;
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                int baseDuration = duration / 4;
+//                int baseDuration = duration;
+                if (voiceType == AxisMundi.Soprano) {
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(0)), octave, baseDuration));
+                } else {
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                }
             }
 
             case _1111: {
-                int baseDuration = duration;
-//                int baseDuration = duration / 4;
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-//                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+//                int baseDuration = duration;
+                int baseDuration = duration / 4;
+                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
                 beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
             }
         }
