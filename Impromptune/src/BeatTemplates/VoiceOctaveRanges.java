@@ -9,7 +9,7 @@ public enum VoiceOctaveRanges {
     Soprano(new Integer [] {new Integer(5), new Integer(6)}),
     Alto(new Integer [] {new Integer(4), new Integer(5)}),
     Tenor(new Integer [] {new Integer(2), new Integer(3)}),
-    Bass(new Integer [] {new Integer(1), new Integer(2)});
+    Bass(new Integer [] {new Integer(0), new Integer(1)});
 
     VoiceOctaveRanges(Integer [] range) {
         voiceRange = range;
