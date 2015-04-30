@@ -42,6 +42,10 @@ public class SopranoTemplate extends AbstractVoiceTemplate {
 
         }
 
+        if (this.tones == null) {
+            tones = new ArrayList<>();
+            tones.add(leadingTone);
+        }
         voiceType = AxisMundi.Soprano;
     }
 }

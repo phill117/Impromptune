@@ -458,7 +458,8 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onOpen(ActionEvent event) {
-        System.out.println("OnOPEN");
+        //System.out.println("OnOPEN");
+
         mainWindow.pageIndex = 0;
         File open = IOHandler.load(stage);
         String file = open.getAbsolutePath();
@@ -473,6 +474,7 @@ public class ImpromptuneInitializer implements Initializable{
 
     public void openFile(File file){
         mainWindow.pageIndex = 0;
+        mainWindow.noteCounter = 8;
         String f = file.getAbsolutePath();
         if(f != null)
         {
@@ -521,7 +523,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onSAVEAS(ActionEvent event) {
-        System.out.println("OnSAVEAS");
+       // System.out.println("OnSAVEAS");
         FileChooser chooser = new FileChooser();
 
         File custom = new File(".");
@@ -545,7 +547,7 @@ public class ImpromptuneInitializer implements Initializable{
     }
 
     @FXML void onSAVE(ActionEvent event) {
-        System.out.println("OnSAVE");
+       // System.out.println("OnSAVE");
 
         if(!mainWindow.getContent().canSave)
             return;

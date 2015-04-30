@@ -52,7 +52,7 @@ public abstract class AbstractVoiceTemplate {
             case _121: {
                 int baseDuration = duration / 4;
 //                int baseDuration = duration;
-                if (tones.size() > 2 && voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
+                if (tones.size() > 2 && (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto)) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration * 2));
                     beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
@@ -67,7 +67,7 @@ public abstract class AbstractVoiceTemplate {
             case _112: {
                 int baseDuration = duration / 4;
 //                int baseDuration = duration;
-                if (tones.size() > 2 && voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
+                if (tones.size() > 2 && (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto)) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration * 2));
@@ -81,7 +81,7 @@ public abstract class AbstractVoiceTemplate {
             case _211: {
                 int baseDuration = duration / 4;
 //                int baseDuration = duration;
-                if (voiceType == AxisMundi.Soprano) {
+                if (tones.size() > 2 && voiceType == AxisMundi.Soprano) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
                     beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
