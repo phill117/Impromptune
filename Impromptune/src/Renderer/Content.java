@@ -66,6 +66,7 @@ public class Content
     public boolean canSave = false;
     private Composition blankComp;
 
+
 	public Content(MainWindow mainWindow) {
 		this.mainWindow = mainWindow;
         //listen for playback events (see method playbackAtMP)
@@ -257,6 +258,7 @@ public class Content
         canRedo = false;
         addAction();
         canSave = true;
+        mainWindow.noteCounter++;
 
         //System.out.println(comp.clef);
 

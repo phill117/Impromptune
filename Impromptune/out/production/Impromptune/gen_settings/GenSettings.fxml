@@ -16,7 +16,7 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Button>
-      <Slider fx:id="voices_scroll" blockIncrement="1.0" layoutX="14.0" layoutY="293.0" majorTickUnit="1.0" max="4.0" min="1.0" minorTickCount="0" prefHeight="17.0" prefWidth="378.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Slider fx:id="voices_scroll" blockIncrement="1.0" layoutX="14.0" layoutY="293.0" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="0" prefHeight="17.0" prefWidth="378.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <Label layoutX="16.0" layoutY="243.0" text="Number of Additional Voices" />
    </children>
 </Pane>

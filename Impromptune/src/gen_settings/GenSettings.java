@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+import impromptune_gui.ImpromptuneInitializer;
 /**
  * Created by Sean on 3/24/2015.
  */
@@ -90,6 +90,14 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+
+        //Check for notes
+        if(mainWindow.noteCounter < 8)
+        {
+            ImpromptuneInitializer.showMessageDialogStat("Please add at least 8 voice elements before generating!");
+            return;
+        }
+
 
         //Generate some music!!
         /**
@@ -190,8 +198,8 @@ public class GenSettings implements Initializable, EventHandler<ActionEvent> {
     public static class DTDEntityResolver implements org.xml.sax.EntityResolver{
         @Override
         public org.xml.sax.InputSource resolveEntity(String publicId, String systemId) throws org.xml.sax.SAXException, IOException {
-            System.out.println("SYSTEMID in RESOLVER "+systemId);
-            System.out.println("publicID in RESOLVER "+publicId);
+//            System.out.println("SYSTEMID in RESOLVER "+systemId);
+//            System.out.println("publicID in RESOLVER "+publicId);
             if (systemId.equals("http://www.musicxml.org/dtds/partwise.dtd")) {
                 // return a special input source
                 FileReader reader = new FileReader(GenSettings.partwisePath);

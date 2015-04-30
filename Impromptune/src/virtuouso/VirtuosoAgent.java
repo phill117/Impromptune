@@ -30,7 +30,7 @@ public class VirtuosoAgent {
 
     private int voices;
     boolean sharp = true;
-    private VoiceFactory voiceFactory;
+    public VoiceFactory voiceFactory;
 
     public VirtuosoAgent(File file, String fifthType, int order, int parts, int repetition) {
         voices = parts;
@@ -437,15 +437,12 @@ public class VirtuosoAgent {
 
                 }
 
-                if(doContinue) continue;
-                else break;
+                if(!doContinue)break;
 
             }
 
-
-
         }else{
-
+            //TODO n/8
         }
 
 

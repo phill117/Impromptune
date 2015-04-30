@@ -22,17 +22,17 @@ public class Validator {
 
     public ArrayList<ArrayList<Pair<Degree, Integer>>> validate(){
 
-        for(int i = 0; i < parts.size(); i++){
+        for(int i = 0; i < parts.size()-1; i++){
             for(int k = i + 1; k < parts.size(); k++) {
-                doubleFifth(parts.get(i),parts.get(k));
-                doubleOctave(parts.get(i),parts.get(k));
+                System.out.println("k = "+k+" i = "+i);
+                doubleFifth(parts.get(k),parts.get(i));
+                doubleOctave(parts.get(k),parts.get(i));
 
                 if(k-1 == i){
                     int thresh = 1;
-                    if(k == parts.size()-1) thresh++;
+                    if(i == 0 && k == 1) thresh++;
                     spacingError(parts.get(i),parts.get(k),thresh);
                 }
-
             }
         }
         return parts;
