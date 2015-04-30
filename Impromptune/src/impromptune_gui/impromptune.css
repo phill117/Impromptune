@@ -5,7 +5,7 @@
 */
 
 .background {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #646464;
 }
 
 .tool-bar {
@@ -90,7 +90,7 @@
 
 .menu-bar .label {
     -fx-font-size: 10pt;
-    -fx-font-family: "Segoe UI Light";
+    -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
     -fx-opacity: 0.9;
 }
@@ -102,6 +102,12 @@
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
+}
+
+.slider .axis{
+    -fx-tick-label-font-size: 14;
+    -fx-tick-label-fill: white;
+
 }
 
 /*
