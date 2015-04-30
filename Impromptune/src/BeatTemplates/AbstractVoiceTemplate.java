@@ -54,8 +54,8 @@ public abstract class AbstractVoiceTemplate {
 //                int baseDuration = duration;
                 if (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
-                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration * 2));
+                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
                 } else {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
@@ -69,8 +69,8 @@ public abstract class AbstractVoiceTemplate {
 //                int baseDuration = duration;
                 if (voiceType == AxisMundi.Soprano || voiceType == AxisMundi.Alto) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(0)), octave, baseDuration));
-                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration * 2));
                 } else {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
@@ -83,8 +83,8 @@ public abstract class AbstractVoiceTemplate {
 //                int baseDuration = duration;
                 if (voiceType == AxisMundi.Soprano) {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
-                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(0)), octave, baseDuration));
-                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(0)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                    beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
                 } else {
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
                     beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
@@ -94,11 +94,76 @@ public abstract class AbstractVoiceTemplate {
 
             case _1111: {
 //                int baseDuration = duration;
-                int baseDuration = duration / 4;
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
-                beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                Random rand = new Random();
+
+                int baseDuration = duration / 8;
+                switch (rand.nextInt(4)) {
+                    case 0:
+                        if (tones.size() == 1) {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 3));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 3));
+                        } else {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 3));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration * 3));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                        }
+                        break;
+                    case 1:
+                        if (tones.size() == 1) {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 3));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                        } else {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 3));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
+                        }
+                        break;
+                    case 2:
+                        if (tones.size() == 1) {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                        } else {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
+                        }
+                        break;
+                    case 3:
+                        if (tones.size() == 1) {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration * 2));
+                        } else {
+                            beat.addNote(new Note(stripTone(tones.get(0)), stripAccidental(tones.get(0)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration * 2));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(1)), stripAccidental(tones.get(1)), octave, baseDuration));
+                            beat.addNote(new Note(stripTone(tones.get(2)), stripAccidental(tones.get(2)), octave, baseDuration * 2));
+                        }
+                }
             }
         }
 

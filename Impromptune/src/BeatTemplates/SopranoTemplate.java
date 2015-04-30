@@ -9,7 +9,7 @@ import java.util.Random;
  * Created by ben on 4/27/2015.
  */
 public class SopranoTemplate extends AbstractVoiceTemplate {
-    Rhythm [] possibleRhythms = {Rhythm._211, Rhythm._112, Rhythm._121};//, Rhythm._1111};
+    Rhythm [] possibleRhythms = {Rhythm._211, Rhythm._112, Rhythm._121, Rhythm._1111};
     String keyTonic;
     String mode;
 
