@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="background" stylesheets="@impromptune.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="impromptune_gui.ImpromptuneInitializer">
+   <children>
+      <MenuBar fx:id="Menubar" prefWidth="600.0" VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onNEW" text="New">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#onOpen" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <Menu fx:id="recent" mnemonicParsing="false" onShowing="#onRecent" text="Open Recent">
+
+                   </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                   <MenuItem mnemonicParsing="false" onAction="#onSAVE" text="Save" visible="true">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#onSAVEAS" text="Save As..." visible="true">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                   <MenuItem mnemonicParsing="false" onAction="#onPRINT" text="Print">
+                       <accelerator>
+                        <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                        </accelerator>
+                    </MenuItem>
+                   <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#onExit" text="Exit">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem fx:id="undo" mnemonicParsing="false" onAction="#onUndo" text="Undo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="redo" mnemonicParsing="false" onAction="#onRedo" text="Redo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" visible="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#openCompositionSettings" text="Composition..." />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onZOUT" text="Zoom In">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="EQUALS" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#onZIN" text="Zoom Out">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="MINUS" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Player">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onConvertFileToMidi" text="File to Midi..." />
+                  <MenuItem mnemonicParsing="false" onAction="#onConvertDirToMidi" text="Directory to Midi..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#onSettingsAudio" text="Audio..." />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onABOUT" text="About Impromptune" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane fx:id="root" onKeyPressed="#onNumDurationPressed" prefHeight="869.0" prefWidth="1252.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="761.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="759.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ToolBar maxHeight="-Infinity" VBox.vgrow="NEVER">
+                                <items>
+                                  <Button mnemonicParsing="false" onAction="#onNewTab" text="New Tab">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#onCloseTab" text="Close Tab">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Separator />
+                                    <Button mnemonicParsing="false" onAction="#onPrev" text="Previous Page">
+                                        <font>
+                                            <Font size="12.0" />
+                                        </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#onNext" text="Next Page">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Button>
+                                </items>
+                              </ToolBar>
+                              <TabPane fx:id="RendererTabs" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" />
+                              <ToolBar fx:id="NoteSelection" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" VBox.vgrow="NEVER">
+                                <items>
+                                    <ToggleButton fx:id="whole" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Whole" />
+                                    <ToggleButton fx:id="half" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Half" />
+                                    <ToggleButton fx:id="quarter" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Quarter" />
+                                    <ToggleButton fx:id="eighth" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Eighth" />
+                                    <ToggleButton fx:id="sixteenth" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Sixteenth" />
+                                    <ToggleButton fx:id="thirtysecond" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Thirty-Second" />
+                                    <Separator prefHeight="44.0" prefWidth="14.0" />
+                                    <ToggleButton fx:id="dot" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Dot" />
+                                    <ToggleButton fx:id="tie" mnemonicParsing="false" onAction="#onDurationPressed" prefHeight="35.0" text="Tie" />
+                                    <Button fx:id="rest" mnemonicParsing="false" onAction="#onRestPressed" prefHeight="35.0" text="Rest" />
+                                </items>
+                              </ToolBar>
+                              <AnchorPane fx:id="PianoCase" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="NEVER" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <Separator orientation="VERTICAL" prefHeight="761.0" prefWidth="0.0" />
+                <AnchorPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="350.0">
+                     <children>
+                        <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="867.0" prefWidth="360.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="PlayerCase" minHeight="179.0" prefHeight="179.0" prefWidth="350.0" />
+                              <Separator prefWidth="350.0" />
+                              <AnchorPane fx:id="GenSettingsCase" prefHeight="200.0" prefWidth="350.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@../impromptune_gui/impromptune.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Renderer.MainWindow">
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane style="-fx-background-color: #dadada;">
+               <children>
+                  <ImageView fx:id="scoreView" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

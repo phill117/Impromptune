@@ -3,6 +3,24 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Impromptune.iml" filepath="$PROJECT_DIR$/Impromptune.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/converter/converter.iml" filepath="$PROJECT_DIR$/src/Zong/converter/converter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/core/core.iml" filepath="$PROJECT_DIR$/src/Zong/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/demos/demos.iml" filepath="$PROJECT_DIR$/src/Zong/demos/demos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/desktop/desktop.iml" filepath="$PROJECT_DIR$/src/Zong/desktop/desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/layout/layout.iml" filepath="$PROJECT_DIR$/src/Zong/layout/layout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/midi-out/midi-out.iml" filepath="$PROJECT_DIR$/src/Zong/midi-out/midi-out.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/musicxml/musicxml.iml" filepath="$PROJECT_DIR$/src/Zong/musicxml/musicxml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/musicxml-in/musicxml-in.iml" filepath="$PROJECT_DIR$/src/Zong/musicxml-in/musicxml-in.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/player/player.iml" filepath="$PROJECT_DIR$/src/Zong/player/player.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/renderer/renderer.iml" filepath="$PROJECT_DIR$/src/Zong/renderer/renderer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/renderer-awt/renderer-awt.iml" filepath="$PROJECT_DIR$/src/Zong/renderer-awt/renderer-awt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/renderer-javafx/renderer-javafx.iml" filepath="$PROJECT_DIR$/src/Zong/renderer-javafx/renderer-javafx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/utils-base/utils-base.iml" filepath="$PROJECT_DIR$/src/Zong/utils-base/utils-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/utils-jse/utils-jse.iml" filepath="$PROJECT_DIR$/src/Zong/utils-jse/utils-jse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/utils-jse8/utils-jse8.iml" filepath="$PROJECT_DIR$/src/Zong/utils-jse8/utils-jse8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/utils-kernel/utils-kernel.iml" filepath="$PROJECT_DIR$/src/Zong/utils-kernel/utils-kernel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/utils-pdlib/utils-pdlib.iml" filepath="$PROJECT_DIR$/src/Zong/utils-pdlib/utils-pdlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/Zong/utils-serialize/utils-serialize.iml" filepath="$PROJECT_DIR$/src/Zong/utils-serialize/utils-serialize.iml" />
     </modules>
   </component>
 </project>
